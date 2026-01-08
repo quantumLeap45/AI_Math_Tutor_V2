@@ -88,14 +88,23 @@ export function ChatSidebar({
           ) : (
             <ul className="space-y-1">
               {sessions.map(session => (
-                <li key={session.id}>
-                  <button
+                <li key={session.id} className="group">
+                  <div
+                    role="button"
+                    tabIndex={0}
                     onClick={() => {
                       onSelectSession(session.id);
                       onClose?.();
                     }}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onSelectSession(session.id);
+                        onClose?.();
+                      }
+                    }}
                     className={`
-                      w-full p-3 rounded-lg text-left transition-colors
+                      w-full p-3 rounded-lg text-left transition-colors cursor-pointer
                       ${
                         session.id === currentSessionId
                           ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800'
@@ -139,7 +148,7 @@ export function ChatSidebar({
                         </button>
                       )}
                     </div>
-                  </button>
+                  </div>
                 </li>
               ))}
             </ul>
