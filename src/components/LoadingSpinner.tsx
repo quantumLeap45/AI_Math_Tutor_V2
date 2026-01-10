@@ -14,22 +14,16 @@ interface LoadingSpinnerProps {
   className?: string;
 }
 
-export function LoadingSpinner({ size = 'md', className = '' }: LoadingSpinnerProps) {
-  const sizeClasses = {
-    sm: 'w-4 h-4 border-2',
-    md: 'w-6 h-6 border-2',
-    lg: 'w-10 h-10 border-3',
-  };
+const SIZE_CLASSES = {
+  sm: 'w-4 h-4 border-2',
+  md: 'w-6 h-6 border-2',
+  lg: 'w-10 h-10 border-3',
+} as const;
 
+export function LoadingSpinner({ size = 'md', className = '' }: LoadingSpinnerProps) {
   return (
     <div
-      className={`
-        ${sizeClasses[size]}
-        border-blue-500 border-t-transparent
-        rounded-full
-        animate-spin
-        ${className}
-      `}
+      className={`${SIZE_CLASSES[size]} border-blue-500 border-t-transparent rounded-full animate-spin ${className}`}
       role="status"
       aria-label="Loading"
     >
@@ -38,9 +32,6 @@ export function LoadingSpinner({ size = 'md', className = '' }: LoadingSpinnerPr
   );
 }
 
-/**
- * Animated loading dots for chat responses
- */
 export function LoadingDots() {
   return (
     <div className="flex items-center gap-1" role="status" aria-label="AI is thinking">
@@ -56,41 +47,14 @@ export function LoadingDots() {
   );
 }
 
-/**
- * Full page loading screen
- */
-export function LoadingScreen() {
-  return (
-    <div className="fixed inset-0 flex items-center justify-center bg-white dark:bg-slate-900">
-      <div className="text-center">
-        <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-          <span className="text-white font-bold text-lg">M</span>
-        </div>
-        <LoadingSpinner size="lg" className="mx-auto mb-4" />
-        <p className="text-slate-600 dark:text-slate-400">Loading...</p>
-      </div>
-    </div>
-  );
-}
-
-/**
- * Skeleton loading placeholder
- */
 interface SkeletonProps {
   className?: string;
 }
 
 export function Skeleton({ className = '' }: SkeletonProps) {
-  return (
-    <div
-      className={`animate-pulse bg-slate-200 dark:bg-slate-700 rounded ${className}`}
-    />
-  );
+  return <div className={`animate-pulse bg-slate-200 dark:bg-slate-700 rounded ${className}`} />;
 }
 
-/**
- * Message loading bubble (typing indicator)
- */
 export function MessageLoading() {
   return (
     <div className="flex justify-start mb-4">
@@ -100,5 +64,3 @@ export function MessageLoading() {
     </div>
   );
 }
-
-export default LoadingSpinner;

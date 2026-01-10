@@ -135,5 +135,3 @@ export function UsernameForm() {
     </form>
   );
 }
-
-export default UsernameForm;

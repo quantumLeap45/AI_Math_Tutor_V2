@@ -1,0 +1,1922 @@
+[
+  {
+    "id": "P1-WHOLE-001",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number notation",
+    "difficulty": "easy",
+    "question": "What is twenty-seven written in numerals?",
+    "options": {
+      "A": "27",
+      "B": "72",
+      "C": "207",
+      "D": "217"
+    },
+    "correctAnswer": "A",
+    "explanation": "Twenty-seven is written as 27. The 'twenty' part is 20 (the tens digit) and 'seven' is 7 (the ones digit)."
+  },
+  {
+    "id": "P1-WHOLE-002",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Counting objects",
+    "difficulty": "easy",
+    "question": "Sarah has 8 red balloons and 5 blue balloons. How many balloons does she have altogether?",
+    "options": {
+      "A": "12",
+      "B": "13",
+      "C": "14",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "explanation": "Add the red and blue balloons: 8 + 5 = 13 balloons."
+  },
+  {
+    "id": "P1-WHOLE-003",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Place values",
+    "difficulty": "medium",
+    "question": "In the number 46, what digit is in the tens place?",
+    "options": {
+      "A": "6",
+      "B": "4",
+      "C": "10",
+      "D": "40"
+    },
+    "correctAnswer": "B",
+    "explanation": "In 46, the digit 4 is in the tens place and 6 is in the ones place."
+  },
+  {
+    "id": "P1-WHOLE-004",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers",
+    "difficulty": "easy",
+    "question": "Which number is greater: 35 or 53?",
+    "options": {
+      "A": "35",
+      "B": "53",
+      "C": "They are the same",
+      "D": "Cannot tell"
+    },
+    "correctAnswer": "B",
+    "explanation": "53 is greater than 35. When comparing, we look at the tens place first."
+  },
+  {
+    "id": "P1-WHOLE-005",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Ordinal numbers",
+    "difficulty": "easy",
+    "question": "Alex finished the race before Ben. Ben finished before Clara. Who came in second?",
+    "options": {
+      "A": "Alex",
+      "B": "Ben",
+      "C": "Clara",
+      "D": "Cannot tell"
+    },
+    "correctAnswer": "B",
+    "explanation": "The order is: Alex (1st), Ben (2nd), Clara (3rd). Ben came in second place."
+  },
+  {
+    "id": "P1-WHOLE-006",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "What number comes next in this pattern? 12, 14, 16, 18, ___",
+    "options": {
+      "A": "19",
+      "B": "20",
+      "C": "21",
+      "D": "22"
+    },
+    "correctAnswer": "B",
+    "explanation": "The pattern increases by 2 each time. 18 + 2 = 20."
+  },
+  {
+    "id": "P1-WHOLE-007",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number notation",
+    "difficulty": "easy",
+    "question": "How do you write the number 'fifty-three' in numerals?",
+    "options": {
+      "A": "35",
+      "B": "503",
+      "C": "53",
+      "D": "530"
+    },
+    "correctAnswer": "C",
+    "explanation": "Fifty-three is written as 53 in numerals."
+  },
+  {
+    "id": "P1-WHOLE-008",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Place values",
+    "difficulty": "medium",
+    "question": "What is the value of the digit 7 in the number 78?",
+    "options": {
+      "A": "7",
+      "B": "70",
+      "C": "8",
+      "D": "80"
+    },
+    "correctAnswer": "B",
+    "explanation": "The digit 7 is in the tens place, so its value is 70."
+  },
+  {
+    "id": "P1-WHOLE-009",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Ordering numbers",
+    "difficulty": "medium",
+    "question": "Arrange these numbers from smallest to greatest: 67, 45, 89.",
+    "options": {
+      "A": "45, 67, 89",
+      "B": "89, 67, 45",
+      "C": "67, 45, 89",
+      "D": "45, 89, 67"
+    },
+    "correctAnswer": "A",
+    "explanation": "From smallest to greatest: 45, 67, 89."
+  },
+  {
+    "id": "P1-WHOLE-010",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Counting objects",
+    "difficulty": "easy",
+    "question": "There are 9 birds on a tree. 4 more birds join them. How many birds are there now?",
+    "options": {
+      "A": "5",
+      "B": "12",
+      "C": "13",
+      "D": "14"
+    },
+    "correctAnswer": "C",
+    "explanation": "9 birds plus 4 more birds: 9 + 4 = 13 birds."
+  },
+  {
+    "id": "P1-WHOLE-011",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "What number is missing? 21, 22, 23, ___, 25",
+    "options": {
+      "A": "20",
+      "B": "24",
+      "C": "26",
+      "D": "27"
+    },
+    "correctAnswer": "B",
+    "explanation": "The numbers go in order: 21, 22, 23, 24, 25."
+  },
+  {
+    "id": "P1-WHOLE-012",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers",
+    "difficulty": "easy",
+    "question": "Which number is smaller: 82 or 28?",
+    "options": {
+      "A": "82",
+      "B": "28",
+      "C": "They are equal",
+      "D": "Cannot tell"
+    },
+    "correctAnswer": "B",
+    "explanation": "28 is smaller than 82."
+  },
+  {
+    "id": "P1-WHOLE-013",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Ordinal numbers",
+    "difficulty": "easy",
+    "question": "In a line of 10 children, Maya is the 5th person. What position is she in?",
+    "options": {
+      "A": "First",
+      "B": "Third",
+      "C": "Fifth",
+      "D": "Tenth"
+    },
+    "correctAnswer": "C",
+    "explanation": "Maya is in the 5th position, which means she is fifth."
+  },
+  {
+    "id": "P1-WHOLE-014",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Place values",
+    "difficulty": "medium",
+    "question": "In the number 93, what is the value of the ones digit?",
+    "options": {
+      "A": "9",
+      "B": "3",
+      "C": "90",
+      "D": "30"
+    },
+    "correctAnswer": "B",
+    "explanation": "In 93, the ones digit is 3. Its value is just 3."
+  },
+  {
+    "id": "P1-WHOLE-015",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number notation",
+    "difficulty": "medium",
+    "question": "What number is 'forty-one' in numerals?",
+    "options": {
+      "A": "14",
+      "B": "41",
+      "C": "401",
+      "D": "140"
+    },
+    "correctAnswer": "B",
+    "explanation": "Forty-one is written as 41."
+  },
+  {
+    "id": "P1-WHOLE-016",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "Complete the pattern: 30, 35, 40, 45, ___",
+    "options": {
+      "A": "46",
+      "B": "48",
+      "C": "50",
+      "D": "55"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 5. 45 + 5 = 50."
+  },
+  {
+    "id": "P1-WHOLE-017",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Counting objects",
+    "difficulty": "medium",
+    "question": "Tom counted 7 red apples, 6 green apples, and 3 yellow apples. How many apples did he count in total?",
+    "options": {
+      "A": "13",
+      "B": "15",
+      "C": "16",
+      "D": "17"
+    },
+    "correctAnswer": "C",
+    "explanation": "Add all the apples: 7 + 6 + 3 = 16 apples."
+  },
+  {
+    "id": "P1-WHOLE-018",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Ordering numbers",
+    "difficulty": "medium",
+    "question": "Which of these numbers is the greatest: 56, 65, 51?",
+    "options": {
+      "A": "56",
+      "B": "65",
+      "C": "51",
+      "D": "They are all equal"
+    },
+    "correctAnswer": "B",
+    "explanation": "65 is the greatest number because it has 6 in the tens place."
+  },
+  {
+    "id": "P1-WHOLE-019",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Ordinal numbers",
+    "difficulty": "medium",
+    "question": "There are 8 children in line. If Raj is 3rd from the front, what position is he from the back?",
+    "options": {
+      "A": "3rd",
+      "B": "5th",
+      "C": "6th",
+      "D": "8th"
+    },
+    "correctAnswer": "C",
+    "explanation": "If Raj is 3rd from the front in a line of 8, he is 6th from the back (8 - 3 + 1 = 6)."
+  },
+  {
+    "id": "P1-WHOLE-020",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers",
+    "difficulty": "easy",
+    "question": "Is 74 greater than or less than 47?",
+    "options": {
+      "A": "Greater than",
+      "B": "Less than",
+      "C": "Equal to",
+      "D": "Cannot tell"
+    },
+    "correctAnswer": "A",
+    "explanation": "74 is greater than 47 because 7 tens is more than 4 tens."
+  },
+  {
+    "id": "P1-ADD-001",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition word problems",
+    "difficulty": "easy",
+    "question": "Lisa has 12 stickers. Her friend gives her 5 more stickers. How many stickers does Lisa have now?",
+    "options": {
+      "A": "7",
+      "B": "15",
+      "C": "17",
+      "D": "20"
+    },
+    "correctAnswer": "C",
+    "explanation": "Add the stickers: 12 + 5 = 17 stickers."
+  },
+  {
+    "id": "P1-ADD-002",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction word problems",
+    "difficulty": "easy",
+    "question": "There are 18 cookies in a jar. Jason eats 6 cookies. How many cookies are left?",
+    "options": {
+      "A": "11",
+      "B": "12",
+      "C": "13",
+      "D": "24"
+    },
+    "correctAnswer": "B",
+    "explanation": "Subtract the cookies eaten: 18 - 6 = 12 cookies left."
+  },
+  {
+    "id": "P1-ADD-003",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Mental calculation",
+    "difficulty": "easy",
+    "question": "What is 9 + 8?",
+    "options": {
+      "A": "15",
+      "B": "16",
+      "C": "17",
+      "D": "18"
+    },
+    "correctAnswer": "C",
+    "explanation": "9 + 8 = 17."
+  },
+  {
+    "id": "P1-ADD-004",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing number problems",
+    "difficulty": "medium",
+    "question": "___ + 7 = 15. What number goes in the blank?",
+    "options": {
+      "A": "6",
+      "B": "7",
+      "C": "8",
+      "D": "9"
+    },
+    "correctAnswer": "C",
+    "explanation": "15 - 7 = 8, so 8 + 7 = 15."
+  },
+  {
+    "id": "P1-ADD-005",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition word problems",
+    "difficulty": "medium",
+    "question": "Amy read 23 pages on Monday and 14 pages on Tuesday. How many pages did she read altogether?",
+    "options": {
+      "A": "37",
+      "B": "36",
+      "C": "35",
+      "D": "34"
+    },
+    "correctAnswer": "A",
+    "explanation": "Add the pages: 23 + 14 = 37 pages."
+  },
+  {
+    "id": "P1-ADD-006",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction word problems",
+    "difficulty": "medium",
+    "question": "Ben had 45 marbles. He gave 18 marbles to his sister. How many marbles does Ben have left?",
+    "options": {
+      "A": "27",
+      "B": "28",
+      "C": "26",
+      "D": "63"
+    },
+    "correctAnswer": "A",
+    "explanation": "Subtract: 45 - 18 = 27 marbles."
+  },
+  {
+    "id": "P1-ADD-007",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Mental calculation",
+    "difficulty": "easy",
+    "question": "What is 14 - 9?",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "6"
+    },
+    "correctAnswer": "C",
+    "explanation": "14 - 9 = 5."
+  },
+  {
+    "id": "P1-ADD-008",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing number problems",
+    "difficulty": "medium",
+    "question": "12 - ___ = 5. What number goes in the blank?",
+    "options": {
+      "A": "5",
+      "B": "6",
+      "C": "7",
+      "D": "8"
+    },
+    "correctAnswer": "C",
+    "explanation": "12 - 7 = 5, so the missing number is 7."
+  },
+  {
+    "id": "P1-ADD-009",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition word problems",
+    "difficulty": "easy",
+    "question": "There are 8 boys and 7 girls in a classroom. How many children are there in total?",
+    "options": {
+      "A": "14",
+      "B": "15",
+      "C": "16",
+      "D": "17"
+    },
+    "correctAnswer": "B",
+    "explanation": "Add the boys and girls: 8 + 7 = 15 children."
+  },
+  {
+    "id": "P1-ADD-010",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction word problems",
+    "difficulty": "easy",
+    "question": "Sarah has 20 crayons. She loses 8 crayons. How many crayons does she have now?",
+    "options": {
+      "A": "10",
+      "B": "11",
+      "C": "12",
+      "D": "13"
+    },
+    "correctAnswer": "C",
+    "explanation": "Subtract: 20 - 8 = 12 crayons."
+  },
+  {
+    "id": "P1-ADD-011",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Mental calculation",
+    "difficulty": "easy",
+    "question": "What is 6 + 9?",
+    "options": {
+      "A": "13",
+      "B": "14",
+      "C": "15",
+      "D": "16"
+    },
+    "correctAnswer": "C",
+    "explanation": "6 + 9 = 15."
+  },
+  {
+    "id": "P1-ADD-012",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing number problems",
+    "difficulty": "medium",
+    "question": "___ - 6 = 11. What is the missing number?",
+    "options": {
+      "A": "5",
+      "B": "15",
+      "C": "16",
+      "D": "17"
+    },
+    "correctAnswer": "D",
+    "explanation": "11 + 6 = 17, so 17 - 6 = 11."
+  },
+  {
+    "id": "P1-ADD-013",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition word problems",
+    "difficulty": "medium",
+    "question": "Daniel collects 16 shells on Monday, 12 shells on Tuesday, and 9 shells on Wednesday. How many shells did he collect in total?",
+    "options": {
+      "A": "35",
+      "B": "36",
+      "C": "37",
+      "D": "38"
+    },
+    "correctAnswer": "C",
+    "explanation": "Add all the shells: 16 + 12 + 9 = 37 shells."
+  },
+  {
+    "id": "P1-ADD-014",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction word problems",
+    "difficulty": "medium",
+    "question": "There are 52 students in Primary 1. 27 students went on a field trip. How many students stayed in school?",
+    "options": {
+      "A": "24",
+      "B": "25",
+      "C": "26",
+      "D": "27"
+    },
+    "correctAnswer": "B",
+    "explanation": "Subtract: 52 - 27 = 25 students stayed."
+  },
+  {
+    "id": "P1-ADD-015",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Mental calculation",
+    "difficulty": "easy",
+    "question": "What is 18 - 9?",
+    "options": {
+      "A": "7",
+      "B": "8",
+      "C": "9",
+      "D": "10"
+    },
+    "correctAnswer": "C",
+    "explanation": "18 - 9 = 9."
+  },
+  {
+    "id": "P1-ADD-016",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition word problems",
+    "difficulty": "medium",
+    "question": "Nina has 34 stamps. She buys 28 more stamps. How many stamps does she have now?",
+    "options": {
+      "A": "60",
+      "B": "61",
+      "C": "62",
+      "D": "63"
+    },
+    "correctAnswer": "C",
+    "explanation": "Add: 34 + 28 = 62 stamps."
+  },
+  {
+    "id": "P1-ADD-017",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing number problems",
+    "difficulty": "medium",
+    "question": "8 + ___ = 20. What is the missing number?",
+    "options": {
+      "A": "10",
+      "B": "11",
+      "C": "12",
+      "D": "13"
+    },
+    "correctAnswer": "C",
+    "explanation": "20 - 8 = 12, so 8 + 12 = 20."
+  },
+  {
+    "id": "P1-ADD-018",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction word problems",
+    "difficulty": "easy",
+    "question": "Mike has 15 toy cars. He gives 7 cars to his brother. How many toy cars does Mike have left?",
+    "options": {
+      "A": "6",
+      "B": "7",
+      "C": "8",
+      "D": "9"
+    },
+    "correctAnswer": "C",
+    "explanation": "Subtract: 15 - 7 = 8 toy cars."
+  },
+  {
+    "id": "P1-ADD-019",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Mental calculation",
+    "difficulty": "easy",
+    "question": "What is 7 + 7?",
+    "options": {
+      "A": "12",
+      "B": "13",
+      "C": "14",
+      "D": "15"
+    },
+    "correctAnswer": "C",
+    "explanation": "7 + 7 = 14."
+  },
+  {
+    "id": "P1-ADD-020",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition word problems",
+    "difficulty": "medium",
+    "question": "On Saturday, 38 children came to the library. On Sunday, 42 children came. How many children came to the library during the weekend?",
+    "options": {
+      "A": "70",
+      "B": "75",
+      "C": "80",
+      "D": "85"
+    },
+    "correctAnswer": "C",
+    "explanation": "Add: 38 + 42 = 80 children."
+  },
+  {
+    "id": "P1-MULT-001",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication as repeated addition",
+    "difficulty": "easy",
+    "question": "There are 3 boxes. Each box has 4 apples. How many apples are there in total?",
+    "options": {
+      "A": "7",
+      "B": "10",
+      "C": "12",
+      "D": "14"
+    },
+    "correctAnswer": "C",
+    "explanation": "3 boxes with 4 apples each: 4 + 4 + 4 = 12 apples, or 3 × 4 = 12."
+  },
+  {
+    "id": "P1-MULT-002",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication within 40",
+    "difficulty": "easy",
+    "question": "What is 5 × 3?",
+    "options": {
+      "A": "8",
+      "B": "12",
+      "C": "15",
+      "D": "18"
+    },
+    "correctAnswer": "C",
+    "explanation": "5 × 3 = 15."
+  },
+  {
+    "id": "P1-MULT-003",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division within 20",
+    "difficulty": "easy",
+    "question": "Share 12 candies equally among 3 children. How many candies does each child get?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correctAnswer": "C",
+    "explanation": "12 ÷ 3 = 4 candies each."
+  },
+  {
+    "id": "P1-MULT-004",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication word problems",
+    "difficulty": "easy",
+    "question": "Emma has 4 bags. Each bag contains 5 oranges. How many oranges does Emma have?",
+    "options": {
+      "A": "9",
+      "B": "15",
+      "C": "20",
+      "D": "25"
+    },
+    "correctAnswer": "C",
+    "explanation": "4 bags × 5 oranges = 20 oranges."
+  },
+  {
+    "id": "P1-MULT-005",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication as repeated addition",
+    "difficulty": "easy",
+    "question": "What is 2 + 2 + 2 + 2 + 2?",
+    "options": {
+      "A": "8",
+      "B": "10",
+      "C": "12",
+      "D": "14"
+    },
+    "correctAnswer": "B",
+    "explanation": "2 + 2 + 2 + 2 + 2 = 10, or 2 × 5 = 10."
+  },
+  {
+    "id": "P1-MULT-006",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division within 20",
+    "difficulty": "easy",
+    "question": "If 18 pencils are shared equally among 2 students, how many pencils does each student get?",
+    "options": {
+      "A": "6",
+      "B": "7",
+      "C": "8",
+      "D": "9"
+    },
+    "correctAnswer": "D",
+    "explanation": "18 ÷ 2 = 9 pencils each."
+  },
+  {
+    "id": "P1-MULT-007",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication within 40",
+    "difficulty": "medium",
+    "question": "What is 4 × 7?",
+    "options": {
+      "A": "24",
+      "B": "28",
+      "C": "32",
+      "D": "35"
+    },
+    "correctAnswer": "B",
+    "explanation": "4 × 7 = 28."
+  },
+  {
+    "id": "P1-MULT-008",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division word problems",
+    "difficulty": "easy",
+    "question": "There are 15 flowers. A florist wants to put them into 5 equal vases. How many flowers go in each vase?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correctAnswer": "B",
+    "explanation": "15 ÷ 5 = 3 flowers in each vase."
+  },
+  {
+    "id": "P1-MULT-009",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication as repeated addition",
+    "difficulty": "medium",
+    "question": "There are 6 tricycles. Each tricycle has 3 wheels. How many wheels are there altogether?",
+    "options": {
+      "A": "9",
+      "B": "12",
+      "C": "15",
+      "D": "18"
+    },
+    "correctAnswer": "D",
+    "explanation": "6 tricycles × 3 wheels = 18 wheels."
+  },
+  {
+    "id": "P1-MULT-010",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication within 40",
+    "difficulty": "easy",
+    "question": "What is 2 × 8?",
+    "options": {
+      "A": "14",
+      "B": "15",
+      "C": "16",
+      "D": "18"
+    },
+    "correctAnswer": "C",
+    "explanation": "2 × 8 = 16."
+  },
+  {
+    "id": "P1-MULT-011",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division within 20",
+    "difficulty": "medium",
+    "question": "Divide 20 stickers equally among 4 children. How many stickers does each child receive?",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "6"
+    },
+    "correctAnswer": "C",
+    "explanation": "20 ÷ 4 = 5 stickers each."
+  },
+  {
+    "id": "P1-MULT-012",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication word problems",
+    "difficulty": "medium",
+    "question": "A farmer has 7 baskets. Each basket has 5 eggs. How many eggs does the farmer have?",
+    "options": {
+      "A": "30",
+      "B": "32",
+      "C": "35",
+      "D": "40"
+    },
+    "correctAnswer": "C",
+    "explanation": "7 baskets × 5 eggs = 35 eggs."
+  },
+  {
+    "id": "P1-MULT-013",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication as repeated addition",
+    "difficulty": "easy",
+    "question": "What is 3 + 3 + 3 + 3?",
+    "options": {
+      "A": "9",
+      "B": "10",
+      "C": "11",
+      "D": "12"
+    },
+    "correctAnswer": "D",
+    "explanation": "3 + 3 + 3 + 3 = 12, or 3 × 4 = 12."
+  },
+  {
+    "id": "P1-MULT-014",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division within 20",
+    "difficulty": "easy",
+    "question": "16 books are shared equally between 2 shelves. How many books are on each shelf?",
+    "options": {
+      "A": "6",
+      "B": "7",
+      "C": "8",
+      "D": "9"
+    },
+    "correctAnswer": "C",
+    "explanation": "16 ÷ 2 = 8 books on each shelf."
+  },
+  {
+    "id": "P1-MULT-015",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication within 40",
+    "difficulty": "medium",
+    "question": "What is 6 × 5?",
+    "options": {
+      "A": "25",
+      "B": "28",
+      "C": "30",
+      "D": "32"
+    },
+    "correctAnswer": "C",
+    "explanation": "6 × 5 = 30."
+  },
+  {
+    "id": "P1-MULT-016",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division word problems",
+    "difficulty": "medium",
+    "question": "A teacher has 14 crayons to share equally among 7 students. How many crayons does each student get?",
+    "options": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "correctAnswer": "B",
+    "explanation": "14 ÷ 7 = 2 crayons each."
+  },
+  {
+    "id": "P1-MULT-017",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication word problems",
+    "difficulty": "easy",
+    "question": "There are 5 plates. Each plate has 4 cookies. How many cookies are there in total?",
+    "options": {
+      "A": "15",
+      "B": "18",
+      "C": "20",
+      "D": "24"
+    },
+    "correctAnswer": "C",
+    "explanation": "5 plates × 4 cookies = 20 cookies."
+  },
+  {
+    "id": "P1-MULT-018",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication within 40",
+    "difficulty": "medium",
+    "question": "What is 8 × 4?",
+    "options": {
+      "A": "24",
+      "B": "28",
+      "C": "32",
+      "D": "36"
+    },
+    "correctAnswer": "C",
+    "explanation": "8 × 4 = 32."
+  },
+  {
+    "id": "P1-MULT-019",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division within 20",
+    "difficulty": "easy",
+    "question": "10 balloons are divided equally between 2 children. How many balloons does each child get?",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "6"
+    },
+    "correctAnswer": "C",
+    "explanation": "10 ÷ 2 = 5 balloons each."
+  },
+  {
+    "id": "P1-MULT-020",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication as repeated addition",
+    "difficulty": "medium",
+    "question": "A shop has 8 boxes of donuts. Each box contains 3 donuts. How many donuts are there in total?",
+    "options": {
+      "A": "21",
+      "B": "24",
+      "C": "27",
+      "D": "30"
+    },
+    "correctAnswer": "B",
+    "explanation": "8 boxes × 3 donuts = 24 donuts."
+  },
+  {
+    "id": "P1-MONEY-001",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Counting money",
+    "difficulty": "easy",
+    "question": "John has 50 cents and his sister gives him 30 cents. How much money does John have now?",
+    "options": {
+      "A": "20 cents",
+      "B": "70 cents",
+      "C": "80 cents",
+      "D": "90 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "50 cents + 30 cents = 80 cents."
+  },
+  {
+    "id": "P1-MONEY-002",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Converting money",
+    "difficulty": "easy",
+    "question": "How many cents are there in 1 dollar?",
+    "options": {
+      "A": "10 cents",
+      "B": "50 cents",
+      "C": "100 cents",
+      "D": "150 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "1 dollar = 100 cents."
+  },
+  {
+    "id": "P1-MONEY-003",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Counting money",
+    "difficulty": "easy",
+    "question": "Maria has two 20-cent coins. How much money does she have?",
+    "options": {
+      "A": "20 cents",
+      "B": "30 cents",
+      "C": "40 cents",
+      "D": "50 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "20 cents + 20 cents = 40 cents."
+  },
+  {
+    "id": "P1-MONEY-004",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Money word problems",
+    "difficulty": "medium",
+    "question": "A pencil costs 65 cents. Amy pays with 1 dollar. How much change does she get?",
+    "options": {
+      "A": "25 cents",
+      "B": "30 cents",
+      "C": "35 cents",
+      "D": "40 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "1 dollar (100 cents) - 65 cents = 35 cents change."
+  },
+  {
+    "id": "P1-MONEY-005",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Converting money",
+    "difficulty": "medium",
+    "question": "What is 2 dollars in cents?",
+    "options": {
+      "A": "20 cents",
+      "B": "100 cents",
+      "C": "150 cents",
+      "D": "200 cents"
+    },
+    "correctAnswer": "D",
+    "explanation": "2 dollars = 200 cents (2 × 100 = 200)."
+  },
+  {
+    "id": "P1-MONEY-006",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Counting money",
+    "difficulty": "easy",
+    "question": "Ben has 45 cents. His mother gives him 25 cents more. How much money does Ben have now?",
+    "options": {
+      "A": "60 cents",
+      "B": "65 cents",
+      "C": "70 cents",
+      "D": "75 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "45 cents + 25 cents = 70 cents."
+  },
+  {
+    "id": "P1-MONEY-007",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Money word problems",
+    "difficulty": "medium",
+    "question": "A toy car costs 85 cents. David has 1 dollar and 20 cents. Does he have enough money to buy the toy car?",
+    "options": {
+      "A": "Yes, with 25 cents left",
+      "B": "Yes, with 35 cents left",
+      "C": "No, he needs 5 cents more",
+      "D": "No, he needs 15 cents more"
+    },
+    "correctAnswer": "B",
+    "explanation": "David has 120 cents (1 dollar 20 cents). 120 - 85 = 35 cents left."
+  },
+  {
+    "id": "P1-MONEY-008",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Converting money",
+    "difficulty": "easy",
+    "question": "How many dollars is 100 cents?",
+    "options": {
+      "A": "10 dollars",
+      "B": "5 dollars",
+      "C": "2 dollars",
+      "D": "1 dollar"
+    },
+    "correctAnswer": "D",
+    "explanation": "100 cents = 1 dollar."
+  },
+  {
+    "id": "P1-MONEY-009",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Counting money",
+    "difficulty": "medium",
+    "question": "Lisa has three 10-cent coins and two 20-cent coins. How much money does she have?",
+    "options": {
+      "A": "50 cents",
+      "B": "60 cents",
+      "C": "70 cents",
+      "D": "80 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "(3 × 10) + (2 × 20) = 30 + 40 = 70 cents."
+  },
+  {
+    "id": "P1-MONEY-010",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Money word problems",
+    "difficulty": "medium",
+    "question": "A notebook costs 1 dollar and 40 cents. Ryan pays with 2 dollars. How much change does he receive?",
+    "options": {
+      "A": "40 cents",
+      "B": "50 cents",
+      "C": "60 cents",
+      "D": "70 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "2 dollars (200 cents) - 140 cents = 60 cents change."
+  },
+  {
+    "id": "P1-MONEY-011",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Converting money",
+    "difficulty": "medium",
+    "question": "What is 250 cents in dollars and cents?",
+    "options": {
+      "A": "1 dollar 50 cents",
+      "B": "2 dollars",
+      "C": "2 dollars 50 cents",
+      "D": "3 dollars"
+    },
+    "correctAnswer": "C",
+    "explanation": "250 cents = 2 dollars 50 cents (200 cents + 50 cents)."
+  },
+  {
+    "id": "P1-MONEY-012",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Counting money",
+    "difficulty": "easy",
+    "question": "Sophie has 35 cents. She finds 15 cents on the ground. How much money does she have now?",
+    "options": {
+      "A": "40 cents",
+      "B": "45 cents",
+      "C": "50 cents",
+      "D": "55 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "35 cents + 15 cents = 50 cents."
+  },
+  {
+    "id": "P1-MONEY-013",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Money word problems",
+    "difficulty": "medium",
+    "question": "Tim buys a ruler for 55 cents and an eraser for 30 cents. How much does he spend in total?",
+    "options": {
+      "A": "75 cents",
+      "B": "80 cents",
+      "C": "85 cents",
+      "D": "90 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "55 cents + 30 cents = 85 cents."
+  },
+  {
+    "id": "P1-MONEY-014",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Converting money",
+    "difficulty": "easy",
+    "question": "How many cents are in 3 dollars?",
+    "options": {
+      "A": "30 cents",
+      "B": "100 cents",
+      "C": "200 cents",
+      "D": "300 cents"
+    },
+    "correctAnswer": "D",
+    "explanation": "3 dollars = 300 cents (3 × 100 = 300)."
+  },
+  {
+    "id": "P1-MONEY-015",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Counting money",
+    "difficulty": "medium",
+    "question": "Emma has one 50-cent coin, two 20-cent coins, and one 5-cent coin. How much money does she have?",
+    "options": {
+      "A": "85 cents",
+      "B": "90 cents",
+      "C": "95 cents",
+      "D": "1 dollar"
+    },
+    "correctAnswer": "C",
+    "explanation": "50 + 20 + 20 + 5 = 95 cents."
+  },
+  {
+    "id": "P1-MONEY-016",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Money word problems",
+    "difficulty": "medium",
+    "question": "A sticker costs 15 cents. How many stickers can you buy with 60 cents?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correctAnswer": "C",
+    "explanation": "60 ÷ 15 = 4 stickers."
+  },
+  {
+    "id": "P1-MONEY-017",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Converting money",
+    "difficulty": "medium",
+    "question": "What is 1 dollar and 75 cents in cents only?",
+    "options": {
+      "A": "75 cents",
+      "B": "100 cents",
+      "C": "175 cents",
+      "D": "275 cents"
+    },
+    "correctAnswer": "C",
+    "explanation": "1 dollar (100 cents) + 75 cents = 175 cents."
+  },
+  {
+    "id": "P1-MONEY-018",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Counting money",
+    "difficulty": "easy",
+    "question": "Jake has 80 cents. He spends 35 cents on a sweet. How much money does he have left?",
+    "options": {
+      "A": "40 cents",
+      "B": "45 cents",
+      "C": "50 cents",
+      "D": "55 cents"
+    },
+    "correctAnswer": "B",
+    "explanation": "80 cents - 35 cents = 45 cents."
+  },
+  {
+    "id": "P1-MONEY-019",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Money word problems",
+    "difficulty": "medium",
+    "question": "A pen costs 1 dollar and 20 cents. A pencil costs 80 cents. How much do they cost together?",
+    "options": {
+      "A": "1 dollar 80 cents",
+      "B": "2 dollars",
+      "C": "2 dollars 20 cents",
+      "D": "2 dollars 40 cents"
+    },
+    "correctAnswer": "B",
+    "explanation": "120 cents + 80 cents = 200 cents = 2 dollars."
+  },
+  {
+    "id": "P1-MONEY-020",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Converting money",
+    "difficulty": "easy",
+    "question": "How many dollars is 400 cents?",
+    "options": {
+      "A": "2 dollars",
+      "B": "3 dollars",
+      "C": "4 dollars",
+      "D": "5 dollars"
+    },
+    "correctAnswer": "C",
+    "explanation": "400 cents = 4 dollars (400 ÷ 100 = 4)."
+  },
+  {
+    "id": "P1-TIME-001",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "easy",
+    "question": "What time is shown: 3:00 pm?",
+    "options": {
+      "A": "3 o'clock in the morning",
+      "B": "3 o'clock in the afternoon",
+      "C": "3 minutes past midnight",
+      "D": "30 minutes past 3"
+    },
+    "correctAnswer": "B",
+    "explanation": "3:00 pm means 3 o'clock in the afternoon. PM means after noon."
+  },
+  {
+    "id": "P1-TIME-002",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "easy",
+    "question": "The movie starts at 2:00 pm and lasts 1 hour. What time does it end?",
+    "options": {
+      "A": "1:00 pm",
+      "B": "2:30 pm",
+      "C": "3:00 pm",
+      "D": "4:00 pm"
+    },
+    "correctAnswer": "C",
+    "explanation": "2:00 pm + 1 hour = 3:00 pm."
+  },
+  {
+    "id": "P1-TIME-003",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "easy",
+    "question": "Is 9:00 am in the morning or evening?",
+    "options": {
+      "A": "Morning",
+      "B": "Evening",
+      "C": "Afternoon",
+      "D": "Night"
+    },
+    "correctAnswer": "A",
+    "explanation": "9:00 am is 9 o'clock in the morning. AM means before noon."
+  },
+  {
+    "id": "P1-TIME-004",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "medium",
+    "question": "School starts at 8:00 am. Recess is 2 hours later. What time is recess?",
+    "options": {
+      "A": "9:00 am",
+      "B": "10:00 am",
+      "C": "11:00 am",
+      "D": "12:00 pm"
+    },
+    "correctAnswer": "B",
+    "explanation": "8:00 am + 2 hours = 10:00 am."
+  },
+  {
+    "id": "P1-TIME-005",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "easy",
+    "question": "What does 7:30 am mean?",
+    "options": {
+      "A": "7 o'clock in the evening",
+      "B": "Half past 7 in the morning",
+      "C": "7 minutes past 3",
+      "D": "30 minutes past 7 at night"
+    },
+    "correctAnswer": "B",
+    "explanation": "7:30 am means half past 7 in the morning (30 minutes after 7 am)."
+  },
+  {
+    "id": "P1-TIME-006",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "easy",
+    "question": "Lunch is at 12:00 pm. It lasts for 1 hour. What time does lunch end?",
+    "options": {
+      "A": "11:00 am",
+      "B": "12:30 pm",
+      "C": "1:00 pm",
+      "D": "2:00 pm"
+    },
+    "correctAnswer": "C",
+    "explanation": "12:00 pm + 1 hour = 1:00 pm."
+  },
+  {
+    "id": "P1-TIME-007",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "medium",
+    "question": "Which time is later in the day: 5:00 am or 5:00 pm?",
+    "options": {
+      "A": "5:00 am",
+      "B": "5:00 pm",
+      "C": "They are the same time",
+      "D": "Cannot tell"
+    },
+    "correctAnswer": "B",
+    "explanation": "5:00 pm (evening) is later than 5:00 am (morning)."
+  },
+  {
+    "id": "P1-TIME-008",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "medium",
+    "question": "A class starts at 9:00 am and ends at 11:00 am. How long is the class?",
+    "options": {
+      "A": "1 hour",
+      "B": "2 hours",
+      "C": "3 hours",
+      "D": "4 hours"
+    },
+    "correctAnswer": "B",
+    "explanation": "From 9:00 am to 11:00 am is 2 hours."
+  },
+  {
+    "id": "P1-TIME-009",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "easy",
+    "question": "What time is 'half past 4 in the afternoon'?",
+    "options": {
+      "A": "4:00 am",
+      "B": "4:15 pm",
+      "C": "4:30 pm",
+      "D": "4:45 pm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Half past 4 pm means 4:30 pm (30 minutes after 4)."
+  },
+  {
+    "id": "P1-TIME-010",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "easy",
+    "question": "Dinner is at 6:00 pm. Bedtime is 2 hours after dinner. What time is bedtime?",
+    "options": {
+      "A": "7:00 pm",
+      "B": "7:30 pm",
+      "C": "8:00 pm",
+      "D": "9:00 pm"
+    },
+    "correctAnswer": "C",
+    "explanation": "6:00 pm + 2 hours = 8:00 pm."
+  },
+  {
+    "id": "P1-TIME-011",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "medium",
+    "question": "What is another way to say 12:00 pm?",
+    "options": {
+      "A": "Midnight",
+      "B": "Noon",
+      "C": "Morning",
+      "D": "Evening"
+    },
+    "correctAnswer": "B",
+    "explanation": "12:00 pm is noon (the middle of the day)."
+  },
+  {
+    "id": "P1-TIME-012",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "medium",
+    "question": "A TV show starts at 7:00 pm and ends at 8:30 pm. How long is the show?",
+    "options": {
+      "A": "30 minutes",
+      "B": "1 hour",
+      "C": "1 hour 30 minutes",
+      "D": "2 hours"
+    },
+    "correctAnswer": "C",
+    "explanation": "From 7:00 pm to 8:30 pm is 1 hour and 30 minutes."
+  },
+  {
+    "id": "P1-TIME-013",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "easy",
+    "question": "Is 10:00 pm at night or in the morning?",
+    "options": {
+      "A": "Morning",
+      "B": "Afternoon",
+      "C": "Night",
+      "D": "Noon"
+    },
+    "correctAnswer": "C",
+    "explanation": "10:00 pm is at night. PM times after 6:00 pm are usually nighttime."
+  },
+  {
+    "id": "P1-TIME-014",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "medium",
+    "question": "Sarah wakes up at 7:00 am. She leaves for school 1 hour and 30 minutes later. What time does she leave?",
+    "options": {
+      "A": "7:30 am",
+      "B": "8:00 am",
+      "C": "8:30 am",
+      "D": "9:00 am"
+    },
+    "correctAnswer": "C",
+    "explanation": "7:00 am + 1 hour 30 minutes = 8:30 am."
+  },
+  {
+    "id": "P1-TIME-015",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "easy",
+    "question": "What does 11:00 am mean?",
+    "options": {
+      "A": "11 o'clock at night",
+      "B": "11 o'clock in the morning",
+      "C": "1 o'clock in the afternoon",
+      "D": "11 minutes past midnight"
+    },
+    "correctAnswer": "B",
+    "explanation": "11:00 am means 11 o'clock in the morning."
+  },
+  {
+    "id": "P1-TIME-016",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "easy",
+    "question": "A game starts at 4:00 pm and ends at 5:00 pm. How long did the game last?",
+    "options": {
+      "A": "30 minutes",
+      "B": "45 minutes",
+      "C": "1 hour",
+      "D": "2 hours"
+    },
+    "correctAnswer": "C",
+    "explanation": "From 4:00 pm to 5:00 pm is 1 hour."
+  },
+  {
+    "id": "P1-TIME-017",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "medium",
+    "question": "What time is 'half past 9 in the evening'?",
+    "options": {
+      "A": "9:00 pm",
+      "B": "9:15 pm",
+      "C": "9:30 pm",
+      "D": "9:45 pm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Half past 9 pm means 9:30 pm."
+  },
+  {
+    "id": "P1-TIME-018",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "medium",
+    "question": "Ben starts his homework at 3:00 pm. He finishes 2 hours later. What time does he finish?",
+    "options": {
+      "A": "4:00 pm",
+      "B": "4:30 pm",
+      "C": "5:00 pm",
+      "D": "6:00 pm"
+    },
+    "correctAnswer": "C",
+    "explanation": "3:00 pm + 2 hours = 5:00 pm."
+  },
+  {
+    "id": "P1-TIME-019",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Reading time",
+    "difficulty": "easy",
+    "question": "Which comes first: 8:00 am or 8:00 pm?",
+    "options": {
+      "A": "8:00 am",
+      "B": "8:00 pm",
+      "C": "They are the same",
+      "D": "Cannot tell"
+    },
+    "correctAnswer": "A",
+    "explanation": "8:00 am (morning) comes before 8:00 pm (evening)."
+  },
+  {
+    "id": "P1-TIME-020",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Duration word problems",
+    "difficulty": "medium",
+    "question": "A party starts at 1:00 pm and lasts for 3 hours. What time does the party end?",
+    "options": {
+      "A": "3:00 pm",
+      "B": "4:00 pm",
+      "C": "5:00 pm",
+      "D": "6:00 pm"
+    },
+    "correctAnswer": "B",
+    "explanation": "1:00 pm + 3 hours = 4:00 pm."
+  },
+  {
+    "id": "P1-PATTERN-001",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "What number comes next? 2, 4, 6, 8, ___",
+    "options": {
+      "A": "9",
+      "B": "10",
+      "C": "11",
+      "D": "12"
+    },
+    "correctAnswer": "B",
+    "explanation": "The pattern increases by 2 each time. 8 + 2 = 10."
+  },
+  {
+    "id": "P1-PATTERN-002",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "Complete the pattern: 5, 10, 15, 20, ___",
+    "options": {
+      "A": "21",
+      "B": "23",
+      "C": "25",
+      "D": "30"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 5. 20 + 5 = 25."
+  },
+  {
+    "id": "P1-PATTERN-003",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "What is the missing number? 10, 20, 30, ___, 50",
+    "options": {
+      "A": "35",
+      "B": "40",
+      "C": "45",
+      "D": "55"
+    },
+    "correctAnswer": "B",
+    "explanation": "The pattern increases by 10. The missing number is 40."
+  },
+  {
+    "id": "P1-PATTERN-004",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "What comes next? 3, 6, 9, 12, ___",
+    "options": {
+      "A": "13",
+      "B": "14",
+      "C": "15",
+      "D": "16"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 3. 12 + 3 = 15."
+  },
+  {
+    "id": "P1-PATTERN-005",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "Complete the sequence: 1, 2, 3, 4, ___",
+    "options": {
+      "A": "5",
+      "B": "6",
+      "C": "7",
+      "D": "8"
+    },
+    "correctAnswer": "A",
+    "explanation": "The pattern increases by 1. 4 + 1 = 5."
+  },
+  {
+    "id": "P1-PATTERN-006",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "What number is missing? 25, 30, 35, ___, 45",
+    "options": {
+      "A": "38",
+      "B": "39",
+      "C": "40",
+      "D": "42"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 5. The missing number is 40."
+  },
+  {
+    "id": "P1-PATTERN-007",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "What comes next? 10, 15, 20, 25, ___",
+    "options": {
+      "A": "27",
+      "B": "28",
+      "C": "30",
+      "D": "35"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 5. 25 + 5 = 30."
+  },
+  {
+    "id": "P1-PATTERN-008",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "Complete the pattern: 4, 8, 12, 16, ___",
+    "options": {
+      "A": "18",
+      "B": "19",
+      "C": "20",
+      "D": "21"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 4. 16 + 4 = 20."
+  },
+  {
+    "id": "P1-PATTERN-009",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "What is the missing number? 6, 12, 18, ___, 30",
+    "options": {
+      "A": "20",
+      "B": "22",
+      "C": "24",
+      "D": "26"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 6. The missing number is 24."
+  },
+  {
+    "id": "P1-PATTERN-010",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "What comes next? 50, 45, 40, 35, ___",
+    "options": {
+      "A": "25",
+      "B": "30",
+      "C": "32",
+      "D": "33"
+    },
+    "correctAnswer": "B",
+    "explanation": "The pattern decreases by 5. 35 - 5 = 30."
+  },
+  {
+    "id": "P1-PATTERN-011",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "Complete the sequence: 11, 12, 13, 14, ___",
+    "options": {
+      "A": "15",
+      "B": "16",
+      "C": "17",
+      "D": "18"
+    },
+    "correctAnswer": "A",
+    "explanation": "The pattern increases by 1. 14 + 1 = 15."
+  },
+  {
+    "id": "P1-PATTERN-012",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "What number is missing? 7, 14, 21, ___, 35",
+    "options": {
+      "A": "24",
+      "B": "26",
+      "C": "28",
+      "D": "30"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 7. The missing number is 28."
+  },
+  {
+    "id": "P1-PATTERN-013",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "What comes next? 20, 22, 24, 26, ___",
+    "options": {
+      "A": "27",
+      "B": "28",
+      "C": "29",
+      "D": "30"
+    },
+    "correctAnswer": "B",
+    "explanation": "The pattern increases by 2. 26 + 2 = 28."
+  },
+  {
+    "id": "P1-PATTERN-014",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "Complete the pattern: 60, 55, 50, 45, ___",
+    "options": {
+      "A": "35",
+      "B": "38",
+      "C": "40",
+      "D": "42"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern decreases by 5. 45 - 5 = 40."
+  },
+  {
+    "id": "P1-PATTERN-015",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "What is the missing number? 15, 20, 25, ___, 35",
+    "options": {
+      "A": "28",
+      "B": "29",
+      "C": "30",
+      "D": "32"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 5. The missing number is 30."
+  },
+  {
+    "id": "P1-PATTERN-016",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "What comes next? 9, 18, 27, 36, ___",
+    "options": {
+      "A": "40",
+      "B": "43",
+      "C": "45",
+      "D": "48"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 9. 36 + 9 = 45."
+  },
+  {
+    "id": "P1-PATTERN-017",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "Complete the sequence: 31, 32, 33, 34, ___",
+    "options": {
+      "A": "35",
+      "B": "36",
+      "C": "37",
+      "D": "38"
+    },
+    "correctAnswer": "A",
+    "explanation": "The pattern increases by 1. 34 + 1 = 35."
+  },
+  {
+    "id": "P1-PATTERN-018",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "What number is missing? 80, 70, 60, ___, 40",
+    "options": {
+      "A": "45",
+      "B": "50",
+      "C": "52",
+      "D": "55"
+    },
+    "correctAnswer": "B",
+    "explanation": "The pattern decreases by 10. The missing number is 50."
+  },
+  {
+    "id": "P1-PATTERN-019",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "easy",
+    "question": "What comes next? 40, 45, 50, 55, ___",
+    "options": {
+      "A": "58",
+      "B": "60",
+      "C": "62",
+      "D": "65"
+    },
+    "correctAnswer": "B",
+    "explanation": "The pattern increases by 5. 55 + 5 = 60."
+  },
+  {
+    "id": "P1-PATTERN-020",
+    "level": "P1",
+    "topic": "Patterns",
+    "subtopic": "Number sequences",
+    "difficulty": "medium",
+    "question": "Complete the pattern: 8, 16, 24, 32, ___",
+    "options": {
+      "A": "36",
+      "B": "38",
+      "C": "40",
+      "D": "42"
+    },
+    "correctAnswer": "C",
+    "explanation": "The pattern increases by 8. 32 + 8 = 40."
+  }
+]

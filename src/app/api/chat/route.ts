@@ -104,8 +104,27 @@ export async function POST(request: NextRequest) {
           controller.close();
         } catch (error) {
           console.error('Streaming error:', error);
-          const errorMessage =
-            error instanceof Error ? error.message : 'An error occurred';
+
+          // CRITICAL FIX: Show user-friendly error message instead of raw error
+          // The getUserFriendlyErrorMessage function is called in gemini.ts,
+          // but for streaming errors we need to handle them here too
+          let errorMessage = 'Something went wrong. Please try again.';
+          const errorMsg = error instanceof Error ? error.message : String(error);
+          const errorLower = errorMsg.toLowerCase();
+
+          // Detect API limit errors
+          if (errorLower.includes('quota') || errorLower.includes('limit') || errorLower.includes('429')) {
+            errorMessage = 'API limit reached. Please wait a moment and try again.';
+          }
+          // Detect auth errors
+          else if (errorLower.includes('auth') || errorLower.includes('401') || errorLower.includes('403')) {
+            errorMessage = 'AI service is currently unavailable. Please try again later.';
+          }
+          // Detect network errors
+          else if (errorLower.includes('network') || errorLower.includes('timeout') || errorLower.includes('fetch')) {
+            errorMessage = 'Connection problem. Please check your internet and try again.';
+          }
+
           controller.enqueue(
             encoder.encode(`\n\n[Error: ${errorMessage}]`)
           );

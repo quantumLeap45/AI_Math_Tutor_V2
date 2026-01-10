@@ -9,7 +9,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { validateImageFile, fileToBase64 } from '@/lib/chat';
-import ImagePreview from './ImagePreview';
+import { ImagePreview } from './ImagePreview';
 
 interface MessageComposerProps {
   onSend: (message: string, image?: string) => void;
@@ -232,5 +232,3 @@ export function MessageComposer({
     </div>
   );
 }
-
-export default MessageComposer;

@@ -5,17 +5,18 @@
  * AI Math Tutor v2
  *
  * Main chat interface with sidebar, messages, and composer.
+ * Updated for Phase 2 with refined header styling.
  */
 
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { Header } from '@/components/Header';
+import Link from 'next/link';
 import { ChatSidebar } from '@/components/ChatSidebar';
 import { MessageBubble } from '@/components/MessageBubble';
 import { MessageComposer } from '@/components/MessageComposer';
 import { ModeToggle } from '@/components/ModeToggle';
 import { MessageLoading } from '@/components/LoadingSpinner';
-import { ChatSession, Message, TutorMode } from '@/types';
+import { ChatSession, TutorMode } from '@/types';
 import {
   getUsername,
   getSessions,
@@ -26,6 +27,76 @@ import {
   saveSettings,
 } from '@/lib/storage';
 import { createMessage, updateSessionTitleFromFirstMessage } from '@/lib/chat';
+
+// Reusable Theme Toggle component
+function ThemeToggle() {
+  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+    const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const initialTheme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(initialTheme);
+    // Apply theme to document on initial load
+    if (initialTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  };
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <button
+        type="button"
+        className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+        aria-label="Toggle theme"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+        </svg>
+      </button>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+    >
+      {theme === 'light' ? (
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      )}
+    </button>
+  );
+}
 
 export default function ChatPage() {
   const router = useRouter();
@@ -266,13 +337,13 @@ export default function ChatPage() {
   return (
     <div className="h-screen flex flex-col bg-white dark:bg-slate-900">
       {/* Header with mode toggle */}
-      <header className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
-        <div className="flex items-center justify-between px-4 h-16">
-          {/* Left: Menu button (mobile) and logo */}
-          <div className="flex items-center gap-3">
+      <header className="sticky top-0 z-40 h-16 border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+        <div className="h-full flex items-center justify-between px-4">
+          {/* Left: Menu button, logo, and nav links */}
+          <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="lg:hidden p-2 -ml-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400"
               aria-label="Open sidebar"
             >
               <svg
@@ -285,21 +356,53 @@ export default function ChatPage() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-slate-600 dark:text-slate-400"
               >
                 <line x1="3" y1="12" x2="21" y2="12" />
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             </button>
-            <Header username={username} showBackButton />
+            <Link href="/home" className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">M</span>
+              </div>
+              <span className="hidden sm:block text-lg font-semibold text-slate-900 dark:text-slate-100">
+                AI Math Tutor
+              </span>
+            </Link>
+
+            {/* Nav links - hidden on small mobile */}
+            <nav className="hidden md:flex items-center gap-1 ml-2" aria-label="Main navigation">
+              <Link
+                href="/home"
+                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-blue-600 dark:text-blue-400"
+                aria-current="page"
+              >
+                Home
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-500 rounded-full" />
+              </Link>
+              <Link
+                href="/chat"
+                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-blue-600 dark:text-blue-400"
+                aria-current="page"
+              >
+                Chat
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-500 rounded-full" />
+              </Link>
+              <Link
+                href="/quiz"
+                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                Quiz
+              </Link>
+            </nav>
           </div>
 
-          {/* Center: Mode toggle */}
-          <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
-
-          {/* Right: Spacer for balance */}
-          <div className="w-10" />
+          {/* Right: Mode toggle and theme toggle */}
+          <div className="flex items-center gap-2">
+            <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 

@@ -12,7 +12,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Message } from '@/types';
 import { formatTimestamp } from '@/lib/chat';
-import ImagePreview from './ImagePreview';
+import { ImagePreview } from './ImagePreview';
 
 interface MessageBubbleProps {
   message: Message;
@@ -102,5 +102,3 @@ export function MessageBubble({ message, showTimestamp = false }: MessageBubbleP
     </div>
   );
 }
-
-export default MessageBubble;

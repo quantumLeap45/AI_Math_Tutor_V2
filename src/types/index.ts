@@ -1,5 +1,8 @@
 // AI Math Tutor v2 - Type Definitions
 
+// Re-export quiz types for convenience
+export * from './quiz';
+
 /**
  * Tutor mode for AI responses
  * - SHOW: Direct instruction - provides complete solutions

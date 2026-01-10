@@ -115,5 +115,3 @@ export function Header({ username, showBackButton }: HeaderProps) {
     </header>
   );
 }
-
-export default Header;

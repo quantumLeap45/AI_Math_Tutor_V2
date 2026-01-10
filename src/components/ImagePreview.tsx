@@ -8,7 +8,6 @@
  */
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 
 interface ImagePreviewProps {
   src: string;
@@ -150,5 +149,3 @@ export function ImagePreview({ src, alt, className = '', onClick }: ImagePreview
     </>
   );
 }
-
-export default ImagePreview;

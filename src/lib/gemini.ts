@@ -107,11 +107,11 @@ export async function* streamChat(
     }
   } catch (error) {
     console.error('Gemini API error:', error);
-    throw new Error(
-      error instanceof Error
-        ? error.message
-        : 'Failed to get response from AI. Please try again.'
-    );
+
+    // CRITICAL FIX: Parse API errors and return user-friendly messages
+    // Prevents raw API error details from being shown to users
+    const userMessage = getUserFriendlyErrorMessage(error);
+    throw new Error(userMessage);
   }
 }
 
@@ -166,12 +166,86 @@ export async function analyzeImage(
     return response.text();
   } catch (error) {
     console.error('Gemini image analysis error:', error);
-    throw new Error(
-      error instanceof Error
-        ? error.message
-        : 'Failed to analyze image. Please try again.'
-    );
+
+    // Use the same user-friendly error handling
+    const userMessage = getUserFriendlyErrorMessage(error);
+    throw new Error(userMessage);
   }
+}
+
+/**
+ * Convert API errors to user-friendly messages
+ * Detects common error patterns and returns clean, actionable messages
+ *
+ * @param error - The error object from the API
+ * @returns A user-friendly error message
+ */
+function getUserFriendlyErrorMessage(error: unknown): string {
+  // Generic fallback message
+  const DEFAULT_MESSAGE = 'Something went wrong. Please try again.';
+
+  if (!error) return DEFAULT_MESSAGE;
+
+  // Get error message as string
+  const errorMessage = error instanceof Error ? error.message : String(error);
+  const errorLower = errorMessage.toLowerCase();
+
+  // Detect specific error types and return friendly messages
+  // API quota/limit errors
+  if (
+    errorLower.includes('quota') ||
+    errorLower.includes('limit') ||
+    errorLower.includes('429') ||
+    errorLower.includes('rate limit')
+  ) {
+    return 'API limit reached. Please wait a moment and try again.';
+  }
+
+  // Authentication errors
+  if (
+    errorLower.includes('auth') ||
+    errorLower.includes('unauthorized') ||
+    errorLower.includes('401') ||
+    errorLower.includes('403') ||
+    errorLower.includes('api key')
+  ) {
+    return 'AI service is currently unavailable. Please try again later.';
+  }
+
+  // Network/connection errors
+  if (
+    errorLower.includes('network') ||
+    errorLower.includes('connect') ||
+    errorLower.includes('fetch') ||
+    errorLower.includes('timeout') ||
+    errorLower.includes('econnrefused')
+  ) {
+    return 'Connection problem. Please check your internet and try again.';
+  }
+
+  // Content safety/policy errors
+  if (
+    errorLower.includes('safety') ||
+    errorLower.includes('policy') ||
+    errorLower.includes('blocked') ||
+    errorLower.includes('inappropriate')
+  ) {
+    return 'This content cannot be processed. Please try a different question.';
+  }
+
+  // Server errors
+  if (
+    errorLower.includes('500') ||
+    errorLower.includes('502') ||
+    errorLower.includes('503') ||
+    errorLower.includes('server error')
+  ) {
+    return 'AI service is temporarily unavailable. Please try again later.';
+  }
+
+  // If we can't categorize the error, return a generic safe message
+  // Never show raw API errors to users
+  return DEFAULT_MESSAGE;
 }
 
 /**

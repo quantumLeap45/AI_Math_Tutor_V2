@@ -5,7 +5,7 @@
  * Helper functions for chat session management and formatting.
  */
 
-import { ChatSession, Message, STORAGE_LIMITS } from '@/types';
+import { ChatSession, Message } from '@/types';
 
 /**
  * Generate a session title from the first user message

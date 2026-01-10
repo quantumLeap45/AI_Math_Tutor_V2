@@ -8,7 +8,7 @@
  * Defaults to light (bright) theme.
  */
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { Theme } from '@/types';
 import { getSettings, saveSettings } from '@/lib/storage';
 
@@ -27,10 +27,15 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
+  const hasInitialized = useRef(false);
 
-  // Load theme from localStorage on mount
+  // Load theme from localStorage on mount (runs once)
   useEffect(() => {
+    if (hasInitialized.current) return;
+    hasInitialized.current = true;
+
     const settings = getSettings();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Initializing from localStorage (external system)
     setThemeState(settings.theme);
     setMounted(true);
   }, []);
@@ -74,5 +79,3 @@ export function useTheme() {
   }
   return context;
 }
-
-export default ThemeProvider;

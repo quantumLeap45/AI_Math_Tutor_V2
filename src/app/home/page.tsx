@@ -5,11 +5,12 @@
  * AI Math Tutor v2
  *
  * Navigation hub with personalized greeting and feature cards.
+ * Updated for Phase 2 with TopBar and glass card styling.
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { Header } from '@/components/Header';
+import { TopBar } from '@/components/TopBar';
 import { NavCard } from '@/components/NavCard';
 import { getUsername } from '@/lib/storage';
 
@@ -17,14 +18,19 @@ export default function HomePage() {
   const router = useRouter();
   const [username, setUsernameState] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
+  const hasCheckedAuth = useRef(false);
 
-  // Auth check and username load
+  // Auth check and username load (runs once on mount)
   useEffect(() => {
+    if (hasCheckedAuth.current) return;
+    hasCheckedAuth.current = true;
+
     const storedUsername = getUsername();
     if (!storedUsername) {
       router.push('/');
       return;
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Initializing from localStorage (external system)
     setUsernameState(storedUsername);
     setMounted(true);
   }, [router]);
@@ -39,14 +45,14 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
-      <Header username={username} />
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900">
+      <TopBar username={username} currentPage="home" showNavLinks showLocalBadge />
 
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-12">
         {/* Greeting */}
-        <div className="text-center mb-12 animate-fadeIn">
+        <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-            Hi, {username}!
+            Hi, {username}! 👋
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
             What would you like to do today?
@@ -54,11 +60,11 @@ export default function HomePage() {
         </div>
 
         {/* Navigation Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl w-full animate-slideIn">
-          {/* AI Chat Card - Enabled */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl w-full">
+          {/* AI Chat Card */}
           <NavCard
             title="AI Chat"
-            description="Ask me any P1-P6 math question. Type or upload a photo of your homework."
+            description="Ask me any P1-P6 math question. Type or upload homework photo."
             href="/chat"
             icon={
               <svg
@@ -77,13 +83,11 @@ export default function HomePage() {
             }
           />
 
-          {/* Quiz Card - Disabled */}
+          {/* Quiz Card */}
           <NavCard
             title="Quiz"
-            description="Test your math skills with interactive quizzes. Practice makes perfect!"
+            description="Test your math skills with interactive quizzes."
             href="/quiz"
-            disabled
-            badge="Coming Soon"
             icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -106,15 +110,15 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Quick tips */}
-        <div className="mt-12 max-w-md text-center animate-fadeIn">
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+        {/* Pro tip */}
+        <div className="mt-12 max-w-md text-center">
+          <p className="text-sm text-slate-500 dark:text-slate-500">
             <span className="font-medium text-slate-700 dark:text-slate-300">
-              Pro tip:
+              💡 Pro tip:
             </span>{' '}
-            Use <span className="text-blue-600 dark:text-blue-400">SHOW mode</span>{' '}
+            Use <span className="text-blue-600 dark:text-blue-400 font-medium">SHOW mode</span>{' '}
             for complete solutions, or{' '}
-            <span className="text-purple-600 dark:text-purple-400">TEACH mode</span>{' '}
+            <span className="text-purple-600 dark:text-purple-400 font-medium">TEACH mode</span>{' '}
             to learn step-by-step with hints.
           </p>
         </div>
