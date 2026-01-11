@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LocalBadge } from './LocalBadge';
+import { useTheme } from './ThemeProvider';
 
 export interface TopBarProps {
   username?: string;
@@ -252,59 +253,10 @@ export function TopBar({
 }
 
 /**
- * Theme Toggle Component (extracted for reuse)
+ * Theme Toggle Component (uses ThemeProvider context)
  */
 function ThemeToggle() {
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-    // Get initial theme from localStorage or system preference
-    const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const initialTheme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    setTheme(initialTheme);
-    // Apply theme to document on initial load
-    if (initialTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
-  };
-
-  // Don't render until mounted to prevent hydration mismatch
-  if (!mounted) {
-    return (
-      <button
-        type="button"
-        className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
-        aria-label="Toggle theme"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2" />
-          <path d="M12 20v2" />
-        </svg>
-      </button>
-    );
-  }
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button
@@ -314,7 +266,7 @@ function ThemeToggle() {
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {theme === 'light' ? (
-        /* Moon icon */
+        /* Moon icon for dark mode */
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -329,7 +281,7 @@ function ThemeToggle() {
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
         </svg>
       ) : (
-        /* Sun icon */
+        /* Sun icon for light mode */
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

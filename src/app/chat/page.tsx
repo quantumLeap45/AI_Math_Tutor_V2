@@ -16,6 +16,7 @@ import { MessageBubble } from '@/components/MessageBubble';
 import { MessageComposer } from '@/components/MessageComposer';
 import { ModeToggle } from '@/components/ModeToggle';
 import { MessageLoading } from '@/components/LoadingSpinner';
+import { useTheme } from '@/components/ThemeProvider';
 import { ChatSession, TutorMode } from '@/types';
 import {
   getUsername,
@@ -28,47 +29,9 @@ import {
 } from '@/lib/storage';
 import { createMessage, updateSessionTitleFromFirstMessage } from '@/lib/chat';
 
-// Reusable Theme Toggle component
+// Reusable Theme Toggle component (uses ThemeProvider)
 function ThemeToggle() {
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const initialTheme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    setTheme(initialTheme);
-    // Apply theme to document on initial load
-    if (initialTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
-  };
-
-  // Don't render until mounted to prevent hydration mismatch
-  if (!mounted) {
-    return (
-      <button
-        type="button"
-        className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
-        aria-label="Toggle theme"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2" />
-          <path d="M12 20v2" />
-        </svg>
-      </button>
-    );
-  }
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button

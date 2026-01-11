@@ -12,3 +12,4 @@ export { QuizSession } from './QuizSession';
 export { QuizHome } from './QuizHome';
 export { ResumePanel } from './ResumePanel';
 export { DiscardDialog } from './DiscardDialog';
+export { QuizAIChat } from './QuizAIChat';
