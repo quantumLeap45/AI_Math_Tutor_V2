@@ -3,55 +3,36 @@
  * AI Math Tutor v2
  *
  * Handles communication with Google Gemini API for chat functionality.
+ * Uses the new Google GenAI SDK (released 2025).
  * Uses streaming for progressive response display.
  */
 
-import { GoogleGenerativeAI, Content, Part } from '@google/generative-ai';
+import { GoogleGenAI, Content } from '@google/genai';
 import { Message, TutorMode } from '@/types';
 import { buildSystemPrompt } from './prompts';
 
 // Initialize the Gemini client (server-side only)
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY || '',
+});
 
-// Model configuration
-// Note: gemini-2.0-flash requires paid plan (free tier quota = 0)
-// gemini-1.5-flash and gemini-flash don't work with current API version
-// Using gemini-pro which is stable and available on free tier
-const MODEL_NAME = 'gemini-pro';
+// Model configuration - using new Gemini 2.5 Flash model
+const MODEL_NAME = 'gemini-2.5-flash';
 
 /**
  * Convert our Message format to Gemini Content format
  */
 function messagesToGeminiContent(messages: Message[]): Content[] {
-  return messages.map(msg => ({
-    role: msg.role === 'user' ? 'user' : 'model',
-    parts: [{ text: msg.content }],
-  }));
-}
+  const contents: Content[] = [];
 
-/**
- * Create image part for Gemini API
- */
-function createImagePart(base64Image: string): Part {
-  // Extract mime type and data from base64 string
-  const matches = base64Image.match(/^data:(.+);base64,(.+)$/);
-
-  if (matches) {
-    return {
-      inlineData: {
-        mimeType: matches[1],
-        data: matches[2],
-      },
-    };
+  for (const msg of messages) {
+    contents.push({
+      role: msg.role === 'user' ? 'user' : 'model',
+      parts: [{ text: msg.content }],
+    });
   }
 
-  // If no data URL prefix, assume it's raw base64 image/jpeg
-  return {
-    inlineData: {
-      mimeType: 'image/jpeg',
-      data: base64Image,
-    },
-  };
+  return contents;
 }
 
 /**
@@ -67,45 +48,42 @@ export async function* streamChat(
   mode: TutorMode,
   image?: string
 ): AsyncGenerator<string, void, unknown> {
-  const model = genAI.getGenerativeModel({
-    model: MODEL_NAME,
-    systemInstruction: buildSystemPrompt(mode),
-  });
+  const systemPrompt = buildSystemPrompt(mode);
 
-  // Build the content for the request
-  const history = messagesToGeminiContent(messages.slice(0, -1));
-  const lastMessage = messages[messages.length - 1];
+  // Build contents for the request
+  const contents = messagesToGeminiContent(messages);
 
-  // Build parts for the last message
-  const parts: Part[] = [];
-
-  // Add image if provided
-  if (image) {
-    parts.push(createImagePart(image));
+  // Add image if provided (add to the last user message)
+  if (image && contents.length > 0) {
+    const lastUserMessageIndex = contents.findLastIndex(c => c.role === 'user');
+    if (lastUserMessageIndex >= 0) {
+      const lastContent = contents[lastUserMessageIndex];
+      // Add image part to the last user message
+      if (Array.isArray(lastContent.parts)) {
+        lastContent.parts.unshift({
+          inlineData: {
+            mimeType: 'image/jpeg',
+            data: image.includes(',') ? image.split(',')[1] : image,
+          },
+        });
+      }
+    }
   }
 
-  // Add text content
-  parts.push({ text: lastMessage.content });
-
-  // Start chat with history
-  const chat = model.startChat({
-    history,
-    generationConfig: {
-      maxOutputTokens: 2048,
-      temperature: 0.7,
-      topP: 0.9,
-    },
-  });
-
   try {
-    // Send message and get streaming response
-    const result = await chat.sendMessageStream(parts);
+    // Use the new Google GenAI SDK for streaming
+    const response = await ai.models.generateContentStream({
+      model: MODEL_NAME,
+      contents,
+      config: {
+        systemInstruction: systemPrompt,
+      },
+    });
 
     // Yield text chunks as they arrive
-    for await (const chunk of result.stream) {
-      const text = chunk.text();
-      if (text) {
-        yield text;
+    for await (const chunk of response) {
+      if (chunk.text) {
+        yield chunk.text;
       }
     }
   } catch (error) {
@@ -156,24 +134,37 @@ export async function analyzeImage(
   prompt: string,
   mode: TutorMode
 ): Promise<string> {
-  const model = genAI.getGenerativeModel({
-    model: MODEL_NAME,
-    systemInstruction: buildSystemPrompt(mode),
-  });
+  const systemPrompt = buildSystemPrompt(mode);
 
-  const parts: Part[] = [
-    createImagePart(image),
-    { text: prompt || 'Please analyze this math problem and help me solve it.' },
+  const imageData = image.includes(',') ? image.split(',')[1] : image;
+
+  const contents: Content[] = [
+    {
+      role: 'user',
+      parts: [
+        {
+          inlineData: {
+            mimeType: 'image/jpeg',
+            data: imageData,
+          },
+        },
+        { text: prompt || 'Please analyze this math problem and help me solve it.' },
+      ],
+    },
   ];
 
   try {
-    const result = await model.generateContent(parts);
-    const response = await result.response;
-    return response.text();
+    const response = await ai.models.generateContent({
+      model: MODEL_NAME,
+      contents,
+      config: {
+        systemInstruction: systemPrompt,
+      },
+    });
+
+    return response.text || '';
   } catch (error) {
     console.error('Gemini image analysis error:', error);
-
-    // Use the same user-friendly error handling
     const userMessage = getUserFriendlyErrorMessage(error);
     throw new Error(userMessage);
   }
