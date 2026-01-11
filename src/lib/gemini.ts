@@ -106,7 +106,13 @@ export async function* streamChat(
       }
     }
   } catch (error) {
-    console.error('Gemini API error:', error);
+    // Log detailed error for debugging
+    console.error('Gemini API raw error:', JSON.stringify({
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      cause: error instanceof Error ? (error as any).cause : undefined,
+      name: error instanceof Error ? error.name : undefined,
+    }));
 
     // CRITICAL FIX: Parse API errors and return user-friendly messages
     // Prevents raw API error details from being shown to users
@@ -189,6 +195,9 @@ function getUserFriendlyErrorMessage(error: unknown): string {
   // Get error message as string
   const errorMessage = error instanceof Error ? error.message : String(error);
   const errorLower = errorMessage.toLowerCase();
+
+  // DIAGNOSTIC: Log the actual error for debugging
+  console.log('[DIAGNOSTIC] Raw error message:', errorMessage);
 
   // Detect specific error types and return friendly messages
   // API quota/limit errors
