@@ -87,13 +87,7 @@ export async function* streamChat(
       }
     }
   } catch (error) {
-    // Log raw error BEFORE conversion
-    const rawError = error instanceof Error ? error.message : String(error);
-    console.log('[RAW API ERROR]', rawError);
-
-    // For debugging, yield the raw error
-    yield `\n\n[RAW ERROR: ${rawError}]`;
-
+    console.error('Gemini API error:', error);
     const userMessage = getUserFriendlyErrorMessage(error);
     throw new Error(userMessage);
   }
@@ -185,9 +179,6 @@ function getUserFriendlyErrorMessage(error: unknown): string {
   const errorMessage = error instanceof Error ? error.message : String(error);
   const errorLower = errorMessage.toLowerCase();
 
-  // TEMPORARY: Log the actual error for debugging
-  console.log('[DEBUG] Raw error:', errorMessage);
-
   // Quota/limit errors
   if (
     errorLower.includes('quota') ||
@@ -240,8 +231,7 @@ function getUserFriendlyErrorMessage(error: unknown): string {
     return 'AI service is temporarily unavailable. Please try again later.';
   }
 
-  // TEMPORARY: Return raw error for debugging
-  return `DEBUG: ${errorMessage}`;
+  return DEFAULT_MESSAGE;
 }
 
 /**

@@ -108,9 +108,7 @@ export async function POST(request: NextRequest) {
           // Extract error message - gemini.ts converts to user-friendly message
           const errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
 
-          // Include raw error for debugging
-          const rawError = error instanceof Error ? error.message : String(error);
-          controller.enqueue(encoder.encode(`\n\n[Error: ${errorMessage} | Raw: ${rawError}]`));
+          controller.enqueue(encoder.encode(`\n\n[Error: ${errorMessage}]`));
           controller.close();
         }
       },
