@@ -108,7 +108,13 @@ export async function* streamChat(
       }
     }
   } catch (error) {
-    console.error('Gemini API error:', error);
+    // Log raw error BEFORE conversion
+    const rawError = error instanceof Error ? error.message : String(error);
+    console.log('[RAW API ERROR]', rawError);
+
+    // For debugging, yield the raw error
+    yield `\n\n[RAW ERROR: ${rawError}]`;
+
     const userMessage = getUserFriendlyErrorMessage(error);
     throw new Error(userMessage);
   }
