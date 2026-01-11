@@ -105,6 +105,9 @@ export async function POST(request: NextRequest) {
         } catch (error) {
           console.error('Streaming error:', error);
 
+          // TEMPORARY: Include raw error for debugging
+          const rawError = error instanceof Error ? error.message : String(error);
+
           // CRITICAL FIX: Show user-friendly error message instead of raw error
           // The getUserFriendlyErrorMessage function is called in gemini.ts,
           // but for streaming errors we need to handle them here too
@@ -125,8 +128,9 @@ export async function POST(request: NextRequest) {
             errorMessage = 'Connection problem. Please check your internet and try again.';
           }
 
+          // Include raw error in brackets for debugging
           controller.enqueue(
-            encoder.encode(`\n\n[Error: ${errorMessage}]`)
+            encoder.encode(`\n\n[Error: ${errorMessage} | Debug: ${rawError}]`)
           );
           controller.close();
         }
