@@ -15,8 +15,9 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 // Model configuration
 // Note: gemini-2.0-flash requires paid plan (free tier quota = 0)
-// Using gemini-1.5-flash which has free tier availability
-const MODEL_NAME = 'gemini-1.5-flash';
+// gemini-1.5-flash doesn't work with v1beta API
+// Using gemini-flash which is available on free tier
+const MODEL_NAME = 'gemini-flash';
 
 /**
  * Convert our Message format to Gemini Content format
