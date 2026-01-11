@@ -40,17 +40,25 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
   }, [messages, isOpen]);
 
   // Add welcome message when chat opens
+  // Reset messages when question changes
   useEffect(() => {
-    if (isOpen && messages.length === 0 && currentQuestion) {
-      const welcomeMessage: ChatMessage = {
-        id: Date.now().toString(),
-        role: 'assistant',
-        content: `Hi! I'm here to help you with Question ${questionNumber || 1}. I can give you hints and guide you through the problem, but I won't give you the answer directly. What would you like to explore?`,
-        timestamp: new Date().toISOString(),
-      };
-      setMessages([welcomeMessage]);
+    if (isOpen && currentQuestion) {
+      // Check if we need to reset (question changed or empty messages)
+      const lastMessage = messages[messages.length - 1];
+      const questionChanged = lastMessage && messages.length > 0 &&
+        !lastMessage.content.includes(`Question ${questionNumber || 1}`);
+
+      if (messages.length === 0 || questionChanged) {
+        const welcomeMessage: ChatMessage = {
+          id: Date.now().toString(),
+          role: 'assistant',
+          content: `Hi! I'm here to help you with Question ${questionNumber || 1}. I can give you hints and guide you through the problem, but I won't give you the answer directly. What would you like to explore?`,
+          timestamp: new Date().toISOString(),
+        };
+        setMessages([welcomeMessage]);
+      }
     }
-  }, [isOpen, messages.length, currentQuestion, questionNumber]);
+  }, [isOpen, currentQuestion?.id, questionNumber]); // Watch question ID for changes
 
   const sendMessage = async () => {
     if (!input.trim() || !currentQuestion) return;

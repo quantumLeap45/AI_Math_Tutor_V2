@@ -297,6 +297,7 @@ export function useQuiz(): QuizState & QuizActions {
         currentIndex: 0,
         state: 'in_progress' as QuizSessionState,
         startedAt: now,
+        accumulatedTime: 0, // Initialize accumulated time
       };
 
       // Initialize empty answers for all questions
@@ -345,10 +346,8 @@ export function useQuiz(): QuizState & QuizActions {
     setConfig(quiz.config);
     setPhase('active');
 
-    // Calculate elapsed time from when quiz started
-    const started = new Date(quiz.startedAt).getTime();
-    const now = Date.now();
-    setElapsed(Math.floor((now - started) / 1000));
+    // Use accumulated time (saved accumulated time, not total from startedAt)
+    setElapsed(quiz.accumulatedTime ?? 0);
 
     questionStartTimeRef.current = Date.now();
   }, [inProgressQuizzes]);
@@ -500,10 +499,11 @@ export function useQuiz(): QuizState & QuizActions {
     // Keep quiz in localStorage (already auto-saved), return to home
     // Clear currentQuiz from React state but keep in localStorage
     if (currentQuiz) {
-      // Update lastSavedAt before exiting
+      // Update lastSavedAt and accumulatedTime before exiting
       const quizToSave = {
         ...currentQuiz,
         lastSavedAt: new Date().toISOString(),
+        accumulatedTime: elapsed, // Save current elapsed time as accumulated
       };
       // Use multi-resume storage
       addOrUpdateInProgressQuiz(quizToSave);
@@ -512,7 +512,7 @@ export function useQuiz(): QuizState & QuizActions {
     setResult(null);
     setPhase('home');
     setElapsed(0);
-  }, [currentQuiz]);
+  }, [currentQuiz, elapsed]);
 
   // ============ UTILITY ============
 

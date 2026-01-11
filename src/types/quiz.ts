@@ -164,6 +164,8 @@ export interface QuizAttempt {
   totalTime?: number;
   /** ISO 8601 timestamp of last auto-save */
   lastSavedAt?: string;
+  /** Accumulated time in seconds (for pause/resume) */
+  accumulatedTime?: number;
 }
 
 // ============ QUIZ RESULT TYPES ============
@@ -434,14 +436,20 @@ export function getRatingColor(rating: PerformanceRating): string {
 
 /**
  * Format time duration in human-readable form
+ * Shows MM:SS for durations < 1 hour, HH:MM:SS for 1+ hours
  */
 export function formatDuration(milliseconds: number): string {
   const seconds = Math.floor(milliseconds / 1000);
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
 
-  if (minutes > 0) {
-    return `${minutes}m ${remainingSeconds}s`;
+  // Format with leading zeros
+  const pad = (num: number) => num.toString().padStart(2, '0');
+
+  if (hours > 0) {
+    return `${pad(hours)}:${pad(remainingMinutes)}:${pad(remainingSeconds)}`;
   }
-  return `${seconds}s`;
+  return `${pad(remainingMinutes)}:${pad(remainingSeconds)}`;
 }
