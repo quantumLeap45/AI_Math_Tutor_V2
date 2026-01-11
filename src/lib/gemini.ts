@@ -187,6 +187,9 @@ function getUserFriendlyErrorMessage(error: unknown): string {
   const errorMessage = error instanceof Error ? error.message : String(error);
   const errorLower = errorMessage.toLowerCase();
 
+  // TEMPORARY: Log the actual error for debugging
+  console.log('[DEBUG] Raw error:', errorMessage);
+
   // Quota/limit errors
   if (
     errorLower.includes('quota') ||
@@ -239,7 +242,8 @@ function getUserFriendlyErrorMessage(error: unknown): string {
     return 'AI service is temporarily unavailable. Please try again later.';
   }
 
-  return DEFAULT_MESSAGE;
+  // TEMPORARY: Return raw error for debugging
+  return `DEBUG: ${errorMessage}`;
 }
 
 /**

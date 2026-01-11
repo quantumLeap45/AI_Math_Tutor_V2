@@ -105,11 +105,12 @@ export async function POST(request: NextRequest) {
         } catch (error) {
           console.error('Streaming error:', error);
 
-          // Extract user-friendly error message from the thrown error
-          // The gemini.ts already converts errors to user-friendly messages
+          // Extract error message - gemini.ts converts to user-friendly message
           const errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
 
-          controller.enqueue(encoder.encode(`\n\n[Error: ${errorMessage}]`));
+          // Include raw error for debugging
+          const rawError = error instanceof Error ? error.message : String(error);
+          controller.enqueue(encoder.encode(`\n\n[Error: ${errorMessage} | Raw: ${rawError}]`));
           controller.close();
         }
       },
