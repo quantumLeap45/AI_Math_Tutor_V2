@@ -18,6 +18,7 @@ interface QuizOptionsProps {
   onSelect: (option: QuizOption) => void;
   disabled?: boolean;
   showResult?: boolean; // Show correct/incorrect after answering
+  explanation?: string; // Explanation to show when displaying results
 }
 
 const OPTION_LABELS: Record<QuizOption, string> = {
@@ -61,6 +62,7 @@ export function QuizOptions({
   onSelect,
   disabled = false,
   showResult = false,
+  explanation = '',
 }: QuizOptionsProps) {
   const optionEntries: [QuizOption, string][] = [
     ['A', options.A],
@@ -70,8 +72,9 @@ export function QuizOptions({
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {optionEntries.map(([key, text], index) => {
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {optionEntries.map(([key, text], index) => {
         const isSelected = selectedOption === key;
         const isCorrect = key === correctAnswer;
         const styles = OPTION_STYLES[index];
@@ -143,6 +146,51 @@ export function QuizOptions({
         );
       })}
     </div>
+
+    {/* Feedback Panel - shown when answer is submitted */}
+    {showResult && selectedOption && (
+      <div
+        className={`mt-6 p-5 rounded-xl border-2 ${
+          selectedOption === correctAnswer
+            ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-900'
+            : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-900'
+        }`}
+      >
+        <div className="flex items-start gap-3">
+          <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+            selectedOption === correctAnswer
+              ? 'bg-green-500 text-white'
+              : 'bg-red-500 text-white'
+          }`}>
+            {selectedOption === correctAnswer ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            )}
+          </div>
+          <div className="flex-1">
+            <p className={`font-semibold mb-1 ${
+              selectedOption === correctAnswer
+                ? 'text-green-700 dark:text-green-400'
+                : 'text-red-700 dark:text-red-400'
+            }`}>
+              {selectedOption === correctAnswer ? 'Correct!' : 'Incorrect'}
+            </p>
+            {explanation && (
+              <p className="text-sm text-slate-700 dark:text-slate-300">
+                {explanation}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
+  </>
   );
 }
 

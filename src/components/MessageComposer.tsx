@@ -138,6 +138,7 @@ export function MessageComposer({
           disabled={disabled || isUploading}
           className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           aria-label="Upload image"
+          title="Upload a photo of your math problem (JPG, PNG, GIF, WebP up to 10MB)"
         >
           {isUploading ? (
             <svg
@@ -227,7 +228,7 @@ export function MessageComposer({
 
       {/* Helper text */}
       <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
-        Press Enter to send, Shift+Enter for new line
+        Press Enter to send, Shift+Enter for new line • You can also upload a photo of your math problem
       </p>
     </div>
   );

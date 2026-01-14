@@ -457,7 +457,15 @@ export function updateQuizProgressFromAttempt(attempt: QuizAttempt): void {
     };
   }
 
+  // MIGRATION: If level exists but has old format (missing arrays), add them
   const levelProgress = progress.byLevel[currentLevel];
+  if (!levelProgress.masteredTopics) {
+    levelProgress.masteredTopics = [];
+  }
+  if (!levelProgress.needsPractice) {
+    levelProgress.needsPractice = [];
+  }
+
   levelProgress.quizzesCompleted += 1;
   levelProgress.questionsAnswered += attempt.questions.length;
 
@@ -520,7 +528,7 @@ export function clearQuizData(): void {
 
 /**
  * Get all in-progress quiz attempts from localStorage
- * Returns array of up to MAX_IN_PROGRESS (5) quizzes
+ * Returns array of up to MAX_IN_PROGRESS (50) quizzes
  */
 export function getInProgressQuizzes(): QuizAttempt[] {
   if (typeof window === 'undefined') return [];
@@ -536,7 +544,7 @@ export function getInProgressQuizzes(): QuizAttempt[] {
 
 /**
  * Save in-progress quiz attempts to localStorage
- * Enforces MAX_IN_PROGRESS limit (5)
+ * Enforces MAX_IN_PROGRESS limit (50)
  */
 export function saveInProgressQuizzes(quizzes: QuizAttempt[]): void {
   if (typeof window === 'undefined') return;

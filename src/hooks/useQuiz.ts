@@ -59,6 +59,9 @@ interface QuizState {
 
   // Time tracking
   elapsed: number;
+
+  // Feedback state - whether answer feedback has been shown for current question
+  feedbackShown: boolean;
 }
 
 /**
@@ -186,6 +189,7 @@ export function useQuiz(): QuizState & QuizActions {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<QuizResult | null>(null);
   const [elapsed, setElapsed] = useState(0);
+  const [feedbackShown, setFeedbackShown] = useState(false);
 
   // Load in-progress quizzes on mount - check for saved quizzes but stay on 'home' phase
   useEffect(() => {
@@ -238,6 +242,13 @@ export function useQuiz(): QuizState & QuizActions {
       setInProgressQuizzes(updated);
     }
   }, [currentQuiz, phase]);
+
+  // Reset feedback state when question index changes
+  useEffect(() => {
+    if (currentQuiz && phase === 'active') {
+      setFeedbackShown(false);
+    }
+  }, [currentQuiz?.currentIndex, phase]);
 
   // ============ CONFIGURATION SETTERS ============
 
@@ -415,6 +426,16 @@ export function useQuiz(): QuizState & QuizActions {
   }, []);
 
   const nextQuestion = useCallback(() => {
+    // First, check if we need to show feedback
+    if (!feedbackShown) {
+      // Show feedback instead of moving to next question
+      setFeedbackShown(true);
+      // Also submit the answer time when showing feedback
+      submitAnswer();
+      return;
+    }
+
+    // Feedback has been shown, proceed to next question
     setCurrentQuiz(prev => {
       if (!prev) return null;
 
@@ -471,7 +492,10 @@ export function useQuiz(): QuizState & QuizActions {
       questionStartTimeRef.current = Date.now();
       return { ...prev, currentIndex: nextIndex };
     });
-  }, []);
+
+    // Reset feedback state for next question
+    setFeedbackShown(false);
+  }, [feedbackShown, submitAnswer]);
 
   const previousQuestion = useCallback(() => {
     setCurrentQuiz(prev => {
@@ -530,6 +554,7 @@ export function useQuiz(): QuizState & QuizActions {
     error,
     result,
     elapsed,
+    feedbackShown,
 
     // Configuration
     setLevel,
@@ -566,13 +591,28 @@ export function useQuiz(): QuizState & QuizActions {
 
 /**
  * Create a default progress object
+ * Must match QuizProgress.byLevel structure (LevelProgress type)
  */
 function createDefaultProgress() {
   const levels: Array<'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6'> = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6'];
-  const byLevel: Record<string, { quizzesCompleted: number; questionsAnswered: number; averageScore: number }> = {};
+  const byLevel: Record<string, {
+    level: string;
+    quizzesCompleted: number;
+    questionsAnswered: number;
+    averageScore: number;
+    masteredTopics: string[];
+    needsPractice: string[];
+  }> = {};
 
   for (const level of levels) {
-    byLevel[level] = { quizzesCompleted: 0, questionsAnswered: 0, averageScore: 0 };
+    byLevel[level] = {
+      level,
+      quizzesCompleted: 0,
+      questionsAnswered: 0,
+      averageScore: 0,
+      masteredTopics: [],
+      needsPractice: [],
+    };
   }
 
   return {
@@ -613,12 +653,21 @@ function updateProgressStats(attempt: QuizAttempt): void {
 
     // Update level-specific stats
     const level = attempt.config.level;
-    if (progress.byLevel[level]) {
-      progress.byLevel[level].quizzesCompleted += 1;
-      progress.byLevel[level].questionsAnswered += attempt.questions.length;
-      const previousTotal = progress.byLevel[level].averageScore * (progress.byLevel[level].quizzesCompleted - 1);
-      progress.byLevel[level].averageScore = Math.round((previousTotal + score) / progress.byLevel[level].quizzesCompleted);
+    if (!progress.byLevel[level]) {
+      // Initialize level if missing (migration from old format)
+      progress.byLevel[level] = {
+        level,
+        quizzesCompleted: 0,
+        questionsAnswered: 0,
+        averageScore: 0,
+        masteredTopics: [],
+        needsPractice: [],
+      };
     }
+    progress.byLevel[level].quizzesCompleted += 1;
+    progress.byLevel[level].questionsAnswered += attempt.questions.length;
+    const previousTotal = progress.byLevel[level].averageScore * (progress.byLevel[level].quizzesCompleted - 1);
+    progress.byLevel[level].averageScore = Math.round((previousTotal + score) / progress.byLevel[level].quizzesCompleted);
 
     // Update weak areas (topics with <60% accuracy)
     const topicScores: Record<string, { correct: number; total: number }> = {};

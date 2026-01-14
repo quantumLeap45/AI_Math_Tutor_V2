@@ -327,7 +327,7 @@ export const QUIZ_STORAGE_LIMITS = {
   /** Maximum number of weak areas to track */
   MAX_WEAK_AREAS: 10,
   /** Maximum number of in-progress quizzes to store */
-  MAX_IN_PROGRESS: 5,
+  MAX_IN_PROGRESS: 50,
 } as const;
 
 // ============ CONSTANTS ============

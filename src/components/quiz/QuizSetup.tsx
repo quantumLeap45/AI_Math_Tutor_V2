@@ -8,7 +8,7 @@
  * Allows selecting level, topics, difficulty, and question count.
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   PrimaryLevel,
   QuizTopic,
@@ -81,6 +81,27 @@ export function QuizSetup({
   onBack,
   availableQuestionCount,
 }: QuizSetupProps) {
+  // Question counts by topic
+  const [topicQuestionCounts, setTopicQuestionCounts] = useState<Record<string, number>>({});
+  const [loadingCounts, setLoadingCounts] = useState(true);
+
+  // Load question counts on mount
+  useEffect(() => {
+    const loadQuestionCounts = async () => {
+      try {
+        const { getQuestionSummary } = await import('@/lib/quiz/quiz-data');
+        const summary = await getQuestionSummary(level);
+        setTopicQuestionCounts(summary.byTopic);
+      } catch (error) {
+        console.error('Failed to load question counts:', error);
+      } finally {
+        setLoadingCounts(false);
+      }
+    };
+
+    setLoadingCounts(true);
+    loadQuestionCounts();
+  }, [level]);
   const toggleTopic = (topic: QuizTopic) => {
     const isSelected = topics.includes(topic);
     const canDeselect = topics.length > 1;
@@ -192,25 +213,37 @@ export function QuizSetup({
             </button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {TOPIC_OPTIONS.map((topic) => (
-              <button
-                key={topic.value}
-                onClick={() => toggleTopic(topic.value)}
-                className={`
-                  p-4 rounded-xl border-2 transition-all text-left
-                  ${
-                    topics.includes(topic.value)
-                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                      : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600'
-                  }
-                `}
-              >
-                <div className="text-2xl mb-1">{topic.emoji}</div>
-                <div className="text-sm font-medium text-slate-900 dark:text-slate-100">
-                  {topic.label}
-                </div>
-              </button>
-            ))}
+            {TOPIC_OPTIONS.map((topic) => {
+              const questionCount = topicQuestionCounts[topic.value] || 0;
+              return (
+                <button
+                  key={topic.value}
+                  onClick={() => toggleTopic(topic.value)}
+                  className={`
+                    p-4 rounded-xl border-2 transition-all text-left relative
+                    ${
+                      topics.includes(topic.value)
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                        : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600'
+                    }
+                  `}
+                >
+                  <div className="text-2xl mb-1">{topic.emoji}</div>
+                  <div className="text-sm font-medium text-slate-900 dark:text-slate-100">
+                    {topic.label}
+                  </div>
+                  {!loadingCounts && (
+                    <div className={`mt-2 text-xs font-medium ${
+                      topics.includes(topic.value)
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : 'text-slate-500 dark:text-slate-500'
+                    }`}>
+                      {questionCount} {questionCount === 1 ? 'question' : 'questions'}
+                    </div>
+                  )}
+                </button>
+              );
+            })}
           </div>
           <p className="mt-2 text-xs text-slate-500 dark:text-slate-500">
             {topics.length === P1_TOPICS.length

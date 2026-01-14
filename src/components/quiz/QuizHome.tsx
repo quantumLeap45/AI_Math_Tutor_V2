@@ -9,8 +9,9 @@
  * Phase 3: Restructured layout with natural card heights.
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { QuizAttempt } from '@/types';
+import { getQuizAttempts, getQuizProgress } from '@/lib/storage';
 import { ResumePanel } from './ResumePanel';
 
 interface QuizHomeProps {
@@ -21,16 +22,43 @@ interface QuizHomeProps {
 }
 
 export function QuizHome({ onStartNew, inProgressQuizzes, onResume, onDiscard }: QuizHomeProps) {
-  // Mock progress data - in real implementation, this would come from getQuizProgress()
-  const quizProgress = {
-    totalQuizzes: 0,
-    overallAccuracy: 0,
-    bestScore: 0,
-    currentStreak: 0,
-  };
+  // Load quiz progress from localStorage
+  const [quizProgress, setQuizProgress] = useState(() => getQuizProgress());
 
-  // Mock recent scores - in real implementation, this would come from getQuizAttempts()
-  const recentScores: { score: number; topic: string }[] = [];
+  // Load recent scores from localStorage (FIX: was using mock data)
+  const [recentScores, setRecentScores] = useState<{ score: number; topic: string; date: string; difficulty: string }[]>([]);
+
+  useEffect(() => {
+    // Load data on mount
+    const loadQuizData = () => {
+      const progress = getQuizProgress();
+      setQuizProgress(progress);
+
+      const attempts = getQuizAttempts();
+      const scores = attempts
+        .filter(a => a.state === 'completed')
+        .map(a => ({
+          score: a.score ?? 0,
+          topic: a.config.topics[0] || 'Mixed Topics',
+          date: a.completedAt ?? new Date().toISOString(),
+          difficulty: a.config.difficulty ?? 'all',
+        }))
+        .slice(0, 5); // Show up to 5 recent scores
+      setRecentScores(scores);
+    };
+
+    loadQuizData();
+
+    // Listen for storage changes
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'math-tutor-quiz-attempts' || e.key === 'math-tutor-quiz-progress') {
+        loadQuizData();
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   return (
     <div className="w-full max-w-7xl mx-auto">
@@ -136,17 +164,29 @@ export function QuizHome({ onStartNew, inProgressQuizzes, onResume, onDiscard }:
                 No completed quizzes yet.
               </p>
             ) : (
-              <div className="space-y-2">
-                {recentScores.map((score, index) => (
-                  <div key={index} className="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
-                    <span className="text-sm text-slate-600 dark:text-slate-400">
-                      {index + 1}. {score.topic}
-                    </span>
-                    <span className={`text-sm font-semibold ${getScoreColor(score.score)}`}>
-                      {score.score}%
-                    </span>
-                  </div>
-                ))}
+              <div className="space-y-3">
+                {recentScores.map((item, index) => {
+                  const date = new Date(item.date);
+                  const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                  const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                  return (
+                    <div key={index} className="py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                          {item.topic}
+                        </span>
+                        <span className={`text-sm font-semibold ${getScoreColor(item.score)}`}>
+                          {item.score}%
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-500">
+                        <span>{item.difficulty}</span>
+                        <span>•</span>
+                        <span>{dateStr} at {timeStr}</span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -188,13 +228,6 @@ export function QuizHome({ onStartNew, inProgressQuizzes, onResume, onDiscard }:
 
           {/* Resume Quizzes Panel - Scrollable with fixed height */}
           <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
-            {/* Warning banner */}
-            <div className="p-3 bg-amber-50 dark:bg-amber-900/20 border-b border-amber-200 dark:border-amber-800">
-              <p className="text-xs text-amber-700 dark:text-amber-300">
-                ⚠️ Maximum 5 quizzes can be saved. Complete or discard quizzes to free up slots.
-              </p>
-            </div>
-
             {/* SCROLLABLE CONTAINER - Fixed height */}
             <div className="max-h-[400px] overflow-y-auto scrollbar-thin relative">
               {/* Top fade indicator */}

@@ -179,6 +179,25 @@ export default function ChatPage() {
     [currentSession]
   );
 
+  // Clear current chat (remove all messages from current session)
+  const handleClearChat = useCallback(() => {
+    if (!currentSession) return;
+
+    // Keep the same session but clear all messages
+    const clearedSession: ChatSession = {
+      ...currentSession,
+      messages: [],
+      title: 'New Chat',
+      updatedAt: new Date().toISOString(),
+    };
+
+    setCurrentSession(clearedSession);
+    saveSession(clearedSession);
+    setSessions(prev =>
+      prev.map(s => (s.id === clearedSession.id ? clearedSession : s))
+    );
+  }, [currentSession]);
+
   // Send message
   const handleSendMessage = useCallback(
     async (content: string, image?: string) => {
@@ -361,9 +380,34 @@ export default function ChatPage() {
             </nav>
           </div>
 
-          {/* Right: Mode toggle and theme toggle */}
+          {/* Right: Mode toggle, Clear Chat, and theme toggle */}
           <div className="flex items-center gap-2">
             <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
+            {currentSession && currentSession.messages.length > 0 && (
+              <button
+                onClick={handleClearChat}
+                disabled={isLoading}
+                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
+                title="Clear current chat"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                </svg>
+                <span className="hidden sm:inline">Clear</span>
+              </button>
+            )}
             <ThemeToggle />
           </div>
         </div>

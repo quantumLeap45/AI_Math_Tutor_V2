@@ -35,6 +35,7 @@ export function QuizSession() {
     error,
     result,
     elapsed,
+    feedbackShown,
     setLevel,
     setTopics,
     setDifficulty,
@@ -177,6 +178,8 @@ export function QuizSession() {
               selectedOption={currentAnswer.selected}
               correctAnswer={currentQuestion.correctAnswer}
               onSelect={(option) => selectOption(option as QuizOption)}
+              showResult={feedbackShown}
+              explanation={currentQuestion.explanation}
             />
           </div>
 
@@ -215,16 +218,23 @@ export function QuizSession() {
                 }
               `}
             >
-              {isLastQuestion ? (
+              {!feedbackShown ? (
                 <>
-                  Finish
+                  Check Answer
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </>
+              ) : isLastQuestion ? (
+                <>
+                  See Results
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </>
               ) : (
                 <>
-                  Next
+                  Next Question
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="9 18 15 12 9 6" />
                   </svg>
