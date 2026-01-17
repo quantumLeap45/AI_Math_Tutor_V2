@@ -8,9 +8,10 @@
  * Provides hints and guidance without giving direct answers.
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { QuizQuestion } from '@/types';
+import { useDailyQuota } from '@/hooks/useDailyQuota';
 
 export interface QuizAIChatProps {
   /** Current quiz question */
@@ -33,6 +34,9 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Daily quota hook
+  const { quotaStatus, countdown, consumeQuota } = useDailyQuota();
 
   // Scroll to bottom when messages change
   useEffect(() => {
@@ -62,6 +66,13 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
 
   const sendMessage = async () => {
     if (!input.trim() || !currentQuestion) return;
+
+    // Check daily quota before sending
+    const quotaResult = consumeQuota();
+    if (!quotaResult.allowed) {
+      setError(`Daily limit reached. Resets in ${countdown?.formatted || '24:00:00'}.`);
+      return;
+    }
 
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
@@ -320,9 +331,33 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
 
             {/* Error message */}
             {error && (
-              <div className="px-4 py-2 bg-red-50 dark:bg-red-900/20 border-t border-red-200 dark:border-red-800">
-                <p className="text-xs text-red-600 dark:text-red-400 text-center">
-                  {error}
+              <div
+                className={`px-4 py-2 border-t ${
+                  error.includes('Daily limit')
+                    ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+                    : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+                }`}
+              >
+                <p
+                  className={`text-xs text-center ${
+                    error.includes('Daily limit')
+                      ? 'text-amber-700 dark:text-amber-300'
+                      : 'text-red-600 dark:text-red-400'
+                  }`}
+                >
+                  {error.includes('Daily limit') ? (
+                    <>
+                      <span className="font-medium">Daily limit reached</span>
+                      {countdown && (
+                        <span>
+                          {' '}• Resets in{' '}
+                          <span className="font-mono font-bold">{countdown.formatted}</span>
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    error
+                  )}
                   <button
                     onClick={() => setError(null)}
                     className="ml-2 underline hover:no-underline"

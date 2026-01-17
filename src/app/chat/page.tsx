@@ -28,6 +28,7 @@ import {
   saveSettings,
 } from '@/lib/storage';
 import { createMessage, updateSessionTitleFromFirstMessage } from '@/lib/chat';
+import { useDailyQuota } from '@/hooks/useDailyQuota';
 
 // Reusable Theme Toggle component (uses ThemeProvider)
 function ThemeToggle() {
@@ -64,6 +65,9 @@ function ThemeToggle() {
 export default function ChatPage() {
   const router = useRouter();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Daily quota hook
+  const { quotaStatus, countdown, consumeQuota } = useDailyQuota();
 
   // State
   const [username, setUsernameState] = useState<string | null>(null);
@@ -203,6 +207,13 @@ export default function ChatPage() {
     async (content: string, image?: string) => {
       if (!content.trim() && !image) return;
 
+      // Check daily quota before sending
+      const quotaResult = consumeQuota();
+      if (!quotaResult.allowed) {
+        setError(`Daily limit reached. Quota resets in ${countdown?.formatted || '24:00:00'}.`);
+        return;
+      }
+
       setError(null);
 
       // Create session if needed
@@ -304,7 +315,7 @@ export default function ChatPage() {
         setIsLoading(false);
       }
     },
-    [currentSession, mode]
+    [currentSession, mode, consumeQuota, countdown]
   );
 
   // Loading state
@@ -380,9 +391,43 @@ export default function ChatPage() {
             </nav>
           </div>
 
-          {/* Right: Mode toggle, Clear Chat, and theme toggle */}
+          {/* Right: Mode toggle, Quota, Clear Chat, and theme toggle */}
           <div className="flex items-center gap-2">
             <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
+
+            {/* Quota Display */}
+            <div
+              className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                quotaStatus.exceeded
+                  ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300'
+                  : quotaStatus.remaining <= 10
+                    ? 'bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+              }`}
+              title={`Daily quota: ${quotaStatus.used}/${quotaStatus.limit} requests used`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 2v20" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+              {quotaStatus.exceeded && countdown ? (
+                <span className="tabular-nums">{countdown.formatted}</span>
+              ) : (
+                <span className="tabular-nums">
+                  {quotaStatus.remaining}/{quotaStatus.limit}
+                </span>
+              )}
+            </div>
             {currentSession && currentSession.messages.length > 0 && (
               <button
                 onClick={handleClearChat}
@@ -468,15 +513,47 @@ export default function ChatPage() {
 
           {/* Error message */}
           {error && (
-            <div className="px-4 py-2 bg-red-50 dark:bg-red-900/20 border-t border-red-200 dark:border-red-800">
-              <p className="text-sm text-red-600 dark:text-red-400 text-center">
-                {error}
-                <button
-                  onClick={() => setError(null)}
-                  className="ml-2 underline hover:no-underline"
-                >
-                  Dismiss
-                </button>
+            <div
+              className={`px-4 py-2 border-t ${
+                error.includes('Daily limit')
+                  ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+                  : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+              }`}
+            >
+              <p
+                className={`text-sm text-center ${
+                  error.includes('Daily limit')
+                    ? 'text-amber-700 dark:text-amber-300'
+                    : 'text-red-600 dark:text-red-400'
+                }`}
+              >
+                {error.includes('Daily limit') ? (
+                  <>
+                    <span className="font-medium">Daily limit reached</span>
+                    {countdown && (
+                      <span>
+                        {' '}• Resets in{' '}
+                        <span className="font-mono font-bold">{countdown.formatted}</span>
+                      </span>
+                    )}
+                    <button
+                      onClick={() => setError(null)}
+                      className="ml-2 underline hover:no-underline"
+                    >
+                      Dismiss
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {error}
+                    <button
+                      onClick={() => setError(null)}
+                      className="ml-2 underline hover:no-underline"
+                    >
+                      Dismiss
+                    </button>
+                  </>
+                )}
               </p>
             </div>
           )}

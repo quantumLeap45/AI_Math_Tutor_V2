@@ -196,9 +196,9 @@ export default function LandingPage() {
             <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
               Test your skills with interactive quizzes.
             </p>
-            {/* P1 Only Badge */}
+            {/* Levels Badge */}
             <span className="inline-flex items-center px-2 py-0.5 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold rounded-full uppercase tracking-wide">
-              P1 Only
+              P1 & P2
             </span>
           </div>
         </div>
@@ -324,11 +324,11 @@ export default function LandingPage() {
             <ul className="space-y-2 text-sm text-blue-800 dark:text-blue-200">
               <li className="flex items-start gap-2">
                 <span className="text-blue-500 font-bold">•</span>
-                <span><strong>Quiz Feature:</strong> Currently available for Primary 1 (P1) only. We're working hard to expand to P2-P6!</span>
+                <span><strong>Quiz Feature:</strong> Currently available for Primary 1 (P1) and Primary 2 (P2). We're working hard to expand to P3-P6!</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-500 font-bold">•</span>
-                <span><strong>Roadmap:</strong> Our goal is to cover all topics from P1 to P6 with AI-generated quizzes tailored to each level.</span>
+                <span><strong>P2 Topics:</strong> Includes Whole Numbers, Addition/Subtraction, Multiplication/Division, Length, Mass, Time, Money, and Fractions. Shapes and Picture Graphs coming soon.</span>
               </li>
             </ul>
           </div>

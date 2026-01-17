@@ -21,7 +21,7 @@
     "topic": "Whole Numbers",
     "subtopic": "Counting objects",
     "difficulty": "easy",
-    "question": "Sarah has 8 red balloons and 5 blue balloons. How many balloons does she have altogether?",
+    "question": "Kai has 6 red stickers and 7 blue stickers. How many stickers does Kai have altogether?",
     "options": {
       "A": "12",
       "B": "13",
@@ -29,7 +29,7 @@
       "D": "15"
     },
     "correctAnswer": "B",
-    "explanation": "Add the red and blue balloons: 8 + 5 = 13 balloons."
+    "explanation": "6 + 7 = 13 stickers."
   },
   {
     "id": "P1-WHOLE-003",
@@ -69,15 +69,15 @@
     "topic": "Whole Numbers",
     "subtopic": "Ordinal numbers",
     "difficulty": "easy",
-    "question": "Alex finished the race before Ben. Ben finished before Clara. Who came in second?",
+    "question": "Zoe finished the race before Max. Max finished before Ivy. Who came in second?",
     "options": {
-      "A": "Alex",
-      "B": "Ben",
-      "C": "Clara",
+      "A": "Zoe",
+      "B": "Max",
+      "C": "Ivy",
       "D": "Cannot tell"
     },
     "correctAnswer": "B",
-    "explanation": "The order is: Alex (1st), Ben (2nd), Clara (3rd). Ben came in second place."
+    "explanation": "The order is: Zoe (1st), Max (2nd), Ivy (3rd). Max came in second place."
   },
   {
     "id": "P1-WHOLE-006",
@@ -197,7 +197,7 @@
     "topic": "Whole Numbers",
     "subtopic": "Ordinal numbers",
     "difficulty": "easy",
-    "question": "In a line of 10 children, Maya is the 5th person. What position is she in?",
+    "question": "In a line of 12 children, Maya is the 5th person. What position is she in?",
     "options": {
       "A": "First",
       "B": "Third",
@@ -261,15 +261,15 @@
     "topic": "Whole Numbers",
     "subtopic": "Counting objects",
     "difficulty": "medium",
-    "question": "Tom counted 7 red apples, 6 green apples, and 3 yellow apples. How many apples did he count in total?",
+    "question": "Leo counted 4 red berries, 6 green berries, and 5 yellow berries. How many berries did Leo count in total?",
     "options": {
       "A": "13",
       "B": "15",
       "C": "16",
       "D": "17"
     },
-    "correctAnswer": "C",
-    "explanation": "Add all the apples: 7 + 6 + 3 = 16 apples."
+    "correctAnswer": "B",
+    "explanation": "Add all the berries: 4 + 6 + 5 = 15 berries."
   },
   {
     "id": "P1-WHOLE-018",
@@ -325,15 +325,15 @@
     "topic": "Addition/Subtraction",
     "subtopic": "Addition word problems",
     "difficulty": "easy",
-    "question": "Lisa has 12 stickers. Her friend gives her 5 more stickers. How many stickers does Lisa have now?",
+    "question": "Maya has 14 stickers. Her friend gives her 5 more stickers. How many stickers does Maya have now?",
     "options": {
-      "A": "7",
-      "B": "15",
-      "C": "17",
+      "A": "17",
+      "B": "18",
+      "C": "19",
       "D": "20"
     },
     "correctAnswer": "C",
-    "explanation": "Add the stickers: 12 + 5 = 17 stickers."
+    "explanation": "Add the stickers: 14 + 5 = 19 stickers."
   },
   {
     "id": "P1-ADD-002",
@@ -389,15 +389,15 @@
     "topic": "Addition/Subtraction",
     "subtopic": "Addition word problems",
     "difficulty": "medium",
-    "question": "Amy read 23 pages on Monday and 14 pages on Tuesday. How many pages did she read altogether?",
+    "question": "Zara read 18 pages on Monday and 14 pages on Tuesday. How many pages did she read altogether?",
     "options": {
-      "A": "37",
-      "B": "36",
-      "C": "35",
-      "D": "34"
+      "A": "30",
+      "B": "31",
+      "C": "32",
+      "D": "33"
     },
-    "correctAnswer": "A",
-    "explanation": "Add the pages: 23 + 14 = 37 pages."
+    "correctAnswer": "C",
+    "explanation": "Add the pages: 18 + 14 = 32 pages."
   },
   {
     "id": "P1-ADD-006",
@@ -405,15 +405,15 @@
     "topic": "Addition/Subtraction",
     "subtopic": "Subtraction word problems",
     "difficulty": "medium",
-    "question": "Ben had 45 marbles. He gave 18 marbles to his sister. How many marbles does Ben have left?",
+    "question": "Jacob had 38 marbles. He gave 15 marbles to his brother. How many marbles does Jacob have left?",
     "options": {
-      "A": "27",
-      "B": "28",
-      "C": "26",
-      "D": "63"
+      "A": "21",
+      "B": "22",
+      "C": "23",
+      "D": "25"
     },
-    "correctAnswer": "A",
-    "explanation": "Subtract: 45 - 18 = 27 marbles."
+    "correctAnswer": "C",
+    "explanation": "Subtract: 38 - 15 = 23 marbles."
   },
   {
     "id": "P1-ADD-007",
@@ -469,7 +469,7 @@
     "topic": "Addition/Subtraction",
     "subtopic": "Subtraction word problems",
     "difficulty": "easy",
-    "question": "Sarah has 20 crayons. She loses 8 crayons. How many crayons does she have now?",
+    "question": "Lily has 19 crayons. She loses 7 crayons. How many crayons does she have now?",
     "options": {
       "A": "10",
       "B": "11",
@@ -477,7 +477,7 @@
       "D": "13"
     },
     "correctAnswer": "C",
-    "explanation": "Subtract: 20 - 8 = 12 crayons."
+    "explanation": "Subtract: 19 - 7 = 12 crayons."
   },
   {
     "id": "P1-ADD-011",
@@ -533,7 +533,7 @@
     "topic": "Addition/Subtraction",
     "subtopic": "Subtraction word problems",
     "difficulty": "medium",
-    "question": "There are 52 students in Primary 1. 27 students went on a field trip. How many students stayed in school?",
+    "question": "There are 48 students in Primary 1. 23 students went on a field trip. How many students stayed in school?",
     "options": {
       "A": "24",
       "B": "25",
@@ -541,7 +541,7 @@
       "D": "27"
     },
     "correctAnswer": "B",
-    "explanation": "Subtract: 52 - 27 = 25 students stayed."
+    "explanation": "Subtract: 48 - 23 = 25 students stayed."
   },
   {
     "id": "P1-ADD-015",
@@ -565,15 +565,15 @@
     "topic": "Addition/Subtraction",
     "subtopic": "Addition word problems",
     "difficulty": "medium",
-    "question": "Nina has 34 stamps. She buys 28 more stamps. How many stamps does she have now?",
+    "question": "Wei has 35 stamps. She buys 28 more stamps. How many stamps does she have now?",
     "options": {
       "A": "60",
       "B": "61",
       "C": "62",
       "D": "63"
     },
-    "correctAnswer": "C",
-    "explanation": "Add: 34 + 28 = 62 stamps."
+    "correctAnswer": "D",
+    "explanation": "Add: 35 + 28 = 63 stamps."
   },
   {
     "id": "P1-ADD-017",
@@ -597,15 +597,15 @@
     "topic": "Addition/Subtraction",
     "subtopic": "Subtraction word problems",
     "difficulty": "easy",
-    "question": "Mike has 15 toy cars. He gives 7 cars to his brother. How many toy cars does Mike have left?",
+    "question": "Noah has 12 toy cars. He gives 5 cars to his brother. How many toy cars does Noah have left?",
     "options": {
       "A": "6",
       "B": "7",
       "C": "8",
       "D": "9"
     },
-    "correctAnswer": "C",
-    "explanation": "Subtract: 15 - 7 = 8 toy cars."
+    "correctAnswer": "B",
+    "explanation": "Subtract: 12 - 5 = 7 toy cars."
   },
   {
     "id": "P1-ADD-019",
@@ -693,7 +693,7 @@
     "topic": "Multiplication/Division",
     "subtopic": "Multiplication word problems",
     "difficulty": "easy",
-    "question": "Emma has 4 bags. Each bag contains 5 oranges. How many oranges does Emma have?",
+    "question": "Zoe has 4 bags. Each bag contains 5 oranges. How many oranges does Zoe have?",
     "options": {
       "A": "9",
       "B": "15",
@@ -965,15 +965,15 @@
     "topic": "Money",
     "subtopic": "Counting money",
     "difficulty": "easy",
-    "question": "John has 50 cents and his sister gives him 30 cents. How much money does John have now?",
+    "question": "Ethan has 45 cents and his sister gives him 25 cents. How much money does Ethan have now?",
     "options": {
-      "A": "20 cents",
-      "B": "70 cents",
-      "C": "80 cents",
-      "D": "90 cents"
+      "A": "60 cents",
+      "B": "65 cents",
+      "C": "70 cents",
+      "D": "75 cents"
     },
     "correctAnswer": "C",
-    "explanation": "50 cents + 30 cents = 80 cents."
+    "explanation": "45 cents + 25 cents = 70 cents."
   },
   {
     "id": "P1-MONEY-002",
@@ -1013,15 +1013,15 @@
     "topic": "Money",
     "subtopic": "Money word problems",
     "difficulty": "medium",
-    "question": "A pencil costs 65 cents. Amy pays with 1 dollar. How much change does she get?",
+    "question": "A notebook costs 75 cents. Zoe pays with 1 dollar. How much change does she get?",
     "options": {
-      "A": "25 cents",
-      "B": "30 cents",
-      "C": "35 cents",
-      "D": "40 cents"
+      "A": "20 cents",
+      "B": "25 cents",
+      "C": "30 cents",
+      "D": "35 cents"
     },
-    "correctAnswer": "C",
-    "explanation": "1 dollar (100 cents) - 65 cents = 35 cents change."
+    "correctAnswer": "B",
+    "explanation": "1 dollar (100 cents) - 75 cents = 25 cents change."
   },
   {
     "id": "P1-MONEY-005",
@@ -1045,15 +1045,15 @@
     "topic": "Money",
     "subtopic": "Counting money",
     "difficulty": "easy",
-    "question": "Ben has 45 cents. His mother gives him 25 cents more. How much money does Ben have now?",
+    "question": "Max has 40 cents. His mother gives him 25 cents more. How much money does Max have now?",
     "options": {
       "A": "60 cents",
       "B": "65 cents",
       "C": "70 cents",
       "D": "75 cents"
     },
-    "correctAnswer": "C",
-    "explanation": "45 cents + 25 cents = 70 cents."
+    "correctAnswer": "B",
+    "explanation": "40 cents + 25 cents = 65 cents."
   },
   {
     "id": "P1-MONEY-007",
@@ -1093,7 +1093,7 @@
     "topic": "Money",
     "subtopic": "Counting money",
     "difficulty": "medium",
-    "question": "Lisa has three 10-cent coins and two 20-cent coins. How much money does she have?",
+    "question": "Chloe has three 10-cent coins and two 20-cent coins. How much money does she have?",
     "options": {
       "A": "50 cents",
       "B": "60 cents",
@@ -1189,7 +1189,7 @@
     "topic": "Money",
     "subtopic": "Counting money",
     "difficulty": "medium",
-    "question": "Emma has one 50-cent coin, two 20-cent coins, and one 5-cent coin. How much money does she have?",
+    "question": "Mia has one 50-cent coin, two 20-cent coins, and one 5-cent coin. How much money does Mia have?",
     "options": {
       "A": "85 cents",
       "B": "90 cents",
@@ -1493,7 +1493,7 @@
     "topic": "Time",
     "subtopic": "Duration word problems",
     "difficulty": "medium",
-    "question": "Sarah wakes up at 7:00 am. She leaves for school 1 hour and 30 minutes later. What time does she leave?",
+    "question": "Aria wakes up at 7:00 am. She leaves for school 1 hour and 30 minutes later. What time does she leave?",
     "options": {
       "A": "7:30 am",
       "B": "8:00 am",
@@ -1557,7 +1557,7 @@
     "topic": "Time",
     "subtopic": "Duration word problems",
     "difficulty": "medium",
-    "question": "Ben starts his homework at 3:00 pm. He finishes 2 hours later. What time does he finish?",
+    "question": "Lucas starts his homework at 3:00 pm. He finishes 2 hours later. What time does he finish?",
     "options": {
       "A": "4:00 pm",
       "B": "4:30 pm",

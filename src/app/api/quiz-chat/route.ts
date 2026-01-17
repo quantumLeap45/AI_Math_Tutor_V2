@@ -169,6 +169,7 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'text/plain; charset=utf-8',
         'Transfer-Encoding': 'chunked',
         'X-RateLimit-Remaining': String(rateLimitResult.remaining),
+        'X-Daily-Quota-Limit': '50',
       },
     });
   } catch (error) {
