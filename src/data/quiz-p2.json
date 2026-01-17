@@ -1,0 +1,3082 @@
+[
+  {
+    "id": "P2-ADD-001",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction within 1,000",
+    "difficulty": "easy",
+    "question": "Subtract 13 from 30.",
+    "options": {
+      "A": "16",
+      "B": "17",
+      "C": "77",
+      "D": "18"
+    },
+    "correctAnswer": "B",
+    "explanation": "30 minus 13 equals 17."
+  },
+  {
+    "id": "P2-ADD-002",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "Add 35 and 10.",
+    "options": {
+      "A": "60",
+      "B": "45",
+      "C": "25",
+      "D": "55"
+    },
+    "correctAnswer": "B",
+    "explanation": "35 + 10 = 45."
+  },
+  {
+    "id": "P2-ADD-003",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction within 1,000",
+    "difficulty": "easy",
+    "question": "Marvellous has 12 pencils and gives Caleb 4 pencils. How many pencils are left?",
+    "options": {
+      "A": "12",
+      "B": "16",
+      "C": "8",
+      "D": "6"
+    },
+    "correctAnswer": "C",
+    "explanation": "12 − 4 = 8, so 8 pencils remain."
+  },
+  {
+    "id": "P2-ADD-004",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "Calculate (24 + 10) + 10.",
+    "options": {
+      "A": "54",
+      "B": "64",
+      "C": "44",
+      "D": "34"
+    },
+    "correctAnswer": "C",
+    "explanation": "First add 24 + 10 = 34, then add another 10 to get 44."
+  },
+  {
+    "id": "P2-ADD-005",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "What is 48 + 12?",
+    "options": {
+      "A": "60",
+      "B": "36",
+      "C": "4",
+      "D": "58"
+    },
+    "correctAnswer": "A",
+    "explanation": "48 + 12 equals 60."
+  },
+  {
+    "id": "P2-ADD-006",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction within 1,000",
+    "difficulty": "easy",
+    "question": "What is 67 − 48?",
+    "options": {
+      "A": "49",
+      "B": "115",
+      "C": "19",
+      "D": "21"
+    },
+    "correctAnswer": "C",
+    "explanation": "Subtracting 48 from 67 gives 19."
+  },
+  {
+    "id": "P2-ADD-007",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing addend",
+    "difficulty": "easy",
+    "question": "19 + ____ = 30.",
+    "options": {
+      "A": "13",
+      "B": "11",
+      "C": "14",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "explanation": "30 − 19 = 11, so the missing number is 11."
+  },
+  {
+    "id": "P2-ADD-008",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "Find 30 + 11 + 10.",
+    "options": {
+      "A": "76",
+      "B": "51",
+      "C": "99",
+      "D": "41"
+    },
+    "correctAnswer": "B",
+    "explanation": "30 + 11 + 10 = 51."
+  },
+  {
+    "id": "P2-ADD-009",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "What is 10 + 12 + 15?",
+    "options": {
+      "A": "37",
+      "B": "65",
+      "C": "80",
+      "D": "40"
+    },
+    "correctAnswer": "A",
+    "explanation": "Adding 10, 12 and 15 gives 37."
+  },
+  {
+    "id": "P2-ADD-010",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "medium",
+    "question": "Add 429 and 47.",
+    "options": {
+      "A": "382",
+      "B": "466",
+      "C": "476",
+      "D": "899"
+    },
+    "correctAnswer": "C",
+    "explanation": "429 + 47 = 476."
+  },
+  {
+    "id": "P2-ADD-011",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction within 1,000",
+    "difficulty": "medium",
+    "question": "Subtract 2 tens from 536. What is the result?",
+    "options": {
+      "A": "336",
+      "B": "516",
+      "C": "534",
+      "D": "556"
+    },
+    "correctAnswer": "B",
+    "explanation": "Subtracting 2 tens (20) from 536 gives 516."
+  },
+  {
+    "id": "P2-ADD-012",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "medium",
+    "question": "Which two numbers add up to 800?",
+    "options": {
+      "A": "284 and 516",
+      "B": "284 and 526",
+      "C": "526 and 374",
+      "D": "516 and 374"
+    },
+    "correctAnswer": "A",
+    "explanation": "284 + 516 = 800."
+  },
+  {
+    "id": "P2-ADD-013",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "medium",
+    "question": "Add 347 and 227.",
+    "options": {
+      "A": "629",
+      "B": "574",
+      "C": "326",
+      "D": "557"
+    },
+    "correctAnswer": "B",
+    "explanation": "347 + 227 = 574."
+  },
+  {
+    "id": "P2-ADD-014",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction within 1,000",
+    "difficulty": "easy",
+    "question": "What is 30 minus 13?",
+    "options": {
+      "A": "16",
+      "B": "17",
+      "C": "77",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "explanation": "30 − 13 = 17."
+  },
+  {
+    "id": "P2-ADD-015",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "What is 35 + 10?",
+    "options": {
+      "A": "60",
+      "B": "45",
+      "C": "25",
+      "D": "55"
+    },
+    "correctAnswer": "B",
+    "explanation": "35 plus 10 equals 45."
+  },
+  {
+    "id": "P2-ADD-016",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "Calculate 10 + 12 + 15.",
+    "options": {
+      "A": "37",
+      "B": "65",
+      "C": "80",
+      "D": "35"
+    },
+    "correctAnswer": "A",
+    "explanation": "Adding 10, 12 and 15 results in 37."
+  },
+  {
+    "id": "P2-ADD-017",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "Find the sum of 30, 11 and 10.",
+    "options": {
+      "A": "76",
+      "B": "51",
+      "C": "99",
+      "D": "52"
+    },
+    "correctAnswer": "B",
+    "explanation": "30 + 11 + 10 = 51."
+  },
+  {
+    "id": "P2-ADD-018",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing addend",
+    "difficulty": "easy",
+    "question": "Fill in the blank: 19 + ____ = 30.",
+    "options": {
+      "A": "13",
+      "B": "11",
+      "C": "14",
+      "D": "9"
+    },
+    "correctAnswer": "B",
+    "explanation": "30 minus 19 is 11."
+  },
+  {
+    "id": "P2-ADD-019",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction within 1,000",
+    "difficulty": "easy",
+    "question": "Compute 67 − 48.",
+    "options": {
+      "A": "49",
+      "B": "115",
+      "C": "19",
+      "D": "39"
+    },
+    "correctAnswer": "C",
+    "explanation": "67 minus 48 equals 19."
+  },
+  {
+    "id": "P2-ADD-020",
+    "level": "P2",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition within 1,000",
+    "difficulty": "easy",
+    "question": "What is the sum of 48 and 12?",
+    "options": {
+      "A": "60",
+      "B": "36",
+      "C": "4",
+      "D": "58"
+    },
+    "correctAnswer": "A",
+    "explanation": "Adding 48 and 12 gives 60."
+  },
+  {
+    "id": "P2-FRAC-001",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a whole",
+    "difficulty": "easy",
+    "question": "What is 1/4 of 8 potatoes?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "2",
+      "D": "8"
+    },
+    "correctAnswer": "C",
+    "explanation": "Divide 8 by 4 to get 2; one quarter of 8 is 2."
+  },
+  {
+    "id": "P2-FRAC-002",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Decimals and fractions",
+    "difficulty": "easy",
+    "question": "0.5 equals which fraction?",
+    "options": {
+      "A": "1/2",
+      "B": "1/3",
+      "C": "1/4",
+      "D": "2/3"
+    },
+    "correctAnswer": "A",
+    "explanation": "0.5 is the decimal representation of 1/2."
+  },
+  {
+    "id": "P2-FRAC-003",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Decimals and fractions",
+    "difficulty": "easy",
+    "question": "0.25 equals which fraction?",
+    "options": {
+      "A": "1/2",
+      "B": "1/3",
+      "C": "1/4",
+      "D": "1/5"
+    },
+    "correctAnswer": "C",
+    "explanation": "0.25 is one quarter, or 1/4."
+  },
+  {
+    "id": "P2-FRAC-004",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a whole",
+    "difficulty": "easy",
+    "question": "1/2 of 12 apples equals ______ apples.",
+    "options": {
+      "A": "6",
+      "B": "8",
+      "C": "9",
+      "D": "3"
+    },
+    "correctAnswer": "A",
+    "explanation": "Half of 12 is 6."
+  },
+  {
+    "id": "P2-FRAC-005",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fraction simplification",
+    "difficulty": "easy",
+    "question": "2/6 simplifies to ______.",
+    "options": {
+      "A": "1/2",
+      "B": "1/3",
+      "C": "1/4",
+      "D": "2/3"
+    },
+    "correctAnswer": "B",
+    "explanation": "2/6 can be simplified by dividing numerator and denominator by 2, giving 1/3."
+  },
+  {
+    "id": "P2-FRAC-006",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fraction simplification",
+    "difficulty": "easy",
+    "question": "2/8 simplifies to ______.",
+    "options": {
+      "A": "1/2",
+      "B": "1/3",
+      "C": "1/4",
+      "D": "2/3"
+    },
+    "correctAnswer": "C",
+    "explanation": "2/8 simplifies to 1/4 when you divide both numerator and denominator by 2."
+  },
+  {
+    "id": "P2-FRAC-007",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Adding fractions",
+    "difficulty": "easy",
+    "question": "Add 2/6 and 3/6.",
+    "options": {
+      "A": "7/6",
+      "B": "1/6",
+      "C": "5/6",
+      "D": "2/3"
+    },
+    "correctAnswer": "C",
+    "explanation": "2/6 + 3/6 = 5/6 since the denominators are the same and the numerators add up."
+  },
+  {
+    "id": "P2-FRAC-008",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fraction comparison",
+    "difficulty": "medium",
+    "question": "Which fraction is smaller than 1/7?",
+    "options": {
+      "A": "1/11",
+      "B": "1/6",
+      "C": "1/5",
+      "D": "1/2"
+    },
+    "correctAnswer": "A",
+    "explanation": "The larger the denominator, the smaller the fraction; 1/11 is smaller than 1/7."
+  },
+  {
+    "id": "P2-FRAC-009",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Subtracting fractions",
+    "difficulty": "medium",
+    "question": "What is 9/9 − 4/9?",
+    "options": {
+      "A": "5/8",
+      "B": "6/8",
+      "C": "5/9",
+      "D": "6/9"
+    },
+    "correctAnswer": "C",
+    "explanation": "9/9 − 4/9 = (9 − 4)/9 = 5/9."
+  },
+  {
+    "id": "P2-FRAC-010",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Making one whole",
+    "difficulty": "medium",
+    "question": "Which two fractions add up to one whole?",
+    "options": {
+      "A": "1/7 and 7/7",
+      "B": "5/7 and 1/7",
+      "C": "1/5 and 4/5",
+      "D": "1/5 and 5/5"
+    },
+    "correctAnswer": "C",
+    "explanation": "1/5 + 4/5 = 5/5, which equals one whole."
+  },
+  {
+    "id": "P2-FRAC-011",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Adding fractions",
+    "difficulty": "easy",
+    "question": "Compute 2/6 + 3/6.",
+    "options": {
+      "A": "7/6",
+      "B": "1/6",
+      "C": "5/6",
+      "D": "1"
+    },
+    "correctAnswer": "C",
+    "explanation": "Adding 2/6 and 3/6 results in 5/6."
+  },
+  {
+    "id": "P2-FRAC-012",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a whole",
+    "difficulty": "easy",
+    "question": "Find 1/4 of 8 potatoes?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "2",
+      "D": "8"
+    },
+    "correctAnswer": "C",
+    "explanation": "Divide 8 by 4 to get 2; one quarter of 8 is 2."
+  },
+  {
+    "id": "P2-FRAC-013",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Decimals and fractions",
+    "difficulty": "easy",
+    "question": "0.5 equals which fraction?",
+    "options": {
+      "A": "1/2",
+      "B": "1/3",
+      "C": "1/4",
+      "D": "2/3"
+    },
+    "correctAnswer": "A",
+    "explanation": "0.5 is the decimal representation of 1/2."
+  },
+  {
+    "id": "P2-FRAC-014",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Decimals and fractions",
+    "difficulty": "easy",
+    "question": "0.25 equals which fraction?",
+    "options": {
+      "A": "1/2",
+      "B": "1/3",
+      "C": "1/4",
+      "D": "1/5"
+    },
+    "correctAnswer": "C",
+    "explanation": "0.25 is one quarter, or 1/4."
+  },
+  {
+    "id": "P2-FRAC-015",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a whole",
+    "difficulty": "easy",
+    "question": "1/2 of 12 apples equals ______ apples.",
+    "options": {
+      "A": "6",
+      "B": "8",
+      "C": "9",
+      "D": "3"
+    },
+    "correctAnswer": "A",
+    "explanation": "Half of 12 is 6."
+  },
+  {
+    "id": "P2-FRAC-016",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fraction simplification",
+    "difficulty": "easy",
+    "question": "2/6 simplifies to ______.",
+    "options": {
+      "A": "1/2",
+      "B": "1/3",
+      "C": "1/4",
+      "D": "2/3"
+    },
+    "correctAnswer": "B",
+    "explanation": "2/6 can be simplified by dividing numerator and denominator by 2, giving 1/3."
+  },
+  {
+    "id": "P2-FRAC-017",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fraction simplification",
+    "difficulty": "easy",
+    "question": "2/8 simplifies to ______.",
+    "options": {
+      "A": "1/2",
+      "B": "1/3",
+      "C": "1/4",
+      "D": "2/3"
+    },
+    "correctAnswer": "C",
+    "explanation": "2/8 simplifies to 1/4 when you divide both numerator and denominator by 2."
+  },
+  {
+    "id": "P2-FRAC-018",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Adding fractions",
+    "difficulty": "easy",
+    "question": "Add 2/6 and 3/6.",
+    "options": {
+      "A": "7/6",
+      "B": "1/6",
+      "C": "5/6",
+      "D": "2/3"
+    },
+    "correctAnswer": "C",
+    "explanation": "2/6 + 3/6 = 5/6 since the denominators are the same and the numerators add up."
+  },
+  {
+    "id": "P2-FRAC-019",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Fraction comparison",
+    "difficulty": "medium",
+    "question": "Which fraction is smaller than 1/7?",
+    "options": {
+      "A": "1/11",
+      "B": "1/6",
+      "C": "1/5",
+      "D": "1/2"
+    },
+    "correctAnswer": "A",
+    "explanation": "The larger the denominator, the smaller the fraction; 1/11 is smaller than 1/7."
+  },
+  {
+    "id": "P2-FRAC-020",
+    "level": "P2",
+    "topic": "Fractions",
+    "subtopic": "Subtracting fractions",
+    "difficulty": "medium",
+    "question": "Find 9/9 − 4/9?",
+    "options": {
+      "A": "5/8",
+      "B": "6/8",
+      "C": "5/9",
+      "D": "6/9"
+    },
+    "correctAnswer": "C",
+    "explanation": "9/9 − 4/9 = (9 − 4)/9 = 5/9."
+  },
+  {
+    "id": "P2-GRAPH-001",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-002",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-003",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-004",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-005",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-006",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-007",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-008",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-009",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-010",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-011",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-012",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-013",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-014",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-015",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-016",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-017",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-018",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-019",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-GRAPH-020",
+    "level": "P2",
+    "topic": "Picture Graphs",
+    "subtopic": "Interpreting picture graphs",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for picture graphs.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-LENGTH-001",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Units of length",
+    "difficulty": "easy",
+    "question": "Length can be measured in ______.",
+    "options": {
+      "A": "grams and kilograms",
+      "B": "metres and centimetres",
+      "C": "seconds and minutes",
+      "D": "hours and days"
+    },
+    "correctAnswer": "B",
+    "explanation": "The standard units for length are metres and centimetres."
+  },
+  {
+    "id": "P2-LENGTH-002",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Natural units",
+    "difficulty": "medium",
+    "question": "Which of these can be used as a natural unit of measurement?",
+    "options": {
+      "A": "Foot",
+      "B": "Tape rule",
+      "C": "Pencil",
+      "D": "Clock"
+    },
+    "correctAnswer": "A",
+    "explanation": "A foot is a traditional (natural) unit of measuring length."
+  },
+  {
+    "id": "P2-LENGTH-003",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Measuring instruments",
+    "difficulty": "easy",
+    "question": "Which instrument is commonly used to measure length?",
+    "options": {
+      "A": "Ruler",
+      "B": "Tape rule",
+      "C": "Meter rule",
+      "D": "Protractor"
+    },
+    "correctAnswer": "A",
+    "explanation": "In Primary 2, a ruler is typically used to measure length."
+  },
+  {
+    "id": "P2-LENGTH-004",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Comparing lengths",
+    "difficulty": "medium",
+    "question": "Which measurement is longest?",
+    "options": {
+      "A": "4 m",
+      "B": "100 cm",
+      "C": "1 m",
+      "D": "50 cm"
+    },
+    "correctAnswer": "A",
+    "explanation": "4 metres (400 cm) is longer than 100 cm, 1 m (100 cm) or 50 cm."
+  },
+  {
+    "id": "P2-LENGTH-005",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Units of length",
+    "difficulty": "easy",
+    "question": "What are the standard units for measuring objects in class?",
+    "options": {
+      "A": "km and m",
+      "B": "m and cm",
+      "C": "mm and mc",
+      "D": "kg and g"
+    },
+    "correctAnswer": "B",
+    "explanation": "Objects in a classroom are typically measured in metres or centimetres."
+  },
+  {
+    "id": "P2-LENGTH-006",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Units of length",
+    "difficulty": "easy",
+    "question": "Length is measured in ______.",
+    "options": {
+      "A": "grams and kilograms",
+      "B": "metres and centimetres",
+      "C": "seconds and minutes",
+      "D": "hours and days"
+    },
+    "correctAnswer": "B",
+    "explanation": "The standard units for length are metres and centimetres."
+  },
+  {
+    "id": "P2-LENGTH-007",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Natural units",
+    "difficulty": "medium",
+    "question": "Select of these can be used as a natural unit of measurement?",
+    "options": {
+      "A": "Foot",
+      "B": "Tape rule",
+      "C": "Pencil",
+      "D": "Clock"
+    },
+    "correctAnswer": "A",
+    "explanation": "A foot is a traditional (natural) unit of measuring length."
+  },
+  {
+    "id": "P2-LENGTH-008",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Measuring instruments",
+    "difficulty": "easy",
+    "question": "Select instrument is commonly used to measure length?",
+    "options": {
+      "A": "Ruler",
+      "B": "Tape rule",
+      "C": "Meter rule",
+      "D": "Protractor"
+    },
+    "correctAnswer": "A",
+    "explanation": "In Primary 2, a ruler is typically used to measure length."
+  },
+  {
+    "id": "P2-LENGTH-009",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Comparing lengths",
+    "difficulty": "medium",
+    "question": "Select measurement is longest?",
+    "options": {
+      "A": "4 m",
+      "B": "100 cm",
+      "C": "1 m",
+      "D": "50 cm"
+    },
+    "correctAnswer": "A",
+    "explanation": "4 metres (400 cm) is longer than 100 cm, 1 m (100 cm) or 50 cm."
+  },
+  {
+    "id": "P2-LENGTH-010",
+    "level": "P2",
+    "topic": "Length",
+    "subtopic": "Units of length",
+    "difficulty": "easy",
+    "question": "Identify are the standard units for measuring objects in class?",
+    "options": {
+      "A": "km and m",
+      "B": "m and cm",
+      "C": "mm and mc",
+      "D": "kg and g"
+    },
+    "correctAnswer": "B",
+    "explanation": "Objects in a classroom are typically measured in metres or centimetres."
+  },
+  {
+    "id": "P2-MASS-001",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Comparing masses",
+    "difficulty": "easy",
+    "question": "Which object is heavier?",
+    "options": {
+      "A": "A feather",
+      "B": "A stone",
+      "C": "A leaf",
+      "D": "A paper"
+    },
+    "correctAnswer": "B",
+    "explanation": "A stone is heavier than a feather, leaf, or paper. Stones have more mass than light objects."
+  },
+  {
+    "id": "P2-MASS-002",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Comparing masses",
+    "difficulty": "easy",
+    "question": "Which object is lighter?",
+    "options": {
+      "A": "A book",
+      "B": "A brick",
+      "C": "A pencil",
+      "D": "A water bottle"
+    },
+    "correctAnswer": "C",
+    "explanation": "A pencil is lighter than a book, brick, or water bottle. Pencils have very little mass."
+  },
+  {
+    "id": "P2-MASS-003",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Units of measurement",
+    "difficulty": "easy",
+    "question": "Mass is measured in ______.",
+    "options": {
+      "A": "litres",
+      "B": "grams and kilograms",
+      "C": "metres",
+      "D": "hours"
+    },
+    "correctAnswer": "B",
+    "explanation": "Mass is measured in grams (g) and kilograms (kg). Litres are for volume, metres for length, and hours for time."
+  },
+  {
+    "id": "P2-MASS-004",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Units of measurement",
+    "difficulty": "easy",
+    "question": "Which unit would you use to measure the mass of a bag of rice?",
+    "options": {
+      "A": "grams",
+      "B": "kilograms",
+      "C": "litres",
+      "D": "metres"
+    },
+    "correctAnswer": "B",
+    "explanation": "A bag of rice is heavy, so we measure it in kilograms. Grams are for lighter objects."
+  },
+  {
+    "id": "P2-MASS-005",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Units of measurement",
+    "difficulty": "easy",
+    "question": "Which unit would you use to measure the mass of an eraser?",
+    "options": {
+      "A": "grams",
+      "B": "kilograms",
+      "C": "litres",
+      "D": "hours"
+    },
+    "correctAnswer": "A",
+    "explanation": "An eraser is light, so we measure it in grams. Kilograms are for heavier objects."
+  },
+  {
+    "id": "P2-MASS-006",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Reading scales",
+    "difficulty": "easy",
+    "question": "A scale shows 3 kg. What does this mean?",
+    "options": {
+      "A": "3 litres",
+      "B": "3 kilograms",
+      "C": "3 metres",
+      "D": "3 grams"
+    },
+    "correctAnswer": "B",
+    "explanation": "The scale measures mass in kilograms. 3 kg means 3 kilograms of mass."
+  },
+  {
+    "id": "P2-MASS-007",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Comparing masses",
+    "difficulty": "easy",
+    "question": "A pineapple has a mass of 1 kg. An apple has a mass of 100 g. Which is heavier?",
+    "options": {
+      "A": "The pineapple",
+      "B": "The apple",
+      "C": "They are the same",
+      "D": "Cannot tell"
+    },
+    "correctAnswer": "A",
+    "explanation": "1 kg = 1000 g. The pineapple is 1000 g and the apple is 100 g. 1000 g > 100 g, so the pineapple is heavier."
+  },
+  {
+    "id": "P2-MASS-008",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Comparing masses",
+    "difficulty": "medium",
+    "question": "Which is the correct order from lightest to heaviest?",
+    "options": {
+      "A": "5 kg, 500 g, 50 g",
+      "B": "50 g, 500 g, 5 kg",
+      "C": "500 g, 50 g, 5 kg",
+      "D": "5 kg, 50 g, 500 g"
+    },
+    "correctAnswer": "B",
+    "explanation": "50 g is the lightest, then 500 g, then 5 kg (which equals 5000 g). So the order is 50 g, 500 g, 5 kg."
+  },
+  {
+    "id": "P2-MASS-009",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Word problems",
+    "difficulty": "medium",
+    "question": "A cat has a mass of 4 kg. A dog has a mass of 12 kg. How much heavier is the dog?",
+    "options": {
+      "A": "6 kg",
+      "B": "8 kg",
+      "C": "9 kg",
+      "D": "16 kg"
+    },
+    "correctAnswer": "B",
+    "explanation": "12 kg - 4 kg = 8 kg. The dog is 8 kg heavier than the cat."
+  },
+  {
+    "id": "P2-MASS-010",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Word problems",
+    "difficulty": "medium",
+    "question": "A bag of flour has a mass of 2 kg. If you use 500 g for baking, how much flour is left?",
+    "options": {
+      "A": "500 g",
+      "B": "1000 g",
+      "C": "1500 g",
+      "D": "2000 g"
+    },
+    "correctAnswer": "C",
+    "explanation": "2 kg = 2000 g. 2000 g - 500 g = 1500 g. So 1500 g (or 1 kg 500 g) of flour is left."
+  },
+  {
+    "id": "P2-MASS-011",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Estimating mass",
+    "difficulty": "easy",
+    "question": "What is the best estimate for the mass of a textbook?",
+    "options": {
+      "A": "5 g",
+      "B": "500 g",
+      "C": "5 kg",
+      "D": "50 kg"
+    },
+    "correctAnswer": "B",
+    "explanation": "A textbook weighs about 500 grams (half a kilogram). 5 g is too light, and 5 kg or 50 kg is too heavy."
+  },
+  {
+    "id": "P2-MASS-012",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Estimating mass",
+    "difficulty": "easy",
+    "question": "What is the best estimate for the mass of a Primary 2 student?",
+    "options": {
+      "A": "20 g",
+      "B": "200 g",
+      "C": "25 kg",
+      "D": "100 kg"
+    },
+    "correctAnswer": "C",
+    "explanation": "A Primary 2 student weighs about 25 kg. 20 g and 200 g are too light, and 100 kg is too heavy for a child."
+  },
+  {
+    "id": "P2-MASS-013",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Units of measurement",
+    "difficulty": "easy",
+    "question": "How many grams are in 1 kilogram?",
+    "options": {
+      "A": "10 grams",
+      "B": "100 grams",
+      "C": "1000 grams",
+      "D": "10000 grams"
+    },
+    "correctAnswer": "C",
+    "explanation": "1 kilogram = 1000 grams. The prefix \"kilo-\" means one thousand."
+  },
+  {
+    "id": "P2-MASS-014",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Word problems",
+    "difficulty": "medium",
+    "question": "John bought 2 kg of apples and 500 g of grapes. What was the total mass?",
+    "options": {
+      "A": "250 g",
+      "B": "700 g",
+      "C": "1500 g",
+      "D": "2500 g"
+    },
+    "correctAnswer": "D",
+    "explanation": "2 kg = 2000 g. 2000 g + 500 g = 2500 g (or 2 kg 500 g)."
+  },
+  {
+    "id": "P2-MASS-015",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Comparing masses",
+    "difficulty": "easy",
+    "question": "Which has more mass: 1 kg of feathers or 1 kg of stones?",
+    "options": {
+      "A": "The feathers",
+      "B": "The stones",
+      "C": "They have the same mass",
+      "D": "Cannot tell"
+    },
+    "correctAnswer": "C",
+    "explanation": "Both have the same mass of 1 kg. Even though feathers are lighter by volume, 1 kg is always equal to 1 kg."
+  },
+  {
+    "id": "P2-MASS-016",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Word problems",
+    "difficulty": "medium",
+    "question": "A box of cereal has a mass of 750 g. How many more grams are needed to make 1 kg?",
+    "options": {
+      "A": "150 g",
+      "B": "200 g",
+      "C": "250 g",
+      "D": "300 g"
+    },
+    "correctAnswer": "C",
+    "explanation": "1 kg = 1000 g. 1000 g - 750 g = 250 g. So 250 g more is needed."
+  },
+  {
+    "id": "P2-MASS-017",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Comparing masses",
+    "difficulty": "medium",
+    "question": "Arrange in order from heaviest to lightest: 300 g, 3 kg, 30 g",
+    "options": {
+      "A": "3 kg, 300 g, 30 g",
+      "B": "30 g, 300 g, 3 kg",
+      "C": "300 g, 3 kg, 30 g",
+      "D": "3 kg, 30 g, 300 g"
+    },
+    "correctAnswer": "A",
+    "explanation": "3 kg = 3000 g, which is heaviest. Then 300 g, then 30 g. So the order is 3 kg, 300 g, 30 g."
+  },
+  {
+    "id": "P2-MASS-018",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Word problems",
+    "difficulty": "medium",
+    "question": "A package has a mass of 1 kg 500 g. How much is this in grams?",
+    "options": {
+      "A": "150 g",
+      "B": "1050 g",
+      "C": "1500 g",
+      "D": "1005 g"
+    },
+    "correctAnswer": "C",
+    "explanation": "1 kg 500 g = 1000 g + 500 g = 1500 g."
+  },
+  {
+    "id": "P2-MASS-019",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Estimating mass",
+    "difficulty": "easy",
+    "question": "What is the best estimate for the mass of a pencil?",
+    "options": {
+      "A": "5 g",
+      "B": "50 g",
+      "C": "500 g",
+      "D": "5 kg"
+    },
+    "correctAnswer": "A",
+    "explanation": "A pencil weighs about 5 grams. 50 g is too heavy, 500 g is way too heavy, and 5 kg is extremely heavy."
+  },
+  {
+    "id": "P2-MASS-020",
+    "level": "P2",
+    "topic": "Mass",
+    "subtopic": "Word problems",
+    "difficulty": "medium",
+    "question": "Mom bought 1 kg of meat. She used 250 g for dinner. How much meat is left?",
+    "options": {
+      "A": "250 g",
+      "B": "500 g",
+      "C": "750 g",
+      "D": "1000 g"
+    },
+    "correctAnswer": "C",
+    "explanation": "1 kg = 1000 g. 1000 g - 250 g = 750 g. So 750 g of meat is left."
+  },
+  {
+    "id": "P2-MONEY-001",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Purpose of money",
+    "difficulty": "easy",
+    "question": "Money can be used for ______.",
+    "options": {
+      "A": "fight",
+      "B": "payment for goods and services",
+      "C": "none of the above",
+      "D": "playing games"
+    },
+    "correctAnswer": "B",
+    "explanation": "Money is used to pay for goods and services, not for fighting."
+  },
+  {
+    "id": "P2-MONEY-002",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Money calculation",
+    "difficulty": "medium",
+    "question": "Subtract ₦50.00k from ₦25.25k.",
+    "options": {
+      "A": "₦25.75k",
+      "B": "₦26.75k",
+      "C": "₦24.75k",
+      "D": "₦30.75k"
+    },
+    "correctAnswer": "C",
+    "explanation": "If you take ₦25.25k away from ₦50.00k, the difference is ₦24.75k."
+  },
+  {
+    "id": "P2-MONEY-003",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Money calculation",
+    "difficulty": "easy",
+    "question": "Ayo bought pencils for 35k and erasers for 25k. How much does he spend in total?",
+    "options": {
+      "A": "60k",
+      "B": "70k",
+      "C": "90k",
+      "D": "50k"
+    },
+    "correctAnswer": "A",
+    "explanation": "35k + 25k = 60k."
+  },
+  {
+    "id": "P2-MONEY-004",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Currency knowledge",
+    "difficulty": "medium",
+    "question": "Whose picture is on the 500 Naira note?",
+    "options": {
+      "A": "Chief Obafemi Awolowo",
+      "B": "President Buhari",
+      "C": "Dr Nnamdi Azikiwe",
+      "D": "Alhaji Musa Yar’ Adua"
+    },
+    "correctAnswer": "C",
+    "explanation": "The 500 Naira note features Dr Nnamdi Azikiwe."
+  },
+  {
+    "id": "P2-MONEY-005",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Purpose of money",
+    "difficulty": "easy",
+    "question": "Money is used for ______.",
+    "options": {
+      "A": "fighting",
+      "B": "payment for goods and services",
+      "C": "nothing",
+      "D": "planting"
+    },
+    "correctAnswer": "B",
+    "explanation": "Money is used to pay for goods and services."
+  },
+  {
+    "id": "P2-MONEY-006",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Currency knowledge",
+    "difficulty": "medium",
+    "question": "Whose picture is on the 100 Naira note?",
+    "options": {
+      "A": "Chief Obafemi Awolowo",
+      "B": "Alhaji Musa Yar’ Adua",
+      "C": "Dr Nnamdi Azikiwe",
+      "D": "Mrs. Olufunmilayo Ransome-Kuti"
+    },
+    "correctAnswer": "A",
+    "explanation": "The 100 Naira note features Chief Obafemi Awolowo."
+  },
+  {
+    "id": "P2-MONEY-007",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Currency knowledge",
+    "difficulty": "easy",
+    "question": "Which is currently the highest Nigeria Naira note?",
+    "options": {
+      "A": "₦200",
+      "B": "₦500",
+      "C": "₦1000",
+      "D": "₦50"
+    },
+    "correctAnswer": "C",
+    "explanation": "The ₦1000 note is the highest denomination in Nigeria."
+  },
+  {
+    "id": "P2-MONEY-008",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Conversions",
+    "difficulty": "easy",
+    "question": "Change 200 kobo to Naira.",
+    "options": {
+      "A": "₦4",
+      "B": "₦2",
+      "C": "₦3",
+      "D": "₦1"
+    },
+    "correctAnswer": "B",
+    "explanation": "200 kobo is equal to ₦2."
+  },
+  {
+    "id": "P2-MONEY-009",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Purpose of money",
+    "difficulty": "easy",
+    "question": "Money can be used for ______.",
+    "options": {
+      "A": "fight",
+      "B": "payment for goods and services",
+      "C": "none of the above",
+      "D": "playing games"
+    },
+    "correctAnswer": "B",
+    "explanation": "Money is used to pay for goods and services, not for fighting."
+  },
+  {
+    "id": "P2-MONEY-010",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Money calculation",
+    "difficulty": "medium",
+    "question": "Subtract ₦50.00k from ₦25.25k.",
+    "options": {
+      "A": "₦25.75k",
+      "B": "₦26.75k",
+      "C": "₦24.75k",
+      "D": "₦30.75k"
+    },
+    "correctAnswer": "C",
+    "explanation": "If you take ₦25.25k away from ₦50.00k, the difference is ₦24.75k."
+  },
+  {
+    "id": "P2-MONEY-011",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Money calculation",
+    "difficulty": "easy",
+    "question": "Ayo bought pencils for 35k and erasers for 25k. What is the total does he spend in total?",
+    "options": {
+      "A": "60k",
+      "B": "70k",
+      "C": "90k",
+      "D": "50k"
+    },
+    "correctAnswer": "A",
+    "explanation": "35k + 25k = 60k."
+  },
+  {
+    "id": "P2-MONEY-012",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Currency knowledge",
+    "difficulty": "medium",
+    "question": "Whose picture is on the 500 Naira note?",
+    "options": {
+      "A": "Chief Obafemi Awolowo",
+      "B": "President Buhari",
+      "C": "Dr Nnamdi Azikiwe",
+      "D": "Alhaji Musa Yar’ Adua"
+    },
+    "correctAnswer": "C",
+    "explanation": "The 500 Naira note features Dr Nnamdi Azikiwe."
+  },
+  {
+    "id": "P2-MONEY-013",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Purpose of money",
+    "difficulty": "easy",
+    "question": "Money is used for ______.",
+    "options": {
+      "A": "fighting",
+      "B": "payment for goods and services",
+      "C": "nothing",
+      "D": "planting"
+    },
+    "correctAnswer": "B",
+    "explanation": "Money is used to pay for goods and services."
+  },
+  {
+    "id": "P2-MONEY-014",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Currency knowledge",
+    "difficulty": "medium",
+    "question": "Whose picture is on the 100 Naira note?",
+    "options": {
+      "A": "Chief Obafemi Awolowo",
+      "B": "Alhaji Musa Yar’ Adua",
+      "C": "Dr Nnamdi Azikiwe",
+      "D": "Mrs. Olufunmilayo Ransome-Kuti"
+    },
+    "correctAnswer": "A",
+    "explanation": "The 100 Naira note features Chief Obafemi Awolowo."
+  },
+  {
+    "id": "P2-MONEY-015",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Currency knowledge",
+    "difficulty": "easy",
+    "question": "Which is currently the highest Nigeria Naira note?",
+    "options": {
+      "A": "₦200",
+      "B": "₦500",
+      "C": "₦1000",
+      "D": "₦50"
+    },
+    "correctAnswer": "C",
+    "explanation": "The ₦1000 note is the highest denomination in Nigeria."
+  },
+  {
+    "id": "P2-MONEY-016",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Conversions",
+    "difficulty": "easy",
+    "question": "Convert 200 kobo to Naira.",
+    "options": {
+      "A": "₦4",
+      "B": "₦2",
+      "C": "₦3",
+      "D": "₦1"
+    },
+    "correctAnswer": "B",
+    "explanation": "200 kobo is equal to ₦2."
+  },
+  {
+    "id": "P2-MONEY-017",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Purpose of money",
+    "difficulty": "easy",
+    "question": "Money can be used for ______.",
+    "options": {
+      "A": "fight",
+      "B": "payment for goods and services",
+      "C": "none of the above",
+      "D": "playing games"
+    },
+    "correctAnswer": "B",
+    "explanation": "Money is used to pay for goods and services, not for fighting."
+  },
+  {
+    "id": "P2-MONEY-018",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Money calculation",
+    "difficulty": "medium",
+    "question": "Subtract ₦50.00k from ₦25.25k.",
+    "options": {
+      "A": "₦25.75k",
+      "B": "₦26.75k",
+      "C": "₦24.75k",
+      "D": "₦30.75k"
+    },
+    "correctAnswer": "C",
+    "explanation": "If you take ₦25.25k away from ₦50.00k, the difference is ₦24.75k."
+  },
+  {
+    "id": "P2-MONEY-019",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Money calculation",
+    "difficulty": "easy",
+    "question": "Ayo bought pencils for 35k and erasers for 25k. What is the total does he spend in total?",
+    "options": {
+      "A": "60k",
+      "B": "70k",
+      "C": "90k",
+      "D": "50k"
+    },
+    "correctAnswer": "A",
+    "explanation": "35k + 25k = 60k."
+  },
+  {
+    "id": "P2-MONEY-020",
+    "level": "P2",
+    "topic": "Money",
+    "subtopic": "Currency knowledge",
+    "difficulty": "medium",
+    "question": "Whose picture is on the 500 Naira note?",
+    "options": {
+      "A": "Chief Obafemi Awolowo",
+      "B": "President Buhari",
+      "C": "Dr Nnamdi Azikiwe",
+      "D": "Alhaji Musa Yar’ Adua"
+    },
+    "correctAnswer": "C",
+    "explanation": "The 500 Naira note features Dr Nnamdi Azikiwe."
+  },
+  {
+    "id": "P2-MULT-001",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division",
+    "difficulty": "easy",
+    "question": "How many 2s are there in 12?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "2",
+      "D": "3"
+    },
+    "correctAnswer": "B",
+    "explanation": "12 divided by 2 equals 6, so there are six 2s in 12."
+  },
+  {
+    "id": "P2-MULT-002",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division",
+    "difficulty": "easy",
+    "question": "How many 5s are there in 25?",
+    "options": {
+      "A": "10",
+      "B": "5",
+      "C": "4",
+      "D": "2"
+    },
+    "correctAnswer": "B",
+    "explanation": "25 ÷ 5 = 5, so five 5s make up 25."
+  },
+  {
+    "id": "P2-MULT-003",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication",
+    "difficulty": "medium",
+    "question": "What is 63 × 3?",
+    "options": {
+      "A": "189",
+      "B": "176",
+      "C": "18",
+      "D": "63"
+    },
+    "correctAnswer": "A",
+    "explanation": "Multiplying 63 by 3 gives 189."
+  },
+  {
+    "id": "P2-MULT-004",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication",
+    "difficulty": "easy",
+    "question": "Find the product of 40 and 5.",
+    "options": {
+      "A": "150",
+      "B": "260",
+      "C": "200",
+      "D": "90"
+    },
+    "correctAnswer": "C",
+    "explanation": "40 times 5 equals 200."
+  },
+  {
+    "id": "P2-MULT-005",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Counting",
+    "difficulty": "easy",
+    "question": "How many items make up one dozen?",
+    "options": {
+      "A": "20",
+      "B": "12",
+      "C": "10",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "explanation": "A dozen refers to 12 items."
+  },
+  {
+    "id": "P2-MULT-006",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division",
+    "difficulty": "easy",
+    "question": "How many 2s are there in 12?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "2",
+      "D": "3"
+    },
+    "correctAnswer": "B",
+    "explanation": "12 divided by 2 equals 6, so there are six 2s in 12."
+  },
+  {
+    "id": "P2-MULT-007",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division",
+    "difficulty": "easy",
+    "question": "How many 5s are there in 25?",
+    "options": {
+      "A": "10",
+      "B": "5",
+      "C": "4",
+      "D": "2"
+    },
+    "correctAnswer": "B",
+    "explanation": "25 ÷ 5 = 5, so five 5s make up 25."
+  },
+  {
+    "id": "P2-MULT-008",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication",
+    "difficulty": "medium",
+    "question": "Calculate 63 × 3?",
+    "options": {
+      "A": "189",
+      "B": "176",
+      "C": "18",
+      "D": "63"
+    },
+    "correctAnswer": "A",
+    "explanation": "Multiplying 63 by 3 gives 189."
+  },
+  {
+    "id": "P2-MULT-009",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication",
+    "difficulty": "easy",
+    "question": "Compute 40 and 5.",
+    "options": {
+      "A": "150",
+      "B": "260",
+      "C": "200",
+      "D": "90"
+    },
+    "correctAnswer": "C",
+    "explanation": "40 times 5 equals 200."
+  },
+  {
+    "id": "P2-MULT-010",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Counting",
+    "difficulty": "easy",
+    "question": "How many items make up one dozen?",
+    "options": {
+      "A": "20",
+      "B": "12",
+      "C": "10",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "explanation": "A dozen refers to 12 items."
+  },
+  {
+    "id": "P2-MULT-011",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division",
+    "difficulty": "easy",
+    "question": "How many 2s are there in 12?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "2",
+      "D": "3"
+    },
+    "correctAnswer": "B",
+    "explanation": "12 divided by 2 equals 6, so there are six 2s in 12."
+  },
+  {
+    "id": "P2-MULT-012",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division",
+    "difficulty": "easy",
+    "question": "How many 5s are there in 25?",
+    "options": {
+      "A": "10",
+      "B": "5",
+      "C": "4",
+      "D": "2"
+    },
+    "correctAnswer": "B",
+    "explanation": "25 ÷ 5 = 5, so five 5s make up 25."
+  },
+  {
+    "id": "P2-MULT-013",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication",
+    "difficulty": "medium",
+    "question": "Calculate 63 × 3?",
+    "options": {
+      "A": "189",
+      "B": "176",
+      "C": "18",
+      "D": "63"
+    },
+    "correctAnswer": "A",
+    "explanation": "Multiplying 63 by 3 gives 189."
+  },
+  {
+    "id": "P2-MULT-014",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication",
+    "difficulty": "easy",
+    "question": "Compute 40 and 5.",
+    "options": {
+      "A": "150",
+      "B": "260",
+      "C": "200",
+      "D": "90"
+    },
+    "correctAnswer": "C",
+    "explanation": "40 times 5 equals 200."
+  },
+  {
+    "id": "P2-MULT-015",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Counting",
+    "difficulty": "easy",
+    "question": "How many items make up one dozen?",
+    "options": {
+      "A": "20",
+      "B": "12",
+      "C": "10",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "explanation": "A dozen refers to 12 items."
+  },
+  {
+    "id": "P2-MULT-016",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division",
+    "difficulty": "easy",
+    "question": "How many 2s are there in 12?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "2",
+      "D": "3"
+    },
+    "correctAnswer": "B",
+    "explanation": "12 divided by 2 equals 6, so there are six 2s in 12."
+  },
+  {
+    "id": "P2-MULT-017",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division",
+    "difficulty": "easy",
+    "question": "How many 5s are there in 25?",
+    "options": {
+      "A": "10",
+      "B": "5",
+      "C": "4",
+      "D": "2"
+    },
+    "correctAnswer": "B",
+    "explanation": "25 ÷ 5 = 5, so five 5s make up 25."
+  },
+  {
+    "id": "P2-MULT-018",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication",
+    "difficulty": "medium",
+    "question": "Calculate 63 × 3?",
+    "options": {
+      "A": "189",
+      "B": "176",
+      "C": "18",
+      "D": "63"
+    },
+    "correctAnswer": "A",
+    "explanation": "Multiplying 63 by 3 gives 189."
+  },
+  {
+    "id": "P2-MULT-019",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multiplication",
+    "difficulty": "easy",
+    "question": "Compute 40 and 5.",
+    "options": {
+      "A": "150",
+      "B": "260",
+      "C": "200",
+      "D": "90"
+    },
+    "correctAnswer": "C",
+    "explanation": "40 times 5 equals 200."
+  },
+  {
+    "id": "P2-MULT-020",
+    "level": "P2",
+    "topic": "Multiplication/Division",
+    "subtopic": "Counting",
+    "difficulty": "easy",
+    "question": "How many items make up one dozen?",
+    "options": {
+      "A": "20",
+      "B": "12",
+      "C": "10",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "explanation": "A dozen refers to 12 items."
+  },
+  {
+    "id": "P2-SHAPE-001",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-002",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-003",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-004",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-005",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-006",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-007",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-008",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-009",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-010",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-011",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-012",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-013",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-014",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-015",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-016",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-017",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-018",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-019",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-SHAPE-020",
+    "level": "P2",
+    "topic": "Shapes",
+    "subtopic": "2D and 3D shapes",
+    "difficulty": "easy",
+    "question": "This topic requires visual diagrams and is currently under development.",
+    "options": {
+      "A": "Coming Soon",
+      "B": "Coming Soon",
+      "C": "Coming Soon",
+      "D": "Coming Soon"
+    },
+    "correctAnswer": "A",
+    "explanation": "This topic is coming soon. We're working on adding visual questions for identifying shapes and their properties.",
+    "status": "coming-soon"
+  },
+  {
+    "id": "P2-TIME-001",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time conversion",
+    "difficulty": "easy",
+    "question": "60 seconds make ______.",
+    "options": {
+      "A": "2 minutes",
+      "B": "4 minutes",
+      "C": "1 minute",
+      "D": "10 minutes"
+    },
+    "correctAnswer": "C",
+    "explanation": "There are 60 seconds in 1 minute."
+  },
+  {
+    "id": "P2-TIME-002",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time conversion",
+    "difficulty": "easy",
+    "question": "60 minutes make ______.",
+    "options": {
+      "A": "2 hours",
+      "B": "3 hours",
+      "C": "1 hour",
+      "D": "30 minutes"
+    },
+    "correctAnswer": "C",
+    "explanation": "60 minutes equal 1 hour."
+  },
+  {
+    "id": "P2-TIME-003",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Calendar",
+    "difficulty": "easy",
+    "question": "How many days are there in a week?",
+    "options": {
+      "A": "2 days",
+      "B": "8 days",
+      "C": "7 days",
+      "D": "6 days"
+    },
+    "correctAnswer": "C",
+    "explanation": "A week has 7 days."
+  },
+  {
+    "id": "P2-TIME-004",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time of day",
+    "difficulty": "medium",
+    "question": "A.M. refers to ______.",
+    "options": {
+      "A": "evening",
+      "B": "morning",
+      "C": "afternoon",
+      "D": "night"
+    },
+    "correctAnswer": "B",
+    "explanation": "A.M. stands for “ante meridiem”, which refers to the time before midday, i.e., morning."
+  },
+  {
+    "id": "P2-TIME-005",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time of day",
+    "difficulty": "medium",
+    "question": "P.M. refers to ______.",
+    "options": {
+      "A": "morning",
+      "B": "evening",
+      "C": "afternoon",
+      "D": "midnight"
+    },
+    "correctAnswer": "B",
+    "explanation": "P.M. stands for “post meridiem”, meaning after noon; it is commonly used for the evening period."
+  },
+  {
+    "id": "P2-TIME-006",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Duration",
+    "difficulty": "medium",
+    "question": "An Ling starts her music lesson at 2:30 p.m. and ends at 3:30 p.m. How long is the lesson?",
+    "options": {
+      "A": "60 min",
+      "B": "45 min",
+      "C": "30 min",
+      "D": "15 min"
+    },
+    "correctAnswer": "A",
+    "explanation": "From 2:30 p.m. to 3:30 p.m. is one hour or 60 minutes."
+  },
+  {
+    "id": "P2-TIME-007",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time conversion",
+    "difficulty": "easy",
+    "question": "60 seconds make ______.",
+    "options": {
+      "A": "2 minutes",
+      "B": "4 minutes",
+      "C": "1 minute",
+      "D": "10 minutes"
+    },
+    "correctAnswer": "C",
+    "explanation": "There are 60 seconds in 1 minute."
+  },
+  {
+    "id": "P2-TIME-008",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time conversion",
+    "difficulty": "easy",
+    "question": "60 minutes make ______.",
+    "options": {
+      "A": "2 hours",
+      "B": "3 hours",
+      "C": "1 hour",
+      "D": "30 minutes"
+    },
+    "correctAnswer": "C",
+    "explanation": "60 minutes equal 1 hour."
+  },
+  {
+    "id": "P2-TIME-009",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Calendar",
+    "difficulty": "easy",
+    "question": "What number of days are there in a week?",
+    "options": {
+      "A": "2 days",
+      "B": "8 days",
+      "C": "7 days",
+      "D": "6 days"
+    },
+    "correctAnswer": "C",
+    "explanation": "A week has 7 days."
+  },
+  {
+    "id": "P2-TIME-010",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time of day",
+    "difficulty": "medium",
+    "question": "A.M. refers to ______.",
+    "options": {
+      "A": "evening",
+      "B": "morning",
+      "C": "afternoon",
+      "D": "night"
+    },
+    "correctAnswer": "B",
+    "explanation": "A.M. stands for “ante meridiem”, which refers to the time before midday, i.e., morning."
+  },
+  {
+    "id": "P2-TIME-011",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time of day",
+    "difficulty": "medium",
+    "question": "P.M. refers to ______.",
+    "options": {
+      "A": "morning",
+      "B": "evening",
+      "C": "afternoon",
+      "D": "midnight"
+    },
+    "correctAnswer": "B",
+    "explanation": "P.M. stands for “post meridiem”, meaning after noon; it is commonly used for the evening period."
+  },
+  {
+    "id": "P2-TIME-012",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Duration",
+    "difficulty": "medium",
+    "question": "An Ling starts her music lesson at 2:30 p.m. and ends at 3:30 p.m. How long is the lesson?",
+    "options": {
+      "A": "60 min",
+      "B": "45 min",
+      "C": "30 min",
+      "D": "15 min"
+    },
+    "correctAnswer": "A",
+    "explanation": "From 2:30 p.m. to 3:30 p.m. is one hour or 60 minutes."
+  },
+  {
+    "id": "P2-TIME-013",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time conversion",
+    "difficulty": "easy",
+    "question": "60 seconds make ______.",
+    "options": {
+      "A": "2 minutes",
+      "B": "4 minutes",
+      "C": "1 minute",
+      "D": "10 minutes"
+    },
+    "correctAnswer": "C",
+    "explanation": "There are 60 seconds in 1 minute."
+  },
+  {
+    "id": "P2-TIME-014",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time conversion",
+    "difficulty": "easy",
+    "question": "60 minutes make ______.",
+    "options": {
+      "A": "2 hours",
+      "B": "3 hours",
+      "C": "1 hour",
+      "D": "30 minutes"
+    },
+    "correctAnswer": "C",
+    "explanation": "60 minutes equal 1 hour."
+  },
+  {
+    "id": "P2-TIME-015",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Calendar",
+    "difficulty": "easy",
+    "question": "What number of days are there in a week?",
+    "options": {
+      "A": "2 days",
+      "B": "8 days",
+      "C": "7 days",
+      "D": "6 days"
+    },
+    "correctAnswer": "C",
+    "explanation": "A week has 7 days."
+  },
+  {
+    "id": "P2-TIME-016",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time of day",
+    "difficulty": "medium",
+    "question": "A.M. refers to ______.",
+    "options": {
+      "A": "evening",
+      "B": "morning",
+      "C": "afternoon",
+      "D": "night"
+    },
+    "correctAnswer": "B",
+    "explanation": "A.M. stands for “ante meridiem”, which refers to the time before midday, i.e., morning."
+  },
+  {
+    "id": "P2-TIME-017",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time of day",
+    "difficulty": "medium",
+    "question": "P.M. refers to ______.",
+    "options": {
+      "A": "morning",
+      "B": "evening",
+      "C": "afternoon",
+      "D": "midnight"
+    },
+    "correctAnswer": "B",
+    "explanation": "P.M. stands for “post meridiem”, meaning after noon; it is commonly used for the evening period."
+  },
+  {
+    "id": "P2-TIME-018",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Duration",
+    "difficulty": "medium",
+    "question": "An Ling starts her music lesson at 2:30 p.m. and ends at 3:30 p.m. How long is the lesson?",
+    "options": {
+      "A": "60 min",
+      "B": "45 min",
+      "C": "30 min",
+      "D": "15 min"
+    },
+    "correctAnswer": "A",
+    "explanation": "From 2:30 p.m. to 3:30 p.m. is one hour or 60 minutes."
+  },
+  {
+    "id": "P2-TIME-019",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time conversion",
+    "difficulty": "easy",
+    "question": "60 seconds make ______.",
+    "options": {
+      "A": "2 minutes",
+      "B": "4 minutes",
+      "C": "1 minute",
+      "D": "10 minutes"
+    },
+    "correctAnswer": "C",
+    "explanation": "There are 60 seconds in 1 minute."
+  },
+  {
+    "id": "P2-TIME-020",
+    "level": "P2",
+    "topic": "Time",
+    "subtopic": "Time conversion",
+    "difficulty": "easy",
+    "question": "60 minutes make ______.",
+    "options": {
+      "A": "2 hours",
+      "B": "3 hours",
+      "C": "1 hour",
+      "D": "30 minutes"
+    },
+    "correctAnswer": "C",
+    "explanation": "60 minutes equal 1 hour."
+  },
+  {
+    "id": "P2-WHOLE-001",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value",
+    "difficulty": "easy",
+    "question": "In the number 423, what value does the digit 4 represent?",
+    "options": {
+      "A": "4 hundreds",
+      "B": "4 tens",
+      "C": "4 ones",
+      "D": "4 thousands"
+    },
+    "correctAnswer": "A",
+    "explanation": "In 423, the digit 4 is in the hundreds place, so it represents 4 hundreds (or 400)."
+  },
+  {
+    "id": "P2-WHOLE-002",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value",
+    "difficulty": "easy",
+    "question": "In 678, what does the digit 8 stand for?",
+    "options": {
+      "A": "8 tens",
+      "B": "8 ones",
+      "C": "8 hundreds",
+      "D": "8 thousands"
+    },
+    "correctAnswer": "B",
+    "explanation": "In 678, the digit 8 is in the ones (units) place, so it stands for 8 ones."
+  },
+  {
+    "id": "P2-WHOLE-003",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Number notation",
+    "difficulty": "easy",
+    "question": "Write in figures: Eight hundred and eighteen.",
+    "options": {
+      "A": "828",
+      "B": "818",
+      "C": "888",
+      "D": "881"
+    },
+    "correctAnswer": "B",
+    "explanation": "Eight hundred and eighteen is written as 818."
+  },
+  {
+    "id": "P2-WHOLE-004",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Number notation",
+    "difficulty": "easy",
+    "question": "Write in words: 300.",
+    "options": {
+      "A": "Three thousand",
+      "B": "Three units",
+      "C": "Three hundred",
+      "D": "Thirty"
+    },
+    "correctAnswer": "C",
+    "explanation": "The number 300 is read as three hundred."
+  },
+  {
+    "id": "P2-WHOLE-005",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value",
+    "difficulty": "easy",
+    "question": "Write 35 in expanded form.",
+    "options": {
+      "A": "3 + 5",
+      "B": "5 + 3",
+      "C": "30 + 5",
+      "D": "300 + 5"
+    },
+    "correctAnswer": "C",
+    "explanation": "35 consists of 3 tens (30) and 5 ones, so its expanded form is 30 + 5."
+  },
+  {
+    "id": "P2-WHOLE-006",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers",
+    "difficulty": "easy",
+    "question": "Choose the correct symbol: 96 ___ 69.",
+    "options": {
+      "A": ">",
+      "B": "<",
+      "C": "=",
+      "D": "≤"
+    },
+    "correctAnswer": "A",
+    "explanation": "Since 96 is larger than 69, we use the greater-than symbol (>)."
+  },
+  {
+    "id": "P2-WHOLE-007",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers",
+    "difficulty": "easy",
+    "question": "Choose the correct symbol: 32 ___ 23.",
+    "options": {
+      "A": "<",
+      "B": "=",
+      "C": ">",
+      "D": "≥"
+    },
+    "correctAnswer": "C",
+    "explanation": "32 is greater than 23, so the correct symbol is >."
+  },
+  {
+    "id": "P2-WHOLE-008",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value",
+    "difficulty": "easy",
+    "question": "In the number 134, what does the digit 1 stand for?",
+    "options": {
+      "A": "1 hundred",
+      "B": "1 unit",
+      "C": "1 ten",
+      "D": "1 thousand"
+    },
+    "correctAnswer": "A",
+    "explanation": "In 134, the digit 1 is in the hundreds place, so it represents 1 hundred (100)."
+  },
+  {
+    "id": "P2-WHOLE-009",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Number notation",
+    "difficulty": "easy",
+    "question": "Write the number 37 in words.",
+    "options": {
+      "A": "Three seven",
+      "B": "Thirty seven",
+      "C": "Seventy three",
+      "D": "Thirty seven hundred"
+    },
+    "correctAnswer": "B",
+    "explanation": "The number 37 is read as thirty seven."
+  },
+  {
+    "id": "P2-WHOLE-010",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers",
+    "difficulty": "easy",
+    "question": "Compare: 84 and 90.",
+    "options": {
+      "A": "84 > 90",
+      "B": "84 < 90",
+      "C": "84 = 90",
+      "D": "84 ≥ 90"
+    },
+    "correctAnswer": "B",
+    "explanation": "Since 84 is less than 90, we use the symbol <."
+  },
+  {
+    "id": "P2-WHOLE-011",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers",
+    "difficulty": "easy",
+    "question": "Complete the statement: 201 ___ 201.",
+    "options": {
+      "A": "<",
+      "B": "=",
+      "C": ">",
+      "D": "≤"
+    },
+    "correctAnswer": "B",
+    "explanation": "201 is equal to 201, so the correct symbol is =."
+  },
+  {
+    "id": "P2-WHOLE-012",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Counting objects",
+    "difficulty": "easy",
+    "question": "How many circles are shown? O O O O O",
+    "options": {
+      "A": "4",
+      "B": "5",
+      "C": "6",
+      "D": "7"
+    },
+    "correctAnswer": "B",
+    "explanation": "There are five circles displayed."
+  },
+  {
+    "id": "P2-WHOLE-013",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value",
+    "difficulty": "easy",
+    "question": "What is the value of the digit 2 in the number 279?",
+    "options": {
+      "A": "2",
+      "B": "20",
+      "C": "200",
+      "D": "2000"
+    },
+    "correctAnswer": "C",
+    "explanation": "In 279, the digit 2 is in the hundreds place and represents 200."
+  },
+  {
+    "id": "P2-WHOLE-014",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Parity (odd/even)",
+    "difficulty": "easy",
+    "question": "Is 35 an odd or even number?",
+    "options": {
+      "A": "odd",
+      "B": "even",
+      "C": "both",
+      "D": "neither"
+    },
+    "correctAnswer": "A",
+    "explanation": "Numbers ending in 1, 3, 5, 7, or 9 are odd, so 35 is odd."
+  },
+  {
+    "id": "P2-WHOLE-015",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Parity (odd/even)",
+    "difficulty": "easy",
+    "question": "Is 48 an odd or even number?",
+    "options": {
+      "A": "even",
+      "B": "maybe",
+      "C": "odd",
+      "D": "both"
+    },
+    "correctAnswer": "A",
+    "explanation": "Numbers ending in 0, 2, 4, 6, or 8 are even, so 48 is even."
+  },
+  {
+    "id": "P2-WHOLE-016",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Number properties",
+    "difficulty": "medium",
+    "question": "Which group lists only odd numbers?",
+    "options": {
+      "A": "2, 4, 6, 8",
+      "B": "3, 5, 9, 11",
+      "C": "2, 9, 13, 11",
+      "D": "3, 6, 9, 12"
+    },
+    "correctAnswer": "B",
+    "explanation": "Odd numbers do not divide evenly by 2. Only 3, 5, 9 and 11 are all odd."
+  },
+  {
+    "id": "P2-WHOLE-017",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Number notation",
+    "difficulty": "easy",
+    "question": "Two hundred and thirty four can be written as _______.",
+    "options": {
+      "A": "214",
+      "B": "324",
+      "C": "234",
+      "D": "243"
+    },
+    "correctAnswer": "C",
+    "explanation": "Two hundred and thirty four in digits is 234."
+  },
+  {
+    "id": "P2-WHOLE-018",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Parity (odd/even)",
+    "difficulty": "easy",
+    "question": "Identify the odd number.",
+    "options": {
+      "A": "40",
+      "B": "41",
+      "C": "42",
+      "D": "44"
+    },
+    "correctAnswer": "B",
+    "explanation": "41 is the only number that is not divisible by 2, so it is odd."
+  },
+  {
+    "id": "P2-WHOLE-019",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value",
+    "difficulty": "medium",
+    "question": "In 831, the value of the digit 8 is _______.",
+    "options": {
+      "A": "8",
+      "B": "80",
+      "C": "100",
+      "D": "800"
+    },
+    "correctAnswer": "D",
+    "explanation": "The digit 8 is in the hundreds place in 831, so its value is 800."
+  },
+  {
+    "id": "P2-WHOLE-020",
+    "level": "P2",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value",
+    "difficulty": "medium",
+    "question": "In 759, which digit is in the tens place?",
+    "options": {
+      "A": "5",
+      "B": "7",
+      "C": "9",
+      "D": "50"
+    },
+    "correctAnswer": "A",
+    "explanation": "In the number 759, 5 is in the tens place."
+  }
+]

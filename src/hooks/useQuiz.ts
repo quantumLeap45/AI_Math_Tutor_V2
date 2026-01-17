@@ -478,7 +478,9 @@ export function useQuiz(): QuizState & QuizActions {
         updateProgressStats(completed);
 
         // Clear current quiz from legacy storage (if any)
-        localStorage.removeItem(QUIZ_STORAGE_KEYS.CURRENT);
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem(QUIZ_STORAGE_KEYS.CURRENT);
+        }
 
         // Calculate and set result
         const quizResult = calculateResult(completed);
@@ -631,6 +633,8 @@ function createDefaultProgress() {
  * Update overall progress statistics after completing a quiz
  */
 function updateProgressStats(attempt: QuizAttempt): void {
+  if (typeof window === 'undefined') return;
+
   try {
     const savedJson = localStorage.getItem(QUIZ_STORAGE_KEYS.PROGRESS);
     const progress = savedJson ? JSON.parse(savedJson) : createDefaultProgress();
@@ -698,7 +702,7 @@ function updateProgressStats(attempt: QuizAttempt): void {
     progress.lastUpdated = new Date().toISOString();
     localStorage.setItem(QUIZ_STORAGE_KEYS.PROGRESS, JSON.stringify(progress));
   } catch (e) {
-    console.warn('Failed to update progress stats:', e);
+    // Silently fail if localStorage is unavailable
   }
 }
 

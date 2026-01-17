@@ -15,6 +15,7 @@ import {
   QuizDifficulty,
   QuizQuestionCount,
   P1_TOPICS,
+  P2_TOPICS,
   DIFFICULTY_OPTIONS,
   QUESTION_COUNT_OPTIONS,
 } from '@/types';
@@ -44,13 +45,18 @@ interface QuizSetupProps {
 }
 
 // Available topics as checkboxes
-const TOPIC_OPTIONS: { value: QuizTopic; label: string; emoji: string }[] = [
-  { value: 'Whole Numbers', label: 'Whole Numbers', emoji: '🔢' },
-  { value: 'Addition/Subtraction', label: 'Addition & Subtraction', emoji: '➕' },
-  { value: 'Multiplication/Division', label: 'Multiplication & Division', emoji: '✖️' },
-  { value: 'Money', label: 'Money', emoji: '💰' },
-  { value: 'Time', label: 'Time', emoji: '⏰' },
-  { value: 'Patterns', label: 'Patterns', emoji: '🔷' },
+const TOPIC_OPTIONS: { value: QuizTopic; label: string; emoji: string; level?: ('P1' | 'P2')[]; comingSoon?: boolean }[] = [
+  { value: 'Whole Numbers', label: 'Whole Numbers', emoji: '🔢', level: ['P1', 'P2'] },
+  { value: 'Addition/Subtraction', label: 'Addition & Subtraction', emoji: '➕', level: ['P1', 'P2'] },
+  { value: 'Multiplication/Division', label: 'Multiplication & Division', emoji: '✖️', level: ['P1', 'P2'] },
+  { value: 'Money', label: 'Money', emoji: '💰', level: ['P1', 'P2'] },
+  { value: 'Time', label: 'Time', emoji: '⏰', level: ['P1', 'P2'] },
+  { value: 'Patterns', label: 'Patterns', emoji: '🔷', level: ['P1'] },
+  { value: 'Length', label: 'Length', emoji: '📏', level: ['P2'] },
+  { value: 'Mass', label: 'Mass', emoji: '⚖️', level: ['P2'] },
+  { value: 'Fractions', label: 'Fractions', emoji: '🍕', level: ['P2'] },
+  { value: 'Shapes', label: 'Shapes', emoji: '🔷', level: ['P2'], comingSoon: true },
+  { value: 'Picture Graphs', label: 'Picture Graphs', emoji: '📊', level: ['P2'], comingSoon: true },
 ];
 
 const DIFFICULTY_LABELS: Record<QuizDifficulty | 'all', { label: string; emoji: string }> = {
@@ -102,6 +108,12 @@ export function QuizSetup({
     setLoadingCounts(true);
     loadQuestionCounts();
   }, [level]);
+
+  // Get topics for current level
+  const getCurrentLevelTopics = (): QuizTopic[] => {
+    return level === 'P1' ? P1_TOPICS : P2_TOPICS;
+  };
+
   const toggleTopic = (topic: QuizTopic) => {
     const isSelected = topics.includes(topic);
     const canDeselect = topics.length > 1;
@@ -114,11 +126,12 @@ export function QuizSetup({
   };
 
   const toggleAllTopics = () => {
-    const allSelected = topics.length === P1_TOPICS.length;
-    setTopics(allSelected ? [P1_TOPICS[0]] : [...P1_TOPICS]);
+    const currentTopics = getCurrentLevelTopics();
+    const allSelected = topics.length === currentTopics.length;
+    setTopics(allSelected ? [currentTopics[0]] : [...currentTopics]);
   };
 
-  const allSelected = topics.length === P1_TOPICS.length;
+  const allSelected = topics.length === getCurrentLevelTopics().length;
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -170,19 +183,17 @@ export function QuizSetup({
             Primary Level
           </label>
           <div className="flex flex-wrap gap-2">
-            {(['P1'] as PrimaryLevel[]).map((lvl) => (
+            {(['P1', 'P2'] as PrimaryLevel[]).map((lvl) => (
               <button
                 key={lvl}
                 onClick={() => setLevel(lvl)}
-                disabled
                 className={`
                   px-4 py-2 rounded-lg font-medium transition-all
                   ${
                     level === lvl
                       ? 'bg-blue-500 text-white shadow-md'
-                      : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400'
+                      : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600'
                   }
-                  cursor-not-allowed opacity-75
                 `}
               >
                 {lvl}
@@ -194,7 +205,7 @@ export function QuizSetup({
               </button>
             ))}
             <span className="text-sm text-slate-500 dark:text-slate-500 py-2 px-3">
-              More levels coming soon!
+              P3-P6 coming soon
             </span>
           </div>
         </div>
@@ -213,18 +224,22 @@ export function QuizSetup({
             </button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {TOPIC_OPTIONS.map((topic) => {
+            {TOPIC_OPTIONS.filter((topic) => !topic.level || topic.level.includes(level as 'P1' | 'P2')).map((topic) => {
               const questionCount = topicQuestionCounts[topic.value] || 0;
+              const isComingSoon = topic.comingSoon || false;
               return (
                 <button
                   key={topic.value}
-                  onClick={() => toggleTopic(topic.value)}
+                  onClick={() => !isComingSoon && toggleTopic(topic.value)}
+                  disabled={isComingSoon}
                   className={`
                     p-4 rounded-xl border-2 transition-all text-left relative
                     ${
                       topics.includes(topic.value)
                         ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                        : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600'
+                        : isComingSoon
+                          ? 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 opacity-60 cursor-not-allowed'
+                          : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600'
                     }
                   `}
                 >
@@ -232,7 +247,12 @@ export function QuizSetup({
                   <div className="text-sm font-medium text-slate-900 dark:text-slate-100">
                     {topic.label}
                   </div>
-                  {!loadingCounts && (
+                  {isComingSoon && (
+                    <div className="mt-1 text-xs font-medium text-orange-500 dark:text-orange-400">
+                      Coming Soon
+                    </div>
+                  )}
+                  {!isComingSoon && !loadingCounts && (
                     <div className={`mt-2 text-xs font-medium ${
                       topics.includes(topic.value)
                         ? 'text-blue-600 dark:text-blue-400'
@@ -246,9 +266,9 @@ export function QuizSetup({
             })}
           </div>
           <p className="mt-2 text-xs text-slate-500 dark:text-slate-500">
-            {topics.length === P1_TOPICS.length
+            {topics.length === getCurrentLevelTopics().length
               ? 'All topics selected'
-              : `${topics.length} of ${P1_TOPICS.length} topics selected`}
+              : `${topics.length} of ${getCurrentLevelTopics().length} topics selected`}
           </p>
         </div>
 

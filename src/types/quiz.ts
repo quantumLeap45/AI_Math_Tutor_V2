@@ -23,6 +23,7 @@ export type QuizOption = 'A' | 'B' | 'C' | 'D';
 
 /**
  * Quiz topics available (based on MOE syllabus)
+ * Includes topics for both P1 and P2
  */
 export type QuizTopic =
   | 'Whole Numbers'
@@ -30,7 +31,12 @@ export type QuizTopic =
   | 'Multiplication/Division'
   | 'Money'
   | 'Time'
-  | 'Patterns';
+  | 'Patterns'
+  | 'Length'
+  | 'Mass'
+  | 'Fractions'
+  | 'Shapes'
+  | 'Picture Graphs';
 
 /**
  * Available question counts for a quiz session
@@ -369,6 +375,23 @@ export const P1_TOPICS: QuizTopic[] = [
 ] as const;
 
 /**
+ * All available topics for P2
+ * Note: Shapes and Picture Graphs are marked as "coming soon" (require visuals)
+ */
+export const P2_TOPICS: QuizTopic[] = [
+  'Whole Numbers',
+  'Addition/Subtraction',
+  'Multiplication/Division',
+  'Length',
+  'Mass',
+  'Time',
+  'Money',
+  'Fractions',
+  'Shapes',
+  'Picture Graphs',
+] as const;
+
+/**
  * Available difficulty levels for filtering
  */
 export const DIFFICULTY_OPTIONS = ['easy', 'medium', 'all'] as const;
@@ -403,9 +426,10 @@ export function isQuizDifficulty(value: string): value is QuizDifficulty {
 
 /**
  * Type guard to check if a value is a valid QuizTopic
+ * Checks against both P1 and P2 topics
  */
 export function isQuizTopic(value: string): value is QuizTopic {
-  return P1_TOPICS.includes(value as QuizTopic);
+  return [...P1_TOPICS, ...P2_TOPICS].includes(value as QuizTopic);
 }
 
 /**

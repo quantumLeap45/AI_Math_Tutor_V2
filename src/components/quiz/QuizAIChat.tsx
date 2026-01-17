@@ -114,22 +114,31 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
 
       setMessages(prev => [...prev, assistantMessage]);
 
-      // Stream the response
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+      // Stream the response with error handling
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
 
-        const chunk = decoder.decode(value, { stream: true });
-        assistantContent += chunk;
+          const chunk = decoder.decode(value, { stream: true });
+          assistantContent += chunk;
 
-        // Update the assistant message content
-        setMessages(prev =>
-          prev.map((m, i) =>
-            i === prev.length - 1
-              ? { ...m, content: assistantContent }
-              : m
-          )
-        );
+          // Update the assistant message content
+          setMessages(prev =>
+            prev.map((m, i) =>
+              i === prev.length - 1
+                ? { ...m, content: assistantContent }
+                : m
+            )
+          );
+        }
+      } catch (streamError) {
+        console.error('Quiz chat streaming error:', streamError);
+        setError('Connection lost while receiving response. Please try again.');
+        // Remove the incomplete assistant message
+        setMessages(prev => prev.filter(m => m.id !== assistantMessage.id));
+        setIsLoading(false);
+        return;
       }
     } catch (err) {
       console.error('Quiz chat error:', err);

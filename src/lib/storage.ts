@@ -250,7 +250,10 @@ export function pruneStorageIfNeeded(): void {
 
     // Strategy 2: Remove oldest sessions if still needed
     if (sessions.length > 20) {
-      sessions.splice(20); // Keep only 20 most recent
+      // Create a trimmed copy and save it
+      const trimmedSessions = sessions.slice(0, 20); // Keep only 20 most recent
+      saveSessions(trimmedSessions);
+      return;
     }
 
     saveSessions(sessions);

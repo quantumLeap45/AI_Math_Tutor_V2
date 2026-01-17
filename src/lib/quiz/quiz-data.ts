@@ -3,7 +3,7 @@
  * AI Math Tutor v2
  *
  * Handles loading and accessing quiz question data.
- * All quiz data is stored in /data/quiz-p1.json
+ * All quiz data is stored in /data/quiz-p1.json and /data/quiz-p2.json
  */
 
 import {
@@ -13,6 +13,7 @@ import {
   QuizDifficulty,
   QuizOption,
   P1_TOPICS,
+  P2_TOPICS,
 } from '@/types';
 import { shuffleArray } from './quiz-randomization';
 
@@ -59,10 +60,51 @@ async function loadP1Questions(): Promise<QuizQuestion[]> {
 }
 
 /**
+ * P2 Quiz Questions (imported from JSON file)
+ * This is dynamically imported to avoid SSR issues
+ */
+let P2_QUESTIONS_CACHE: QuizQuestion[] | null = null;
+
+/**
+ * Load and parse P2 quiz questions from JSON
+ */
+async function loadP2Questions(): Promise<QuizQuestion[]> {
+  if (P2_QUESTIONS_CACHE) {
+    return P2_QUESTIONS_CACHE;
+  }
+
+  try {
+    // Dynamic import to avoid SSR issues
+    const data = await import('@/data/quiz-p2.json');
+    const rawQuestions = data.default || data;
+
+    // Validate and parse questions
+    const questions: QuizQuestion[] = rawQuestions.map((q) => ({
+      id: q.id,
+      level: q.level as PrimaryLevel,
+      topic: q.topic,
+      subtopic: q.subtopic,
+      difficulty: q.difficulty as QuizDifficulty,
+      question: q.question,
+      options: q.options,
+      correctAnswer: q.correctAnswer as QuizOption,
+      explanation: q.explanation,
+    }));
+
+    P2_QUESTIONS_CACHE = questions;
+    return questions;
+  } catch (error) {
+    console.error('Failed to load P2 quiz questions:', error);
+    return [];
+  }
+}
+
+/**
  * Reset the cache (useful for testing or data updates)
  */
 export function resetQuestionCache(): void {
   P1_QUESTIONS_CACHE = null;
+  P2_QUESTIONS_CACHE = null;
 }
 
 // ============ PUBLIC API ============
@@ -74,6 +116,9 @@ export function getAvailableTopics(level: string): string[] {
   if (level === 'P1') {
     return [...P1_TOPICS];
   }
+  if (level === 'P2') {
+    return [...P2_TOPICS];
+  }
   // Future levels can be added here
   return [];
 }
@@ -84,6 +129,9 @@ export function getAvailableTopics(level: string): string[] {
 export async function getQuestionsForLevel(level: string): Promise<QuizQuestion[]> {
   if (level === 'P1') {
     return loadP1Questions();
+  }
+  if (level === 'P2') {
+    return loadP2Questions();
   }
   // Future levels can be added here
   return [];
