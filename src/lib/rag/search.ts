@@ -248,7 +248,8 @@ export function formatRAGContext(results: SearchResult[]): RAGContext {
   const formattedContext = `
 ## Relevant Example Questions
 
-Use these MOE-style questions as reference for format, difficulty, and style:
+**IMPORTANT: These examples are for STYLE REFERENCE ONLY.**
+Use them to understand the format, difficulty level, and structure of MOE-style questions.
 
 ${examples.map((q, i) => `
 ### Example ${i + 1}
@@ -261,11 +262,27 @@ ${q.workingSolution ? `**Working:** ${q.workingSolution}` : ''}
 `).join('\n')}
 
 ---
-When generating new questions:
-- Match the grade level and difficulty of the request
-- Use Singapore context (names like Ahmad, Siti, Mei Ling, Ravi; places; SGD currency)
-- For simple problems, consider including visual hints with emojis (e.g., 🍎 for apples, 🚗 for cars)
-- Follow the MOE format shown in these examples
+
+## When Generating NEW Questions - Follow These Rules:
+
+**CRITICAL: DO NOT copy the example questions above.** Create ORIGINAL questions inspired by them.
+
+### Required Changes (MUST Be Different):
+- **Names:** Use different Singaporean names (Ahmad, Siti, Mei Ling, Ravi, Wei Ling, Muthu, John, Sarah, etc.)
+- **Objects/Items:** Change what the question is about (apples → pencils, cars, books, marbles, stickers, etc.)
+- **Numbers:** Use different numbers (keep similar difficulty level, but different values)
+- **Scenarios:** Create different situations and contexts
+
+### Keep the Same (Style Guide):
+- **Grade level** (P1, P2, etc.)
+- **Question type** (addition word problem, subtraction, multiplication, etc.)
+- **Difficulty level** (Easy, Medium, Hard)
+- **Format structure** (how the question is written)
+- **Singapore context** (local names, places where appropriate, SGD currency for money problems)
+- **Visual hints** for simple problems (use emojis like 🍎🚗📏⭐)
+
+### Remember:
+The examples above show you **HOW** MOE questions are styled. Your job is to create **NEW** questions in that same style—not to reuse the examples themselves.
 `;
 
   return {
