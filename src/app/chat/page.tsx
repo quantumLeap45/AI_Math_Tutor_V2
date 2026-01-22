@@ -391,43 +391,10 @@ export default function ChatPage() {
             </nav>
           </div>
 
-          {/* Right: Mode toggle, Quota, Clear Chat, and theme toggle */}
+          {/* Right: Mode toggle, Clear Chat, and theme toggle */}
           <div className="flex items-center gap-2">
             <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
 
-            {/* Quota Display */}
-            <div
-              className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                quotaStatus.exceeded
-                  ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300'
-                  : quotaStatus.remaining <= 10
-                    ? 'bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
-              }`}
-              title={`Daily quota: ${quotaStatus.used}/${quotaStatus.limit} requests used`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 2v20" />
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-              </svg>
-              {quotaStatus.exceeded && countdown ? (
-                <span className="tabular-nums">{countdown.formatted}</span>
-              ) : (
-                <span className="tabular-nums">
-                  {quotaStatus.remaining}/{quotaStatus.limit}
-                </span>
-              )}
-            </div>
             {currentSession && currentSession.messages.length > 0 && (
               <button
                 onClick={handleClearChat}
@@ -502,8 +469,15 @@ export default function ChatPage() {
             ) : (
               // Messages list
               <div className="max-w-3xl mx-auto">
-                {currentSession.messages.map(message => (
-                  <MessageBubble key={message.id} message={message} />
+                {currentSession.messages.map((message, index) => (
+                  <MessageBubble
+                    key={message.id}
+                    message={message}
+                    quotaInfo={message.role === 'assistant' && index === currentSession.messages.length - 1 ? {
+                      remaining: quotaStatus.remaining,
+                      limit: quotaStatus.limit
+                    } : undefined}
+                  />
                 ))}
                 {isLoading && <MessageLoading />}
                 <div ref={messagesEndRef} />

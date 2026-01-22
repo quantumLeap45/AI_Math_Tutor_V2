@@ -2,16 +2,44 @@
  * Rate Limiting Utility
  * AI Math Tutor v2
  *
- * Simple in-memory rate limiting for API routes.
- * Limits requests per IP address within a time window.
+ * Two-tier rate limiting:
+ * 1. Anti-spam: 20 requests per minute (in-memory)
+ * 2. Daily quota: 50 messages per 24 hours (Supabase)
  */
+
+import { createClient } from '@supabase/supabase-js';
+
+// Get environment variables
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY;
+
+// Initialize Supabase client if credentials are available
+let supabase: ReturnType<typeof createClient> | null = null;
+if (supabaseUrl && supabaseKey) {
+  supabase = createClient(supabaseUrl, supabaseKey);
+}
+
+// Type definition for daily_quota table
+interface DailyQuotaRecord {
+  id?: number;
+  ip_address: string;
+  request_date: string;
+  requests_count: number;
+  last_request?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+// ============================================
+// ANTI-SPAM: In-memory rate limiting (per minute)
+// ============================================
 
 // Store request timestamps by IP
 const requestLog = new Map<string, number[]>();
 
-// Configuration
+// Configuration for anti-spam
 const WINDOW_MS = 60 * 1000; // 1 minute window
-const MAX_REQUESTS = 20; // Max requests per window
+const MAX_REQUESTS = 20; // Max requests per minute
 
 /**
  * Clean up old entries from the request log
@@ -31,12 +59,9 @@ function cleanupOldEntries(): void {
 }
 
 /**
- * Check if a request should be rate limited
- *
- * @param ip - The client IP address
- * @returns Object with success status and optional retry-after seconds
+ * Check anti-spam rate limit (20 per minute)
  */
-export function checkRateLimit(ip: string): {
+function checkAntiSpamLimit(ip: string): {
   success: boolean;
   remaining: number;
   retryAfter?: number;
@@ -51,8 +76,6 @@ export function checkRateLimit(ip: string): {
 
   // Get existing timestamps for this IP
   const timestamps = requestLog.get(ip) || [];
-
-  // Filter to only timestamps within the window
   const recentTimestamps = timestamps.filter(t => t > cutoff);
 
   // Check if rate limit exceeded
@@ -77,18 +100,209 @@ export function checkRateLimit(ip: string): {
   };
 }
 
+// ============================================
+// DAILY QUOTA: 50 messages per 24 hours (Supabase)
+// ============================================
+
+const DAILY_QUOTA_LIMIT = 50; // 50 messages per day
+
+interface DailyQuotaStatus {
+  used: number;
+  remaining: number;
+  limit: number;
+  resetsAt?: Date;
+}
+
+/**
+ * Get or create the daily quota record for an IP
+ */
+async function getOrCreateQuotaRecord(ip: string): Promise<{ used: number; isNew: boolean }> {
+  if (!supabase) {
+    // Fallback to in-memory if Supabase not configured
+    console.warn('Supabase not configured, using in-memory quota');
+    return { used: 0, isNew: true };
+  }
+
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+
+  try {
+    // Try to get existing record
+    const { data, error } = await (supabase as any)
+      .from('daily_quota')
+      .select('requests_count')
+      .eq('ip_address', ip)
+      .eq('request_date', today)
+      .maybeSingle();
+
+    if (error && error.code !== 'PGRST116') {
+      // PGRST116 is "not found" which is expected
+      console.error('Supabase quota check error:', error);
+    }
+
+    if (data) {
+      return { used: data.requests_count || 0, isNew: false };
+    }
+
+    // Create new record
+    await (supabase as any)
+      .from('daily_quota')
+      .insert({
+        ip_address: ip,
+        request_date: today,
+        requests_count: 0,
+      });
+
+    return { used: 0, isNew: true };
+  } catch (err) {
+    console.error('Supabase quota operation error:', err);
+    return { used: 0, isNew: true };
+  }
+}
+
+/**
+ * Increment the quota count for an IP
+ */
+async function incrementQuota(ip: string): Promise<boolean> {
+  if (!supabase) {
+    return true; // Fallback: allow if Supabase not configured
+  }
+
+  const today = new Date().toISOString().split('T')[0];
+
+  try {
+    // Use RPC function to increment atomically
+    const { error } = await (supabase as any).rpc('increment_quota', {
+      p_ip_address: ip,
+      p_request_date: today,
+    });
+
+    if (error) {
+      console.error('Supabase quota increment error:', error);
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.error('Supabase quota increment error:', err);
+    return false;
+  }
+}
+
+/**
+ * Check daily quota limit (50 per 24 hours)
+ */
+async function checkDailyQuota(ip: string): Promise<{
+  success: boolean;
+  status: DailyQuotaStatus;
+}> {
+  const { used } = await getOrCreateQuotaRecord(ip);
+
+  const remaining = Math.max(0, DAILY_QUOTA_LIMIT - used);
+  const success = used < DAILY_QUOTA_LIMIT;
+
+  // Calculate reset time (midnight tomorrow in UTC)
+  const tomorrow = new Date();
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+  tomorrow.setUTCHours(0, 0, 0, 0);
+
+  return {
+    success,
+    status: {
+      used,
+      remaining,
+      limit: DAILY_QUOTA_LIMIT,
+      resetsAt: tomorrow,
+    },
+  };
+}
+
+// ============================================
+// COMBINED: Check both limits
+// ============================================
+
+export interface RateLimitResult {
+  success: boolean;
+  remaining: number;
+  dailyRemaining?: number;
+  retryAfter?: number;
+  quotaStatus?: DailyQuotaStatus;
+}
+
+/**
+ * Main rate limit check - validates both anti-spam and daily quota
+ *
+ * @param ip - The client IP address
+ * @returns Object with success status and quota info
+ */
+export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
+  // Check anti-spam limit first (fast, in-memory)
+  const antiSpamResult = checkAntiSpamLimit(ip);
+
+  if (!antiSpamResult.success) {
+    return {
+      success: false,
+      remaining: antiSpamResult.remaining,
+      retryAfter: antiSpamResult.retryAfter,
+    };
+  }
+
+  // Check daily quota (Supabase)
+  const dailyResult = await checkDailyQuota(ip);
+
+  if (!dailyResult.success) {
+    return {
+      success: false,
+      remaining: 0,
+      dailyRemaining: 0,
+      quotaStatus: dailyResult.status,
+    };
+  }
+
+  // Both checks passed - increment the daily quota
+  await incrementQuota(ip);
+
+  return {
+    success: true,
+    remaining: antiSpamResult.remaining,
+    dailyRemaining: dailyResult.status.remaining,
+    quotaStatus: {
+      ...dailyResult.status,
+      used: dailyResult.status.used + 1, // Account for the current request
+    },
+  };
+}
+
+/**
+ * Get the current quota status without checking/incrementing
+ */
+export async function getQuotaStatus(ip: string): Promise<DailyQuotaStatus> {
+  if (!supabase) {
+    return {
+      used: 0,
+      remaining: DAILY_QUOTA_LIMIT,
+      limit: DAILY_QUOTA_LIMIT,
+    };
+  }
+
+  const { used } = await getOrCreateQuotaRecord(ip);
+  const tomorrow = new Date();
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+  tomorrow.setUTCHours(0, 0, 0, 0);
+
+  return {
+    used,
+    remaining: Math.max(0, DAILY_QUOTA_LIMIT - used),
+    limit: DAILY_QUOTA_LIMIT,
+    resetsAt: tomorrow,
+  };
+}
+
 /**
  * Get the client IP from request headers
- * Handles various proxy configurations
- *
- * @param request - The incoming request
- * @returns Client IP address
  */
 export function getClientIp(request: Request): string {
-  // Check common headers for proxied requests
   const forwardedFor = request.headers.get('x-forwarded-for');
   if (forwardedFor) {
-    // Take the first IP in the list
     return forwardedFor.split(',')[0].trim();
   }
 
@@ -97,38 +311,12 @@ export function getClientIp(request: Request): string {
     return realIp;
   }
 
-  // Fallback for direct connections (development)
   return '127.0.0.1';
 }
 
 /**
  * Reset rate limit for an IP (for testing)
- *
- * @param ip - The IP to reset
  */
 export function resetRateLimit(ip: string): void {
   requestLog.delete(ip);
-}
-
-/**
- * Get current rate limit status for an IP
- *
- * @param ip - The IP to check
- * @returns Current request count and remaining quota
- */
-export function getRateLimitStatus(ip: string): {
-  used: number;
-  remaining: number;
-  limit: number;
-} {
-  const now = Date.now();
-  const cutoff = now - WINDOW_MS;
-  const timestamps = requestLog.get(ip) || [];
-  const recentCount = timestamps.filter(t => t > cutoff).length;
-
-  return {
-    used: recentCount,
-    remaining: Math.max(0, MAX_REQUESTS - recentCount),
-    limit: MAX_REQUESTS,
-  };
 }

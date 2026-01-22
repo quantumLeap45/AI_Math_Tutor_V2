@@ -23,11 +23,36 @@ interface ChatRequestBody {
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting
+    // Rate limiting (both anti-spam and daily quota)
     const ip = getClientIp(request);
-    const rateLimitResult = checkRateLimit(ip);
+    const rateLimitResult = await checkRateLimit(ip);
 
     if (!rateLimitResult.success) {
+      // Check if this is a daily quota exceeded error
+      if (rateLimitResult.quotaStatus && rateLimitResult.dailyRemaining !== undefined) {
+        const resetsAt = rateLimitResult.quotaStatus.resetsAt;
+        const hoursUntilReset = resetsAt
+          ? Math.ceil((resetsAt.getTime() - Date.now()) / (1000 * 60 * 60))
+          : 24;
+
+        return NextResponse.json(
+          {
+            error: `Daily limit reached. You've used all ${rateLimitResult.quotaStatus.limit} messages for today. Please wait ${hoursUntilReset} hours or try again tomorrow.`,
+            quotaExceeded: true,
+            resetsAt: resetsAt?.toISOString(),
+          },
+          {
+            status: 429,
+            headers: {
+              'X-RateLimit-Remaining': '0',
+              'X-Daily-Quota-Remaining': '0',
+              'X-Daily-Quota-Limit': String(rateLimitResult.quotaStatus.limit),
+            },
+          }
+        );
+      }
+
+      // Anti-spam rate limit exceeded
       return NextResponse.json(
         {
           error: `Too many requests. Please wait ${rateLimitResult.retryAfter} seconds.`,
@@ -169,8 +194,9 @@ export async function POST(request: NextRequest) {
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
         'Transfer-Encoding': 'chunked',
-        'X-RateLimit-Remaining': String(rateLimitResult.remaining),
-        'X-Daily-Quota-Limit': '50',
+        'X-RateLimit-Remaining': String(rateLimitResult.remaining || 0),
+        'X-Daily-Quota-Remaining': String(rateLimitResult.dailyRemaining ?? rateLimitResult.quotaStatus?.remaining ?? 50),
+        'X-Daily-Quota-Limit': String(rateLimitResult.quotaStatus?.limit ?? 50),
       },
     });
   } catch (error) {
