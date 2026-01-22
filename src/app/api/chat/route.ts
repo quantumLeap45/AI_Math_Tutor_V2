@@ -3,12 +3,15 @@
  * AI Math Tutor v2
  *
  * Handles chat requests to the Gemini API with streaming responses.
+ * Integrates RAG (Retrieval-Augmented Generation) for enhanced question generation.
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { streamChat, isConfigured } from '@/lib/gemini';
+import { streamChat, isConfigured, checkHealth } from '@/lib/gemini';
 import { checkRateLimit, getClientIp } from '@/lib/rateLimit';
 import { Message, TutorMode } from '@/types';
+import { getRAGContext, detectUserIntent } from '@/lib/rag/search';
+import { isPineconeConfigured } from '@/lib/rag/pinecone';
 
 export const runtime = 'nodejs';
 
@@ -98,7 +101,55 @@ export async function POST(request: NextRequest) {
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          for await (const chunk of streamChat(messages, mode, image)) {
+          // Get the last user message for RAG search
+          const lastUserMessage = messages.filter(m => m.role === 'user').pop();
+          const userQuery = lastUserMessage?.content || '';
+
+          // Health check: Verify Gemini is available before running RAG
+          // This prevents wasting OpenAI embedding costs when Gemini quota is exceeded
+          let ragContext;
+          let ragUsed = false;
+          let skipRAG = false;
+
+          if (isPineconeConfigured() && userQuery) {
+            // Detect intent first to see if RAG is needed
+            const intent = detectUserIntent(userQuery);
+
+            if (intent.wantsQuestions || intent.topic) {
+              // RAG might be needed - check Gemini health first
+              const health = await checkHealth();
+              if (!health.available) {
+                console.log('⚠️  Gemini unavailable - skipping RAG to save costs');
+                skipRAG = true;
+                // Send error to user immediately
+                controller.enqueue(encoder.encode(`\n\n[Error: ${health.error || 'AI service temporarily unavailable. Please try again later.'}]`));
+                controller.close();
+                return;
+              }
+
+              // Gemini is available, proceed with RAG
+              try {
+                ragContext = await getRAGContext(userQuery);
+                if (ragContext.count > 0) {
+                  ragUsed = true;
+                  console.log(`🔍 RAG ACTIVE: Retrieved ${ragContext.count} example questions for query: "${userQuery.substring(0, 50)}..."`);
+                  console.log(`🔍 RAG Examples:`, ragContext.examples.map((e: any) => e.id).join(', '));
+                } else {
+                  console.log(`ℹ️  RAG: No relevant examples found for query: "${userQuery.substring(0, 50)}..."`);
+                }
+              } catch (ragError) {
+                // Log RAG error but continue without RAG context (graceful fallback)
+                console.warn('RAG search failed, continuing without context:', ragError);
+              }
+            }
+          }
+
+          // Log RAG status for debugging (helpful for verification)
+          if (!skipRAG && !ragUsed && (userQuery.includes('question') || userQuery.includes('problem') || userQuery.includes('practice'))) {
+            console.log(`⚠️  RAG NOT ACTIVE: Query suggests questions but RAG didn't trigger (no examples found)`);
+          }
+
+          for await (const chunk of streamChat(messages, mode, image, ragContext)) {
             controller.enqueue(encoder.encode(chunk));
           }
           controller.close();

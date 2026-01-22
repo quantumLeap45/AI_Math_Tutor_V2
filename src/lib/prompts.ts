@@ -7,6 +7,7 @@
  */
 
 import { TutorMode } from '@/types';
+import { RAGContext } from './rag/types';
 
 /**
  * Base system prompt defining the AI tutor's identity and knowledge
@@ -210,17 +211,35 @@ If the question is beyond Primary level:
  * Build the complete system prompt for a given mode
  *
  * @param mode - The tutor mode (SHOW or TEACH)
+ * @param ragContext - Optional RAG context with example questions
  * @returns Complete system prompt string
  */
-export function buildSystemPrompt(mode: TutorMode): string {
+export function buildSystemPrompt(mode: TutorMode, ragContext?: RAGContext): string {
   const modePrompt = mode === 'SHOW' ? SHOW_MODE_PROMPT : TEACH_MODE_PROMPT;
-  return `${SYSTEM_PROMPT_BASE}
+
+  // Build base prompt
+  let prompt = `${SYSTEM_PROMPT_BASE}
 
 ${modePrompt}
 
 ${IMAGE_ANALYSIS_PROMPT}
 
 ${GUARDRAILS_PROMPT}`;
+
+  // Inject RAG context if provided
+  if (ragContext && ragContext.count > 0) {
+    prompt = `${SYSTEM_PROMPT_BASE}
+
+${ragContext.formattedContext}
+
+${modePrompt}
+
+${IMAGE_ANALYSIS_PROMPT}
+
+${GUARDRAILS_PROMPT}`;
+  }
+
+  return prompt;
 }
 
 /**

@@ -11,6 +11,7 @@ import { GoogleGenAI, Content } from '@google/genai';
 import { Message, TutorMode } from '@/types';
 import { buildSystemPrompt } from './prompts';
 import { getUserFriendlyErrorMessage } from './error-utils';
+import { RAGContext } from './rag/types';
 
 // Initialize the Gemini client (server-side only)
 const ai = new GoogleGenAI({
@@ -42,14 +43,16 @@ function messagesToGeminiContent(messages: Message[]): Content[] {
  * @param messages - Conversation history
  * @param mode - Tutor mode (SHOW or TEACH)
  * @param image - Optional base64 image
+ * @param ragContext - Optional RAG context with example questions
  * @returns AsyncGenerator yielding text chunks
  */
 export async function* streamChat(
   messages: Message[],
   mode: TutorMode,
-  image?: string
+  image?: string,
+  ragContext?: RAGContext
 ): AsyncGenerator<string, void, unknown> {
-  const systemPrompt = buildSystemPrompt(mode);
+  const systemPrompt = buildSystemPrompt(mode, ragContext);
 
   // Build contents for the request
   const contents = messagesToGeminiContent(messages);
@@ -100,16 +103,18 @@ export async function* streamChat(
  * @param messages - Conversation history
  * @param mode - Tutor mode (SHOW or TEACH)
  * @param image - Optional base64 image
+ * @param ragContext - Optional RAG context with example questions
  * @returns Complete response text
  */
 export async function sendChat(
   messages: Message[],
   mode: TutorMode,
-  image?: string
+  image?: string,
+  ragContext?: RAGContext
 ): Promise<string> {
   let response = '';
 
-  for await (const chunk of streamChat(messages, mode, image)) {
+  for await (const chunk of streamChat(messages, mode, image, ragContext)) {
     response += chunk;
   }
 
@@ -170,4 +175,43 @@ export async function analyzeImage(
  */
 export function isConfigured(): boolean {
   return Boolean(process.env.GEMINI_API_KEY);
+}
+
+/**
+ * Health check - verifies Gemini API is responding
+ * Returns true if Gemini is available, false if quota exceeded or error
+ *
+ * This is called before running RAG to avoid wasting OpenAI embedding costs
+ * when Gemini is unavailable.
+ */
+export async function checkHealth(): Promise<{ available: boolean; error?: string }> {
+  try {
+    // Send a minimal request to test availability
+    const response = await ai.models.generateContent({
+      model: MODEL_NAME,
+      contents: [{ role: 'user', parts: [{ text: 'ping' }] }],
+    });
+
+    // If we get a response, Gemini is available
+    return { available: true };
+  } catch (error: any) {
+    console.error('Gemini health check failed:', error);
+
+    // Check for quota/rate limit errors
+    const errorMsg = String(error).toLowerCase();
+    if (
+      errorMsg.includes('quota') ||
+      errorMsg.includes('limit') ||
+      errorMsg.includes('exceeded') ||
+      errorMsg.includes('429')
+    ) {
+      return {
+        available: false,
+        error: 'Gemini API quota exceeded. Please try again later.',
+      };
+    }
+
+    // Other errors - might be temporary, allow proceeding
+    return { available: true };
+  }
 }
