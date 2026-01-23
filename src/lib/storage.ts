@@ -8,6 +8,7 @@
 
 import {
   ChatSession,
+  ChatQuizState,
   UserSettings,
   STORAGE_KEYS,
   DEFAULT_SETTINGS,
@@ -651,4 +652,80 @@ function getDefaultQuizProgress(): QuizProgress {
     weakAreas: [],
     lastUpdated: new Date().toISOString(),
   };
+}
+
+// ============ QUIZ IN CHAT STORAGE ============
+
+/**
+ * Save quiz state for a specific chat session
+ */
+export function saveChatQuizState(sessionId: string, quizState: ChatQuizState): void {
+  if (typeof window === 'undefined') return;
+
+  // Get all chat quiz states
+  const allStates = getAllChatQuizStates();
+
+  // Update or add the state for this session
+  allStates[sessionId] = quizState;
+
+  try {
+    localStorage.setItem(STORAGE_KEYS.QUIZ_IN_CHAT, JSON.stringify(allStates));
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'QuotaExceededError') {
+      console.warn('localStorage quota exceeded, pruning old chat quiz states...');
+      // Keep only the 20 most recently updated sessions
+      const entries = Object.entries(allStates);
+      entries.sort((a, b) =>
+        new Date(b[1].startedAt).getTime() - new Date(a[1].startedAt).getTime()
+      );
+      const pruned = Object.fromEntries(entries.slice(0, 20));
+      localStorage.setItem(STORAGE_KEYS.QUIZ_IN_CHAT, JSON.stringify(pruned));
+    } else {
+      console.error('Failed to save chat quiz state:', error);
+    }
+  }
+}
+
+/**
+ * Get quiz state for a specific chat session
+ */
+export function getChatQuizState(sessionId: string): ChatQuizState | undefined {
+  if (typeof window === 'undefined') return undefined;
+
+  const allStates = getAllChatQuizStates();
+  return allStates[sessionId];
+}
+
+/**
+ * Clear quiz state for a specific chat session
+ */
+export function clearChatQuizState(sessionId: string): void {
+  if (typeof window === 'undefined') return;
+
+  const allStates = getAllChatQuizStates();
+  delete allStates[sessionId];
+
+  try {
+    if (Object.keys(allStates).length === 0) {
+      localStorage.removeItem(STORAGE_KEYS.QUIZ_IN_CHAT);
+    } else {
+      localStorage.setItem(STORAGE_KEYS.QUIZ_IN_CHAT, JSON.stringify(allStates));
+    }
+  } catch (error) {
+    console.error('Failed to clear chat quiz state:', error);
+  }
+}
+
+/**
+ * Get all chat quiz states (internal helper)
+ */
+function getAllChatQuizStates(): Record<string, ChatQuizState> {
+  const raw = localStorage.getItem(STORAGE_KEYS.QUIZ_IN_CHAT);
+  if (!raw) return {};
+  try {
+    return JSON.parse(raw) as Record<string, ChatQuizState>;
+  } catch {
+    console.warn('Failed to parse chat quiz states from localStorage');
+    return {};
+  }
 }
