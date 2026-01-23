@@ -17,6 +17,8 @@ import { MessageComposer } from '@/components/MessageComposer';
 import { ModeToggle } from '@/components/ModeToggle';
 import { MessageLoading } from '@/components/LoadingSpinner';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { QuizModeToggle } from '@/components/QuizModeToggle';
+import { QuizPanel } from '@/components/chat/QuizPanel';
 import { ChatSession, TutorMode } from '@/types';
 import {
   getUsername,
@@ -29,6 +31,7 @@ import {
 } from '@/lib/storage';
 import { createMessage, updateSessionTitleFromFirstMessage } from '@/lib/chat';
 import { useDailyQuota } from '@/hooks/useDailyQuota';
+import { useChatQuiz } from '@/hooks';
 
 export default function ChatPage() {
   const router = useRouter();
@@ -36,6 +39,10 @@ export default function ChatPage() {
 
   // Daily quota hook
   const { quotaStatus, countdown, consumeQuota, updateQuotaFromResponse } = useDailyQuota();
+
+  // Chat quiz hook (initialized when we have a session ID)
+  const [quizSessionId, setQuizSessionId] = useState<string>('');
+  const chatQuiz = useChatQuiz({ sessionId: quizSessionId });
 
   // State
   const [username, setUsernameState] = useState<string | null>(null);
@@ -47,6 +54,10 @@ export default function ChatPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // Quiz mode state
+  const [quizModeActive, setQuizModeActive] = useState(false);
+  const [showQuizResults, setShowQuizResults] = useState(false);
 
   // Scroll to bottom of messages (scroll the messages container, not the page)
   const scrollToBottom = useCallback(() => {
@@ -72,17 +83,26 @@ export default function ChatPage() {
     setMode(settings.defaultMode);
 
     // Set current session
+    let initialSession: ChatSession | null = null;
     if (settings.lastActiveSession) {
       const lastSession = storedSessions.find(
         s => s.id === settings.lastActiveSession
       );
       if (lastSession) {
+        initialSession = lastSession;
         setCurrentSession(lastSession);
       } else if (storedSessions.length > 0) {
+        initialSession = storedSessions[0];
         setCurrentSession(storedSessions[0]);
       }
     } else if (storedSessions.length > 0) {
+      initialSession = storedSessions[0];
       setCurrentSession(storedSessions[0]);
+    }
+
+    // Initialize quiz session ID
+    if (initialSession) {
+      setQuizSessionId(initialSession.id);
     }
 
     setMounted(true);
@@ -100,6 +120,7 @@ export default function ChatPage() {
     setSessions(prev => [newSession, ...prev]);
     saveSession(newSession);
     saveSettings({ lastActiveSession: newSession.id });
+    setQuizSessionId(newSession.id);
   }, [mode]);
 
   // Select existing session
@@ -109,6 +130,7 @@ export default function ChatPage() {
       setCurrentSession(session);
       setMode(session.mode);
       saveSettings({ lastActiveSession: sessionId });
+      setQuizSessionId(sessionId);
     }
   }, [sessions]);
 
@@ -171,6 +193,55 @@ export default function ChatPage() {
     );
   }, [currentSession]);
 
+  // ============ QUIZ MODE HANDLERS ============
+
+  // Toggle quiz mode on/off
+  const handleQuizModeToggle = useCallback(async () => {
+    if (quizModeActive) {
+      // Exit quiz mode
+      setQuizModeActive(false);
+      setShowQuizResults(false);
+    } else {
+      // Start quiz mode - start a new quiz
+      if (!quizSessionId) return;
+      await chatQuiz.startQuiz();
+      setQuizModeActive(true);
+      setShowQuizResults(false);
+    }
+  }, [quizModeActive, quizSessionId, chatQuiz]);
+
+  // Handle quiz exit
+  const handleQuizExit = useCallback(() => {
+    chatQuiz.exitQuiz();
+    setQuizModeActive(false);
+    setShowQuizResults(false);
+  }, [chatQuiz]);
+
+  // Handle option selection in quiz
+  const handleQuizSelectOption = useCallback((option: 'A' | 'B' | 'C' | 'D') => {
+    chatQuiz.selectOption(option);
+  }, [chatQuiz]);
+
+  // Handle quiz next button
+  const handleQuizNext = useCallback(() => {
+    const quiz = chatQuiz.quiz;
+    if (!quiz) return;
+
+    // Check if this is the last question and we need to complete
+    const isLastQuestion = quiz.currentIndex === quiz.questions.length - 1;
+
+    if (isLastQuestion && quiz.showFeedback) {
+      // Quiz is complete, show results
+      setShowQuizResults(true);
+      setQuizModeActive(false);
+    } else {
+      // Move to next question or show feedback
+      chatQuiz.nextQuestion();
+    }
+  }, [chatQuiz]);
+
+  // ============ END QUIZ MODE HANDLERS ============
+
   // Send message
   const handleSendMessage = useCallback(
     async (content: string, image?: string) => {
@@ -191,6 +262,7 @@ export default function ChatPage() {
         session = createSession(mode);
         setCurrentSession(session);
         setSessions(prev => [session!, ...prev]);
+        setQuizSessionId(session.id);
       }
 
       // Add user message
@@ -405,9 +477,17 @@ export default function ChatPage() {
             </nav>
           </div>
 
-          {/* Right: Mode toggle, Clear Chat, and theme toggle */}
+          {/* Right: Mode toggle, Quiz Mode toggle, Clear Chat, and theme toggle */}
           <div className="flex items-center gap-2">
             <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
+
+            <QuizModeToggle
+              isActive={quizModeActive}
+              onToggle={handleQuizModeToggle}
+              disabled={isLoading || chatQuiz.isLoading}
+              questionCount={chatQuiz.quiz?.questions.length}
+              currentQuestion={chatQuiz.quiz ? chatQuiz.quiz.currentIndex + 1 : undefined}
+            />
 
             {currentSession && currentSession.messages.length > 0 && (
               <button
@@ -560,6 +640,82 @@ export default function ChatPage() {
           />
         </main>
       </div>
+
+      {/* Quiz Panel - slide-in from right */}
+      {quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
+        <QuizPanel
+          currentQuestion={chatQuiz.currentQuestion}
+          questionNumber={chatQuiz.quiz.currentIndex + 1}
+          totalQuestions={chatQuiz.quiz.questions.length}
+          selectedOption={chatQuiz.quiz.answers[chatQuiz.quiz.currentIndex]?.selected ?? null}
+          showFeedback={chatQuiz.quiz.showFeedback}
+          isLastQuestion={chatQuiz.quiz.currentIndex === chatQuiz.quiz.questions.length - 1}
+          onSelectOption={handleQuizSelectOption}
+          onNext={handleQuizNext}
+          onExit={handleQuizExit}
+          isVisible={quizModeActive}
+        />
+      )}
+
+      {/* Quiz Results Modal */}
+      {showQuizResults && chatQuiz.quiz && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl max-w-md w-full p-6">
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                <svg
+                  className="w-8 h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+                Quiz Complete!
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 mb-6">
+                You've completed the quiz. Great job practicing!
+              </p>
+
+              {/* Score */}
+              <div className="bg-slate-100 dark:bg-slate-700 rounded-xl p-4 mb-6">
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                  {chatQuiz.quiz.answers.filter(a => a.isCorrect).length}/{chatQuiz.quiz.questions.length}
+                </div>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  Questions Correct
+                </p>
+              </div>
+
+              {/* Actions */}
+              <div className="flex gap-3">
+                <button
+                  onClick={handleQuizExit}
+                  className="flex-1 py-3 rounded-lg font-semibold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
+                >
+                  Close
+                </button>
+                <button
+                  onClick={async () => {
+                    handleQuizExit();
+                    await handleQuizModeToggle();
+                  }}
+                  className="flex-1 py-3 rounded-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg transition-all"
+                >
+                  Try Again
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
