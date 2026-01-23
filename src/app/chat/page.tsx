@@ -67,7 +67,7 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Daily quota hook
-  const { quotaStatus, countdown, consumeQuota } = useDailyQuota();
+  const { quotaStatus, countdown, consumeQuota, updateQuotaFromResponse } = useDailyQuota();
 
   // State
   const [username, setUsernameState] = useState<string | null>(null);
@@ -259,8 +259,13 @@ export default function ChatPage() {
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
+          // Update quota status from response headers even on error
+          updateQuotaFromResponse(response);
           throw new Error(errorData.error || 'Failed to get response');
         }
+
+        // Update quota status from response headers
+        updateQuotaFromResponse(response);
 
         // Handle streaming response
         const reader = response.body?.getReader();
@@ -315,7 +320,7 @@ export default function ChatPage() {
         setIsLoading(false);
       }
     },
-    [currentSession, mode, consumeQuota, countdown]
+    [currentSession, mode, consumeQuota, countdown, updateQuotaFromResponse]
   );
 
   // Loading state

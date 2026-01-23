@@ -9,7 +9,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI, Content } from '@google/genai';
 import { buildQuizSystemPrompt } from '@/lib/prompts';
-import { checkRateLimit, getClientIp } from '@/lib/rateLimit';
+import { checkRateLimit, getClientIp, getQuotaStatus } from '@/lib/rateLimit';
 import { getUserFriendlyErrorMessage } from '@/lib/error-utils';
 
 export const runtime = 'nodejs';
@@ -194,7 +194,9 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'text/plain; charset=utf-8',
         'Transfer-Encoding': 'chunked',
         'X-RateLimit-Remaining': String(rateLimitResult.remaining),
-        'X-Daily-Quota-Limit': '50',
+        'X-Daily-Quota-Remaining': String(rateLimitResult.dailyRemaining ?? rateLimitResult.quotaStatus?.remaining ?? 50),
+        'X-Daily-Quota-Limit': String(rateLimitResult.quotaStatus?.limit ?? 50),
+        'X-Daily-Quota-Resets-At': rateLimitResult.quotaStatus?.resetsAt?.toISOString() ?? '',
       },
     });
   } catch (error) {
@@ -226,4 +228,30 @@ export async function GET() {
     { error: 'Method not allowed. Use POST.' },
     { status: 405 }
   );
+}
+
+// Handle OPTIONS for quota checking (without consuming)
+export async function OPTIONS(request: NextRequest) {
+  try {
+    const ip = getClientIp(request);
+    const quotaStatus = await getQuotaStatus(ip);
+
+    return NextResponse.json(
+      { quota: 'ok' },
+      {
+        status: 200,
+        headers: {
+          'X-Daily-Quota-Remaining': String(quotaStatus.remaining),
+          'X-Daily-Quota-Limit': String(quotaStatus.limit),
+          'X-Daily-Quota-Resets-At': quotaStatus.resetsAt.toISOString(),
+        },
+      }
+    );
+  } catch (error) {
+    console.error('Quota check error:', error);
+    return NextResponse.json(
+      { error: 'Failed to check quota status' },
+      { status: 500 }
+    );
+  }
 }

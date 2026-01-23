@@ -2,17 +2,12 @@
  * useDailyQuota Hook
  * AI Math Tutor v2
  *
- * Client-side hook for managing daily chat quota.
- * Provides quota status and countdown timer functionality.
+ * Client-side hook for displaying daily chat quota.
+ * Quota is tracked server-side in Supabase; this hook displays the status.
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import {
-  checkDailyQuota,
-  getQuotaStatus,
-  getTimeUntilReset,
-  resetDailyQuota,
-} from '@/lib/dailyQuota';
+import { getTimeUntilReset } from '@/lib/dailyQuota';
 
 export interface QuotaStatus {
   used: number;
@@ -30,43 +25,112 @@ export interface QuotaCountdown {
 }
 
 /**
- * Hook for managing daily chat quota
+ * Parse quota status from API response headers
+ */
+function parseQuotaFromHeaders(headers: Headers): QuotaStatus | null {
+  const remaining = headers.get('X-Daily-Quota-Remaining');
+  const limit = headers.get('X-Daily-Quota-Limit');
+  const resetsAt = headers.get('X-Daily-Quota-Resets-At');
+
+  if (remaining !== null && limit !== null) {
+    const remainingNum = parseInt(remaining, 10);
+    const limitNum = parseInt(limit, 10);
+    const used = limitNum - remainingNum;
+
+    return {
+      used,
+      remaining: remainingNum,
+      limit: limitNum,
+      resetAt: resetsAt || undefined,
+      exceeded: remainingNum <= 0,
+    };
+  }
+
+  return null;
+}
+
+/**
+ * Hook for managing daily chat quota display
  *
  * @returns Object with quota status, countdown, and control functions
  */
 export function useDailyQuota() {
-  const [quotaStatus, setQuotaStatus] = useState<QuotaStatus>(() => getQuotaStatus());
+  const [quotaStatus, setQuotaStatus] = useState<QuotaStatus>({
+    used: 0,
+    remaining: 50,
+    limit: 50,
+    exceeded: false,
+  });
   const [countdown, setCountdown] = useState<QuotaCountdown | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Update quota status from localStorage
-  const refreshQuotaStatus = useCallback(() => {
-    const status = getQuotaStatus();
-    setQuotaStatus(status);
+  // Update quota status from API response
+  const updateQuotaFromResponse = useCallback((response: Response) => {
+    const status = parseQuotaFromHeaders(response.headers);
+    if (status) {
+      setQuotaStatus(status);
 
-    // Update countdown if quota is exceeded
-    if (status.exceeded && status.resetAt) {
-      setCountdown(getTimeUntilReset(status.resetAt));
-    } else {
-      setCountdown(null);
+      // Update countdown if quota is exceeded
+      if (status.exceeded && status.resetAt) {
+        setCountdown(getTimeUntilReset(status.resetAt));
+      } else {
+        setCountdown(null);
+      }
     }
   }, []);
 
-  // Try to consume a quota slot
-  const consumeQuota = useCallback((): { allowed: boolean; resetAt?: string } => {
-    const result = checkDailyQuota();
-    refreshQuotaStatus();
-    return {
-      allowed: result.allowed,
-      resetAt: result.resetAt,
-    };
-  }, [refreshQuotaStatus]);
+  // Refresh quota status by making a lightweight API call
+  const refreshQuotaStatus = useCallback(async () => {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'OPTIONS',
+      });
 
-  // Reset quota (for testing)
+      if (response.ok) {
+        const status = parseQuotaFromHeaders(response.headers);
+        if (status) {
+          setQuotaStatus(status);
+
+          if (status.exceeded && status.resetAt) {
+            setCountdown(getTimeUntilReset(status.resetAt));
+          } else {
+            setCountdown(null);
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Failed to refresh quota status:', error);
+    }
+  }, []);
+
+  // Check if quota allows a request (client-side estimate)
+  // Actual enforcement happens server-side
+  const consumeQuota = useCallback((): { allowed: boolean } => {
+    // Client-side prediction - actual check happens server-side
+    const allowed = quotaStatus.remaining > 0;
+
+    if (allowed) {
+      // Optimistically update
+      setQuotaStatus(prev => ({
+        ...prev,
+        used: prev.used + 1,
+        remaining: Math.max(0, prev.remaining - 1),
+      }));
+    }
+
+    return { allowed };
+  }, [quotaStatus.remaining]);
+
+  // Reset quota (for testing - doesn't affect server)
   const resetQuota = useCallback(() => {
-    resetDailyQuota();
-    refreshQuotaStatus();
-  }, [refreshQuotaStatus]);
+    setQuotaStatus({
+      used: 0,
+      remaining: 50,
+      limit: 50,
+      exceeded: false,
+    });
+    setCountdown(null);
+  }, []);
 
   // Set up countdown timer when quota is exceeded
   useEffect(() => {
@@ -97,16 +161,9 @@ export function useDailyQuota() {
     };
   }, [quotaStatus.exceeded, quotaStatus.resetAt, refreshQuotaStatus]);
 
-  // Listen for storage changes from other tabs
+  // Initial quota fetch on mount
   useEffect(() => {
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === 'math-tutor-daily-quota') {
-        refreshQuotaStatus();
-      }
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
+    refreshQuotaStatus();
   }, [refreshQuotaStatus]);
 
   return {
@@ -115,5 +172,6 @@ export function useDailyQuota() {
     consumeQuota,
     refreshQuotaStatus,
     resetQuota,
+    updateQuotaFromResponse,
   };
 }

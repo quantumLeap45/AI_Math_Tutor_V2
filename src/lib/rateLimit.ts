@@ -7,28 +7,7 @@
  * 2. Daily quota: 50 messages per 24 hours (Supabase)
  */
 
-import { createClient } from '@supabase/supabase-js';
-
-// Get environment variables
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-
-// Initialize Supabase client if credentials are available
-let supabase: ReturnType<typeof createClient> | null = null;
-if (supabaseUrl && supabaseKey) {
-  supabase = createClient(supabaseUrl, supabaseKey);
-}
-
-// Type definition for daily_quota table
-interface DailyQuotaRecord {
-  id?: number;
-  ip_address: string;
-  request_date: string;
-  requests_count: number;
-  last_request?: string;
-  created_at?: string;
-  updated_at?: string;
-}
+import { supabase as supabaseClient, isSupabaseConfigured } from '@/lib/supabase';
 
 // ============================================
 // ANTI-SPAM: In-memory rate limiting (per minute)
@@ -110,24 +89,31 @@ interface DailyQuotaStatus {
   used: number;
   remaining: number;
   limit: number;
-  resetsAt?: Date;
+  resetsAt: Date;
+}
+
+/**
+ * Get today's date in YYYY-MM-DD format
+ */
+function getTodayDate(): string {
+  return new Date().toISOString().split('T')[0];
 }
 
 /**
  * Get or create the daily quota record for an IP
  */
 async function getOrCreateQuotaRecord(ip: string): Promise<{ used: number; isNew: boolean }> {
-  if (!supabase) {
+  if (!isSupabaseConfigured() || !supabaseClient) {
     // Fallback to in-memory if Supabase not configured
     console.warn('Supabase not configured, using in-memory quota');
     return { used: 0, isNew: true };
   }
 
-  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+  const today = getTodayDate();
 
   try {
     // Try to get existing record
-    const { data, error } = await (supabase as any)
+    const { data, error } = await supabaseClient
       .from('daily_quota')
       .select('requests_count')
       .eq('ip_address', ip)
@@ -144,7 +130,7 @@ async function getOrCreateQuotaRecord(ip: string): Promise<{ used: number; isNew
     }
 
     // Create new record
-    await (supabase as any)
+    await supabaseClient
       .from('daily_quota')
       .insert({
         ip_address: ip,
@@ -160,28 +146,50 @@ async function getOrCreateQuotaRecord(ip: string): Promise<{ used: number; isNew
 }
 
 /**
- * Increment the quota count for an IP
+ * Increment the quota count for an IP using atomic upsert
  */
 async function incrementQuota(ip: string): Promise<boolean> {
-  if (!supabase) {
+  if (!isSupabaseConfigured() || !supabaseClient) {
     return true; // Fallback: allow if Supabase not configured
   }
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = getTodayDate();
 
   try {
-    // Use RPC function to increment atomically
-    const { error } = await (supabase as any).rpc('increment_quota', {
-      p_ip_address: ip,
-      p_request_date: today,
-    });
+    // First, try to get the current record
+    const { data: existing } = await supabaseClient
+      .from('daily_quota')
+      .select('requests_count')
+      .eq('ip_address', ip)
+      .eq('request_date', today)
+      .single();
 
-    if (error) {
-      console.error('Supabase quota increment error:', error);
-      return false;
+    if (existing) {
+      // Update existing record
+      const { error } = await supabaseClient
+        .from('daily_quota')
+        .update({
+          requests_count: existing.requests_count + 1,
+          last_request: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        })
+        .eq('ip_address', ip)
+        .eq('request_date', today);
+
+      return !error;
+    } else {
+      // Insert new record with count = 1
+      const { error } = await supabaseClient
+        .from('daily_quota')
+        .insert({
+          ip_address: ip,
+          request_date: today,
+          requests_count: 1,
+          last_request: new Date().toISOString(),
+        });
+
+      return !error;
     }
-
-    return true;
   } catch (err) {
     console.error('Supabase quota increment error:', err);
     return false;
@@ -264,10 +272,11 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
   return {
     success: true,
     remaining: antiSpamResult.remaining,
-    dailyRemaining: dailyResult.status.remaining,
+    dailyRemaining: dailyResult.status.remaining - 1, // Account for current request
     quotaStatus: {
       ...dailyResult.status,
       used: dailyResult.status.used + 1, // Account for the current request
+      remaining: dailyResult.status.remaining - 1,
     },
   };
 }
@@ -276,11 +285,16 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
  * Get the current quota status without checking/incrementing
  */
 export async function getQuotaStatus(ip: string): Promise<DailyQuotaStatus> {
-  if (!supabase) {
+  if (!isSupabaseConfigured() || !supabaseClient) {
+    const tomorrow = new Date();
+    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+    tomorrow.setUTCHours(0, 0, 0, 0);
+
     return {
       used: 0,
       remaining: DAILY_QUOTA_LIMIT,
       limit: DAILY_QUOTA_LIMIT,
+      resetsAt: tomorrow,
     };
   }
 

@@ -8,7 +8,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { streamChat, isConfigured, checkHealth } from '@/lib/gemini';
-import { checkRateLimit, getClientIp } from '@/lib/rateLimit';
+import { checkRateLimit, getClientIp, getQuotaStatus } from '@/lib/rateLimit';
 import { Message, TutorMode } from '@/types';
 import { getRAGContext, detectUserIntent } from '@/lib/rag/search';
 import { isPineconeConfigured } from '@/lib/rag/pinecone';
@@ -197,6 +197,7 @@ export async function POST(request: NextRequest) {
         'X-RateLimit-Remaining': String(rateLimitResult.remaining || 0),
         'X-Daily-Quota-Remaining': String(rateLimitResult.dailyRemaining ?? rateLimitResult.quotaStatus?.remaining ?? 50),
         'X-Daily-Quota-Limit': String(rateLimitResult.quotaStatus?.limit ?? 50),
+        'X-Daily-Quota-Resets-At': rateLimitResult.quotaStatus?.resetsAt?.toISOString() ?? '',
       },
     });
   } catch (error) {
@@ -228,4 +229,30 @@ export async function GET() {
     { error: 'Method not allowed. Use POST.' },
     { status: 405 }
   );
+}
+
+// Handle OPTIONS for quota checking (without consuming)
+export async function OPTIONS(request: NextRequest) {
+  try {
+    const ip = getClientIp(request);
+    const quotaStatus = await getQuotaStatus(ip);
+
+    return NextResponse.json(
+      { quota: 'ok' },
+      {
+        status: 200,
+        headers: {
+          'X-Daily-Quota-Remaining': String(quotaStatus.remaining),
+          'X-Daily-Quota-Limit': String(quotaStatus.limit),
+          'X-Daily-Quota-Resets-At': quotaStatus.resetsAt.toISOString(),
+        },
+      }
+    );
+  } catch (error) {
+    console.error('Quota check error:', error);
+    return NextResponse.json(
+      { error: 'Failed to check quota status' },
+      { status: 500 }
+    );
+  }
 }
