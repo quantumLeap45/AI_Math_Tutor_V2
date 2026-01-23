@@ -47,14 +47,6 @@ export function LoadingDots() {
   );
 }
 
-interface SkeletonProps {
-  className?: string;
-}
-
-export function Skeleton({ className = '' }: SkeletonProps) {
-  return <div className={`animate-pulse bg-slate-200 dark:bg-slate-700 rounded ${className}`} />;
-}
-
 export function MessageLoading() {
   return (
     <div className="flex justify-start mb-4">

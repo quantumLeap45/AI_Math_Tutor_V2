@@ -134,48 +134,6 @@ export function createMessage(
   };
 }
 
-/**
- * Count user attempts in a conversation (for TEACH mode)
- * An attempt is when the user shares their working or asks for help
- *
- * @param messages - Array of messages in the conversation
- * @returns Number of user attempts
- */
-export function countUserAttempts(messages: Message[]): number {
-  return messages.filter(m => m.role === 'user').length;
-}
-
-/**
- * Check if the user is asking for the answer directly
- *
- * @param message - User's message content
- * @returns True if asking for answer
- */
-export function isAskingForAnswer(message: string): boolean {
-  const askingPatterns = [
-    /\bshow\s*(me\s*)?the\s*answer/i,
-    /\btell\s*(me\s*)?the\s*answer/i,
-    /\bgive\s*(me\s*)?the\s*answer/i,
-    /\bwhat('s| is)\s*the\s*answer/i,
-    /\bi\s*give\s*up/i,
-    /\bi\s*don'?t\s*know/i,
-    /\bjust\s*tell\s*me/i,
-  ];
-
-  return askingPatterns.some(pattern => pattern.test(message));
-}
-
-/**
- * Sort sessions by most recently updated
- *
- * @param sessions - Array of sessions
- * @returns Sorted sessions (most recent first)
- */
-export function sortSessionsByRecent(sessions: ChatSession[]): ChatSession[] {
-  return [...sessions].sort(
-    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-  );
-}
 
 /**
  * Validate image file for upload
