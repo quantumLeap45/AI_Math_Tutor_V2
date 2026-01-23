@@ -1,7 +1,11 @@
 // AI Math Tutor v2 - Type Definitions
 
+// Import quiz types for use in this file
+import type { QuizQuestion } from './quiz';
+
 // Re-export quiz types for convenience
 export * from './quiz';
+export type { QuizQuestion } from './quiz';
 
 /**
  * Tutor mode for AI responses
@@ -52,6 +56,45 @@ export interface ChatSession {
   createdAt: string;
   /** ISO 8601 timestamp when session was last updated */
   updatedAt: string;
+}
+
+/**
+ * Active quiz state within a chat session
+ */
+export interface ChatQuizState {
+  /** Unique quiz identifier */
+  id: string;
+  /** Quiz configuration */
+  config: {
+    level: 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
+    topics: string[];
+    difficulty: 'easy' | 'medium' | 'hard' | 'all';
+    questionCount: 5 | 10 | 15 | 20;
+  };
+  /** Questions in the quiz */
+  questions: QuizQuestion[];
+  /** User's answers (indexed by question position) */
+  answers: Array<{
+    selected: 'A' | 'B' | 'C' | 'D' | null;
+    isCorrect: boolean;
+    answeredAt: string;
+  }>;
+  /** Current question index (0-based) */
+  currentIndex: number;
+  /** Whether feedback is shown for current question */
+  showFeedback: boolean;
+  /** ISO 8601 timestamp when quiz started */
+  startedAt: string;
+  /** Whether quiz is completed */
+  isCompleted: boolean;
+}
+
+/**
+ * Chat session with optional embedded quiz
+ */
+export interface ChatSessionWithQuiz extends ChatSession {
+  /** Active quiz in this session (optional) */
+  activeQuiz?: ChatQuizState;
 }
 
 /**
@@ -108,6 +151,7 @@ export const STORAGE_KEYS = {
   SESSIONS: 'math-tutor-sessions',
   SETTINGS: 'math-tutor-settings',
   VERSION: 'math-tutor-version',
+  QUIZ_IN_CHAT: 'math-tutor-quiz-in-chat',
 } as const;
 
 /**
