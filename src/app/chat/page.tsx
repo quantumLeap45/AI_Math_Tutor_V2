@@ -468,12 +468,6 @@ export default function ChatPage() {
                 Chat
                 <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-500 rounded-full" />
               </Link>
-              <Link
-                href="/quiz"
-                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                Quiz
-              </Link>
             </nav>
           </div>
 
