@@ -4,3 +4,5 @@
  */
 
 export { QuizPanel } from './QuizPanel';
+export { QuizSummaryCard } from './QuizSummaryCard';
+export { QuizReviewModal } from './QuizReviewModal';

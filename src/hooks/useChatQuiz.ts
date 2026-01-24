@@ -27,6 +27,8 @@ interface UseChatQuizState {
   error: string | null;
   /** Current question */
   currentQuestion: QuizQuestion | null;
+  /** Completed quizzes for review (stored in memory) */
+  completedQuizzes: Array<ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string }>;
 }
 
 interface UseChatQuizActions {
@@ -80,6 +82,24 @@ function calculateScore(quiz: ChatQuizState): number {
   return Math.round((correct / quiz.questions.length) * 100);
 }
 
+/**
+ * Format time taken in human-readable form
+ */
+function formatTimeTaken(startedAt: string, completedAt: string): string {
+  const start = new Date(startedAt).getTime();
+  const end = new Date(completedAt).getTime();
+  const diffMs = end - start;
+
+  const seconds = Math.floor(diffMs / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+
+  if (minutes > 0) {
+    return `${minutes}m ${remainingSeconds}s`;
+  }
+  return `${remainingSeconds}s`;
+}
+
 // ============ HOOK IMPLEMENTATION ============
 
 /**
@@ -92,6 +112,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   const [quiz, setQuiz] = useState<ChatQuizState | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [completedQuizzes, setCompletedQuizzes] = useState<Array<ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string }>>([]);
 
   // Derive current question
   const currentQuestion = quiz ? quiz.questions[quiz.currentIndex] || null : null;
@@ -230,16 +251,22 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
         // Mark quiz as completed
         const score = calculateScore(prev);
         const correctCount = prev.answers.filter(a => a.isCorrect).length;
+        const completedAt = new Date().toISOString();
 
-        return {
+        const completedQuiz = {
           ...prev,
           isCompleted: true,
           currentIndex: prev.questions.length - 1,
-          // Add completion metadata
-          completedAt: new Date().toISOString(),
+          completedAt,
           score,
           correctCount,
-        } as ChatQuizState & { completedAt: string; score: number; correctCount: number };
+          timeTaken: formatTimeTaken(prev.startedAt, completedAt),
+        } as ChatQuizState & { completedAt: string; score: number; correctCount: number; timeTaken: string };
+
+        // Store in completed quizzes for review
+        setCompletedQuizzes(prev => [...prev, completedQuiz]);
+
+        return completedQuiz;
       }
 
       // Move to next question and hide feedback
@@ -287,6 +314,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     isLoading,
     error,
     currentQuestion,
+    completedQuizzes,
 
     // Actions
     startQuiz,
