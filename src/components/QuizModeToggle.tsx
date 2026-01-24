@@ -21,6 +21,8 @@ interface QuizModeToggleProps {
   questionCount?: number;
   /** Current question number (displays when active) */
   currentQuestion?: number;
+  /** Whether a quiz is currently running (button is locked) */
+  isLocked?: boolean;
 }
 
 export function QuizModeToggle({
@@ -29,24 +31,25 @@ export function QuizModeToggle({
   disabled = false,
   questionCount,
   currentQuestion,
+  isLocked = false,
 }: QuizModeToggleProps) {
   return (
     <button
       type="button"
       onClick={onToggle}
-      disabled={disabled}
+      disabled={disabled || isLocked}
       className={`
         relative px-4 py-2 rounded-lg font-medium text-sm
         transition-all duration-200 flex items-center gap-2
-        ${disabled
-          ? 'opacity-50 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500'
+        ${disabled || isLocked
+          ? 'opacity-70 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500'
           : isActive
           ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:shadow-lg'
           : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
         }
       `}
       aria-pressed={isActive}
-      title={isActive ? 'Exit quiz mode' : 'Start quiz mode'}
+      title={isLocked ? 'Quiz running - use Exit Quiz button to close' : isActive ? 'Exit quiz mode' : 'Start quiz mode'}
     >
       {/* Quiz icon */}
       <svg
@@ -81,8 +84,23 @@ export function QuizModeToggle({
       )}
 
       {/* Active indicator dot */}
-      {isActive && (
+      {isActive && !isLocked && (
         <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white dark:border-slate-900 animate-pulse" />
+      )}
+
+      {/* Lock icon when quiz is running */}
+      {isLocked && (
+        <svg
+          className="absolute -top-1 -right-1 w-3 h-3 text-slate-500"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fillRule="evenodd"
+            d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+            clipRule="evenodd"
+          />
+        </svg>
       )}
     </button>
   );

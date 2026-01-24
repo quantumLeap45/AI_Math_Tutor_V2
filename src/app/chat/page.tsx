@@ -113,21 +113,21 @@ export default function ChatPage() {
     scrollToBottom();
   }, [currentSession?.messages, scrollToBottom]);
 
-  // Auto-collapse sidebar when quiz mode is active
-  const [previousSidebarCollapsed, setPreviousSidebarCollapsed] = useState(false);
+  // Auto-collapse sidebar when quiz mode is activated (once)
+  const [hasAutoCollapsed, setHasAutoCollapsed] = useState(false);
 
   useEffect(() => {
-    if (quizModeActive && !sidebarCollapsed) {
-      // Save current state and collapse
-      setPreviousSidebarCollapsed(false);
+    if (quizModeActive && !hasAutoCollapsed) {
+      // Save current state and collapse (only once when quiz activates)
       setSidebarCollapsed(true);
+      setHasAutoCollapsed(true);
       // Also close mobile sidebar if open
       setSidebarOpen(false);
-    } else if (!quizModeActive && previousSidebarCollapsed === false) {
-      // Restore previous state (only if it wasn't already collapsed)
-      // Don't auto-restore - let user control it manually after quiz ends
+    } else if (!quizModeActive) {
+      // Reset the auto-collapse flag when quiz ends
+      setHasAutoCollapsed(false);
     }
-  }, [quizModeActive, sidebarCollapsed]);
+  }, [quizModeActive, hasAutoCollapsed]);
 
   // Create new chat session
   const handleNewChat = useCallback(() => {
@@ -213,17 +213,15 @@ export default function ChatPage() {
 
   // Toggle quiz mode on/off
   const handleQuizModeToggle = useCallback(async () => {
-    if (quizModeActive) {
-      // Exit quiz mode
-      chatQuiz.exitQuiz();
-      setQuizModeActive(false);
-      setShowQuizResults(false);
-    } else {
-      // Activate quiz mode - user will type their request
-      setQuizModeActive(true);
-      setShowQuizResults(false);
+    // If quiz is active, button is locked - do nothing (user must use Exit Quiz button)
+    if (quizModeActive || chatQuiz.quiz) {
+      // Quiz is running - button is locked, ignore click
+      return;
     }
-  }, [quizModeActive, chatQuiz]);
+    // Activate quiz mode - user will type their request
+    setQuizModeActive(true);
+    setShowQuizResults(false);
+  }, [quizModeActive, chatQuiz.quiz]);
 
   // Handle quiz exit
   const handleQuizExit = useCallback(() => {
@@ -555,6 +553,7 @@ export default function ChatPage() {
               disabled={isLoading || chatQuiz.isLoading}
               questionCount={chatQuiz.quiz?.questions.length}
               currentQuestion={chatQuiz.quiz ? chatQuiz.quiz.currentIndex + 1 : undefined}
+              isLocked={!!chatQuiz.quiz}
             />
 
             {currentSession && currentSession.messages.length > 0 && (
@@ -605,7 +604,7 @@ export default function ChatPage() {
         {/* Content wrapper: Chat area + optional Quiz Panel */}
         <div className="flex-1 flex overflow-hidden">
           {/* Chat area */}
-          <main className="flex-1 flex flex-col overflow-hidden min-w-0">
+          <main className="flex-1 flex flex-col overflow-hidden min-w-0 min-w-[300px]">
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4">
             {!currentSession || currentSession.messages.length === 0 ? (
