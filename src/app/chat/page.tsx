@@ -113,6 +113,22 @@ export default function ChatPage() {
     scrollToBottom();
   }, [currentSession?.messages, scrollToBottom]);
 
+  // Auto-collapse sidebar when quiz mode is active
+  const [previousSidebarCollapsed, setPreviousSidebarCollapsed] = useState(false);
+
+  useEffect(() => {
+    if (quizModeActive && !sidebarCollapsed) {
+      // Save current state and collapse
+      setPreviousSidebarCollapsed(false);
+      setSidebarCollapsed(true);
+      // Also close mobile sidebar if open
+      setSidebarOpen(false);
+    } else if (!quizModeActive && previousSidebarCollapsed === false) {
+      // Restore previous state (only if it wasn't already collapsed)
+      // Don't auto-restore - let user control it manually after quiz ends
+    }
+  }, [quizModeActive, sidebarCollapsed]);
+
   // Create new chat session
   const handleNewChat = useCallback(() => {
     const newSession = createSession(mode);
@@ -586,8 +602,10 @@ export default function ChatPage() {
           onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
         />
 
-        {/* Chat area */}
-        <main className="flex-1 flex flex-col overflow-hidden">
+        {/* Content wrapper: Chat area + optional Quiz Panel */}
+        <div className="flex-1 flex overflow-hidden">
+          {/* Chat area */}
+          <main className="flex-1 flex flex-col overflow-hidden min-w-0">
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4">
             {!currentSession || currentSession.messages.length === 0 ? (
@@ -635,7 +653,7 @@ export default function ChatPage() {
               </div>
             ) : (
               // Messages list
-              <div className="max-w-3xl mx-auto">
+              <div className={quizModeActive ? "max-w-2xl mx-auto px-4" : "max-w-3xl mx-auto"}>
                 {currentSession.messages.map((message, index) => (
                   <MessageBubble
                     key={message.id}
@@ -712,23 +730,24 @@ export default function ChatPage() {
             }
           />
         </main>
-      </div>
 
-      {/* Quiz Panel - slide-in from right */}
-      {quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
-        <QuizPanel
-          currentQuestion={chatQuiz.currentQuestion}
-          questionNumber={chatQuiz.quiz.currentIndex + 1}
-          totalQuestions={chatQuiz.quiz.questions.length}
-          selectedOption={chatQuiz.quiz.answers[chatQuiz.quiz.currentIndex]?.selected ?? null}
-          showFeedback={chatQuiz.quiz.showFeedback}
-          isLastQuestion={chatQuiz.quiz.currentIndex === chatQuiz.quiz.questions.length - 1}
-          onSelectOption={handleQuizSelectOption}
-          onNext={handleQuizNext}
-          onExit={handleQuizExit}
-          isVisible={quizModeActive}
-        />
-      )}
+        {/* Quiz Panel - side-by-side with chat */}
+        {quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
+          <QuizPanel
+            currentQuestion={chatQuiz.currentQuestion}
+            questionNumber={chatQuiz.quiz.currentIndex + 1}
+            totalQuestions={chatQuiz.quiz.questions.length}
+            selectedOption={chatQuiz.quiz.answers[chatQuiz.quiz.currentIndex]?.selected ?? null}
+            showFeedback={chatQuiz.quiz.showFeedback}
+            isLastQuestion={chatQuiz.quiz.currentIndex === chatQuiz.quiz.questions.length - 1}
+            onSelectOption={handleQuizSelectOption}
+            onNext={handleQuizNext}
+            onExit={handleQuizExit}
+            isVisible={quizModeActive}
+          />
+        )}
+        </div>
+      </div>
 
       {/* Quiz Results Modal */}
       {showQuizResults && chatQuiz.quiz && (

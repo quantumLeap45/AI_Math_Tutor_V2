@@ -51,11 +51,11 @@ export function QuizPanel({
   return (
     <div
       className={`
-        fixed right-0 top-16 bottom-0 w-[450px] bg-white dark:bg-slate-800
+        w-[450px] bg-white dark:bg-slate-800
         border-l border-slate-200 dark:border-slate-700
-        transform transition-transform duration-300 ease-in-out
-        ${isVisible ? 'translate-x-0' : 'translate-x-full'}
-        z-30 flex flex-col
+        flex flex-col transition-all duration-300 ease-in-out
+        ${isVisible ? 'opacity-100' : 'opacity-0 -translate-x-full'}
+        ${!isVisible ? 'pointer-events-none' : ''}
       `}
       aria-label="Quiz panel"
     >
