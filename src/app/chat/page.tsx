@@ -18,7 +18,7 @@ import { ModeToggle } from '@/components/ModeToggle';
 import { MessageLoading } from '@/components/LoadingSpinner';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { QuizModeToggle } from '@/components/QuizModeToggle';
-import { QuizPanel } from '@/components/chat/QuizPanel';
+import { QuizPanel } from '@/components/chat';
 import { ChatSession, TutorMode } from '@/types';
 import {
   getUsername,
@@ -199,16 +199,15 @@ export default function ChatPage() {
   const handleQuizModeToggle = useCallback(async () => {
     if (quizModeActive) {
       // Exit quiz mode
+      chatQuiz.exitQuiz();
       setQuizModeActive(false);
       setShowQuizResults(false);
     } else {
-      // Start quiz mode - start a new quiz
-      if (!quizSessionId) return;
-      await chatQuiz.startQuiz();
+      // Activate quiz mode - user will type their request
       setQuizModeActive(true);
       setShowQuizResults(false);
     }
-  }, [quizModeActive, quizSessionId, chatQuiz]);
+  }, [quizModeActive, chatQuiz]);
 
   // Handle quiz exit
   const handleQuizExit = useCallback(() => {
@@ -255,6 +254,65 @@ export default function ChatPage() {
       }
 
       setError(null);
+
+      // Check if user is requesting a quiz in quiz mode
+      if (quizModeActive && currentSession) {
+        // Parse the request for quiz parameters
+        const levelMatch = content.match(/\b(P[1-6])\b/i);
+        const topic = content.replace(/quiz|question|give me|generate|create|questions?/gi, '').trim() || 'math';
+
+        const level = (levelMatch?.[1]?.toUpperCase() || 'P2') as 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
+        const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;
+
+        // Add user message to chat (note: images are not supported in quiz mode)
+        const userMessage = createMessage('user', content);
+        const updatedSession = {
+          ...currentSession,
+          messages: [...currentSession.messages, userMessage],
+          updatedAt: new Date().toISOString(),
+        };
+
+        setCurrentSession(updatedSession);
+        saveSession(updatedSession);
+        setSessions(prev =>
+          prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
+        );
+
+        // Call startQuiz from the hook (it handles the API call internally)
+        setIsLoading(true);
+        try {
+          await chatQuiz.startQuiz({
+            level,
+            topics: [topic],
+            difficulty: 'all',
+            questionCount,
+          });
+
+          // Add AI message confirming quiz start
+          const aiMessage = createMessage(
+            'assistant',
+            `I've generated ${questionCount} ${level} questions on **${topic}**. Let's begin! You can ask me questions while you work through them.`
+          );
+
+          const sessionWithAI = {
+            ...updatedSession,
+            messages: [...updatedSession.messages, aiMessage],
+            updatedAt: new Date().toISOString(),
+          };
+
+          setCurrentSession(sessionWithAI);
+          saveSession(sessionWithAI);
+          setSessions(prev =>
+            prev.map(s => (s.id === sessionWithAI.id ? sessionWithAI : s))
+          );
+        } catch (error) {
+          console.error('Quiz generation error:', error);
+          setError('Failed to generate quiz. Please try again.');
+        } finally {
+          setIsLoading(false);
+        }
+        return;
+      }
 
       // Create session if needed
       let session = currentSession;
@@ -361,7 +419,7 @@ export default function ChatPage() {
         setIsLoading(false);
       }
     },
-    [currentSession, mode, consumeQuota, countdown, updateQuotaFromResponse]
+    [currentSession, mode, consumeQuota, countdown, updateQuotaFromResponse, quizModeActive, chatQuiz]
   );
 
   // Loading state
@@ -537,23 +595,42 @@ export default function ChatPage() {
               <div className="h-full flex items-center justify-center">
                 <div className="text-center max-w-md p-6">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                    <span className="text-white text-2xl">M</span>
+                    {quizModeActive ? (
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    ) : (
+                      <span className="text-white text-2xl">M</span>
+                    )}
                   </div>
                   <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                    Ready to learn math!
+                    {quizModeActive ? 'Quiz Mode Active!' : 'Ready to learn math!'}
                   </h2>
                   <p className="text-slate-600 dark:text-slate-400 mb-4">
-                    Ask me any Primary 1-6 math question. You can type or upload a
-                    photo of your homework.
+                    {quizModeActive
+                      ? 'Type your quiz request below. Tell me the topic, level, and how many questions you want.'
+                      : 'Ask me any Primary 1-6 math question. You can type or upload a photo of your homework.'
+                    }
                   </p>
-                  <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                    <p>Try asking:</p>
-                    <ul className="space-y-1">
-                      <li>&quot;What is 25 + 17?&quot;</li>
-                      <li>&quot;Help me with fractions&quot;</li>
-                      <li>&quot;How do I find the area of a rectangle?&quot;</li>
-                    </ul>
-                  </div>
+                  {quizModeActive ? (
+                    <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                      <p>Try typing:</p>
+                      <ul className="space-y-1">
+                        <li>&quot;Give me 5 P2 fractions questions&quot;</li>
+                        <li>&quot;Generate 10 P4 geometry questions&quot;</li>
+                        <li>&quot;I want 15 P6 algebra problems&quot;</li>
+                      </ul>
+                    </div>
+                  ) : (
+                    <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                      <p>Try asking:</p>
+                      <ul className="space-y-1">
+                        <li>&quot;What is 25 + 17?&quot;</li>
+                        <li>&quot;Help me with fractions&quot;</li>
+                        <li>&quot;How do I find the area of a rectangle?&quot;</li>
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (
@@ -627,7 +704,9 @@ export default function ChatPage() {
             onSend={handleSendMessage}
             disabled={isLoading}
             placeholder={
-              mode === 'TEACH'
+              quizModeActive
+                ? 'Type your quiz request (e.g., "Give me 5 P2 fractions questions")...'
+                : mode === 'TEACH'
                 ? 'Type your question or share your attempt...'
                 : 'Type your math question...'
             }

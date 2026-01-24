@@ -139,10 +139,15 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
       };
 
       // Call quiz generation API
-      const response = await fetch('/api/quiz/generate', {
+      const response = await fetch('/api/generate-quiz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(quizConfig),
+        body: JSON.stringify({
+          topic: quizConfig.topics[0] || 'math',
+          level: quizConfig.level,
+          questionCount: quizConfig.questionCount,
+          difficulty: quizConfig.difficulty,
+        }),
       });
 
       if (!response.ok) {
