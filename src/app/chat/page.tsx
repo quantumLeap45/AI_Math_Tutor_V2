@@ -213,14 +213,20 @@ export default function ChatPage() {
 
   // Toggle quiz mode on/off
   const handleQuizModeToggle = useCallback(async () => {
-    // If quiz is active, button is locked - do nothing (user must use Exit Quiz button)
-    if (quizModeActive || chatQuiz.quiz) {
-      // Quiz is running - button is locked, ignore click
+    // If quiz is running (questions loaded), button is locked
+    if (chatQuiz.quiz) {
       return;
     }
-    // Activate quiz mode - user will type their request
-    setQuizModeActive(true);
-    setShowQuizResults(false);
+    // Toggle quiz mode on/off (only if no quiz is running)
+    if (quizModeActive) {
+      // User can toggle off if they accidentally clicked it
+      setQuizModeActive(false);
+      setShowQuizResults(false);
+    } else {
+      // Activate quiz mode - user will type their request
+      setQuizModeActive(true);
+      setShowQuizResults(false);
+    }
   }, [quizModeActive, chatQuiz.quiz]);
 
   // Handle quiz exit
@@ -305,7 +311,7 @@ export default function ChatPage() {
           // Add AI message confirming quiz start
           const aiMessage = createMessage(
             'assistant',
-            `I've generated ${questionCount} ${level} questions on **${topic}**. Let's begin! You can ask me questions while you work through them.`
+            `Great! I've prepared ${questionCount} ${level} questions for you to practice. You can ask me questions while you work through them.`
           );
 
           const sessionWithAI = {
