@@ -28,6 +28,7 @@ import {
   deleteSession,
   getSettings,
   saveSettings,
+  clearChatQuizState,
 } from '@/lib/storage';
 import { createMessage, updateSessionTitleFromFirstMessage, createQuizSummaryMessage } from '@/lib/chat';
 import { useDailyQuota } from '@/hooks/useDailyQuota';
@@ -108,6 +109,12 @@ export default function ChatPage() {
     }
 
     setMounted(true);
+
+    // Clear any stale quiz state from previous sessions
+    // Only clear if we're not actively in quiz mode (which shouldn't happen on fresh load)
+    if (!quizModeActive && currentSession) {
+      clearChatQuizState(currentSession.id);
+    }
   }, [router]);
 
   // Auto-scroll on new messages
@@ -139,6 +146,11 @@ export default function ChatPage() {
     saveSession(newSession);
     saveSettings({ lastActiveSession: newSession.id });
     setQuizSessionId(newSession.id);
+    // Clear any saved quiz state from previous session
+    clearChatQuizState(newSession.id);
+    // Also reset quiz mode state
+    setQuizModeActive(false);
+    setCurrentRetryAttempt(0);
   }, [mode]);
 
   // Select existing session
@@ -148,7 +160,15 @@ export default function ChatPage() {
       setCurrentSession(session);
       setMode(session.mode);
       saveSettings({ lastActiveSession: sessionId });
-      setQuizSessionId(sessionId);
+      // First clear any existing quiz state in the hook
+      setQuizSessionId('');
+      // Then set the new session ID after a brief delay to trigger re-init
+      setTimeout(() => {
+        setQuizSessionId(sessionId);
+      }, 0);
+      // Reset quiz mode state
+      setQuizModeActive(false);
+      setCurrentRetryAttempt(0);
     }
   }, [sessions]);
 
