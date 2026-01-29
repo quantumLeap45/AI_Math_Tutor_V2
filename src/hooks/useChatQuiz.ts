@@ -29,11 +29,15 @@ interface UseChatQuizState {
   currentQuestion: QuizQuestion | null;
   /** Completed quizzes for review (stored in memory) */
   completedQuizzes: Array<ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string }>;
+  /** Last completed quiz available for retry (with retry count) */
+  lastCompletedQuiz: (ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string; retryAttempt: number }) | null;
 }
 
 interface UseChatQuizActions {
   /** Start a new quiz with the given configuration */
   startQuiz: (config?: Partial<ChatQuizState['config']>) => Promise<void>;
+  /** Retry the last completed quiz with same questions */
+  retryQuiz: () => Promise<void>;
   /** Select an answer option for the current question */
   selectOption: (option: 'A' | 'B' | 'C' | 'D') => void;
   /** Submit the current answer and show feedback */
@@ -113,6 +117,8 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [completedQuizzes, setCompletedQuizzes] = useState<Array<ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string }>>([]);
+  // Track last completed quiz for retry (with retry count)
+  const [lastCompletedQuiz, setLastCompletedQuiz] = useState<(ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string; retryAttempt: number }) | null>(null);
 
   // Derive current question
   const currentQuestion = quiz ? quiz.questions[quiz.currentIndex] || null : null;
@@ -261,12 +267,18 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
           score,
           correctCount,
           timeTaken: formatTimeTaken(prev.startedAt, completedAt),
-        } as ChatQuizState & { completedAt: string; score: number; correctCount: number; timeTaken: string };
+          retryAttempt: 0, // First attempt
+        } as ChatQuizState & { completedAt: string; score: number; correctCount: number; timeTaken: string; retryAttempt: number };
 
         // Store in completed quizzes for review
-        setCompletedQuizzes(prev => [...prev, completedQuiz]);
+        setCompletedQuizzes(old => [...old, completedQuiz]);
 
-        return completedQuiz;
+        // Store as last completed quiz for retry
+        setLastCompletedQuiz(completedQuiz);
+
+        // Clear the quiz state so the Quiz button becomes clickable again
+        // The completed quiz data is now in lastCompletedQuiz for the page to use
+        return null;
       }
 
       // Move to next question and hide feedback
@@ -308,6 +320,44 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     clearChatQuizState(sessionId);
   }, [sessionId]);
 
+  /**
+   * Retry the last completed quiz with the same questions
+   */
+  const retryQuiz = useCallback(async () => {
+    if (!lastCompletedQuiz) {
+      setError('No quiz to retry');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Create a new quiz state with the same questions but reset answers
+      const retryQuiz: ChatQuizState = {
+        id: crypto.randomUUID(),
+        config: lastCompletedQuiz.config,
+        questions: lastCompletedQuiz.questions, // Same questions
+        answers: lastCompletedQuiz.questions.map(() => ({
+          selected: null,
+          isCorrect: false,
+          answeredAt: '',
+        })),
+        currentIndex: 0,
+        showFeedback: false,
+        startedAt: new Date().toISOString(),
+        isCompleted: false,
+      };
+
+      setQuiz(retryQuiz);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to retry quiz';
+      setError(message);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [lastCompletedQuiz]);
+
   return {
     // State
     quiz,
@@ -315,9 +365,11 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     error,
     currentQuestion,
     completedQuizzes,
+    lastCompletedQuiz,
 
     // Actions
     startQuiz,
+    retryQuiz,
     selectOption,
     submitAnswer,
     nextQuestion,

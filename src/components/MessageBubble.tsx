@@ -7,6 +7,7 @@
  * Displays a single message with role-based styling.
  * Supports Markdown rendering for assistant messages.
  * Includes M logo avatar for AI messages and credits display.
+ * Also renders quiz summary cards for quiz_summary messages.
  */
 
 import React from 'react';
@@ -14,15 +15,39 @@ import ReactMarkdown from 'react-markdown';
 import { Message } from '@/types';
 import { formatTimestamp } from '@/lib/chat';
 import { ImagePreview } from './ImagePreview';
+import { QuizSummaryCard } from './chat/QuizSummaryCard';
 
 interface MessageBubbleProps {
   message: Message;
   showTimestamp?: boolean;
   quotaInfo?: { remaining: number; limit: number };
+  onReviewQuiz?: (quiz: any) => void;
+  onRetryQuiz?: () => void;
 }
 
-export function MessageBubble({ message, showTimestamp = false, quotaInfo }: MessageBubbleProps) {
+export function MessageBubble({ message, showTimestamp = false, quotaInfo, onReviewQuiz, onRetryQuiz }: MessageBubbleProps) {
   const isUser = message.role === 'user';
+  const isQuizSummary = message.role === 'quiz_summary';
+
+  // Render quiz summary as a full-width card
+  if (isQuizSummary && message.quizSummary) {
+    return (
+      <div className="w-full max-w-3xl mx-auto mb-4 animate-fadeIn">
+        <QuizSummaryCard
+          score={message.quizSummary.score}
+          totalQuestions={parseInt(message.quizSummary.totalQuestions)}
+          percentage={message.quizSummary.percentage}
+          timeTaken={message.quizSummary.timeTaken}
+          level={message.quizSummary.config.level}
+          difficulty={message.quizSummary.config.difficulty === 'all' ? 'medium' : message.quizSummary.config.difficulty}
+          topic={message.quizSummary.config.topics[0] || 'Math'}
+          retryAttempt={message.quizSummary.retryAttempt}
+          onReview={() => onReviewQuiz?.(message.quizSummary)}
+          onRetry={onRetryQuiz}
+        />
+      </div>
+    );
+  }
 
   return (
     <div

@@ -22,7 +22,44 @@ export type Theme = 'light' | 'dark';
 /**
  * Message role in a conversation
  */
-export type MessageRole = 'user' | 'assistant';
+export type MessageRole = 'user' | 'assistant' | 'quiz_summary';
+
+/**
+ * Quiz summary data for quiz summary messages
+ */
+export interface QuizSummaryData {
+  /** Quiz configuration */
+  config: {
+    level: 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
+    topics: string[];
+    difficulty: 'easy' | 'medium' | 'hard' | 'all';
+    questionCount: 5 | 10 | 15 | 20;
+  };
+  /** Number of correct answers */
+  score: number;
+  /** Total questions */
+  totalQuestions: string;
+  /** Percentage score */
+  percentage: number;
+  /** Time taken to complete */
+  timeTaken: string;
+  /** Retry attempt number (0 for first attempt, 1 for first retry, etc.) */
+  retryAttempt: number;
+  /** Whether this is a retry */
+  isRetry: boolean;
+  /** Questions for review */
+  questions: QuizQuestion[];
+  /** User's answers */
+  answers: Array<{
+    selected: 'A' | 'B' | 'C' | 'D' | null;
+    isCorrect: boolean;
+    answeredAt: string;
+  }>;
+  /** When quiz was completed */
+  completedAt: string;
+  /** When quiz was started */
+  startedAt: string;
+}
 
 /**
  * A single message in a chat session
@@ -38,6 +75,8 @@ export interface Message {
   imageUrl?: string;
   /** ISO 8601 timestamp when message was created */
   timestamp: string;
+  /** Quiz summary data (only present for quiz_summary messages) */
+  quizSummary?: QuizSummaryData;
 }
 
 /**

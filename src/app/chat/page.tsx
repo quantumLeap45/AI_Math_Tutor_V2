@@ -29,7 +29,7 @@ import {
   getSettings,
   saveSettings,
 } from '@/lib/storage';
-import { createMessage, updateSessionTitleFromFirstMessage } from '@/lib/chat';
+import { createMessage, updateSessionTitleFromFirstMessage, createQuizSummaryMessage } from '@/lib/chat';
 import { useDailyQuota } from '@/hooks/useDailyQuota';
 import { useChatQuiz } from '@/hooks';
 
@@ -59,6 +59,7 @@ export default function ChatPage() {
   const [quizModeActive, setQuizModeActive] = useState(false);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [selectedQuizForReview, setSelectedQuizForReview] = useState<(ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) | null>(null);
+  const [currentRetryAttempt, setCurrentRetryAttempt] = useState(0);
 
   // Scroll to bottom of messages (scroll the messages container, not the page)
   const scrollToBottom = useCallback(() => {
@@ -248,14 +249,48 @@ export default function ChatPage() {
     const isLastQuestion = quiz.currentIndex === quiz.questions.length - 1;
 
     if (isLastQuestion && quiz.showFeedback) {
-      // Quiz is complete - move to next (which completes it)
+      // Quiz is complete - get the quiz data before calling nextQuestion
+      const score = quiz.answers.filter(a => a.isCorrect).length;
+      const percentage = Math.round((score / quiz.questions.length) * 100);
+      const timeTaken = chatQuiz.completedQuizzes[chatQuiz.completedQuizzes.length - 1]?.timeTaken || '';
+
+      // Move to next (which completes it and clears quiz state)
       chatQuiz.nextQuestion();
       setQuizModeActive(false);
+
+      // Add quiz summary message to the chat
+      if (currentSession && chatQuiz.lastCompletedQuiz) {
+        const summaryMessage = createQuizSummaryMessage({
+          config: chatQuiz.lastCompletedQuiz.config,
+          score,
+          totalQuestions: quiz.questions.length.toString(),
+          percentage,
+          timeTaken,
+          retryAttempt: currentRetryAttempt,
+          isRetry: currentRetryAttempt > 0,
+          questions: chatQuiz.lastCompletedQuiz.questions,
+          answers: chatQuiz.lastCompletedQuiz.answers,
+          completedAt: chatQuiz.lastCompletedQuiz.completedAt,
+          startedAt: chatQuiz.lastCompletedQuiz.startedAt,
+        });
+
+        const updatedSession = {
+          ...currentSession,
+          messages: [...currentSession.messages, summaryMessage],
+          updatedAt: new Date().toISOString(),
+        };
+
+        setCurrentSession(updatedSession);
+        saveSession(updatedSession);
+        setSessions(prev =>
+          prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
+        );
+      }
     } else {
       // Move to next question or show feedback
       chatQuiz.nextQuestion();
     }
-  }, [chatQuiz]);
+  }, [chatQuiz, currentSession]);
 
   // Handle review button click
   const handleReviewQuiz = useCallback((quiz: ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) => {
@@ -268,9 +303,13 @@ export default function ChatPage() {
     setIsReviewModalOpen(false);
     setSelectedQuizForReview(null);
 
-    // Restart quiz mode with same configuration
-    await handleQuizModeToggle();
-  }, [handleQuizModeToggle]);
+    // Increment retry attempt count
+    setCurrentRetryAttempt(prev => prev + 1);
+
+    // Activate quiz mode and retry with same questions
+    setQuizModeActive(true);
+    await chatQuiz.retryQuiz();
+  }, [chatQuiz]);
 
   // ============ END QUIZ MODE HANDLERS ============
 
@@ -313,6 +352,8 @@ export default function ChatPage() {
 
         // Call startQuiz from the hook (it handles the API call internally)
         setIsLoading(true);
+        // Reset retry count for new quiz
+        setCurrentRetryAttempt(0);
         try {
           await chatQuiz.startQuiz({
             level,
@@ -572,7 +613,7 @@ export default function ChatPage() {
               disabled={isLoading || chatQuiz.isLoading}
               questionCount={chatQuiz.quiz?.questions.length}
               currentQuestion={chatQuiz.quiz ? chatQuiz.quiz.currentIndex + 1 : undefined}
-              isLocked={!!chatQuiz.quiz}
+              isLocked={!!chatQuiz.quiz && !chatQuiz.quiz.isCompleted}
             />
 
             {currentSession && currentSession.messages.length > 0 && (
@@ -680,28 +721,11 @@ export default function ChatPage() {
                       remaining: quotaStatus.remaining,
                       limit: quotaStatus.limit
                     } : undefined}
+                    onReviewQuiz={handleReviewQuiz}
+                    onRetryQuiz={handleRetryQuiz}
                   />
                 ))}
                 {isLoading && <MessageLoading />}
-
-                {/* Quiz Summary Cards for completed quizzes */}
-                {chatQuiz.completedQuizzes.map((completedQuiz) => {
-                  const percentage = Math.round((completedQuiz.correctCount / completedQuiz.questions.length) * 100);
-                  return (
-                    <QuizSummaryCard
-                      key={completedQuiz.id}
-                      score={completedQuiz.correctCount}
-                      totalQuestions={completedQuiz.questions.length}
-                      percentage={percentage}
-                      timeTaken={completedQuiz.timeTaken}
-                      level={completedQuiz.config.level}
-                      difficulty={completedQuiz.config.difficulty === 'all' ? 'medium' : completedQuiz.config.difficulty}
-                      topic={completedQuiz.config.topics[0] || 'Math'}
-                      onReview={() => handleReviewQuiz(completedQuiz)}
-                      onRetry={handleRetryQuiz}
-                    />
-                  );
-                })}
 
                 <div ref={messagesEndRef} />
               </div>

@@ -21,8 +21,9 @@ interface QuizSummaryCardProps {
   level: Level;
   difficulty: Difficulty;
   topic: string;
-  onReview: () => void;
-  onRetry: () => void;
+  retryAttempt?: number;
+  onReview?: () => void;
+  onRetry?: () => void;
 }
 
 export function QuizSummaryCard({
@@ -33,9 +34,13 @@ export function QuizSummaryCard({
   level,
   difficulty,
   topic,
-  onReview,
-  onRetry,
+  retryAttempt = 0,
+  onReview = () => {},
+  onRetry = () => {},
 }: QuizSummaryCardProps) {
+  const isRetry = retryAttempt > 0;
+  const retryLabel = isRetry ? `🔄 Retry #${retryAttempt}: ` : '';
+
   return (
     <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-xl p-4">
       {/* Header with checkmark and title */}
@@ -45,7 +50,7 @@ export function QuizSummaryCard({
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Quiz Complete!</h3>
+        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{retryLabel}Quiz Complete!</h3>
       </div>
 
       {/* Score and accuracy */}

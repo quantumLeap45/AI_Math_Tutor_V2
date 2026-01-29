@@ -5,7 +5,8 @@
  * Helper functions for chat session management and formatting.
  */
 
-import { ChatSession, Message } from '@/types';
+import { ChatSession, Message, QuizSummaryData } from '@/types';
+import type { QuizQuestion } from '@/types';
 
 /**
  * Generate a session title from the first user message
@@ -131,6 +132,25 @@ export function createMessage(
     content,
     imageUrl,
     timestamp: new Date().toISOString(),
+  };
+}
+
+/**
+ * Create a quiz summary message
+ *
+ * @param summaryData - Quiz summary data
+ * @returns New quiz summary message
+ */
+export function createQuizSummaryMessage(summaryData: QuizSummaryData): Message {
+  const { score, totalQuestions, percentage, timeTaken, retryAttempt, config } = summaryData;
+  const retryLabel = retryAttempt > 0 ? `🔄 Retry #${retryAttempt}: ` : '';
+
+  return {
+    id: crypto.randomUUID(),
+    role: 'quiz_summary',
+    content: `${retryLabel}Quiz Complete! Score: ${score}/${totalQuestions} (${percentage}%) • Time: ${timeTaken} • ${config.level} ${config.difficulty === 'all' ? 'medium' : config.difficulty}`,
+    timestamp: new Date().toISOString(),
+    quizSummary: summaryData,
   };
 }
 
