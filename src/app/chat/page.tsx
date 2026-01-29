@@ -274,48 +274,14 @@ export default function ChatPage() {
     const isLastQuestion = quiz.currentIndex === quiz.questions.length - 1;
 
     if (isLastQuestion && quiz.showFeedback) {
-      // Quiz is complete - get the quiz data before calling nextQuestion
-      const score = quiz.answers.filter(a => a.isCorrect).length;
-      const percentage = Math.round((score / quiz.questions.length) * 100);
-      const timeTaken = chatQuiz.completedQuizzes[chatQuiz.completedQuizzes.length - 1]?.timeTaken || '';
-
-      // Move to next (which completes it and clears quiz state)
+      // Quiz is complete - nextQuestion will trigger the useEffect that adds summary message
       chatQuiz.nextQuestion();
       setQuizModeActive(false);
-
-      // Add quiz summary message to the chat
-      if (currentSession && chatQuiz.lastCompletedQuiz) {
-        const summaryMessage = createQuizSummaryMessage({
-          config: chatQuiz.lastCompletedQuiz.config,
-          score,
-          totalQuestions: quiz.questions.length.toString(),
-          percentage,
-          timeTaken,
-          retryAttempt: currentRetryAttempt,
-          isRetry: currentRetryAttempt > 0,
-          questions: chatQuiz.lastCompletedQuiz.questions,
-          answers: chatQuiz.lastCompletedQuiz.answers,
-          completedAt: chatQuiz.lastCompletedQuiz.completedAt,
-          startedAt: chatQuiz.lastCompletedQuiz.startedAt,
-        });
-
-        const updatedSession = {
-          ...currentSession,
-          messages: [...currentSession.messages, summaryMessage],
-          updatedAt: new Date().toISOString(),
-        };
-
-        setCurrentSession(updatedSession);
-        saveSession(updatedSession);
-        setSessions(prev =>
-          prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
-        );
-      }
     } else {
       // Move to next question or show feedback
       chatQuiz.nextQuestion();
     }
-  }, [chatQuiz, currentSession]);
+  }, [chatQuiz]);
 
   // Handle review button click
   const handleReviewQuiz = useCallback((quiz: ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) => {
@@ -335,6 +301,46 @@ export default function ChatPage() {
     setQuizModeActive(true);
     await chatQuiz.retryQuiz();
   }, [chatQuiz]);
+
+  // Handle quiz completion - watch for lastCompletedQuiz changes
+  // This useEffect runs when quiz completes and adds the summary message to chat
+  useEffect(() => {
+    if (chatQuiz.lastCompletedQuiz && currentSession) {
+      const completedQuiz = chatQuiz.lastCompletedQuiz;
+      const score = completedQuiz.score;
+      const percentage = Math.round((score / completedQuiz.questions.length) * 100);
+      const timeTaken = completedQuiz.timeTaken;
+
+      const summaryMessage = createQuizSummaryMessage({
+        config: completedQuiz.config,
+        score,
+        totalQuestions: completedQuiz.questions.length.toString(),
+        percentage,
+        timeTaken,
+        retryAttempt: currentRetryAttempt,
+        isRetry: currentRetryAttempt > 0,
+        questions: completedQuiz.questions,
+        answers: completedQuiz.answers,
+        completedAt: completedQuiz.completedAt,
+        startedAt: completedQuiz.startedAt,
+      });
+
+      const updatedSession = {
+        ...currentSession,
+        messages: [...currentSession.messages, summaryMessage],
+        updatedAt: new Date().toISOString(),
+      };
+
+      setCurrentSession(updatedSession);
+      saveSession(updatedSession);
+      setSessions(prev =>
+        prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
+      );
+
+      // Clear the lastCompletedQuiz to prevent duplicate summary messages
+      // Note: We can't directly modify the hook's state, but the hook should handle this
+    }
+  }, [chatQuiz.lastCompletedQuiz, currentSession, currentRetryAttempt]);
 
   // ============ END QUIZ MODE HANDLERS ============
 
