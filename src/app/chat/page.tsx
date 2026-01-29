@@ -361,6 +361,12 @@ export default function ChatPage() {
         const level = (levelMatch?.[1]?.toUpperCase() || 'P2') as 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
         const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;
 
+        // IMPORTANT: Ensure quizSessionId is set before calling startQuiz
+        // This fixes a race condition where the hook might not have the correct session ID
+        if (!quizSessionId || quizSessionId !== currentSession.id) {
+          setQuizSessionId(currentSession.id);
+        }
+
         // Add user message to chat (note: images are not supported in quiz mode)
         const userMessage = createMessage('user', content);
         const updatedSession = {
@@ -379,7 +385,19 @@ export default function ChatPage() {
         setIsLoading(true);
         // Reset retry count for new quiz
         setCurrentRetryAttempt(0);
+
         try {
+          // IMPORTANT: Ensure quizSessionId is set before calling startQuiz
+          // This fixes a race condition where the hook might not have the correct session ID
+          if (!quizSessionId || quizSessionId !== currentSession.id) {
+            setQuizSessionId(currentSession.id);
+          }
+
+          // Small delay to ensure quizSessionId has propagated to the hook
+          await new Promise(resolve => setTimeout(resolve, 50));
+
+          // Call startQuiz and wait for it to complete
+          // Note: startQuiz handles all error cases internally and sets quiz state
           await chatQuiz.startQuiz({
             level,
             topics: [topic],
@@ -406,7 +424,29 @@ export default function ChatPage() {
           );
         } catch (error) {
           console.error('Quiz generation error:', error);
-          setError('Failed to generate quiz. Please try again.');
+          const errorMsg = error instanceof Error ? error.message : 'Failed to generate quiz. Please try again.';
+          setError(errorMsg);
+
+          // Add error message to chat so user knows what happened
+          const errorMessage = createMessage(
+            'assistant',
+            `Sorry, I couldn't generate the quiz. ${errorMsg}`
+          );
+
+          const sessionWithError = {
+            ...updatedSession,
+            messages: [...updatedSession.messages, errorMessage],
+            updatedAt: new Date().toISOString(),
+          };
+
+          setCurrentSession(sessionWithError);
+          saveSession(sessionWithError);
+          setSessions(prev =>
+            prev.map(s => (s.id === sessionWithError.id ? sessionWithError : s))
+          );
+
+          // Exit quiz mode on error so user can try again
+          setQuizModeActive(false);
         } finally {
           setIsLoading(false);
         }

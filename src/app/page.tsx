@@ -135,7 +135,7 @@ export default function LandingPage() {
         </form>
 
         {/* Feature Cards - Glass effect */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg w-full mb-8">
+        <div className="grid grid-cols-1 max-w-md w-full mb-8">
           {/* Chat Card */}
           <div className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all p-6">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-4">
@@ -158,7 +158,7 @@ export default function LandingPage() {
               Chat with AI
             </h3>
             <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-              Ask any P1-P6 math question. Upload homework photos.
+              Ask any P1-P6 math question. Upload homework photos. Includes Quiz Mode for practice questions.
             </p>
             <div className="flex flex-wrap gap-2">
               <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-full">
@@ -167,39 +167,10 @@ export default function LandingPage() {
               <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium rounded-full">
                 TEACH mode
               </span>
+              <span className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs font-medium rounded-full">
+                Quiz mode
+              </span>
             </div>
-          </div>
-
-          {/* Quiz Card */}
-          <div className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all p-6">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-white"
-              >
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 17h.01" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
-              Practice Quiz
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-              Test your skills with interactive quizzes.
-            </p>
-            {/* Levels Badge */}
-            <span className="inline-flex items-center px-2 py-0.5 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold rounded-full uppercase tracking-wide">
-              P1 & P2
-            </span>
           </div>
         </div>
 
@@ -278,34 +249,34 @@ export default function LandingPage() {
               </ul>
             </div>
 
-            {/* Quiz Feature */}
+            {/* Quiz Mode Feature */}
             <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 17h.01" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Practice Quizzes</h3>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Quiz Mode</h3>
               </div>
               <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                 <li className="flex items-start gap-2">
                   <svg className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
-                  <span>Multiple choice questions (MCQ) format</span>
+                  <span>Generate custom quizzes by topic, level (P1-P6), and difficulty</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
-                  <span>Built-in AI helper that gives hints (not answers!)</span>
+                  <span>Built-in AI helper gives hints without revealing answers</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
-                  <span>Save & Exit feature - pause and resume anytime</span>
+                  <span>Quiz summary with score, accuracy, and review options</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
-                  <span>Progress tracking and performance analytics</span>
+                  <span>Retry quizzes to improve your score</span>
                 </li>
               </ul>
             </div>
@@ -319,16 +290,20 @@ export default function LandingPage() {
                 <line x1="12" y1="16" x2="12" y2="12" />
                 <line x1="12" y1="8" x2="12.01" y2="8" />
               </svg>
-              Current Status
+              Available Features
             </h4>
             <ul className="space-y-2 text-sm text-blue-800 dark:text-blue-200">
               <li className="flex items-start gap-2">
                 <span className="text-blue-500 font-bold">•</span>
-                <span><strong>Quiz Feature:</strong> Currently available for Primary 1 (P1) and Primary 2 (P2). We're working hard to expand to P3-P6!</span>
+                <span><strong>AI Chat:</strong> Available for all Primary 1-6 levels with SHOW mode and TEACH mode.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-500 font-bold">•</span>
-                <span><strong>P2 Topics:</strong> Includes Whole Numbers, Addition/Subtraction, Multiplication/Division, Length, Mass, Time, Money, and Fractions. Shapes and Picture Graphs coming soon.</span>
+                <span><strong>Quiz Mode:</strong> Integrated into AI chat for all levels (P1-P6). Generate custom quizzes by topic, difficulty, and number of questions.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-500 font-bold">•</span>
+                <span><strong>Image Upload:</strong> Upload photos of math problems for AI assistance.</span>
               </li>
             </ul>
           </div>
