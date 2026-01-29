@@ -10,7 +10,8 @@
 
 import React, { useState } from 'react';
 import { QuizQuestion, QuizOption } from '@/types';
-import { formatQuizQuestion, formatQuizOption, formatQuizExplanation } from '@/lib/math-format';
+import { formatLatexToKidFriendly } from '@/lib/math-format';
+import { formatMathWithVerticalFractions } from '@/components/math/VerticalFraction';
 
 interface QuizPanelProps {
   /** Current question to display */
@@ -85,7 +86,7 @@ export function QuizPanel({
       {/* Question */}
       <div className="flex-1 overflow-y-auto p-4">
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
-          {formatQuizQuestion(currentQuestion.question)}
+          {formatMathWithVerticalFractions(formatLatexToKidFriendly(currentQuestion.question))}
         </h3>
 
         {/* Options */}
@@ -133,7 +134,7 @@ export function QuizPanel({
                     {option}
                   </span>
                   <span className="flex-1 text-slate-900 dark:text-slate-100">
-                    {formatQuizOption(currentQuestion.options[option])}
+                    {formatMathWithVerticalFractions(formatLatexToKidFriendly(currentQuestion.options[option]))}
                   </span>
                   {shouldShowCorrect && (
                     <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -169,7 +170,7 @@ export function QuizPanel({
               </p>
             )}
             <p className="text-sm text-slate-700 dark:text-slate-300">
-              {formatQuizExplanation(currentQuestion.explanation)}
+              {formatMathWithVerticalFractions(formatLatexToKidFriendly(currentQuestion.explanation))}
             </p>
           </div>
         )}

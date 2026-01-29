@@ -34,10 +34,11 @@ export function formatLatexToKidFriendly(text: string): string {
   result = result.replace(/\\\$/g, '$');
 
   // Convert fractions \frac{a}{b} or \\frac{a}{b} to a/b
+  // Using simple format (1/2) for compatibility with vertical fraction component
   // Handle single backslash
-  result = result.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)');
+  result = result.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
   // Handle double backslash (escaped)
-  result = result.replace(/\\\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)');
+  result = result.replace(/\\\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
 
   // Convert \times to ×
   result = result.replace(/\\times/g, '×');
