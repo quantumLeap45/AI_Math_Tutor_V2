@@ -49,7 +49,12 @@ export function QuizModeToggle({
         }
       `}
       aria-pressed={isActive}
-      title={isLocked ? 'Quiz running - use Exit Quiz button to close' : isActive ? 'Exit quiz mode' : 'Start quiz mode'}
+      title={isLocked
+        ? 'Quiz running - use Exit Quiz button to close'
+        : isActive
+        ? 'Exit quiz mode'
+        : 'Start quiz mode - Click here to generate interactive quizzes with AI'
+      }
     >
       {/* Quiz icon */}
       <svg
