@@ -110,10 +110,15 @@ export default function ChatPage() {
 
     setMounted(true);
 
-    // Clear any stale quiz state from previous sessions
-    // Only clear if we're not actively in quiz mode (which shouldn't happen on fresh load)
-    if (!quizModeActive && currentSession) {
-      clearChatQuizState(currentSession.id);
+    // Clear ALL stale quiz state on page load
+    // This ensures Quiz button is always clickable on fresh load
+    // Users who were mid-quiz will need to restart their quiz
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('math-tutor-quiz-in-chat');
+      }
+    } catch (e) {
+      // Ignore errors
     }
   }, [router]);
 
