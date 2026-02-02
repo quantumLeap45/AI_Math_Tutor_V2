@@ -27,7 +27,7 @@ interface MessageBubbleProps {
 
 export function MessageBubble({ message, showTimestamp = false, quotaInfo, onReviewQuiz, onRetryQuiz }: MessageBubbleProps) {
   const isUser = message.role === 'user';
-  const isQuizSummary = message.role === 'quiz_summary';
+  const isQuizSummary = message.quizSummary !== undefined; // Check for quizSummary data instead of role
 
   // Render quiz summary as a full-width card
   if (isQuizSummary && message.quizSummary) {

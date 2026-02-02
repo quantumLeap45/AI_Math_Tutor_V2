@@ -24,7 +24,7 @@ export interface TopBarProps {
 const NAV_LINKS = [
   { href: '/home', label: 'Home', page: 'home' as const },
   { href: '/chat', label: 'Chat', page: 'chat' as const },
-  { href: '/quiz', label: 'Quiz', page: 'quiz' as const },
+  // Quiz link removed - Quiz Mode is now integrated into Chat
 ] as const;
 
 export function TopBar({
@@ -51,12 +51,12 @@ export function TopBar({
 
   return (
     <header className="sticky top-0 z-50 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
-      <div className="h-full w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="h-full w-full max-w-7xl mx-auto px-4 sm:px-6 lg:pr-8">
         <div className="h-full flex items-center justify-between gap-4">
           {/* Left: Logo + optional nav links */}
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link href="/" className="flex items-center gap-2 group -ml-0 sm:-ml-0">
               {/* Gradient M logo */}
               <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
                 <span className="text-white font-bold text-lg">M</span>

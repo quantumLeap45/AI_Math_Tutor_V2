@@ -344,13 +344,14 @@ export default function ChatPage() {
     // Mark this quiz as processed
     processedQuizIdsRef.current.add(completedQuiz.id);
 
-    const score = completedQuiz.score;
-    const percentage = Math.round((score / completedQuiz.questions.length) * 100);
+    // score is already the percentage (0-100), correctCount is the raw score
+    const rawScore = completedQuiz.correctCount;
+    const percentage = completedQuiz.score; // Already calculated by the hook
     const timeTaken = completedQuiz.timeTaken;
 
     const summaryMessage = createQuizSummaryMessage({
       config: completedQuiz.config,
-      score,
+      score: rawScore,
       totalQuestions: completedQuiz.questions.length.toString(),
       percentage,
       timeTaken,

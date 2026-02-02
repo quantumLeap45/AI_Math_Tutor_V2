@@ -147,7 +147,7 @@ export function createQuizSummaryMessage(summaryData: QuizSummaryData): Message 
 
   return {
     id: crypto.randomUUID(),
-    role: 'quiz_summary',
+    role: 'assistant', // Changed from 'quiz_summary' to 'assistant' for API compatibility
     content: `${retryLabel}Quiz Complete! Score: ${score}/${totalQuestions} (${percentage}%) • Time: ${timeTaken} • ${config.level} ${config.difficulty === 'all' ? 'medium' : config.difficulty}`,
     timestamp: new Date().toISOString(),
     quizSummary: summaryData,
