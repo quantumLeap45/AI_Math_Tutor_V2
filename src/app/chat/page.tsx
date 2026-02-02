@@ -41,8 +41,21 @@ export default function ChatPage() {
   // Daily quota hook
   const { quotaStatus, countdown, consumeQuota, updateQuotaFromResponse } = useDailyQuota();
 
-  // Chat quiz hook (initialized when we have a session ID)
-  const [quizSessionId, setQuizSessionId] = useState<string>('');
+  // Chat quiz hook - using currentSession.id directly when available
+  // We use a stable empty string initially and let the hook use currentSession.id for storage
+  const [quizSessionId, setQuizSessionId] = useState<string>(() => {
+    // Initialize from the first available session if any
+    if (typeof window !== 'undefined') {
+      const sessions = getSessions();
+      const settings = getSettings();
+      if (settings.lastActiveSession) {
+        const session = sessions.find(s => s.id === settings.lastActiveSession);
+        if (session) return session.id;
+      }
+      if (sessions.length > 0) return sessions[0].id;
+    }
+    return '';
+  });
   const chatQuiz = useChatQuiz({ sessionId: quizSessionId });
 
   // State
@@ -61,6 +74,9 @@ export default function ChatPage() {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [selectedQuizForReview, setSelectedQuizForReview] = useState<(ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) | null>(null);
   const [currentRetryAttempt, setCurrentRetryAttempt] = useState(0);
+
+  // Track which quiz IDs have already had summary messages added (prevents infinite loop)
+  const processedQuizIdsRef = useRef<Set<string>>(new Set());
 
   // Scroll to bottom of messages (scroll the messages container, not the page)
   const scrollToBottom = useCallback(() => {
@@ -142,6 +158,14 @@ export default function ChatPage() {
       setHasAutoCollapsed(false);
     }
   }, [quizModeActive, hasAutoCollapsed]);
+
+  // Keep quizSessionId in sync with currentSession.id
+  // This ensures the hook always has the correct session ID for storage
+  useEffect(() => {
+    if (currentSession && currentSession.id !== quizSessionId) {
+      setQuizSessionId(currentSession.id);
+    }
+  }, [currentSession?.id, quizSessionId]);
 
   // Create new chat session
   const handleNewChat = useCallback(() => {
@@ -249,10 +273,13 @@ export default function ChatPage() {
       // User can toggle off if they accidentally clicked it
       setQuizModeActive(false);
     } else {
-      // Activate quiz mode - user will type their request
+      // Activate quiz mode - ensure quizSessionId is synced with currentSession
+      if (currentSession && quizSessionId !== currentSession.id) {
+        setQuizSessionId(currentSession.id);
+      }
       setQuizModeActive(true);
     }
-  }, [quizModeActive, chatQuiz.quiz]);
+  }, [quizModeActive, chatQuiz.quiz, currentSession, quizSessionId]);
 
   // Handle quiz exit
   const handleQuizExit = useCallback(() => {
@@ -305,42 +332,54 @@ export default function ChatPage() {
   // Handle quiz completion - watch for lastCompletedQuiz changes
   // This useEffect runs when quiz completes and adds the summary message to chat
   useEffect(() => {
-    if (chatQuiz.lastCompletedQuiz && currentSession) {
-      const completedQuiz = chatQuiz.lastCompletedQuiz;
-      const score = completedQuiz.score;
-      const percentage = Math.round((score / completedQuiz.questions.length) * 100);
-      const timeTaken = completedQuiz.timeTaken;
+    if (!chatQuiz.lastCompletedQuiz) return;
 
-      const summaryMessage = createQuizSummaryMessage({
-        config: completedQuiz.config,
-        score,
-        totalQuestions: completedQuiz.questions.length.toString(),
-        percentage,
-        timeTaken,
-        retryAttempt: currentRetryAttempt,
-        isRetry: currentRetryAttempt > 0,
-        questions: completedQuiz.questions,
-        answers: completedQuiz.answers,
-        completedAt: completedQuiz.completedAt,
-        startedAt: completedQuiz.startedAt,
-      });
+    const completedQuiz = chatQuiz.lastCompletedQuiz;
+
+    // Check if we've already processed this quiz (prevents infinite loop)
+    if (processedQuizIdsRef.current.has(completedQuiz.id)) {
+      return;
+    }
+
+    // Mark this quiz as processed
+    processedQuizIdsRef.current.add(completedQuiz.id);
+
+    const score = completedQuiz.score;
+    const percentage = Math.round((score / completedQuiz.questions.length) * 100);
+    const timeTaken = completedQuiz.timeTaken;
+
+    const summaryMessage = createQuizSummaryMessage({
+      config: completedQuiz.config,
+      score,
+      totalQuestions: completedQuiz.questions.length.toString(),
+      percentage,
+      timeTaken,
+      retryAttempt: currentRetryAttempt,
+      isRetry: currentRetryAttempt > 0,
+      questions: completedQuiz.questions,
+      answers: completedQuiz.answers,
+      completedAt: completedQuiz.completedAt,
+      startedAt: completedQuiz.startedAt,
+    });
+
+    // Use functional update to avoid depending on currentSession
+    setCurrentSession(prevSession => {
+      if (!prevSession) return prevSession;
 
       const updatedSession = {
-        ...currentSession,
-        messages: [...currentSession.messages, summaryMessage],
+        ...prevSession,
+        messages: [...prevSession.messages, summaryMessage],
         updatedAt: new Date().toISOString(),
       };
 
-      setCurrentSession(updatedSession);
       saveSession(updatedSession);
       setSessions(prev =>
         prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
       );
 
-      // Clear the lastCompletedQuiz to prevent duplicate summary messages
-      // Note: We can't directly modify the hook's state, but the hook should handle this
-    }
-  }, [chatQuiz.lastCompletedQuiz, currentSession, currentRetryAttempt]);
+      return updatedSession;
+    });
+  }, [chatQuiz.lastCompletedQuiz, currentRetryAttempt]);
 
   // ============ END QUIZ MODE HANDLERS ============
 
@@ -367,12 +406,6 @@ export default function ChatPage() {
         const level = (levelMatch?.[1]?.toUpperCase() || 'P2') as 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
         const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;
 
-        // IMPORTANT: Ensure quizSessionId is set before calling startQuiz
-        // This fixes a race condition where the hook might not have the correct session ID
-        if (!quizSessionId || quizSessionId !== currentSession.id) {
-          setQuizSessionId(currentSession.id);
-        }
-
         // Add user message to chat (note: images are not supported in quiz mode)
         const userMessage = createMessage('user', content);
         const updatedSession = {
@@ -393,15 +426,6 @@ export default function ChatPage() {
         setCurrentRetryAttempt(0);
 
         try {
-          // IMPORTANT: Ensure quizSessionId is set before calling startQuiz
-          // This fixes a race condition where the hook might not have the correct session ID
-          if (!quizSessionId || quizSessionId !== currentSession.id) {
-            setQuizSessionId(currentSession.id);
-          }
-
-          // Small delay to ensure quizSessionId has propagated to the hook
-          await new Promise(resolve => setTimeout(resolve, 50));
-
           // Call startQuiz and wait for it to complete
           // Note: startQuiz handles all error cases internally and sets quiz state
           await chatQuiz.startQuiz({
