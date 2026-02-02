@@ -516,11 +516,18 @@ export default function ChatPage() {
       setIsLoading(true);
 
       try {
+        // Filter out quiz summary messages before sending to API
+        // Quiz summaries are only for display and shouldn't be part of AI conversation context
+        // Also handles old messages with role: 'quiz_summary' for backward compatibility
+        const messagesForApi = sessionWithTitle.messages.filter(
+          msg => !msg.quizSummary && msg.role !== 'quiz_summary'
+        );
+
         const response = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            messages: sessionWithTitle.messages,
+            messages: messagesForApi,
             mode,
             image,
           }),
