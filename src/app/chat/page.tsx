@@ -399,7 +399,9 @@ export default function ChatPage() {
       setError(null);
 
       // Check if user is requesting a quiz in quiz mode
-      if (quizModeActive && currentSession) {
+      // Only generate quiz if no quiz is currently loaded (initial request)
+      // Once quiz is active, messages should go to AI chat for help
+      if (quizModeActive && currentSession && !chatQuiz.quiz) {
         // Parse the request for quiz parameters
         const levelMatch = content.match(/\b(P[1-6])\b/i);
         const topic = content.replace(/quiz|question|give me|generate|create|questions?/gi, '').trim() || 'math';
