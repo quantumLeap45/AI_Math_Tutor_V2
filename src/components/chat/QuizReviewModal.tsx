@@ -10,6 +10,7 @@
 
 import React from 'react';
 import { ChatQuizState } from '@/types';
+import { ImagePreview } from '@/components/ImagePreview';
 
 interface QuizReviewModalProps {
   /** Quiz state to review */
@@ -124,6 +125,17 @@ export function QuizReviewModal({
                       <p className="text-slate-900 dark:text-slate-100 font-medium">
                         {question.question}
                       </p>
+
+                      {/* Question image (if present) */}
+                      {question.imageUrl && (
+                        <div className="mt-2">
+                          <ImagePreview
+                            src={question.imageUrl}
+                            alt={question.imageAlt || 'Quiz question image'}
+                            className="max-w-xs"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
 

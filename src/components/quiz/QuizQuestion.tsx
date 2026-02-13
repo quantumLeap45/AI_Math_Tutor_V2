@@ -12,6 +12,7 @@
 
 import React from 'react';
 import { QuizQuestion as Question, QuizDifficulty } from '@/types';
+import { ImagePreview } from '@/components/ImagePreview';
 
 interface QuizQuestionProps {
   question: Question;
@@ -80,6 +81,17 @@ export function QuizQuestion({
           {question.question}
         </h2>
       </div>
+
+      {/* Question image (if present) */}
+      {question.imageUrl && (
+        <div className="mb-4">
+          <ImagePreview
+            src={question.imageUrl}
+            alt={question.imageAlt || 'Quiz question image'}
+            className="max-w-sm mx-auto"
+          />
+        </div>
+      )}
 
       {/* Subtopic indicator (subtle) */}
       {question.subtopic && (

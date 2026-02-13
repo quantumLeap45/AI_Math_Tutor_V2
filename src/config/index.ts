@@ -41,6 +41,12 @@ interface AppConfig {
     dailyQuotaLimit: number;
   };
 
+  // Vercel Blob Configuration (for quiz question images)
+  blob: {
+    token: string;
+    enabled: boolean;
+  };
+
   // Storage Limits
   storage: {
     maxSessions: number;
@@ -87,6 +93,10 @@ class ConfigManager {
         apiKey: process.env.OPENAI_API_KEY || '',
         enabled: Boolean(process.env.OPENAI_API_KEY),
       },
+      blob: {
+        token: process.env.BLOB_READ_WRITE_TOKEN || '',
+        enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      },
       rateLimits: {
         antiSpamWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000', 10),
         antiSpamMaxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '20', 10),
@@ -122,6 +132,9 @@ class ConfigManager {
     }
     if (!config.openai.enabled) {
       console.warn('⚠️  OpenAI not configured - embeddings disabled');
+    }
+    if (!config.blob.enabled) {
+      console.warn('⚠️  Vercel Blob not configured - quiz image uploads disabled');
     }
 
     // Validate rate limits
@@ -210,6 +223,20 @@ class ConfigManager {
    */
   isSupabaseConfigured(): boolean {
     return this.config.supabase.enabled;
+  }
+
+  /**
+   * Get Vercel Blob configuration
+   */
+  getBlob(): { token: string; enabled: boolean } {
+    return { ...this.config.blob };
+  }
+
+  /**
+   * Check if Vercel Blob is configured
+   */
+  isBlobConfigured(): boolean {
+    return this.config.blob.enabled;
   }
 }
 

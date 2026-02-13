@@ -120,6 +120,8 @@ function parseQuizQuestions(response: string, expectedCount: number, level: Prim
         },
         correctAnswer: q.correctAnswer as QuizOption,
         explanation: q.explanation,
+        ...(q.imageUrl && { imageUrl: q.imageUrl }),
+        ...(q.imageAlt && { imageAlt: q.imageAlt }),
       };
     });
 

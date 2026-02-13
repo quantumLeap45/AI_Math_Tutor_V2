@@ -43,6 +43,14 @@ export interface RAGQuestion {
   skillsTested: string[];
   /** Multiple choice options (if applicable) */
   options?: string;
+  /** Whether this question requires a visual (from markdown HasVisual field) */
+  hasVisual?: boolean;
+  /** Filename of the visual asset (from markdown VisualFile field) */
+  visualFile?: string;
+  /** Alt text describing the visual (from markdown VisualAlt field) */
+  visualAlt?: string;
+  /** Uploaded image URL (populated after image upload to blob storage) */
+  imageUrl?: string;
 }
 
 /**
