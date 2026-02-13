@@ -46,6 +46,9 @@ export default function ChatPage() {
   const [quizSessionId, setQuizSessionId] = useState<string>(() => {
     // Initialize from the first available session if any
     if (typeof window !== 'undefined') {
+      // Clear stale quiz state FIRST — ensures Quiz button is always clickable on fresh load
+      localStorage.removeItem('math-tutor-quiz-in-chat');
+
       const sessions = getSessions();
       const settings = getSettings();
       if (settings.lastActiveSession) {
@@ -75,6 +78,7 @@ export default function ChatPage() {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [selectedQuizForReview, setSelectedQuizForReview] = useState<(ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) | null>(null);
   const [currentRetryAttempt, setCurrentRetryAttempt] = useState(0);
+  const [preQuizMode, setPreQuizMode] = useState<TutorMode | null>(null);
 
   // Track which quiz IDs have already had summary messages added (prevents infinite loop)
   const processedQuizIdsRef = useRef<Set<string>>(new Set());
@@ -126,17 +130,6 @@ export default function ChatPage() {
     }
 
     setMounted(true);
-
-    // Clear ALL stale quiz state on page load
-    // This ensures Quiz button is always clickable on fresh load
-    // Users who were mid-quiz will need to restart their quiz
-    try {
-      if (typeof window !== 'undefined') {
-        localStorage.removeItem('math-tutor-quiz-in-chat');
-      }
-    } catch (e) {
-      // Ignore errors
-    }
   }, [router]);
 
   // Auto-scroll on new messages
@@ -282,11 +275,16 @@ export default function ChatPage() {
     }
   }, [quizModeActive, chatQuiz.quiz, currentSession, quizSessionId]);
 
-  // Handle quiz exit
+  // Handle quiz exit — restore previous mode
   const handleQuizExit = useCallback(() => {
     chatQuiz.exitQuiz();
     setQuizModeActive(false);
-  }, [chatQuiz]);
+    // Restore pre-quiz mode
+    if (preQuizMode) {
+      handleModeChange(preQuizMode);
+      setPreQuizMode(null);
+    }
+  }, [chatQuiz, preQuizMode, handleModeChange]);
 
   // Handle option selection in quiz
   const handleQuizSelectOption = useCallback((option: 'A' | 'B' | 'C' | 'D') => {
@@ -305,11 +303,16 @@ export default function ChatPage() {
       // Quiz is complete - nextQuestion will trigger the useEffect that adds summary message
       chatQuiz.nextQuestion();
       setQuizModeActive(false);
+      // Restore pre-quiz mode
+      if (preQuizMode) {
+        handleModeChange(preQuizMode);
+        setPreQuizMode(null);
+      }
     } else {
       // Move to next question or show feedback
       chatQuiz.nextQuestion();
     }
-  }, [chatQuiz]);
+  }, [chatQuiz, preQuizMode, handleModeChange]);
 
   // Handle review button click
   const handleReviewQuiz = useCallback((quiz: ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) => {
@@ -325,10 +328,18 @@ export default function ChatPage() {
     // Increment retry attempt count
     setCurrentRetryAttempt(prev => prev + 1);
 
-    // Activate quiz mode and retry with same questions
+    // Activate quiz mode first
     setQuizModeActive(true);
+
+    // Save current mode and switch to TEACH
+    if (!preQuizMode) {
+      setPreQuizMode(mode);
+    }
+    setMode('TEACH');
+
+    // Retry after a microtask to ensure React has processed quiz mode change
     await chatQuiz.retryQuiz();
-  }, [chatQuiz]);
+  }, [chatQuiz, mode, preQuizMode]);
 
   // Handle quiz completion - watch for lastCompletedQuiz changes
   // This useEffect runs when quiz completes and adds the summary message to chat
@@ -416,22 +427,27 @@ export default function ChatPage() {
 
         // Parse the request for quiz parameters
         const levelMatch = content.match(/\b(P[1-6])\b/i);
-        const level = (levelMatch?.[1]?.toUpperCase() || 'P2') as 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
+        const level = (levelMatch?.[1]?.toUpperCase() || 'P4') as 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
 
-        // Extract difficulty from user message
-        let difficulty: 'easy' | 'medium' | 'hard' | 'all' = 'all';
-        if (/\bhard(est)?\b/i.test(content)) difficulty = 'hard';
+        // Extract question count BEFORE topic parsing so numbers are removed
+        const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;
+
+        // Extract difficulty — check multi-word phrases first
+        let difficulty: 'easy' | 'medium' | 'hard' = 'medium';
+        if (/\b(super\s+hard|very\s+hard|hardest|toughest|most\s+difficult)\b/i.test(content)) difficulty = 'hard';
+        else if (/\b(hard|difficult|challenging)\b/i.test(content)) difficulty = 'hard';
+        else if (/\b(easy|simple|basic|beginner)\b/i.test(content)) difficulty = 'easy';
         else if (/\bmedium\b/i.test(content)) difficulty = 'medium';
-        else if (/\beasy\b/i.test(content)) difficulty = 'easy';
+        // else stays 'medium' (default)
 
-        // Extract topic by removing noise words, level, and difficulty
+        // Extract topic by removing noise words, level, difficulty, numbers, and number words
         const topic = content
           .replace(/\b(P[1-6])\b/gi, '')
-          .replace(/\b(quiz|questions?|give|me|generate|create|revision|practice|revise|some|the|for|a|an|i|want|can|you|please|hardest|harder|hard|medium|easy|difficult|challenging|about|on|of|my|do|make|try|get|with|have|that|this|it|them|best|most|really|very|just|like|show|test|from|your|could|would|should|will|need|know|help|us|we|let|go)\b/gi, '')
+          .replace(/\b\d+\b/g, '') // Strip standalone digits (e.g., "5", "10")
+          .replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\b/gi, '')
+          .replace(/\b(quiz|questions?|give|me|generate|create|revision|practice|revise|some|the|for|a|an|i|want|can|you|please|hardest|harder|hard|medium|easy|difficult|challenging|super|toughest|simple|basic|beginner|about|on|of|my|do|make|try|get|with|have|that|this|it|them|best|most|really|very|just|like|show|test|from|your|could|would|should|will|need|know|help|us|we|let|go|problems?|math|maths)\b/gi, '')
           .replace(/\s+/g, ' ')
           .trim() || 'math';
-
-        const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;
 
         // Add user message to chat
         const userMessage = createMessage('user', content);
@@ -446,6 +462,10 @@ export default function ChatPage() {
         setSessions(prev =>
           prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
         );
+
+        // Auto-TEACH mode: save current mode and switch to TEACH during quiz
+        setPreQuizMode(mode);
+        setMode('TEACH');
 
         // Show quiz loading panel and generate quiz
         setIsQuizLoading(true);
@@ -499,6 +519,11 @@ export default function ChatPage() {
           );
 
           setQuizModeActive(false);
+          // Restore pre-quiz mode on failure
+          if (preQuizMode) {
+            setMode(preQuizMode);
+            setPreQuizMode(null);
+          }
         } finally {
           setIsQuizLoading(false);
         }
@@ -537,22 +562,49 @@ export default function ChatPage() {
       setIsLoading(true);
 
       try {
-        // Filter out quiz summary messages before sending to API
-        // Quiz summaries are only for display and shouldn't be part of AI conversation context
-        // Also handles old messages with role: 'quiz_summary' for backward compatibility
-        const messagesForApi = sessionWithTitle.messages.filter(
-          msg => !msg.quizSummary && msg.role !== 'quiz_summary'
-        );
+        // Determine API endpoint — use quiz chat when quiz is active
+        const isQuizChatMode = quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion;
 
-        const response = await fetch('/api/v1/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            messages: messagesForApi,
-            mode,
-            image,
-          }),
-        });
+        let response: Response;
+
+        if (isQuizChatMode) {
+          // Route to quiz chat endpoint with current question context
+          const conversationHistory = sessionWithTitle.messages
+            .filter(msg => !msg.quizSummary && msg.role !== 'quiz_summary')
+            .map(msg => ({
+              role: msg.role as 'user' | 'assistant',
+              content: msg.content,
+              timestamp: msg.timestamp,
+            }));
+
+          response = await fetch('/api/v1/quiz/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              question: chatQuiz.currentQuestion!.question,
+              options: Object.values(chatQuiz.currentQuestion!.options),
+              message: content,
+              conversationHistory,
+            }),
+          });
+        } else {
+          // Filter out quiz summary messages before sending to API
+          // Quiz summaries are only for display and shouldn't be part of AI conversation context
+          // Also handles old messages with role: 'quiz_summary' for backward compatibility
+          const messagesForApi = sessionWithTitle.messages.filter(
+            msg => !msg.quizSummary && msg.role !== 'quiz_summary'
+          );
+
+          response = await fetch('/api/v1/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              messages: messagesForApi,
+              mode,
+              image,
+            }),
+          });
+        }
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
@@ -617,7 +669,7 @@ export default function ChatPage() {
         setIsLoading(false);
       }
     },
-    [currentSession, mode, consumeQuota, countdown, updateQuotaFromResponse, quizModeActive, chatQuiz]
+    [currentSession, mode, consumeQuota, countdown, updateQuotaFromResponse, quizModeActive, chatQuiz, chatQuiz.currentQuestion]
   );
 
   // Loading state
@@ -729,7 +781,7 @@ export default function ChatPage() {
 
           {/* Right: Mode toggle, Quiz Mode toggle, Clear Chat, and theme toggle */}
           <div className="flex items-center gap-2">
-            <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading} />
+            <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading || (quizModeActive && !!chatQuiz.quiz)} />
 
             <QuizModeToggle
               isActive={quizModeActive}

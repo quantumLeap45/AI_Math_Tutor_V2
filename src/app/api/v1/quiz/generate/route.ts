@@ -47,12 +47,38 @@ const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math questio
 5. Only ONE option can be correct
 6. Include a clear explanation for the correct answer
 
+## CRITICAL: VERIFY YOUR MATH
+- Before finalizing each question, solve it yourself
+- The correct answer option MUST match your solution
+- The explanation MUST show working that arrives at the correct answer
+- If the numbers don't work out, change them until they do
+- NEVER create a question where the stated correct answer is wrong
+
+## VARIETY REQUIREMENTS
+- Mix question formats: word problems, direct calculation, comparison, "which is greater", ordering, fill-in-the-blank
+- Use different scenario types: food sharing, shopping, travel distance, classroom items, sports scores, garden planting, cooking, crafts
+- Vary the position of the correct answer across A, B, C, D (don't always put it in A or B)
+- Don't repeat the same name or scenario in multiple questions
+- Vary sentence structure — don't start every question the same way
+
+## DIFFICULTY GUIDE (for Primary school students aged 6-12)
+- Easy: Single-step problems, small numbers, straightforward operations
+- Medium: Two-step problems, moderate numbers, may require carrying/borrowing or simple conversion
+- Hard: Multi-step problems, larger numbers, requires combining multiple concepts, careful reading needed
+
+## TOPIC HANDLING
+- If the topic is "math" or very generic, create a DIVERSE mix of questions covering different topics appropriate for the given level
+- For P1-P2: Whole Numbers, Addition, Subtraction, Shapes, Patterns, Money, Length, Mass
+- For P3-P4: Fractions, Multiplication, Division, Area, Perimeter, Time, Graphs, Angles
+- For P5-P6: Decimals, Percentage, Ratio, Rate, Volume, Algebra, Geometry, Data Analysis
+- Always set the "topic" field to the actual mathematical topic of each question (e.g., "Fractions", "Geometry"), NOT the user's raw input
+
 ## Output Format:
 Return a JSON array of questions. Each question must have:
 {
   "id": "Generated-<level>-<topic>-<number>",
   "level": "P1" | "P2" | "P3" | "P4" | "P5" | "P6",
-  "topic": "<topic name>",
+  "topic": "<actual math topic name, e.g. Fractions, Geometry, Whole Numbers>",
   "subtopic": "<specific subtopic>",
   "difficulty": "easy" | "medium" | "hard",
   "question": "<question text>",
@@ -155,6 +181,11 @@ function parseQuizQuestions(response: string, expectedCount: number, level: Prim
       throw new Error('No valid questions generated');
     }
 
+    // Enforce exact question count — trim if AI generated more than requested
+    if (questions.length > expectedCount) {
+      return questions.slice(0, expectedCount);
+    }
+
     return questions;
   } catch (error) {
     console.error('Failed to parse quiz questions:', error);
@@ -189,8 +220,8 @@ async function generateQuizWithGemini(
     : difficulty;
 
   const userPrompt = ragContext
-    ? `${ragContext}\n\nBased on the style examples above, please generate ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}".`
-    : `Please generate ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}".`;
+    ? `${ragContext}\n\nBased on the style examples above, generate EXACTLY ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}". Not more, not less — exactly ${count} questions.`
+    : `Generate EXACTLY ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}". Not more, not less — exactly ${count} questions.`;
 
   const contents: Content[] = [
     { role: 'user', parts: [{ text: QUIZ_GENERATION_PROMPT + '\n\n' + userPrompt }] },
@@ -238,8 +269,8 @@ async function generateQuizWithOpenRouter(
     : difficulty;
 
   const userPrompt = ragContext
-    ? `${ragContext}\n\nBased on the style examples above, please generate ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}".`
-    : `Please generate ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}".`;
+    ? `${ragContext}\n\nBased on the style examples above, generate EXACTLY ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}". Not more, not less — exactly ${count} questions.`
+    : `Generate EXACTLY ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}". Not more, not less — exactly ${count} questions.`;
 
   try {
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {

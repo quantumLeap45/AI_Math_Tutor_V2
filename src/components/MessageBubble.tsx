@@ -41,7 +41,7 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
           timeTaken={message.quizSummary.timeTaken}
           level={message.quizSummary.config.level}
           difficulty={message.quizSummary.config.difficulty === 'all' ? 'medium' : message.quizSummary.config.difficulty}
-          topic={message.quizSummary.config.topics[0] || 'Math'}
+          topic={message.quizSummary.questions?.[0]?.topic || message.quizSummary.config.topics[0] || 'Math'}
           retryAttempt={message.quizSummary.retryAttempt}
           onReview={() => onReviewQuiz?.(message.quizSummary)}
           onRetry={onRetryQuiz}

@@ -142,13 +142,15 @@ export function createMessage(
  * @returns New quiz summary message
  */
 export function createQuizSummaryMessage(summaryData: QuizSummaryData): Message {
-  const { score, totalQuestions, percentage, timeTaken, retryAttempt, config } = summaryData;
+  const { score, totalQuestions, percentage, timeTaken, retryAttempt, config, questions } = summaryData;
   const retryLabel = retryAttempt > 0 ? `🔄 Retry #${retryAttempt}: ` : '';
+  // Use AI-generated topic from first question instead of parsed user input
+  const displayTopic = questions?.[0]?.topic || config.topics[0] || 'Math';
 
   return {
     id: crypto.randomUUID(),
     role: 'assistant', // Changed from 'quiz_summary' to 'assistant' for API compatibility
-    content: `${retryLabel}Quiz Complete! Score: ${score}/${totalQuestions} (${percentage}%) • Time: ${timeTaken} • ${config.level} ${config.difficulty === 'all' ? 'medium' : config.difficulty}`,
+    content: `${retryLabel}Quiz Complete! Score: ${score}/${totalQuestions} (${percentage}%) • Time: ${timeTaken} • ${config.level} ${config.difficulty === 'all' ? 'medium' : config.difficulty} • ${displayTopic}`,
     timestamp: new Date().toISOString(),
     quizSummary: summaryData,
   };
