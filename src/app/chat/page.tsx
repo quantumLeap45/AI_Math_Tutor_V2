@@ -404,9 +404,20 @@ export default function ChatPage() {
       if (quizModeActive && currentSession && !chatQuiz.quiz) {
         // Parse the request for quiz parameters
         const levelMatch = content.match(/\b(P[1-6])\b/i);
-        const topic = content.replace(/quiz|question|give me|generate|create|questions?/gi, '').trim() || 'math';
-
         const level = (levelMatch?.[1]?.toUpperCase() || 'P2') as 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
+
+        // Extract difficulty from user message
+        let difficulty: 'easy' | 'medium' | 'hard' | 'all' = 'all';
+        if (/\bhard(est)?\b/i.test(content)) difficulty = 'hard';
+        else if (/\bmedium\b/i.test(content)) difficulty = 'medium';
+        else if (/\beasy\b/i.test(content)) difficulty = 'easy';
+
+        // Extract topic by removing noise words, level, and difficulty
+        const topic = content
+          .replace(/\b(P[1-6])\b/gi, '')
+          .replace(/quiz|question|give me|generate|create|questions?|revision|practice|revise|some|the|for|me|a|an|i want|can you|please|hardest|harder|hard|medium|easy|difficult|challenging/gi, '')
+          .trim() || 'math';
+
         const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;
 
         // Add user message to chat (note: images are not supported in quiz mode)
@@ -434,7 +445,7 @@ export default function ChatPage() {
           await chatQuiz.startQuiz({
             level,
             topics: [topic],
-            difficulty: 'all',
+            difficulty,
             questionCount,
           });
 

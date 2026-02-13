@@ -14,6 +14,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Message } from '@/types';
 import { formatTimestamp } from '@/lib/chat';
+import { formatLatexToKidFriendly } from '@/lib/math-format';
 import { ImagePreview } from './ImagePreview';
 import { QuizSummaryCard } from './chat/QuizSummaryCard';
 
@@ -119,7 +120,7 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
                   },
                 }}
               >
-                {message.content}
+                {formatLatexToKidFriendly(message.content)}
               </ReactMarkdown>
             </div>
           )}
