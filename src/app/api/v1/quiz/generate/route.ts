@@ -195,6 +195,66 @@ async function generateQuizWithGemini(
 }
 
 /**
+ * Generate quiz questions using OpenRouter (OpenAI-compatible API)
+ * Used as primary provider when configured, with Gemini as fallback.
+ */
+async function generateQuizWithOpenRouter(
+  topic: string,
+  level: PrimaryLevel,
+  count: number,
+  difficulty: string,
+  ragContext?: string
+): Promise<QuizQuestion[]> {
+  const { apiKey, model } = config.getOpenRouter();
+
+  const difficultyPrompt = difficulty === 'all'
+    ? 'a mix of easy, medium, and hard'
+    : difficulty;
+
+  const userPrompt = ragContext
+    ? `${ragContext}\n\nBased on the style examples above, please generate ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}".`
+    : `Please generate ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}".`;
+
+  try {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://ai-math-tutor-v2.vercel.app',
+        'X-Title': 'AI Math Tutor V2',
+      },
+      body: JSON.stringify({
+        model,
+        messages: [
+          { role: 'system', content: QUIZ_GENERATION_PROMPT },
+          { role: 'user', content: userPrompt },
+        ],
+        temperature: 0.8,
+        max_tokens: 4000,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(`OpenRouter API error: ${response.status} ${errorData.error?.message || response.statusText}`);
+    }
+
+    const data = await response.json();
+    const text = data.choices?.[0]?.message?.content || '';
+
+    if (!text) {
+      throw new Error('Empty response from OpenRouter');
+    }
+
+    return parseQuizQuestions(text, count, level, topic);
+  } catch (error) {
+    console.error('OpenRouter quiz generation error:', error);
+    throw error;
+  }
+}
+
+/**
  * POST /api/v1/quiz/generate
  * Generate quiz questions based on parameters
  */
@@ -218,13 +278,18 @@ export async function POST(request: NextRequest) {
     const topic = topics[0]; // Use first topic for generation
     const count = Number(questionCount); // Convert literal type to number
 
-    // Check Gemini health first
-    const health = await checkHealth();
-    if (!health.available) {
-      throw new AIError(
-        ErrorCode.AI_UNAVAILABLE,
-        health.error || 'AI service temporarily unavailable. Please try again later.'
-      );
+    // Determine which AI provider to use
+    const useOpenRouter = config.isOpenRouterConfigured();
+
+    // Check AI provider health (skip for OpenRouter — it has its own error handling)
+    if (!useOpenRouter) {
+      const health = await checkHealth();
+      if (!health.available) {
+        throw new AIError(
+          ErrorCode.AI_UNAVAILABLE,
+          health.error || 'AI service temporarily unavailable. Please try again later.'
+        );
+      }
     }
 
     // Get RAG context for style reference (if available)
@@ -241,8 +306,10 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Generate quiz questions
-    const questions = await generateQuizWithGemini(topic, level, count, difficulty, ragContext);
+    // Generate quiz questions — prefer OpenRouter when configured
+    const questions = useOpenRouter
+      ? await generateQuizWithOpenRouter(topic, level, count, difficulty, ragContext)
+      : await generateQuizWithGemini(topic, level, count, difficulty, ragContext);
 
     const response = {
       questions,

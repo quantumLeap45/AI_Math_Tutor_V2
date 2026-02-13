@@ -172,6 +172,84 @@ export async function analyzeImage(
 }
 
 /**
+ * Stream chat response via OpenRouter (OpenAI-compatible API)
+ * Used as alternative provider when configured.
+ */
+export async function* streamChatWithOpenRouter(
+  messages: Message[],
+  mode: TutorMode,
+  image?: string,
+  ragContext?: RAGContext
+): AsyncGenerator<string, void, unknown> {
+  const { apiKey, model } = config.getOpenRouter();
+  const systemPrompt = buildSystemPrompt(mode, ragContext);
+
+  // Convert messages to OpenAI format
+  const openAIMessages: Array<{ role: string; content: string }> = [
+    { role: 'system', content: systemPrompt },
+    ...messages.map(m => ({
+      role: m.role === 'user' ? 'user' : 'assistant',
+      content: m.content,
+    })),
+  ];
+
+  try {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://ai-math-tutor-v2.vercel.app',
+        'X-Title': 'AI Math Tutor V2',
+      },
+      body: JSON.stringify({
+        model,
+        messages: openAIMessages,
+        stream: true,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(`OpenRouter API error: ${response.status} ${errorData.error?.message || response.statusText}`);
+    }
+
+    const reader = response.body?.getReader();
+    if (!reader) throw new Error('No response body from OpenRouter');
+
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || !trimmed.startsWith('data: ')) continue;
+        const data = trimmed.slice(6);
+        if (data === '[DONE]') return;
+
+        try {
+          const parsed = JSON.parse(data);
+          const content = parsed.choices?.[0]?.delta?.content;
+          if (content) yield content;
+        } catch {
+          // Skip malformed SSE lines
+        }
+      }
+    }
+  } catch (error) {
+    console.error('OpenRouter streaming error:', error);
+    throw new Error(error instanceof Error ? error.message : 'OpenRouter streaming failed');
+  }
+}
+
+/**
  * Check if the Gemini API key is configured
  */
 export function isConfigured(): boolean {

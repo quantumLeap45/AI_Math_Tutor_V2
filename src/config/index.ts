@@ -41,6 +41,13 @@ interface AppConfig {
     dailyQuotaLimit: number;
   };
 
+  // OpenRouter Configuration (alternative AI provider)
+  openRouter: {
+    apiKey: string;
+    model: string;
+    enabled: boolean;
+  };
+
   // Vercel Blob Configuration (for quiz question images)
   blob: {
     token: string;
@@ -93,6 +100,11 @@ class ConfigManager {
         apiKey: process.env.OPENAI_API_KEY || '',
         enabled: Boolean(process.env.OPENAI_API_KEY),
       },
+      openRouter: {
+        apiKey: process.env.OPENROUTER_API_KEY || '',
+        model: process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-lite-preview-09-2025',
+        enabled: Boolean(process.env.OPENROUTER_API_KEY),
+      },
       blob: {
         token: process.env.BLOB_READ_WRITE_TOKEN || '',
         enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
@@ -118,9 +130,9 @@ class ConfigManager {
   private validate(config: AppConfig): void {
     const errors: string[] = [];
 
-    // Required: Gemini API key
-    if (!config.gemini.apiKey) {
-      errors.push('GEMINI_API_KEY is required');
+    // Required: At least one AI provider
+    if (!config.gemini.apiKey && !config.openRouter.enabled) {
+      errors.push('GEMINI_API_KEY or OPENROUTER_API_KEY is required');
     }
 
     // Warnings for optional services
@@ -223,6 +235,20 @@ class ConfigManager {
    */
   isSupabaseConfigured(): boolean {
     return this.config.supabase.enabled;
+  }
+
+  /**
+   * Get OpenRouter configuration
+   */
+  getOpenRouter(): { apiKey: string; model: string; enabled: boolean } {
+    return { ...this.config.openRouter };
+  }
+
+  /**
+   * Check if OpenRouter is configured
+   */
+  isOpenRouterConfigured(): boolean {
+    return this.config.openRouter.enabled;
   }
 
   /**

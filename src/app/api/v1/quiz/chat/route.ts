@@ -99,9 +99,10 @@ export async function POST(request: NextRequest) {
       throw new RateLimitError(rateLimitResult.retryAfter);
     }
 
-    // Check API key configuration
-    if (!config.getGemini().apiKey) {
-      console.error('GEMINI_API_KEY not configured');
+    // Check AI provider configuration
+    const useOpenRouter = config.isOpenRouterConfigured();
+    if (!useOpenRouter && !config.getGemini().apiKey) {
+      console.error('No AI provider configured');
       throw new AIError(
         ErrorCode.AI_UNAVAILABLE,
         'AI service is not configured. Please contact support.'
@@ -141,19 +142,82 @@ export async function POST(request: NextRequest) {
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          // Use the Google GenAI SDK for streaming
-          const response = await ai.models.generateContentStream({
-            model: MODEL_NAME,
-            contents,
-            config: {
-              systemInstruction: systemPrompt,
-            },
-          });
+          if (useOpenRouter) {
+            // Stream via OpenRouter (OpenAI-compatible API)
+            const { apiKey, model } = config.getOpenRouter();
+            const openAIMessages = [
+              { role: 'system', content: systemPrompt },
+              ...conversationHistory.map(m => ({
+                role: m.role === 'user' ? 'user' : 'assistant',
+                content: m.content,
+              })),
+              { role: 'user', content: message },
+            ];
 
-          // Yield text chunks as they arrive
-          for await (const chunk of response) {
-            if (chunk.text) {
-              controller.enqueue(encoder.encode(chunk.text));
+            const orResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${apiKey}`,
+                'Content-Type': 'application/json',
+                'HTTP-Referer': 'https://ai-math-tutor-v2.vercel.app',
+                'X-Title': 'AI Math Tutor V2',
+              },
+              body: JSON.stringify({
+                model,
+                messages: openAIMessages,
+                stream: true,
+              }),
+            });
+
+            if (!orResponse.ok) {
+              const errorData = await orResponse.json().catch(() => ({}));
+              throw new Error(`OpenRouter API error: ${orResponse.status} ${errorData.error?.message || orResponse.statusText}`);
+            }
+
+            const reader = orResponse.body?.getReader();
+            if (!reader) throw new Error('No response body from OpenRouter');
+
+            const decoder = new TextDecoder();
+            let buffer = '';
+
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+
+              buffer += decoder.decode(value, { stream: true });
+              const lines = buffer.split('\n');
+              buffer = lines.pop() || '';
+
+              for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed || !trimmed.startsWith('data: ')) continue;
+                const data = trimmed.slice(6);
+                if (data === '[DONE]') { controller.close(); return; }
+
+                try {
+                  const parsed = JSON.parse(data);
+                  const content = parsed.choices?.[0]?.delta?.content;
+                  if (content) controller.enqueue(encoder.encode(content));
+                } catch {
+                  // Skip malformed SSE lines
+                }
+              }
+            }
+          } else {
+            // Use the Google GenAI SDK for streaming
+            const response = await ai.models.generateContentStream({
+              model: MODEL_NAME,
+              contents,
+              config: {
+                systemInstruction: systemPrompt,
+              },
+            });
+
+            // Yield text chunks as they arrive
+            for await (const chunk of response) {
+              if (chunk.text) {
+                controller.enqueue(encoder.encode(chunk.text));
+              }
             }
           }
           controller.close();
