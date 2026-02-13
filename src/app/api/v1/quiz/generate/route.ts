@@ -69,15 +69,41 @@ Return a JSON array of questions. Each question must have:
 ## Singapore Context:
 - Use SGD currency for money problems
 - Use Singaporean names (Ahmad, Siti, Mei Ling, Ravi, Wei Ling, Muthu, John, Sarah)
-- Refer to local places where appropriate (e.g., "took the MRT", "went to Sentosa")`;
+- Refer to local places where appropriate (e.g., "took the MRT", "went to Sentosa")
+
+## IMPORTANT FORMAT RULES:
+- Do NOT use LaTeX notation (no $, \\frac, \\text etc). Write fractions as "1/4" or "three-quarters"
+- Write all math in plain text that a primary school student can read
+- Keep explanations concise (2-3 sentences max)
+- Return ONLY the JSON array — no markdown code fences, no extra text`;
 
 /**
  * Parse quiz questions from AI response
  */
 function parseQuizQuestions(response: string, expectedCount: number, level: PrimaryLevel, topic: string): QuizQuestion[] {
   try {
+    // Strip markdown code fences if present
+    let cleaned = response.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+
     // Try to extract JSON array from response
-    const jsonMatch = response.match(/\[[\s\S]*\]/);
+    let jsonMatch = cleaned.match(/\[[\s\S]*\]/);
+
+    // If no match (possibly truncated response), try to repair by closing the array
+    if (!jsonMatch) {
+      // Find the opening bracket
+      const openIdx = cleaned.indexOf('[');
+      if (openIdx >= 0) {
+        let partial = cleaned.substring(openIdx);
+        // Try to close any incomplete objects and the array
+        // Remove trailing incomplete object (no closing })
+        const lastCompleteObj = partial.lastIndexOf('}');
+        if (lastCompleteObj > 0) {
+          partial = partial.substring(0, lastCompleteObj + 1) + ']';
+          jsonMatch = partial.match(/\[[\s\S]*\]/);
+        }
+      }
+    }
+
     if (!jsonMatch) {
       throw new Error('No JSON array found in response');
     }
@@ -178,7 +204,7 @@ async function generateQuizWithGemini(
       config: {
         systemInstruction: QUIZ_GENERATION_PROMPT,
         temperature: 0.8,
-        maxOutputTokens: 4000,
+        maxOutputTokens: 8000,
       },
     });
 
@@ -231,7 +257,7 @@ async function generateQuizWithOpenRouter(
           { role: 'user', content: userPrompt },
         ],
         temperature: 0.8,
-        max_tokens: 4000,
+        max_tokens: 8000,
       }),
     });
 
