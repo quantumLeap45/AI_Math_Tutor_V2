@@ -427,7 +427,8 @@ export default function ChatPage() {
         // Extract topic by removing noise words, level, and difficulty
         const topic = content
           .replace(/\b(P[1-6])\b/gi, '')
-          .replace(/quiz|question|give me|generate|create|questions?|revision|practice|revise|some|the|for|me|a|an|i want|can you|please|hardest|harder|hard|medium|easy|difficult|challenging/gi, '')
+          .replace(/\b(quiz|questions?|give|me|generate|create|revision|practice|revise|some|the|for|a|an|i|want|can|you|please|hardest|harder|hard|medium|easy|difficult|challenging|about|on|of|my|do|make|try|get|with|have|that|this|it|them|best|most|really|very|just|like|show|test|from|your|could|would|should|will|need|know|help|us|we|let|go)\b/gi, '')
+          .replace(/\s+/g, ' ')
           .trim() || 'math';
 
         const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;

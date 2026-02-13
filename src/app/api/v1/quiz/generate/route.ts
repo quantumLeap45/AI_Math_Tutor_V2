@@ -280,6 +280,7 @@ export async function POST(request: NextRequest) {
 
     // Determine which AI provider to use
     const useOpenRouter = config.isOpenRouterConfigured();
+    console.log(`[Quiz Generate] Provider: ${useOpenRouter ? 'OpenRouter' : 'Gemini'}, Level: ${level}, Topic: ${topic}, Count: ${count}, Difficulty: ${difficulty}`);
 
     // Check AI provider health (skip for OpenRouter — it has its own error handling)
     if (!useOpenRouter) {

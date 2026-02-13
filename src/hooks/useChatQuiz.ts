@@ -179,7 +179,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || 'Failed to generate quiz');
+        throw new Error(errorData.message || errorData.error || 'Failed to generate quiz');
       }
 
       const data = await response.json();
