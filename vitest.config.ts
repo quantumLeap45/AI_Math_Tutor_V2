@@ -15,14 +15,6 @@ export default defineConfig({
     // Test environment
     environment: 'happy-dom',
 
-    // Use threads for better isolation
-    pool: 'threads',
-    poolOptions: {
-      threads: {
-        singleThread: false,
-      },
-    },
-
     // Global setup files
     setupFiles: ['./src/__tests__/setup.ts'],
 
@@ -50,8 +42,6 @@ export default defineConfig({
         branches: 65,
         statements: 70,
       },
-      // Check coverage against thresholds
-      thresholdsAutoUpdate: false,
     },
 
     // Test file patterns

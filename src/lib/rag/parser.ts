@@ -84,12 +84,18 @@ function parseQuestionBlock(
   const topic = extractField(block, 'Topic') || 'Unknown';
   const subtopic = extractField(block, 'Subtopic') || 'General';
   const difficultyStr = extractField(block, 'Difficulty') || 'Easy';
-  const questionText = extractField(block, 'Question') || '';
+  const questionText = extractField(block, 'QuestionText') || extractField(block, 'Question') || '';
   const visualHintRaw = extractField(block, 'Visual_Hint') || '';
   const answer = extractField(block, 'Answer') || '';
   const working = extractField(block, 'Working');
   const skillsStr = extractField(block, 'Skills');
   const options = extractField(block, 'Options');
+
+  // Extract visual fields (HasVisual, VisualFile, VisualAlt)
+  const hasVisualRaw = extractField(block, 'HasVisual');
+  const hasVisual = hasVisualRaw ? hasVisualRaw.toLowerCase() === 'yes' : false;
+  const visualFile = extractField(block, 'VisualFile');
+  const visualAlt = extractField(block, 'VisualAlt');
 
   // Validate required fields
   if (!questionText || !answer) {
@@ -124,6 +130,9 @@ function parseQuestionBlock(
     source: metadata.source + (metadata.year ? ` ${metadata.year}` : ''),
     skillsTested,
     options,
+    hasVisual: hasVisual ? true : undefined,
+    visualFile: visualFile || undefined,
+    visualAlt: visualAlt || undefined,
   };
 }
 

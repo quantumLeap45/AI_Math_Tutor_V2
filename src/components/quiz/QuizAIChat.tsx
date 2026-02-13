@@ -11,6 +11,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { QuizQuestion } from '@/types';
+import { formatLatexToKidFriendly } from '@/lib/math-format';
 import { useDailyQuota } from '@/hooks/useDailyQuota';
 
 export interface QuizAIChatProps {
@@ -313,7 +314,7 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
                             },
                           }}
                         >
-                          {message.content}
+                          {formatLatexToKidFriendly(message.content)}
                         </ReactMarkdown>
                       </div>
                     )}

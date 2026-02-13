@@ -12,7 +12,7 @@
  */
 
 import { NextRequest } from 'next/server';
-import { streamChat, isConfigured as isGeminiConfigured, checkHealth } from '@/lib/gemini';
+import { streamChat, streamChatWithOpenRouter, isConfigured as isGeminiConfigured, checkHealth } from '@/lib/gemini';
 import { checkRateLimit, getClientIp, getQuotaStatus } from '@/lib/rateLimit';
 import { Message, TutorMode } from '@/types';
 import { getRAGContext, detectUserIntent } from '@/lib/rag/search';
@@ -56,9 +56,10 @@ export async function POST(request: NextRequest) {
       throw new RateLimitError(rateLimitResult.retryAfter);
     }
 
-    // Check API key configuration
-    if (!isGeminiConfigured()) {
-      console.error('GEMINI_API_KEY not configured');
+    // Check AI provider configuration
+    const useOpenRouter = config.isOpenRouterConfigured();
+    if (!useOpenRouter && !isGeminiConfigured()) {
+      console.error('No AI provider configured');
       throw new AIError(
         ErrorCode.AI_UNAVAILABLE,
         'AI service is not configured. Please contact support.'
@@ -102,20 +103,21 @@ export async function POST(request: NextRequest) {
             const intent = detectUserIntent(userQuery);
 
             if (intent.wantsQuestions || intent.topic) {
-              // RAG might be needed - check Gemini health first
-              const health = await checkHealth();
-              if (!health.available) {
-                console.log(' Gemini unavailable - skipping RAG to save costs');
-                skipRAG = true;
-                // Send error to user immediately
-                controller.enqueue(
-                  encoder.encode(`\n\n[Error: ${health.error || 'AI service temporarily unavailable. Please try again later.'}]`)
-                );
-                controller.close();
-                return;
+              // RAG might be needed - check AI health first (skip for OpenRouter)
+              if (!useOpenRouter) {
+                const health = await checkHealth();
+                if (!health.available) {
+                  console.log(' Gemini unavailable - skipping RAG to save costs');
+                  skipRAG = true;
+                  controller.enqueue(
+                    encoder.encode(`\n\n[Error: ${health.error || 'AI service temporarily unavailable. Please try again later.'}]`)
+                  );
+                  controller.close();
+                  return;
+                }
               }
 
-              // Gemini is available, proceed with RAG
+              // AI provider is available, proceed with RAG
               try {
                 ragContext = await getRAGContext(userQuery);
                 if (ragContext.count > 0) {
@@ -126,18 +128,22 @@ export async function POST(request: NextRequest) {
                   console.log(` RAG: No relevant examples found for query: "${userQuery.substring(0, 50)}..."`);
                 }
               } catch (ragError) {
-                // Log RAG error but continue without RAG context (graceful fallback)
                 console.warn('RAG search failed, continuing without context:', ragError);
               }
             }
           }
 
-          // Log RAG status for debugging (helpful for verification)
+          // Log RAG status for debugging
           if (!skipRAG && !ragUsed && (userQuery.includes('question') || userQuery.includes('problem') || userQuery.includes('practice'))) {
             console.log(` RAG NOT ACTIVE: Query suggests questions but RAG didn't trigger (no examples found)`);
           }
 
-          for await (const chunk of streamChat(messages, mode, image, ragContext)) {
+          // Stream from the appropriate AI provider
+          const chatStream = useOpenRouter
+            ? streamChatWithOpenRouter(messages, mode, image, ragContext)
+            : streamChat(messages, mode, image, ragContext);
+
+          for await (const chunk of chatStream) {
             controller.enqueue(encoder.encode(chunk));
           }
           controller.close();

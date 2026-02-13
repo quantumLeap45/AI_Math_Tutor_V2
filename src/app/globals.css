@@ -44,6 +44,25 @@
   animation: slideIn 0.3s ease-out;
 }
 
+/* Indeterminate loading bar for quiz generation */
+@keyframes loadingBar {
+  0% {
+    transform: translateX(-100%);
+    width: 40%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    transform: translateX(250%);
+    width: 40%;
+  }
+}
+
+.animate-loading-bar {
+  animation: loadingBar 1.5s ease-in-out infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

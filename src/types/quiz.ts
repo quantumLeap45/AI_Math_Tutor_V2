@@ -83,7 +83,7 @@ export interface QuizQuestion {
   subtopic: string;
   /** Difficulty level */
   difficulty: QuizDifficulty;
-  /** Question text (no images) */
+  /** Question text */
   question: string;
   /** Multiple choice options */
   options: QuizOptions;
@@ -91,6 +91,10 @@ export interface QuizQuestion {
   correctAnswer: QuizOption;
   /** Explanation of the correct answer */
   explanation: string;
+  /** Optional image URL for visual questions (e.g., charts, diagrams) */
+  imageUrl?: string;
+  /** Alt text describing the image for accessibility */
+  imageAlt?: string;
 }
 
 /**
@@ -106,6 +110,10 @@ export interface RawQuestionData {
   options: QuizOptions;
   correctAnswer: QuizOption;
   explanation: string;
+  /** Optional image URL for visual questions */
+  imageUrl?: string;
+  /** Alt text describing the image */
+  imageAlt?: string;
 }
 
 // ============ QUIZ CONFIGURATION ============

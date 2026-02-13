@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 import { QuizQuestion, QuizOption } from '@/types';
 import { formatLatexToKidFriendly } from '@/lib/math-format';
 import { formatMathWithVerticalFractions } from '@/components/math/VerticalFraction';
+import { ImagePreview } from '@/components/ImagePreview';
 
 interface QuizPanelProps {
   /** Current question to display */
@@ -54,7 +55,7 @@ export function QuizPanel({
     <div
       className={`
         w-[450px] bg-white dark:bg-slate-800
-        border-l border-slate-200 dark:border-slate-700
+        border-l-2 border-blue-200 dark:border-blue-800
         flex flex-col transition-all duration-300 ease-in-out
         ${isVisible ? 'opacity-100' : 'opacity-0 -translate-x-full'}
         ${!isVisible ? 'pointer-events-none' : ''}
@@ -88,6 +89,17 @@ export function QuizPanel({
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
           {formatMathWithVerticalFractions(formatLatexToKidFriendly(currentQuestion.question))}
         </h3>
+
+        {/* Question image (if present) */}
+        {currentQuestion.imageUrl && (
+          <div className="mb-4">
+            <ImagePreview
+              src={currentQuestion.imageUrl}
+              alt={currentQuestion.imageAlt || 'Quiz question image'}
+              className="max-w-full"
+            />
+          </div>
+        )}
 
         {/* Options */}
         <div className="space-y-3">

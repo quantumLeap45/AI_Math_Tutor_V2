@@ -160,6 +160,16 @@ export type UserSettings = z.infer<typeof userSettingsSchema>;
 export type ChatSession = z.infer<typeof chatSessionSchema>;
 
 /**
+ * Quiz image upload schema
+ */
+export const quizImageUploadSchema = z.object({
+  questionId: z.string().min(1, 'Question ID is required'),
+  alt: z.string().max(500, 'Alt text too long (max 500 characters)').optional(),
+});
+
+export type QuizImageUpload = z.infer<typeof quizImageUploadSchema>;
+
+/**
  * Helper function to format Zod errors for API responses
  */
 export function formatZodError(error: z.ZodError): { error: string; details?: Record<string, string[]> } {

@@ -170,7 +170,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          topic: quizConfig.topics[0] || 'math',
+          topics: quizConfig.topics.length > 0 ? quizConfig.topics : ['math'],
           level: quizConfig.level,
           questionCount: quizConfig.questionCount,
           difficulty: quizConfig.difficulty,
@@ -179,7 +179,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || 'Failed to generate quiz');
+        throw new Error(errorData.message || errorData.error || 'Failed to generate quiz');
       }
 
       const data = await response.json();
@@ -194,6 +194,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to start quiz';
       setError(message);
+      throw err; // Re-throw so callers can handle quiz generation failures
     } finally {
       setIsLoading(false);
     }

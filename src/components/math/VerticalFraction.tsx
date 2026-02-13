@@ -25,15 +25,15 @@ interface VerticalFractionProps {
 
 export function VerticalFraction({ numerator, denominator, className = '' }: VerticalFractionProps) {
   return (
-    <span className={`inline-flex flex-col items-center justify-center mx-1 ${className}`}>
+    <span className={`inline-flex flex-col items-center justify-center align-middle mx-0.5 text-[0.85em] ${className}`}>
       {/* Numerator */}
-      <span className="text-center leading-tight">
+      <span className="text-center leading-none px-0.5">
         {numerator}
       </span>
       {/* Fraction bar */}
-      <span className="w-full border-t border-current border-2 my-0.5" />
+      <span className="w-full border-t border-current my-px" />
       {/* Denominator */}
-      <span className="text-center leading-tight">
+      <span className="text-center leading-none px-0.5">
         {denominator}
       </span>
     </span>
