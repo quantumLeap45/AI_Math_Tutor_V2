@@ -166,7 +166,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
       };
 
       // Call quiz generation API
-      const response = await fetch('/api/generate-quiz', {
+      const response = await fetch('/api/v1/quiz/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

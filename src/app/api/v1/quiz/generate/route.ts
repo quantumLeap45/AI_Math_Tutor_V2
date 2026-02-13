@@ -1,40 +1,40 @@
 /**
- * Quiz Generation API Route
+ * Quiz Generation API Route (v1)
  * AI Math Tutor v2
  *
  * Generates MCQ quiz questions using Gemini + RAG.
  * Questions are created fresh each time based on user's topic request.
+ *
+ * Refactored to use enterprise-grade infrastructure:
+ * - Centralized config service
+ * - Zod validation schemas
+ * - Standardized error handling
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { GoogleGenAI, Content } from '@google/genai';
 import { getRAGContext } from '@/lib/rag/search';
 import { isPineconeConfigured } from '@/lib/rag/pinecone';
 import { checkHealth } from '@/lib/gemini';
 import { QuizQuestion, PrimaryLevel, QuizOption } from '@/types';
+import { config } from '@/config';
+import {
+  validateQuizRequest,
+  QuizRequest,
+  formatZodError,
+} from '@/lib/validation';
+import {
+  errorToResponse,
+  ValidationError,
+  AIError,
+  ErrorCode,
+} from '@/lib/errors';
+import { z } from 'zod';
 
 export const runtime = 'nodejs';
 
-interface GenerateQuizRequest {
-  /** Topic for quiz questions */
-  topic: string;
-  /** Grade level (P1-P6) */
-  level?: PrimaryLevel;
-  /** Number of questions to generate */
-  questionCount: 5 | 10 | 15 | 20;
-  /** Difficulty level */
-  difficulty?: 'easy' | 'medium' | 'hard' | 'all';
-}
-
-interface GenerateQuizResponse {
-  /** Generated questions */
-  questions: QuizQuestion[];
-  /** Number of questions generated */
-  count: number;
-}
-
-// Model configuration
-const MODEL_NAME = 'gemini-2.5-flash';
+// Model configuration from config
+const MODEL_NAME = config.getGemini().model;
 
 // Quiz generation system prompt
 const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math question writer. Your task is to create ORIGINAL multiple-choice questions in the MOE style.
@@ -144,12 +144,15 @@ async function generateQuizWithGemini(
   difficulty: string,
   ragContext?: string
 ): Promise<QuizQuestion[]> {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = config.getGemini().apiKey;
   if (!apiKey) {
-    throw new Error('GEMINI_API_KEY not configured');
+    throw new AIError(
+      ErrorCode.AI_UNAVAILABLE,
+      'AI service is not configured. Please contact support.'
+    );
   }
 
-  // Initialize the Gemini client (matching existing lib/gemini.ts pattern)
+  // Initialize the Gemini client
   const ai = new GoogleGenAI({ apiKey });
 
   // Build the prompt
@@ -189,40 +192,36 @@ async function generateQuizWithGemini(
   }
 }
 
+/**
+ * POST /api/v1/quiz/generate
+ * Generate quiz questions based on parameters
+ */
 export async function POST(request: NextRequest) {
   try {
-    // Parse request body
-    const body: GenerateQuizRequest = await request.json();
-    const { topic, level = 'P2', questionCount = 5, difficulty = 'all' } = body;
+    // Parse and validate request body
+    const body = await request.json();
 
-    // Validate inputs
-    if (!topic || typeof topic !== 'string') {
-      return NextResponse.json(
-        { error: 'Topic is required and must be a string' },
-        { status: 400 }
-      );
+    // Use Zod validation
+    let validatedData: QuizRequest;
+    try {
+      validatedData = validateQuizRequest(body);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        throw new ValidationError('request body', formatZodError(error).error);
+      }
+      throw new ValidationError('request body');
     }
 
-    if (!['P1', 'P2', 'P3', 'P4', 'P5', 'P6'].includes(level)) {
-      return NextResponse.json(
-        { error: 'Level must be one of: P1, P2, P3, P4, P5, P6' },
-        { status: 400 }
-      );
-    }
-
-    if (![5, 10, 15, 20].includes(questionCount)) {
-      return NextResponse.json(
-        { error: 'Question count must be one of: 5, 10, 15, 20' },
-        { status: 400 }
-      );
-    }
+    const { level, topics, difficulty, questionCount } = validatedData;
+    const topic = topics[0]; // Use first topic for generation
+    const count = Number(questionCount); // Convert literal type to number
 
     // Check Gemini health first
     const health = await checkHealth();
     if (!health.available) {
-      return NextResponse.json(
-        { error: health.error || 'AI service temporarily unavailable. Please try again later.' },
-        { status: 503 }
+      throw new AIError(
+        ErrorCode.AI_UNAVAILABLE,
+        health.error || 'AI service temporarily unavailable. Please try again later.'
       );
     }
 
@@ -230,7 +229,7 @@ export async function POST(request: NextRequest) {
     let ragContext: string | undefined;
     if (isPineconeConfigured()) {
       try {
-        const ragResult = await getRAGContext(`generate ${questionCount} questions for ${level} ${topic}`);
+        const ragResult = await getRAGContext(`generate ${count} questions for ${level} ${topic}`);
         if (ragResult.count > 0) {
           ragContext = ragResult.formattedContext;
           console.log(`RAG context found: ${ragResult.count} examples for quiz generation`);
@@ -241,32 +240,29 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate quiz questions
-    const questions = await generateQuizWithGemini(topic, level, questionCount, difficulty, ragContext);
+    const questions = await generateQuizWithGemini(topic, level, count, difficulty, ragContext);
 
-    const response: GenerateQuizResponse = {
+    const response = {
       questions,
       count: questions.length,
     };
 
-    return NextResponse.json(response);
+    return new Response(JSON.stringify(response), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (error) {
     console.error('Quiz generation API error:', error);
-
-    const errorMessage = error instanceof Error
-      ? error.message
-      : 'Failed to generate quiz questions';
-
-    return NextResponse.json(
-      { error: errorMessage },
-      { status: 500 }
-    );
+    return errorToResponse(error);
   }
 }
 
-// Handle unsupported methods
+/**
+ * GET /api/v1/quiz/generate
+ * Returns 405 - Method not allowed
+ */
 export async function GET() {
-  return NextResponse.json(
-    { error: 'Method not allowed. Use POST.' },
-    { status: 405 }
+  return errorToResponse(
+    new ValidationError('method', 'Method not allowed. Use POST.')
   );
 }

@@ -82,7 +82,7 @@ export function useDailyQuota() {
   // Refresh quota status by making a lightweight API call
   const refreshQuotaStatus = useCallback(async () => {
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('/api/v1/chat', {
         method: 'OPTIONS',
       });
 

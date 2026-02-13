@@ -92,7 +92,7 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
         ? Object.values(currentQuestion.options)
         : undefined;
 
-      const response = await fetch('/api/quiz-chat', {
+      const response = await fetch('/api/v1/quiz/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

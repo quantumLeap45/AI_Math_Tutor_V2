@@ -525,7 +525,7 @@ export default function ChatPage() {
           msg => !msg.quizSummary && msg.role !== 'quiz_summary'
         );
 
-        const response = await fetch('/api/chat', {
+        const response = await fetch('/api/v1/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

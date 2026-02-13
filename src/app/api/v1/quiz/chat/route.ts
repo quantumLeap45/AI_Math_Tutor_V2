@@ -1,16 +1,31 @@
 /**
- * Quiz Chat API Route
+ * Quiz Chat API Route (v1)
  * AI Math Tutor v2
  *
  * Handles quiz-specific chat requests with streaming responses.
  * Uses quiz-specific system prompt that guides without giving answers.
+ *
+ * Refactored to use enterprise-grade infrastructure:
+ * - Centralized config service
+ * - Zod validation schemas
+ * - Standardized error handling
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { GoogleGenAI, Content } from '@google/genai';
 import { buildQuizSystemPrompt } from '@/lib/prompts';
 import { checkRateLimit, getClientIp, getQuotaStatus } from '@/lib/rateLimit';
 import { getUserFriendlyErrorMessage } from '@/lib/error-utils';
+import { config } from '@/config';
+import {
+  errorToResponse,
+  ValidationError,
+  QuotaError,
+  RateLimitError,
+  AIError,
+  ErrorCode,
+} from '@/lib/errors';
+import { z } from 'zod';
 
 export const runtime = 'nodejs';
 
@@ -29,11 +44,23 @@ interface QuizChatRequestBody {
 
 // Initialize the Gemini client (server-side only)
 const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY || '',
+  apiKey: config.getGemini().apiKey,
 });
 
-// Model configuration - using new Gemini 2.5 Flash model
-const MODEL_NAME = 'gemini-2.5-flash';
+// Model configuration - using config
+const MODEL_NAME = config.getGemini().model;
+
+// Quiz chat request validation schema
+const quizChatRequestSchema = z.object({
+  question: z.string().min(1, 'Question text is required'),
+  options: z.array(z.string()).optional(),
+  message: z.string().min(1, 'Message is required'),
+  conversationHistory: z.array(z.object({
+    role: z.enum(['user', 'assistant']),
+    content: z.string(),
+    timestamp: z.string(),
+  })).optional(),
+});
 
 /**
  * Convert chat messages to Gemini Content format
@@ -52,12 +79,9 @@ function messagesToGeminiContent(messages: ChatMessage[]): Content[] {
 }
 
 /**
- * Check if the Gemini API key is configured
+ * POST /api/v1/quiz/chat
+ * Quiz chat endpoint with streaming response
  */
-function isConfigured(): boolean {
-  return Boolean(process.env.GEMINI_API_KEY);
-}
-
 export async function POST(request: NextRequest) {
   try {
     // Rate limiting
@@ -68,78 +92,36 @@ export async function POST(request: NextRequest) {
       // Check if this is a daily quota exceeded error
       if (rateLimitResult.quotaStatus && rateLimitResult.dailyRemaining !== undefined) {
         const resetsAt = rateLimitResult.quotaStatus.resetsAt;
-        const hoursUntilReset = resetsAt
-          ? Math.ceil((resetsAt.getTime() - Date.now()) / (1000 * 60 * 60))
-          : 24;
-
-        return NextResponse.json(
-          {
-            error: `Daily limit reached. You've used all ${rateLimitResult.quotaStatus.limit} messages for today. Please wait ${hoursUntilReset} hours or try again tomorrow.`,
-            quotaExceeded: true,
-            resetsAt: resetsAt?.toISOString(),
-          },
-          {
-            status: 429,
-            headers: {
-              'X-RateLimit-Remaining': '0',
-              'X-Daily-Quota-Remaining': '0',
-              'X-Daily-Quota-Limit': String(rateLimitResult.quotaStatus.limit),
-            },
-          }
-        );
+        throw new QuotaError(resetsAt);
       }
 
       // Anti-spam rate limit exceeded
-      return NextResponse.json(
-        {
-          error: `Too many requests. Please wait ${rateLimitResult.retryAfter} seconds.`,
-        },
-        {
-          status: 429,
-          headers: {
-            'Retry-After': String(rateLimitResult.retryAfter),
-            'X-RateLimit-Remaining': '0',
-          },
-        }
-      );
+      throw new RateLimitError(rateLimitResult.retryAfter);
     }
 
     // Check API key configuration
-    if (!isConfigured()) {
+    if (!config.getGemini().apiKey) {
       console.error('GEMINI_API_KEY not configured');
-      return NextResponse.json(
-        { error: 'AI service is not configured. Please contact support.' },
-        { status: 500 }
+      throw new AIError(
+        ErrorCode.AI_UNAVAILABLE,
+        'AI service is not configured. Please contact support.'
       );
     }
 
-    // Parse request body
-    let body: QuizChatRequestBody;
+    // Parse and validate request body
+    const body = await request.json();
+
+    let validatedData: QuizChatRequestBody;
     try {
-      body = await request.json();
-    } catch {
-      return NextResponse.json(
-        { error: 'Invalid request body' },
-        { status: 400 }
-      );
+      validatedData = quizChatRequestSchema.parse(body);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        throw new ValidationError('request body', `Validation failed: ${error.issues.map(e => e.message).join(', ')}`);
+      }
+      throw new ValidationError('request body');
     }
 
-    const { question, options, message, conversationHistory = [] } = body;
-
-    // Validate required fields
-    if (!question || typeof question !== 'string') {
-      return NextResponse.json(
-        { error: 'Question text is required' },
-        { status: 400 }
-      );
-    }
-
-    if (!message || typeof message !== 'string') {
-      return NextResponse.json(
-        { error: 'Message is required' },
-        { status: 400 }
-      );
-    }
+    const { question, options, message, conversationHistory = [] } = validatedData;
 
     // Build quiz-specific system prompt
     const systemPrompt = buildQuizSystemPrompt(question, options);
@@ -194,64 +176,47 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'text/plain; charset=utf-8',
         'Transfer-Encoding': 'chunked',
         'X-RateLimit-Remaining': String(rateLimitResult.remaining),
-        'X-Daily-Quota-Remaining': String(rateLimitResult.dailyRemaining ?? rateLimitResult.quotaStatus?.remaining ?? 50),
-        'X-Daily-Quota-Limit': String(rateLimitResult.quotaStatus?.limit ?? 50),
+        'X-Daily-Quota-Remaining': String(rateLimitResult.dailyRemaining ?? rateLimitResult.quotaStatus?.remaining ?? config.getRateLimits().dailyQuotaLimit),
+        'X-Daily-Quota-Limit': String(rateLimitResult.quotaStatus?.limit ?? config.getRateLimits().dailyQuotaLimit),
         'X-Daily-Quota-Resets-At': rateLimitResult.quotaStatus?.resetsAt?.toISOString() ?? '',
       },
     });
   } catch (error) {
     console.error('Quiz chat API error:', error);
-
-    // Handle specific error types
-    if (error instanceof SyntaxError) {
-      return NextResponse.json(
-        { error: 'Invalid JSON in request body' },
-        { status: 400 }
-      );
-    }
-
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error
-            ? error.message
-            : 'An unexpected error occurred',
-      },
-      { status: 500 }
-    );
+    return errorToResponse(error);
   }
 }
 
-// Handle unsupported methods
+/**
+ * GET /api/v1/quiz/chat
+ * Returns 405 - Method not allowed
+ */
 export async function GET() {
-  return NextResponse.json(
-    { error: 'Method not allowed. Use POST.' },
-    { status: 405 }
+  return errorToResponse(
+    new ValidationError('method', 'Method not allowed. Use POST.')
   );
 }
 
-// Handle OPTIONS for quota checking (without consuming)
+/**
+ * OPTIONS /api/v1/quiz/chat
+ * Returns quota status without consuming
+ */
 export async function OPTIONS(request: NextRequest) {
   try {
     const ip = getClientIp(request);
     const quotaStatus = await getQuotaStatus(ip);
 
-    return NextResponse.json(
-      { quota: 'ok' },
-      {
-        status: 200,
-        headers: {
-          'X-Daily-Quota-Remaining': String(quotaStatus.remaining),
-          'X-Daily-Quota-Limit': String(quotaStatus.limit),
-          'X-Daily-Quota-Resets-At': quotaStatus.resetsAt.toISOString(),
-        },
-      }
-    );
+    return new Response(JSON.stringify({ quota: 'ok' }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Daily-Quota-Remaining': String(quotaStatus.remaining),
+        'X-Daily-Quota-Limit': String(quotaStatus.limit),
+        'X-Daily-Quota-Resets-At': quotaStatus.resetsAt.toISOString(),
+      },
+    });
   } catch (error) {
     console.error('Quota check error:', error);
-    return NextResponse.json(
-      { error: 'Failed to check quota status' },
-      { status: 500 }
-    );
+    return errorToResponse(error);
   }
 }

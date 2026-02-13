@@ -8,6 +8,7 @@
  */
 
 import { supabase as supabaseClient, isSupabaseConfigured } from '@/lib/supabase';
+import { config } from '@/config';
 
 // ============================================
 // ANTI-SPAM: In-memory rate limiting (per minute)
@@ -16,9 +17,10 @@ import { supabase as supabaseClient, isSupabaseConfigured } from '@/lib/supabase
 // Store request timestamps by IP
 const requestLog = new Map<string, number[]>();
 
-// Configuration for anti-spam
-const WINDOW_MS = 60 * 1000; // 1 minute window
-const MAX_REQUESTS = 20; // Max requests per minute
+// Configuration for anti-spam - use config values
+const rateLimitConfig = config.getRateLimits();
+const WINDOW_MS = rateLimitConfig.antiSpamWindowMs;
+const MAX_REQUESTS = rateLimitConfig.antiSpamMaxRequests;
 
 /**
  * Clean up old entries from the request log
@@ -83,7 +85,7 @@ function checkAntiSpamLimit(ip: string): {
 // DAILY QUOTA: 50 messages per 24 hours (Supabase)
 // ============================================
 
-const DAILY_QUOTA_LIMIT = 50; // 50 messages per day
+const DAILY_QUOTA_LIMIT = config.getRateLimits().dailyQuotaLimit;
 
 interface DailyQuotaStatus {
   used: number;

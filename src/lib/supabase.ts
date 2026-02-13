@@ -7,24 +7,24 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
+import { config } from '@/config';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseConfig = config.getSupabase();
 
-if (!supabaseUrl || !supabaseAnonKey) {
+if (!supabaseConfig.url || !supabaseConfig.anonKey) {
   console.warn('Supabase credentials not configured. Database features will be disabled.');
 }
 
 // Create Supabase client for server-side use
-export const supabase = supabaseUrl && supabaseAnonKey
-  ? createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = supabaseConfig.url && supabaseConfig.anonKey
+  ? createClient(supabaseConfig.url, supabaseConfig.anonKey)
   : null;
 
 /**
  * Check if Supabase is properly configured
  */
 export function isSupabaseConfigured(): boolean {
-  return supabase !== null;
+  return config.isSupabaseConfigured();
 }
 
 /**

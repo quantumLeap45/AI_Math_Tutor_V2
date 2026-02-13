@@ -12,14 +12,15 @@ import { Message, TutorMode } from '@/types';
 import { buildSystemPrompt } from './prompts';
 import { getUserFriendlyErrorMessage } from './error-utils';
 import { RAGContext } from './rag/types';
+import { config } from '@/config';
 
 // Initialize the Gemini client (server-side only)
 const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY || '',
+  apiKey: config.getGemini().apiKey,
 });
 
-// Model configuration - using new Gemini 2.5 Flash model
-const MODEL_NAME = 'gemini-2.5-flash';
+// Get model from config
+const MODEL_NAME = config.getGemini().model;
 
 /**
  * Convert our Message format to Gemini Content format
@@ -174,7 +175,7 @@ export async function analyzeImage(
  * Check if the Gemini API key is configured
  */
 export function isConfigured(): boolean {
-  return Boolean(process.env.GEMINI_API_KEY);
+  return Boolean(config.getGemini().apiKey);
 }
 
 /**

@@ -1,11 +1,10 @@
 // AI Math Tutor v2 - Type Definitions
 
-// Import quiz types for use in this file
+// Import QuizQuestion explicitly since it's used in this file
 import type { QuizQuestion } from './quiz';
 
-// Re-export quiz types for convenience
+// Re-export all types from quiz module
 export * from './quiz';
-export type { QuizQuestion } from './quiz';
 
 /**
  * Tutor mode for AI responses
