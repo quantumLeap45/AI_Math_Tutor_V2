@@ -18,7 +18,7 @@ import { ModeToggle } from '@/components/ModeToggle';
 import { MessageLoading } from '@/components/LoadingSpinner';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { QuizModeToggle } from '@/components/QuizModeToggle';
-import { QuizPanel, QuizSummaryCard, QuizReviewModal } from '@/components/chat';
+import { QuizPanel, QuizLoadingPanel, QuizSummaryCard, QuizReviewModal } from '@/components/chat';
 import { ChatSession, ChatQuizState, TutorMode } from '@/types';
 import {
   getUsername,
@@ -71,6 +71,7 @@ export default function ChatPage() {
 
   // Quiz mode state
   const [quizModeActive, setQuizModeActive] = useState(false);
+  const [isQuizLoading, setIsQuizLoading] = useState(false);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [selectedQuizForReview, setSelectedQuizForReview] = useState<(ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) | null>(null);
   const [currentRetryAttempt, setCurrentRetryAttempt] = useState(0);
@@ -401,7 +402,18 @@ export default function ChatPage() {
       // Check if user is requesting a quiz in quiz mode
       // Only generate quiz if no quiz is currently loaded (initial request)
       // Once quiz is active, messages should go to AI chat for help
-      if (quizModeActive && currentSession && !chatQuiz.quiz) {
+      if (quizModeActive && !chatQuiz.quiz) {
+        // Ensure session exists before proceeding (mirrors regular chat pattern)
+        let session = currentSession;
+        if (!session) {
+          session = createSession(mode);
+          setCurrentSession(session);
+          setSessions(prev => [session!, ...prev]);
+          saveSession(session);
+          saveSettings({ lastActiveSession: session.id });
+          setQuizSessionId(session.id);
+        }
+
         // Parse the request for quiz parameters
         const levelMatch = content.match(/\b(P[1-6])\b/i);
         const level = (levelMatch?.[1]?.toUpperCase() || 'P2') as 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
@@ -420,11 +432,11 @@ export default function ChatPage() {
 
         const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;
 
-        // Add user message to chat (note: images are not supported in quiz mode)
+        // Add user message to chat
         const userMessage = createMessage('user', content);
         const updatedSession = {
-          ...currentSession,
-          messages: [...currentSession.messages, userMessage],
+          ...session,
+          messages: [...session.messages, userMessage],
           updatedAt: new Date().toISOString(),
         };
 
@@ -434,14 +446,11 @@ export default function ChatPage() {
           prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
         );
 
-        // Call startQuiz from the hook (it handles the API call internally)
-        setIsLoading(true);
-        // Reset retry count for new quiz
+        // Show quiz loading panel and generate quiz
+        setIsQuizLoading(true);
         setCurrentRetryAttempt(0);
 
         try {
-          // Call startQuiz and wait for it to complete
-          // Note: startQuiz handles all error cases internally and sets quiz state
           await chatQuiz.startQuiz({
             level,
             topics: [topic],
@@ -471,7 +480,6 @@ export default function ChatPage() {
           const errorMsg = error instanceof Error ? error.message : 'Failed to generate quiz. Please try again.';
           setError(errorMsg);
 
-          // Add error message to chat so user knows what happened
           const errorMessage = createMessage(
             'assistant',
             `Sorry, I couldn't generate the quiz. ${errorMsg}`
@@ -489,10 +497,9 @@ export default function ChatPage() {
             prev.map(s => (s.id === sessionWithError.id ? sessionWithError : s))
           );
 
-          // Exit quiz mode on error so user can try again
           setQuizModeActive(false);
         } finally {
-          setIsLoading(false);
+          setIsQuizLoading(false);
         }
         return;
       }
@@ -726,7 +733,7 @@ export default function ChatPage() {
             <QuizModeToggle
               isActive={quizModeActive}
               onToggle={handleQuizModeToggle}
-              disabled={isLoading || chatQuiz.isLoading}
+              disabled={isLoading || isQuizLoading || chatQuiz.isLoading}
               questionCount={chatQuiz.quiz?.questions.length}
               currentQuestion={chatQuiz.quiz ? chatQuiz.quiz.currentIndex + 1 : undefined}
               isLocked={!!chatQuiz.quiz && !chatQuiz.quiz.isCompleted}
@@ -779,8 +786,8 @@ export default function ChatPage() {
 
         {/* Content wrapper: Chat area + optional Quiz Panel */}
         <div className="flex-1 flex overflow-hidden">
-          {/* Chat area */}
-          <main className="flex-1 flex flex-col overflow-hidden min-w-0 min-w-[300px]">
+          {/* Chat area — dims when quiz panel is showing */}
+          <main className={`flex-1 flex flex-col overflow-hidden min-w-0 min-w-[300px] transition-opacity duration-300 ${(quizModeActive && (chatQuiz.quiz || isQuizLoading)) ? 'opacity-75' : 'opacity-100'}`}>
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4">
             {!currentSession || currentSession.messages.length === 0 ? (
@@ -898,7 +905,7 @@ export default function ChatPage() {
           {/* Composer */}
           <MessageComposer
             onSend={handleSendMessage}
-            disabled={isLoading}
+            disabled={isLoading || isQuizLoading}
             placeholder={
               quizModeActive
                 ? 'Type your quiz request (e.g., "Give me 5 P2 fractions questions")...'
@@ -909,8 +916,19 @@ export default function ChatPage() {
           />
         </main>
 
-        {/* Quiz Panel - side-by-side with chat */}
-        {quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
+        {/* Quiz Loading Panel — shown while generating questions */}
+        {isQuizLoading && quizModeActive && (
+          <QuizLoadingPanel
+            isVisible={true}
+            onCancel={() => {
+              setIsQuizLoading(false);
+              setQuizModeActive(false);
+            }}
+          />
+        )}
+
+        {/* Quiz Panel — shown when questions are ready */}
+        {!isQuizLoading && quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
           <QuizPanel
             currentQuestion={chatQuiz.currentQuestion}
             questionNumber={chatQuiz.quiz.currentIndex + 1}

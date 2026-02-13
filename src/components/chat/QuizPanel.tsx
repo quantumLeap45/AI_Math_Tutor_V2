@@ -55,7 +55,7 @@ export function QuizPanel({
     <div
       className={`
         w-[450px] bg-white dark:bg-slate-800
-        border-l border-slate-200 dark:border-slate-700
+        border-l-2 border-blue-200 dark:border-blue-800
         flex flex-col transition-all duration-300 ease-in-out
         ${isVisible ? 'opacity-100' : 'opacity-0 -translate-x-full'}
         ${!isVisible ? 'pointer-events-none' : ''}
