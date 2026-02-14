@@ -29,7 +29,7 @@ export function ModeToggle({ mode, onChange, disabled = false }: ModeToggleProps
       <button
         onClick={() => onChange('SHOW')}
         disabled={disabled}
-        className={getButtonClass('SHOW', 'text-blue-600 dark:text-blue-400')}
+        className={getButtonClass('SHOW', 'text-emerald-600 dark:text-emerald-400')}
         aria-pressed={mode === 'SHOW'}
         title="SHOW mode: I'll give you the complete solution with step-by-step explanations"
       >
@@ -45,7 +45,7 @@ export function ModeToggle({ mode, onChange, disabled = false }: ModeToggleProps
       <button
         onClick={() => onChange('TEACH')}
         disabled={disabled}
-        className={getButtonClass('TEACH', 'text-purple-600 dark:text-purple-400')}
+        className={getButtonClass('TEACH', 'text-teal-600 dark:text-teal-400')}
         aria-pressed={mode === 'TEACH'}
         title="TEACH mode: I'll guide you to discover the answer yourself"
       >

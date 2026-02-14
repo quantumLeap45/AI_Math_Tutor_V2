@@ -89,8 +89,16 @@ Return a JSON array of questions. Each question must have:
     "D": "<option D text>"
   },
   "correctAnswer": "A" | "B" | "C" | "D",
-  "explanation": "<step-by-step explanation>"
+  "explanation": "<structured explanation>"
 }
+
+## EXPLANATION FORMAT (CRITICAL - FOLLOW EXACTLY):
+- Keep explanations SHORT: Maximum 2-3 sentences, under 150 characters total
+- Use this STRUCTURED format: "Step 1: [first step]. Step 2: [second step]. Answer: [result]."
+- For simple questions: "[Method]. Answer: [result]."
+- NO reasoning process or verification text in the output
+- NO phrases like "Let's solve this" or "First, I need to" or "We can verify"
+- Just the essential steps and final answer
 
 ## Singapore Context:
 - Use SGD currency for money problems
@@ -100,7 +108,6 @@ Return a JSON array of questions. Each question must have:
 ## IMPORTANT FORMAT RULES:
 - Do NOT use LaTeX notation (no $, \\frac, \\text etc). Write fractions as "1/4" or "three-quarters"
 - Write all math in plain text that a primary school student can read
-- Keep explanations concise (2-3 sentences max)
 - Return ONLY the JSON array — no markdown code fences, no extra text`;
 
 /**

@@ -57,7 +57,7 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
       {/* AI Avatar */}
       {!isUser && (
         <div className="flex-shrink-0 mr-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
             <span className="text-white font-bold text-sm">M</span>
           </div>
         </div>
@@ -67,10 +67,9 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
         <div
           className={`
             px-4 py-3 rounded-2xl shadow-sm
-            ${
-              isUser
-                ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-br-sm'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-bl-sm rounded-tr-sm'
+            ${isUser
+              ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-br-sm'
+              : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-bl-sm rounded-tr-sm'
             }
           `}
         >
@@ -91,7 +90,7 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
                   // Customize rendering for better display
                   p: ({ children }) => <p className="my-2">{children}</p>,
                   strong: ({ children }) => (
-                    <strong className="font-semibold text-blue-600 dark:text-blue-400">
+                    <strong className="font-semibold text-emerald-600 dark:text-emerald-400">
                       {children}
                     </strong>
                   ),

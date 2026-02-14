@@ -19,6 +19,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -30,9 +31,46 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
   }
 }
 
@@ -44,15 +82,30 @@
   animation: slideIn 0.3s ease-out;
 }
 
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
 /* Indeterminate loading bar for quiz generation */
 @keyframes loadingBar {
   0% {
     transform: translateX(-100%);
     width: 40%;
   }
+
   50% {
     width: 60%;
   }
+
   100% {
     transform: translateX(250%);
     width: 40%;
@@ -100,20 +153,24 @@
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgb(203 213 225); /* slate-300 */
+  background: rgb(203 213 225);
+  /* slate-300 */
   border-radius: 3px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: rgb(148 163 184); /* slate-400 */
+  background: rgb(148 163 184);
+  /* slate-400 */
 }
 
 .dark .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgb(71 85 105); /* slate-600 */
+  background: rgb(71 85 105);
+  /* slate-600 */
 }
 
 .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: rgb(100 116 139); /* slate-500 */
+  background: rgb(100 116 139);
+  /* slate-500 */
 }
 
 /* Prose customization for markdown */
@@ -121,19 +178,19 @@
   --tw-prose-body: #334155;
   --tw-prose-headings: #0f172a;
   --tw-prose-bold: #0f172a;
-  --tw-prose-links: #3b82f6;
+  --tw-prose-links: #10b981;
 }
 
 .dark .prose {
   --tw-prose-body: #cbd5e1;
   --tw-prose-headings: #f8fafc;
   --tw-prose-bold: #f8fafc;
-  --tw-prose-links: #60a5fa;
+  --tw-prose-links: #34d399;
 }
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #10b981;
   outline-offset: 2px;
 }
 

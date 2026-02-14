@@ -75,6 +75,7 @@ export default function ChatPage() {
   // Quiz mode state
   const [quizModeActive, setQuizModeActive] = useState(false);
   const [isQuizLoading, setIsQuizLoading] = useState(false);
+  const [quizGenerationError, setQuizGenerationError] = useState<string | null>(null);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [selectedQuizForReview, setSelectedQuizForReview] = useState<(ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) | null>(null);
   const [currentRetryAttempt, setCurrentRetryAttempt] = useState(0);
@@ -341,6 +342,44 @@ export default function ChatPage() {
     await chatQuiz.retryQuiz();
   }, [chatQuiz, mode, preQuizMode]);
 
+  // Handle retry for failed quiz generation
+  const handleRetryFailedQuiz = useCallback(async () => {
+    if (!chatQuiz.lastFailedConfig) return;
+
+    setIsQuizLoading(true);
+    setQuizGenerationError(null);
+
+    try {
+      await chatQuiz.retryFailedQuiz();
+
+      // Add AI message confirming quiz start
+      if (currentSession && chatQuiz.quiz) {
+        const aiMessage = createMessage(
+          'assistant',
+          `Great! I've prepared ${chatQuiz.lastFailedConfig.questionCount} ${chatQuiz.lastFailedConfig.level} questions for you to practice. You can ask me questions while you work through them.`
+        );
+
+        const sessionWithAI = {
+          ...currentSession,
+          messages: [...currentSession.messages, aiMessage],
+          updatedAt: new Date().toISOString(),
+        };
+
+        setCurrentSession(sessionWithAI);
+        saveSession(sessionWithAI);
+        setSessions(prev =>
+          prev.map(s => (s.id === sessionWithAI.id ? sessionWithAI : s))
+        );
+      }
+    } catch (error) {
+      console.error('Quiz retry error:', error);
+      const errorMsg = error instanceof Error ? error.message : 'Failed to generate quiz. Please try again.';
+      setQuizGenerationError(errorMsg);
+    } finally {
+      setIsQuizLoading(false);
+    }
+  }, [chatQuiz, currentSession]);
+
   // Handle quiz completion - watch for lastCompletedQuiz changes
   // This useEffect runs when quiz completes and adds the summary message to chat
   useEffect(() => {
@@ -499,7 +538,7 @@ export default function ChatPage() {
         } catch (error) {
           console.error('Quiz generation error:', error);
           const errorMsg = error instanceof Error ? error.message : 'Failed to generate quiz. Please try again.';
-          setError(errorMsg);
+          setQuizGenerationError(errorMsg);
 
           const errorMessage = createMessage(
             'assistant',
@@ -518,12 +557,8 @@ export default function ChatPage() {
             prev.map(s => (s.id === sessionWithError.id ? sessionWithError : s))
           );
 
-          setQuizModeActive(false);
-          // Restore pre-quiz mode on failure
-          if (preQuizMode) {
-            setMode(preQuizMode);
-            setPreQuizMode(null);
-          }
+          // Keep quiz mode active so user can retry
+          // Don't restore pre-quiz mode yet - allow retry
         } finally {
           setIsQuizLoading(false);
         }
@@ -676,7 +711,7 @@ export default function ChatPage() {
   if (!mounted || !username) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900">
-        <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -750,7 +785,7 @@ export default function ChatPage() {
               )}
             </button>
             <Link href="/home" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">M</span>
               </div>
               <span className="hidden sm:block text-lg font-semibold text-slate-900 dark:text-slate-100">
@@ -762,19 +797,19 @@ export default function ChatPage() {
             <nav className="hidden md:flex items-center gap-1 ml-2" aria-label="Main navigation">
               <Link
                 href="/home"
-                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-blue-600 dark:text-blue-400"
+                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-emerald-600 dark:text-emerald-400"
                 aria-current="page"
               >
                 Home
-                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-500 rounded-full" />
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-emerald-500 rounded-full" />
               </Link>
               <Link
                 href="/chat"
-                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-blue-600 dark:text-blue-400"
+                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-emerald-600 dark:text-emerald-400"
                 aria-current="page"
               >
                 Chat
-                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-500 rounded-full" />
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-emerald-500 rounded-full" />
               </Link>
             </nav>
           </div>
@@ -841,160 +876,158 @@ export default function ChatPage() {
         <div className="flex-1 flex overflow-hidden">
           {/* Chat area — dims when quiz panel is showing */}
           <main className={`flex-1 flex flex-col overflow-hidden min-w-0 min-w-[300px] transition-opacity duration-300 ${(quizModeActive && (chatQuiz.quiz || isQuizLoading)) ? 'opacity-75' : 'opacity-100'}`}>
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4">
-            {!currentSession || currentSession.messages.length === 0 ? (
-              // Empty state
-              <div className="h-full flex items-center justify-center">
-                <div className="text-center max-w-md p-6">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4">
+              {!currentSession || currentSession.messages.length === 0 ? (
+                // Empty state
+                <div className="h-full flex items-center justify-center">
+                  <div className="text-center max-w-md p-6">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+                      {quizModeActive ? (
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      ) : (
+                        <span className="text-white text-2xl">M</span>
+                      )}
+                    </div>
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                      {quizModeActive ? 'Quiz Mode Active!' : 'Ready to learn math!'}
+                    </h2>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4">
+                      {quizModeActive
+                        ? 'Type your quiz request below. Tell me the topic, level, and how many questions you want.'
+                        : 'Ask me any Primary 1-6 math question. You can type or upload a photo of your homework.'
+                      }
+                    </p>
                     {quizModeActive ? (
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
+                      <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <p>Try typing:</p>
+                        <ul className="space-y-1">
+                          <li>&quot;Give me 5 P2 fractions questions&quot;</li>
+                          <li>&quot;Generate 10 P4 geometry questions&quot;</li>
+                          <li>&quot;I want 15 P6 algebra problems&quot;</li>
+                        </ul>
+                      </div>
                     ) : (
-                      <span className="text-white text-2xl">M</span>
+                      <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <p>Try asking:</p>
+                        <ul className="space-y-1">
+                          <li>&quot;What is 25 + 17?&quot;</li>
+                          <li>&quot;Help me with fractions&quot;</li>
+                          <li>&quot;How do I find the area of a rectangle?&quot;</li>
+                        </ul>
+                      </div>
                     )}
                   </div>
-                  <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                    {quizModeActive ? 'Quiz Mode Active!' : 'Ready to learn math!'}
-                  </h2>
-                  <p className="text-slate-600 dark:text-slate-400 mb-4">
-                    {quizModeActive
-                      ? 'Type your quiz request below. Tell me the topic, level, and how many questions you want.'
-                      : 'Ask me any Primary 1-6 math question. You can type or upload a photo of your homework.'
-                    }
-                  </p>
-                  {quizModeActive ? (
-                    <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                      <p>Try typing:</p>
-                      <ul className="space-y-1">
-                        <li>&quot;Give me 5 P2 fractions questions&quot;</li>
-                        <li>&quot;Generate 10 P4 geometry questions&quot;</li>
-                        <li>&quot;I want 15 P6 algebra problems&quot;</li>
-                      </ul>
-                    </div>
-                  ) : (
-                    <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                      <p>Try asking:</p>
-                      <ul className="space-y-1">
-                        <li>&quot;What is 25 + 17?&quot;</li>
-                        <li>&quot;Help me with fractions&quot;</li>
-                        <li>&quot;How do I find the area of a rectangle?&quot;</li>
-                      </ul>
-                    </div>
-                  )}
                 </div>
-              </div>
-            ) : (
-              // Messages list
-              <div className={quizModeActive ? "max-w-2xl mx-auto px-4" : "max-w-3xl mx-auto"}>
-                {currentSession.messages.map((message, index) => (
-                  <MessageBubble
-                    key={message.id}
-                    message={message}
-                    quotaInfo={message.role === 'assistant' && index === currentSession.messages.length - 1 ? {
-                      remaining: quotaStatus.remaining,
-                      limit: quotaStatus.limit
-                    } : undefined}
-                    onReviewQuiz={handleReviewQuiz}
-                    onRetryQuiz={handleRetryQuiz}
-                  />
-                ))}
-                {isLoading && <MessageLoading />}
+              ) : (
+                // Messages list
+                <div className={quizModeActive ? "max-w-2xl mx-auto px-4" : "max-w-3xl mx-auto"}>
+                  {currentSession.messages.map((message, index) => (
+                    <MessageBubble
+                      key={message.id}
+                      message={message}
+                      quotaInfo={message.role === 'assistant' && index === currentSession.messages.length - 1 ? {
+                        remaining: quotaStatus.remaining,
+                        limit: quotaStatus.limit
+                      } : undefined}
+                      onReviewQuiz={handleReviewQuiz}
+                      onRetryQuiz={handleRetryQuiz}
+                    />
+                  ))}
+                  {isLoading && <MessageLoading />}
 
-                <div ref={messagesEndRef} />
-              </div>
-            )}
-          </div>
+                  <div ref={messagesEndRef} />
+                </div>
+              )}
+            </div>
 
-          {/* Error message */}
-          {error && (
-            <div
-              className={`px-4 py-2 border-t ${
-                error.includes('Daily limit')
+            {/* Error message */}
+            {error && (
+              <div
+                className={`px-4 py-2 border-t ${error.includes('Daily limit')
                   ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
                   : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
-              }`}
-            >
-              <p
-                className={`text-sm text-center ${
-                  error.includes('Daily limit')
+                  }`}
+              >
+                <p
+                  className={`text-sm text-center ${error.includes('Daily limit')
                     ? 'text-amber-700 dark:text-amber-300'
                     : 'text-red-600 dark:text-red-400'
-                }`}
-              >
-                {error.includes('Daily limit') ? (
-                  <>
-                    <span className="font-medium">Daily limit reached</span>
-                    {countdown && (
-                      <span>
-                        {' '}• Resets in{' '}
-                        <span className="font-mono font-bold">{countdown.formatted}</span>
-                      </span>
-                    )}
-                    <button
-                      onClick={() => setError(null)}
-                      className="ml-2 underline hover:no-underline"
-                    >
-                      Dismiss
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    {error}
-                    <button
-                      onClick={() => setError(null)}
-                      className="ml-2 underline hover:no-underline"
-                    >
-                      Dismiss
-                    </button>
-                  </>
-                )}
-              </p>
-            </div>
+                    }`}
+                >
+                  {error.includes('Daily limit') ? (
+                    <>
+                      <span className="font-medium">Daily limit reached</span>
+                      {countdown && (
+                        <span>
+                          {' '}• Resets in{' '}
+                          <span className="font-mono font-bold">{countdown.formatted}</span>
+                        </span>
+                      )}
+                      <button
+                        onClick={() => setError(null)}
+                        className="ml-2 underline hover:no-underline"
+                      >
+                        Dismiss
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      {error}
+                      <button
+                        onClick={() => setError(null)}
+                        className="ml-2 underline hover:no-underline"
+                      >
+                        Dismiss
+                      </button>
+                    </>
+                  )}
+                </p>
+              </div>
+            )}
+
+            {/* Composer */}
+            <MessageComposer
+              onSend={handleSendMessage}
+              disabled={isLoading || isQuizLoading}
+              placeholder={
+                quizModeActive
+                  ? 'Type your quiz request (e.g., "Give me 5 P2 fractions questions")...'
+                  : mode === 'TEACH'
+                    ? 'Type your question or share your attempt...'
+                    : 'Type your math question...'
+              }
+            />
+          </main>
+
+          {/* Quiz Loading Panel — shown while generating questions */}
+          {isQuizLoading && quizModeActive && (
+            <QuizLoadingPanel
+              isVisible={true}
+              onCancel={() => {
+                setIsQuizLoading(false);
+                setQuizModeActive(false);
+              }}
+            />
           )}
 
-          {/* Composer */}
-          <MessageComposer
-            onSend={handleSendMessage}
-            disabled={isLoading || isQuizLoading}
-            placeholder={
-              quizModeActive
-                ? 'Type your quiz request (e.g., "Give me 5 P2 fractions questions")...'
-                : mode === 'TEACH'
-                ? 'Type your question or share your attempt...'
-                : 'Type your math question...'
-            }
-          />
-        </main>
-
-        {/* Quiz Loading Panel — shown while generating questions */}
-        {isQuizLoading && quizModeActive && (
-          <QuizLoadingPanel
-            isVisible={true}
-            onCancel={() => {
-              setIsQuizLoading(false);
-              setQuizModeActive(false);
-            }}
-          />
-        )}
-
-        {/* Quiz Panel — shown when questions are ready */}
-        {!isQuizLoading && quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
-          <QuizPanel
-            currentQuestion={chatQuiz.currentQuestion}
-            questionNumber={chatQuiz.quiz.currentIndex + 1}
-            totalQuestions={chatQuiz.quiz.questions.length}
-            selectedOption={chatQuiz.quiz.answers[chatQuiz.quiz.currentIndex]?.selected ?? null}
-            showFeedback={chatQuiz.quiz.showFeedback}
-            isLastQuestion={chatQuiz.quiz.currentIndex === chatQuiz.quiz.questions.length - 1}
-            onSelectOption={handleQuizSelectOption}
-            onNext={handleQuizNext}
-            onExit={handleQuizExit}
-            isVisible={quizModeActive}
-          />
-        )}
+          {/* Quiz Panel — shown when questions are ready */}
+          {!isQuizLoading && quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
+            <QuizPanel
+              currentQuestion={chatQuiz.currentQuestion}
+              questionNumber={chatQuiz.quiz.currentIndex + 1}
+              totalQuestions={chatQuiz.quiz.questions.length}
+              selectedOption={chatQuiz.quiz.answers[chatQuiz.quiz.currentIndex]?.selected ?? null}
+              showFeedback={chatQuiz.quiz.showFeedback}
+              isLastQuestion={chatQuiz.quiz.currentIndex === chatQuiz.quiz.questions.length - 1}
+              onSelectOption={handleQuizSelectOption}
+              onNext={handleQuizNext}
+              onExit={handleQuizExit}
+              isVisible={quizModeActive}
+            />
+          )}
         </div>
       </div>
 

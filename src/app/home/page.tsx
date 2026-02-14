@@ -39,7 +39,7 @@ export default function HomePage() {
   if (!mounted || !username) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900">
-        <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -90,9 +90,9 @@ export default function HomePage() {
             <span className="font-medium text-slate-700 dark:text-slate-300">
               💡 Pro tip:
             </span>{' '}
-            Use <span className="text-blue-600 dark:text-blue-400 font-medium">SHOW mode</span>{' '}
+            Use <span className="text-emerald-600 dark:text-emerald-400 font-medium">SHOW mode</span>{' '}
             for complete solutions, or{' '}
-            <span className="text-purple-600 dark:text-purple-400 font-medium">TEACH mode</span>{' '}
+            <span className="text-teal-600 dark:text-teal-400 font-medium">TEACH mode</span>{' '}
             to learn step-by-step with hints.
           </p>
         </div>

@@ -58,7 +58,7 @@ export function TopBar({
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group -ml-0 sm:-ml-0">
               {/* Gradient M logo */}
-              <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+              <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
                 <span className="text-white font-bold text-lg">M</span>
               </div>
               {/* Text - hidden on small mobile */}
@@ -79,7 +79,7 @@ export function TopBar({
                       className={`
                         px-3 py-2 rounded-lg font-medium text-sm transition-colors relative
                         ${isActive
-                          ? 'text-blue-600 dark:text-blue-400'
+                          ? 'text-emerald-600 dark:text-emerald-400'
                           : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                         }
                       `}
@@ -87,7 +87,7 @@ export function TopBar({
                     >
                       {link.label}
                       {isActive && (
-                        <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-500 rounded-full" />
+                        <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-emerald-500 rounded-full" />
                       )}
                     </Link>
                   );
@@ -198,7 +198,7 @@ export function TopBar({
                     className={`
                       flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors
                       ${isActive
-                        ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                        ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400'
                         : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
                       }
                     `}
