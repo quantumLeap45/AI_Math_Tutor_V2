@@ -197,11 +197,21 @@ async function main() {
     process.exit(1);
   }
 
-  // Verify parsed questions
+  // Verify parsed questions (all, including disabled)
   const isValid = verifyQuestions(questions);
   if (!isValid) {
     console.error('\nERROR: Verification failed. Please fix the issues above.');
     process.exit(1);
+  }
+
+  // Filter out DisableRAG questions before upload
+  const disabledCount = questions.filter((q: any) => q.disableRAG).length;
+  if (disabledCount > 0) {
+    console.log(`\n=== DisableRAG Filter ===`);
+    console.log(`  Total parsed: ${questions.length}`);
+    console.log(`  Disabled (visual-dependent): ${disabledCount}`);
+    questions = questions.filter((q: any) => !q.disableRAG);
+    console.log(`  Uploading: ${questions.length}`);
   }
 
   // Stop here if verify-only mode

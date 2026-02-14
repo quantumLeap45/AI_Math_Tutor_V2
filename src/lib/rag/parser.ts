@@ -18,22 +18,40 @@ import {
 
 /**
  * Extract metadata from filename
- * Filename format: P{1-6}_{SchoolNames}_{Year}.md
+ *
+ * Supports two filename formats:
+ *   Format 1 (old): P{1-6}_{SchoolNames}_{Year}.md
+ *     Example: P1_HenryPark_MahaBodhi_2022.md → grade P1, source "HenryPark MahaBodhi", year 2022
+ *
+ *   Format 2 (new): {Year}-P{1-6}-Maths-{ExamType}-{School}.md
+ *     Example: 2024-P3-Maths-EndOfYearExam-Nanyang.md → grade P3, source "Nanyang", year 2024
  */
 function parseFilenameMetadata(filename: string): MarkdownFileMetadata {
   const baseName = filename.replace('.md', '');
 
-  // Extract grade level (P1, P2, etc.)
+  // Try Format 2 first: {Year}-P{1-6}-Maths-{ExamType}-{School}
+  const format2Match = baseName.match(
+    /^(\d{4})-(P[1-6])-Maths-(.+)-([^-]+)$/i
+  );
+  if (format2Match) {
+    const year = format2Match[1];
+    const gradeLevel = format2Match[2].toUpperCase() as GradeLevel;
+    const examType = format2Match[3].replace(/-/g, ' ');
+    const school = format2Match[4];
+    // Source combines school and exam type for richer context
+    const source = `${school} ${examType}`;
+    return { filename, gradeLevel, source, year };
+  }
+
+  // Format 1 (old): P{1-6}_{SchoolNames}_{Year}
   const gradeMatch = baseName.match(/^(P[1-6])/i);
   const gradeLevel = (gradeMatch ? gradeMatch[1].toUpperCase() : 'P1') as GradeLevel;
 
-  // Extract source (everything between grade and year)
-  const sourceMatch = baseName.match(/^P[1-6]_(.+?)_\d{4}$/i);
+  const sourceMatch = baseName.match(/^P[1-6]_(.+?)_(\d{4})$/i);
   const source = sourceMatch
-    ? sourceMatch[1].replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').trim()
+    ? sourceMatch[1].replace(/_/g, ' ')
     : baseName;
 
-  // Extract year
   const yearMatch = baseName.match(/(\d{4})$/);
   const year = yearMatch ? yearMatch[1] : undefined;
 
@@ -73,13 +91,22 @@ function extractField(content: string, fieldName: string): string | undefined {
 }
 
 /**
+ * Extended RAGQuestion with DisableRAG flag.
+ * Questions with DisableRAG: Yes are parsed but flagged
+ * so the upload script can skip them during Pinecone upsert.
+ */
+export interface ParsedRAGQuestion extends RAGQuestion {
+  disableRAG?: boolean;
+}
+
+/**
  * Parse a single question block
  */
 function parseQuestionBlock(
   block: string,
   questionNumber: number,
   metadata: MarkdownFileMetadata
-): RAGQuestion | null {
+): ParsedRAGQuestion | null {
   // Extract all fields using the extractField function
   const topic = extractField(block, 'Topic') || 'Unknown';
   const subtopic = extractField(block, 'Subtopic') || 'General';
@@ -87,7 +114,7 @@ function parseQuestionBlock(
   const questionText = extractField(block, 'QuestionText') || extractField(block, 'Question') || '';
   const visualHintRaw = extractField(block, 'Visual_Hint') || '';
   const answer = extractField(block, 'Answer') || '';
-  const working = extractField(block, 'Working');
+  const working = extractField(block, 'WorkingSolution') || extractField(block, 'Working');
   const skillsStr = extractField(block, 'Skills');
   const options = extractField(block, 'Options');
 
@@ -96,6 +123,12 @@ function parseQuestionBlock(
   const hasVisual = hasVisualRaw ? hasVisualRaw.toLowerCase() === 'yes' : false;
   const visualFile = extractField(block, 'VisualFile');
   const visualAlt = extractField(block, 'VisualAlt');
+
+  // Extract DisableRAG flag — also check VisualCritical as a secondary indicator
+  const disableRAGRaw = extractField(block, 'DisableRAG');
+  const visualCriticalRaw = extractField(block, 'VisualCritical');
+  const visualCritical = visualCriticalRaw ? visualCriticalRaw.toLowerCase().startsWith('yes') : false;
+  const disableRAG = (disableRAGRaw ? disableRAGRaw.toLowerCase() === 'yes' : false) || visualCritical;
 
   // Validate required fields
   if (!questionText || !answer) {
@@ -133,14 +166,15 @@ function parseQuestionBlock(
     hasVisual: hasVisual ? true : undefined,
     visualFile: visualFile || undefined,
     visualAlt: visualAlt || undefined,
+    disableRAG: disableRAG || undefined,
   };
 }
 
 /**
  * Parse entire markdown file content
  */
-export function parseMarkdownFile(content: string, metadata: MarkdownFileMetadata): RAGQuestion[] {
-  const questions: RAGQuestion[] = [];
+export function parseMarkdownFile(content: string, metadata: MarkdownFileMetadata): ParsedRAGQuestion[] {
+  const questions: ParsedRAGQuestion[] = [];
 
   // Split by "### Question" to find all question blocks
   const questionBlocks = content.split(/### Question\s+/i).filter(Boolean);
@@ -163,8 +197,8 @@ export function parseMarkdownFile(content: string, metadata: MarkdownFileMetadat
 /**
  * Parse all markdown files in a directory
  */
-export function parseAllMarkdownFiles(dirPath: string): RAGQuestion[] {
-  const allQuestions: RAGQuestion[] = [];
+export function parseAllMarkdownFiles(dirPath: string): ParsedRAGQuestion[] {
+  const allQuestions: ParsedRAGQuestion[] = [];
   const files = readdirSync(dirPath);
 
   for (const file of files) {
