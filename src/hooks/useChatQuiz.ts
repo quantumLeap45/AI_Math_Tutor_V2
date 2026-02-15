@@ -165,13 +165,15 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   // Derive current question
   const currentQuestion = quiz ? quiz.questions[quiz.currentIndex] || null : null;
 
-  // Load saved quiz state on mount
+  // Load saved quiz state on session change (or clear if none exists)
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const savedState = getChatQuizState(sessionId);
     if (savedState && !savedState.isCompleted) {
       setQuiz(savedState);
+    } else {
+      setQuiz(null);
     }
   }, [sessionId]);
 

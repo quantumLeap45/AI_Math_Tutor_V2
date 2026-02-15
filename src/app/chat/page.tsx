@@ -39,7 +39,7 @@ export default function ChatPage() {
   const [error, setError] = useState<string | null>(null);
 
   // Daily quota hook
-  const { quotaStatus, countdown, consumeQuota, updateQuotaFromResponse } = useDailyQuota();
+  const { quotaStatus, quotaLoaded, countdown, consumeQuota, updateQuotaFromResponse } = useDailyQuota();
 
   // Session management hook
   const sessionMgmt = useSessionManagement();
@@ -315,7 +315,7 @@ export default function ChatPage() {
   );
 
   // Derived state
-  const hasMessages = !!(sessionMgmt.currentSession && sessionMgmt.currentSession.messages.length > 0);
+  const hasSessions = sessionMgmt.sessions.length > 0;
 
   // Shared ChatMessagesArea props
   const messagesAreaProps = {
@@ -335,7 +335,7 @@ export default function ChatPage() {
     onDismissError: () => setError(null),
     onQuizModeToggle: quizMode.handleQuizModeToggle,
     quizDisabled: isLoading || quizMode.isQuizLoading || chatQuiz.isLoading,
-    quizLocked: !!chatQuiz.quiz && !chatQuiz.quiz.isCompleted,
+    quizLocked: quizMode.quizModeActive && !!chatQuiz.quiz && !chatQuiz.quiz.isCompleted,
     quiz: chatQuiz.quiz,
   };
 
@@ -350,8 +350,8 @@ export default function ChatPage() {
 
   return (
     <div className="h-screen flex flex-col bg-white dark:bg-slate-900">
-      {/* Header: minimal for welcome state, full for chat state */}
-      {hasMessages ? (
+      {/* Header: minimal for first-ever visit, full when user has any history */}
+      {hasSessions ? (
         <ChatHeader
           isLoading={isLoading}
           sidebarCollapsed={sidebarCollapsed}
@@ -361,6 +361,7 @@ export default function ChatPage() {
           onClearChat={sessionMgmt.handleClearChat}
           quotaRemaining={quotaStatus.remaining}
           quotaLimit={quotaStatus.limit}
+          quotaLoaded={quotaLoaded}
         />
       ) : (
         /* Minimal header for welcome state */
@@ -375,11 +376,13 @@ export default function ChatPage() {
               </span>
             </Link>
             <div className="flex items-center gap-2">
-              <div className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800">
-                <span className="text-xs font-medium text-slate-600 dark:text-slate-400 tabular-nums">
-                  {quotaStatus.remaining}/{quotaStatus.limit} left
-                </span>
-              </div>
+              {quotaLoaded && (
+                <div className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800">
+                  <span className="text-xs font-medium text-slate-600 dark:text-slate-400 tabular-nums">
+                    {quotaStatus.remaining}/{quotaStatus.limit} left
+                  </span>
+                </div>
+              )}
               <ThemeToggle />
             </div>
           </div>
@@ -388,8 +391,8 @@ export default function ChatPage() {
 
       {/* Main content */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Sidebar — only shown when there are messages */}
-        {hasMessages && (
+        {/* Sidebar — shown when user has any session history */}
+        {hasSessions && (
           <ChatSidebar
             sessions={sessionMgmt.sessions}
             currentSessionId={sessionMgmt.currentSession?.id}

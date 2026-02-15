@@ -61,6 +61,7 @@ export function useDailyQuota() {
     limit: 50,
     exceeded: false,
   });
+  const [quotaLoaded, setQuotaLoaded] = useState(false);
   const [countdown, setCountdown] = useState<QuotaCountdown | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -90,6 +91,7 @@ export function useDailyQuota() {
         const status = parseQuotaFromHeaders(response.headers);
         if (status) {
           setQuotaStatus(status);
+          setQuotaLoaded(true);
 
           if (status.exceeded && status.resetAt) {
             setCountdown(getTimeUntilReset(status.resetAt));
@@ -168,6 +170,7 @@ export function useDailyQuota() {
 
   return {
     quotaStatus,
+    quotaLoaded,
     countdown,
     consumeQuota,
     refreshQuotaStatus,
