@@ -112,7 +112,7 @@ export function ChatHeader({
               </svg>
             )}
           </button>
-          <Link href="/home" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">M</span>
             </div>
@@ -123,12 +123,6 @@ export function ChatHeader({
 
           {/* Nav links - hidden on small mobile */}
           <nav className="hidden md:flex items-center gap-1 ml-2" aria-label="Main navigation">
-            <Link
-              href="/home"
-              className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
-            >
-              Home
-            </Link>
             <Link
               href="/chat"
               className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-emerald-600 dark:text-emerald-400"

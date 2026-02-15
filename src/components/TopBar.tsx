@@ -16,13 +16,12 @@ import { ThemeToggle } from './ThemeToggle';
 
 export interface TopBarProps {
   username?: string;
-  currentPage?: 'home' | 'chat' | 'quiz';
+  currentPage?: 'chat' | 'quiz';
   showNavLinks?: boolean;
   showLocalBadge?: boolean;
 }
 
 const NAV_LINKS = [
-  { href: '/home', label: 'Home', page: 'home' as const },
   { href: '/chat', label: 'Chat', page: 'chat' as const },
   // Quiz link removed - Quiz Mode is now integrated into Chat
 ] as const;
@@ -38,7 +37,6 @@ export function TopBar({
 
   // Determine active page based on pathname if not provided
   const activePage = currentPage || (() => {
-    if (pathname === '/home') return 'home';
     if (pathname === '/chat' || pathname.startsWith('/chat/')) return 'chat';
     if (pathname === '/quiz') return 'quiz';
     return undefined;
