@@ -32,6 +32,7 @@ interface ChatQuizHook {
   selectOption: (option: 'A' | 'B' | 'C' | 'D') => void;
   nextQuestion: () => void;
   exitQuiz: () => void;
+  abortQuizGeneration: () => void;
 }
 
 interface UseQuizModeOptions {

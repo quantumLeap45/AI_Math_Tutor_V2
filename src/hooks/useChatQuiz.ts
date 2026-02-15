@@ -7,7 +7,7 @@
  * and persistence for the chat-embedded quiz feature.
  */
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { ChatQuizState, QuizQuestion, QuizOption, DEFAULT_QUIZ_CONFIG } from '@/types';
 import { saveChatQuizState, getChatQuizState, clearChatQuizState } from '@/lib/storage';
 
@@ -54,6 +54,8 @@ interface UseChatQuizActions {
   clearError: () => void;
   /** Exit and clear quiz state */
   exitQuiz: () => void;
+  /** Abort any in-flight quiz generation request */
+  abortQuizGeneration: () => void;
 }
 
 // ============ HELPER FUNCTIONS ============
@@ -85,7 +87,7 @@ function createInitialQuizState(
  * Generate quiz questions from the API
  * Shared by startQuiz and retryFailedQuiz to avoid code duplication.
  */
-async function generateQuizFromAPI(config: ChatQuizState['config']): Promise<QuizQuestion[]> {
+async function generateQuizFromAPI(config: ChatQuizState['config'], signal?: AbortSignal): Promise<QuizQuestion[]> {
   const response = await fetch('/api/v1/quiz/generate', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -95,6 +97,7 @@ async function generateQuizFromAPI(config: ChatQuizState['config']): Promise<Qui
       questionCount: config.questionCount,
       difficulty: config.difficulty,
     }),
+    signal,
   });
 
   if (!response.ok) {
@@ -156,6 +159,9 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   // Track last failed quiz config for retry on generation failure
   const [lastFailedConfig, setLastFailedConfig] = useState<ChatQuizState['config'] | null>(null);
 
+  // AbortController for in-flight quiz generation requests
+  const quizAbortRef = useRef<AbortController | null>(null);
+
   // Derive current question
   const currentQuestion = quiz ? quiz.questions[quiz.currentIndex] || null : null;
 
@@ -189,6 +195,11 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
    * Start a new quiz by generating questions from the API
    */
   const startQuiz = useCallback(async (config?: Partial<ChatQuizState['config']>) => {
+    // Abort any in-flight quiz generation
+    quizAbortRef.current?.abort();
+    const abortController = new AbortController();
+    quizAbortRef.current = abortController;
+
     setIsLoading(true);
     setError(null);
 
@@ -201,7 +212,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     };
 
     try {
-      const questions = await generateQuizFromAPI(quizConfig);
+      const questions = await generateQuizFromAPI(quizConfig, abortController.signal);
 
       // Clear failed config on success
       setLastFailedConfig(null);
@@ -210,6 +221,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
       const newQuiz = createInitialQuizState(questions, quizConfig);
       setQuiz(newQuiz);
     } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') return;
       // Store config for retry only on actual failure
       setLastFailedConfig(quizConfig);
       const message = err instanceof Error ? err.message : 'Failed to start quiz';
@@ -380,11 +392,16 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
       return;
     }
 
+    // Abort any in-flight quiz generation
+    quizAbortRef.current?.abort();
+    const abortController = new AbortController();
+    quizAbortRef.current = abortController;
+
     setIsLoading(true);
     setError(null);
 
     try {
-      const questions = await generateQuizFromAPI(lastFailedConfig);
+      const questions = await generateQuizFromAPI(lastFailedConfig, abortController.signal);
 
       // Clear failed config on success
       setLastFailedConfig(null);
@@ -393,6 +410,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
       const newQuiz = createInitialQuizState(questions, lastFailedConfig);
       setQuiz(newQuiz);
     } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') return;
       const message = err instanceof Error ? err.message : 'Failed to retry quiz generation';
       setError(message);
       throw err; // Re-throw so callers can handle retry failures consistently
@@ -400,6 +418,14 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
       setIsLoading(false);
     }
   }, [lastFailedConfig]);
+
+  /**
+   * Abort any in-flight quiz generation request
+   */
+  const abortQuizGeneration = useCallback(() => {
+    quizAbortRef.current?.abort();
+    quizAbortRef.current = null;
+  }, []);
 
   return {
     // State
@@ -421,6 +447,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     previousQuestion,
     clearError,
     exitQuiz,
+    abortQuizGeneration,
   };
 }
 

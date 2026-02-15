@@ -35,9 +35,17 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatAbortRef = useRef<AbortController | null>(null);
 
   // Daily quota hook
   const { quotaStatus, countdown, consumeQuota, updateQuotaFromResponse } = useDailyQuota();
+
+  // Cleanup AbortController on unmount
+  useEffect(() => {
+    return () => {
+      chatAbortRef.current?.abort();
+    };
+  }, []);
 
   // Scroll to bottom when messages change
   useEffect(() => {
@@ -87,6 +95,11 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
     setIsLoading(true);
     setError(null);
 
+    // Abort any in-flight request before starting a new one
+    chatAbortRef.current?.abort();
+    const abortController = new AbortController();
+    chatAbortRef.current = abortController;
+
     try {
       // Convert QuizOptions object to string array for the API
       const optionsArray = currentQuestion.options
@@ -102,6 +115,7 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
           message: userMessage.content,
           conversationHistory: messages.slice(-6), // Send last 6 messages for context
         }),
+        signal: abortController.signal,
       });
 
       if (!response.ok) {
@@ -158,6 +172,7 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
         return;
       }
     } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') return;
       console.error('Quiz chat error:', err);
       setError(err instanceof Error ? err.message : 'Something went wrong');
       // Remove the loading placeholder message

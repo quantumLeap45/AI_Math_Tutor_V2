@@ -26,6 +26,7 @@ import { useQuizMode } from '@/hooks/useQuizMode';
 
 export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatAbortControllerRef = useRef<AbortController | null>(null);
 
   // Sidebar UI state
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -77,6 +78,13 @@ export default function ChatPage() {
   useEffect(() => {
     scrollToBottom();
   }, [sessionMgmt.currentSession?.messages, scrollToBottom]);
+
+  // Cleanup AbortController on unmount
+  useEffect(() => {
+    return () => {
+      chatAbortControllerRef.current?.abort();
+    };
+  }, []);
 
   // Send message (central coordinator)
   const handleSendMessage = useCallback(
@@ -197,6 +205,11 @@ export default function ChatPage() {
 
       setIsLoading(true);
 
+      // Abort any in-flight chat request before starting a new one
+      chatAbortControllerRef.current?.abort();
+      const abortController = new AbortController();
+      chatAbortControllerRef.current = abortController;
+
       try {
         const isQuizChatMode = quizMode.quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion;
 
@@ -220,6 +233,7 @@ export default function ChatPage() {
               message: content,
               conversationHistory,
             }),
+            signal: abortController.signal,
           });
         } else {
           const messagesForApi = sessionWithTitle.messages.filter(
@@ -234,6 +248,7 @@ export default function ChatPage() {
               mode: sessionMgmt.mode,
               image,
             }),
+            signal: abortController.signal,
           });
         }
 
@@ -287,6 +302,7 @@ export default function ChatPage() {
         );
         saveSession(sessionWithAssistant);
       } catch (err) {
+        if (err instanceof DOMException && err.name === 'AbortError') return;
         console.error('Chat error:', err);
         setError(err instanceof Error ? err.message : 'Something went wrong');
       } finally {
@@ -362,6 +378,7 @@ export default function ChatPage() {
             <QuizLoadingPanel
               isVisible={true}
               onCancel={() => {
+                chatQuiz.abortQuizGeneration();
                 quizMode.setIsQuizLoading(false);
                 quizMode.setQuizModeActive(false);
               }}
