@@ -110,6 +110,21 @@ Return a JSON array of questions. Each question must have:
 - Write all math in plain text that a primary school student can read
 - Return ONLY the JSON array — no markdown code fences, no extra text`;
 
+/** Shape of a question parsed from AI-generated JSON (before validation) */
+interface RawGeneratedQuestion {
+  id?: string;
+  level?: string;
+  topic?: string;
+  subtopic?: string;
+  difficulty?: string;
+  question?: string;
+  options?: { A?: string; B?: string; C?: string; D?: string };
+  correctAnswer?: string;
+  explanation?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+}
+
 /**
  * Parse quiz questions from AI response
  */
@@ -148,7 +163,7 @@ function parseQuizQuestions(response: string, expectedCount: number, level: Prim
     }
 
     // Validate and transform each question
-    const questions: QuizQuestion[] = parsed.map((q: any, index: number) => {
+    const questions: QuizQuestion[] = parsed.map((q: RawGeneratedQuestion, index: number) => {
       // Validate required fields
       if (!q.question || !q.options || !q.correctAnswer || !q.explanation) {
         throw new Error(`Question ${index + 1} missing required fields`);
@@ -166,10 +181,10 @@ function parseQuizQuestions(response: string, expectedCount: number, level: Prim
 
       return {
         id: q.id || `Generated-${level}-${topic}-${index + 1}`,
-        level: q.level || level,
+        level: (q.level || level) as PrimaryLevel,
         topic: q.topic || topic,
         subtopic: q.subtopic || topic,
-        difficulty: q.difficulty || 'medium',
+        difficulty: (q.difficulty || 'medium') as QuizQuestion['difficulty'],
         question: q.question,
         options: {
           A: q.options.A,

@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
                 if (ragContext.count > 0) {
                   ragUsed = true;
                   console.log(` RAG ACTIVE: Retrieved ${ragContext.count} example questions for query: "${userQuery.substring(0, 50)}..."`);
-                  console.log(` RAG Examples:`, ragContext.examples.map((e: any) => e.id).join(', '));
+                  console.log(` RAG Examples:`, ragContext.examples.map(e => e.id).join(', '));
                 } else {
                   console.log(` RAG: No relevant examples found for query: "${userQuery.substring(0, 50)}..."`);
                 }

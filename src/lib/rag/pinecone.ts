@@ -6,7 +6,7 @@
  * Uses OpenAI embeddings with traditional vector upsert and query.
  */
 
-import { Pinecone, PineconeRecord } from '@pinecone-database/pinecone';
+import { Pinecone, ScoredPineconeRecord } from '@pinecone-database/pinecone';
 import { RAGQuestion } from './types';
 
 // Get environment variables dynamically (for scripts that use dotenv)
@@ -147,22 +147,17 @@ export async function queryByVector(
   vector: number[],
   topK: number = 5,
   namespace: string = RAG_NAMESPACE,
-  filter?: Record<string, any>
-): Promise<PineconeRecord[]> {
+  filter?: PineconeFilter
+): Promise<ScoredPineconeRecord[]> {
   const index = getPineconeIndex();
 
   try {
-    const queryOptions: any = {
+    const queryResult = await index.namespace(namespace).query({
       vector,
       topK,
       includeMetadata: true,
-    };
-
-    if (filter) {
-      queryOptions.filter = filter;
-    }
-
-    const queryResult = await index.namespace(namespace).query(queryOptions);
+      ...(filter && { filter }),
+    });
     return queryResult.matches || [];
   } catch (error) {
     console.error('Error querying Pinecone:', error);
@@ -253,7 +248,7 @@ export async function listAllRecordIds(namespace: string = RAG_NAMESPACE): Promi
       });
 
       if (result.vectors) {
-        allIds.push(...result.vectors.map((v: any) => v.id));
+        allIds.push(...result.vectors.map(v => v.id).filter((id): id is string => id != null));
       }
 
       if (!result.pagination || !result.pagination.next) {
@@ -270,14 +265,19 @@ export async function listAllRecordIds(namespace: string = RAG_NAMESPACE): Promi
 }
 
 /**
+ * Pinecone metadata filter type
+ */
+export type PineconeFilter = Record<string, { $eq: string }>;
+
+/**
  * Build filter object for Pinecone queries
  */
 export function buildFilter(filters: {
   gradeLevel?: string;
   topic?: string;
   difficulty?: string;
-}): Record<string, any> | undefined {
-  const conditions: Record<string, any> = {};
+}): PineconeFilter | undefined {
+  const conditions: PineconeFilter = {};
 
   if (filters.gradeLevel) {
     conditions.gradeLevel = { $eq: filters.gradeLevel };

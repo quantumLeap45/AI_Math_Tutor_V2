@@ -273,7 +273,7 @@ export async function checkHealth(): Promise<{ available: boolean; error?: strin
 
     // If we get a response, Gemini is available
     return { available: true };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Gemini health check failed:', error);
 
     // Check for quota/rate limit errors

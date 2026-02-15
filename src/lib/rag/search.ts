@@ -198,11 +198,11 @@ export async function searchQuestions(
 
     for (const match of matches) {
       if (match.metadata) {
-        const metadata = match.metadata as Record<string, any>;
+        const metadata = match.metadata as Record<string, string | number | string[]>;
 
         searchResults.push({
           id: match.id,
-          score: (match as any).score || 0,
+          score: match.score ?? 0,
           question: {
             id: match.id,
             questionText: String(metadata.questionText || ''),
