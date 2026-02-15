@@ -13,7 +13,7 @@ import React from 'react';
 import { MessageBubble } from '@/components/MessageBubble';
 import { MessageComposer } from '@/components/MessageComposer';
 import { MessageLoading } from '@/components/LoadingSpinner';
-import { ChatSession, QuizSummaryData, TutorMode, ChatQuizState } from '@/types';
+import { ChatSession, QuizSummaryData, TutorMode } from '@/types';
 
 interface ChatMessagesAreaProps {
   currentSession: ChatSession | null;
@@ -30,10 +30,6 @@ interface ChatMessagesAreaProps {
   onReviewQuiz: (quiz: QuizSummaryData) => void;
   onRetryQuiz: () => void;
   onDismissError: () => void;
-  onQuizModeToggle: () => void;
-  quizDisabled: boolean;
-  quizLocked: boolean;
-  quiz: ChatQuizState | null;
 }
 
 export function ChatMessagesArea({
@@ -51,10 +47,6 @@ export function ChatMessagesArea({
   onReviewQuiz,
   onRetryQuiz,
   onDismissError,
-  onQuizModeToggle,
-  quizDisabled,
-  quizLocked,
-  quiz,
 }: ChatMessagesAreaProps) {
   const hasMessages = currentSession && currentSession.messages.length > 0;
 
@@ -72,11 +64,7 @@ export function ChatMessagesArea({
     mode,
     onModeChange,
     quizModeActive,
-    onQuizModeToggle,
-    modeDisabled: isLoading || (quizModeActive && !!quiz),
-    quizDisabled,
-    quizLocked,
-    quiz,
+    modeDisabled: isLoading || quizModeActive,
   };
 
   // Suggestion chip handler

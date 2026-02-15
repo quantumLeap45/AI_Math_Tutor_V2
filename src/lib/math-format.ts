@@ -93,6 +93,18 @@ export function formatLatexToKidFriendly(text: string): string {
   result = result.replace(/\^\{(\d)\}/g, (_, digit) => superscripts[digit] || `^{${digit}}`);
   result = result.replace(/\^([+-=()n])/g, (_, char) => superscripts[char] || `^${char}`);
 
+  // Normalize common area/volume unit forms to superscripts:
+  // cm2 -> cm², m3 -> m³, cm squared -> cm², m cubed -> m³
+  // Use a non-word prefix guard to avoid converting variable names like "xm2".
+  result = result.replace(
+    /(^|[^\w])((?:cm|mm|km|m|in|ft))\s*(?:\^\s*\{?\s*3\s*\}?|3|cubed)\b/gi,
+    (_, prefix, unit) => `${prefix}${unit}³`
+  );
+  result = result.replace(
+    /(^|[^\w])((?:cm|mm|km|m|in|ft))\s*(?:\^\s*\{?\s*2\s*\}?|2|squared)\b/gi,
+    (_, prefix, unit) => `${prefix}${unit}²`
+  );
+
   // Convert common subscripts: x_1 → x₁, x_2 → x₂
   const subscripts: Record<string, string> = {
     '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄',

@@ -13,14 +13,13 @@ import { QuizQuestion } from '@/types';
  * Keep patterns specific to avoid blocking normal word problems.
  */
 const VISUAL_DEPENDENCY_PATTERNS: Array<{ label: string; regex: RegExp }> = [
-  { label: 'figure/diagram reference', regex: /\bin\s+the\s+(?:figure|diagram|image|picture|chart|graph|table)\b/i },
   { label: 'below/above visual reference', regex: /\b(?:figure|diagram|image|picture|chart|graph|table)\s+(?:below|above)\b/i },
-  { label: 'refer to visual', regex: /\brefer(?:ring)?\s+to\s+(?:the\s+)?(?:figure|diagram|image|picture|chart|graph|table)\b/i },
-  { label: 'look at visual', regex: /\blook\s+at\s+(?:the\s+)?(?:figure|diagram|image|picture|chart|graph|table)\b/i },
-  { label: 'as shown visual', regex: /\bas\s+shown\s+(?:in|on)\s+(?:the\s+)?(?:figure|diagram|image|picture|chart|graph|table)\b/i },
-  { label: 'graph/chart shows', regex: /\b(?:line|bar|pie|picture)\s+graph\s+shows\b/i },
-  { label: 'pie chart shows', regex: /\bpie\s+chart\s+shows\b/i },
-  { label: 'table shows', regex: /\btable\s+shows\b/i },
+  { label: 'refer to visual', regex: /\brefer(?:ring)?\s+to\s+(?:the\s+)?(?:figure|diagram|image|picture|chart|table|(?:line|bar|pie|picture)\s+graph|graph)\b/i },
+  { label: 'look at visual', regex: /\blook\s+at\s+(?:the\s+)?(?:figure|diagram|image|picture|chart|table|(?:line|bar|pie|picture)\s+graph|graph)\b/i },
+  { label: 'as shown visual', regex: /\bas\s+shown\s+(?:in|on)\s+(?:the\s+)?(?:figure|diagram|image|picture|chart|table|(?:line|bar|pie|picture)\s+graph|graph)\b/i },
+  // We intentionally allow descriptive text like:
+  // "In the pie chart, 25% are girls, 45% are boys..."
+  // as long as it does not depend on a missing "below/above" visual reference.
   { label: 'if line is drawn', regex: /\bif\s+[A-Z]{2,}\s+is\s+(?:drawn|extended|joined|connected)\b/i },
   { label: 'not drawn to scale', regex: /\bnot\s+drawn\s+to\s+scale\b/i },
 ];
@@ -94,4 +93,3 @@ export function findVisualDependencyIssues(questions: QuizQuestion[]): VisualDep
 
   return issues;
 }
-

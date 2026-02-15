@@ -342,10 +342,6 @@ export default function ChatPage() {
     onReviewQuiz: quizMode.handleReviewQuiz,
     onRetryQuiz: quizMode.handleRetryQuiz,
     onDismissError: () => setError(null),
-    onQuizModeToggle: quizMode.handleQuizModeToggle,
-    quizDisabled: isLoading || quizMode.isQuizLoading || chatQuiz.isLoading,
-    quizLocked: quizMode.quizModeActive && !!chatQuiz.quiz && !chatQuiz.quiz.isCompleted,
-    quiz: chatQuiz.quiz,
   };
 
   // Loading state
@@ -371,6 +367,12 @@ export default function ChatPage() {
           quotaRemaining={quotaStatus.remaining}
           quotaLimit={quotaStatus.limit}
           quotaLoaded={quotaLoaded}
+          quizModeActive={quizMode.quizModeActive}
+          onQuizModeToggle={quizMode.handleQuizModeToggle}
+          quizDisabled={isLoading || quizMode.isQuizLoading || chatQuiz.isLoading}
+          quizLocked={quizMode.quizModeActive && !!chatQuiz.quiz && !chatQuiz.quiz.isCompleted}
+          quizCurrentQuestion={chatQuiz.quiz ? chatQuiz.quiz.currentIndex + 1 : undefined}
+          quizTotalQuestions={chatQuiz.quiz ? chatQuiz.quiz.questions.length : undefined}
         />
       ) : (
         /* Minimal header for welcome state */
@@ -392,6 +394,30 @@ export default function ChatPage() {
                   </span>
                 </div>
               )}
+              <button
+                type="button"
+                onClick={quizMode.handleQuizModeToggle}
+                disabled={isLoading || quizMode.isQuizLoading || chatQuiz.isLoading}
+                className={`
+                  relative px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium
+                  transition-colors flex items-center gap-1.5
+                  ${(isLoading || quizMode.isQuizLoading || chatQuiz.isLoading)
+                    ? 'opacity-50 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500'
+                    : quizMode.quizModeActive
+                    ? 'bg-emerald-500 text-white hover:bg-emerald-600'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  }
+                `}
+                aria-pressed={quizMode.quizModeActive}
+                aria-label="Quiz mode"
+                title={quizMode.quizModeActive ? 'Exit quiz mode' : 'Start quiz mode'}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                </svg>
+                <span className="hidden sm:inline">Quiz Mode</span>
+              </button>
               <ThemeToggle />
             </div>
           </div>

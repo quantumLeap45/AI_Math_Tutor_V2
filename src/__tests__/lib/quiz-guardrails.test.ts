@@ -25,8 +25,13 @@ function makeQuestion(overrides: Partial<QuizQuestion> = {}): QuizQuestion {
 describe('quiz guardrails', () => {
   it('detects visual-dependent text patterns', () => {
     expect(hasVisualDependency('In the figure below, line AB is parallel to line CD.')).toBe(true);
-    expect(hasVisualDependency('The line graph shows the sales from Jan to Mar.')).toBe(true);
+    expect(hasVisualDependency('Look at the bar graph and choose the highest value.')).toBe(true);
     expect(hasVisualDependency('Find 3/4 of 24.')).toBe(false);
+    expect(
+      hasVisualDependency(
+        'In the pie chart, 25% are girls, 45% are boys, and the rest are teachers. Find the ratio of boys:girls:teachers.'
+      )
+    ).toBe(false);
   });
 
   it('returns readable labels for matched patterns', () => {
@@ -55,4 +60,3 @@ describe('quiz guardrails', () => {
     expect(issues.some(issue => issue.questionIndex === 1 && issue.field === 'optionC')).toBe(true);
   });
 });
-

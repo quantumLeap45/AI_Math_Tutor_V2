@@ -5,14 +5,14 @@
  * AI Math Tutor v2
  *
  * Input area for composing messages with image upload support.
- * Includes mode controls (Show/Teach/Quiz) as icon buttons with tooltips.
+ * Includes mode controls (Show/Teach) as icon buttons with tooltips.
  * Supports a centered layout variant for the welcome state.
  */
 
 import React, { useState, useRef, useEffect } from 'react';
 import { validateImageFile, fileToBase64 } from '@/lib/chat';
 import { ImagePreview } from './ImagePreview';
-import { TutorMode, ChatQuizState } from '@/types';
+import { TutorMode } from '@/types';
 
 interface MessageComposerProps {
   onSend: (message: string, image?: string) => void;
@@ -26,16 +26,8 @@ interface MessageComposerProps {
   onModeChange: (mode: TutorMode) => void;
   /** Whether quiz mode is active */
   quizModeActive: boolean;
-  /** Quiz mode toggle handler */
-  onQuizModeToggle: () => void;
   /** Whether mode controls are disabled (e.g. during loading) */
   modeDisabled?: boolean;
-  /** Whether quiz toggle is disabled */
-  quizDisabled?: boolean;
-  /** Whether quiz is locked (running, can't toggle off) */
-  quizLocked?: boolean;
-  /** Active quiz state for progress display */
-  quiz?: ChatQuizState | null;
 }
 
 export function MessageComposer({
@@ -46,11 +38,7 @@ export function MessageComposer({
   mode,
   onModeChange,
   quizModeActive,
-  onQuizModeToggle,
   modeDisabled = false,
-  quizDisabled = false,
-  quizLocked = false,
-  quiz,
 }: MessageComposerProps) {
   const [message, setMessage] = useState('');
   const [image, setImage] = useState<string | null>(null);
@@ -132,12 +120,6 @@ export function MessageComposer({
         : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300'
     }`;
 
-  const quizTooltip = quizLocked
-    ? 'Quiz running — use Exit Quiz to close'
-    : quizModeActive
-    ? 'Exit quiz mode'
-    : 'Quiz — Generate practice questions';
-
   const showModeButton = (
     <button
       type="button"
@@ -176,41 +158,8 @@ export function MessageComposer({
     </button>
   );
 
-  const quizModeButton = (
-    <button
-      type="button"
-      onClick={onQuizModeToggle}
-      disabled={quizDisabled || quizLocked}
-      className={`group/btn relative p-2 rounded-lg transition-colors ${
-        (quizDisabled || quizLocked)
-          ? 'opacity-50 cursor-not-allowed text-slate-400 dark:text-slate-500'
-          : quizModeActive
-          ? 'bg-emerald-500 text-white shadow-sm'
-          : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300'
-      }`}
-      aria-pressed={quizModeActive}
-      aria-label="Quiz mode"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 11l3 3L22 4" />
-        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-      </svg>
-      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 shadow-lg">
-        {quizTooltip}
-      </span>
-      {/* Quiz progress indicator */}
-      {quizModeActive && quiz && !quiz.isCompleted && (
-        <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center px-1 rounded-full bg-emerald-500 text-white text-[10px] font-bold leading-none">
-          {quiz.currentIndex + 1}/{quiz.questions.length}
-        </span>
-      )}
-    </button>
-  );
-
   const rightSideModeButtons = (
     <div className="flex items-center gap-0.5">
-      {quizModeButton}
-      <div className="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-1" />
       {showModeButton}
       {teachModeButton}
     </div>

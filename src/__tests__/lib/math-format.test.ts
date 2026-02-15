@@ -23,4 +23,10 @@ describe('formatLatexToKidFriendly', () => {
   it('strips common LaTeX text wrappers from question content', () => {
     expect(formatLatexToKidFriendly('x\\text{ notebook cost } + 10')).toBe('x notebook cost  + 10');
   });
+
+  it('normalizes area/volume units to superscript format', () => {
+    expect(formatLatexToKidFriendly('Area = 16 cm2')).toBe('Area = 16 cm²');
+    expect(formatLatexToKidFriendly('Volume = 24 m3')).toBe('Volume = 24 m³');
+    expect(formatLatexToKidFriendly('Perimeter unit: cm squared')).toBe('Perimeter unit: cm²');
+  });
 });
