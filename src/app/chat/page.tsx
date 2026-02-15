@@ -4,435 +4,85 @@
  * Chat Page
  * AI Math Tutor v2
  *
- * Main chat interface with sidebar, messages, and composer.
- * Updated for Phase 2 with refined header styling.
+ * Thin orchestrator that wires together session management, quiz mode,
+ * and daily quota hooks. Owns handleSendMessage and layout rendering.
  */
 
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { ChatSidebar } from '@/components/ChatSidebar';
-import { MessageBubble } from '@/components/MessageBubble';
-import { MessageComposer } from '@/components/MessageComposer';
-import { ModeToggle } from '@/components/ModeToggle';
-import { MessageLoading } from '@/components/LoadingSpinner';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { QuizModeToggle } from '@/components/QuizModeToggle';
-import { QuizPanel, QuizLoadingPanel, QuizSummaryCard, QuizReviewModal } from '@/components/chat';
-import { ChatSession, ChatQuizState, QuizSummaryData, TutorMode } from '@/types';
+import { QuizPanel, QuizLoadingPanel, QuizReviewModal, ChatHeader, ChatMessagesArea } from '@/components/chat';
+import { ChatSession } from '@/types';
 import {
-  getUsername,
-  getSessions,
-  saveSession,
   createSession,
-  deleteSession,
-  getSettings,
+  saveSession,
   saveSettings,
-  clearChatQuizState,
 } from '@/lib/storage';
-import { createMessage, updateSessionTitleFromFirstMessage, createQuizSummaryMessage } from '@/lib/chat';
+import { createMessage, updateSessionTitleFromFirstMessage } from '@/lib/chat';
+import { parseQuizSettings } from '@/lib/quiz-parser';
 import { useDailyQuota } from '@/hooks/useDailyQuota';
 import { useChatQuiz } from '@/hooks';
+import { useSessionManagement } from '@/hooks/useSessionManagement';
+import { useQuizMode } from '@/hooks/useQuizMode';
 
 export default function ChatPage() {
-  const router = useRouter();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Sidebar UI state
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  // Message sending state
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Daily quota hook
   const { quotaStatus, countdown, consumeQuota, updateQuotaFromResponse } = useDailyQuota();
 
-  // Chat quiz hook - using currentSession.id directly when available
-  // We use a stable empty string initially and let the hook use currentSession.id for storage
-  const [quizSessionId, setQuizSessionId] = useState<string>(() => {
-    // Initialize from the first available session if any
-    if (typeof window !== 'undefined') {
-      const sessions = getSessions();
-      const settings = getSettings();
-      if (settings.lastActiveSession) {
-        const session = sessions.find(s => s.id === settings.lastActiveSession);
-        if (session) return session.id;
-      }
-      if (sessions.length > 0) return sessions[0].id;
-    }
-    return '';
+  // Session management hook
+  const sessionMgmt = useSessionManagement();
+
+  // Chat quiz hook
+  const chatQuiz = useChatQuiz({ sessionId: sessionMgmt.quizSessionId });
+
+  // Quiz mode hook
+  const quizMode = useQuizMode({
+    chatQuiz,
+    currentSession: sessionMgmt.currentSession,
+    mode: sessionMgmt.mode,
+    quizSessionId: sessionMgmt.quizSessionId,
+    setCurrentSession: sessionMgmt.setCurrentSession,
+    setSessions: sessionMgmt.setSessions,
+    setQuizSessionId: sessionMgmt.setQuizSessionId,
+    onAutoCollapse: useCallback(() => setSidebarCollapsed(true), []),
+    onCloseMobileSidebar: useCallback(() => setSidebarOpen(false), []),
+    onModeChange: sessionMgmt.handleModeChange,
   });
-  const chatQuiz = useChatQuiz({ sessionId: quizSessionId });
 
-  // State
-  const [username, setUsernameState] = useState<string | null>(null);
-  const [sessions, setSessions] = useState<ChatSession[]>([]);
-  const [currentSession, setCurrentSession] = useState<ChatSession | null>(null);
-  const [mode, setMode] = useState<TutorMode>('SHOW');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  // Wrap session handlers to also reset quiz state
+  const handleNewChat = useCallback(() => {
+    sessionMgmt.handleNewChat();
+    quizMode.resetQuizState();
+  }, [sessionMgmt.handleNewChat, quizMode.resetQuizState]);
 
-  // Quiz mode state
-  const [quizModeActive, setQuizModeActive] = useState(false);
-  const [isQuizLoading, setIsQuizLoading] = useState(false);
-  const [quizGenerationError, setQuizGenerationError] = useState<string | null>(null);
-  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
-  const [selectedQuizForReview, setSelectedQuizForReview] = useState<QuizSummaryData | null>(null);
-  const [currentRetryAttempt, setCurrentRetryAttempt] = useState(0);
-  const [preQuizMode, setPreQuizMode] = useState<TutorMode | null>(null);
+  const handleSelectSession = useCallback((sessionId: string) => {
+    sessionMgmt.handleSelectSession(sessionId);
+    quizMode.resetQuizState();
+  }, [sessionMgmt.handleSelectSession, quizMode.resetQuizState]);
 
-  // Track which quiz IDs have already had summary messages added (prevents infinite loop)
-  const processedQuizIdsRef = useRef<Set<string>>(new Set());
-
-  // Scroll to bottom of messages (scroll the messages container, not the page)
+  // Auto-scroll on new messages
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, []);
 
-  // Initialize
-  useEffect(() => {
-    const storedUsername = getUsername();
-    if (!storedUsername) {
-      router.push('/');
-      return;
-    }
-
-    setUsernameState(storedUsername);
-
-    // Load sessions
-    const storedSessions = getSessions();
-    setSessions(storedSessions);
-
-    // Load settings
-    const settings = getSettings();
-    setMode(settings.defaultMode);
-
-    // Set current session
-    let initialSession: ChatSession | null = null;
-    if (settings.lastActiveSession) {
-      const lastSession = storedSessions.find(
-        s => s.id === settings.lastActiveSession
-      );
-      if (lastSession) {
-        initialSession = lastSession;
-        setCurrentSession(lastSession);
-      } else if (storedSessions.length > 0) {
-        initialSession = storedSessions[0];
-        setCurrentSession(storedSessions[0]);
-      }
-    } else if (storedSessions.length > 0) {
-      initialSession = storedSessions[0];
-      setCurrentSession(storedSessions[0]);
-    }
-
-    // Initialize quiz session ID
-    if (initialSession) {
-      setQuizSessionId(initialSession.id);
-    }
-
-    setMounted(true);
-  }, [router]);
-
-  // Auto-scroll on new messages
   useEffect(() => {
     scrollToBottom();
-  }, [currentSession?.messages, scrollToBottom]);
+  }, [sessionMgmt.currentSession?.messages, scrollToBottom]);
 
-  // Auto-collapse sidebar when quiz mode is activated (once)
-  const [hasAutoCollapsed, setHasAutoCollapsed] = useState(false);
-
-  useEffect(() => {
-    if (quizModeActive && !hasAutoCollapsed) {
-      // Save current state and collapse (only once when quiz activates)
-      setSidebarCollapsed(true);
-      setHasAutoCollapsed(true);
-      // Also close mobile sidebar if open
-      setSidebarOpen(false);
-    } else if (!quizModeActive) {
-      // Reset the auto-collapse flag when quiz ends
-      setHasAutoCollapsed(false);
-    }
-  }, [quizModeActive, hasAutoCollapsed]);
-
-  // Keep quizSessionId in sync with currentSession.id
-  // This ensures the hook always has the correct session ID for storage
-  useEffect(() => {
-    if (currentSession && currentSession.id !== quizSessionId) {
-      setQuizSessionId(currentSession.id);
-    }
-  }, [currentSession?.id, quizSessionId]);
-
-  // Create new chat session
-  const handleNewChat = useCallback(() => {
-    const newSession = createSession(mode);
-    setCurrentSession(newSession);
-    setSessions(prev => [newSession, ...prev]);
-    saveSession(newSession);
-    saveSettings({ lastActiveSession: newSession.id });
-    setQuizSessionId(newSession.id);
-    // Clear any saved quiz state from previous session
-    clearChatQuizState(newSession.id);
-    // Also reset quiz mode state
-    setQuizModeActive(false);
-    setCurrentRetryAttempt(0);
-  }, [mode]);
-
-  // Select existing session
-  const handleSelectSession = useCallback((sessionId: string) => {
-    const session = sessions.find(s => s.id === sessionId);
-    if (session) {
-      setCurrentSession(session);
-      setMode(session.mode);
-      saveSettings({ lastActiveSession: sessionId });
-      setQuizSessionId(sessionId);
-      // Reset quiz mode state
-      setQuizModeActive(false);
-      setCurrentRetryAttempt(0);
-    }
-  }, [sessions]);
-
-  // Delete session
-  const handleDeleteSession = useCallback(
-    (sessionId: string) => {
-      deleteSession(sessionId);
-      const updatedSessions = sessions.filter(s => s.id !== sessionId);
-      setSessions(updatedSessions);
-
-      // If deleted current session, select another
-      if (currentSession?.id === sessionId) {
-        if (updatedSessions.length > 0) {
-          setCurrentSession(updatedSessions[0]);
-          saveSettings({ lastActiveSession: updatedSessions[0].id });
-        } else {
-          setCurrentSession(null);
-          saveSettings({ lastActiveSession: undefined });
-        }
-      }
-    },
-    [sessions, currentSession]
-  );
-
-  // Change mode
-  const handleModeChange = useCallback(
-    (newMode: TutorMode) => {
-      setMode(newMode);
-      saveSettings({ defaultMode: newMode });
-
-      // Update current session mode
-      if (currentSession) {
-        const updatedSession = { ...currentSession, mode: newMode };
-        setCurrentSession(updatedSession);
-        saveSession(updatedSession);
-        setSessions(prev =>
-          prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
-        );
-      }
-    },
-    [currentSession]
-  );
-
-  // Clear current chat (remove all messages from current session)
-  const handleClearChat = useCallback(() => {
-    if (!currentSession) return;
-
-    // Keep the same session but clear all messages
-    const clearedSession: ChatSession = {
-      ...currentSession,
-      messages: [],
-      title: 'New Chat',
-      updatedAt: new Date().toISOString(),
-    };
-
-    setCurrentSession(clearedSession);
-    saveSession(clearedSession);
-    setSessions(prev =>
-      prev.map(s => (s.id === clearedSession.id ? clearedSession : s))
-    );
-  }, [currentSession]);
-
-  // ============ QUIZ MODE HANDLERS ============
-
-  // Toggle quiz mode on/off
-  const handleQuizModeToggle = useCallback(async () => {
-    // If quiz is running (questions loaded), button is locked
-    if (chatQuiz.quiz) {
-      return;
-    }
-    // Toggle quiz mode on/off (only if no quiz is running)
-    if (quizModeActive) {
-      // User can toggle off if they accidentally clicked it
-      setQuizModeActive(false);
-    } else {
-      // Activate quiz mode - ensure quizSessionId is synced with currentSession
-      if (currentSession && quizSessionId !== currentSession.id) {
-        setQuizSessionId(currentSession.id);
-      }
-      setQuizModeActive(true);
-    }
-  }, [quizModeActive, chatQuiz.quiz, currentSession, quizSessionId]);
-
-  // Handle quiz exit — restore previous mode
-  const handleQuizExit = useCallback(() => {
-    chatQuiz.exitQuiz();
-    setQuizModeActive(false);
-    // Restore pre-quiz mode
-    if (preQuizMode) {
-      handleModeChange(preQuizMode);
-      setPreQuizMode(null);
-    }
-  }, [chatQuiz, preQuizMode, handleModeChange]);
-
-  // Handle option selection in quiz
-  const handleQuizSelectOption = useCallback((option: 'A' | 'B' | 'C' | 'D') => {
-    chatQuiz.selectOption(option);
-  }, [chatQuiz]);
-
-  // Handle quiz next button
-  const handleQuizNext = useCallback(() => {
-    const quiz = chatQuiz.quiz;
-    if (!quiz) return;
-
-    // Check if this is the last question and we need to complete
-    const isLastQuestion = quiz.currentIndex === quiz.questions.length - 1;
-
-    if (isLastQuestion && quiz.showFeedback) {
-      // Quiz is complete - nextQuestion will trigger the useEffect that adds summary message
-      chatQuiz.nextQuestion();
-      setQuizModeActive(false);
-      // Restore pre-quiz mode
-      if (preQuizMode) {
-        handleModeChange(preQuizMode);
-        setPreQuizMode(null);
-      }
-    } else {
-      // Move to next question or show feedback
-      chatQuiz.nextQuestion();
-    }
-  }, [chatQuiz, preQuizMode, handleModeChange]);
-
-  // Handle review button click
-  const handleReviewQuiz = useCallback((quiz: QuizSummaryData) => {
-    setSelectedQuizForReview(quiz);
-    setIsReviewModalOpen(true);
-  }, []);
-
-  // Handle retry button click
-  const handleRetryQuiz = useCallback(async () => {
-    setIsReviewModalOpen(false);
-    setSelectedQuizForReview(null);
-
-    // Increment retry attempt count
-    setCurrentRetryAttempt(prev => prev + 1);
-
-    // Activate quiz mode first
-    setQuizModeActive(true);
-
-    // Save current mode and switch to TEACH
-    if (!preQuizMode) {
-      setPreQuizMode(mode);
-    }
-    setMode('TEACH');
-
-    // Retry after a microtask to ensure React has processed quiz mode change
-    await chatQuiz.retryQuiz();
-  }, [chatQuiz, mode, preQuizMode]);
-
-  // Handle retry for failed quiz generation
-  const handleRetryFailedQuiz = useCallback(async () => {
-    if (!chatQuiz.lastFailedConfig) return;
-
-    setIsQuizLoading(true);
-    setQuizGenerationError(null);
-
-    try {
-      await chatQuiz.retryFailedQuiz();
-
-      // Add AI message confirming quiz start
-      if (currentSession && chatQuiz.quiz) {
-        const aiMessage = createMessage(
-          'assistant',
-          `Great! I've prepared ${chatQuiz.lastFailedConfig.questionCount} ${chatQuiz.lastFailedConfig.level} questions for you to practice. You can ask me questions while you work through them.`
-        );
-
-        const sessionWithAI = {
-          ...currentSession,
-          messages: [...currentSession.messages, aiMessage],
-          updatedAt: new Date().toISOString(),
-        };
-
-        setCurrentSession(sessionWithAI);
-        saveSession(sessionWithAI);
-        setSessions(prev =>
-          prev.map(s => (s.id === sessionWithAI.id ? sessionWithAI : s))
-        );
-      }
-    } catch (error) {
-      console.error('Quiz retry error:', error);
-      const errorMsg = error instanceof Error ? error.message : 'Failed to generate quiz. Please try again.';
-      setQuizGenerationError(errorMsg);
-    } finally {
-      setIsQuizLoading(false);
-    }
-  }, [chatQuiz, currentSession]);
-
-  // Handle quiz completion - watch for lastCompletedQuiz changes
-  // This useEffect runs when quiz completes and adds the summary message to chat
-  useEffect(() => {
-    if (!chatQuiz.lastCompletedQuiz) return;
-
-    const completedQuiz = chatQuiz.lastCompletedQuiz;
-
-    // Check if we've already processed this quiz (prevents infinite loop)
-    if (processedQuizIdsRef.current.has(completedQuiz.id)) {
-      return;
-    }
-
-    // Mark this quiz as processed
-    processedQuizIdsRef.current.add(completedQuiz.id);
-
-    // score is already the percentage (0-100), correctCount is the raw score
-    const rawScore = completedQuiz.correctCount;
-    const percentage = completedQuiz.score; // Already calculated by the hook
-    const timeTaken = completedQuiz.timeTaken;
-
-    const summaryMessage = createQuizSummaryMessage({
-      config: completedQuiz.config,
-      score: rawScore,
-      totalQuestions: completedQuiz.questions.length,
-      percentage,
-      timeTaken,
-      retryAttempt: currentRetryAttempt,
-      isRetry: currentRetryAttempt > 0,
-      questions: completedQuiz.questions,
-      answers: completedQuiz.answers,
-      completedAt: completedQuiz.completedAt,
-      startedAt: completedQuiz.startedAt,
-    });
-
-    // Use functional update to avoid depending on currentSession
-    setCurrentSession(prevSession => {
-      if (!prevSession) return prevSession;
-
-      const updatedSession = {
-        ...prevSession,
-        messages: [...prevSession.messages, summaryMessage],
-        updatedAt: new Date().toISOString(),
-      };
-
-      saveSession(updatedSession);
-      setSessions(prev =>
-        prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
-      );
-
-      return updatedSession;
-    });
-  }, [chatQuiz.lastCompletedQuiz, currentRetryAttempt]);
-
-  // ============ END QUIZ MODE HANDLERS ============
-
-  // Send message
+  // Send message (central coordinator)
   const handleSendMessage = useCallback(
     async (content: string, image?: string) => {
       if (!content.trim() && !image) return;
 
-      // Check daily quota before sending
       const quotaResult = consumeQuota();
       if (!quotaResult.allowed) {
         setError(`Daily limit reached. Quota resets in ${countdown?.formatted || '24:00:00'}.`);
@@ -441,46 +91,20 @@ export default function ChatPage() {
 
       setError(null);
 
-      // Check if user is requesting a quiz in quiz mode
-      // Only generate quiz if no quiz is currently loaded (initial request)
-      // Once quiz is active, messages should go to AI chat for help
-      if (quizModeActive && !chatQuiz.quiz) {
-        // Ensure session exists before proceeding (mirrors regular chat pattern)
-        let session = currentSession;
+      // ===== Quiz generation path =====
+      if (quizMode.quizModeActive && !chatQuiz.quiz) {
+        let session = sessionMgmt.currentSession;
         if (!session) {
-          session = createSession(mode);
-          setCurrentSession(session);
-          setSessions(prev => [session!, ...prev]);
+          session = createSession(sessionMgmt.mode);
+          sessionMgmt.setCurrentSession(session);
+          sessionMgmt.setSessions(prev => [session!, ...prev]);
           saveSession(session);
           saveSettings({ lastActiveSession: session.id });
-          setQuizSessionId(session.id);
+          sessionMgmt.setQuizSessionId(session.id);
         }
 
-        // Parse the request for quiz parameters
-        const levelMatch = content.match(/\b(P[1-6])\b/i);
-        const level = (levelMatch?.[1]?.toUpperCase() || 'P4') as 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
+        const { level, topic, difficulty, questionCount } = parseQuizSettings(content);
 
-        // Extract question count BEFORE topic parsing so numbers are removed
-        const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as 5 | 10 | 15 | 20;
-
-        // Extract difficulty — check multi-word phrases first
-        let difficulty: 'easy' | 'medium' | 'hard' = 'medium';
-        if (/\b(super\s+hard|very\s+hard|hardest|toughest|most\s+difficult)\b/i.test(content)) difficulty = 'hard';
-        else if (/\b(hard|difficult|challenging)\b/i.test(content)) difficulty = 'hard';
-        else if (/\b(easy|simple|basic|beginner)\b/i.test(content)) difficulty = 'easy';
-        else if (/\bmedium\b/i.test(content)) difficulty = 'medium';
-        // else stays 'medium' (default)
-
-        // Extract topic by removing noise words, level, difficulty, numbers, and number words
-        const topic = content
-          .replace(/\b(P[1-6])\b/gi, '')
-          .replace(/\b\d+\b/g, '') // Strip standalone digits (e.g., "5", "10")
-          .replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\b/gi, '')
-          .replace(/\b(quiz|questions?|give|me|generate|create|revision|practice|revise|some|the|for|a|an|i|want|can|you|please|hardest|harder|hard|medium|easy|difficult|challenging|super|toughest|simple|basic|beginner|about|on|of|my|do|make|try|get|with|have|that|this|it|them|best|most|really|very|just|like|show|test|from|your|could|would|should|will|need|know|help|us|we|let|go|problems?|math|maths)\b/gi, '')
-          .replace(/\s+/g, ' ')
-          .trim() || 'math';
-
-        // Add user message to chat
         const userMessage = createMessage('user', content);
         const updatedSession = {
           ...session,
@@ -488,29 +112,20 @@ export default function ChatPage() {
           updatedAt: new Date().toISOString(),
         };
 
-        setCurrentSession(updatedSession);
+        sessionMgmt.setCurrentSession(updatedSession);
         saveSession(updatedSession);
-        setSessions(prev =>
+        sessionMgmt.setSessions(prev =>
           prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
         );
 
-        // Auto-TEACH mode: save current mode and switch to TEACH during quiz
-        setPreQuizMode(mode);
-        setMode('TEACH');
-
-        // Show quiz loading panel and generate quiz
-        setIsQuizLoading(true);
-        setCurrentRetryAttempt(0);
+        quizMode.setPreQuizMode(sessionMgmt.mode);
+        sessionMgmt.setMode('TEACH');
+        quizMode.setIsQuizLoading(true);
+        quizMode.setCurrentRetryAttempt(0);
 
         try {
-          await chatQuiz.startQuiz({
-            level,
-            topics: [topic],
-            difficulty,
-            questionCount,
-          });
+          await chatQuiz.startQuiz({ level, topics: [topic], difficulty, questionCount });
 
-          // Add AI message confirming quiz start
           const aiMessage = createMessage(
             'assistant',
             `Great! I've prepared ${questionCount} ${level} questions for you to practice. You can ask me questions while you work through them.`
@@ -522,15 +137,15 @@ export default function ChatPage() {
             updatedAt: new Date().toISOString(),
           };
 
-          setCurrentSession(sessionWithAI);
+          sessionMgmt.setCurrentSession(sessionWithAI);
           saveSession(sessionWithAI);
-          setSessions(prev =>
+          sessionMgmt.setSessions(prev =>
             prev.map(s => (s.id === sessionWithAI.id ? sessionWithAI : s))
           );
-        } catch (error) {
-          console.error('Quiz generation error:', error);
-          const errorMsg = error instanceof Error ? error.message : 'Failed to generate quiz. Please try again.';
-          setQuizGenerationError(errorMsg);
+        } catch (err) {
+          console.error('Quiz generation error:', err);
+          const errorMsg = err instanceof Error ? err.message : 'Failed to generate quiz. Please try again.';
+          quizMode.setQuizGenerationError(errorMsg);
 
           const errorMessage = createMessage(
             'assistant',
@@ -543,59 +158,51 @@ export default function ChatPage() {
             updatedAt: new Date().toISOString(),
           };
 
-          setCurrentSession(sessionWithError);
+          sessionMgmt.setCurrentSession(sessionWithError);
           saveSession(sessionWithError);
-          setSessions(prev =>
+          sessionMgmt.setSessions(prev =>
             prev.map(s => (s.id === sessionWithError.id ? sessionWithError : s))
           );
-
-          // Keep quiz mode active so user can retry
-          // Don't restore pre-quiz mode yet - allow retry
         } finally {
-          setIsQuizLoading(false);
+          quizMode.setIsQuizLoading(false);
         }
         return;
       }
 
-      // Create session if needed
-      let session = currentSession;
+      // ===== Regular chat path =====
+      let session = sessionMgmt.currentSession;
       if (!session) {
-        session = createSession(mode);
-        setCurrentSession(session);
-        setSessions(prev => [session!, ...prev]);
-        setQuizSessionId(session.id);
+        session = createSession(sessionMgmt.mode);
+        sessionMgmt.setCurrentSession(session);
+        sessionMgmt.setSessions(prev => [session!, ...prev]);
+        sessionMgmt.setQuizSessionId(session.id);
       }
 
-      // Add user message
       const userMessage = createMessage('user', content, image);
       const updatedSession: ChatSession = {
         ...session,
-        mode,
+        mode: sessionMgmt.mode,
         messages: [...session.messages, userMessage],
         updatedAt: new Date().toISOString(),
       };
 
-      // Update title from first message
       const sessionWithTitle = updateSessionTitleFromFirstMessage(updatedSession);
 
-      setCurrentSession(sessionWithTitle);
-      setSessions(prev =>
+      sessionMgmt.setCurrentSession(sessionWithTitle);
+      sessionMgmt.setSessions(prev =>
         prev.map(s => (s.id === sessionWithTitle.id ? sessionWithTitle : s))
       );
       saveSession(sessionWithTitle);
       saveSettings({ lastActiveSession: sessionWithTitle.id });
 
-      // Call API
       setIsLoading(true);
 
       try {
-        // Determine API endpoint — use quiz chat when quiz is active
-        const isQuizChatMode = quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion;
+        const isQuizChatMode = quizMode.quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion;
 
         let response: Response;
 
         if (isQuizChatMode) {
-          // Route to quiz chat endpoint with current question context
           const conversationHistory = sessionWithTitle.messages
             .filter(msg => !msg.quizSummary && msg.role !== 'quiz_summary')
             .map(msg => ({
@@ -615,9 +222,6 @@ export default function ChatPage() {
             }),
           });
         } else {
-          // Filter out quiz summary messages before sending to API
-          // Quiz summaries are only for display and shouldn't be part of AI conversation context
-          // Also handles old messages with role: 'quiz_summary' for backward compatibility
           const messagesForApi = sessionWithTitle.messages.filter(
             msg => !msg.quizSummary && msg.role !== 'quiz_summary'
           );
@@ -627,7 +231,7 @@ export default function ChatPage() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               messages: messagesForApi,
-              mode,
+              mode: sessionMgmt.mode,
               image,
             }),
           });
@@ -635,22 +239,18 @@ export default function ChatPage() {
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
-          // Update quota status from response headers even on error
           updateQuotaFromResponse(response);
           throw new Error(errorData.error || 'Failed to get response');
         }
 
-        // Update quota status from response headers
         updateQuotaFromResponse(response);
 
-        // Handle streaming response
         const reader = response.body?.getReader();
         if (!reader) throw new Error('No response body');
 
         const decoder = new TextDecoder();
         let assistantContent = '';
 
-        // Create placeholder assistant message
         const assistantMessage = createMessage('assistant', '');
         let sessionWithAssistant: ChatSession = {
           ...sessionWithTitle,
@@ -658,9 +258,8 @@ export default function ChatPage() {
           updatedAt: new Date().toISOString(),
         };
 
-        setCurrentSession(sessionWithAssistant);
+        sessionMgmt.setCurrentSession(sessionWithAssistant);
 
-        // Stream the response
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
@@ -668,7 +267,6 @@ export default function ChatPage() {
           const chunk = decoder.decode(value, { stream: true });
           assistantContent += chunk;
 
-          // Update the assistant message content
           sessionWithAssistant = {
             ...sessionWithAssistant,
             messages: sessionWithAssistant.messages.map((m, i) =>
@@ -679,11 +277,10 @@ export default function ChatPage() {
             updatedAt: new Date().toISOString(),
           };
 
-          setCurrentSession(sessionWithAssistant);
+          sessionMgmt.setCurrentSession(sessionWithAssistant);
         }
 
-        // Save final state
-        setSessions(prev =>
+        sessionMgmt.setSessions(prev =>
           prev.map(s =>
             s.id === sessionWithAssistant.id ? sessionWithAssistant : s
           )
@@ -696,11 +293,11 @@ export default function ChatPage() {
         setIsLoading(false);
       }
     },
-    [currentSession, mode, consumeQuota, countdown, updateQuotaFromResponse, quizModeActive, chatQuiz, chatQuiz.currentQuestion]
+    [sessionMgmt.currentSession, sessionMgmt.mode, consumeQuota, countdown, updateQuotaFromResponse, quizMode.quizModeActive, chatQuiz, chatQuiz.currentQuestion]
   );
 
   // Loading state
-  if (!mounted || !username) {
+  if (!sessionMgmt.mounted || !sessionMgmt.username) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900">
         <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
@@ -710,152 +307,31 @@ export default function ChatPage() {
 
   return (
     <div className="h-screen flex flex-col bg-white dark:bg-slate-900">
-      {/* Header with mode toggle */}
-      <header className="sticky top-0 z-40 h-16 border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
-        <div className="h-full flex items-center justify-between px-4">
-          {/* Left: Menu button, logo, and nav links */}
-          <div className="flex items-center gap-2">
-            {/* Mobile sidebar toggle */}
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="lg:hidden p-2 -ml-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400"
-              aria-label="Open sidebar"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
-            </button>
-            {/* Desktop sidebar toggle */}
-            <button
-              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="hidden lg:flex p-2 -ml-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400"
-              aria-label={sidebarCollapsed ? "Open sidebar" : "Close sidebar"}
-            >
-              {sidebarCollapsed ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="11 17 6 12 11 7" />
-                  <polyline points="17 17 12 12 17 7" />
-                </svg>
-              )}
-            </button>
-            <Link href="/home" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
-              </div>
-              <span className="hidden sm:block text-lg font-semibold text-slate-900 dark:text-slate-100">
-                AI Math Tutor
-              </span>
-            </Link>
-
-            {/* Nav links - hidden on small mobile */}
-            <nav className="hidden md:flex items-center gap-1 ml-2" aria-label="Main navigation">
-              <Link
-                href="/home"
-                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
-              >
-                Home
-              </Link>
-              <Link
-                href="/chat"
-                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-emerald-600 dark:text-emerald-400"
-                aria-current="page"
-              >
-                Chat
-                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-emerald-500 rounded-full" />
-              </Link>
-            </nav>
-          </div>
-
-          {/* Right: Mode toggle, Quiz Mode toggle, Clear Chat, and theme toggle */}
-          <div className="flex items-center gap-2">
-            <ModeToggle mode={mode} onChange={handleModeChange} disabled={isLoading || (quizModeActive && !!chatQuiz.quiz)} />
-
-            <QuizModeToggle
-              isActive={quizModeActive}
-              onToggle={handleQuizModeToggle}
-              disabled={isLoading || isQuizLoading || chatQuiz.isLoading}
-              questionCount={chatQuiz.quiz?.questions.length}
-              currentQuestion={chatQuiz.quiz ? chatQuiz.quiz.currentIndex + 1 : undefined}
-              isLocked={!!chatQuiz.quiz && !chatQuiz.quiz.isCompleted}
-            />
-
-            {currentSession && currentSession.messages.length > 0 && (
-              <button
-                onClick={handleClearChat}
-                disabled={isLoading}
-                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
-                title="Clear current chat"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M3 6h18" />
-                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                </svg>
-                <span className="hidden sm:inline">Clear</span>
-              </button>
-            )}
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+      <ChatHeader
+        mode={sessionMgmt.mode}
+        onModeChange={sessionMgmt.handleModeChange}
+        isLoading={isLoading}
+        sidebarCollapsed={sidebarCollapsed}
+        onToggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)}
+        onOpenMobileSidebar={() => setSidebarOpen(true)}
+        quizModeActive={quizMode.quizModeActive}
+        onQuizModeToggle={quizMode.handleQuizModeToggle}
+        isQuizLoading={quizMode.isQuizLoading}
+        chatQuizIsLoading={chatQuiz.isLoading}
+        quiz={chatQuiz.quiz}
+        currentSession={sessionMgmt.currentSession}
+        onClearChat={sessionMgmt.handleClearChat}
+      />
 
       {/* Main content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar */}
         <ChatSidebar
-          sessions={sessions}
-          currentSessionId={currentSession?.id}
+          sessions={sessionMgmt.sessions}
+          currentSessionId={sessionMgmt.currentSession?.id}
           onNewChat={handleNewChat}
           onSelectSession={handleSelectSession}
-          onDeleteSession={handleDeleteSession}
+          onDeleteSession={sessionMgmt.handleDeleteSession}
           isOpen={sidebarOpen}
           collapsed={sidebarCollapsed}
           onClose={() => setSidebarOpen(false)}
@@ -864,147 +340,36 @@ export default function ChatPage() {
 
         {/* Content wrapper: Chat area + optional Quiz Panel */}
         <div className="flex-1 flex overflow-hidden">
-          {/* Chat area — dims when quiz panel is showing */}
-          <main className={`flex-1 flex flex-col overflow-hidden min-w-[300px] transition-opacity duration-300 ${(quizModeActive && (chatQuiz.quiz || isQuizLoading)) ? 'opacity-75' : 'opacity-100'}`}>
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4">
-              {!currentSession || currentSession.messages.length === 0 ? (
-                // Empty state
-                <div className="h-full flex items-center justify-center">
-                  <div className="text-center max-w-md p-6">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
-                      {quizModeActive ? (
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      ) : (
-                        <span className="text-white text-2xl">M</span>
-                      )}
-                    </div>
-                    <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                      {quizModeActive ? 'Quiz Mode Active!' : 'Ready to learn math!'}
-                    </h2>
-                    <p className="text-slate-600 dark:text-slate-400 mb-4">
-                      {quizModeActive
-                        ? 'Type your quiz request below. Tell me the topic, level, and how many questions you want.'
-                        : 'Ask me any Primary 1-6 math question. You can type or upload a photo of your homework.'
-                      }
-                    </p>
-                    {quizModeActive ? (
-                      <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                        <p>Try typing:</p>
-                        <ul className="space-y-1">
-                          <li>&quot;Give me 5 P2 fractions questions&quot;</li>
-                          <li>&quot;Generate 10 P4 geometry questions&quot;</li>
-                          <li>&quot;I want 15 P6 algebra problems&quot;</li>
-                        </ul>
-                      </div>
-                    ) : (
-                      <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                        <p>Try asking:</p>
-                        <ul className="space-y-1">
-                          <li>&quot;What is 25 + 17?&quot;</li>
-                          <li>&quot;Help me with fractions&quot;</li>
-                          <li>&quot;How do I find the area of a rectangle?&quot;</li>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                // Messages list
-                <div className={quizModeActive ? "max-w-2xl mx-auto px-4" : "max-w-3xl mx-auto"}>
-                  {currentSession.messages.map((message, index) => (
-                    <MessageBubble
-                      key={message.id}
-                      message={message}
-                      quotaInfo={message.role === 'assistant' && index === currentSession.messages.length - 1 ? {
-                        remaining: quotaStatus.remaining,
-                        limit: quotaStatus.limit
-                      } : undefined}
-                      onReviewQuiz={handleReviewQuiz}
-                      onRetryQuiz={handleRetryQuiz}
-                    />
-                  ))}
-                  {isLoading && <MessageLoading />}
-
-                  <div ref={messagesEndRef} />
-                </div>
-              )}
-            </div>
-
-            {/* Error message */}
-            {error && (
-              <div
-                className={`px-4 py-2 border-t ${error.includes('Daily limit')
-                  ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
-                  : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
-                  }`}
-              >
-                <p
-                  className={`text-sm text-center ${error.includes('Daily limit')
-                    ? 'text-amber-700 dark:text-amber-300'
-                    : 'text-red-600 dark:text-red-400'
-                    }`}
-                >
-                  {error.includes('Daily limit') ? (
-                    <>
-                      <span className="font-medium">Daily limit reached</span>
-                      {countdown && (
-                        <span>
-                          {' '}• Resets in{' '}
-                          <span className="font-mono font-bold">{countdown.formatted}</span>
-                        </span>
-                      )}
-                      <button
-                        onClick={() => setError(null)}
-                        className="ml-2 underline hover:no-underline"
-                      >
-                        Dismiss
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      {error}
-                      <button
-                        onClick={() => setError(null)}
-                        className="ml-2 underline hover:no-underline"
-                      >
-                        Dismiss
-                      </button>
-                    </>
-                  )}
-                </p>
-              </div>
-            )}
-
-            {/* Composer */}
-            <MessageComposer
-              onSend={handleSendMessage}
-              disabled={isLoading || isQuizLoading}
-              placeholder={
-                quizModeActive
-                  ? 'Type your quiz request (e.g., "Give me 5 P2 fractions questions")...'
-                  : mode === 'TEACH'
-                    ? 'Type your question or share your attempt...'
-                    : 'Type your math question...'
-              }
-            />
-          </main>
+          <ChatMessagesArea
+            currentSession={sessionMgmt.currentSession}
+            quizModeActive={quizMode.quizModeActive}
+            isQuizActive={quizMode.quizModeActive && (!!chatQuiz.quiz || quizMode.isQuizLoading)}
+            isLoading={isLoading}
+            isQuizLoading={quizMode.isQuizLoading}
+            mode={sessionMgmt.mode}
+            error={error}
+            countdown={countdown}
+            quotaStatus={quotaStatus}
+            messagesEndRef={messagesEndRef}
+            onSendMessage={handleSendMessage}
+            onReviewQuiz={quizMode.handleReviewQuiz}
+            onRetryQuiz={quizMode.handleRetryQuiz}
+            onDismissError={() => setError(null)}
+          />
 
           {/* Quiz Loading Panel — shown while generating questions */}
-          {isQuizLoading && quizModeActive && (
+          {quizMode.isQuizLoading && quizMode.quizModeActive && (
             <QuizLoadingPanel
               isVisible={true}
               onCancel={() => {
-                setIsQuizLoading(false);
-                setQuizModeActive(false);
+                quizMode.setIsQuizLoading(false);
+                quizMode.setQuizModeActive(false);
               }}
             />
           )}
 
           {/* Quiz Panel — shown when questions are ready */}
-          {!isQuizLoading && quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
+          {!quizMode.isQuizLoading && quizMode.quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion && (
             <QuizPanel
               currentQuestion={chatQuiz.currentQuestion}
               questionNumber={chatQuiz.quiz.currentIndex + 1}
@@ -1012,25 +377,22 @@ export default function ChatPage() {
               selectedOption={chatQuiz.quiz.answers[chatQuiz.quiz.currentIndex]?.selected ?? null}
               showFeedback={chatQuiz.quiz.showFeedback}
               isLastQuestion={chatQuiz.quiz.currentIndex === chatQuiz.quiz.questions.length - 1}
-              onSelectOption={handleQuizSelectOption}
-              onNext={handleQuizNext}
-              onExit={handleQuizExit}
-              isVisible={quizModeActive}
+              onSelectOption={quizMode.handleQuizSelectOption}
+              onNext={quizMode.handleQuizNext}
+              onExit={quizMode.handleQuizExit}
+              isVisible={quizMode.quizModeActive}
             />
           )}
         </div>
       </div>
 
       {/* Quiz Review Modal */}
-      {isReviewModalOpen && selectedQuizForReview && (
+      {quizMode.isReviewModalOpen && quizMode.selectedQuizForReview && (
         <QuizReviewModal
-          quiz={selectedQuizForReview}
-          isOpen={isReviewModalOpen}
-          onClose={() => {
-            setIsReviewModalOpen(false);
-            setSelectedQuizForReview(null);
-          }}
-          onRetry={handleRetryQuiz}
+          quiz={quizMode.selectedQuizForReview}
+          isOpen={quizMode.isReviewModalOpen}
+          onClose={quizMode.closeReviewModal}
+          onRetry={quizMode.handleRetryQuiz}
         />
       )}
     </div>
