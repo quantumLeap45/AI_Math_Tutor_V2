@@ -5,22 +5,52 @@
  * AI Math Tutor v2
  *
  * Input area for composing messages with image upload support.
+ * Includes mode controls (Show/Teach/Quiz) as icon buttons with tooltips.
+ * Supports a centered layout variant for the welcome state.
  */
 
 import React, { useState, useRef, useEffect } from 'react';
 import { validateImageFile, fileToBase64 } from '@/lib/chat';
 import { ImagePreview } from './ImagePreview';
+import { TutorMode, ChatQuizState } from '@/types';
 
 interface MessageComposerProps {
   onSend: (message: string, image?: string) => void;
   disabled?: boolean;
   placeholder?: string;
+  /** Whether to use centered welcome state layout */
+  centered?: boolean;
+  /** Current tutor mode */
+  mode: TutorMode;
+  /** Mode change handler */
+  onModeChange: (mode: TutorMode) => void;
+  /** Whether quiz mode is active */
+  quizModeActive: boolean;
+  /** Quiz mode toggle handler */
+  onQuizModeToggle: () => void;
+  /** Whether mode controls are disabled (e.g. during loading) */
+  modeDisabled?: boolean;
+  /** Whether quiz toggle is disabled */
+  quizDisabled?: boolean;
+  /** Whether quiz is locked (running, can't toggle off) */
+  quizLocked?: boolean;
+  /** Active quiz state for progress display */
+  quiz?: ChatQuizState | null;
 }
 
 export function MessageComposer({
   onSend,
   disabled = false,
   placeholder = 'Type your math question...',
+  centered = false,
+  mode,
+  onModeChange,
+  quizModeActive,
+  onQuizModeToggle,
+  modeDisabled = false,
+  quizDisabled = false,
+  quizLocked = false,
+  quiz,
 }: MessageComposerProps) {
   const [message, setMessage] = useState('');
   const [image, setImage] = useState<string | null>(null);
@@ -54,7 +84,6 @@ export function MessageComposer({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    // Submit on Enter (without Shift for multiline)
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
@@ -65,12 +94,10 @@ export function MessageComposer({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Reset file input
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
 
-    // Validate file
     const validation = validateImageFile(file);
     if (!validation.valid) {
       setImageError(validation.error || 'Invalid file');
@@ -95,8 +122,193 @@ export function MessageComposer({
     setImageError(null);
   };
 
+  // Mode icon button helper
+  const modeButtonClass = (isActive: boolean, isDisabled: boolean) =>
+    `relative p-2 rounded-lg transition-colors ${
+      isDisabled
+        ? 'opacity-50 cursor-not-allowed text-slate-400 dark:text-slate-500'
+        : isActive
+        ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
+        : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300'
+    }`;
+
+  const modeButtons = (
+    <div className="flex items-center gap-0.5">
+      {/* Show mode */}
+      <button
+        type="button"
+        onClick={() => onModeChange('SHOW')}
+        disabled={modeDisabled}
+        className={modeButtonClass(mode === 'SHOW' && !quizModeActive, modeDisabled)}
+        title="Show mode — Get complete solutions with step-by-step explanations"
+        aria-pressed={mode === 'SHOW'}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </button>
+
+      {/* Teach mode */}
+      <button
+        type="button"
+        onClick={() => onModeChange('TEACH')}
+        disabled={modeDisabled}
+        className={modeButtonClass(mode === 'TEACH' && !quizModeActive, modeDisabled)}
+        title="Teach mode — Learn through guided hints without direct answers"
+        aria-pressed={mode === 'TEACH'}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+        </svg>
+      </button>
+
+      {/* Divider */}
+      <div className="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-1" />
+
+      {/* Quiz mode */}
+      <button
+        type="button"
+        onClick={onQuizModeToggle}
+        disabled={quizDisabled || quizLocked}
+        className={`${modeButtonClass(quizModeActive, quizDisabled || quizLocked)} ${quizModeActive && !quizLocked ? 'ring-1 ring-emerald-500/50' : ''}`}
+        title={
+          quizLocked
+            ? 'Quiz running — use Exit Quiz to close'
+            : quizModeActive
+            ? 'Exit quiz mode'
+            : 'Quiz mode — Generate practice questions for any topic'
+        }
+        aria-pressed={quizModeActive}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 11l3 3L22 4" />
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+        </svg>
+        {/* Quiz progress indicator */}
+        {quizModeActive && quiz && !quiz.isCompleted && (
+          <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center px-1 rounded-full bg-emerald-500 text-white text-[10px] font-bold leading-none">
+            {quiz.currentIndex + 1}/{quiz.questions.length}
+          </span>
+        )}
+      </button>
+    </div>
+  );
+
+  // Hidden file input (shared)
+  const fileInput = (
+    <input
+      ref={fileInputRef}
+      type="file"
+      accept="image/jpeg,image/png,image/gif,image/webp"
+      onChange={handleImageUpload}
+      className="hidden"
+    />
+  );
+
+  // Image upload button (shared)
+  const imageUploadButton = (
+    <button
+      type="button"
+      onClick={() => fileInputRef.current?.click()}
+      disabled={disabled || isUploading}
+      className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+      aria-label="Upload image"
+      title="Upload a photo of your math problem"
+    >
+      {isUploading ? (
+        <svg className="animate-spin h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+          <circle cx="8.5" cy="8.5" r="1.5" />
+          <polyline points="21 15 16 10 5 21" />
+        </svg>
+      )}
+    </button>
+  );
+
+  // Send button (shared)
+  const sendButton = (
+    <button
+      type="submit"
+      disabled={disabled || (!message.trim() && !image)}
+      className="p-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+      aria-label="Send message"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13" />
+        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+      </svg>
+    </button>
+  );
+
+  // ===== CENTERED LAYOUT (Welcome state) =====
+  if (centered) {
+    return (
+      <div className="w-full max-w-2xl mx-auto px-4">
+        {/* Image preview */}
+        {image && (
+          <div className="mb-3 relative inline-block">
+            <ImagePreview src={image} alt="Upload preview" className="max-h-32" />
+            <button
+              onClick={removeImage}
+              className="absolute -top-2 -right-2 w-6 h-6 bg-slate-500 hover:bg-slate-600 text-white rounded-full flex items-center justify-center transition-colors"
+              aria-label="Remove image"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        )}
+
+        {imageError && (
+          <p className="mb-2 text-sm text-red-500">{imageError}</p>
+        )}
+
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm overflow-hidden">
+          {/* Textarea */}
+          <textarea
+            ref={textareaRef}
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder={placeholder}
+            disabled={disabled}
+            rows={2}
+            autoFocus
+            className="w-full px-4 pt-4 pb-2 bg-transparent text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none resize-none max-h-36 text-base leading-relaxed"
+          />
+
+          {/* Toolbar row */}
+          <div className="flex items-center justify-between px-3 pb-3">
+            <div className="flex items-center gap-0.5">
+              {modeButtons}
+              <div className="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-1" />
+              {imageUploadButton}
+            </div>
+            {sendButton}
+          </div>
+        </form>
+
+        {fileInput}
+
+        <p className="mt-3 text-xs text-center text-slate-400 dark:text-slate-500">
+          Press Enter to send, Shift+Enter for new line
+        </p>
+      </div>
+    );
+  }
+
+  // ===== BOTTOM LAYOUT (Chat state) =====
   return (
-    <div className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+    <div className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-3">
       {/* Image preview */}
       {image && (
         <div className="mb-3 relative inline-block">
@@ -106,17 +318,7 @@ export function MessageComposer({
             className="absolute -top-2 -right-2 w-6 h-6 bg-slate-500 hover:bg-slate-600 text-white rounded-full flex items-center justify-center transition-colors"
             aria-label="Remove image"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
@@ -124,69 +326,16 @@ export function MessageComposer({
         </div>
       )}
 
-      {/* Error message */}
       {imageError && (
         <p className="mb-2 text-sm text-red-500">{imageError}</p>
       )}
 
-      {/* Input area */}
-      <form onSubmit={handleSubmit} className="flex items-center gap-2">
-        {/* Image upload button */}
-        <button
-          type="button"
-          onClick={() => fileInputRef.current?.click()}
-          disabled={disabled || isUploading}
-          className="h-10 w-10 flex-shrink-0 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
-          aria-label="Upload image"
-          title="Upload a photo of your math problem (JPG, PNG, GIF, WebP up to 10MB)"
-        >
-          {isUploading ? (
-            <svg
-              className="animate-spin h-5 w-5 text-slate-600 dark:text-slate-400"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-slate-600 dark:text-slate-400"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <polyline points="21 15 16 10 5 21" />
-            </svg>
-          )}
-        </button>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/jpeg,image/png,image/gif,image/webp"
-          onChange={handleImageUpload}
-          className="hidden"
-        />
+      <form onSubmit={handleSubmit} className="flex items-end gap-2">
+        {/* Mode buttons */}
+        {modeButtons}
+
+        {/* Image upload */}
+        {imageUploadButton}
 
         {/* Text input */}
         <div className="flex-1 relative">
@@ -203,33 +352,10 @@ export function MessageComposer({
         </div>
 
         {/* Send button */}
-        <button
-          type="submit"
-          disabled={disabled || (!message.trim() && !image)}
-          className="h-10 w-10 flex-shrink-0 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white shadow-none disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
-          aria-label="Send message"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="22" y1="2" x2="11" y2="13" />
-            <polygon points="22 2 15 22 11 13 2 9 22 2" />
-          </svg>
-        </button>
+        {sendButton}
       </form>
 
-      {/* Helper text */}
-      <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
-        Press Enter to send, Shift+Enter for new line • You can also upload a photo of your math problem
-      </p>
+      {fileInput}
     </div>
   );
 }

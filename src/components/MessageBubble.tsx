@@ -21,12 +21,11 @@ import { QuizSummaryCard } from './chat/QuizSummaryCard';
 interface MessageBubbleProps {
   message: Message;
   showTimestamp?: boolean;
-  quotaInfo?: { remaining: number; limit: number };
   onReviewQuiz?: (quiz: QuizSummaryData) => void;
   onRetryQuiz?: () => void;
 }
 
-export function MessageBubble({ message, showTimestamp = false, quotaInfo, onReviewQuiz, onRetryQuiz }: MessageBubbleProps) {
+export function MessageBubble({ message, showTimestamp = false, onReviewQuiz, onRetryQuiz }: MessageBubbleProps) {
   const isUser = message.role === 'user';
   const isQuizSummary = message.quizSummary !== undefined; // Check for quizSummary data instead of role
 
@@ -137,24 +136,6 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
           )}
         </div>
 
-        {/* Credits display - only for AI messages at bottom right */}
-        {!isUser && quotaInfo && (
-          <div
-            className="self-end mt-1 px-2 py-0.5 rounded-md bg-slate-50 dark:bg-slate-800/50 group relative"
-            title="50 messages per day • Resets at midnight"
-          >
-            <span className="text-xs text-slate-400 dark:text-slate-500 tabular-nums">
-              {quotaInfo.remaining}/{quotaInfo.limit} left
-            </span>
-            {/* Tooltip */}
-            <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block w-48 p-2 bg-slate-900 dark:bg-slate-700 text-white text-xs rounded-lg shadow-lg z-10">
-              <div className="font-medium mb-1">Daily Usage Limit</div>
-              <div className="text-slate-300">
-                {quotaInfo.limit} messages per day • Resets at midnight UTC
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

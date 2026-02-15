@@ -9,8 +9,10 @@
  */
 
 import React, { useEffect, useState, useRef, useCallback } from 'react';
+import Link from 'next/link';
 import { ChatSidebar } from '@/components/ChatSidebar';
 import { QuizPanel, QuizLoadingPanel, QuizReviewModal, ChatHeader, ChatMessagesArea } from '@/components/chat';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { ChatSession } from '@/types';
 import {
   createSession,
@@ -312,6 +314,31 @@ export default function ChatPage() {
     [sessionMgmt.currentSession, sessionMgmt.mode, consumeQuota, countdown, updateQuotaFromResponse, quizMode.quizModeActive, chatQuiz, chatQuiz.currentQuestion]
   );
 
+  // Derived state
+  const hasMessages = !!(sessionMgmt.currentSession && sessionMgmt.currentSession.messages.length > 0);
+
+  // Shared ChatMessagesArea props
+  const messagesAreaProps = {
+    currentSession: sessionMgmt.currentSession,
+    quizModeActive: quizMode.quizModeActive,
+    isQuizActive: quizMode.quizModeActive && (!!chatQuiz.quiz || quizMode.isQuizLoading),
+    isLoading,
+    isQuizLoading: quizMode.isQuizLoading,
+    mode: sessionMgmt.mode,
+    onModeChange: sessionMgmt.handleModeChange,
+    error,
+    countdown,
+    messagesEndRef,
+    onSendMessage: handleSendMessage,
+    onReviewQuiz: quizMode.handleReviewQuiz,
+    onRetryQuiz: quizMode.handleRetryQuiz,
+    onDismissError: () => setError(null),
+    onQuizModeToggle: quizMode.handleQuizModeToggle,
+    quizDisabled: isLoading || quizMode.isQuizLoading || chatQuiz.isLoading,
+    quizLocked: !!chatQuiz.quiz && !chatQuiz.quiz.isCompleted,
+    quiz: chatQuiz.quiz,
+  };
+
   // Loading state
   if (!sessionMgmt.mounted || !sessionMgmt.username) {
     return (
@@ -323,55 +350,62 @@ export default function ChatPage() {
 
   return (
     <div className="h-screen flex flex-col bg-white dark:bg-slate-900">
-      <ChatHeader
-        mode={sessionMgmt.mode}
-        onModeChange={sessionMgmt.handleModeChange}
-        isLoading={isLoading}
-        sidebarCollapsed={sidebarCollapsed}
-        onToggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)}
-        onOpenMobileSidebar={() => setSidebarOpen(true)}
-        quizModeActive={quizMode.quizModeActive}
-        onQuizModeToggle={quizMode.handleQuizModeToggle}
-        isQuizLoading={quizMode.isQuizLoading}
-        chatQuizIsLoading={chatQuiz.isLoading}
-        quiz={chatQuiz.quiz}
-        currentSession={sessionMgmt.currentSession}
-        onClearChat={sessionMgmt.handleClearChat}
-      />
+      {/* Header: minimal for welcome state, full for chat state */}
+      {hasMessages ? (
+        <ChatHeader
+          isLoading={isLoading}
+          sidebarCollapsed={sidebarCollapsed}
+          onToggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)}
+          onOpenMobileSidebar={() => setSidebarOpen(true)}
+          currentSession={sessionMgmt.currentSession}
+          onClearChat={sessionMgmt.handleClearChat}
+          quotaRemaining={quotaStatus.remaining}
+          quotaLimit={quotaStatus.limit}
+        />
+      ) : (
+        /* Minimal header for welcome state */
+        <header className="sticky top-0 z-40 h-14 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+          <div className="h-full flex items-center justify-between px-4">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">M</span>
+              </div>
+              <span className="hidden sm:block text-lg font-semibold text-slate-900 dark:text-slate-100">
+                AI Math Tutor
+              </span>
+            </Link>
+            <div className="flex items-center gap-2">
+              <div className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800">
+                <span className="text-xs font-medium text-slate-600 dark:text-slate-400 tabular-nums">
+                  {quotaStatus.remaining}/{quotaStatus.limit} left
+                </span>
+              </div>
+              <ThemeToggle />
+            </div>
+          </div>
+        </header>
+      )}
 
       {/* Main content */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Sidebar */}
-        <ChatSidebar
-          sessions={sessionMgmt.sessions}
-          currentSessionId={sessionMgmt.currentSession?.id}
-          onNewChat={handleNewChat}
-          onSelectSession={handleSelectSession}
-          onDeleteSession={sessionMgmt.handleDeleteSession}
-          isOpen={sidebarOpen}
-          collapsed={sidebarCollapsed}
-          onClose={() => setSidebarOpen(false)}
-          onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
-        />
+        {/* Sidebar — only shown when there are messages */}
+        {hasMessages && (
+          <ChatSidebar
+            sessions={sessionMgmt.sessions}
+            currentSessionId={sessionMgmt.currentSession?.id}
+            onNewChat={handleNewChat}
+            onSelectSession={handleSelectSession}
+            onDeleteSession={sessionMgmt.handleDeleteSession}
+            isOpen={sidebarOpen}
+            collapsed={sidebarCollapsed}
+            onClose={() => setSidebarOpen(false)}
+            onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+          />
+        )}
 
         {/* Content wrapper: Chat area + optional Quiz Panel */}
         <div className="flex-1 flex overflow-hidden">
-          <ChatMessagesArea
-            currentSession={sessionMgmt.currentSession}
-            quizModeActive={quizMode.quizModeActive}
-            isQuizActive={quizMode.quizModeActive && (!!chatQuiz.quiz || quizMode.isQuizLoading)}
-            isLoading={isLoading}
-            isQuizLoading={quizMode.isQuizLoading}
-            mode={sessionMgmt.mode}
-            error={error}
-            countdown={countdown}
-            quotaStatus={quotaStatus}
-            messagesEndRef={messagesEndRef}
-            onSendMessage={handleSendMessage}
-            onReviewQuiz={quizMode.handleReviewQuiz}
-            onRetryQuiz={quizMode.handleRetryQuiz}
-            onDismissError={() => setError(null)}
-          />
+          <ChatMessagesArea {...messagesAreaProps} />
 
           {/* Quiz Loading Panel — shown while generating questions */}
           {quizMode.isQuizLoading && quizMode.quizModeActive && (

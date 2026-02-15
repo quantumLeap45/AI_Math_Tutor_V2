@@ -4,15 +4,16 @@
  * ChatMessagesArea Component
  * AI Math Tutor v2
  *
- * Message display area: empty state, message list, error banner,
- * and message composer.
+ * Handles two layouts:
+ * 1. Welcome state (no messages) — centered input with suggestion chips
+ * 2. Chat state (has messages) — message list with bottom composer
  */
 
 import React from 'react';
 import { MessageBubble } from '@/components/MessageBubble';
 import { MessageComposer } from '@/components/MessageComposer';
 import { MessageLoading } from '@/components/LoadingSpinner';
-import { ChatSession, QuizSummaryData, TutorMode } from '@/types';
+import { ChatSession, QuizSummaryData, TutorMode, ChatQuizState } from '@/types';
 
 interface ChatMessagesAreaProps {
   currentSession: ChatSession | null;
@@ -21,14 +22,18 @@ interface ChatMessagesAreaProps {
   isLoading: boolean;
   isQuizLoading: boolean;
   mode: TutorMode;
+  onModeChange: (mode: TutorMode) => void;
   error: string | null;
   countdown: { formatted: string } | null;
-  quotaStatus: { remaining: number; limit: number };
   messagesEndRef: React.RefObject<HTMLDivElement | null>;
   onSendMessage: (content: string, image?: string) => void;
   onReviewQuiz: (quiz: QuizSummaryData) => void;
   onRetryQuiz: () => void;
   onDismissError: () => void;
+  onQuizModeToggle: () => void;
+  quizDisabled: boolean;
+  quizLocked: boolean;
+  quiz: ChatQuizState | null;
 }
 
 export function ChatMessagesArea({
@@ -38,82 +43,103 @@ export function ChatMessagesArea({
   isLoading,
   isQuizLoading,
   mode,
+  onModeChange,
   error,
   countdown,
-  quotaStatus,
   messagesEndRef,
   onSendMessage,
   onReviewQuiz,
   onRetryQuiz,
   onDismissError,
+  onQuizModeToggle,
+  quizDisabled,
+  quizLocked,
+  quiz,
 }: ChatMessagesAreaProps) {
+  const hasMessages = currentSession && currentSession.messages.length > 0;
+
+  const composerPlaceholder = quizModeActive
+    ? 'Type your quiz request (e.g., "Give me 5 P2 fractions questions")...'
+    : mode === 'TEACH'
+      ? 'Type your question or share your attempt...'
+      : 'Type your math question...';
+
+  // Shared composer props
+  const composerProps = {
+    onSend: onSendMessage,
+    disabled: isLoading || isQuizLoading,
+    placeholder: composerPlaceholder,
+    mode,
+    onModeChange,
+    quizModeActive,
+    onQuizModeToggle,
+    modeDisabled: isLoading || (quizModeActive && !!quiz),
+    quizDisabled,
+    quizLocked,
+    quiz,
+  };
+
+  // Suggestion chip handler
+  const handleSuggestion = (text: string) => {
+    onSendMessage(text);
+  };
+
+  // ===== WELCOME STATE (centered) =====
+  if (!hasMessages) {
+    return (
+      <main className="flex-1 flex flex-col items-center justify-center overflow-hidden min-w-[300px] px-4">
+        <div className="w-full max-w-2xl text-center mb-8">
+          <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-emerald-500 flex items-center justify-center">
+            <span className="text-white font-bold text-2xl">M</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
+            What would you like to learn?
+          </h1>
+          <p className="text-slate-500 dark:text-slate-400">
+            Ask any P1&ndash;P6 math question, start a quiz, or upload your homework.
+          </p>
+        </div>
+
+        <MessageComposer {...composerProps} centered={true} />
+
+        {/* Suggestion chips */}
+        <div className="flex flex-wrap justify-center gap-2 mt-6 max-w-2xl px-4">
+          {quizModeActive ? (
+            <>
+              <SuggestionChip onClick={handleSuggestion} text="Give me 5 P2 fractions questions" />
+              <SuggestionChip onClick={handleSuggestion} text="10 P4 geometry questions" />
+              <SuggestionChip onClick={handleSuggestion} text="15 P6 algebra problems" />
+            </>
+          ) : (
+            <>
+              <SuggestionChip onClick={handleSuggestion} text="What is 25 + 17?" />
+              <SuggestionChip onClick={handleSuggestion} text="Help me with fractions" />
+              <SuggestionChip onClick={handleSuggestion} text="How do I find the area of a rectangle?" />
+            </>
+          )}
+        </div>
+      </main>
+    );
+  }
+
+  // ===== CHAT STATE (messages + bottom composer) =====
   return (
     <main className={`flex-1 flex flex-col overflow-hidden min-w-[300px] transition-opacity duration-300 ${isQuizActive ? 'opacity-75' : 'opacity-100'}`}>
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4">
-        {!currentSession || currentSession.messages.length === 0 ? (
-          // Empty state
-          <div className="h-full flex items-center justify-center">
-            <div className="text-center max-w-md p-6">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-emerald-500 flex items-center justify-center">
-                {quizModeActive ? (
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ) : (
-                  <span className="text-white text-2xl">M</span>
-                )}
-              </div>
-              <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                {quizModeActive ? 'Quiz Mode Active!' : 'Ready to learn math!'}
-              </h2>
-              <p className="text-slate-600 dark:text-slate-400 mb-4">
-                {quizModeActive
-                  ? 'Type your quiz request below. Tell me the topic, level, and how many questions you want.'
-                  : 'Ask me any Primary 1-6 math question. You can type or upload a photo of your homework.'
-                }
-              </p>
-              {quizModeActive ? (
-                <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                  <p>Try typing:</p>
-                  <ul className="space-y-1">
-                    <li>&quot;Give me 5 P2 fractions questions&quot;</li>
-                    <li>&quot;Generate 10 P4 geometry questions&quot;</li>
-                    <li>&quot;I want 15 P6 algebra problems&quot;</li>
-                  </ul>
-                </div>
-              ) : (
-                <div className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                  <p>Try asking:</p>
-                  <ul className="space-y-1">
-                    <li>&quot;What is 25 + 17?&quot;</li>
-                    <li>&quot;Help me with fractions&quot;</li>
-                    <li>&quot;How do I find the area of a rectangle?&quot;</li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-        ) : (
-          // Messages list
-          <div className={quizModeActive ? "max-w-2xl mx-auto px-4" : "max-w-3xl mx-auto"}>
-            {currentSession.messages.map((message, index) => (
-              <MessageBubble
-                key={message.id}
-                message={message}
-                quotaInfo={message.role === 'assistant' && index === currentSession.messages.length - 1 ? {
-                  remaining: quotaStatus.remaining,
-                  limit: quotaStatus.limit
-                } : undefined}
-                onReviewQuiz={onReviewQuiz}
-                onRetryQuiz={onRetryQuiz}
-              />
-            ))}
-            {isLoading && <MessageLoading />}
+        <div className={quizModeActive ? "max-w-2xl mx-auto px-4" : "max-w-3xl mx-auto"}>
+          {currentSession.messages.map((message) => (
+            <MessageBubble
+              key={message.id}
+              message={message}
+              onReviewQuiz={onReviewQuiz}
+              onRetryQuiz={onRetryQuiz}
+            />
+          ))}
+          {isLoading && <MessageLoading />}
 
-            <div ref={messagesEndRef} />
-          </div>
-        )}
+          <div ref={messagesEndRef} />
+        </div>
       </div>
 
       {/* Error message */}
@@ -135,7 +161,7 @@ export function ChatMessagesArea({
                 <span className="font-medium">Daily limit reached</span>
                 {countdown && (
                   <span>
-                    {' '}• Resets in{' '}
+                    {' '}&bull; Resets in{' '}
                     <span className="font-mono font-bold">{countdown.formatted}</span>
                   </span>
                 )}
@@ -162,17 +188,20 @@ export function ChatMessagesArea({
       )}
 
       {/* Composer */}
-      <MessageComposer
-        onSend={onSendMessage}
-        disabled={isLoading || isQuizLoading}
-        placeholder={
-          quizModeActive
-            ? 'Type your quiz request (e.g., "Give me 5 P2 fractions questions")...'
-            : mode === 'TEACH'
-              ? 'Type your question or share your attempt...'
-              : 'Type your math question...'
-        }
-      />
+      <MessageComposer {...composerProps} centered={false} />
     </main>
+  );
+}
+
+/** Small suggestion chip button */
+function SuggestionChip({ text, onClick }: { text: string; onClick: (text: string) => void }) {
+  return (
+    <button
+      type="button"
+      onClick={() => onClick(text)}
+      className="px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-600 dark:text-slate-400 hover:border-emerald-300 dark:hover:border-emerald-700 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+    >
+      {text}
+    </button>
   );
 }
