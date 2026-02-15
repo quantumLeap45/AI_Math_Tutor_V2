@@ -19,7 +19,7 @@ import { MessageLoading } from '@/components/LoadingSpinner';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { QuizModeToggle } from '@/components/QuizModeToggle';
 import { QuizPanel, QuizLoadingPanel, QuizSummaryCard, QuizReviewModal } from '@/components/chat';
-import { ChatSession, ChatQuizState, TutorMode } from '@/types';
+import { ChatSession, ChatQuizState, QuizSummaryData, TutorMode } from '@/types';
 import {
   getUsername,
   getSessions,
@@ -46,9 +46,6 @@ export default function ChatPage() {
   const [quizSessionId, setQuizSessionId] = useState<string>(() => {
     // Initialize from the first available session if any
     if (typeof window !== 'undefined') {
-      // Clear stale quiz state FIRST — ensures Quiz button is always clickable on fresh load
-      localStorage.removeItem('math-tutor-quiz-in-chat');
-
       const sessions = getSessions();
       const settings = getSettings();
       if (settings.lastActiveSession) {
@@ -77,7 +74,7 @@ export default function ChatPage() {
   const [isQuizLoading, setIsQuizLoading] = useState(false);
   const [quizGenerationError, setQuizGenerationError] = useState<string | null>(null);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
-  const [selectedQuizForReview, setSelectedQuizForReview] = useState<(ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) | null>(null);
+  const [selectedQuizForReview, setSelectedQuizForReview] = useState<QuizSummaryData | null>(null);
   const [currentRetryAttempt, setCurrentRetryAttempt] = useState(0);
   const [preQuizMode, setPreQuizMode] = useState<TutorMode | null>(null);
 
@@ -184,12 +181,7 @@ export default function ChatPage() {
       setCurrentSession(session);
       setMode(session.mode);
       saveSettings({ lastActiveSession: sessionId });
-      // First clear any existing quiz state in the hook
-      setQuizSessionId('');
-      // Then set the new session ID after a brief delay to trigger re-init
-      setTimeout(() => {
-        setQuizSessionId(sessionId);
-      }, 0);
+      setQuizSessionId(sessionId);
       // Reset quiz mode state
       setQuizModeActive(false);
       setCurrentRetryAttempt(0);
@@ -316,7 +308,7 @@ export default function ChatPage() {
   }, [chatQuiz, preQuizMode, handleModeChange]);
 
   // Handle review button click
-  const handleReviewQuiz = useCallback((quiz: ChatQuizState & { completedAt?: string; score?: number; correctCount?: number; timeTaken?: string }) => {
+  const handleReviewQuiz = useCallback((quiz: QuizSummaryData) => {
     setSelectedQuizForReview(quiz);
     setIsReviewModalOpen(true);
   }, []);
@@ -403,7 +395,7 @@ export default function ChatPage() {
     const summaryMessage = createQuizSummaryMessage({
       config: completedQuiz.config,
       score: rawScore,
-      totalQuestions: completedQuiz.questions.length.toString(),
+      totalQuestions: completedQuiz.questions.length,
       percentage,
       timeTaken,
       retryAttempt: currentRetryAttempt,
@@ -797,11 +789,9 @@ export default function ChatPage() {
             <nav className="hidden md:flex items-center gap-1 ml-2" aria-label="Main navigation">
               <Link
                 href="/home"
-                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-emerald-600 dark:text-emerald-400"
-                aria-current="page"
+                className="px-3 py-2 rounded-lg font-medium text-sm transition-colors relative text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               >
                 Home
-                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-emerald-500 rounded-full" />
               </Link>
               <Link
                 href="/chat"
@@ -875,7 +865,7 @@ export default function ChatPage() {
         {/* Content wrapper: Chat area + optional Quiz Panel */}
         <div className="flex-1 flex overflow-hidden">
           {/* Chat area — dims when quiz panel is showing */}
-          <main className={`flex-1 flex flex-col overflow-hidden min-w-0 min-w-[300px] transition-opacity duration-300 ${(quizModeActive && (chatQuiz.quiz || isQuizLoading)) ? 'opacity-75' : 'opacity-100'}`}>
+          <main className={`flex-1 flex flex-col overflow-hidden min-w-[300px] transition-opacity duration-300 ${(quizModeActive && (chatQuiz.quiz || isQuizLoading)) ? 'opacity-75' : 'opacity-100'}`}>
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4">
               {!currentSession || currentSession.messages.length === 0 ? (

@@ -199,8 +199,14 @@ button {
   font-family: inherit;
 }
 
-/* Smooth transitions for theme change */
-* {
+/* Smooth transitions for theme change — scoped to key containers */
+body,
+header,
+main,
+nav,
+aside,
+footer,
+.theme-transition {
   transition-property: background-color, border-color;
   transition-duration: 150ms;
   transition-timing-function: ease-in-out;

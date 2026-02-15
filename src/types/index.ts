@@ -37,7 +37,7 @@ export interface QuizSummaryData {
   /** Number of correct answers */
   score: number;
   /** Total questions */
-  totalQuestions: string;
+  totalQuestions: number;
   /** Percentage score */
   percentage: number;
   /** Time taken to complete */

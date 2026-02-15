@@ -44,6 +44,7 @@ export default function LandingPage() {
   const animationRef = useRef<number>(0);
   const timeRef = useRef(0);
   const lastScrambleRef = useRef(0);
+  const isDarkRef = useRef(false);
 
   // Check for returning user on mount
   useEffect(() => {
@@ -131,6 +132,13 @@ export default function LandingPage() {
     resize();
     window.addEventListener('resize', resize);
 
+    // Cache theme value via MutationObserver instead of querying DOM every frame
+    isDarkRef.current = document.documentElement.classList.contains('dark');
+    const themeObserver = new MutationObserver(() => {
+      isDarkRef.current = document.documentElement.classList.contains('dark');
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
     const CONFIG = {
       baseOpacity: 0.18,
       damping: 0.96,
@@ -167,8 +175,7 @@ export default function LandingPage() {
 
       ctx.clearRect(0, 0, width, height);
 
-      const isDark = document.documentElement.classList.contains('dark');
-      const fillColor = isDark ? '16, 185, 129' : '5, 150, 105';
+      const fillColor = isDarkRef.current ? '16, 185, 129' : '5, 150, 105';
 
       // Gradient mask for edge fading
       const gradient = ctx.createRadialGradient(
@@ -247,6 +254,7 @@ export default function LandingPage() {
     return () => {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationRef.current);
+      themeObserver.disconnect();
     };
   }, [mounted, createParticle, noise2D]);
 

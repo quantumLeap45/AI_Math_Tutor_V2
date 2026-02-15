@@ -39,7 +39,7 @@ interface UseChatQuizActions {
   /** Start a new quiz with the given configuration */
   startQuiz: (config?: Partial<ChatQuizState['config']>) => Promise<void>;
   /** Retry the last completed quiz with same questions */
-  retryQuiz: () => Promise<void>;
+  retryQuiz: () => void;
   /** Retry a failed quiz generation with the last config */
   retryFailedQuiz: () => Promise<void>;
   /** Select an answer option for the current question */
@@ -79,6 +79,36 @@ function createInitialQuizState(
     startedAt: new Date().toISOString(),
     isCompleted: false,
   };
+}
+
+/**
+ * Generate quiz questions from the API
+ * Shared by startQuiz and retryFailedQuiz to avoid code duplication.
+ */
+async function generateQuizFromAPI(config: ChatQuizState['config']): Promise<QuizQuestion[]> {
+  const response = await fetch('/api/v1/quiz/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      topics: config.topics.length > 0 ? config.topics : ['math'],
+      level: config.level,
+      questionCount: config.questionCount,
+      difficulty: config.difficulty,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || errorData.error || 'Failed to generate quiz');
+  }
+
+  const data = await response.json();
+
+  if (!data.questions || data.questions.length === 0) {
+    throw new Error('No questions generated');
+  }
+
+  return data.questions;
 }
 
 /**
@@ -170,40 +200,18 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
       questionCount: config?.questionCount ?? DEFAULT_QUIZ_CONFIG.questionCount,
     };
 
-    // Store config for potential retry on failure
-    setLastFailedConfig(quizConfig);
-
     try {
-      // Call quiz generation API
-      const response = await fetch('/api/v1/quiz/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          topics: quizConfig.topics.length > 0 ? quizConfig.topics : ['math'],
-          level: quizConfig.level,
-          questionCount: quizConfig.questionCount,
-          difficulty: quizConfig.difficulty,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || errorData.error || 'Failed to generate quiz');
-      }
-
-      const data = await response.json();
-
-      if (!data.questions || data.questions.length === 0) {
-        throw new Error('No questions generated');
-      }
+      const questions = await generateQuizFromAPI(quizConfig);
 
       // Clear failed config on success
       setLastFailedConfig(null);
 
       // Create initial quiz state
-      const newQuiz = createInitialQuizState(data.questions, quizConfig);
+      const newQuiz = createInitialQuizState(questions, quizConfig);
       setQuiz(newQuiz);
     } catch (err) {
+      // Store config for retry only on actual failure
+      setLastFailedConfig(quizConfig);
       const message = err instanceof Error ? err.message : 'Failed to start quiz';
       setError(message);
       throw err; // Re-throw so callers can handle quiz generation failures
@@ -336,39 +344,31 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   /**
    * Retry the last completed quiz with the same questions
    */
-  const retryQuiz = useCallback(async () => {
+  const retryQuiz = useCallback(() => {
     if (!lastCompletedQuiz) {
       setError('No quiz to retry');
       return;
     }
 
-    setIsLoading(true);
     setError(null);
 
-    try {
-      // Create a new quiz state with the same questions but reset answers
-      const retryQuiz: ChatQuizState = {
-        id: crypto.randomUUID(),
-        config: lastCompletedQuiz.config,
-        questions: lastCompletedQuiz.questions, // Same questions
-        answers: lastCompletedQuiz.questions.map(() => ({
-          selected: null,
-          isCorrect: false,
-          answeredAt: '',
-        })),
-        currentIndex: 0,
-        showFeedback: false,
-        startedAt: new Date().toISOString(),
-        isCompleted: false,
-      };
+    // Create a new quiz state with the same questions but reset answers
+    const newRetryQuiz: ChatQuizState = {
+      id: crypto.randomUUID(),
+      config: lastCompletedQuiz.config,
+      questions: lastCompletedQuiz.questions,
+      answers: lastCompletedQuiz.questions.map(() => ({
+        selected: null,
+        isCorrect: false,
+        answeredAt: '',
+      })),
+      currentIndex: 0,
+      showFeedback: false,
+      startedAt: new Date().toISOString(),
+      isCompleted: false,
+    };
 
-      setQuiz(retryQuiz);
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to retry quiz';
-      setError(message);
-    } finally {
-      setIsLoading(false);
-    }
+    setQuiz(newRetryQuiz);
   }, [lastCompletedQuiz]);
 
   /**
@@ -384,38 +384,18 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     setError(null);
 
     try {
-      // Call quiz generation API with the stored config
-      const response = await fetch('/api/v1/quiz/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          topics: lastFailedConfig.topics.length > 0 ? lastFailedConfig.topics : ['math'],
-          level: lastFailedConfig.level,
-          questionCount: lastFailedConfig.questionCount,
-          difficulty: lastFailedConfig.difficulty,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || errorData.error || 'Failed to generate quiz');
-      }
-
-      const data = await response.json();
-
-      if (!data.questions || data.questions.length === 0) {
-        throw new Error('No questions generated');
-      }
+      const questions = await generateQuizFromAPI(lastFailedConfig);
 
       // Clear failed config on success
       setLastFailedConfig(null);
 
       // Create initial quiz state
-      const newQuiz = createInitialQuizState(data.questions, lastFailedConfig);
+      const newQuiz = createInitialQuizState(questions, lastFailedConfig);
       setQuiz(newQuiz);
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to retry quiz generation';
       setError(message);
+      throw err; // Re-throw so callers can handle retry failures consistently
     } finally {
       setIsLoading(false);
     }

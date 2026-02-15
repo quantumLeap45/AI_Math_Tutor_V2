@@ -9,12 +9,12 @@
  */
 
 import React from 'react';
-import { ChatQuizState } from '@/types';
+import { QuizSummaryData } from '@/types';
 import { ImagePreview } from '@/components/ImagePreview';
 
 interface QuizReviewModalProps {
   /** Quiz state to review */
-  quiz: ChatQuizState;
+  quiz: QuizSummaryData;
   /** Whether modal is open */
   isOpen: boolean;
   /** Callback when modal is closed */

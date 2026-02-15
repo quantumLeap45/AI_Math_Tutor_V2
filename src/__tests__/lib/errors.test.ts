@@ -197,7 +197,7 @@ describe('RateLimitError', () => {
   });
 });
 
-describe('QuotaError', ()) => {
+describe('QuotaError', () => {
   it('should create quota error with reset time', () => {
     const resetTime = new Date('2025-01-02T12:00:00Z');
     const error = new QuotaError(resetTime);
@@ -217,7 +217,6 @@ describe('QuotaError', ()) => {
 
     // Mock Date.now() for testing
     const originalNow = Date.now;
-    // @ts-expect-error - mocking Date.now for testing
     Date.now = () => now.getTime();
 
     const error = new QuotaError(tomorrow);
@@ -232,7 +231,6 @@ describe('QuotaError', ()) => {
     const resetTime = new Date('2025-01-01T18:30:00Z');
 
     const originalNow = Date.now;
-    // @ts-expect-error - mocking Date.now for testing
     Date.now = () => now.getTime();
 
     const error = new QuotaError(resetTime);
@@ -241,7 +239,7 @@ describe('QuotaError', ()) => {
 
     Date.now = originalNow;
   });
-}
+});
 
 describe('ValidationError', () => {
   it('should create validation error for field', () => {
@@ -272,7 +270,7 @@ describe('ValidationError', () => {
 
     expect(error.message).toContain('password');
   });
-}
+});
 
 describe('RAGError', () => {
   it('should create RAG error with user message', () => {

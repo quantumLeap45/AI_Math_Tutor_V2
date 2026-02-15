@@ -12,7 +12,7 @@
 
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Message } from '@/types';
+import { Message, QuizSummaryData } from '@/types';
 import { formatTimestamp } from '@/lib/chat';
 import { formatLatexToKidFriendly } from '@/lib/math-format';
 import { ImagePreview } from './ImagePreview';
@@ -22,7 +22,7 @@ interface MessageBubbleProps {
   message: Message;
   showTimestamp?: boolean;
   quotaInfo?: { remaining: number; limit: number };
-  onReviewQuiz?: (quiz: any) => void;
+  onReviewQuiz?: (quiz: QuizSummaryData) => void;
   onRetryQuiz?: () => void;
 }
 
@@ -36,14 +36,14 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
       <div className="w-full max-w-3xl mx-auto mb-4 animate-fadeIn">
         <QuizSummaryCard
           score={message.quizSummary.score}
-          totalQuestions={parseInt(message.quizSummary.totalQuestions)}
+          totalQuestions={message.quizSummary.totalQuestions}
           percentage={message.quizSummary.percentage}
           timeTaken={message.quizSummary.timeTaken}
           level={message.quizSummary.config.level}
           difficulty={message.quizSummary.config.difficulty === 'all' ? 'medium' : message.quizSummary.config.difficulty}
           topic={message.quizSummary.questions?.[0]?.topic || message.quizSummary.config.topics[0] || 'Math'}
           retryAttempt={message.quizSummary.retryAttempt}
-          onReview={() => onReviewQuiz?.(message.quizSummary)}
+          onReview={() => onReviewQuiz?.(message.quizSummary!)}
           onRetry={onRetryQuiz}
         />
       </div>
