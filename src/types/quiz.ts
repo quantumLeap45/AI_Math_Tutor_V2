@@ -41,7 +41,13 @@ export type QuizTopic =
 /**
  * Available question counts for a quiz session
  */
-export type QuizQuestionCount = 5 | 10 | 15 | 20;
+export type QuizQuestionCount = number;
+
+/**
+ * Quiz question count limits
+ */
+export const QUIZ_QUESTION_COUNT_MIN = 1;
+export const QUIZ_QUESTION_COUNT_MAX = 25;
 
 /**
  * Quiz session states
@@ -407,7 +413,7 @@ export const DIFFICULTY_OPTIONS = ['easy', 'medium', 'all'] as const;
 /**
  * Available question counts
  */
-export const QUESTION_COUNT_OPTIONS: QuizQuestionCount[] = [5, 10, 15, 20] as const;
+export const QUESTION_COUNT_OPTIONS: QuizQuestionCount[] = [5, 10, 15, 20, 25] as const;
 
 // ============ UTILITY TYPES ============
 

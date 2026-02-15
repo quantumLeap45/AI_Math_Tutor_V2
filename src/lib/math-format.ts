@@ -56,6 +56,10 @@ export function formatLatexToKidFriendly(text: string): string {
   // Handle double backslash (escaped)
   result = result.replace(/\\\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
 
+  // Convert math asterisk to multiplication sign for student-friendly display
+  // Matches contexts like "2*3", "2 * 3", "b*18", "(a+b)*4"
+  result = result.replace(/(?<=\b[\dA-Za-z)\]])\s*\*\s*(?=[\dA-Za-z([])/g, ' × ');
+
   // Convert \times to ×
   result = result.replace(/\\times/g, '×');
 

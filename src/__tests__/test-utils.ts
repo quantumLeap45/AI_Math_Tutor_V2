@@ -6,7 +6,7 @@
  */
 
 import { vi } from 'vitest';
-import { Message, TutorMode } from '@/types';
+import { Message, TutorMode, QuizQuestionCount } from '@/types';
 
 /**
  * Mock message factory for testing
@@ -63,7 +63,7 @@ export interface MockQuizRequest {
   level: 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
   topics: string[];
   difficulty: 'easy' | 'medium' | 'hard' | 'all';
-  questionCount: 5 | 10 | 15 | 20;
+  questionCount: QuizQuestionCount;
 }
 
 export function createMockQuizRequest(overrides: Partial<MockQuizRequest> = {}): MockQuizRequest {

@@ -7,6 +7,7 @@
  */
 
 import { z } from 'zod';
+import { QUIZ_QUESTION_COUNT_MAX, QUIZ_QUESTION_COUNT_MIN } from '@/types';
 
 /**
  * Valid message roles
@@ -31,7 +32,10 @@ export const difficultySchema = z.enum(['easy', 'medium', 'hard', 'all']);
 /**
  * Valid question counts
  */
-export const questionCountSchema = z.union([z.literal(5), z.literal(10), z.literal(15), z.literal(20)]);
+export const questionCountSchema = z.number()
+  .int('Question count must be a whole number')
+  .min(QUIZ_QUESTION_COUNT_MIN, `Question count must be at least ${QUIZ_QUESTION_COUNT_MIN}`)
+  .max(QUIZ_QUESTION_COUNT_MAX, `Maximum ${QUIZ_QUESTION_COUNT_MAX} questions per quiz`);
 
 /**
  * Valid themes

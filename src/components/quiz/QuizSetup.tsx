@@ -71,6 +71,7 @@ const QUESTION_COUNT_LABELS: Record<QuizQuestionCount, string> = {
   10: '10 questions',
   15: '15 questions',
   20: '20 questions',
+  25: '25 questions',
 };
 
 export function QuizSetup({

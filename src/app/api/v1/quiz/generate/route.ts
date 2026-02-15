@@ -16,7 +16,7 @@ import { GoogleGenAI, Content } from '@google/genai';
 import { getRAGContext } from '@/lib/rag/search';
 import { isPineconeConfigured } from '@/lib/rag/pinecone';
 import { checkHealth } from '@/lib/gemini';
-import { QuizQuestion, PrimaryLevel, QuizOption } from '@/types';
+import { QuizQuestion, PrimaryLevel, QuizOption, QUIZ_QUESTION_COUNT_MAX } from '@/types';
 import { config } from '@/config';
 import { formatLatexToKidFriendly } from '@/lib/math-format';
 import {
@@ -111,7 +111,10 @@ Return a JSON array of questions. Each question must have:
 
 ## IMPORTANT FORMAT RULES:
 - Do NOT use LaTeX notation (no $, \\frac, \\text etc). Write fractions as "1/4" or "three-quarters"
+- Use "×" for multiplication (NOT "*")
+- Use "÷" for division operations (keep "/" only for fractions like "3/4")
 - Write all math in plain text that a primary school student can read
+- Avoid "statement (1)/(2)/(3)/(4) only" option style unless explicitly requested by the user
 - Return ONLY the JSON array — no markdown code fences, no extra text`;
 
 /** Shape of a question parsed from AI-generated JSON (before validation) */
@@ -135,7 +138,7 @@ interface RawGeneratedQuestion {
 function parseQuizQuestions(response: string, expectedCount: number, level: PrimaryLevel, topic: string): QuizQuestion[] {
   try {
     // Strip markdown code fences if present
-    let cleaned = response.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+    const cleaned = response.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
 
     // Try to extract JSON array from response
     let jsonMatch = cleaned.match(/\[[\s\S]*\]/);
@@ -381,7 +384,11 @@ export async function POST(request: NextRequest) {
 
     const { level, topics, difficulty, questionCount } = validatedData;
     const topic = topics[0]; // Use first topic for generation
-    const count = Number(questionCount); // Convert literal type to number
+    const requestedCount = Number(questionCount);
+    const count = Math.min(requestedCount, QUIZ_QUESTION_COUNT_MAX);
+    if (requestedCount > QUIZ_QUESTION_COUNT_MAX) {
+      console.warn(`[Quiz Generate] Requested ${requestedCount} questions; capped to ${QUIZ_QUESTION_COUNT_MAX}`);
+    }
 
     // Determine which AI provider to use
     const useOpenRouter = config.isOpenRouterConfigured();

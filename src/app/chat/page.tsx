@@ -113,7 +113,15 @@ export default function ChatPage() {
           sessionMgmt.setQuizSessionId(session.id);
         }
 
-        const { level, topic, difficulty, questionCount } = parseQuizSettings(content);
+        const {
+          level,
+          topic,
+          difficulty,
+          questionCount,
+          requestedQuestionCount,
+          wasQuestionCountCapped,
+          maxQuestionCount,
+        } = parseQuizSettings(content);
 
         const userMessage = createMessage('user', content);
         const updatedSession = {
@@ -136,10 +144,11 @@ export default function ChatPage() {
         try {
           await chatQuiz.startQuiz({ level, topics: [topic], difficulty, questionCount });
 
-          const aiMessage = createMessage(
-            'assistant',
-            `Great! I've prepared ${questionCount} ${level} questions for you to practice. You can ask me questions while you work through them.`
-          );
+          const assistantMessage = wasQuestionCountCapped && requestedQuestionCount
+            ? `Great! I can generate up to ${maxQuestionCount} questions per quiz. You asked for ${requestedQuestionCount}, so I've prepared ${questionCount} ${level} questions for you to practice. You can ask me questions while you work through them.`
+            : `Great! I've prepared ${questionCount} ${level} questions for you to practice. You can ask me questions while you work through them.`;
+
+          const aiMessage = createMessage('assistant', assistantMessage);
 
           const sessionWithAI = {
             ...updatedSession,

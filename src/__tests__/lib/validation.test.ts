@@ -89,16 +89,18 @@ describe('Difficulty Schema', () => {
 
 describe('Question Count Schema', () => {
   it('should accept valid question counts', () => {
+    expect(questionCountSchema.parse(1)).toBe(1);
     expect(questionCountSchema.parse(5)).toBe(5);
     expect(questionCountSchema.parse(10)).toBe(10);
     expect(questionCountSchema.parse(15)).toBe(15);
     expect(questionCountSchema.parse(20)).toBe(20);
+    expect(questionCountSchema.parse(25)).toBe(25);
   });
 
   it('should reject invalid question counts', () => {
-    expect(() => questionCountSchema.parse(1)).toThrow();
-    expect(() => questionCountSchema.parse(25)).toThrow();
+    expect(() => questionCountSchema.parse(0)).toThrow();
     expect(() => questionCountSchema.parse(100)).toThrow();
+    expect(() => questionCountSchema.parse(26)).toThrow();
   });
 });
 
@@ -309,7 +311,7 @@ describe('Quiz Request Schema', () => {
   });
 
   it('should reject invalid question count', () => {
-    expect(() => quizRequestSchema.parse({ ...validQuizRequest, questionCount: 25 as any })).toThrow();
+    expect(() => quizRequestSchema.parse({ ...validQuizRequest, questionCount: 26 as any })).toThrow();
   });
 });
 
