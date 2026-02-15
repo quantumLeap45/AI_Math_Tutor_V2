@@ -3,7 +3,7 @@
  * AI Math Tutor v2
  *
  * Server-side Supabase client for database operations.
- * Uses service role key for server operations.
+ * Uses anon key with RLS policies for authorization.
  */
 
 import { createClient } from '@supabase/supabase-js';

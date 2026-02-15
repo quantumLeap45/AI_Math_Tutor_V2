@@ -33,6 +33,22 @@ export function formatLatexToKidFriendly(text: string): string {
   // Handle escaped dollar signs
   result = result.replace(/\\\$/g, '$');
 
+  // Strip \text{...}, \textbf{...}, \mathrm{...}, \mathbf{...} — keep inner content
+  result = result.replace(/\\text(?:bf|rm|it)?\{([^}]+)\}/g, '$1');
+  result = result.replace(/\\math(?:rm|bf|it|cal)?\{([^}]+)\}/g, '$1');
+
+  // Strip \left and \right delimiters (e.g., \left( ... \right))
+  result = result.replace(/\\left\s*/g, '');
+  result = result.replace(/\\right\s*/g, '');
+
+  // Convert LaTeX spacing commands to regular space
+  result = result.replace(/\\[,;:!]\s*/g, ' ');
+  result = result.replace(/\\quad\s*/g, ' ');
+  result = result.replace(/\\qquad\s*/g, ' ');
+
+  // Convert \% to %
+  result = result.replace(/\\%/g, '%');
+
   // Convert fractions \frac{a}{b} or \\frac{a}{b} to a/b
   // Using simple format (1/2) for compatibility with vertical fraction component
   // Handle single backslash

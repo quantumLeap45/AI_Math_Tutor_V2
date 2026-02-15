@@ -92,7 +92,7 @@ class ConfigManager {
       },
       pinecone: {
         apiKey: process.env.PINECONE_API_KEY || '',
-        index: process.env.PINECONE_INDEX || 'math-tutor',
+        index: process.env.PINECONE_INDEX_NAME || process.env.PINECONE_INDEX || 'math-tutor',
         environment: process.env.PINECONE_ENVIRONMENT || 'production',
         enabled: Boolean(process.env.PINECONE_API_KEY),
       },

@@ -18,6 +18,7 @@ import { isPineconeConfigured } from '@/lib/rag/pinecone';
 import { checkHealth } from '@/lib/gemini';
 import { QuizQuestion, PrimaryLevel, QuizOption } from '@/types';
 import { config } from '@/config';
+import { formatLatexToKidFriendly } from '@/lib/math-format';
 import {
   validateQuizRequest,
   QuizRequest,
@@ -27,8 +28,11 @@ import {
   errorToResponse,
   ValidationError,
   AIError,
+  QuotaError,
+  RateLimitError,
   ErrorCode,
 } from '@/lib/errors';
+import { checkRateLimit, getClientIp } from '@/lib/rateLimit';
 import { z } from 'zod';
 
 export const runtime = 'nodejs';
@@ -204,11 +208,22 @@ function parseQuizQuestions(response: string, expectedCount: number, level: Prim
     }
 
     // Enforce exact question count — trim if AI generated more than requested
-    if (questions.length > expectedCount) {
-      return questions.slice(0, expectedCount);
-    }
+    const trimmed = questions.length > expectedCount
+      ? questions.slice(0, expectedCount)
+      : questions;
 
-    return questions;
+    // Server-side sanitization: strip any LaTeX that slipped through despite prompt rules
+    return trimmed.map(q => ({
+      ...q,
+      question: formatLatexToKidFriendly(q.question),
+      options: {
+        A: formatLatexToKidFriendly(q.options.A),
+        B: formatLatexToKidFriendly(q.options.B),
+        C: formatLatexToKidFriendly(q.options.C),
+        D: formatLatexToKidFriendly(q.options.D),
+      },
+      explanation: formatLatexToKidFriendly(q.explanation),
+    }));
   } catch (error) {
     console.error('Failed to parse quiz questions:', error);
     throw new Error(`Failed to parse quiz questions: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -339,6 +354,17 @@ async function generateQuizWithOpenRouter(
  */
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting (both anti-spam and daily quota)
+    const ip = getClientIp(request);
+    const rateLimitResult = await checkRateLimit(ip);
+
+    if (!rateLimitResult.success) {
+      if (rateLimitResult.quotaStatus && rateLimitResult.dailyRemaining !== undefined) {
+        throw new QuotaError(rateLimitResult.quotaStatus.resetsAt);
+      }
+      throw new RateLimitError(rateLimitResult.retryAfter);
+    }
+
     // Parse and validate request body
     const body = await request.json();
 

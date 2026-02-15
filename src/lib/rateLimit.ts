@@ -4,7 +4,7 @@
  *
  * Two-tier rate limiting:
  * 1. Anti-spam: 20 requests per minute (in-memory)
- * 2. Daily quota: 50 messages per 24 hours (Supabase)
+ * 2. Daily quota: configurable messages per 24 hours (Supabase, default 30)
  */
 
 import { supabase as supabaseClient, isSupabaseConfigured } from '@/lib/supabase';
@@ -82,7 +82,7 @@ function checkAntiSpamLimit(ip: string): {
 }
 
 // ============================================
-// DAILY QUOTA: 50 messages per 24 hours (Supabase)
+// DAILY QUOTA: Configurable per 24 hours (Supabase)
 // ============================================
 
 const DAILY_QUOTA_LIMIT = config.getRateLimits().dailyQuotaLimit;
@@ -148,7 +148,9 @@ async function getOrCreateQuotaRecord(ip: string): Promise<{ used: number; isNew
 }
 
 /**
- * Increment the quota count for an IP using atomic upsert
+ * Increment the quota count for an IP using optimistic locking.
+ * Uses a conditional WHERE on the current count to prevent race conditions
+ * where two concurrent requests read the same count and both increment.
  */
 async function incrementQuota(ip: string): Promise<boolean> {
   if (!isSupabaseConfigured() || !supabaseClient) {
@@ -156,50 +158,61 @@ async function incrementQuota(ip: string): Promise<boolean> {
   }
 
   const today = getTodayDate();
+  const maxRetries = 2;
 
-  try {
-    // First, try to get the current record
-    const { data: existing } = await supabaseClient
-      .from('daily_quota')
-      .select('requests_count')
-      .eq('ip_address', ip)
-      .eq('request_date', today)
-      .single();
-
-    if (existing) {
-      // Update existing record
-      const { error } = await supabaseClient
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const { data: existing } = await supabaseClient
         .from('daily_quota')
-        .update({
-          requests_count: existing.requests_count + 1,
-          last_request: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        })
+        .select('requests_count')
         .eq('ip_address', ip)
-        .eq('request_date', today);
+        .eq('request_date', today)
+        .maybeSingle();
 
-      return !error;
-    } else {
-      // Insert new record with count = 1
-      const { error } = await supabaseClient
-        .from('daily_quota')
-        .insert({
-          ip_address: ip,
-          request_date: today,
-          requests_count: 1,
-          last_request: new Date().toISOString(),
-        });
+      if (existing) {
+        // Optimistic lock: only update if count hasn't changed since we read it
+        const { data: updated } = await supabaseClient
+          .from('daily_quota')
+          .update({
+            requests_count: existing.requests_count + 1,
+            last_request: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          })
+          .eq('ip_address', ip)
+          .eq('request_date', today)
+          .eq('requests_count', existing.requests_count)
+          .select();
 
-      return !error;
+        if (updated && updated.length > 0) return true;
+        // Count changed between read and write — retry
+        continue;
+      } else {
+        // Insert new record with count = 1
+        const { error } = await supabaseClient
+          .from('daily_quota')
+          .insert({
+            ip_address: ip,
+            request_date: today,
+            requests_count: 1,
+            last_request: new Date().toISOString(),
+          });
+
+        if (!error) return true;
+        // Insert conflict (another request created it first) — retry as update
+        continue;
+      }
+    } catch (err) {
+      console.error('Supabase quota increment error:', err);
+      return false;
     }
-  } catch (err) {
-    console.error('Supabase quota increment error:', err);
-    return false;
   }
+
+  console.warn('Quota increment failed after retries for IP:', ip);
+  return false;
 }
 
 /**
- * Check daily quota limit (50 per 24 hours)
+ * Check daily quota limit (configurable, default 30 per 24 hours)
  */
 async function checkDailyQuota(ip: string): Promise<{
   success: boolean;

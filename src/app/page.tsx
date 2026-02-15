@@ -566,7 +566,7 @@ export default function LandingPage() {
                   <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">Free</h3>
                   <p className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">$0<span className="text-sm font-normal text-slate-500">/mo</span></p>
                   <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                    <li>50 messages per day</li>
+                    <li>30 messages per day</li>
                     <li>Basic quiz mode</li>
                     <li>Image upload</li>
                     <li>Community support</li>

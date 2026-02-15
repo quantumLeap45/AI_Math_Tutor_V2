@@ -204,6 +204,9 @@ export function parseAllMarkdownFiles(dirPath: string): ParsedRAGQuestion[] {
   for (const file of files) {
     if (!file.endsWith('.md')) continue;
 
+    // Skip test marker and known non-production files
+    if (file.includes('RAG_TEST_MARKER') || file.includes('_TEST_')) continue;
+
     const filePath = join(dirPath, file);
     const metadata = parseFilenameMetadata(file);
     const content = readFileSync(filePath, 'utf-8');

@@ -27,7 +27,8 @@ export function parseQuizSettings(content: string): ParsedQuizSettings {
   const level = (levelMatch?.[1]?.toUpperCase() || 'P4') as PrimaryLevel;
 
   // Extract question count BEFORE topic parsing so numbers are removed
-  const questionCount = ([5, 10, 15, 20].find(n => content.includes(n.toString())) || 5) as QuizQuestionCount;
+  // Check largest first; use word boundaries to avoid matching "5" inside "P5"
+  const questionCount = ([20, 15, 10, 5].find(n => new RegExp(`\\b${n}\\b`).test(content)) || 5) as QuizQuestionCount;
 
   // Extract difficulty — check multi-word phrases first
   let difficulty: QuizDifficulty = 'medium';
