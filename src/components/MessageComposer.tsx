@@ -184,7 +184,13 @@ export function MessageComposer({
         type="button"
         onClick={onQuizModeToggle}
         disabled={quizDisabled || quizLocked}
-        className={`${modeButtonClass(quizModeActive, quizDisabled || quizLocked)} ${quizModeActive && !quizLocked ? 'ring-1 ring-emerald-500/50' : ''}`}
+        className={`group/btn relative p-2 rounded-lg transition-colors ${
+          (quizDisabled || quizLocked)
+            ? 'opacity-50 cursor-not-allowed text-slate-400 dark:text-slate-500'
+            : quizModeActive
+            ? 'bg-emerald-500 text-white shadow-sm'
+            : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300'
+        }`}
         aria-pressed={quizModeActive}
         aria-label="Quiz mode"
       >
