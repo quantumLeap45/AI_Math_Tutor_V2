@@ -57,7 +57,7 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
       {/* AI Avatar */}
       {!isUser && (
         <div className="flex-shrink-0 mr-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
             <span className="text-white font-bold text-sm">M</span>
           </div>
         </div>
@@ -66,10 +66,10 @@ export function MessageBubble({ message, showTimestamp = false, quotaInfo, onRev
       <div className="flex flex-col max-w-[85%] sm:max-w-[75%]">
         <div
           className={`
-            px-4 py-3 rounded-2xl shadow-sm
+            px-4 py-3 rounded-xl shadow-sm
             ${isUser
-              ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-br-sm'
-              : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-bl-sm rounded-tr-sm'
+              ? 'bg-emerald-500 text-white'
+              : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100'
             }
           `}
         >

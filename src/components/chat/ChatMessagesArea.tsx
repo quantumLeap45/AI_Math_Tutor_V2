@@ -55,7 +55,7 @@ export function ChatMessagesArea({
           // Empty state
           <div className="h-full flex items-center justify-center">
             <div className="text-center max-w-md p-6">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-emerald-500 flex items-center justify-center">
                 {quizModeActive ? (
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

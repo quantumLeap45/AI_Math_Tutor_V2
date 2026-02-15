@@ -58,7 +58,7 @@ export function TopBar({
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group -ml-0 sm:-ml-0">
               {/* Gradient M logo */}
-              <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+              <div className="relative w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
                 <span className="text-white font-bold text-lg">M</span>
               </div>
               {/* Text - hidden on small mobile */}

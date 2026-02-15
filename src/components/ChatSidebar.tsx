@@ -95,7 +95,7 @@ export function ChatSidebar({
                 onNewChat();
                 onClose?.();
               }}
-              className="flex-1 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+              className="flex-1 px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +167,7 @@ export function ChatSidebar({
                         w-full p-3 rounded-lg text-left transition-colors cursor-pointer
                         ${
                           session.id === currentSessionId
-                            ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800'
+                            ? 'bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800'
                             : 'hover:bg-slate-100 dark:hover:bg-slate-800'
                         }
                       `}

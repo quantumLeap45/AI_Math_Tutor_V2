@@ -44,7 +44,7 @@ export function QuizModeToggle({
         ${disabled || isLocked
           ? 'opacity-70 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500'
           : isActive
-          ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md hover:shadow-lg'
+          ? 'bg-emerald-500 text-white shadow-sm hover:bg-emerald-600'
           : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
         }
       `}
@@ -90,7 +90,7 @@ export function QuizModeToggle({
 
       {/* Active indicator dot */}
       {isActive && !isLocked && (
-        <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white dark:border-slate-900 animate-pulse" />
+        <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-slate-900 animate-pulse" />
       )}
 
       {/* Lock icon when quiz is running */}

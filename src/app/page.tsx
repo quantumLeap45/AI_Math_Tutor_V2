@@ -305,7 +305,7 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
         <div className="h-full max-w-7xl mx-auto px-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+            <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center shadow-sm">
               <span className="text-white font-bold text-lg">M</span>
             </div>
             <span className="hidden sm:block text-lg font-semibold text-slate-900 dark:text-slate-100">
@@ -316,7 +316,7 @@ export default function LandingPage() {
             <ThemeToggle />
             <Link
               href="/home"
-              className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-lg shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all"
+              className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg shadow-none transition-colors"
             >
               Get Started
             </Link>
@@ -329,18 +329,18 @@ export default function LandingPage() {
         <div className="text-center max-w-lg">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-medium text-slate-600 dark:text-slate-400 mb-8 animate-fade-in-up">
-            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-lg shadow-emerald-500/50" />
+            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
             Built for Singapore Primary Students
           </div>
 
           {/* Logo */}
-          <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-xl shadow-emerald-500/30 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+          <div className="w-20 h-20 mx-auto mb-6 rounded-xl bg-emerald-500 flex items-center justify-center shadow-sm animate-fade-in-up" style={{ animationDelay: '100ms' }}>
             <span className="text-white font-bold text-4xl">M</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
             Your personal<br />
-            <span className="bg-gradient-to-r from-emerald-500 to-green-600 bg-clip-text text-transparent">math tutor</span> anytime
+            <span className="text-emerald-500">math tutor</span> anytime
           </h1>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
@@ -350,13 +350,13 @@ export default function LandingPage() {
           {/* Returning user or new user form */}
           {returningUser ? (
             <div className="animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-lg">
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-xl p-6 shadow-sm">
                 <p className="text-slate-600 dark:text-slate-400 mb-4">
                   Welcome back,
                 </p>
                 <button
                   onClick={handleContinue}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold text-lg rounded-xl shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-lg rounded-lg shadow-none transition-colors flex items-center justify-center gap-2"
                 >
                   <span className="text-xl">{returningUser}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -384,7 +384,7 @@ export default function LandingPage() {
                     className={`
                       w-full min-w-[200px] md:min-w-[280px] px-4 py-3
                       bg-white dark:bg-slate-800
-                      border rounded-xl
+                      border rounded-lg
                       text-slate-900 dark:text-slate-100
                       placeholder:text-slate-400 dark:placeholder:text-slate-500
                       focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent
@@ -401,12 +401,11 @@ export default function LandingPage() {
                   disabled={name.trim().length < 2}
                   className={`
                     px-6 py-3
-                    bg-gradient-to-r from-emerald-500 to-green-600
-                    text-white font-semibold
-                    rounded-xl
-                    shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/40
-                    hover:-translate-y-0.5 active:translate-y-0
-                    transition-all duration-200
+                    bg-emerald-500 hover:bg-emerald-600
+                    text-white font-medium
+                    rounded-lg
+                    shadow-none
+                    transition-colors duration-200
                     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0
                     flex items-center justify-center gap-2
                     whitespace-nowrap
@@ -438,9 +437,9 @@ export default function LandingPage() {
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             {/* AI Chat Feature */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-shadow">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                   </svg>
@@ -468,9 +467,9 @@ export default function LandingPage() {
             </div>
 
             {/* Quiz Mode Feature */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-shadow">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
                     <circle cx="12" cy="12" r="10" />
@@ -501,7 +500,7 @@ export default function LandingPage() {
           </div>
 
           {/* Important Limitation */}
-          <div className="bg-amber-50 dark:bg-amber-900/20 rounded-2xl p-6 border border-amber-200 dark:border-amber-800">
+          <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-6 border border-amber-200 dark:border-amber-800">
             <h4 className="font-semibold text-amber-900 dark:text-amber-100 mb-3 flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />

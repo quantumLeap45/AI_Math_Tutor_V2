@@ -92,7 +92,7 @@ export default function HomePage() {
             </span>{' '}
             Use <span className="text-emerald-600 dark:text-emerald-400 font-medium">SHOW mode</span>{' '}
             for complete solutions, or{' '}
-            <span className="text-teal-600 dark:text-teal-400 font-medium">TEACH mode</span>{' '}
+            <span className="text-emerald-600 dark:text-emerald-400 font-medium">TEACH mode</span>{' '}
             to learn step-by-step with hints.
           </p>
         </div>

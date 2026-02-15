@@ -65,8 +65,8 @@ export function QuizLoadingPanel({ isVisible, onCancel }: QuizLoadingPanelProps)
   return (
     <div
       className={`
-        w-[450px] bg-white dark:bg-slate-800
-        border-l-2 border-blue-200 dark:border-blue-800
+        w-full max-w-md bg-white dark:bg-slate-800
+        border-l-2 border-emerald-200 dark:border-emerald-800
         flex flex-col transition-all duration-300 ease-in-out
         ${isVisible ? 'opacity-100' : 'opacity-0 translate-x-full'}
         ${!isVisible ? 'pointer-events-none' : ''}
@@ -77,7 +77,7 @@ export function QuizLoadingPanel({ isVisible, onCancel }: QuizLoadingPanelProps)
       {/* Header */}
       <div className="flex-shrink-0 p-4 border-b border-slate-200 dark:border-slate-700">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+          <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
             Generating Quiz...
           </span>
           <button
@@ -89,15 +89,15 @@ export function QuizLoadingPanel({ isVisible, onCancel }: QuizLoadingPanelProps)
         </div>
         {/* Animated indeterminate progress bar */}
         <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 mt-3 overflow-hidden">
-          <div className="h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 animate-loading-bar" />
+          <div className="h-1.5 rounded-full bg-emerald-500 animate-loading-bar" />
         </div>
       </div>
 
       {/* Center content */}
       <div className="flex-1 flex flex-col items-center justify-center p-8">
         {/* Animated spinner icon */}
-        <div className="w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
-          <div className="w-10 h-10 border-[3px] border-blue-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-20 h-20 mb-6 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+          <div className="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin" />
         </div>
 
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2 text-center">
@@ -111,9 +111,8 @@ export function QuizLoadingPanel({ isVisible, onCancel }: QuizLoadingPanelProps)
         <div
           className={`
             w-full max-w-sm p-4 rounded-xl
-            bg-gradient-to-br from-blue-50 to-purple-50
-            dark:from-blue-900/20 dark:to-purple-900/20
-            border border-blue-100 dark:border-blue-800
+            bg-emerald-50 dark:bg-emerald-900/20
+            border border-emerald-100 dark:border-emerald-800
             transition-opacity duration-300
             ${isFading ? 'opacity-0' : 'opacity-100'}
           `}

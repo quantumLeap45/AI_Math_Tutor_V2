@@ -54,8 +54,8 @@ export function QuizPanel({
   return (
     <div
       className={`
-        w-[450px] bg-white dark:bg-slate-800
-        border-l-2 border-blue-200 dark:border-blue-800
+        w-full max-w-md bg-white dark:bg-slate-800
+        border-l-2 border-emerald-200 dark:border-emerald-800
         flex flex-col transition-all duration-300 ease-in-out
         ${isVisible ? 'opacity-100' : 'opacity-0 -translate-x-full'}
         ${!isVisible ? 'pointer-events-none' : ''}
@@ -78,7 +78,7 @@ export function QuizPanel({
         {/* Progress bar */}
         <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
           <div
-            className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+            className="bg-emerald-500 h-2 rounded-full transition-all duration-300"
             style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
           />
         </div>
@@ -116,9 +116,9 @@ export function QuizPanel({
                 disabled={showFeedback}
                 className={`
                   w-full p-4 text-left rounded-lg border-2 transition-all
-                  ${showFeedback ? 'cursor-not-allowed' : 'cursor-pointer hover:border-blue-300'}
+                  ${showFeedback ? 'cursor-not-allowed' : 'cursor-pointer hover:border-emerald-300'}
                   ${isSelected && !showFeedback
-                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                    ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20'
                     : 'border-slate-200 dark:border-slate-700'
                   }
                   ${shouldShowCorrect
@@ -135,7 +135,7 @@ export function QuizPanel({
                   <span className={`
                     flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-semibold
                     ${isSelected && !showFeedback
-                      ? 'bg-blue-500 text-white'
+                      ? 'bg-emerald-500 text-white'
                       : shouldShowCorrect
                       ? 'bg-green-500 text-white'
                       : shouldShowIncorrect
@@ -196,7 +196,7 @@ export function QuizPanel({
           className={`
             w-full py-3 rounded-lg font-semibold transition-all
             ${selectedOption
-              ? 'bg-blue-500 text-white hover:bg-blue-600'
+              ? 'bg-emerald-500 text-white hover:bg-emerald-600'
               : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
             }
           `}

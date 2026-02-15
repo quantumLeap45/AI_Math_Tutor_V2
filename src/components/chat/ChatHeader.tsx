@@ -113,7 +113,7 @@ export function ChatHeader({
             )}
           </button>
           <Link href="/home" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">M</span>
             </div>
             <span className="hidden sm:block text-lg font-semibold text-slate-900 dark:text-slate-100">

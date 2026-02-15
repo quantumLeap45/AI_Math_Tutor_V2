@@ -195,7 +195,7 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center justify-center"
+          className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-sm transition-colors flex items-center justify-center"
           aria-label="Open AI chat assistant"
         >
           <svg
@@ -225,11 +225,11 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
           />
 
           {/* Chat Container */}
-          <div className="fixed bottom-0 right-0 z-50 w-full sm:w-96 sm:bottom-6 sm:right-6 h-[70vh] sm:h-[500px] bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 flex flex-col animate-in slide-in-from-right-2 duration-200">
+          <div className="fixed bottom-0 right-0 z-50 w-full sm:w-96 sm:bottom-6 sm:right-6 h-[70vh] sm:h-[500px] bg-white dark:bg-slate-800 rounded-t-xl sm:rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 flex flex-col animate-in slide-in-from-right-2 duration-200">
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-700">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -285,11 +285,11 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
                 >
                   <div
                     className={`
-                      max-w-[85%] rounded-2xl px-4 py-2
+                      max-w-[85%] rounded-xl px-4 py-2
                       ${
                         message.role === 'user'
-                          ? 'bg-blue-500 text-white rounded-br-sm'
-                          : 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-bl-sm'
+                          ? 'bg-emerald-500 text-white'
+                          : 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200'
                       }
                     `}
                   >
@@ -301,7 +301,7 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
                           components={{
                             p: ({ children }) => <p className="my-1">{children}</p>,
                             strong: ({ children }) => (
-                              <strong className="font-semibold text-blue-600 dark:text-blue-400">
+                              <strong className="font-semibold text-emerald-600 dark:text-emerald-400">
                                 {children}
                               </strong>
                             ),
@@ -338,7 +338,7 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-slate-100 dark:bg-slate-700 rounded-2xl rounded-bl-sm px-4 py-3">
+                  <div className="bg-slate-100 dark:bg-slate-700 rounded-xl px-4 py-3">
                     <div className="flex items-center gap-1">
                       <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                       <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -399,13 +399,13 @@ export function QuizAIChat({ currentQuestion, questionNumber }: QuizAIChatProps)
                   placeholder="Ask for a hint..."
                   rows={1}
                   disabled={isLoading || !currentQuestion}
-                  className="flex-1 resize-none rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                  className="flex-1 resize-none rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
                   style={{ minHeight: '40px', maxHeight: '120px' }}
                 />
                 <button
                   onClick={sendMessage}
                   disabled={isLoading || !input.trim() || !currentQuestion}
-                  className="p-2 rounded-xl bg-blue-500 text-white hover:bg-blue-600 disabled:bg-slate-300 dark:disabled:bg-slate-600 disabled:cursor-not-allowed transition-colors"
+                  className="p-2 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 disabled:bg-slate-300 dark:disabled:bg-slate-600 disabled:cursor-not-allowed transition-colors"
                   aria-label="Send message"
                 >
                   <svg

@@ -88,7 +88,7 @@ export function QuizSummaryCard({
         </button>
         <button
           onClick={onRetry}
-          className="flex-1 py-2 px-4 rounded-lg font-medium bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+          className="flex-1 py-2 px-4 rounded-lg font-medium bg-emerald-500 text-white hover:bg-emerald-600 transition-colors"
         >
           Retry Quiz
         </button>
