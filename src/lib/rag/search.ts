@@ -8,7 +8,8 @@
  */
 
 import { queryByVector, buildFilter, RAG_NAMESPACE } from './pinecone';
-import { generateQueryEmbedding, createSearchableText } from './embeddings';
+import { generateQueryEmbedding } from './embeddings';
+import { hasVisualDependency } from '../quiz/guardrails';
 import {
   SearchResult,
   RAGContext,
@@ -16,7 +17,6 @@ import {
   UserIntent,
   GradeLevel,
   RAGQuestion,
-  Difficulty,
 } from './types';
 
 /**
@@ -199,13 +199,19 @@ export async function searchQuestions(
     for (const match of matches) {
       if (match.metadata) {
         const metadata = match.metadata as Record<string, string | number | string[]>;
+        const questionText = String(metadata.questionText || '');
+
+        // Guardrail: exclude visual-dependent references from RAG examples.
+        if (hasVisualDependency(questionText)) {
+          continue;
+        }
 
         searchResults.push({
           id: match.id,
           score: match.score ?? 0,
           question: {
             id: match.id,
-            questionText: String(metadata.questionText || ''),
+            questionText,
             gradeLevel: metadata.gradeLevel || 'P1',
             topic: String(metadata.topic || ''),
             subtopic: String(metadata.subtopic || ''),

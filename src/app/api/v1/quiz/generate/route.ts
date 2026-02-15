@@ -19,6 +19,7 @@ import { checkHealth } from '@/lib/gemini';
 import { QuizQuestion, PrimaryLevel, QuizOption, QUIZ_QUESTION_COUNT_MAX } from '@/types';
 import { config } from '@/config';
 import { formatLatexToKidFriendly } from '@/lib/math-format';
+import { findVisualDependencyIssues } from '@/lib/quiz/guardrails';
 import {
   validateQuizRequest,
   QuizRequest,
@@ -39,6 +40,17 @@ export const runtime = 'nodejs';
 
 // Model configuration from config
 const MODEL_NAME = config.getGemini().model;
+const MAX_GUARDRAIL_RETRIES = 3;
+
+/**
+ * Thrown when generated questions violate text-only quiz constraints.
+ */
+class QuizContentGuardrailError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'QuizContentGuardrailError';
+  }
+}
 
 // Quiz generation system prompt
 const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math question writer. Your task is to create ORIGINAL multiple-choice questions in the MOE style.
@@ -216,7 +228,7 @@ function parseQuizQuestions(response: string, expectedCount: number, level: Prim
       : questions;
 
     // Server-side sanitization: strip any LaTeX that slipped through despite prompt rules
-    return trimmed.map(q => ({
+    const sanitized = trimmed.map(q => ({
       ...q,
       question: formatLatexToKidFriendly(q.question),
       options: {
@@ -227,7 +239,22 @@ function parseQuizQuestions(response: string, expectedCount: number, level: Prim
       },
       explanation: formatLatexToKidFriendly(q.explanation),
     }));
+
+    // Guardrail: reject visual-dependent questions until visual rendering pipeline is ready.
+    const visualIssues = findVisualDependencyIssues(sanitized);
+    if (visualIssues.length > 0) {
+      const summary = visualIssues
+        .slice(0, 3)
+        .map(issue => `Q${issue.questionIndex + 1} ${issue.field}: ${issue.label}`)
+        .join('; ');
+      throw new QuizContentGuardrailError(`Visual-dependent content detected (${summary})`);
+    }
+
+    return sanitized;
   } catch (error) {
+    if (error instanceof QuizContentGuardrailError) {
+      throw error;
+    }
     console.error('Failed to parse quiz questions:', error);
     throw new Error(`Failed to parse quiz questions: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
@@ -420,9 +447,39 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate quiz questions — prefer OpenRouter when configured
-    const questions = useOpenRouter
-      ? await generateQuizWithOpenRouter(topic, level, count, difficulty, ragContext)
-      : await generateQuizWithGemini(topic, level, count, difficulty, ragContext);
+    // Retry when content fails text-only guardrails.
+    let questions: QuizQuestion[] | null = null;
+    let lastGuardrailError: QuizContentGuardrailError | null = null;
+
+    for (let attempt = 1; attempt <= MAX_GUARDRAIL_RETRIES; attempt++) {
+      try {
+        questions = useOpenRouter
+          ? await generateQuizWithOpenRouter(topic, level, count, difficulty, ragContext)
+          : await generateQuizWithGemini(topic, level, count, difficulty, ragContext);
+        break;
+      } catch (error) {
+        if (error instanceof QuizContentGuardrailError) {
+          lastGuardrailError = error;
+          console.warn(
+            `[Quiz Generate] Guardrail rejected attempt ${attempt}/${MAX_GUARDRAIL_RETRIES}: ${error.message}`
+          );
+          if (attempt < MAX_GUARDRAIL_RETRIES) {
+            continue;
+          }
+          break;
+        }
+        throw error;
+      }
+    }
+
+    if (!questions) {
+      console.error('[Quiz Generate] Unable to produce text-only quiz after retries', lastGuardrailError);
+      throw new AIError(
+        ErrorCode.AI_UNAVAILABLE,
+        'I could not generate a text-only quiz right now. Please try again.',
+        true
+      );
+    }
 
     const response = {
       questions,
