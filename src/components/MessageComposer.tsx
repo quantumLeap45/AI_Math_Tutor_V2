@@ -138,76 +138,81 @@ export function MessageComposer({
     ? 'Exit quiz mode'
     : 'Quiz — Generate practice questions';
 
-  const modeButtons = (
+  const showModeButton = (
+    <button
+      type="button"
+      onClick={() => onModeChange('SHOW')}
+      disabled={modeDisabled}
+      className={modeButtonClass(mode === 'SHOW' && !quizModeActive, modeDisabled)}
+      aria-pressed={mode === 'SHOW'}
+      aria-label="Show mode"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 shadow-lg">
+        Show — Complete solutions
+      </span>
+    </button>
+  );
+
+  const teachModeButton = (
+    <button
+      type="button"
+      onClick={() => onModeChange('TEACH')}
+      disabled={modeDisabled}
+      className={modeButtonClass(mode === 'TEACH' && !quizModeActive, modeDisabled)}
+      aria-pressed={mode === 'TEACH'}
+      aria-label="Teach mode"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 shadow-lg">
+        Teach — Guided hints
+      </span>
+    </button>
+  );
+
+  const quizModeButton = (
+    <button
+      type="button"
+      onClick={onQuizModeToggle}
+      disabled={quizDisabled || quizLocked}
+      className={`group/btn relative p-2 rounded-lg transition-colors ${
+        (quizDisabled || quizLocked)
+          ? 'opacity-50 cursor-not-allowed text-slate-400 dark:text-slate-500'
+          : quizModeActive
+          ? 'bg-emerald-500 text-white shadow-sm'
+          : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300'
+      }`}
+      aria-pressed={quizModeActive}
+      aria-label="Quiz mode"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 11l3 3L22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </svg>
+      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 shadow-lg">
+        {quizTooltip}
+      </span>
+      {/* Quiz progress indicator */}
+      {quizModeActive && quiz && !quiz.isCompleted && (
+        <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center px-1 rounded-full bg-emerald-500 text-white text-[10px] font-bold leading-none">
+          {quiz.currentIndex + 1}/{quiz.questions.length}
+        </span>
+      )}
+    </button>
+  );
+
+  const rightSideModeButtons = (
     <div className="flex items-center gap-0.5">
-      {/* Show mode */}
-      <button
-        type="button"
-        onClick={() => onModeChange('SHOW')}
-        disabled={modeDisabled}
-        className={modeButtonClass(mode === 'SHOW' && !quizModeActive, modeDisabled)}
-        aria-pressed={mode === 'SHOW'}
-        aria-label="Show mode"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-          <circle cx="12" cy="12" r="3" />
-        </svg>
-        <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 shadow-lg">
-          Show — Complete solutions
-        </span>
-      </button>
-
-      {/* Teach mode */}
-      <button
-        type="button"
-        onClick={() => onModeChange('TEACH')}
-        disabled={modeDisabled}
-        className={modeButtonClass(mode === 'TEACH' && !quizModeActive, modeDisabled)}
-        aria-pressed={mode === 'TEACH'}
-        aria-label="Teach mode"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 20h9" />
-          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-        </svg>
-        <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 shadow-lg">
-          Teach — Guided hints
-        </span>
-      </button>
-
-      {/* Divider */}
+      {quizModeButton}
       <div className="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-1" />
-
-      {/* Quiz mode */}
-      <button
-        type="button"
-        onClick={onQuizModeToggle}
-        disabled={quizDisabled || quizLocked}
-        className={`group/btn relative p-2 rounded-lg transition-colors ${
-          (quizDisabled || quizLocked)
-            ? 'opacity-50 cursor-not-allowed text-slate-400 dark:text-slate-500'
-            : quizModeActive
-            ? 'bg-emerald-500 text-white shadow-sm'
-            : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300'
-        }`}
-        aria-pressed={quizModeActive}
-        aria-label="Quiz mode"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 11l3 3L22 4" />
-          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-        </svg>
-        <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs whitespace-nowrap opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 shadow-lg">
-          {quizTooltip}
-        </span>
-        {/* Quiz progress indicator */}
-        {quizModeActive && quiz && !quiz.isCompleted && (
-          <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center px-1 rounded-full bg-emerald-500 text-white text-[10px] font-bold leading-none">
-            {quiz.currentIndex + 1}/{quiz.questions.length}
-          </span>
-        )}
-      </button>
+      {showModeButton}
+      {teachModeButton}
     </div>
   );
 
@@ -304,9 +309,9 @@ export function MessageComposer({
           {/* Toolbar row */}
           <div className="flex items-center justify-between px-3 pb-3">
             <div className="flex items-center gap-0.5">
-              {modeButtons}
-              <div className="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-1" />
               {imageUploadButton}
+              <div className="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-1" />
+              {rightSideModeButtons}
             </div>
             {sendButton}
           </div>
@@ -346,11 +351,11 @@ export function MessageComposer({
       )}
 
       <form onSubmit={handleSubmit} className="flex items-center gap-2">
-        {/* Mode buttons */}
-        {modeButtons}
-
-        {/* Image upload */}
+        {/* Image upload (left-most action) */}
         {imageUploadButton}
+
+        {/* Mode controls (right of quiz toggle) */}
+        {rightSideModeButtons}
 
         {/* Text input */}
         <div className="flex-1 relative">
