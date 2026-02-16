@@ -25,11 +25,21 @@ Audit rules:
 5) Explanation should not contradict the selected answer.
 6) Formatting should be student-friendly (e.g., avoid '*' when '×' is intended, avoid malformed unit text like "in² centimeters").
 
+Allowed reasonCodes:
+- LOGIC_CONTRADICTION
+- MATH_INCORRECT
+- ANSWER_KEY_MISMATCH
+- MULTIPLE_CORRECT_OPTIONS
+- NO_CORRECT_OPTION
+- UNSOLVABLE_TEXT_ONLY
+- FORMAT_ISSUE
+
 Output format (strict JSON object only):
 {
   "failedQuestions": [
     {
       "questionIndex": 0,
+      "severity": "critical" | "warning",
       "reasonCodes": ["CODE_1", "CODE_2"],
       "message": "Short reason",
       "regenerationHint": "Short fix guidance for generator"
@@ -40,12 +50,15 @@ Output format (strict JSON object only):
 Rules for output:
 - questionIndex is 0-based.
 - Include ONLY failed questions.
+- Use severity "critical" for logic/math/solvability/answer-key failures.
+- Use severity "warning" only for formatting/style polish issues.
 - If all questions pass, return {"failedQuestions": []}.
 - No markdown, no code fences, no extra text.`;
 
 export interface AIValidatorIssue {
   questionIndex: number;
   reasonCodes: string[];
+  severity: 'critical' | 'warning';
   message: string;
   regenerationHint: string;
 }
@@ -86,6 +99,7 @@ export function parseAIValidatorResponse(rawText: string, totalQuestions: number
   const parsed = JSON.parse(cleaned) as {
     failedQuestions?: Array<{
       questionIndex?: unknown;
+      severity?: unknown;
       reasonCodes?: unknown;
       message?: unknown;
       regenerationHint?: unknown;
@@ -93,6 +107,7 @@ export function parseAIValidatorResponse(rawText: string, totalQuestions: number
     questions?: Array<{
       questionIndex?: unknown;
       status?: unknown;
+      severity?: unknown;
       reasonCodes?: unknown;
       message?: unknown;
       regenerationHint?: unknown;
@@ -120,10 +135,12 @@ export function parseAIValidatorResponse(rawText: string, totalQuestions: number
     const regenerationHint = typeof item.regenerationHint === 'string' && item.regenerationHint.trim().length > 0
       ? item.regenerationHint.trim()
       : 'Regenerate this question so it is logically consistent and has one correct option.';
+    const severity = String(item.severity || '').toLowerCase() === 'critical' ? 'critical' : 'warning';
 
     issues.push({
       questionIndex: index,
       reasonCodes: normalizeReasonCodes(item.reasonCodes),
+      severity,
       message,
       regenerationHint,
     });
@@ -246,5 +263,8 @@ export async function validateQuizWithAI(args: ValidateQuizWithAIArgs): Promise<
     }
   }
 
-  throw new Error(`AI validator failed after ${VALIDATOR_MAX_ATTEMPTS} attempts: ${String(lastError)}`);
+  // Soft-fail validator service outages so quiz generation stays available.
+  // Deterministic validation remains active.
+  console.warn(`[Quiz AI Validator] Disabled for this request after failures: ${String(lastError)}`);
+  return [];
 }

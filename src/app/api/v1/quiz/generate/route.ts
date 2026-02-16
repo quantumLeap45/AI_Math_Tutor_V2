@@ -42,13 +42,14 @@ export const runtime = 'nodejs';
 // Model configuration from config
 const MODEL_NAME = config.getGemini().model;
 const MAX_VALIDATION_ROUNDS = 3;
-const QUIZ_GENERATION_FAILURE_MESSAGE = 'An error occurred during quiz generation. Please tap here to try again.';
+const QUIZ_GENERATION_FAILURE_MESSAGE = 'An error occurred during quiz generation. Please try again.';
 
 interface QuizQualityIssue {
   questionIndex: number;
   code: string;
   message: string;
   source: 'rule' | 'ai';
+  blocking: boolean;
   excerpt?: string;
 }
 
@@ -308,16 +309,29 @@ function toRuleQualityIssues(issues: QuizIntegrityIssue[]): QuizQualityIssue[] {
     code: issue.code,
     message: issue.message,
     source: 'rule',
+    blocking: true,
     excerpt: issue.excerpt,
   }));
 }
 
 function toAIQualityIssues(issues: AIValidatorIssue[]): QuizQualityIssue[] {
+  const CRITICAL_REASON_TOKENS = [
+    'LOGIC_CONTRADICTION',
+    'MATH_INCORRECT',
+    'ANSWER_KEY_MISMATCH',
+    'MULTIPLE_CORRECT_OPTIONS',
+    'NO_CORRECT_OPTION',
+    'UNSOLVABLE_TEXT_ONLY',
+    'VISUAL_DEPENDENCY',
+  ];
+
   return issues.map(issue => ({
     questionIndex: issue.questionIndex,
     code: issue.reasonCodes.join('|'),
     message: issue.message,
     source: 'ai',
+    blocking: issue.severity === 'critical'
+      && issue.reasonCodes.some(code => CRITICAL_REASON_TOKENS.some(token => code.includes(token))),
   }));
 }
 
@@ -494,7 +508,13 @@ async function generateValidatedQuiz(
       difficulty: args.difficulty,
       questions,
     }));
-    const issues = [...ruleIssues, ...aiIssues];
+    const allIssues = [...ruleIssues, ...aiIssues];
+    const issues = allIssues.filter(issue => issue.blocking);
+    const warnings = allIssues.filter(issue => !issue.blocking);
+
+    if (warnings.length > 0) {
+      console.warn(`[Quiz Generate] Non-blocking AI warnings: ${summarizeValidationIssues(warnings)}`);
+    }
 
     if (issues.length === 0) {
       return shuffleQuestions(questions);
@@ -634,12 +654,8 @@ export async function POST(request: NextRequest) {
         ragContext,
       });
     } catch (error) {
-      if (
-        error instanceof QuizContentGuardrailError ||
-        (error instanceof Error && error.message.toLowerCase().includes('validator failed'))
-      ) {
-        const details = error instanceof QuizContentGuardrailError ? error.issues : undefined;
-        console.error('[Quiz Generate] Validation gate blocked quiz output:', error.message, details);
+      if (error instanceof QuizContentGuardrailError) {
+        console.error('[Quiz Generate] Validation gate blocked quiz output:', error.message, error.issues);
         throw new AIError(
           ErrorCode.AI_UNAVAILABLE,
           QUIZ_GENERATION_FAILURE_MESSAGE,

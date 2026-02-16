@@ -7,9 +7,17 @@
 
 import OpenAI from 'openai';
 
+function sanitizeEnvSecret(raw: string | undefined): string {
+  const trimmed = (raw || '').trim();
+  if (trimmed.length >= 2 && trimmed[0] === trimmed[trimmed.length - 1] && (trimmed[0] === '"' || trimmed[0] === '\'')) {
+    return trimmed.slice(1, -1).trim();
+  }
+  return trimmed;
+}
+
 // Initialize OpenAI client
 const getOpenAIClient = () => {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = sanitizeEnvSecret(process.env.OPENAI_API_KEY);
   if (!apiKey) {
     throw new Error('OPENAI_API_KEY environment variable is not set');
   }
