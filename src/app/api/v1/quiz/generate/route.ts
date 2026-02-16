@@ -13,7 +13,8 @@
 
 import { NextRequest } from 'next/server';
 import { GoogleGenAI, Content } from '@google/genai';
-import { getRAGContext } from '@/lib/rag/search';
+import { searchByFilters } from '@/lib/rag/search';
+import type { GradeLevel } from '@/lib/rag/types';
 import { isPineconeConfigured } from '@/lib/rag/pinecone';
 import { checkHealth } from '@/lib/gemini';
 import { QuizQuestion, PrimaryLevel, QuizOption, QUIZ_QUESTION_COUNT_MAX } from '@/types';
@@ -67,105 +68,64 @@ class QuizContentGuardrailError extends Error {
   }
 }
 
-// Quiz generation system prompt
-const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math question writer. Your task is to create ORIGINAL multiple-choice questions in the MOE style.
+// Quiz generation system prompt — streamlined for better model performance
+const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math question writer. Create ORIGINAL multiple-choice questions in the MOE style.
 
-## CRITICAL RULES:
-1. Create ORIGINAL questions - DO NOT copy from examples
-2. Use different names, numbers, and scenarios than examples
-3. Follow the same STRUCTURE and DIFFICULTY level as examples
-4. Each question must have 4 options (A, B, C, D)
-5. Only ONE option can be correct
-6. Include a clear explanation for the correct answer
+## RULES
+1. Create ORIGINAL questions — do not copy from any examples provided
+2. Each question: 4 options (A, B, C, D), exactly ONE correct
+3. Include a concise explanation for the correct answer
+4. Every question must be solvable from text alone — no diagrams needed
 
-## CRITICAL: SELF-VERIFICATION PROTOCOL (MANDATORY)
-For EVERY question you generate, you MUST follow this internal process:
-1. Pick your numbers and write the question
-2. Solve the problem yourself step by step — compute the actual numerical answer
-3. Verify: Is your computed answer one of the four options? If not, CHANGE THE NUMBERS and redo steps 1-3
-4. Verify: Does the correctAnswer field point to the option matching your computed answer?
-5. Verify: Does the explanation arrive at the same answer?
-If ANY verification fails, fix the question before including it.
+## MATH ACCURACY (MANDATORY)
+For EVERY question, before including it:
+1. Write the question with your chosen numbers
+2. Solve it yourself — compute the actual answer
+3. Verify your answer matches one of the four options
+4. If it doesn't match, change the numbers and redo
+5. Countable items (people, objects) MUST be whole numbers
+6. Money must be valid currency amounts (e.g., $1.50 not $1.333)
+7. If the math doesn't work cleanly, start over with different numbers
 
-## MATHEMATICAL INTEGRITY RULES
-- All countable quantities (people, erasers, books, marbles, stickers) MUST be whole numbers — NEVER fractional
-- All money answers must be valid currency amounts (e.g., $1.50 is valid, $1.333 is not)
-- Percentage problems: after applying all percentage changes, the result must be a clean number that matches one of the options
-- NEVER create a question where the stated conditions are contradictory or impossible
-- NEVER change the problem's given numbers mid-solution to force a "cleaner" answer
-- If you cannot make the numbers work, start over with different numbers entirely
+## DIFFICULTY CALIBRATION (CRITICAL)
+Difficulty is RELATIVE TO THE LEVEL — what is "hard" for P1 is "easy" for P3.
 
-## QUALITY SAFETY RULES
-- Keep every question solvable using text alone (no missing diagrams needed)
-- If you mention a figure/chart/graph, include all required values and relationships in text
-- Do not ask students to compare different units unless you explicitly state "compare numerical values only"
-- Never include conditional options like "if line DE is drawn..."
-- Explanations must agree with the marked correct option
+### P1-P2 Difficulty:
+- Easy: Single-step, small numbers (e.g., "3 + 5 = ?", "Count the shapes")
+- Medium: Two-step problem or numbers requiring carrying/borrowing (e.g., "Siti has 15 stickers. She gives away 8 and gets 5 more. How many now?")
+- Hard: Multi-step word problem with comparison or logic (e.g., "Ahmad has 12 more stickers than Mei. Together they have 40. How many does Mei have?")
 
-## QUESTION COHERENCE
-- Each question must be fully self-contained and unambiguous
-- Never ask the student to re-derive a given value (e.g., "find the cost if it should have been X" when X is already stated)
-- If referencing geometric shapes by vertex labels (e.g., square ABCD), state the vertex order explicitly (e.g., "vertices labeled clockwise from top-left")
-- Never generate questions that require information not present in the question text
+### P3-P4 Difficulty:
+- Easy: Single concept, straightforward (e.g., "What is 3/4 of 20?")
+- Medium: Two concepts combined (e.g., "A rectangle has length 12 cm and width 8 cm. Find its area and perimeter.")
+- Hard: Multi-step word problem requiring careful reading (e.g., "Ahmad buys 3 books at $4.50 each and pays with a $20 note. He uses the change to buy stickers at $0.60 each. How many stickers can he buy?")
 
-## VARIETY REQUIREMENTS
-- Mix question formats: word problems, direct calculation, comparison, "which is greater", ordering, fill-in-the-blank
-- Use different scenario types: food sharing, shopping, travel distance, classroom items, sports scores, garden planting, cooking, crafts
-- Vary the position of the correct answer across A, B, C, D (don't always put it in A or B)
-- Don't repeat the same name or scenario in multiple questions
-- Vary sentence structure — don't start every question the same way
-
-## DIFFICULTY GUIDE (for Primary school students aged 6-12)
-- Easy: Single-step problems, small numbers, straightforward operations
-- Medium: Two-step problems, moderate numbers, may require carrying/borrowing or simple conversion
-- Hard: Multi-step problems, larger numbers, requires combining multiple concepts, careful reading needed
+### P5-P6 Difficulty:
+- Easy: Direct calculation or single-concept application (e.g., "Express 3/5 as a percentage")
+- Medium: Word problem with 2-3 steps (e.g., "Ahmad has 3/4 of a cake. He eats 1/3 of it. How much is left?")
+- Hard: Heuristic word problems requiring non-obvious reasoning:
+  * MUST be a word problem, never a raw equation
+  * Requires forming the equation from the story, not just solving a given one
+  * Uses before/after models, constant-part reasoning, working backwards, or multi-concept integration
+  * Example patterns: "A train goes at speed X one way and speed Y back, find average speed", "After giving away 1/3, the ratio changed from 5:3 to 2:1, find original", "Two taps fill a tank at different rates"
+  * If a P5-P6 student can solve it in under 30 seconds mentally, it is NOT hard
 
 ## TOPIC HANDLING
-- If the topic is "math" or very generic, create a DIVERSE mix of questions covering different topics appropriate for the given level
-- For P1-P2: Whole Numbers, Addition, Subtraction, Shapes, Patterns, Money, Length, Mass
-- For P3-P4: Fractions, Multiplication, Division, Area, Perimeter, Time, Graphs, Angles
-- For P5-P6: Decimals, Percentage, Ratio, Rate, Volume, Algebra, Geometry, Data Analysis
-- Always set the "topic" field to the actual mathematical topic of each question (e.g., "Fractions", "Geometry"), NOT the user's raw input
+- If topic is generic ("math"), create a diverse mix appropriate for the level
+- Set the "topic" field to the actual math concept (e.g., "Fractions"), not the user's input
 
-## Output Format:
-Return a JSON array of questions. Each question must have:
-{
-  "id": "Generated-<level>-<topic>-<number>",
-  "level": "P1" | "P2" | "P3" | "P4" | "P5" | "P6",
-  "topic": "<actual math topic name, e.g. Fractions, Geometry, Whole Numbers>",
-  "subtopic": "<specific subtopic>",
-  "difficulty": "easy" | "medium" | "hard",
-  "question": "<question text>",
-  "options": {
-    "A": "<option A text>",
-    "B": "<option B text>",
-    "C": "<option C text>",
-    "D": "<option D text>"
-  },
-  "correctAnswer": "A" | "B" | "C" | "D",
-  "explanation": "<structured explanation>"
-}
+## EXPLANATION FORMAT
+- Max 2-3 sentences. Format: "Step 1: [step]. Step 2: [step]. Answer: [result]."
 
-## EXPLANATION FORMAT (CRITICAL - FOLLOW EXACTLY):
-- Keep explanations SHORT: Maximum 2-3 sentences, under 150 characters total
-- Use this STRUCTURED format: "Step 1: [first step]. Step 2: [second step]. Answer: [result]."
-- For simple questions: "[Method]. Answer: [result]."
-- NO reasoning process or verification text in the output
-- NO phrases like "Let's solve this" or "First, I need to" or "We can verify"
-- Just the essential steps and final answer
+## SINGAPORE CONTEXT
+- SGD for money, Singaporean names, local references where appropriate
 
-## Singapore Context:
-- Use SGD currency for money problems
-- Use Singaporean names (Ahmad, Siti, Mei Ling, Ravi, Wei Ling, Muthu, John, Sarah)
-- Refer to local places where appropriate (e.g., "took the MRT", "went to Sentosa")
+## FORMAT
+- Use "x" for multiplication, "/" for fractions, plain text only. No LaTeX.
+- Return ONLY a JSON array — no code fences, no extra text
 
-## IMPORTANT FORMAT RULES:
-- Do NOT use LaTeX notation (no $, \\frac, \\text etc). Write fractions as "1/4" or "three-quarters"
-- Use "×" for multiplication (NOT "*")
-- Use "÷" for division operations (keep "/" only for fractions like "3/4")
-- Write all math in plain text that a primary school student can read
-- Avoid "statement (1)/(2)/(3)/(4) only" option style unless explicitly requested by the user
-- Return ONLY the JSON array — no markdown code fences, no extra text`;
+## JSON SCHEMA (per question):
+{ "id": "Generated-<level>-<topic>-<N>", "level": "P1"-"P6", "topic": "<math topic>", "subtopic": "<specific>", "difficulty": "easy"|"medium"|"hard", "question": "<text>", "options": { "A": "", "B": "", "C": "", "D": "" }, "correctAnswer": "A"|"B"|"C"|"D", "explanation": "<concise>" }`;
 
 /** Shape of a question parsed from AI-generated JSON (before validation) */
 interface RawGeneratedQuestion {
@@ -388,7 +348,7 @@ async function generateQuizWithGemini(
     : userPrompt;
 
   const contents: Content[] = [
-    { role: 'user', parts: [{ text: QUIZ_GENERATION_PROMPT + '\n\n' + finalPrompt }] },
+    { role: 'user', parts: [{ text: finalPrompt }] },
   ];
 
   try {
@@ -398,7 +358,7 @@ async function generateQuizWithGemini(
       contents,
       config: {
         systemInstruction: QUIZ_GENERATION_PROMPT,
-        temperature: 0.8,
+        temperature: 0.4,
         maxOutputTokens: 16000,
       },
     });
@@ -456,7 +416,7 @@ async function generateQuizWithOpenRouter(
           { role: 'system', content: QUIZ_GENERATION_PROMPT },
           { role: 'user', content: finalPrompt },
         ],
-        temperature: 0.8,
+        temperature: 0.4,
         max_tokens: 16000,
       }),
     });
@@ -523,7 +483,7 @@ async function generateValidatedQuiz(
     // Time budget exceeded — skip the expensive AI validation call.
     // If deterministic (rule) checks pass, deliver the quiz immediately.
     if (elapsed > VALIDATION_TIME_BUDGET_MS) {
-      const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions));
+      const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions, args.topic));
       const ruleBlockers = ruleIssues.filter(issue => issue.blocking);
 
       if (ruleBlockers.length === 0) {
@@ -544,7 +504,7 @@ async function generateValidatedQuiz(
     }
 
     // Full validation: deterministic rules + AI reviewer
-    const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions));
+    const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions, args.topic));
     const aiIssues = toAIQualityIssues(await validateQuizWithAI({
       useOpenRouter: args.useOpenRouter,
       level: args.level,
@@ -699,7 +659,10 @@ export async function POST(request: NextRequest) {
     let ragContext: string | undefined;
     if (isPineconeConfigured()) {
       try {
-        const ragResult = await getRAGContext(`generate ${count} questions for ${level} ${topic}`);
+        const ragResult = await searchByFilters(
+          { gradeLevel: level as GradeLevel, topic, maxResults: 5 },
+          `${level} ${topic} math question`
+        );
         if (ragResult.count > 0) {
           ragContext = ragResult.formattedContext;
           console.log(`RAG context found: ${ragResult.count} examples for quiz generation`);

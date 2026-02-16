@@ -17,7 +17,11 @@ export type QuizIntegrityIssueCode =
   | 'EXPLANATION_ANSWER_MISMATCH'
   | 'AMBIGUOUS_COMPARISON'
   | 'DETERMINISTIC_MATH_MISMATCH'
-  | 'GEOMETRY_LOGIC_INVALID';
+  | 'GEOMETRY_LOGIC_INVALID'
+  | 'NON_INTEGER_COUNTABLE'
+  | 'INVALID_CURRENCY'
+  | 'TOPIC_DRIFT'
+  | 'DIFFICULTY_MISLABEL';
 
 export interface QuizIntegrityIssue {
   questionIndex: number;
@@ -30,6 +34,7 @@ export interface QuizIntegrityIssue {
 interface CheckContext {
   question: QuizQuestion;
   questionIndex: number;
+  requestedTopic?: string;
 }
 
 const OPTION_KEYS: QuizOption[] = ['A', 'B', 'C', 'D'];
@@ -448,9 +453,184 @@ function tryValidateAreaPerimeterComparison(context: CheckContext): QuizIntegrit
   return null;
 }
 
-function validateQuestion(question: QuizQuestion, questionIndex: number): QuizIntegrityIssue[] {
+// --- Phase 6: New deterministic checks ---
+
+/** Countable nouns that must always be whole numbers */
+const COUNTABLE_NOUNS = /\b(?:people|person|children|child|students?|boys?|girls?|men|women|erasers?|pencils?|pens?|books?|marbles?|stickers?|sweets?|candies?|apples?|oranges?|mangoes?|balls?|coins?|stamps?|cards?|bags?|boxes?|bottles?|cups?|plates?|slices?|pieces?|packets?|bundles?|crayons?|rulers?|notebooks?|shirts?|beads?|toys?|cars?|buses?|flowers?|eggs?|cakes?|cookies?|muffins?|sandwiches?)\b/i;
+
+function checkNonIntegerCountable(context: CheckContext): QuizIntegrityIssue | null {
+  const { question } = context;
+  const text = question.question.toLowerCase();
+
+  // Only check if the question mentions countable items
+  if (!COUNTABLE_NOUNS.test(text)) return null;
+
+  // Check the correct answer option value
+  const correctOptionText = question.options[question.correctAnswer as QuizOption];
+  const numericMatch = correctOptionText.match(/^[\s$SGD]*(-?\d+(?:\.\d+)?)[\s%]*/);
+  if (!numericMatch) return null;
+
+  const value = Number(numericMatch[1]);
+  if (!Number.isFinite(value)) return null;
+
+  // If the answer is a non-integer and the question is about countable items, flag it
+  if (!Number.isInteger(value)) {
+    return {
+      questionIndex: context.questionIndex,
+      code: 'NON_INTEGER_COUNTABLE',
+      field: 'correctAnswer',
+      message: `Correct answer is ${value} but the question involves countable items that must be whole numbers.`,
+      excerpt: excerpt(question.question),
+    };
+  }
+
+  return null;
+}
+
+function checkInvalidCurrency(context: CheckContext): QuizIntegrityIssue | null {
+  const { question } = context;
+  const text = question.question.toLowerCase();
+
+  // Only check if the question involves money
+  if (!/[$]|sgd|\bdollars?\b|\bcents?\b|\bmoney\b/i.test(text)) return null;
+
+  // Check all option values for invalid currency amounts (>2 decimal places)
+  for (const key of OPTION_KEYS) {
+    const optionText = question.options[key];
+    const moneyMatches = [...optionText.matchAll(/\$(\d+\.\d{3,})/g)];
+    for (const match of moneyMatches) {
+      return {
+        questionIndex: context.questionIndex,
+        code: 'INVALID_CURRENCY',
+        field: 'options',
+        message: `Option ${key} has invalid currency amount $${match[1]} (more than 2 decimal places).`,
+        excerpt: `${key}: ${optionText}`,
+      };
+    }
+  }
+
+  return null;
+}
+
+/** Common math topics for fuzzy matching */
+const TOPIC_ALIASES: Record<string, string[]> = {
+  'geometry': ['geometry', 'angles', 'shapes', 'area', 'perimeter', 'volume', 'lines', 'symmetry'],
+  'fractions': ['fractions', 'fraction'],
+  'decimals': ['decimals', 'decimal'],
+  'percentage': ['percentage', 'percent', '%'],
+  'ratio': ['ratio', 'ratios', 'proportion'],
+  'algebra': ['algebra', 'algebraic', 'equation', 'equations', 'variable'],
+  'whole numbers': ['whole numbers', 'addition', 'subtraction', 'multiplication', 'division', 'number'],
+  'money': ['money', 'dollars', 'cents', 'sgd', 'currency', 'cost', 'price'],
+  'measurement': ['measurement', 'length', 'mass', 'weight', 'capacity', 'volume'],
+  'time': ['time', 'clock', 'hours', 'minutes', 'duration'],
+  'data analysis': ['data analysis', 'statistics', 'graph', 'graphs', 'chart', 'charts', 'table', 'tables', 'average', 'mean'],
+  'speed': ['speed', 'rate', 'distance', 'velocity'],
+  'patterns': ['patterns', 'pattern', 'sequences', 'sequence'],
+};
+
+function getTopicFamily(topic: string): string[] {
+  const lower = topic.toLowerCase().trim();
+  for (const [, aliases] of Object.entries(TOPIC_ALIASES)) {
+    if (aliases.some(alias => lower.includes(alias) || alias.includes(lower))) {
+      return aliases;
+    }
+  }
+  return [lower];
+}
+
+function checkTopicDrift(context: CheckContext): QuizIntegrityIssue | null {
+  const { question, requestedTopic } = context;
+  if (!requestedTopic) return null;
+
+  // Skip if topic is generic
+  const genericTopics = ['math', 'maths', 'mathematics', 'mixed', 'all', 'general'];
+  if (genericTopics.includes(requestedTopic.toLowerCase().trim())) return null;
+
+  const requestedFamily = getTopicFamily(requestedTopic);
+  const questionFamily = getTopicFamily(question.topic);
+
+  // Check if there's any overlap between topic families
+  const hasOverlap = requestedFamily.some(r => questionFamily.some(q => r === q));
+  if (hasOverlap) return null;
+
+  return {
+    questionIndex: context.questionIndex,
+    code: 'TOPIC_DRIFT',
+    field: 'question',
+    message: `Question topic "${question.topic}" does not match requested topic "${requestedTopic}".`,
+    excerpt: excerpt(question.question),
+  };
+}
+
+// --- Phase 7: Difficulty mislabel check ---
+
+/** Patterns that indicate a raw/direct calculation (NOT a word problem) */
+const RAW_EQUATION_PATTERNS = [
+  /^(?:find|what is|calculate|evaluate|solve|simplify|work out)\s+(?:the\s+)?(?:value\s+of\s+)?[\d\w\s+\-*/()=×÷.^]+$/i,
+  /^[\d\w\s+\-*/()=×÷.^]+\s*=\s*\?\s*$/i,
+  /^(?:find|what is|calculate|evaluate|solve)\s+\d/i,
+];
+
+function checkDifficultyMislabel(context: CheckContext): QuizIntegrityIssue | null {
+  const { question } = context;
+
+  // Only check questions labeled "hard"
+  if (question.difficulty !== 'hard') return null;
+
+  const level = question.level;
+  const text = question.question;
+
+  // For P5-P6 "hard" questions: must be a word problem, not a raw equation
+  if (level === 'P5' || level === 'P6') {
+    // Check if question has any story/context indicators (names, scenarios)
+    const hasStoryContext = /\b(?:Ahmad|Siti|Mei|Ravi|Wei|Muthu|John|Sarah|Mr|Mrs|shop|store|school|garden|park|tank|pool|journey|trip|race|train|car|bus|tap|pipe|worker)\b/i.test(text);
+    const hasWordProblemStructure = text.length > 80 && /\b(?:how many|how much|what|find the|what fraction|what percentage|what is the)\b/i.test(text);
+
+    // If it matches raw equation patterns and lacks story context, flag it
+    const isRawEquation = RAW_EQUATION_PATTERNS.some(p => p.test(text.trim()));
+    if (isRawEquation && !hasStoryContext) {
+      return {
+        questionIndex: context.questionIndex,
+        code: 'DIFFICULTY_MISLABEL',
+        field: 'question',
+        message: `P5/P6 "hard" question appears to be a direct calculation without word problem context.`,
+        excerpt: excerpt(text),
+      };
+    }
+
+    // Very short questions are unlikely to be genuinely "hard" for P5/P6
+    if (text.length < 60 && !hasStoryContext) {
+      return {
+        questionIndex: context.questionIndex,
+        code: 'DIFFICULTY_MISLABEL',
+        field: 'question',
+        message: `P5/P6 "hard" question is too short (${text.length} chars) to be a genuine heuristic word problem.`,
+        excerpt: excerpt(text),
+      };
+    }
+  }
+
+  // For P3-P4 "hard": should have multi-step context, not single direct operation
+  if (level === 'P3' || level === 'P4') {
+    const isRawEquation = RAW_EQUATION_PATTERNS.some(p => p.test(text.trim()));
+    if (isRawEquation && text.length < 50) {
+      return {
+        questionIndex: context.questionIndex,
+        code: 'DIFFICULTY_MISLABEL',
+        field: 'question',
+        message: `P3/P4 "hard" question appears to be a simple direct calculation.`,
+        excerpt: excerpt(text),
+      };
+    }
+  }
+
+  return null;
+}
+
+function validateQuestion(question: QuizQuestion, questionIndex: number, requestedTopic?: string): QuizIntegrityIssue[] {
   const issues: QuizIntegrityIssue[] = [];
-  const context: CheckContext = { question, questionIndex };
+  const context: CheckContext = { question, questionIndex, requestedTopic };
 
   if (hasDuplicateOptions(question)) {
     issues.push({
@@ -506,13 +686,26 @@ function validateQuestion(question: QuizQuestion, questionIndex: number): QuizIn
   const angleShapeIssue = tryValidateAngleShapeQuestion(context);
   if (angleShapeIssue) issues.push(angleShapeIssue);
 
+  const countableIssue = checkNonIntegerCountable(context);
+  if (countableIssue) issues.push(countableIssue);
+
+  const currencyIssue = checkInvalidCurrency(context);
+  if (currencyIssue) issues.push(currencyIssue);
+
+  const topicDriftIssue = checkTopicDrift(context);
+  if (topicDriftIssue) issues.push(topicDriftIssue);
+
+  const difficultyIssue = checkDifficultyMislabel(context);
+  if (difficultyIssue) issues.push(difficultyIssue);
+
   return issues;
 }
 
 /**
  * Validate a generated quiz batch.
+ * @param requestedTopic - The topic the user originally requested (for topic drift detection)
  */
-export function validateQuizBatch(questions: QuizQuestion[]): QuizIntegrityIssue[] {
+export function validateQuizBatch(questions: QuizQuestion[], requestedTopic?: string): QuizIntegrityIssue[] {
   const issues: QuizIntegrityIssue[] = [];
 
   const visualIssues = findVisualDependencyIssues(questions);
@@ -527,7 +720,7 @@ export function validateQuizBatch(questions: QuizQuestion[]): QuizIntegrityIssue
   }
 
   questions.forEach((question, index) => {
-    issues.push(...validateQuestion(question, index));
+    issues.push(...validateQuestion(question, index, requestedTopic));
   });
 
   return issues;
