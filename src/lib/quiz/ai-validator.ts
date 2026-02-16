@@ -14,46 +14,50 @@ const VALIDATOR_MAX_ATTEMPTS = 2;
 
 const VALIDATOR_SYSTEM_PROMPT = `You are an independent quiz quality auditor for Singapore Primary Math (P1-P6).
 
-You MUST audit each question and mark only failed questions.
-Do NOT rewrite questions. Do NOT generate a new quiz.
+You MUST audit each question by SOLVING IT YOURSELF. Do NOT trust the provided explanation or correctAnswer — verify independently.
 
-Audit rules:
-1) The question must be solvable from text only.
-2) The question premise must be logically valid (no impossible geometry or contradictory conditions).
-3) Exactly one option should be clearly correct.
-4) correctAnswer must match the actual solution and explanation.
-5) Explanation should not contradict the selected answer.
-6) Formatting should be student-friendly (e.g., avoid '*' when '×' is intended, avoid malformed unit text like "in² centimeters").
+## AUDIT PROCESS (Follow for EVERY question):
+1. Read the question and options
+2. Solve the problem yourself step by step
+3. Determine which option matches YOUR answer
+4. Compare YOUR answer to the stated correctAnswer
+5. Check: does the explanation match YOUR solution?
 
-Allowed reasonCodes:
-- LOGIC_CONTRADICTION
-- MATH_INCORRECT
-- ANSWER_KEY_MISMATCH
-- MULTIPLE_CORRECT_OPTIONS
-- NO_CORRECT_OPTION
-- UNSOLVABLE_TEXT_ONLY
-- FORMAT_ISSUE
+## Flag as CRITICAL ("severity": "critical") if:
+- Your computed answer differs from the stated correctAnswer (MATH_INCORRECT)
+- The question's conditions are contradictory or impossible to satisfy (LOGIC_CONTRADICTION)
+- Countable quantities (people, items, objects) result in non-integer amounts (LOGIC_CONTRADICTION)
+- The stated correctAnswer does not match the explanation's conclusion (ANSWER_KEY_MISMATCH)
+- More than one option is mathematically correct (MULTIPLE_CORRECT_OPTIONS)
+- No option matches the correct mathematical answer (NO_CORRECT_OPTION)
+- The question requires a diagram, chart, or visual that is not provided (UNSOLVABLE_TEXT_ONLY)
+- The question contradicts itself (e.g., states a cost then asks to find that same cost) (LOGIC_CONTRADICTION)
 
-Output format (strict JSON object only):
+## Flag as WARNING ("severity": "warning") if:
+- Formatting is poor but math is correct (FORMAT_ISSUE)
+- Wording is confusing but the question is technically solvable (FORMAT_ISSUE)
+
+## Allowed reasonCodes:
+LOGIC_CONTRADICTION, MATH_INCORRECT, ANSWER_KEY_MISMATCH, MULTIPLE_CORRECT_OPTIONS, NO_CORRECT_OPTION, UNSOLVABLE_TEXT_ONLY, FORMAT_ISSUE
+
+## Output format (strict JSON only):
 {
   "failedQuestions": [
     {
       "questionIndex": 0,
       "severity": "critical" | "warning",
-      "reasonCodes": ["CODE_1", "CODE_2"],
-      "message": "Short reason",
-      "regenerationHint": "Short fix guidance for generator"
+      "reasonCodes": ["CODE_1"],
+      "message": "Your computed answer is X but correctAnswer states Y",
+      "regenerationHint": "Short fix guidance"
     }
   ]
 }
 
-Rules for output:
-- questionIndex is 0-based.
-- Include ONLY failed questions.
-- Use severity "critical" for logic/math/solvability/answer-key failures.
-- Use severity "warning" only for formatting/style polish issues.
-- If all questions pass, return {"failedQuestions": []}.
-- No markdown, no code fences, no extra text.`;
+Rules:
+- questionIndex is 0-based
+- Include ONLY failed questions
+- If all questions pass YOUR independent verification, return {"failedQuestions": []}
+- No markdown, no code fences, no extra text`;
 
 export interface AIValidatorIssue {
   questionIndex: number;
@@ -192,7 +196,7 @@ async function runValidatorWithGemini(prompt: string): Promise<string> {
     config: {
       systemInstruction: VALIDATOR_SYSTEM_PROMPT,
       temperature: 0,
-      maxOutputTokens: 3000,
+      maxOutputTokens: 6000,
     },
   });
 
@@ -225,7 +229,7 @@ async function runValidatorWithOpenRouter(prompt: string): Promise<string> {
         { role: 'user', content: prompt },
       ],
       temperature: 0,
-      max_tokens: 3000,
+      max_tokens: 6000,
     }),
   });
 

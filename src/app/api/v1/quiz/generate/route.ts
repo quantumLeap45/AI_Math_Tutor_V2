@@ -78,12 +78,22 @@ const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math questio
 5. Only ONE option can be correct
 6. Include a clear explanation for the correct answer
 
-## CRITICAL: VERIFY YOUR MATH
-- Before finalizing each question, solve it yourself
-- The correct answer option MUST match your solution
-- The explanation MUST show working that arrives at the correct answer
-- If the numbers don't work out, change them until they do
-- NEVER create a question where the stated correct answer is wrong
+## CRITICAL: SELF-VERIFICATION PROTOCOL (MANDATORY)
+For EVERY question you generate, you MUST follow this internal process:
+1. Pick your numbers and write the question
+2. Solve the problem yourself step by step — compute the actual numerical answer
+3. Verify: Is your computed answer one of the four options? If not, CHANGE THE NUMBERS and redo steps 1-3
+4. Verify: Does the correctAnswer field point to the option matching your computed answer?
+5. Verify: Does the explanation arrive at the same answer?
+If ANY verification fails, fix the question before including it.
+
+## MATHEMATICAL INTEGRITY RULES
+- All countable quantities (people, erasers, books, marbles, stickers) MUST be whole numbers — NEVER fractional
+- All money answers must be valid currency amounts (e.g., $1.50 is valid, $1.333 is not)
+- Percentage problems: after applying all percentage changes, the result must be a clean number that matches one of the options
+- NEVER create a question where the stated conditions are contradictory or impossible
+- NEVER change the problem's given numbers mid-solution to force a "cleaner" answer
+- If you cannot make the numbers work, start over with different numbers entirely
 
 ## QUALITY SAFETY RULES
 - Keep every question solvable using text alone (no missing diagrams needed)
@@ -91,6 +101,12 @@ const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math questio
 - Do not ask students to compare different units unless you explicitly state "compare numerical values only"
 - Never include conditional options like "if line DE is drawn..."
 - Explanations must agree with the marked correct option
+
+## QUESTION COHERENCE
+- Each question must be fully self-contained and unambiguous
+- Never ask the student to re-derive a given value (e.g., "find the cost if it should have been X" when X is already stated)
+- If referencing geometric shapes by vertex labels (e.g., square ABCD), state the vertex order explicitly (e.g., "vertices labeled clockwise from top-left")
+- Never generate questions that require information not present in the question text
 
 ## VARIETY REQUIREMENTS
 - Mix question formats: word problems, direct calculation, comparison, "which is greater", ordering, fill-in-the-blank
@@ -383,7 +399,7 @@ async function generateQuizWithGemini(
       config: {
         systemInstruction: QUIZ_GENERATION_PROMPT,
         temperature: 0.8,
-        maxOutputTokens: 8000,
+        maxOutputTokens: 16000,
       },
     });
 
@@ -441,7 +457,7 @@ async function generateQuizWithOpenRouter(
           { role: 'user', content: finalPrompt },
         ],
         temperature: 0.8,
-        max_tokens: 8000,
+        max_tokens: 16000,
       }),
     });
 
@@ -606,11 +622,15 @@ async function generateValidatedQuiz(
   // rule blockers), deliver the quiz rather than failing the entire request.
   // The AI reviewer is advisory — deterministic rules are the hard gate.
   const ruleBlockersInFinal = lastIssues.filter(issue => issue.source === 'rule');
-  if (ruleBlockersInFinal.length === 0 && lastIssues.length > 0) {
+  const aiCriticalInFinal = lastIssues.filter(issue => issue.source === 'ai' && issue.blocking);
+  const aiWarningsOnly = lastIssues.filter(issue => issue.source === 'ai' && !issue.blocking);
+
+  // Deliver if only AI warnings remain (no rule blockers and no AI critical issues)
+  if (ruleBlockersInFinal.length === 0 && aiCriticalInFinal.length === 0 && lastIssues.length > 0) {
     const totalMs = Date.now() - startTime;
     console.warn(
-      `[Quiz Generate] Delivering quiz with ${lastIssues.length} AI-flagged issue(s) after ` +
-      `${MAX_VALIDATION_ROUNDS} rounds (${totalMs}ms) — no deterministic blockers remain.`
+      `[Quiz Generate] Delivering quiz with ${aiWarningsOnly.length} AI warning(s) after ` +
+      `${MAX_VALIDATION_ROUNDS} rounds (${totalMs}ms) — no critical issues remain.`
     );
     return shuffleQuestions(questions);
   }

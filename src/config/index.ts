@@ -110,7 +110,7 @@ class ConfigManager {
       },
       openRouter: {
         apiKey: env('OPENROUTER_API_KEY'),
-        model: env('OPENROUTER_MODEL') || 'google/gemini-2.5-flash-lite-preview-09-2025',
+        model: env('OPENROUTER_MODEL') || 'minimax/minimax-m2.5',
         enabled: Boolean(env('OPENROUTER_API_KEY')),
       },
       blob: {
