@@ -120,7 +120,7 @@ class ConfigManager {
       rateLimits: {
         antiSpamWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000', 10),
         antiSpamMaxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '20', 10),
-        dailyQuotaLimit: parseInt(process.env.DAILY_QUOTA_LIMIT || '30', 10),
+        dailyQuotaLimit: parseInt(process.env.DAILY_QUOTA_LIMIT || '9999', 10),
       },
       storage: {
         maxSessions: parseInt(process.env.MAX_SESSIONS || '50', 10),

@@ -57,8 +57,8 @@ function parseQuotaFromHeaders(headers: Headers): QuotaStatus | null {
 export function useDailyQuota() {
   const [quotaStatus, setQuotaStatus] = useState<QuotaStatus>({
     used: 0,
-    remaining: 30,
-    limit: 30,
+    remaining: 9999,
+    limit: 9999,
     exceeded: false,
   });
   const [quotaLoaded, setQuotaLoaded] = useState(false);
@@ -127,8 +127,8 @@ export function useDailyQuota() {
   const resetQuota = useCallback(() => {
     setQuotaStatus({
       used: 0,
-      remaining: 30,
-      limit: 30,
+      remaining: 9999,
+      limit: 9999,
       exceeded: false,
     });
     setCountdown(null);
