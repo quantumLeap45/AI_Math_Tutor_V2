@@ -34,6 +34,14 @@ describe('quiz guardrails', () => {
     ).toBe(false);
   });
 
+  it('allows figure references when the description is fully self-contained', () => {
+    expect(
+      hasVisualDependency(
+        'In the figure below, a rectangle has length 8 cm and width 3 cm. Find its area.'
+      )
+    ).toBe(false);
+  });
+
   it('returns readable labels for matched patterns', () => {
     const labels = getVisualDependencyLabels('Refer to the diagram below and find angle x.');
     expect(labels.length).toBeGreaterThan(0);
@@ -56,7 +64,23 @@ describe('quiz guardrails', () => {
 
     const issues = findVisualDependencyIssues(questions);
     expect(issues.length).toBeGreaterThan(0);
-    expect(issues.some(issue => issue.questionIndex === 1 && issue.field === 'question')).toBe(true);
     expect(issues.some(issue => issue.questionIndex === 1 && issue.field === 'optionC')).toBe(true);
+  });
+
+  it('does not flag self-contained visual wording in full question context', () => {
+    const questions = [
+      makeQuestion({
+        question: 'In the figure below, 25% are girls and 45% are boys. What fraction are teachers?',
+        options: {
+          A: '3/10',
+          B: '1/2',
+          C: '3/5',
+          D: '4/5',
+        },
+      }),
+    ];
+
+    const issues = findVisualDependencyIssues(questions);
+    expect(issues.length).toBe(0);
   });
 });

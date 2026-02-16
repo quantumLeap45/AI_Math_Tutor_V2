@@ -28,5 +28,7 @@ describe('formatLatexToKidFriendly', () => {
     expect(formatLatexToKidFriendly('Area = 16 cm2')).toBe('Area = 16 cm²');
     expect(formatLatexToKidFriendly('Volume = 24 m3')).toBe('Volume = 24 m³');
     expect(formatLatexToKidFriendly('Perimeter unit: cm squared')).toBe('Perimeter unit: cm²');
+    expect(formatLatexToKidFriendly('Area = 16 sq cm')).toBe('Area = 16 cm²');
+    expect(formatLatexToKidFriendly('Volume = 30 cu. cm')).toBe('Volume = 30 cm³');
   });
 });
