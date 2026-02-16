@@ -17,6 +17,7 @@ import { saveSession } from '@/lib/storage';
 interface ChatQuizHook {
   quiz: ChatQuizState | null;
   currentQuestion: QuizQuestion | null;
+  lastActiveQuestion: QuizQuestion | null;
   lastCompletedQuiz: (ChatQuizState & {
     timeTaken: string;
     score: number;
@@ -32,6 +33,7 @@ interface ChatQuizHook {
   selectOption: (option: 'A' | 'B' | 'C' | 'D') => void;
   nextQuestion: () => void;
   exitQuiz: () => void;
+  clearLastActiveQuestion: () => void;
   abortQuizGeneration: () => void;
 }
 
@@ -138,6 +140,7 @@ export function useQuizMode(options: UseQuizModeOptions) {
 
     if (quizModeActive) {
       setQuizModeActive(false);
+      chatQuiz.clearLastActiveQuestion();
     } else {
       if (currentSession && quizSessionId !== currentSession.id) {
         setQuizSessionId(currentSession.id);
@@ -170,7 +173,9 @@ export function useQuizMode(options: UseQuizModeOptions) {
 
     if (isLastQuestion && quiz.showFeedback) {
       chatQuiz.nextQuestion();
-      setQuizModeActive(false);
+      // Keep quizModeActive = true so post-completion chat messages
+      // still route to quiz chat API with lastActiveQuestion context.
+      // User can toggle quiz mode off when done asking follow-up questions.
       if (preQuizMode) {
         onModeChange(preQuizMode);
         setPreQuizMode(null);
@@ -242,7 +247,8 @@ export function useQuizMode(options: UseQuizModeOptions) {
   const resetQuizState = useCallback(() => {
     setQuizModeActive(false);
     setCurrentRetryAttempt(0);
-  }, []);
+    chatQuiz.clearLastActiveQuestion();
+  }, [chatQuiz.clearLastActiveQuestion]);
 
   // Close review modal
   const closeReviewModal = useCallback(() => {

@@ -102,7 +102,10 @@ export default function ChatPage() {
       setError(null);
 
       // ===== Quiz generation path =====
-      if (quizMode.quizModeActive && !chatQuiz.quiz) {
+      // Only enter generation if quiz mode is active, no active quiz, and no recently
+      // completed quiz context (lastActiveQuestion). This prevents post-completion
+      // follow-up messages from being treated as new quiz generation requests.
+      if (quizMode.quizModeActive && !chatQuiz.quiz && !chatQuiz.lastActiveQuestion) {
         let session = sessionMgmt.currentSession;
         if (!session) {
           session = createSession(sessionMgmt.mode);
@@ -222,7 +225,9 @@ export default function ChatPage() {
       chatAbortControllerRef.current = abortController;
 
       try {
-        const isQuizChatMode = quizMode.quizModeActive && chatQuiz.quiz && chatQuiz.currentQuestion;
+        // Route to quiz chat if there's an active quiz OR recently completed quiz context
+        const quizQuestionForContext = chatQuiz.currentQuestion || chatQuiz.lastActiveQuestion;
+        const isQuizChatMode = quizMode.quizModeActive && quizQuestionForContext;
 
         let response: Response;
 
@@ -239,8 +244,8 @@ export default function ChatPage() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              question: chatQuiz.currentQuestion!.question,
-              options: Object.values(chatQuiz.currentQuestion!.options),
+              question: quizQuestionForContext!.question,
+              options: Object.values(quizQuestionForContext!.options),
               message: content,
               conversationHistory,
             }),
@@ -320,7 +325,7 @@ export default function ChatPage() {
         setIsLoading(false);
       }
     },
-    [sessionMgmt.currentSession, sessionMgmt.mode, consumeQuota, countdown, updateQuotaFromResponse, quizMode.quizModeActive, chatQuiz, chatQuiz.currentQuestion]
+    [sessionMgmt.currentSession, sessionMgmt.mode, consumeQuota, countdown, updateQuotaFromResponse, quizMode.quizModeActive, chatQuiz, chatQuiz.currentQuestion, chatQuiz.lastActiveQuestion]
   );
 
   // Derived state

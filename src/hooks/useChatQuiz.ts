@@ -27,6 +27,8 @@ interface UseChatQuizState {
   error: string | null;
   /** Current question */
   currentQuestion: QuizQuestion | null;
+  /** Last active question — persists after quiz completion for follow-up chat context */
+  lastActiveQuestion: QuizQuestion | null;
   /** Completed quizzes for review (stored in memory) */
   completedQuizzes: Array<ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string }>;
   /** Last completed quiz available for retry (with retry count) */
@@ -54,6 +56,8 @@ interface UseChatQuizActions {
   clearError: () => void;
   /** Exit and clear quiz state */
   exitQuiz: () => void;
+  /** Clear the last active question context (used when toggling quiz mode off) */
+  clearLastActiveQuestion: () => void;
   /** Abort any in-flight quiz generation request */
   abortQuizGeneration: () => void;
 }
@@ -159,6 +163,9 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   // Track last failed quiz config for retry on generation failure
   const [lastFailedConfig, setLastFailedConfig] = useState<ChatQuizState['config'] | null>(null);
 
+  // Last active question — persists after quiz completion for follow-up chat context
+  const [lastActiveQuestion, setLastActiveQuestion] = useState<QuizQuestion | null>(null);
+
   // AbortController for in-flight quiz generation requests
   const quizAbortRef = useRef<AbortController | null>(null);
 
@@ -191,6 +198,13 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     }
   }, [quiz?.isCompleted, sessionId]);
 
+  // Track last active question for post-completion chat context
+  useEffect(() => {
+    if (currentQuestion) {
+      setLastActiveQuestion(currentQuestion);
+    }
+  }, [currentQuestion]);
+
   // ============ ACTIONS ============
 
   /**
@@ -204,6 +218,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
 
     setIsLoading(true);
     setError(null);
+    setLastActiveQuestion(null);
 
     // Merge provided config with defaults
     const quizConfig: ChatQuizState['config'] = {
@@ -352,8 +367,16 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   const exitQuiz = useCallback(() => {
     setQuiz(null);
     setError(null);
+    setLastActiveQuestion(null);
     clearChatQuizState(sessionId);
   }, [sessionId]);
+
+  /**
+   * Clear last active question context (used when toggling quiz mode off)
+   */
+  const clearLastActiveQuestion = useCallback(() => {
+    setLastActiveQuestion(null);
+  }, []);
 
   /**
    * Retry the last completed quiz with the same questions
@@ -435,6 +458,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     isLoading,
     error,
     currentQuestion,
+    lastActiveQuestion,
     completedQuizzes,
     lastCompletedQuiz,
     lastFailedConfig,
@@ -449,6 +473,7 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     previousQuestion,
     clearError,
     exitQuiz,
+    clearLastActiveQuestion,
     abortQuizGeneration,
   };
 }
