@@ -105,23 +105,10 @@ export function useDailyQuota() {
     }
   }, []);
 
-  // Check if quota allows a request (client-side estimate)
-  // Actual enforcement happens server-side
+  // Daily quota bypassed for preview testing — always allow
   const consumeQuota = useCallback((): { allowed: boolean } => {
-    // Client-side prediction - actual check happens server-side
-    const allowed = quotaStatus.remaining > 0;
-
-    if (allowed) {
-      // Optimistically update
-      setQuotaStatus(prev => ({
-        ...prev,
-        used: prev.used + 1,
-        remaining: Math.max(0, prev.remaining - 1),
-      }));
-    }
-
-    return { allowed };
-  }, [quotaStatus.remaining]);
+    return { allowed: true };
+  }, []);
 
   // Reset quota (for testing - doesn't affect server)
   const resetQuota = useCallback(() => {

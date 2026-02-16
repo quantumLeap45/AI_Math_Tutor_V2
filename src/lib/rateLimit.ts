@@ -269,29 +269,20 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
     };
   }
 
-  // Check daily quota (Supabase)
-  const dailyResult = await checkDailyQuota(ip);
-
-  if (!dailyResult.success) {
-    return {
-      success: false,
-      remaining: 0,
-      dailyRemaining: 0,
-      quotaStatus: dailyResult.status,
-    };
-  }
-
-  // Both checks passed - increment the daily quota
-  await incrementQuota(ip);
+  // Daily quota bypassed for preview testing — anti-spam still active
+  const tomorrow = new Date();
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+  tomorrow.setUTCHours(0, 0, 0, 0);
 
   return {
     success: true,
     remaining: antiSpamResult.remaining,
-    dailyRemaining: dailyResult.status.remaining - 1, // Account for current request
+    dailyRemaining: 9999,
     quotaStatus: {
-      ...dailyResult.status,
-      used: dailyResult.status.used + 1, // Account for the current request
-      remaining: dailyResult.status.remaining - 1,
+      used: 0,
+      remaining: 9999,
+      limit: 9999,
+      resetsAt: tomorrow,
     },
   };
 }
@@ -300,28 +291,15 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
  * Get the current quota status without checking/incrementing
  */
 export async function getQuotaStatus(ip: string): Promise<DailyQuotaStatus> {
-  if (!isSupabaseConfigured() || !supabaseClient) {
-    const tomorrow = new Date();
-    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-    tomorrow.setUTCHours(0, 0, 0, 0);
-
-    return {
-      used: 0,
-      remaining: DAILY_QUOTA_LIMIT,
-      limit: DAILY_QUOTA_LIMIT,
-      resetsAt: tomorrow,
-    };
-  }
-
-  const { used } = await getOrCreateQuotaRecord(ip);
+  // Daily quota bypassed for preview testing
   const tomorrow = new Date();
   tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
   tomorrow.setUTCHours(0, 0, 0, 0);
 
   return {
-    used,
-    remaining: Math.max(0, DAILY_QUOTA_LIMIT - used),
-    limit: DAILY_QUOTA_LIMIT,
+    used: 0,
+    remaining: 9999,
+    limit: 9999,
     resetsAt: tomorrow,
   };
 }
