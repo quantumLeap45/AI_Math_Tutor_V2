@@ -41,7 +41,8 @@ export const runtime = 'nodejs';
 
 // Model configuration from config
 const MODEL_NAME = config.getGemini().model;
-const MAX_VALIDATION_ROUNDS = 3;
+const MAX_VALIDATION_ROUNDS = 2;
+const VALIDATION_TIME_BUDGET_MS = 10_000; // 10s — after this, skip AI validation if deterministic checks pass
 const QUIZ_GENERATION_FAILURE_MESSAGE = 'An error occurred during quiz generation. Please try again.';
 
 interface QuizQualityIssue {
@@ -331,7 +332,7 @@ function toAIQualityIssues(issues: AIValidatorIssue[]): QuizQualityIssue[] {
     message: issue.message,
     source: 'ai',
     blocking: issue.severity === 'critical'
-      && issue.reasonCodes.some(code => CRITICAL_REASON_TOKENS.some(token => code.includes(token))),
+      && issue.reasonCodes.some(code => CRITICAL_REASON_TOKENS.includes(code)),
   }));
 }
 
@@ -496,10 +497,37 @@ async function generateQuizBatch(args: GenerateQuizBatchArgs): Promise<QuizQuest
 async function generateValidatedQuiz(
   args: Omit<GenerateQuizBatchArgs, 'qualityInstruction'>
 ): Promise<QuizQuestion[]> {
+  const startTime = Date.now();
   let questions = await generateQuizBatch(args);
   let lastIssues: QuizQualityIssue[] = [];
 
   for (let round = 1; round <= MAX_VALIDATION_ROUNDS; round++) {
+    const elapsed = Date.now() - startTime;
+
+    // Time budget exceeded — skip the expensive AI validation call.
+    // If deterministic (rule) checks pass, deliver the quiz immediately.
+    if (elapsed > VALIDATION_TIME_BUDGET_MS) {
+      const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions));
+      const ruleBlockers = ruleIssues.filter(issue => issue.blocking);
+
+      if (ruleBlockers.length === 0) {
+        console.warn(
+          `[Quiz Generate] Time budget exceeded (${elapsed}ms/${VALIDATION_TIME_BUDGET_MS}ms) at round ${round} — ` +
+          `deterministic checks pass, delivering quiz without AI validation.`
+        );
+        return shuffleQuestions(questions);
+      }
+
+      // Deterministic blockers remain and we're out of time — must fail
+      console.warn(
+        `[Quiz Generate] Time budget exceeded with ${ruleBlockers.length} deterministic blocker(s): ` +
+        `${summarizeValidationIssues(ruleBlockers)}`
+      );
+      lastIssues = ruleBlockers;
+      break;
+    }
+
+    // Full validation: deterministic rules + AI reviewer
     const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions));
     const aiIssues = toAIQualityIssues(await validateQuizWithAI({
       useOpenRouter: args.useOpenRouter,
@@ -517,6 +545,11 @@ async function generateValidatedQuiz(
     }
 
     if (issues.length === 0) {
+      const totalMs = Date.now() - startTime;
+      console.log(
+        `[Quiz Generate] Validated in ${round} round(s), ${totalMs}ms — ` +
+        `${questions.length} questions, ${warnings.length} warning(s)`
+      );
       return shuffleQuestions(questions);
     }
 
@@ -567,6 +600,19 @@ async function generateValidatedQuiz(
       patchedQuestions[idx] = replacements[replacementIdx];
     });
     questions = patchedQuestions;
+  }
+
+  // Graceful degradation: if only AI-flagged issues remain (no deterministic
+  // rule blockers), deliver the quiz rather than failing the entire request.
+  // The AI reviewer is advisory — deterministic rules are the hard gate.
+  const ruleBlockersInFinal = lastIssues.filter(issue => issue.source === 'rule');
+  if (ruleBlockersInFinal.length === 0 && lastIssues.length > 0) {
+    const totalMs = Date.now() - startTime;
+    console.warn(
+      `[Quiz Generate] Delivering quiz with ${lastIssues.length} AI-flagged issue(s) after ` +
+      `${MAX_VALIDATION_ROUNDS} rounds (${totalMs}ms) — no deterministic blockers remain.`
+    );
+    return shuffleQuestions(questions);
   }
 
   throw new QuizContentGuardrailError(
