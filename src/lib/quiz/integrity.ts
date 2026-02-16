@@ -16,7 +16,8 @@ export type QuizIntegrityIssueCode =
   | 'EXPLANATION_KEY_MISMATCH'
   | 'EXPLANATION_ANSWER_MISMATCH'
   | 'AMBIGUOUS_COMPARISON'
-  | 'DETERMINISTIC_MATH_MISMATCH';
+  | 'DETERMINISTIC_MATH_MISMATCH'
+  | 'GEOMETRY_LOGIC_INVALID';
 
 export interface QuizIntegrityIssue {
   questionIndex: number;
@@ -365,6 +366,71 @@ function inferExpectedAreaPerimeterAnswer(question: QuizQuestion): QuizOption | 
   return trueOptions.length === 1 ? trueOptions[0] : null;
 }
 
+function extractAngleValues(text: string): number[] {
+  return [...text.matchAll(/(-?\d+(?:\.\d+)?)\s*(?:°|degrees?)/gi)]
+    .map(match => Number(match[1]))
+    .filter(value => Number.isFinite(value));
+}
+
+function tryValidateAngleShapeQuestion(context: CheckContext): QuizIntegrityIssue | null {
+  const questionText = context.question.question;
+  const angleValues = extractAngleValues(questionText);
+
+  const mentionsThreeAngles = /\b(?:three|3)\s+angles?\b/i.test(questionText);
+  const mentionsTriangle = /\btriangle\b/i.test(questionText);
+  const mentionsQuadrilateral = /\bquadrilateral\b/i.test(questionText);
+  const asksShapeType = mentionsTriangle && mentionsQuadrilateral;
+
+  if (!mentionsThreeAngles && !asksShapeType) return null;
+  if (angleValues.length < 3) return null;
+
+  const sum = angleValues.slice(0, 3).reduce((total, value) => total + value, 0);
+  const isTriangleValid = Math.abs(sum - 180) < 1e-6;
+  const isQuadrilateralValid = Math.abs(sum - 360) < 1e-6;
+
+  if (mentionsThreeAngles && !isTriangleValid) {
+    return {
+      questionIndex: context.questionIndex,
+      code: 'GEOMETRY_LOGIC_INVALID',
+      field: 'question',
+      message: `Question states three angles but their sum is ${sum}, not 180.`,
+      excerpt: excerpt(questionText),
+    };
+  }
+
+  if (!asksShapeType) return null;
+  if (!isTriangleValid && !isQuadrilateralValid) {
+    return {
+      questionIndex: context.questionIndex,
+      code: 'GEOMETRY_LOGIC_INVALID',
+      field: 'question',
+      message: `Angle sum ${sum} does not support triangle (180) or quadrilateral (360).`,
+      excerpt: excerpt(questionText),
+    };
+  }
+
+  // If options encode "<sum>; <shape>", verify correctAnswer against deterministic expectation.
+  const expectedShape = isTriangleValid ? 'triangle' : 'quadrilateral';
+  const matches = OPTION_KEYS.filter(key => {
+    const option = normalizeForCompare(context.question.options[key]);
+    const hasShape = option.includes(expectedShape);
+    const numeric = parseNumericOptionValue(context.question.options[key]);
+    return hasShape && numeric !== null && Math.abs(numeric - sum) < 1e-6;
+  });
+
+  if (matches.length === 1 && matches[0] !== context.question.correctAnswer) {
+    return {
+      questionIndex: context.questionIndex,
+      code: 'DETERMINISTIC_MATH_MISMATCH',
+      field: 'correctAnswer',
+      message: `Angle-shape logic implies ${matches[0]}, but correctAnswer is ${context.question.correctAnswer}.`,
+      excerpt: excerpt(questionText),
+    };
+  }
+
+  return null;
+}
+
 function tryValidateAreaPerimeterComparison(context: CheckContext): QuizIntegrityIssue | null {
   const expected = inferExpectedAreaPerimeterAnswer(context.question);
   if (!expected) return null;
@@ -436,6 +502,9 @@ function validateQuestion(question: QuizQuestion, questionIndex: number): QuizIn
 
   const areaPerimeterIssue = tryValidateAreaPerimeterComparison(context);
   if (areaPerimeterIssue) issues.push(areaPerimeterIssue);
+
+  const angleShapeIssue = tryValidateAngleShapeQuestion(context);
+  if (angleShapeIssue) issues.push(angleShapeIssue);
 
   return issues;
 }

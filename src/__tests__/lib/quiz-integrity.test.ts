@@ -139,4 +139,22 @@ describe('quiz integrity validator', () => {
     const failingIndexes = getFailingQuestionIndexes(issues);
     expect(failingIndexes).toEqual([0, 1]);
   });
+
+  it('flags impossible angle-sum shape questions', () => {
+    const questions = [
+      makeQuestion({
+        question: 'Ravi drew a shape with three angles. The angles are 40 degrees, 115 degrees and 90 degrees. What is the sum and is it a triangle or quadrilateral?',
+        options: {
+          A: '245 degrees; quadrilateral',
+          B: '245 degrees; triangle',
+          C: '255 degrees; triangle',
+          D: '255 degrees; quadrilateral',
+        },
+        correctAnswer: 'A',
+      }),
+    ];
+
+    const issues = validateQuizBatch(questions);
+    expect(issues.some(issue => issue.code === 'GEOMETRY_LOGIC_INVALID')).toBe(true);
+  });
 });

@@ -97,27 +97,27 @@ export function formatLatexToKidFriendly(text: string): string {
   // cm2 -> cm², m3 -> m³, cm squared -> cm², m cubed -> m³
   // Use a non-word prefix guard to avoid converting variable names like "xm2".
   result = result.replace(
-    /(^|[^\w])(?:sq|sq\.|square)\s*((?:cm|mm|km|m|in|ft))\b/gi,
+    /(^|[^\w])(?:sq|sq\.|square)\s*((?:cm|mm|km|m|ft))\b/gi,
     (_, prefix, unit) => `${prefix}${unit}²`
   );
   result = result.replace(
-    /(^|[^\w])(?:cu|cu\.|cubic)\s*((?:cm|mm|km|m|in|ft))\b/gi,
+    /(^|[^\w])(?:cu|cu\.|cubic)\s*((?:cm|mm|km|m|ft))\b/gi,
     (_, prefix, unit) => `${prefix}${unit}³`
   );
   result = result.replace(
-    /(^|[^\w])((?:cm|mm|km|m|in|ft))\s*(?:sq|sq\.|square)\b/gi,
+    /(^|[^\w])((?:cm|mm|km|m|ft))\s*(?:sq|sq\.|square)\b/gi,
     (_, prefix, unit) => `${prefix}${unit}²`
   );
   result = result.replace(
-    /(^|[^\w])((?:cm|mm|km|m|in|ft))\s*(?:cu|cu\.|cubic|cube|cubed)\b/gi,
+    /(^|[^\w])((?:cm|mm|km|m|ft))\s*(?:cu|cu\.|cubic|cube|cubed)\b/gi,
     (_, prefix, unit) => `${prefix}${unit}³`
   );
   result = result.replace(
-    /(^|[^\w])((?:cm|mm|km|m|in|ft))\s*(?:\^\s*\{?\s*3\s*\}?|3|cubed)\b/gi,
+    /(^|[^\w])((?:cm|mm|km|m|ft))\s*(?:\^\s*\{?\s*3\s*\}?|3|cubed)\b/gi,
     (_, prefix, unit) => `${prefix}${unit}³`
   );
   result = result.replace(
-    /(^|[^\w])((?:cm|mm|km|m|in|ft))\s*(?:\^\s*\{?\s*2\s*\}?|2|squared)\b/gi,
+    /(^|[^\w])((?:cm|mm|km|m|ft))\s*(?:\^\s*\{?\s*2\s*\}?|2|squared)\b/gi,
     (_, prefix, unit) => `${prefix}${unit}²`
   );
 

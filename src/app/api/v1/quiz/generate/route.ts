@@ -19,7 +19,8 @@ import { checkHealth } from '@/lib/gemini';
 import { QuizQuestion, PrimaryLevel, QuizOption, QUIZ_QUESTION_COUNT_MAX } from '@/types';
 import { config } from '@/config';
 import { formatLatexToKidFriendly } from '@/lib/math-format';
-import { validateQuizBatch, getFailingQuestionIndexes, QuizIntegrityIssue } from '@/lib/quiz/integrity';
+import { validateQuizBatch, QuizIntegrityIssue } from '@/lib/quiz/integrity';
+import { validateQuizWithAI, AIValidatorIssue } from '@/lib/quiz/ai-validator';
 import {
   validateQuizRequest,
   QuizRequest,
@@ -41,14 +42,23 @@ export const runtime = 'nodejs';
 // Model configuration from config
 const MODEL_NAME = config.getGemini().model;
 const MAX_VALIDATION_ROUNDS = 3;
+const QUIZ_GENERATION_FAILURE_MESSAGE = 'An error occurred during quiz generation. Please tap here to try again.';
+
+interface QuizQualityIssue {
+  questionIndex: number;
+  code: string;
+  message: string;
+  source: 'rule' | 'ai';
+  excerpt?: string;
+}
 
 /**
  * Thrown when generated questions violate text-only quiz constraints.
  */
 class QuizContentGuardrailError extends Error {
-  issues: QuizIntegrityIssue[];
+  issues: QuizQualityIssue[];
 
-  constructor(message: string, issues: QuizIntegrityIssue[]) {
+  constructor(message: string, issues: QuizQualityIssue[]) {
     super(message);
     this.name = 'QuizContentGuardrailError';
     this.issues = issues;
@@ -270,14 +280,14 @@ function shuffleQuestions(questions: QuizQuestion[]): QuizQuestion[] {
   return shuffled;
 }
 
-function summarizeValidationIssues(issues: QuizIntegrityIssue[]): string {
+function summarizeValidationIssues(issues: QuizQualityIssue[]): string {
   return issues
     .slice(0, 5)
     .map(issue => `Q${issue.questionIndex + 1} ${issue.code}`)
     .join('; ');
 }
 
-function buildQualityRetryInstruction(issues: QuizIntegrityIssue[], replacementCount: number): string {
+function buildQualityRetryInstruction(issues: QuizQualityIssue[], replacementCount: number): string {
   const issueHints = issues
     .slice(0, 6)
     .map(issue => `Q${issue.questionIndex + 1}: ${issue.code} (${issue.message})`)
@@ -290,6 +300,25 @@ function buildQualityRetryInstruction(issues: QuizIntegrityIssue[], replacementC
     `- ${issueHints}`,
     'Return only valid JSON array with exactly the requested number of replacement questions.',
   ].join('\n');
+}
+
+function toRuleQualityIssues(issues: QuizIntegrityIssue[]): QuizQualityIssue[] {
+  return issues.map(issue => ({
+    questionIndex: issue.questionIndex,
+    code: issue.code,
+    message: issue.message,
+    source: 'rule',
+    excerpt: issue.excerpt,
+  }));
+}
+
+function toAIQualityIssues(issues: AIValidatorIssue[]): QuizQualityIssue[] {
+  return issues.map(issue => ({
+    questionIndex: issue.questionIndex,
+    code: issue.reasonCodes.join('|'),
+    message: issue.message,
+    source: 'ai',
+  }));
 }
 
 /**
@@ -454,16 +483,25 @@ async function generateValidatedQuiz(
   args: Omit<GenerateQuizBatchArgs, 'qualityInstruction'>
 ): Promise<QuizQuestion[]> {
   let questions = await generateQuizBatch(args);
-  let lastIssues: QuizIntegrityIssue[] = [];
+  let lastIssues: QuizQualityIssue[] = [];
 
   for (let round = 1; round <= MAX_VALIDATION_ROUNDS; round++) {
-    const issues = validateQuizBatch(questions);
+    const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions));
+    const aiIssues = toAIQualityIssues(await validateQuizWithAI({
+      useOpenRouter: args.useOpenRouter,
+      level: args.level,
+      topic: args.topic,
+      difficulty: args.difficulty,
+      questions,
+    }));
+    const issues = [...ruleIssues, ...aiIssues];
+
     if (issues.length === 0) {
       return shuffleQuestions(questions);
     }
 
     lastIssues = issues;
-    const failedIndexes = getFailingQuestionIndexes(issues);
+    const failedIndexes = [...new Set(issues.map(issue => issue.questionIndex))].sort((a, b) => a - b);
     const summary = summarizeValidationIssues(issues);
     console.warn(`[Quiz Generate] Validation round ${round}/${MAX_VALIDATION_ROUNDS} failed: ${summary}`);
 
@@ -596,11 +634,15 @@ export async function POST(request: NextRequest) {
         ragContext,
       });
     } catch (error) {
-      if (error instanceof QuizContentGuardrailError) {
-        console.error('[Quiz Generate] Validation gate blocked quiz output:', error.message, error.issues);
+      if (
+        error instanceof QuizContentGuardrailError ||
+        (error instanceof Error && error.message.toLowerCase().includes('validator failed'))
+      ) {
+        const details = error instanceof QuizContentGuardrailError ? error.issues : undefined;
+        console.error('[Quiz Generate] Validation gate blocked quiz output:', error.message, details);
         throw new AIError(
           ErrorCode.AI_UNAVAILABLE,
-          'I could not generate a reliable quiz right now. Please try again.',
+          QUIZ_GENERATION_FAILURE_MESSAGE,
           true
         );
       }

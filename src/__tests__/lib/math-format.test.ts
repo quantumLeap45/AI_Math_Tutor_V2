@@ -31,4 +31,9 @@ describe('formatLatexToKidFriendly', () => {
     expect(formatLatexToKidFriendly('Area = 16 sq cm')).toBe('Area = 16 cm²');
     expect(formatLatexToKidFriendly('Volume = 30 cu. cm')).toBe('Volume = 30 cm³');
   });
+
+  it('does not convert preposition \"in\" into a squared unit marker', () => {
+    expect(formatLatexToKidFriendly('What is the area in square centimeters?'))
+      .toBe('What is the area in square centimeters?');
+  });
 });
