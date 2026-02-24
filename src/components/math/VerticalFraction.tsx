@@ -45,16 +45,16 @@ export function VerticalFraction({ numerator, denominator, className = '' }: Ver
  * Returns null if the input is not a simple fraction.
  */
 export function parseFraction(fractionStr: string): { numerator: string; denominator: string } | null {
-  // Match patterns like: 1/2, (1)/(2), 12/5, etc.
+  // Match patterns like: 1/2, (1)/(2), b/18, c/4, x1/y2, etc.
   // The regex captures:
   // - Optional opening parenthesis
-  // - Numerator (one or more digits)
+  // - Numerator (letters/numbers, optional +/- segments)
   // - Optional closing parenthesis
   // - Forward slash
   // - Optional opening parenthesis
-  // - Denominator (one or more digits)
+  // - Denominator (letters/numbers, optional +/- segments)
   // - Optional closing parenthesis
-  const simpleFractionRegex = /^\(?(\d+)\)?\/\(?(\d+)\)?$/;
+  const simpleFractionRegex = /^\(?([A-Za-z0-9]+(?:[+-][A-Za-z0-9]+)*)\)?\/\(?([A-Za-z0-9]+(?:[+-][A-Za-z0-9]+)*)\)?$/;
   const match = fractionStr.match(simpleFractionRegex);
 
   if (match) {
@@ -82,16 +82,14 @@ export function formatMathWithVerticalFractions(text: string): React.ReactNode {
 
   // Split by potential fraction patterns
   // This regex matches:
-  // - Optional whitespace
   // - Optional opening parenthesis
-  // - One or more digits (numerator)
+  // - One or more letters/numbers (numerator), optional +/- segments
   // - Optional closing parenthesis
   // - Forward slash
   // - Optional opening parenthesis
-  // - One or more digits (denominator)
+  // - One or more letters/numbers (denominator), optional +/- segments
   // - Optional closing parenthesis
-  // - Whitespace or end of string
-  const fractionRegex = /(\s*\(?(\d+)\)?\/\(?(\d+)\)?\s*)/g;
+  const fractionRegex = /(\(?[A-Za-z0-9]+(?:[+-][A-Za-z0-9]+)*\)?\/\(?[A-Za-z0-9]+(?:[+-][A-Za-z0-9]+)*\)?)/g;
 
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
@@ -104,11 +102,20 @@ export function formatMathWithVerticalFractions(text: string): React.ReactNode {
     }
 
     // Add the vertical fraction component
-    const numerator = match[2];
-    const denominator = match[3];
-    parts.push(<VerticalFraction key={`${match.index}-${numerator}-${denominator}`} numerator={numerator} denominator={denominator} />);
+    const parsedFraction = parseFraction(match[1]);
+    if (parsedFraction) {
+      parts.push(
+        <VerticalFraction
+          key={`${match.index}-${parsedFraction.numerator}-${parsedFraction.denominator}`}
+          numerator={parsedFraction.numerator}
+          denominator={parsedFraction.denominator}
+        />
+      );
+    } else {
+      parts.push(match[1]);
+    }
 
-    lastIndex = match.index + match[1].length;
+    lastIndex = match.index + match[0].length;
   }
 
   // Add remaining text after the last fraction

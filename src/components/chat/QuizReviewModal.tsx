@@ -198,7 +198,7 @@ export function QuizReviewModal({
 
           <button
             onClick={onRetry}
-            className="w-full py-3 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold transition-colors"
+            className="w-full py-3 px-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-semibold transition-colors"
           >
             Retry Quiz
           </button>

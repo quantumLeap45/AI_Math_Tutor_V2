@@ -57,10 +57,11 @@ function parseQuotaFromHeaders(headers: Headers): QuotaStatus | null {
 export function useDailyQuota() {
   const [quotaStatus, setQuotaStatus] = useState<QuotaStatus>({
     used: 0,
-    remaining: 50,
-    limit: 50,
+    remaining: 9999,
+    limit: 9999,
     exceeded: false,
   });
+  const [quotaLoaded, setQuotaLoaded] = useState(false);
   const [countdown, setCountdown] = useState<QuotaCountdown | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -90,6 +91,7 @@ export function useDailyQuota() {
         const status = parseQuotaFromHeaders(response.headers);
         if (status) {
           setQuotaStatus(status);
+          setQuotaLoaded(true);
 
           if (status.exceeded && status.resetAt) {
             setCountdown(getTimeUntilReset(status.resetAt));
@@ -103,30 +105,17 @@ export function useDailyQuota() {
     }
   }, []);
 
-  // Check if quota allows a request (client-side estimate)
-  // Actual enforcement happens server-side
+  // Daily quota bypassed for preview testing — always allow
   const consumeQuota = useCallback((): { allowed: boolean } => {
-    // Client-side prediction - actual check happens server-side
-    const allowed = quotaStatus.remaining > 0;
-
-    if (allowed) {
-      // Optimistically update
-      setQuotaStatus(prev => ({
-        ...prev,
-        used: prev.used + 1,
-        remaining: Math.max(0, prev.remaining - 1),
-      }));
-    }
-
-    return { allowed };
-  }, [quotaStatus.remaining]);
+    return { allowed: true };
+  }, []);
 
   // Reset quota (for testing - doesn't affect server)
   const resetQuota = useCallback(() => {
     setQuotaStatus({
       used: 0,
-      remaining: 50,
-      limit: 50,
+      remaining: 9999,
+      limit: 9999,
       exceeded: false,
     });
     setCountdown(null);
@@ -168,6 +157,7 @@ export function useDailyQuota() {
 
   return {
     quotaStatus,
+    quotaLoaded,
     countdown,
     consumeQuota,
     refreshQuotaStatus,

@@ -13,11 +13,15 @@
 
 import { NextRequest } from 'next/server';
 import { GoogleGenAI, Content } from '@google/genai';
-import { getRAGContext } from '@/lib/rag/search';
+import { searchByFilters } from '@/lib/rag/search';
+import type { GradeLevel } from '@/lib/rag/types';
 import { isPineconeConfigured } from '@/lib/rag/pinecone';
 import { checkHealth } from '@/lib/gemini';
-import { QuizQuestion, PrimaryLevel, QuizOption } from '@/types';
+import { QuizQuestion, PrimaryLevel, QuizOption, QUIZ_QUESTION_COUNT_MAX } from '@/types';
 import { config } from '@/config';
+import { formatLatexToKidFriendly } from '@/lib/math-format';
+import { validateQuizBatch, QuizIntegrityIssue } from '@/lib/quiz/integrity';
+import { validateQuizWithAI, AIValidatorIssue } from '@/lib/quiz/ai-validator';
 import {
   validateQuizRequest,
   QuizRequest,
@@ -27,88 +31,101 @@ import {
   errorToResponse,
   ValidationError,
   AIError,
+  QuotaError,
+  RateLimitError,
   ErrorCode,
 } from '@/lib/errors';
+import { checkRateLimit, getClientIp } from '@/lib/rateLimit';
 import { z } from 'zod';
 
 export const runtime = 'nodejs';
 
 // Model configuration from config
 const MODEL_NAME = config.getGemini().model;
+const MAX_VALIDATION_ROUNDS = 2;
+const VALIDATION_TIME_BUDGET_MS = 10_000; // 10s — after this, skip AI validation if deterministic checks pass
+const QUIZ_GENERATION_FAILURE_MESSAGE = 'An error occurred during quiz generation. Please try again.';
 
-// Quiz generation system prompt
-const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math question writer. Your task is to create ORIGINAL multiple-choice questions in the MOE style.
-
-## CRITICAL RULES:
-1. Create ORIGINAL questions - DO NOT copy from examples
-2. Use different names, numbers, and scenarios than examples
-3. Follow the same STRUCTURE and DIFFICULTY level as examples
-4. Each question must have 4 options (A, B, C, D)
-5. Only ONE option can be correct
-6. Include a clear explanation for the correct answer
-
-## CRITICAL: VERIFY YOUR MATH
-- Before finalizing each question, solve it yourself
-- The correct answer option MUST match your solution
-- The explanation MUST show working that arrives at the correct answer
-- If the numbers don't work out, change them until they do
-- NEVER create a question where the stated correct answer is wrong
-
-## VARIETY REQUIREMENTS
-- Mix question formats: word problems, direct calculation, comparison, "which is greater", ordering, fill-in-the-blank
-- Use different scenario types: food sharing, shopping, travel distance, classroom items, sports scores, garden planting, cooking, crafts
-- Vary the position of the correct answer across A, B, C, D (don't always put it in A or B)
-- Don't repeat the same name or scenario in multiple questions
-- Vary sentence structure — don't start every question the same way
-
-## DIFFICULTY GUIDE (for Primary school students aged 6-12)
-- Easy: Single-step problems, small numbers, straightforward operations
-- Medium: Two-step problems, moderate numbers, may require carrying/borrowing or simple conversion
-- Hard: Multi-step problems, larger numbers, requires combining multiple concepts, careful reading needed
-
-## TOPIC HANDLING
-- If the topic is "math" or very generic, create a DIVERSE mix of questions covering different topics appropriate for the given level
-- For P1-P2: Whole Numbers, Addition, Subtraction, Shapes, Patterns, Money, Length, Mass
-- For P3-P4: Fractions, Multiplication, Division, Area, Perimeter, Time, Graphs, Angles
-- For P5-P6: Decimals, Percentage, Ratio, Rate, Volume, Algebra, Geometry, Data Analysis
-- Always set the "topic" field to the actual mathematical topic of each question (e.g., "Fractions", "Geometry"), NOT the user's raw input
-
-## Output Format:
-Return a JSON array of questions. Each question must have:
-{
-  "id": "Generated-<level>-<topic>-<number>",
-  "level": "P1" | "P2" | "P3" | "P4" | "P5" | "P6",
-  "topic": "<actual math topic name, e.g. Fractions, Geometry, Whole Numbers>",
-  "subtopic": "<specific subtopic>",
-  "difficulty": "easy" | "medium" | "hard",
-  "question": "<question text>",
-  "options": {
-    "A": "<option A text>",
-    "B": "<option B text>",
-    "C": "<option C text>",
-    "D": "<option D text>"
-  },
-  "correctAnswer": "A" | "B" | "C" | "D",
-  "explanation": "<structured explanation>"
+interface QuizQualityIssue {
+  questionIndex: number;
+  code: string;
+  message: string;
+  source: 'rule' | 'ai';
+  blocking: boolean;
+  excerpt?: string;
 }
 
-## EXPLANATION FORMAT (CRITICAL - FOLLOW EXACTLY):
-- Keep explanations SHORT: Maximum 2-3 sentences, under 150 characters total
-- Use this STRUCTURED format: "Step 1: [first step]. Step 2: [second step]. Answer: [result]."
-- For simple questions: "[Method]. Answer: [result]."
-- NO reasoning process or verification text in the output
-- NO phrases like "Let's solve this" or "First, I need to" or "We can verify"
-- Just the essential steps and final answer
+/**
+ * Thrown when generated questions violate text-only quiz constraints.
+ */
+class QuizContentGuardrailError extends Error {
+  issues: QuizQualityIssue[];
 
-## Singapore Context:
-- Use SGD currency for money problems
-- Use Singaporean names (Ahmad, Siti, Mei Ling, Ravi, Wei Ling, Muthu, John, Sarah)
-- Refer to local places where appropriate (e.g., "took the MRT", "went to Sentosa")
+  constructor(message: string, issues: QuizQualityIssue[]) {
+    super(message);
+    this.name = 'QuizContentGuardrailError';
+    this.issues = issues;
+  }
+}
 
-## IMPORTANT FORMAT RULES:
-- Do NOT use LaTeX notation (no $, \\frac, \\text etc). Write fractions as "1/4" or "three-quarters"
-- Write all math in plain text that a primary school student can read
-- Return ONLY the JSON array — no markdown code fences, no extra text`;
+// Quiz generation system prompt — streamlined for better model performance
+const QUIZ_GENERATION_PROMPT = `You are an expert Singapore Primary Math question writer. Create ORIGINAL multiple-choice questions in the MOE style.
+
+## RULES
+1. Create ORIGINAL questions — do not copy from any examples provided
+2. Each question: 4 options (A, B, C, D), exactly ONE correct
+3. Include a concise explanation for the correct answer
+4. Every question must be solvable from text alone — no diagrams needed
+
+## MATH ACCURACY (MANDATORY)
+For EVERY question, before including it:
+1. Write the question with your chosen numbers
+2. Solve it yourself — compute the actual answer
+3. Verify your answer matches one of the four options
+4. If it doesn't match, change the numbers and redo
+5. Countable items (people, objects) MUST be whole numbers
+6. Money must be valid currency amounts (e.g., $1.50 not $1.333)
+7. If the math doesn't work cleanly, start over with different numbers
+
+## DIFFICULTY CALIBRATION (CRITICAL)
+Difficulty is RELATIVE TO THE LEVEL — what is "hard" for P1 is "easy" for P3.
+
+### P1-P2 Difficulty:
+- Easy: Single-step, small numbers (e.g., "3 + 5 = ?", "Count the shapes")
+- Medium: Two-step problem or numbers requiring carrying/borrowing (e.g., "Siti has 15 stickers. She gives away 8 and gets 5 more. How many now?")
+- Hard: Multi-step word problem with comparison or logic (e.g., "Ahmad has 12 more stickers than Mei. Together they have 40. How many does Mei have?")
+
+### P3-P4 Difficulty:
+- Easy: Single concept, straightforward (e.g., "What is 3/4 of 20?")
+- Medium: Two concepts combined (e.g., "A rectangle has length 12 cm and width 8 cm. Find its area and perimeter.")
+- Hard: Multi-step word problem requiring careful reading (e.g., "Ahmad buys 3 books at $4.50 each and pays with a $20 note. He uses the change to buy stickers at $0.60 each. How many stickers can he buy?")
+
+### P5-P6 Difficulty:
+- Easy: Direct calculation or single-concept application (e.g., "Express 3/5 as a percentage")
+- Medium: Word problem with 2-3 steps (e.g., "Ahmad has 3/4 of a cake. He eats 1/3 of it. How much is left?")
+- Hard: Heuristic word problems requiring non-obvious reasoning:
+  * MUST be a word problem, never a raw equation
+  * Requires forming the equation from the story, not just solving a given one
+  * Uses before/after models, constant-part reasoning, working backwards, or multi-concept integration
+  * Example patterns: "A train goes at speed X one way and speed Y back, find average speed", "After giving away 1/3, the ratio changed from 5:3 to 2:1, find original", "Two taps fill a tank at different rates"
+  * If a P5-P6 student can solve it in under 30 seconds mentally, it is NOT hard
+
+## TOPIC HANDLING
+- If topic is generic ("math"), create a diverse mix appropriate for the level
+- Set the "topic" field to the actual math concept (e.g., "Fractions"), not the user's input
+
+## EXPLANATION FORMAT
+- Max 2-3 sentences. Format: "Step 1: [step]. Step 2: [step]. Answer: [result]."
+
+## SINGAPORE CONTEXT
+- SGD for money, Singaporean names, local references where appropriate
+
+## FORMAT
+- Use "x" for multiplication, "/" for fractions, plain text only. No LaTeX.
+- Return ONLY a JSON array — no code fences, no extra text
+
+## JSON SCHEMA (per question):
+{ "id": "Generated-<level>-<topic>-<N>", "level": "P1"-"P6", "topic": "<math topic>", "subtopic": "<specific>", "difficulty": "easy"|"medium"|"hard", "question": "<text>", "options": { "A": "", "B": "", "C": "", "D": "" }, "correctAnswer": "A"|"B"|"C"|"D", "explanation": "<concise>" }`;
 
 /** Shape of a question parsed from AI-generated JSON (before validation) */
 interface RawGeneratedQuestion {
@@ -131,7 +148,7 @@ interface RawGeneratedQuestion {
 function parseQuizQuestions(response: string, expectedCount: number, level: PrimaryLevel, topic: string): QuizQuestion[] {
   try {
     // Strip markdown code fences if present
-    let cleaned = response.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+    const cleaned = response.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
 
     // Try to extract JSON array from response
     let jsonMatch = cleaned.match(/\[[\s\S]*\]/);
@@ -204,15 +221,95 @@ function parseQuizQuestions(response: string, expectedCount: number, level: Prim
     }
 
     // Enforce exact question count — trim if AI generated more than requested
-    if (questions.length > expectedCount) {
-      return questions.slice(0, expectedCount);
+    const trimmed = questions.length > expectedCount
+      ? questions.slice(0, expectedCount)
+      : questions;
+
+    if (trimmed.length < expectedCount) {
+      throw new Error(`Generated ${trimmed.length} questions, expected ${expectedCount}`);
     }
 
-    return questions;
+    // Server-side sanitization: strip any LaTeX that slipped through despite prompt rules
+    const sanitized = trimmed.map(q => ({
+      ...q,
+      question: formatLatexToKidFriendly(q.question),
+      options: {
+        A: formatLatexToKidFriendly(q.options.A),
+        B: formatLatexToKidFriendly(q.options.B),
+        C: formatLatexToKidFriendly(q.options.C),
+        D: formatLatexToKidFriendly(q.options.D),
+      },
+      explanation: formatLatexToKidFriendly(q.explanation),
+    }));
+
+    return sanitized;
   } catch (error) {
     console.error('Failed to parse quiz questions:', error);
     throw new Error(`Failed to parse quiz questions: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
+}
+
+function shuffleQuestions(questions: QuizQuestion[]): QuizQuestion[] {
+  const shuffled = [...questions];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+function summarizeValidationIssues(issues: QuizQualityIssue[]): string {
+  return issues
+    .slice(0, 5)
+    .map(issue => `Q${issue.questionIndex + 1} ${issue.code}`)
+    .join('; ');
+}
+
+function buildQualityRetryInstruction(issues: QuizQualityIssue[], replacementCount: number): string {
+  const issueHints = issues
+    .slice(0, 6)
+    .map(issue => `Q${issue.questionIndex + 1}: ${issue.code} (${issue.message})`)
+    .join('\n- ');
+
+  return [
+    `REGENERATE EXACTLY ${replacementCount} NEW QUESTIONS to replace failed ones.`,
+    'Do not repeat previously generated wording.',
+    'Fix these failures explicitly:',
+    `- ${issueHints}`,
+    'Return only valid JSON array with exactly the requested number of replacement questions.',
+  ].join('\n');
+}
+
+function toRuleQualityIssues(issues: QuizIntegrityIssue[]): QuizQualityIssue[] {
+  return issues.map(issue => ({
+    questionIndex: issue.questionIndex,
+    code: issue.code,
+    message: issue.message,
+    source: 'rule',
+    blocking: true,
+    excerpt: issue.excerpt,
+  }));
+}
+
+function toAIQualityIssues(issues: AIValidatorIssue[]): QuizQualityIssue[] {
+  const CRITICAL_REASON_TOKENS = [
+    'LOGIC_CONTRADICTION',
+    'MATH_INCORRECT',
+    'ANSWER_KEY_MISMATCH',
+    'MULTIPLE_CORRECT_OPTIONS',
+    'NO_CORRECT_OPTION',
+    'UNSOLVABLE_TEXT_ONLY',
+    'VISUAL_DEPENDENCY',
+  ];
+
+  return issues.map(issue => ({
+    questionIndex: issue.questionIndex,
+    code: issue.reasonCodes.join('|'),
+    message: issue.message,
+    source: 'ai',
+    blocking: issue.severity === 'critical'
+      && issue.reasonCodes.some(code => CRITICAL_REASON_TOKENS.includes(code)),
+  }));
 }
 
 /**
@@ -223,7 +320,8 @@ async function generateQuizWithGemini(
   level: PrimaryLevel,
   count: number,
   difficulty: string,
-  ragContext?: string
+  ragContext?: string,
+  qualityInstruction?: string
 ): Promise<QuizQuestion[]> {
   const apiKey = config.getGemini().apiKey;
   if (!apiKey) {
@@ -245,8 +343,12 @@ async function generateQuizWithGemini(
     ? `${ragContext}\n\nBased on the style examples above, generate EXACTLY ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}". Not more, not less — exactly ${count} questions.`
     : `Generate EXACTLY ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}". Not more, not less — exactly ${count} questions.`;
 
+  const finalPrompt = qualityInstruction
+    ? `${userPrompt}\n\n${qualityInstruction}`
+    : userPrompt;
+
   const contents: Content[] = [
-    { role: 'user', parts: [{ text: QUIZ_GENERATION_PROMPT + '\n\n' + userPrompt }] },
+    { role: 'user', parts: [{ text: finalPrompt }] },
   ];
 
   try {
@@ -256,8 +358,8 @@ async function generateQuizWithGemini(
       contents,
       config: {
         systemInstruction: QUIZ_GENERATION_PROMPT,
-        temperature: 0.8,
-        maxOutputTokens: 8000,
+        temperature: 0.4,
+        maxOutputTokens: 16000,
       },
     });
 
@@ -282,7 +384,8 @@ async function generateQuizWithOpenRouter(
   level: PrimaryLevel,
   count: number,
   difficulty: string,
-  ragContext?: string
+  ragContext?: string,
+  qualityInstruction?: string
 ): Promise<QuizQuestion[]> {
   const { apiKey, model } = config.getOpenRouter();
 
@@ -293,6 +396,10 @@ async function generateQuizWithOpenRouter(
   const userPrompt = ragContext
     ? `${ragContext}\n\nBased on the style examples above, generate EXACTLY ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}". Not more, not less — exactly ${count} questions.`
     : `Generate EXACTLY ${count} ${difficultyPrompt} multiple-choice questions for ${level} students on the topic of "${topic}". Not more, not less — exactly ${count} questions.`;
+
+  const finalPrompt = qualityInstruction
+    ? `${userPrompt}\n\n${qualityInstruction}`
+    : userPrompt;
 
   try {
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -307,10 +414,10 @@ async function generateQuizWithOpenRouter(
         model,
         messages: [
           { role: 'system', content: QUIZ_GENERATION_PROMPT },
-          { role: 'user', content: userPrompt },
+          { role: 'user', content: finalPrompt },
         ],
-        temperature: 0.8,
-        max_tokens: 8000,
+        temperature: 0.4,
+        max_tokens: 16000,
       }),
     });
 
@@ -333,12 +440,184 @@ async function generateQuizWithOpenRouter(
   }
 }
 
+interface GenerateQuizBatchArgs {
+  useOpenRouter: boolean;
+  topic: string;
+  level: PrimaryLevel;
+  count: number;
+  difficulty: string;
+  ragContext?: string;
+  qualityInstruction?: string;
+}
+
+async function generateQuizBatch(args: GenerateQuizBatchArgs): Promise<QuizQuestion[]> {
+  return args.useOpenRouter
+    ? generateQuizWithOpenRouter(
+      args.topic,
+      args.level,
+      args.count,
+      args.difficulty,
+      args.ragContext,
+      args.qualityInstruction
+    )
+    : generateQuizWithGemini(
+      args.topic,
+      args.level,
+      args.count,
+      args.difficulty,
+      args.ragContext,
+      args.qualityInstruction
+    );
+}
+
+async function generateValidatedQuiz(
+  args: Omit<GenerateQuizBatchArgs, 'qualityInstruction'>
+): Promise<QuizQuestion[]> {
+  const startTime = Date.now();
+  let questions = await generateQuizBatch(args);
+  let lastIssues: QuizQualityIssue[] = [];
+
+  for (let round = 1; round <= MAX_VALIDATION_ROUNDS; round++) {
+    const elapsed = Date.now() - startTime;
+
+    // Time budget exceeded — skip the expensive AI validation call.
+    // If deterministic (rule) checks pass, deliver the quiz immediately.
+    if (elapsed > VALIDATION_TIME_BUDGET_MS) {
+      const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions, args.topic));
+      const ruleBlockers = ruleIssues.filter(issue => issue.blocking);
+
+      if (ruleBlockers.length === 0) {
+        console.warn(
+          `[Quiz Generate] Time budget exceeded (${elapsed}ms/${VALIDATION_TIME_BUDGET_MS}ms) at round ${round} — ` +
+          `deterministic checks pass, delivering quiz without AI validation.`
+        );
+        return shuffleQuestions(questions);
+      }
+
+      // Deterministic blockers remain and we're out of time — must fail
+      console.warn(
+        `[Quiz Generate] Time budget exceeded with ${ruleBlockers.length} deterministic blocker(s): ` +
+        `${summarizeValidationIssues(ruleBlockers)}`
+      );
+      lastIssues = ruleBlockers;
+      break;
+    }
+
+    // Full validation: deterministic rules + AI reviewer
+    const ruleIssues = toRuleQualityIssues(validateQuizBatch(questions, args.topic));
+    const aiIssues = toAIQualityIssues(await validateQuizWithAI({
+      useOpenRouter: args.useOpenRouter,
+      level: args.level,
+      topic: args.topic,
+      difficulty: args.difficulty,
+      questions,
+    }));
+    const allIssues = [...ruleIssues, ...aiIssues];
+    const issues = allIssues.filter(issue => issue.blocking);
+    const warnings = allIssues.filter(issue => !issue.blocking);
+
+    if (warnings.length > 0) {
+      console.warn(`[Quiz Generate] Non-blocking AI warnings: ${summarizeValidationIssues(warnings)}`);
+    }
+
+    if (issues.length === 0) {
+      const totalMs = Date.now() - startTime;
+      console.log(
+        `[Quiz Generate] Validated in ${round} round(s), ${totalMs}ms — ` +
+        `${questions.length} questions, ${warnings.length} warning(s)`
+      );
+      return shuffleQuestions(questions);
+    }
+
+    lastIssues = issues;
+    const failedIndexes = [...new Set(issues.map(issue => issue.questionIndex))].sort((a, b) => a - b);
+    const summary = summarizeValidationIssues(issues);
+    console.warn(`[Quiz Generate] Validation round ${round}/${MAX_VALIDATION_ROUNDS} failed: ${summary}`);
+
+    if (round === MAX_VALIDATION_ROUNDS) {
+      break;
+    }
+
+    // Regenerate only failed questions to preserve healthy items while fixing defects.
+    const replacementCount = failedIndexes.length;
+    const retryInstruction = buildQualityRetryInstruction(issues, replacementCount);
+    let replacements: QuizQuestion[];
+
+    try {
+      replacements = await generateQuizBatch({
+        ...args,
+        count: replacementCount,
+        qualityInstruction: retryInstruction,
+      });
+    } catch (replacementError) {
+      console.warn('[Quiz Generate] Replacement generation failed, regenerating full batch once:', replacementError);
+      questions = await generateQuizBatch({
+        ...args,
+        count: args.count,
+        qualityInstruction: retryInstruction,
+      });
+      continue;
+    }
+
+    if (replacements.length < replacementCount) {
+      console.warn(
+        `[Quiz Generate] Replacement count mismatch (${replacements.length}/${replacementCount}), regenerating full batch.`
+      );
+      questions = await generateQuizBatch({
+        ...args,
+        count: args.count,
+        qualityInstruction: retryInstruction,
+      });
+      continue;
+    }
+
+    const patchedQuestions = [...questions];
+    failedIndexes.forEach((idx, replacementIdx) => {
+      patchedQuestions[idx] = replacements[replacementIdx];
+    });
+    questions = patchedQuestions;
+  }
+
+  // Graceful degradation: if only AI-flagged issues remain (no deterministic
+  // rule blockers), deliver the quiz rather than failing the entire request.
+  // The AI reviewer is advisory — deterministic rules are the hard gate.
+  const ruleBlockersInFinal = lastIssues.filter(issue => issue.source === 'rule');
+  const aiCriticalInFinal = lastIssues.filter(issue => issue.source === 'ai' && issue.blocking);
+  const aiWarningsOnly = lastIssues.filter(issue => issue.source === 'ai' && !issue.blocking);
+
+  // Deliver if only AI warnings remain (no rule blockers and no AI critical issues)
+  if (ruleBlockersInFinal.length === 0 && aiCriticalInFinal.length === 0 && lastIssues.length > 0) {
+    const totalMs = Date.now() - startTime;
+    console.warn(
+      `[Quiz Generate] Delivering quiz with ${aiWarningsOnly.length} AI warning(s) after ` +
+      `${MAX_VALIDATION_ROUNDS} rounds (${totalMs}ms) — no critical issues remain.`
+    );
+    return shuffleQuestions(questions);
+  }
+
+  throw new QuizContentGuardrailError(
+    `Validation failed after ${MAX_VALIDATION_ROUNDS} rounds (${summarizeValidationIssues(lastIssues)})`,
+    lastIssues
+  );
+}
+
 /**
  * POST /api/v1/quiz/generate
  * Generate quiz questions based on parameters
  */
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting (both anti-spam and daily quota)
+    const ip = getClientIp(request);
+    const rateLimitResult = await checkRateLimit(ip);
+
+    if (!rateLimitResult.success) {
+      if (rateLimitResult.quotaStatus && rateLimitResult.dailyRemaining !== undefined) {
+        throw new QuotaError(rateLimitResult.quotaStatus.resetsAt);
+      }
+      throw new RateLimitError(rateLimitResult.retryAfter);
+    }
+
     // Parse and validate request body
     const body = await request.json();
 
@@ -355,7 +634,11 @@ export async function POST(request: NextRequest) {
 
     const { level, topics, difficulty, questionCount } = validatedData;
     const topic = topics[0]; // Use first topic for generation
-    const count = Number(questionCount); // Convert literal type to number
+    const requestedCount = Number(questionCount);
+    const count = Math.min(requestedCount, QUIZ_QUESTION_COUNT_MAX);
+    if (requestedCount > QUIZ_QUESTION_COUNT_MAX) {
+      console.warn(`[Quiz Generate] Requested ${requestedCount} questions; capped to ${QUIZ_QUESTION_COUNT_MAX}`);
+    }
 
     // Determine which AI provider to use
     const useOpenRouter = config.isOpenRouterConfigured();
@@ -376,7 +659,10 @@ export async function POST(request: NextRequest) {
     let ragContext: string | undefined;
     if (isPineconeConfigured()) {
       try {
-        const ragResult = await getRAGContext(`generate ${count} questions for ${level} ${topic}`);
+        const ragResult = await searchByFilters(
+          { gradeLevel: level as GradeLevel, topic, maxResults: 5 },
+          `${level} ${topic} math question`
+        );
         if (ragResult.count > 0) {
           ragContext = ragResult.formattedContext;
           console.log(`RAG context found: ${ragResult.count} examples for quiz generation`);
@@ -386,10 +672,27 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Generate quiz questions — prefer OpenRouter when configured
-    const questions = useOpenRouter
-      ? await generateQuizWithOpenRouter(topic, level, count, difficulty, ragContext)
-      : await generateQuizWithGemini(topic, level, count, difficulty, ragContext);
+    let questions: QuizQuestion[];
+    try {
+      questions = await generateValidatedQuiz({
+        useOpenRouter,
+        topic,
+        level,
+        count,
+        difficulty,
+        ragContext,
+      });
+    } catch (error) {
+      if (error instanceof QuizContentGuardrailError) {
+        console.error('[Quiz Generate] Validation gate blocked quiz output:', error.message, error.issues);
+        throw new AIError(
+          ErrorCode.AI_UNAVAILABLE,
+          QUIZ_GENERATION_FAILURE_MESSAGE,
+          true
+        );
+      }
+      throw error;
+    }
 
     const response = {
       questions,

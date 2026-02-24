@@ -1,0 +1,3522 @@
+[
+  {
+    "id": "P1-MUL-008-H04",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Grouping by 2",
+    "difficulty": "hard",
+    "question": "At the canteen counter, Mei Hua is asked this. Mei Hua has 10 sticks, gets 4 more sticks, then loses 2 sticks. If each sign uses 2 sticks, how many signs can be made?",
+    "options": {
+      "A": "7",
+      "B": "9",
+      "C": "10",
+      "D": "6"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: After getting more, sticks are 10 + 4 = 14. Step 2: After losing 2, sticks left are 12. Step 3: 12 / 2 = 6."
+  },
+  {
+    "id": "P1-TIME-004-H04",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "hard",
+    "question": "At the holiday camp counter, Mei Hua is asked this. The hour hand is between 4 and 5. The minute hand points to 6. We arrived at the holiday camp 30 minutes later and stayed for 1 hour. What time did we leave?",
+    "options": {
+      "A": "5:00 p.m.",
+      "B": "5:30 p.m.",
+      "C": "6:30 p.m.",
+      "D": "6:00 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Clock time is 4:30 p.m.. Step 2: Arrive 30 minutes later at 5:00 p.m.. Step 3: One hour after that is 6:00 p.m.."
+  },
+  {
+    "id": "P1-GRAPH-006-M03",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding equal values in data",
+    "difficulty": "medium",
+    "question": "Inside the birthday party, Ismail attempts this problem. Data list: football - 11, reading club - 9, kite flying - 13, frisbee - 8. Then 2 pupils join reading club. Which category now has the same number as football?",
+    "options": {
+      "A": "kite flying",
+      "B": "frisbee",
+      "C": "reading club",
+      "D": "none"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: reading club becomes 9 + 2 = 11. Step 2: football is 11, so reading club matches football."
+  },
+  {
+    "id": "P1-TIME-004-M06",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "medium",
+    "question": "A classmate in the family picnic asks Hui Min this question. The hour hand is between 6 and 7. The minute hand points to 6. We reached the family picnic 30 minutes later. What time did we reach?",
+    "options": {
+      "A": "6:30 p.m.",
+      "B": "7:00 p.m.",
+      "C": "7:30 p.m.",
+      "D": "6:00 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Clock time is 6:30 p.m.. Step 2: Add 30 minutes to get 7:00 p.m.."
+  },
+  {
+    "id": "P1-TIME-003-M08",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "medium",
+    "question": "On a note in the weekend market, Kavitha finds this question. Child A reaches home at 4:30 p.m.. Child B is 30 minutes later than Child A. Child C is 30 minutes earlier than Child A. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "Child C",
+      "C": "They reach at the same time",
+      "D": "Child B"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Child B reaches at 5:00 p.m. and Child C reaches at 4:00 p.m.. Step 2: Compare with Child A's 4:30 p.m.. Step 3: 5:00 p.m. is latest, so Child B is latest."
+  },
+  {
+    "id": "P1-WHOLE-019-M07",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "Arjun chooses this challenge from the home study table station. Complete the pattern 2, 4, 6, ?, 10. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "8",
+      "B": "9",
+      "C": "10",
+      "D": "11"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Missing number is 8 because the step is 2. Step 2: 8 + 2 = 10."
+  },
+  {
+    "id": "P1-MUL-014-H04",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division by 2",
+    "difficulty": "hard",
+    "question": "At the kitchen counter, Mei Hua is asked this. Group 1 has 11 toy blocks and Group 2 also has 11 toy blocks. 8 toy blocks are transferred to another table. The rest are shared equally into 2 boxes. How many toy blocks are in each box?",
+    "options": {
+      "A": "8",
+      "B": "10",
+      "C": "11",
+      "D": "7"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Together, they have 11 + 11 = 22. Step 2: After transferring 8, 22 - 8 = 14. Step 3: 14 / 2 = 7."
+  },
+  {
+    "id": "P1-MONEY-002-H09",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Matching equal coin values",
+    "difficulty": "hard",
+    "question": "In the school bookshop queue, Zhi Hao thinks about this. Zhi Hao has 1 x 20-cent coin + 6 x 10-cent coin + 1 x 5-cent coin (worth 85 cents). Then 10 cents are added and 15 cents are spent. Which option shows the amount left?",
+    "options": {
+      "A": "3 x 20-cent coin + 2 x 5-cent coin",
+      "B": "1 x 20-cent coin + 7 x 10-cent coin + 1 x 5-cent coin",
+      "C": "2 x 20-cent coin + 8 x 5-cent coin",
+      "D": "2 x 20-cent coin + 1 x 10-cent coin + 8 x 5-cent coin"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Start with 85 cents. Step 2: After adding 10 cents and spending 15 cents, amount left is 85 + 10 - 15 = 80 cents. Step 3: The matching option is 2 x 20-cent coin + 8 x 5-cent coin."
+  },
+  {
+    "id": "P1-MONEY-009-H08",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact dollar amounts",
+    "difficulty": "hard",
+    "question": "Priya reviews this question after visiting the living room. Priya has $67. Priya buys shells for $27 and receives $7 as a gift. Which option shows the money left?",
+    "options": {
+      "A": "17 x $2 note + 14 x $1 coin",
+      "B": "18 x $2 note + 10 x $1 coin",
+      "C": "19 x $2 note + 29 x $1 coin",
+      "D": "16 x $2 note + 15 x $1 coin"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: After buying, money left is $67 - $27 = $40. Step 2: Add the gift: $40 + $7 = $47. Step 3: The matching set is 16 x $2 note + 15 x $1 coin."
+  },
+  {
+    "id": "P1-TIME-001-E06",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the half hour",
+    "difficulty": "easy",
+    "question": "Devi writes this in a worksheet at the living room. The hour hand is between 6 and 7. The minute hand points to 6. What time is it?",
+    "options": {
+      "A": "6:00 p.m.",
+      "B": "7:30 p.m.",
+      "C": "7:00 p.m.",
+      "D": "6:30 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Minute hand at 6 means 30 minutes past the hour. Step 2: The hour hand is between 6 and 7, so the time is 6:30 p.m.."
+  },
+  {
+    "id": "P1-WHOLE-019-H02",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the hawker centre, Siti gets this. Complete the pattern 3, 6, 9, ?, 15. Subtract 2 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "24",
+      "B": "20",
+      "C": "10",
+      "D": "22"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Missing number is 12. Step 2: 12 - 2 = 10. Step 3: Double it: 10 x 2 = 20."
+  },
+  {
+    "id": "P1-MUL-007-E08",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Missing multiplier in equation",
+    "difficulty": "easy",
+    "question": "Priya is helping friends at the swimming lesson and sees this. Each pack has 3 toy blocks. There are 6 toy blocks in all. Complete ? x 3 = 6.",
+    "options": {
+      "A": "1",
+      "B": "3",
+      "C": "5",
+      "D": "2"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Divide total items by items in each pack. Step 2: 6 / 3 = 2. So the missing number is 2."
+  },
+  {
+    "id": "P1-ADD-003-M02",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the swimming lesson and reads this. Sarah collects 4 cookies on Monday, 4 on Tuesday, and 4 on Wednesday. Then 2 cookies are given away. How many are left?",
+    "options": {
+      "A": "12",
+      "B": "11",
+      "C": "6",
+      "D": "10"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total collected is 4 + 4 + 4 = 12. Step 2: After giving away 2, 12 - 2 = 10."
+  },
+  {
+    "id": "P1-WHOLE-019-E02",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "At the weekend market, Siti solves this question. Complete the number pattern: 3, 6, 9, ?, 15.",
+    "options": {
+      "A": "11",
+      "B": "12",
+      "C": "13",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: The pattern increases by 3 each time. Step 2: 9 + 3 = 12."
+  },
+  {
+    "id": "P1-WHOLE-019-M10",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "At the bakery counter event, Xin Yi answers this question. Complete the pattern 5, 7, 9, ?, 13. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "11",
+      "B": "13",
+      "C": "12",
+      "D": "14"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Missing number is 11 because the step is 2. Step 2: 11 + 2 = 13."
+  },
+  {
+    "id": "P1-ADD-003-H02",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the zoo trip, Siti gets this. Siti counts 4 flowers in each of 3 trays. Then 3 extra flowers are added, and 2 flowers go missing. How many are there in all?",
+    "options": {
+      "A": "15",
+      "B": "16",
+      "C": "10",
+      "D": "13"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Three trays give 4 + 4 + 4 = 12. Step 2: Add 3: 12 + 3 = 15. Step 3: Subtract 2: 15 - 2 = 13."
+  },
+  {
+    "id": "P1-TIME-005-H04",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "hard",
+    "question": "At the toy shop counter, Mei Hua is asked this. The hour hand points to 5. The minute hand points to 12. Mei Hua starts dinner 1 hour later and finishes 30 minutes after that. What time does Mei Hua finish dinner?",
+    "options": {
+      "A": "6:00 p.m.",
+      "B": "5:30 p.m.",
+      "C": "7:00 p.m.",
+      "D": "6:30 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Start dinner at 6:00 p.m. (1 hour later). Step 2: Add 30 minutes. Step 3: Finish time is 6:30 p.m.."
+  },
+  {
+    "id": "P1-ADD-003-H03",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "Raju is timed on this question at the museum visit. Raju counts 5 postcards in each of 3 trays. Then 4 extra postcards are added, and 1 postcard goes missing. How many are there in all?",
+    "options": {
+      "A": "19",
+      "B": "14",
+      "C": "18",
+      "D": "20"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Three trays give 5 + 5 + 5 = 15. Step 2: Add 4: 15 + 4 = 19. Step 3: Subtract 1: 19 - 1 = 18."
+  },
+  {
+    "id": "P1-ADD-003-H06",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "At the toy shop activity booth, Devi reads this. Devi counts 8 marbles in each of 3 trays. Then 4 extra marbles are added, and 2 marbles go missing. How many are there in all?",
+    "options": {
+      "A": "28",
+      "B": "29",
+      "C": "22",
+      "D": "26"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Three trays give 8 + 8 + 8 = 24. Step 2: Add 4: 24 + 4 = 28. Step 3: Subtract 2: 28 - 2 = 26."
+  },
+  {
+    "id": "P1-MONEY-010-M05",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact cents amounts",
+    "difficulty": "medium",
+    "question": "Kai starts this maths question during the zoo trip. Kai has 65 cents and spends 10 cents. Which set of coins can make the amount left?",
+    "options": {
+      "A": "1 x 20-cent coin + 3 x 10-cent coin + 1 x 5-cent coin",
+      "B": "1 x 20-cent coin + 3 x 10-cent coin + 3 x 5-cent coin",
+      "C": "1 x 20-cent coin + 4 x 10-cent coin",
+      "D": "1 x 50-cent coin"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Amount left is 65 - 10 = 55 cents. Step 2: The matching coin set is 1 x 20-cent coin + 3 x 10-cent coin + 1 x 5-cent coin."
+  },
+  {
+    "id": "P1-WHOLE-019-E05",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "From the sports day booth, Wei Ling receives this maths challenge. Complete the number pattern: 6, 9, 12, ?, 18.",
+    "options": {
+      "A": "15",
+      "B": "14",
+      "C": "16",
+      "D": "18"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: The pattern increases by 3 each time. Step 2: 12 + 3 = 15."
+  },
+  {
+    "id": "P1-MONEY-012-H04",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Reading and comparing prices",
+    "difficulty": "hard",
+    "question": "At the home study table counter, Mei Hua is asked this. Price list: box of cookies $7, set of postcards $30, pack of postcards $22, tray of toy cars $18. A child buys box of cookies and pack of postcards and uses a $5 voucher. How much does the child pay?",
+    "options": {
+      "A": "$29",
+      "B": "$20",
+      "C": "$26",
+      "D": "$24"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: box of cookies + pack of postcards costs $7 + $22 = $29. Step 2: After using the voucher, pay $29 - $5 = $24."
+  },
+  {
+    "id": "P1-ADD-003-E09",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "At a corner in the MRT kiosk, Zhi Hao works on this question. What is 3 + 3 + 3?",
+    "options": {
+      "A": "8",
+      "B": "6",
+      "C": "9",
+      "D": "10"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the first two numbers: 3 + 3 = 6. Step 2: Add the third 3: 6 + 3 = 9."
+  },
+  {
+    "id": "P1-GRAPH-006-H03",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding equal values in data",
+    "difficulty": "hard",
+    "question": "Raju is timed on this question at the toy shop. Data list: football - 11, reading club - 10, kite flying - 12, frisbee - 14. Then 1 pupils leave football and 2 pupils join reading club. Which category now has the same number as football?",
+    "options": {
+      "A": "kite flying",
+      "B": "frisbee",
+      "C": "reading club",
+      "D": "none"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: New football count is 11 - 1 = 10. Step 2: New reading club count is 10 + 2 = 12. Step 3: Since both are 10, the matching category is reading club."
+  },
+  {
+    "id": "P1-MONEY-009-E10",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact dollar amounts",
+    "difficulty": "easy",
+    "question": "Li Ting hears this question announced in the birthday party. A flowers set costs $62. Which set of notes and coins makes exactly $62?",
+    "options": {
+      "A": "11 x $2 note + 41 x $1 coin",
+      "B": "10 x $2 note + 42 x $1 coin",
+      "C": "12 x $2 note + 37 x $1 coin",
+      "D": "13 x $2 note + 38 x $1 coin"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Add the values in each option. Step 2: The set that totals exactly $62 is 10 x $2 note + 42 x $1 coin."
+  },
+  {
+    "id": "P1-TIME-005-M03",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "medium",
+    "question": "Inside the science corner, Ismail attempts this problem. The hour hand points to 4. The minute hand points to 12. Ismail starts homework then and eats dinner 1 hour later. What time does Ismail eat dinner?",
+    "options": {
+      "A": "4:00 p.m.",
+      "B": "4:30 p.m.",
+      "C": "5:00 p.m.",
+      "D": "5:30 p.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Starting time is 4:00 p.m.. Step 2: One hour later is 5:00 p.m.."
+  },
+  {
+    "id": "P1-GRAPH-006-E01",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding equal values in data",
+    "difficulty": "easy",
+    "question": "Ahmad is at the living room. Data list: badminton - 11, robotics club - 11, cycling - 7, volleyball - 13. Which category has the same number as badminton?",
+    "options": {
+      "A": "robotics club",
+      "B": "cycling",
+      "C": "volleyball",
+      "D": "none"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: badminton has 11. Step 2: robotics club also has 11. So robotics club has the same number."
+  },
+  {
+    "id": "P1-ADD-003-H04",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "At the park outing counter, Mei Hua is asked this. Mei Hua counts 6 keychains in each of 3 trays. Then 2 extra keychains are added, and 2 keychains go missing. How many are there in all?",
+    "options": {
+      "A": "20",
+      "B": "16",
+      "C": "19",
+      "D": "18"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Three trays give 6 + 6 + 6 = 18. Step 2: Add 2: 18 + 2 = 20. Step 3: Subtract 2: 20 - 2 = 18."
+  },
+  {
+    "id": "P1-GRAPH-018-H09",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Adding two values from data",
+    "difficulty": "hard",
+    "question": "In the music class queue, Zhi Hao thinks about this. Data list: dance club - 8, model making - 9 pencils. dance club gets 2 more pencils and model making gives away 1. How many pencils are there in total now?",
+    "options": {
+      "A": "18",
+      "B": "17",
+      "C": "19",
+      "D": "20"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: New counts are dance club: 10 and model making: 8. Step 2: Add them: 10 + 8 = 18."
+  },
+  {
+    "id": "P1-ADD-003-E10",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "Li Ting hears this question announced in the HDB void deck. What is 4 + 4 + 4?",
+    "options": {
+      "A": "8",
+      "B": "13",
+      "C": "11",
+      "D": "12"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add the first two numbers: 4 + 4 = 8. Step 2: Add the third 4: 8 + 4 = 12."
+  },
+  {
+    "id": "P1-MONEY-010-M02",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact cents amounts",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the community centre and reads this. Sarah has 50 cents and spends 10 cents. Which set of coins can make the amount left?",
+    "options": {
+      "A": "1 x 20-cent coin + 1 x 10-cent coin + 4 x 5-cent coin",
+      "B": "1 x 20-cent coin + 1 x 10-cent coin + 2 x 5-cent coin",
+      "C": "2 x 20-cent coin + 1 x 5-cent coin",
+      "D": "3 x 10-cent coin + 1 x 5-cent coin"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Amount left is 50 - 10 = 40 cents. Step 2: The matching coin set is 1 x 20-cent coin + 1 x 10-cent coin + 2 x 5-cent coin."
+  },
+  {
+    "id": "P1-GRAPH-015-M04",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding the least value",
+    "difficulty": "medium",
+    "question": "While waiting at the toy shop, Aisha practises this. Data list: skipping - 10, model making - 7, frisbee - 12, lego building - 12 buttons. Then model making gets 2 more buttons. Which category has the least buttons now?",
+    "options": {
+      "A": "frisbee",
+      "B": "lego building",
+      "C": "skipping",
+      "D": "model making"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Update model making's count: 7 + 2 = 9. Step 2: Compare 10, 9, 12, and 12. The smallest is 9, so model making has the least buttons."
+  },
+  {
+    "id": "P1-WHOLE-019-H08",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "Priya reviews this question after visiting the music class. Complete the pattern 3, 6, 9, ?, 15. Subtract 2 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "24",
+      "B": "10",
+      "C": "22",
+      "D": "20"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Missing number is 12. Step 2: 12 - 2 = 10. Step 3: Double it: 10 x 2 = 20."
+  },
+  {
+    "id": "P1-ADD-003-H08",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "Priya reviews this question after visiting the school bookshop. Priya counts 10 storybooks in each of 3 trays. Then 3 extra storybooks are added, and 2 storybooks go missing. How many are there in all?",
+    "options": {
+      "A": "33",
+      "B": "28",
+      "C": "34",
+      "D": "31"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Three trays give 10 + 10 + 10 = 30. Step 2: Add 3: 30 + 3 = 33. Step 3: Subtract 2: 33 - 2 = 31."
+  },
+  {
+    "id": "P1-TIME-005-E06",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "easy",
+    "question": "Devi writes this in a worksheet at the hawker centre. The hour hand points to 7. The minute hand points to 12. Devi takes dinner at ________. Which answer is correct?",
+    "options": {
+      "A": "7:30 p.m.",
+      "B": "7:00 p.m.",
+      "C": "8:00 p.m.",
+      "D": "8:30 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Minute hand at 12 means exact hour. Step 2: Hour hand at 7 means the time is 7:00 p.m.."
+  },
+  {
+    "id": "P1-TIME-003-E03",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "easy",
+    "question": "Raju's teacher at the home study table asks this. Child A reaches home at 4:00 p.m., Child B at 4:30 p.m., and Child C at 5:00 p.m.. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "Child B",
+      "C": "Child C",
+      "D": "They reach at the same time"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Compare 4:00 p.m., 4:30 p.m., and 5:00 p.m.. Step 2: 5:00 p.m. is the latest, so Child C reaches home the latest."
+  },
+  {
+    "id": "P1-ADD-003-H05",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "Wei Ling practices this during a break in the holiday camp. Wei Ling counts 7 stickers in each of 3 trays. Then 3 extra stickers are added, and 1 sticker goes missing. How many are there in all?",
+    "options": {
+      "A": "20",
+      "B": "24",
+      "C": "23",
+      "D": "25"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Three trays give 7 + 7 + 7 = 21. Step 2: Add 3: 21 + 3 = 24. Step 3: Subtract 1: 24 - 1 = 23."
+  },
+  {
+    "id": "P1-GRAPH-016-M02",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the holiday camp and reads this. Data list: football - 10, robotics club - 7, dance club - 8, drawing - 11 buttons. dance club gets 3 more buttons. How many buttons does dance club have now?",
+    "options": {
+      "A": "8",
+      "B": "11",
+      "C": "10",
+      "D": "12"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: dance club starts with 8 buttons. Step 2: Add 3: 8 + 3 = 11."
+  },
+  {
+    "id": "P1-GRAPH-006-E07",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding equal values in data",
+    "difficulty": "easy",
+    "question": "In the HDB void deck, Ethan is checking this problem. Data list: chess club - 11, swimming - 11, gardening - 7, lego building - 13. Which category has the same number as chess club?",
+    "options": {
+      "A": "gardening",
+      "B": "lego building",
+      "C": "swimming",
+      "D": "none"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: chess club has 11. Step 2: swimming also has 11. So swimming has the same number."
+  },
+  {
+    "id": "P1-ADD-003-E04",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "During an activity in the living room, Mei Hua reads this task. What is 6 + 6 + 6?",
+    "options": {
+      "A": "12",
+      "B": "17",
+      "C": "19",
+      "D": "18"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add the first two numbers: 6 + 6 = 12. Step 2: Add the third 6: 12 + 6 = 18."
+  },
+  {
+    "id": "P1-WHOLE-019-M01",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "A helper at the neighbourhood store gives Darren this task. Complete the pattern 2, 4, 6, ?, 10. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "10",
+      "B": "8",
+      "C": "9",
+      "D": "11"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Missing number is 8 because the step is 2. Step 2: 8 + 2 = 10."
+  },
+  {
+    "id": "P1-TIME-003-E07",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "easy",
+    "question": "In the fruit stall, Ethan is checking this problem. Child A reaches home at 3:00 p.m., Child B at 3:30 p.m., and Child C at 4:00 p.m.. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "Child B",
+      "C": "Child C",
+      "D": "They reach at the same time"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Compare 3:00 p.m., 3:30 p.m., and 4:00 p.m.. Step 2: 4:00 p.m. is the latest, so Child C reaches home the latest."
+  },
+  {
+    "id": "P1-GRAPH-017-E07",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two people in data",
+    "difficulty": "easy",
+    "question": "In the sports day booth, Ethan is checking this problem. Data list: science club - 10 paper clips, kite flying - 8 paper clips. How many more paper clips does science club have than kite flying?",
+    "options": {
+      "A": "1",
+      "B": "3",
+      "C": "2",
+      "D": "18"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: \"How many more\" means subtract. Step 2: 10 - 8 = 2."
+  },
+  {
+    "id": "P1-ADD-003-M09",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "Jun Wei tries this puzzle at the community centre table. Jun Wei collects 3 coins on Monday, 3 on Tuesday, and 3 on Wednesday. Then 3 coins are given away. How many are left?",
+    "options": {
+      "A": "8",
+      "B": "9",
+      "C": "6",
+      "D": "3"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total collected is 3 + 3 + 3 = 9. Step 2: After giving away 3, 9 - 3 = 6."
+  },
+  {
+    "id": "P1-TIME-004-E08",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "easy",
+    "question": "Priya is helping friends at the MRT kiosk and sees this. The hour hand is between 8 and 9. The minute hand points to 6. We were at the MRT kiosk at ________. Which answer fits the blank?",
+    "options": {
+      "A": "8:00 p.m.",
+      "B": "9:00 p.m.",
+      "C": "9:30 p.m.",
+      "D": "8:30 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Minute hand at 6 means half past. Step 2: Half past 8 is 8:30 p.m.."
+  },
+  {
+    "id": "P1-MUL-022-H07",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Checking fair sharing",
+    "difficulty": "hard",
+    "question": "A worksheet in the birthday party gives Ethan this task. 16 paper clips are prepared. 4 more are added, then 4 are removed. Can the remaining paper clips be shared equally among 4 children?",
+    "options": {
+      "A": "No, it is not equal.",
+      "B": "Yes, each child gets 5.",
+      "C": "Yes, each child gets 4.",
+      "D": "Yes, each child gets 3."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: After adding and removing, remaining items are 16. Step 2: 16 / 4 = 4 with no remainder. So the sharing is equal."
+  },
+  {
+    "id": "P1-GRAPH-017-M01",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two people in data",
+    "difficulty": "medium",
+    "question": "A helper at the holiday camp gives Darren this task. Data list: football - 10, art club - 8 stamps. art club gets 1 more stamp. How many more stamps does football have now?",
+    "options": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "0"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: art club's new count is 8 + 1 = 9. Step 2: Difference is 10 - 9 = 1."
+  },
+  {
+    "id": "P1-MONEY-016-E10",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Finding cost from paid amount and change",
+    "difficulty": "easy",
+    "question": "Li Ting hears this question announced in the museum visit. Li Ting bought erasers and paid $48. Li Ting got $11 back. How much did the item cost?",
+    "options": {
+      "A": "$48",
+      "B": "$37",
+      "C": "$11",
+      "D": "$39"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Cost = amount paid - change. Step 2: $48 - $11 = $37."
+  },
+  {
+    "id": "P1-TIME-001-M05",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the half hour",
+    "difficulty": "medium",
+    "question": "Kai starts this maths question during the art class. The hour hand is between 5 and 6. The minute hand points to 6. A lesson starts 30 minutes later. What time does it start?",
+    "options": {
+      "A": "6:30 a.m.",
+      "B": "5:30 a.m.",
+      "C": "6:00 a.m.",
+      "D": "5:00 a.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: The clock time is 5:30 a.m.. Step 2: Add 30 minutes: 5:30 a.m. + 30 minutes = 6:00 a.m.."
+  },
+  {
+    "id": "P1-MONEY-016-M02",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Finding cost from paid amount and change",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the holiday camp and reads this. Sarah paid $44 and got $13 back for buttons. Sarah also bought coins for $6. How much was spent in total?",
+    "options": {
+      "A": "$31",
+      "B": "$37",
+      "C": "$50",
+      "D": "$35"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: First item cost is $44 - $13 = $31. Step 2: Add the second item: $31 + $6 = $37."
+  },
+  {
+    "id": "P1-MONEY-016-H01",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Finding cost from paid amount and change",
+    "difficulty": "hard",
+    "question": "Ahmad sees this problem printed for the living room. Ahmad paid $43 and got $11 back for straws. Ahmad also buys storybooks for $6. Then Ahmad pays $43 for both items together. How much change is received?",
+    "options": {
+      "A": "$5",
+      "B": "$11",
+      "C": "$38",
+      "D": "$7"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: First item costs $43 - $11 = $32. Step 2: Total for both items is $32 + $6 = $38. Step 3: Change is $43 - $38 = $5."
+  },
+  {
+    "id": "P1-GRAPH-016-H06",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "hard",
+    "question": "At the MRT kiosk activity booth, Devi reads this. Data list: chess club - 14, music club - 11, kite flying - 12, volleyball - 15 flowers. kite flying gets 3 flowers and then gives away 2 flowers. How many flowers does kite flying have now?",
+    "options": {
+      "A": "15",
+      "B": "13",
+      "C": "10",
+      "D": "14"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: After receiving, kite flying has 12 + 3 = 15. Step 2: After giving away 2, 15 - 2 = 13."
+  },
+  {
+    "id": "P1-WHOLE-019-M05",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "Kai starts this maths question during the classroom. Complete the pattern 6, 9, 12, ?, 18. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "17",
+      "B": "15",
+      "C": "16",
+      "D": "18"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Missing number is 15 because the step is 3. Step 2: 15 + 2 = 17."
+  },
+  {
+    "id": "P1-MONEY-011-M10",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Budgeting within a fixed amount",
+    "difficulty": "medium",
+    "question": "At the school bookshop event, Xin Yi answers this question. Prices: pack of erasers $6, set of straws $4, bundle of toy cars $8. Xin Yi has $9 and gets $1 more. Which two items can be bought now?",
+    "options": {
+      "A": "pack of erasers and bundle of toy cars",
+      "B": "pack of erasers and set of straws",
+      "C": "set of straws and bundle of toy cars",
+      "D": "No pair can be bought"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Total money is $9 + $1 = $10. Step 2: pack of erasers + set of straws = $10, which is affordable. The other pairs are not. So pack of erasers and set of straws is correct."
+  },
+  {
+    "id": "P1-MONEY-002-E08",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Matching equal coin values",
+    "difficulty": "easy",
+    "question": "Priya is helping friends at the fruit stall and sees this. Priya has these coins: 1 x 20-cent coin + 1 x 10-cent coin + 7 x 5-cent coin. Which option has the same value?",
+    "options": {
+      "A": "1 x 20-cent coin + 2 x 10-cent coin + 6 x 5-cent coin",
+      "B": "1 x 20-cent coin + 4 x 10-cent coin",
+      "C": "1 x 20-cent coin + 4 x 10-cent coin + 3 x 5-cent coin",
+      "D": "1 x 20-cent coin + 3 x 10-cent coin + 3 x 5-cent coin"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add the shown coins to get 65 cents. Step 2: Find the option that also totals 65 cents. That option is 1 x 20-cent coin + 3 x 10-cent coin + 3 x 5-cent coin."
+  },
+  {
+    "id": "P1-ADD-003-E08",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "Priya is helping friends at the hawker centre and sees this. What is 10 + 10 + 10?",
+    "options": {
+      "A": "20",
+      "B": "29",
+      "C": "31",
+      "D": "30"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add the first two numbers: 10 + 10 = 20. Step 2: Add the third 10: 20 + 10 = 30."
+  },
+  {
+    "id": "P1-MUL-010-E05",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Grouping into boxes",
+    "difficulty": "easy",
+    "question": "From the swimming lesson, Wei Ling receives this maths challenge. There are 30 coins. If each box holds 5, how many boxes are needed?",
+    "options": {
+      "A": "6",
+      "B": "5",
+      "C": "7",
+      "D": "25"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Equal grouping uses division. Step 2: 30 / 5 = 6. So 6 boxes are needed."
+  },
+  {
+    "id": "P1-MONEY-011-M08",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Budgeting within a fixed amount",
+    "difficulty": "medium",
+    "question": "On a note in the toy shop, Kavitha finds this question. Prices: pack of balloons $6, set of notebooks $4, bundle of stickers $8. Kavitha has $9 and gets $1 more. Which two items can be bought now?",
+    "options": {
+      "A": "pack of balloons and bundle of stickers",
+      "B": "set of notebooks and bundle of stickers",
+      "C": "No pair can be bought",
+      "D": "pack of balloons and set of notebooks"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total money is $9 + $1 = $10. Step 2: pack of balloons + set of notebooks = $10, which is affordable. The other pairs are not. So pack of balloons and set of notebooks is correct."
+  },
+  {
+    "id": "P1-MUL-008-H07",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Grouping by 2",
+    "difficulty": "hard",
+    "question": "A worksheet in the library gives Ethan this task. Ethan has 16 sticks, gets 4 more sticks, then loses 2 sticks. If each sign uses 2 sticks, how many signs can be made?",
+    "options": {
+      "A": "10",
+      "B": "12",
+      "C": "9",
+      "D": "13"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: After getting more, sticks are 16 + 4 = 20. Step 2: After losing 2, sticks left are 18. Step 3: 18 / 2 = 9."
+  },
+  {
+    "id": "P1-MUL-011-M09",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Forming equal groups",
+    "difficulty": "medium",
+    "question": "Jun Wei tries this puzzle at the neighbourhood store table. Jun Wei has 15 paper clips. 5 are kept aside. The rest are grouped in sets of 5. How many groups are formed?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "1"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Remaining items are 15 - 5 = 10. Step 2: 10 / 5 = 2. So 2 groups are formed."
+  },
+  {
+    "id": "P1-MONEY-002-E01",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Matching equal coin values",
+    "difficulty": "easy",
+    "question": "Ahmad is at the school fair. Ahmad has these coins: 1 x 10-cent coin + 4 x 5-cent coin. Which option has the same value?",
+    "options": {
+      "A": "5 x 5-cent coin",
+      "B": "3 x 10-cent coin + 1 x 5-cent coin",
+      "C": "3 x 10-cent coin",
+      "D": "1 x 20-cent coin + 4 x 5-cent coin"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the shown coins to get 30 cents. Step 2: Find the option that also totals 30 cents. That option is 3 x 10-cent coin."
+  },
+  {
+    "id": "P1-WHOLE-019-H03",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "Raju is timed on this question at the MRT kiosk. Complete the pattern 4, 8, 12, ?, 20. Subtract 1 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "32",
+      "B": "15",
+      "C": "30",
+      "D": "31"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Missing number is 16. Step 2: 16 - 1 = 15. Step 3: Double it: 15 x 2 = 30."
+  },
+  {
+    "id": "P1-TIME-005-H07",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "hard",
+    "question": "A worksheet in the canteen gives Ethan this task. The hour hand points to 8. The minute hand points to 12. Ethan starts dinner 1 hour later and finishes 30 minutes after that. What time does Ethan finish dinner?",
+    "options": {
+      "A": "9:00 p.m.",
+      "B": "8:30 p.m.",
+      "C": "9:30 p.m.",
+      "D": "10:00 p.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Start dinner at 9:00 p.m. (1 hour later). Step 2: Add 30 minutes. Step 3: Finish time is 9:30 p.m.."
+  },
+  {
+    "id": "P1-MONEY-011-H03",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Budgeting within a fixed amount",
+    "difficulty": "hard",
+    "question": "Raju is timed on this question at the classroom. Prices: pack of stamps $7, set of tokens $4, bundle of crayons $9. Raju has $12, keeps $2 for bus fare, and has a $1 voucher. Which two items can be bought exactly with the shopping money?",
+    "options": {
+      "A": "pack of stamps and bundle of crayons",
+      "B": "set of tokens and bundle of crayons",
+      "C": "pack of stamps and set of tokens",
+      "D": "No pair can be bought"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Shopping money is $12 - $2 = $10. Step 2: pack of stamps + set of tokens is $11, and after voucher pay $11 - $1 = $10. Step 3: $10 matches $10, so pack of stamps and set of tokens is correct."
+  },
+  {
+    "id": "P1-TIME-001-E08",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the half hour",
+    "difficulty": "easy",
+    "question": "Priya is helping friends at the bakery counter and sees this. The hour hand is between 8 and 9. The minute hand points to 6. What time is it?",
+    "options": {
+      "A": "8:00 p.m.",
+      "B": "9:00 p.m.",
+      "C": "9:30 p.m.",
+      "D": "8:30 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Minute hand at 6 means 30 minutes past the hour. Step 2: The hour hand is between 8 and 9, so the time is 8:30 p.m.."
+  },
+  {
+    "id": "P1-GRAPH-018-E06",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Adding two values from data",
+    "difficulty": "easy",
+    "question": "Devi writes this in a worksheet at the sports day booth. Data list: reading club - 11 erasers, kite flying - 9 erasers. How many erasers are there altogether?",
+    "options": {
+      "A": "19",
+      "B": "20",
+      "C": "21",
+      "D": "2"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Add both counts. Step 2: 11 + 9 = 20."
+  },
+  {
+    "id": "P1-MUL-010-H02",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Grouping into boxes",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the canteen, Siti gets this. There are 4 erasers. 4 more are added and then 2 are removed. The rest are packed 2 in each box. How many boxes are made?",
+    "options": {
+      "A": "4",
+      "B": "3",
+      "C": "6",
+      "D": "7"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: After adding, there are 4 + 4 = 8. Step 2: After removing 2, 8 - 2 = 6. Step 3: 6 / 2 = 3."
+  },
+  {
+    "id": "P1-TIME-005-E07",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "easy",
+    "question": "In the MRT kiosk, Ethan is checking this problem. The hour hand points to 8. The minute hand points to 12. Ethan takes dinner at ________. Which answer is correct?",
+    "options": {
+      "A": "8:30 p.m.",
+      "B": "9:00 p.m.",
+      "C": "8:00 p.m.",
+      "D": "9:30 p.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Minute hand at 12 means exact hour. Step 2: Hour hand at 8 means the time is 8:00 p.m.."
+  },
+  {
+    "id": "P1-MUL-008-E09",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Sharing equally among 3 groups",
+    "difficulty": "easy",
+    "question": "At a corner in the music class, Zhi Hao works on this question. Miss Wong has 9 coins. She puts an equal number on 3 plates. How many are on each plate?",
+    "options": {
+      "A": "3",
+      "B": "2",
+      "C": "4",
+      "D": "6"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Equal sharing among 3 plates means divide by 3. Step 2: 9 / 3 = 3."
+  },
+  {
+    "id": "P1-ADD-003-M10",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "At the tuition room event, Xin Yi answers this question. Xin Yi collects 4 tokens on Monday, 4 on Tuesday, and 4 on Wednesday. Then 1 token is given away. How many are left?",
+    "options": {
+      "A": "12",
+      "B": "7",
+      "C": "13",
+      "D": "11"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total collected is 4 + 4 + 4 = 12. Step 2: After giving away 1, 12 - 1 = 11."
+  },
+  {
+    "id": "P1-TIME-001-H01",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the half hour",
+    "difficulty": "hard",
+    "question": "Ahmad sees this problem printed for the community centre. The hour hand is between 1 and 2. The minute hand points to 6. Practice starts 30 minutes later and lasts 1 hour. What time does practice end?",
+    "options": {
+      "A": "2:30 a.m.",
+      "B": "2:00 a.m.",
+      "C": "3:00 a.m.",
+      "D": "3:30 a.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: The given time is 1:30 a.m.. Step 2: Start time is 2:00 a.m. (30 minutes later). Step 3: One hour after 2:00 a.m. is 3:00 a.m.."
+  },
+  {
+    "id": "P1-ADD-003-E06",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "Devi writes this in a worksheet at the bakery counter. What is 8 + 8 + 8?",
+    "options": {
+      "A": "16",
+      "B": "25",
+      "C": "23",
+      "D": "24"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add the first two numbers: 8 + 8 = 16. Step 2: Add the third 8: 16 + 8 = 24."
+  },
+  {
+    "id": "P1-MUL-012-E06",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Writing equations from equal groups",
+    "difficulty": "easy",
+    "question": "Devi writes this in a worksheet at the science corner. A picture has 3 equal rows with 4 keychains in each row. Which equation matches?",
+    "options": {
+      "A": "3 + 4 = 7",
+      "B": "3 x 4 = 12",
+      "C": "3 x 4 = 15",
+      "D": "4 x 3 = 7"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Equal rows mean multiplication. Step 2: 3 x 4 = 12. So the matching equation is 3 x 4 = 12."
+  },
+  {
+    "id": "P1-TIME-001-E07",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the half hour",
+    "difficulty": "easy",
+    "question": "In the kitchen, Ethan is checking this problem. The hour hand is between 7 and 8. The minute hand points to 6. What time is it?",
+    "options": {
+      "A": "7:00 a.m.",
+      "B": "8:00 a.m.",
+      "C": "7:30 a.m.",
+      "D": "8:30 a.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Minute hand at 6 means 30 minutes past the hour. Step 2: The hour hand is between 7 and 8, so the time is 7:30 a.m.."
+  },
+  {
+    "id": "P1-MUL-011-H04",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Forming equal groups",
+    "difficulty": "hard",
+    "question": "At the library counter, Mei Hua is asked this. Mei Hua starts with 20 shells, receives 10 more, and uses 5. The rest are grouped in sets of 5. How many groups are formed?",
+    "options": {
+      "A": "6",
+      "B": "8",
+      "C": "9",
+      "D": "5"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: After receiving more, items become 20 + 10 = 30. Step 2: After using 5, 30 - 5 = 25. Step 3: 25 / 5 = 5."
+  },
+  {
+    "id": "P1-MUL-007-M09",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Counting groups of 3",
+    "difficulty": "medium",
+    "question": "Jun Wei tries this puzzle at the museum visit table. There are 10 groups of 3 toy cars. Then 1 more group of 3 is added. How many toy cars are there now?",
+    "options": {
+      "A": "33",
+      "B": "30",
+      "C": "36",
+      "D": "37"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: New groups = 10 + 1 = 11. Step 2: Total is 11 x 3 = 33."
+  },
+  {
+    "id": "P1-ADD-003-E02",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "At the library, Siti solves this question. What is 4 + 4 + 4?",
+    "options": {
+      "A": "8",
+      "B": "13",
+      "C": "11",
+      "D": "12"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add the first two numbers: 4 + 4 = 8. Step 2: Add the third 4: 8 + 4 = 12."
+  },
+  {
+    "id": "P1-WHOLE-019-H01",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "Ahmad sees this problem printed for the fruit stall. Complete the pattern 2, 4, 6, ?, 10. Subtract 1 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "14",
+      "B": "16",
+      "C": "7",
+      "D": "17"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Missing number is 8. Step 2: 8 - 1 = 7. Step 3: Double it: 7 x 2 = 14."
+  },
+  {
+    "id": "P1-TIME-004-H05",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "hard",
+    "question": "Wei Ling practices this during a break in the toy shop. The hour hand is between 5 and 6. The minute hand points to 6. We arrived at the toy shop 30 minutes later and stayed for 1 hour. What time did we leave?",
+    "options": {
+      "A": "7:00 a.m.",
+      "B": "6:00 a.m.",
+      "C": "6:30 a.m.",
+      "D": "7:30 a.m."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Clock time is 5:30 a.m.. Step 2: Arrive 30 minutes later at 6:00 a.m.. Step 3: One hour after that is 7:00 a.m.."
+  },
+  {
+    "id": "P1-ADD-003-E07",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "In the fruit stall, Ethan is checking this problem. What is 9 + 9 + 9?",
+    "options": {
+      "A": "18",
+      "B": "26",
+      "C": "27",
+      "D": "28"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the first two numbers: 9 + 9 = 18. Step 2: Add the third 9: 18 + 9 = 27."
+  },
+  {
+    "id": "P1-GRAPH-006-E09",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding equal values in data",
+    "difficulty": "easy",
+    "question": "At a corner in the swimming lesson, Zhi Hao works on this question. Data list: science club - 11, skipping - 11, captain's ball - 9, basketball - 15. Which category has the same number as science club?",
+    "options": {
+      "A": "skipping",
+      "B": "captain's ball",
+      "C": "basketball",
+      "D": "none"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: science club has 11. Step 2: skipping also has 11. So skipping has the same number."
+  },
+  {
+    "id": "P1-MONEY-010-E04",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact cents amounts",
+    "difficulty": "easy",
+    "question": "During an activity in the playground, Mei Hua reads this task. A fruit cards costs 50 cents. Which set of coins makes exactly 50 cents?",
+    "options": {
+      "A": "5 x 10-cent coin + 1 x 5-cent coin",
+      "B": "1 x 20-cent coin + 1 x 10-cent coin + 3 x 5-cent coin",
+      "C": "1 x 20-cent coin + 8 x 5-cent coin",
+      "D": "4 x 10-cent coin + 2 x 5-cent coin"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add each option's coins in cents. Step 2: The option that totals 50 cents is 4 x 10-cent coin + 2 x 5-cent coin."
+  },
+  {
+    "id": "P1-MUL-006-M06",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Sharing equally into 2 groups",
+    "difficulty": "medium",
+    "question": "A classmate in the community centre asks Hui Min this question. There are 20 flowers. 2 are removed first. The rest are split into 2 equal groups. How many are in each group?",
+    "options": {
+      "A": "10",
+      "B": "9",
+      "C": "11",
+      "D": "8"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Remaining items are 20 - 2 = 18. Step 2: 18 / 2 = 9."
+  },
+  {
+    "id": "P1-GRAPH-005-H10",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two categories",
+    "difficulty": "hard",
+    "question": "At the end of the library session, Li Ting solves this. Data list: robotics club - 13, cycling - 11. Then 2 pupils leave robotics club and 2 pupils join cycling. How many more pupils chose cycling than robotics club now?",
+    "options": {
+      "A": "4",
+      "B": "2",
+      "C": "0",
+      "D": "1"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: New robotics club count is 13 - 2 = 11. Step 2: New cycling count is 11 + 2 = 13. Step 3: Difference is 13 - 11 = 2."
+  },
+  {
+    "id": "P1-MUL-004-H01",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Sharing equally",
+    "difficulty": "hard",
+    "question": "Ahmad sees this problem printed for the zoo trip. Ahmad has 4 postcards. 4 more are added and then 2 are used. The rest are shared equally among 2 children. How many does each child get?",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "6",
+      "D": "5"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: After adding, total is 4 + 4 = 8. Step 2: After using 2, 8 - 2 = 6. Step 3: 6 / 2 = 3."
+  },
+  {
+    "id": "P1-MUL-017-E06",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Total from equal groups",
+    "difficulty": "easy",
+    "question": "Devi writes this in a worksheet at the tuition room. There are 6 equal groups. Each group has 2 balloons. How many balloons are there altogether?",
+    "options": {
+      "A": "8",
+      "B": "12",
+      "C": "10",
+      "D": "14"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Multiply the number of groups by items per group. Step 2: 6 x 2 = 12."
+  },
+  {
+    "id": "P1-WHOLE-019-H05",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "Wei Ling practices this during a break in the playground. Complete the pattern 6, 9, 12, ?, 18. Subtract 1 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "28",
+      "B": "30",
+      "C": "14",
+      "D": "31"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Missing number is 15. Step 2: 15 - 1 = 14. Step 3: Double it: 14 x 2 = 28."
+  },
+  {
+    "id": "P1-TIME-005-M01",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "medium",
+    "question": "A helper at the art class gives Darren this task. The hour hand points to 2. The minute hand points to 12. Darren starts homework then and eats dinner 1 hour later. What time does Darren eat dinner?",
+    "options": {
+      "A": "3:00 p.m.",
+      "B": "2:00 p.m.",
+      "C": "2:30 p.m.",
+      "D": "3:30 p.m."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Starting time is 2:00 p.m.. Step 2: One hour later is 3:00 p.m.."
+  },
+  {
+    "id": "P1-MONEY-009-M02",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact dollar amounts",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the weekend market and reads this. An item costs $56. Sarah already has $31. Which option shows the extra money needed?",
+    "options": {
+      "A": "7 x $2 note + 12 x $1 coin",
+      "B": "6 x $2 note + 13 x $1 coin",
+      "C": "8 x $2 note + 8 x $1 coin",
+      "D": "9 x $2 note + 38 x $1 coin"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Extra money needed is $56 - $31 = $25. Step 2: Choose the set worth $25. That is 6 x $2 note + 13 x $1 coin."
+  },
+  {
+    "id": "P1-GRAPH-015-H06",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding the least value",
+    "difficulty": "hard",
+    "question": "At the hawker centre activity booth, Devi reads this. Data list: basketball - 14, netball - 10, robotics club - 13, music club - 12 tokens. Then basketball gets 1 tokens and robotics club gives away 2 tokens. Which category has the least tokens now?",
+    "options": {
+      "A": "basketball",
+      "B": "netball",
+      "C": "robotics club",
+      "D": "music club"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: New counts are basketball: 15, netball: 10, robotics club: 11, music club: 12. Step 2: The smallest count is 10, so netball has the least tokens."
+  },
+  {
+    "id": "P1-TIME-004-E07",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "easy",
+    "question": "In the hawker centre, Ethan is checking this problem. The hour hand is between 7 and 8. The minute hand points to 6. We were at the hawker centre at ________. Which answer fits the blank?",
+    "options": {
+      "A": "7:00 a.m.",
+      "B": "8:00 a.m.",
+      "C": "7:30 a.m.",
+      "D": "8:30 a.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Minute hand at 6 means half past. Step 2: Half past 7 is 7:30 a.m.."
+  },
+  {
+    "id": "P1-WHOLE-019-M04",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "While waiting at the school fair, Aisha practises this. Complete the pattern 5, 7, 9, ?, 13. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "11",
+      "B": "12",
+      "C": "14",
+      "D": "13"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Missing number is 11 because the step is 2. Step 2: 11 + 2 = 13."
+  },
+  {
+    "id": "P1-ADD-003-M03",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "Inside the art class, Ismail attempts this problem. Ismail collects 5 origami stars on Monday, 5 on Tuesday, and 5 on Wednesday. Then 3 origami stars are given away. How many are left?",
+    "options": {
+      "A": "15",
+      "B": "14",
+      "C": "12",
+      "D": "7"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total collected is 5 + 5 + 5 = 15. Step 2: After giving away 3, 15 - 3 = 12."
+  },
+  {
+    "id": "P1-ADD-003-E03",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "Raju's teacher at the home study table asks this. What is 5 + 5 + 5?",
+    "options": {
+      "A": "10",
+      "B": "14",
+      "C": "15",
+      "D": "16"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the first two numbers: 5 + 5 = 10. Step 2: Add the third 5: 10 + 5 = 15."
+  },
+  {
+    "id": "P1-MUL-010-H03",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Grouping into boxes",
+    "difficulty": "hard",
+    "question": "Raju is timed on this question at the school fair. There are 9 badges. 6 more are added and then 3 are removed. The rest are packed 3 in each box. How many boxes are made?",
+    "options": {
+      "A": "5",
+      "B": "7",
+      "C": "4",
+      "D": "6"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: After adding, there are 9 + 6 = 15. Step 2: After removing 3, 15 - 3 = 12. Step 3: 12 / 3 = 4."
+  },
+  {
+    "id": "P1-MONEY-012-H06",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Reading and comparing prices",
+    "difficulty": "hard",
+    "question": "At the kitchen activity booth, Devi reads this. Price list: box of rubber bands $9, set of stickers $32, pack of stickers $24, tray of pencils $20. A child buys box of rubber bands and pack of stickers and uses a $5 voucher. How much does the child pay?",
+    "options": {
+      "A": "$33",
+      "B": "$28",
+      "C": "$24",
+      "D": "$30"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: box of rubber bands + pack of stickers costs $9 + $24 = $33. Step 2: After using the voucher, pay $33 - $5 = $28."
+  },
+  {
+    "id": "P1-MONEY-012-H10",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Reading and comparing prices",
+    "difficulty": "hard",
+    "question": "At the end of the MRT kiosk session, Li Ting solves this. Price list: box of fruit cards $7, set of pencils $30, pack of pencils $22, tray of sandwiches $18. A child buys box of fruit cards and pack of pencils and uses a $5 voucher. How much does the child pay?",
+    "options": {
+      "A": "$29",
+      "B": "$24",
+      "C": "$20",
+      "D": "$26"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: box of fruit cards + pack of pencils costs $7 + $22 = $29. Step 2: After using the voucher, pay $29 - $5 = $24."
+  },
+  {
+    "id": "P1-TIME-003-H06",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "hard",
+    "question": "At the toy shop activity booth, Devi reads this. Child A reaches home at 2:30 p.m.. Child B reaches home 45 minutes after Child A. Child C reaches home 30 minutes before Child B. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "They reach at the same time",
+      "C": "Child C",
+      "D": "Child B"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Child B reaches at 3:15 p.m.. Step 2: Child C reaches 30 minutes before Child B, so Child C reaches at 2:45 p.m.. Step 3: 3:15 p.m. is the latest time, so Child B is latest."
+  },
+  {
+    "id": "P1-MONEY-010-M04",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact cents amounts",
+    "difficulty": "medium",
+    "question": "While waiting at the sports day booth, Aisha practises this. Aisha has 60 cents and spends 10 cents. Which set of coins can make the amount left?",
+    "options": {
+      "A": "1 x 20-cent coin + 2 x 10-cent coin + 4 x 5-cent coin",
+      "B": "2 x 20-cent coin + 3 x 5-cent coin",
+      "C": "2 x 10-cent coin + 5 x 5-cent coin",
+      "D": "1 x 20-cent coin + 2 x 10-cent coin + 2 x 5-cent coin"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Amount left is 60 - 10 = 50 cents. Step 2: The matching coin set is 1 x 20-cent coin + 2 x 10-cent coin + 2 x 5-cent coin."
+  },
+  {
+    "id": "P1-MONEY-016-E09",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Finding cost from paid amount and change",
+    "difficulty": "easy",
+    "question": "At a corner in the zoo trip, Zhi Hao works on this question. Zhi Hao bought paper clips and paid $46. Zhi Hao got $10 back. How much did the item cost?",
+    "options": {
+      "A": "$36",
+      "B": "$46",
+      "C": "$10",
+      "D": "$38"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Cost = amount paid - change. Step 2: $46 - $10 = $36."
+  },
+  {
+    "id": "P1-WHOLE-019-E10",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "Li Ting hears this question announced in the toy shop. Complete the number pattern: 5, 7, 9, ?, 13.",
+    "options": {
+      "A": "10",
+      "B": "11",
+      "C": "12",
+      "D": "13"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: The pattern increases by 2 each time. Step 2: 9 + 2 = 11."
+  },
+  {
+    "id": "P1-TIME-004-H03",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "hard",
+    "question": "Raju is timed on this question at the park outing. The hour hand is between 3 and 4. The minute hand points to 6. We arrived at the park outing 30 minutes later and stayed for 1 hour. What time did we leave?",
+    "options": {
+      "A": "4:00 a.m.",
+      "B": "4:30 a.m.",
+      "C": "5:00 a.m.",
+      "D": "5:30 a.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Clock time is 3:30 a.m.. Step 2: Arrive 30 minutes later at 4:00 a.m.. Step 3: One hour after that is 5:00 a.m.."
+  },
+  {
+    "id": "P1-TIME-001-H07",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the half hour",
+    "difficulty": "hard",
+    "question": "A worksheet in the holiday camp gives Ethan this task. The hour hand is between 7 and 8. The minute hand points to 6. Practice starts 30 minutes later and lasts 1 hour. What time does practice end?",
+    "options": {
+      "A": "8:00 a.m.",
+      "B": "8:30 a.m.",
+      "C": "9:00 a.m.",
+      "D": "9:30 a.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: The given time is 7:30 a.m.. Step 2: Start time is 8:00 a.m. (30 minutes later). Step 3: One hour after 8:00 a.m. is 9:00 a.m.."
+  },
+  {
+    "id": "P1-MUL-001-H03",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Missing factor in multiplication",
+    "difficulty": "hard",
+    "question": "Raju is timed on this question at the sports day booth. Raju starts with 12 coins. Then 8 more coins are added, and 4 coins are used. The rest are split into 4 equal groups. What number completes 4 x ? = 16?",
+    "options": {
+      "A": "5",
+      "B": "7",
+      "C": "4",
+      "D": "8"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: After adding, 12 + 8 = 20. Step 2: After using 4, 20 - 4 = 16. Step 3: 16 / 4 = 4. So the missing number is 4."
+  },
+  {
+    "id": "P1-MUL-002-M02",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Interpreting equal groups as equations",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the playground and reads this. Sarah has 3 boxes with 4 shells in each box, and 3 extra shells. Which equation gives the total number of shells?",
+    "options": {
+      "A": "3 + 4 + 3 = 10",
+      "B": "6 x 4 = 24",
+      "C": "3 x 4 - 3 = 9",
+      "D": "3 x 4 + 3 = 15"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Items in equal groups are 3 x 4 = 12. Step 2: Add the 3 extra items: 12 + 3 = 15. So the correct equation is 3 x 4 + 3 = 15."
+  },
+  {
+    "id": "P1-MUL-015-H06",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Repeated groups of 10",
+    "difficulty": "hard",
+    "question": "At the hawker centre activity booth, Devi reads this. There are 3 trays of tokens, each with 10 pieces. 10 pieces are sold. The rest are packed 5 pieces in each box. How many boxes are needed?",
+    "options": {
+      "A": "20",
+      "B": "4",
+      "C": "6",
+      "D": "2"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Total pieces are 3 x 10 = 30. Step 2: Left pieces are 30 - 10 = 20. Step 3: 20 / 5 = 4."
+  },
+  {
+    "id": "P1-WHOLE-019-H09",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "In the science corner queue, Zhi Hao thinks about this. Complete the pattern 4, 8, 12, ?, 20. Subtract 1 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "30",
+      "B": "32",
+      "C": "15",
+      "D": "31"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Missing number is 16. Step 2: 16 - 1 = 15. Step 3: Double it: 15 x 2 = 30."
+  },
+  {
+    "id": "P1-GRAPH-017-H09",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two people in data",
+    "difficulty": "hard",
+    "question": "In the art class queue, Zhi Hao thinks about this. Data list: art club - 12, story writing - 8 toy cars. art club gets 2 more toy cars and story writing gives away 1 toy cars. How many more toy cars does art club have now?",
+    "options": {
+      "A": "7",
+      "B": "4",
+      "C": "5",
+      "D": "6"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: New art club count is 12 + 2 = 14. Step 2: New story writing count is 8 - 1 = 7. Step 3: Difference is 14 - 7 = 7."
+  },
+  {
+    "id": "P1-WHOLE-019-M06",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "A classmate in the library asks Hui Min this question. Complete the pattern 7, 11, 15, ?, 23. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "19",
+      "B": "21",
+      "C": "20",
+      "D": "22"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Missing number is 19 because the step is 4. Step 2: 19 + 2 = 21."
+  },
+  {
+    "id": "P1-GRAPH-016-H01",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "hard",
+    "question": "Ahmad sees this problem printed for the living room. Data list: tennis - 9, chess club - 6, music club - 7, kite flying - 10 straws. music club gets 3 straws and then gives away 1 straw. How many straws does music club have now?",
+    "options": {
+      "A": "9",
+      "B": "10",
+      "C": "6",
+      "D": "11"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: After receiving, music club has 7 + 3 = 10. Step 2: After giving away 1, 10 - 1 = 9."
+  },
+  {
+    "id": "P1-WHOLE-019-M02",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the school bookshop and reads this. Complete the pattern 3, 6, 9, ?, 15. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "12",
+      "B": "14",
+      "C": "13",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Missing number is 12 because the step is 3. Step 2: 12 + 2 = 14."
+  },
+  {
+    "id": "P1-WHOLE-019-M08",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "On a note in the living room, Kavitha finds this question. Complete the pattern 3, 6, 9, ?, 15. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "12",
+      "B": "13",
+      "C": "15",
+      "D": "14"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Missing number is 12 because the step is 3. Step 2: 12 + 2 = 14."
+  },
+  {
+    "id": "P1-MONEY-002-M03",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Matching equal coin values",
+    "difficulty": "medium",
+    "question": "Inside the swimming lesson, Ismail attempts this problem. Ismail has coins worth 60 cents: 4 x 10-cent coin + 4 x 5-cent coin. After spending 10 cents, which option shows the value left?",
+    "options": {
+      "A": "6 x 10-cent coin",
+      "B": "1 x 20-cent coin + 1 x 10-cent coin + 5 x 5-cent coin",
+      "C": "5 x 10-cent coin",
+      "D": "2 x 20-cent coin + 1 x 5-cent coin"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total value is 60 cents. Step 2: After spending 10 cents, 60 - 10 = 50 cents remain. Step 3: The option worth 50 cents is 5 x 10-cent coin."
+  },
+  {
+    "id": "P1-MUL-009-M03",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Comparing expressions",
+    "difficulty": "medium",
+    "question": "Inside the community centre, Ismail attempts this problem. Which expression has the greatest value?",
+    "options": {
+      "A": "5 x 4",
+      "B": "5 + 4 + 4",
+      "C": "5 x 4 + 4",
+      "D": "5 x 4 - 4"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Multiply first in each expression. Step 2: Compare the totals. 5 x 4 + 4 is 24, so it is the greatest."
+  },
+  {
+    "id": "P1-GRAPH-015-M06",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding the least value",
+    "difficulty": "medium",
+    "question": "A classmate in the school bookshop asks Hui Min this question. Data list: model making - 12, frisbee - 9, lego building - 14, tennis - 12 shells. Then frisbee gets 2 more shells. Which category has the least shells now?",
+    "options": {
+      "A": "lego building",
+      "B": "frisbee",
+      "C": "tennis",
+      "D": "model making"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Update frisbee's count: 9 + 2 = 11. Step 2: Compare 12, 11, 14, and 12. The smallest is 11, so frisbee has the least shells."
+  },
+  {
+    "id": "P1-MONEY-009-E09",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact dollar amounts",
+    "difficulty": "easy",
+    "question": "At a corner in the science corner, Zhi Hao works on this question. A magnets set costs $61. Which set of notes and coins makes exactly $61?",
+    "options": {
+      "A": "9 x $2 note + 43 x $1 coin",
+      "B": "10 x $2 note + 42 x $1 coin",
+      "C": "11 x $2 note + 38 x $1 coin",
+      "D": "12 x $2 note + 39 x $1 coin"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Add the values in each option. Step 2: The set that totals exactly $61 is 9 x $2 note + 43 x $1 coin."
+  },
+  {
+    "id": "P1-GRAPH-016-E10",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "easy",
+    "question": "Li Ting hears this question announced in the museum visit. Data list: art club - 11 erasers, skipping - 8 erasers, gardening - 9 erasers, hopscotch - 12 erasers. How many erasers does gardening have?",
+    "options": {
+      "A": "11",
+      "B": "9",
+      "C": "8",
+      "D": "12"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Read gardening's value from the data list. Step 2: gardening has 9 erasers."
+  },
+  {
+    "id": "P1-MONEY-002-E09",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Matching equal coin values",
+    "difficulty": "easy",
+    "question": "At a corner in the hawker centre, Zhi Hao works on this question. Zhi Hao has these coins: 1 x 20-cent coin + 1 x 10-cent coin + 8 x 5-cent coin. Which option has the same value?",
+    "options": {
+      "A": "2 x 20-cent coin + 5 x 5-cent coin",
+      "B": "1 x 20-cent coin + 3 x 10-cent coin + 5 x 5-cent coin",
+      "C": "1 x 20-cent coin + 3 x 10-cent coin + 4 x 5-cent coin",
+      "D": "1 x 20-cent coin + 4 x 10-cent coin + 4 x 5-cent coin"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the shown coins to get 70 cents. Step 2: Find the option that also totals 70 cents. That option is 1 x 20-cent coin + 3 x 10-cent coin + 4 x 5-cent coin."
+  },
+  {
+    "id": "P1-TIME-003-M02",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the swimming lesson and reads this. Child A reaches home at 3:30 p.m.. Child B is 30 minutes later than Child A. Child C is 30 minutes earlier than Child A. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "They reach at the same time",
+      "C": "Child C",
+      "D": "Child B"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Child B reaches at 4:00 p.m. and Child C reaches at 3:00 p.m.. Step 2: Compare with Child A's 3:30 p.m.. Step 3: 4:00 p.m. is latest, so Child B is latest."
+  },
+  {
+    "id": "P1-MONEY-010-M01",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact cents amounts",
+    "difficulty": "medium",
+    "question": "A helper at the weekend market gives Darren this task. Darren has 45 cents and spends 10 cents. Which set of coins can make the amount left?",
+    "options": {
+      "A": "1 x 20-cent coin + 1 x 10-cent coin + 1 x 5-cent coin",
+      "B": "1 x 20-cent coin + 1 x 10-cent coin + 3 x 5-cent coin",
+      "C": "1 x 20-cent coin + 2 x 10-cent coin",
+      "D": "2 x 10-cent coin + 2 x 5-cent coin"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Amount left is 45 - 10 = 35 cents. Step 2: The matching coin set is 1 x 20-cent coin + 1 x 10-cent coin + 1 x 5-cent coin."
+  },
+  {
+    "id": "P1-MUL-020-M06",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Total from equal groups",
+    "difficulty": "medium",
+    "question": "A classmate in the home study table asks Hui Min this question. 2 children each receive 4 tokens. Then 2 extra tokens are given. How many are given in total?",
+    "options": {
+      "A": "8",
+      "B": "10",
+      "C": "9",
+      "D": "11"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Initial total is 2 x 4 = 8. Step 2: Add extras: 8 + 2 = 10."
+  },
+  {
+    "id": "P1-ADD-003-M08",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "On a note in the weekend market, Kavitha finds this question. Kavitha collects 10 fruit cards on Monday, 10 on Tuesday, and 10 on Wednesday. Then 2 fruit cards are given away. How many are left?",
+    "options": {
+      "A": "30",
+      "B": "18",
+      "C": "29",
+      "D": "28"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total collected is 10 + 10 + 10 = 30. Step 2: After giving away 2, 30 - 2 = 28."
+  },
+  {
+    "id": "P1-MONEY-010-E01",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact cents amounts",
+    "difficulty": "easy",
+    "question": "Ahmad is at the hawker centre. A notebooks costs 35 cents. Which set of coins makes exactly 35 cents?",
+    "options": {
+      "A": "1 x 10-cent coin + 5 x 5-cent coin",
+      "B": "2 x 10-cent coin + 4 x 5-cent coin",
+      "C": "3 x 10-cent coin",
+      "D": "4 x 10-cent coin + 1 x 5-cent coin"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Add each option's coins in cents. Step 2: The option that totals 35 cents is 1 x 10-cent coin + 5 x 5-cent coin."
+  },
+  {
+    "id": "P1-GRAPH-018-H02",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Adding two values from data",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the fruit stall, Siti gets this. Data list: floorball - 7, dance club - 7 flowers. floorball gets 2 more flowers and dance club gives away 2. How many flowers are there in total now?",
+    "options": {
+      "A": "16",
+      "B": "14",
+      "C": "17",
+      "D": "18"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: New counts are floorball: 9 and dance club: 5. Step 2: Add them: 9 + 5 = 14."
+  },
+  {
+    "id": "P1-MUL-015-E07",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Repeated groups of 10",
+    "difficulty": "easy",
+    "question": "In the community centre, Ethan is checking this problem. There are 4 trays of biscuits. Each tray has 10 pieces. How many pieces are there altogether?",
+    "options": {
+      "A": "14",
+      "B": "30",
+      "C": "40",
+      "D": "50"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Multiply trays by pieces per tray. Step 2: 4 x 10 = 40."
+  },
+  {
+    "id": "P1-WHOLE-019-H07",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "A worksheet in the art class gives Ethan this task. Complete the pattern 2, 4, 6, ?, 10. Subtract 1 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "16",
+      "B": "7",
+      "C": "14",
+      "D": "17"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Missing number is 8. Step 2: 8 - 1 = 7. Step 3: Double it: 7 x 2 = 14."
+  },
+  {
+    "id": "P1-ADD-003-H09",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "In the canteen queue, Zhi Hao thinks about this. Zhi Hao counts 3 pencils in each of 3 trays. Then 4 extra pencils are added, and 1 pencil goes missing. How many are there in all?",
+    "options": {
+      "A": "8",
+      "B": "13",
+      "C": "12",
+      "D": "14"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Three trays give 3 + 3 + 3 = 9. Step 2: Add 4: 9 + 4 = 13. Step 3: Subtract 1: 13 - 1 = 12."
+  },
+  {
+    "id": "P1-GRAPH-005-H02",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two categories",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the park outing, Siti gets this. Data list: volleyball - 11, origami - 8. Then 2 pupils leave volleyball and 2 pupils join origami. How many more pupils chose origami than volleyball now?",
+    "options": {
+      "A": "3",
+      "B": "1",
+      "C": "2",
+      "D": "0"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: New volleyball count is 11 - 2 = 9. Step 2: New origami count is 8 + 2 = 10. Step 3: Difference is 10 - 9 = 1."
+  },
+  {
+    "id": "P1-MUL-001-E04",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Missing factor in multiplication",
+    "difficulty": "easy",
+    "question": "During an activity in the library, Mei Hua reads this task. There are 5 equal groups of crayons. There are 25 crayons altogether. What number completes 5 x ? = 25?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "10",
+      "D": "5"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Divide the total by the number of groups. Step 2: 25 / 5 = 5. So the missing number is 5."
+  },
+  {
+    "id": "P1-MUL-017-M01",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Total from equal groups",
+    "difficulty": "medium",
+    "question": "A helper at the holiday camp gives Darren this task. There are 6 equal groups with 2 stamps in each group. Then 2 extra stamps are added. How many are there now?",
+    "options": {
+      "A": "14",
+      "B": "12",
+      "C": "16",
+      "D": "17"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Equal groups give 6 x 2 = 12. Step 2: Add 2: 12 + 2 = 14."
+  },
+  {
+    "id": "P1-MUL-013-H06",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Repeated addition in equal groups",
+    "difficulty": "hard",
+    "question": "At the bakery counter activity booth, Devi reads this. There are 5 boxes with 2 toy blocks each. 2 are removed and 4 are added. How many are there now?",
+    "options": {
+      "A": "10",
+      "B": "12",
+      "C": "8",
+      "D": "14"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Start with 5 x 2 = 10. Step 2: After removing 2, 10 - 2 = 8. Step 3: Add 4: 8 + 4 = 12."
+  },
+  {
+    "id": "P1-TIME-003-M01",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "medium",
+    "question": "A helper at the playground gives Darren this task. Child A reaches home at 2:30 p.m.. Child B is 30 minutes later than Child A. Child C is 30 minutes earlier than Child A. Who reaches home the latest?",
+    "options": {
+      "A": "Child C",
+      "B": "Child A",
+      "C": "Child B",
+      "D": "They reach at the same time"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Child B reaches at 3:00 p.m. and Child C reaches at 2:00 p.m.. Step 2: Compare with Child A's 2:30 p.m.. Step 3: 3:00 p.m. is latest, so Child B is latest."
+  },
+  {
+    "id": "P1-GRAPH-005-E03",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two categories",
+    "difficulty": "easy",
+    "question": "Raju's teacher at the kitchen asks this. Data list: netball - 12, art club - 8. How many more pupils chose netball than art club?",
+    "options": {
+      "A": "5",
+      "B": "3",
+      "C": "4",
+      "D": "20"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: \"How many more\" means subtract. Step 2: 12 - 8 = 4."
+  },
+  {
+    "id": "P1-GRAPH-017-M07",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two people in data",
+    "difficulty": "medium",
+    "question": "Arjun chooses this challenge from the classroom station. Data list: science club - 10, kite flying - 8 notebooks. kite flying gets 1 more notebook. How many more notebooks does science club have now?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "1",
+      "D": "0"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: kite flying's new count is 8 + 1 = 9. Step 2: Difference is 10 - 9 = 1."
+  },
+  {
+    "id": "P1-ADD-003-M01",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "A helper at the playground gives Darren this task. Darren collects 3 beads on Monday, 3 on Tuesday, and 3 on Wednesday. Then 1 bead is given away. How many are left?",
+    "options": {
+      "A": "10",
+      "B": "9",
+      "C": "8",
+      "D": "5"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total collected is 3 + 3 + 3 = 9. Step 2: After giving away 1, 9 - 1 = 8."
+  },
+  {
+    "id": "P1-MONEY-012-H02",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Reading and comparing prices",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the classroom, Siti gets this. Price list: box of shells $8, set of magnets $31, pack of magnets $23, tray of stickers $19. A child buys box of shells and pack of magnets and uses a $5 voucher. How much does the child pay?",
+    "options": {
+      "A": "$31",
+      "B": "$26",
+      "C": "$22",
+      "D": "$28"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: box of shells + pack of magnets costs $8 + $23 = $31. Step 2: After using the voucher, pay $31 - $5 = $26."
+  },
+  {
+    "id": "P1-TIME-003-M07",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "medium",
+    "question": "Arjun chooses this challenge from the family picnic station. Child A reaches home at 3:30 p.m.. Child B is 30 minutes later than Child A. Child C is 30 minutes earlier than Child A. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "Child C",
+      "C": "Child B",
+      "D": "They reach at the same time"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Child B reaches at 4:00 p.m. and Child C reaches at 3:00 p.m.. Step 2: Compare with Child A's 3:30 p.m.. Step 3: 4:00 p.m. is latest, so Child B is latest."
+  },
+  {
+    "id": "P1-MONEY-009-H02",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact dollar amounts",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the school bookshop, Siti gets this. Siti has $61. Siti buys balloons for $21 and receives $6 as a gift. Which option shows the money left?",
+    "options": {
+      "A": "11 x $2 note + 25 x $1 coin",
+      "B": "10 x $2 note + 26 x $1 coin",
+      "C": "12 x $2 note + 21 x $1 coin",
+      "D": "13 x $2 note + 35 x $1 coin"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: After buying, money left is $61 - $21 = $40. Step 2: Add the gift: $40 + $6 = $46. Step 3: The matching set is 10 x $2 note + 26 x $1 coin."
+  },
+  {
+    "id": "P1-MUL-008-E03",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Grouping by 2",
+    "difficulty": "easy",
+    "question": "Raju's teacher at the hawker centre asks this. Each letter sign uses 2 sticks. With 10 sticks, how many signs can be made?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "5",
+      "D": "8"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Each sign needs 2 sticks. Step 2: 10 / 2 = 5. So 5 signs can be made."
+  },
+  {
+    "id": "P1-TIME-003-H01",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "hard",
+    "question": "Ahmad sees this problem printed for the sports day booth. Child A reaches home at 2:30 p.m.. Child B reaches home 45 minutes after Child A. Child C reaches home 30 minutes before Child B. Who reaches home the latest?",
+    "options": {
+      "A": "Child C",
+      "B": "Child A",
+      "C": "Child B",
+      "D": "They reach at the same time"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Child B reaches at 3:15 p.m.. Step 2: Child C reaches 30 minutes before Child B, so Child C reaches at 2:45 p.m.. Step 3: 3:15 p.m. is the latest time, so Child B is latest."
+  },
+  {
+    "id": "P1-GRAPH-017-H06",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two people in data",
+    "difficulty": "hard",
+    "question": "At the HDB void deck activity booth, Devi reads this. Data list: robotics club - 15, skipping - 11 keychains. robotics club gets 2 more keychains and skipping gives away 1 keychain. How many more keychains does robotics club have now?",
+    "options": {
+      "A": "4",
+      "B": "7",
+      "C": "5",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: New robotics club count is 15 + 2 = 17. Step 2: New skipping count is 11 - 1 = 10. Step 3: Difference is 17 - 10 = 7."
+  },
+  {
+    "id": "P1-ADD-003-H07",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "A worksheet in the neighbourhood store gives Ethan this task. Ethan counts 9 toy cars in each of 3 trays. Then 2 extra toy cars are added, and 1 toy cars go missing. How many are there in all?",
+    "options": {
+      "A": "29",
+      "B": "26",
+      "C": "28",
+      "D": "30"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Three trays give 9 + 9 + 9 = 27. Step 2: Add 2: 27 + 2 = 29. Step 3: Subtract 1: 29 - 1 = 28."
+  },
+  {
+    "id": "P1-MUL-008-E08",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Sharing equally among 3 groups",
+    "difficulty": "easy",
+    "question": "Priya is helping friends at the art class and sees this. Miss Wong has 30 fruit cards. She puts an equal number on 3 plates. How many are on each plate?",
+    "options": {
+      "A": "9",
+      "B": "11",
+      "C": "27",
+      "D": "10"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Equal sharing among 3 plates means divide by 3. Step 2: 30 / 3 = 10."
+  },
+  {
+    "id": "P1-MONEY-012-E07",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Reading and comparing prices",
+    "difficulty": "easy",
+    "question": "In the birthday party, Ethan is checking this problem. Price list: box of stickers $7, set of erasers $30, pack of erasers $22, tray of shells $18. Which item costs the least?",
+    "options": {
+      "A": "set of erasers",
+      "B": "pack of erasers",
+      "C": "box of stickers",
+      "D": "tray of shells"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Compare all prices. Step 2: $7 is the smallest, so box of stickers costs the least."
+  },
+  {
+    "id": "P1-MONEY-009-H10",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact dollar amounts",
+    "difficulty": "hard",
+    "question": "At the end of the bakery counter session, Li Ting solves this. Li Ting has $69. Li Ting buys cookies for $21 and receives $9 as a gift. Which option shows the money left?",
+    "options": {
+      "A": "19 x $2 note + 20 x $1 coin",
+      "B": "18 x $2 note + 21 x $1 coin",
+      "C": "20 x $2 note + 16 x $1 coin",
+      "D": "21 x $2 note + 27 x $1 coin"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: After buying, money left is $69 - $21 = $48. Step 2: Add the gift: $48 + $9 = $57. Step 3: The matching set is 18 x $2 note + 21 x $1 coin."
+  },
+  {
+    "id": "P1-MONEY-016-M07",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Finding cost from paid amount and change",
+    "difficulty": "medium",
+    "question": "Arjun chooses this challenge from the school fair station. Arjun paid $48 and got $12 back for origami stars. Arjun also bought keychains for $6. How much was spent in total?",
+    "options": {
+      "A": "$36",
+      "B": "$54",
+      "C": "$42",
+      "D": "$40"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: First item cost is $48 - $12 = $36. Step 2: Add the second item: $36 + $6 = $42."
+  },
+  {
+    "id": "P1-TIME-003-E04",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "easy",
+    "question": "During an activity in the living room, Mei Hua reads this task. Child A reaches home at 5:00 p.m., Child B at 5:30 p.m., and Child C at 6:00 p.m.. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "Child B",
+      "C": "They reach at the same time",
+      "D": "Child C"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Compare 5:00 p.m., 5:30 p.m., and 6:00 p.m.. Step 2: 6:00 p.m. is the latest, so Child C reaches home the latest."
+  },
+  {
+    "id": "P1-TIME-003-H02",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the zoo trip, Siti gets this. Child A reaches home at 3:30 p.m.. Child B reaches home 45 minutes after Child A. Child C reaches home 30 minutes before Child B. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "They reach at the same time",
+      "C": "Child C",
+      "D": "Child B"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Child B reaches at 4:15 p.m.. Step 2: Child C reaches 30 minutes before Child B, so Child C reaches at 3:45 p.m.. Step 3: 4:15 p.m. is the latest time, so Child B is latest."
+  },
+  {
+    "id": "P1-MONEY-002-H07",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Matching equal coin values",
+    "difficulty": "hard",
+    "question": "A worksheet in the toy shop gives Ethan this task. Ethan has 1 x 20-cent coin + 5 x 10-cent coin + 1 x 5-cent coin (worth 75 cents). Then 10 cents are added and 15 cents are spent. Which option shows the amount left?",
+    "options": {
+      "A": "1 x 20-cent coin + 6 x 10-cent coin + 1 x 5-cent coin",
+      "B": "1 x 50-cent coin + 2 x 5-cent coin",
+      "C": "2 x 20-cent coin + 6 x 5-cent coin",
+      "D": "2 x 20-cent coin + 1 x 10-cent coin + 6 x 5-cent coin"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Start with 75 cents. Step 2: After adding 10 cents and spending 15 cents, amount left is 75 + 10 - 15 = 70 cents. Step 3: The matching option is 2 x 20-cent coin + 6 x 5-cent coin."
+  },
+  {
+    "id": "P1-MUL-001-H02",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Missing factor in multiplication",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the tuition room, Siti gets this. Siti starts with 6 fruit cards. Then 6 more fruit cards are added, and 3 fruit cards are used. The rest are split into 3 equal groups. What number completes 3 x ? = 9?",
+    "options": {
+      "A": "4",
+      "B": "4.5",
+      "C": "6",
+      "D": "3"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: After adding, 6 + 6 = 12. Step 2: After using 3, 12 - 3 = 9. Step 3: 9 / 3 = 3. So the missing number is 3."
+  },
+  {
+    "id": "P1-WHOLE-019-M03",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "Inside the canteen, Ismail attempts this problem. Complete the pattern 4, 8, 12, ?, 20. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "16",
+      "B": "17",
+      "C": "18",
+      "D": "19"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Missing number is 16 because the step is 4. Step 2: 16 + 2 = 18."
+  },
+  {
+    "id": "P1-ADD-003-M04",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "While waiting at the music class, Aisha practises this. Aisha collects 6 rubber bands on Monday, 6 on Tuesday, and 6 on Wednesday. Then 1 rubber bands are given away. How many are left?",
+    "options": {
+      "A": "18",
+      "B": "19",
+      "C": "11",
+      "D": "17"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total collected is 6 + 6 + 6 = 18. Step 2: After giving away 1, 18 - 1 = 17."
+  },
+  {
+    "id": "P1-GRAPH-006-E02",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding equal values in data",
+    "difficulty": "easy",
+    "question": "At the kitchen, Siti solves this question. Data list: tennis - 11, science club - 11, skipping - 8, captain's ball - 14. Which category has the same number as tennis?",
+    "options": {
+      "A": "skipping",
+      "B": "science club",
+      "C": "captain's ball",
+      "D": "none"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: tennis has 11. Step 2: science club also has 11. So science club has the same number."
+  },
+  {
+    "id": "P1-GRAPH-015-H05",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding the least value",
+    "difficulty": "hard",
+    "question": "Wei Ling practices this during a break in the fruit stall. Data list: lego building - 13, tennis - 9, floorball - 12, reading club - 11 coins. Then lego building gets 1 coins and floorball gives away 2 coins. Which category has the least coins now?",
+    "options": {
+      "A": "tennis",
+      "B": "lego building",
+      "C": "floorball",
+      "D": "reading club"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: New counts are lego building: 14, tennis: 9, floorball: 10, reading club: 11. Step 2: The smallest count is 9, so tennis has the least coins."
+  },
+  {
+    "id": "P1-WHOLE-019-E04",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "During an activity in the tuition room, Mei Hua reads this task. Complete the number pattern: 5, 7, 9, ?, 13.",
+    "options": {
+      "A": "10",
+      "B": "12",
+      "C": "13",
+      "D": "11"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: The pattern increases by 2 each time. Step 2: 9 + 2 = 11."
+  },
+  {
+    "id": "P1-GRAPH-017-M06",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two people in data",
+    "difficulty": "medium",
+    "question": "A classmate in the school fair asks Hui Min this question. Data list: robotics club - 15, skipping - 11 rubber bands. skipping gets 2 more rubber bands. How many more rubber bands does robotics club have now?",
+    "options": {
+      "A": "4",
+      "B": "2",
+      "C": "1",
+      "D": "3"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: skipping's new count is 11 + 2 = 13. Step 2: Difference is 15 - 13 = 2."
+  },
+  {
+    "id": "P1-ADD-003-H01",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "Ahmad sees this problem printed for the sports day booth. Ahmad counts 3 magnets in each of 3 trays. Then 2 extra magnets are added, and 1 magnet goes missing. How many are there in all?",
+    "options": {
+      "A": "8",
+      "B": "11",
+      "C": "10",
+      "D": "12"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Three trays give 3 + 3 + 3 = 9. Step 2: Add 2: 9 + 2 = 11. Step 3: Subtract 1: 11 - 1 = 10."
+  },
+  {
+    "id": "P1-MONEY-012-M03",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Reading and comparing prices",
+    "difficulty": "medium",
+    "question": "Inside the zoo trip, Ismail attempts this problem. Price list: box of biscuits $9, set of cookies $32, pack of cookies $24, tray of toy blocks $20. How much more does set of cookies cost than tray of toy blocks?",
+    "options": {
+      "A": "$52",
+      "B": "$15",
+      "C": "$12",
+      "D": "$14"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: set of cookies costs $32 and tray of toy blocks costs $20. Step 2: Difference is $32 - $20 = $12."
+  },
+  {
+    "id": "P1-TIME-005-E01",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "easy",
+    "question": "Ahmad is at the home study table. The hour hand points to 2. The minute hand points to 12. Ahmad takes dinner at ________. Which answer is correct?",
+    "options": {
+      "A": "2:00 p.m.",
+      "B": "2:30 p.m.",
+      "C": "3:00 p.m.",
+      "D": "3:30 p.m."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Minute hand at 12 means exact hour. Step 2: Hour hand at 2 means the time is 2:00 p.m.."
+  },
+  {
+    "id": "P1-ADD-003-E05",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "From the kitchen, Wei Ling receives this maths challenge. What is 7 + 7 + 7?",
+    "options": {
+      "A": "20",
+      "B": "14",
+      "C": "21",
+      "D": "22"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the first two numbers: 7 + 7 = 14. Step 2: Add the third 7: 14 + 7 = 21."
+  },
+  {
+    "id": "P1-MONEY-012-M07",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Reading and comparing prices",
+    "difficulty": "medium",
+    "question": "Arjun chooses this challenge from the toy shop station. Price list: box of paper clips $7, set of toy blocks $30, pack of toy blocks $22, tray of tokens $18. How much more does set of toy blocks cost than tray of tokens?",
+    "options": {
+      "A": "$48",
+      "B": "$15",
+      "C": "$12",
+      "D": "$14"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: set of toy blocks costs $30 and tray of tokens costs $18. Step 2: Difference is $30 - $18 = $12."
+  },
+  {
+    "id": "P1-MUL-006-M05",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Sharing equally into 2 groups",
+    "difficulty": "medium",
+    "question": "Kai starts this maths question during the weekend market. There are 18 magnets. 2 are removed first. The rest are split into 2 equal groups. How many are in each group?",
+    "options": {
+      "A": "8",
+      "B": "9",
+      "C": "10",
+      "D": "7"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Remaining items are 18 - 2 = 16. Step 2: 16 / 2 = 8."
+  },
+  {
+    "id": "P1-GRAPH-016-E02",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "easy",
+    "question": "At the science corner, Siti solves this question. Data list: football - 10 storybooks, robotics club - 7 storybooks, dance club - 8 storybooks, drawing - 11 storybooks. How many storybooks does dance club have?",
+    "options": {
+      "A": "10",
+      "B": "8",
+      "C": "7",
+      "D": "11"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Read dance club's value from the data list. Step 2: dance club has 8 storybooks."
+  },
+  {
+    "id": "P1-WHOLE-019-H04",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "At the HDB void deck counter, Mei Hua is asked this. Complete the pattern 5, 7, 9, ?, 13. Subtract 2 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "22",
+      "B": "9",
+      "C": "20",
+      "D": "18"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Missing number is 11. Step 2: 11 - 2 = 9. Step 3: Double it: 9 x 2 = 18."
+  },
+  {
+    "id": "P1-MONEY-010-H06",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact cents amounts",
+    "difficulty": "hard",
+    "question": "At the home study table activity booth, Devi reads this. Devi has 75 cents, gets 10 cents more, and spends 15 cents. Which coin set shows the amount left?",
+    "options": {
+      "A": "1 x 20-cent coin + 6 x 10-cent coin + 1 x 5-cent coin",
+      "B": "2 x 20-cent coin + 6 x 5-cent coin",
+      "C": "1 x 50-cent coin + 2 x 5-cent coin",
+      "D": "2 x 20-cent coin + 1 x 10-cent coin + 6 x 5-cent coin"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: After getting more, amount is 85 cents. Step 2: After spending 15 cents, amount left is 70 cents. Step 3: The matching set is 2 x 20-cent coin + 6 x 5-cent coin."
+  },
+  {
+    "id": "P1-WHOLE-019-E08",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "Priya is helping friends at the park outing and sees this. Complete the number pattern: 3, 6, 9, ?, 15.",
+    "options": {
+      "A": "11",
+      "B": "13",
+      "C": "15",
+      "D": "12"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: The pattern increases by 3 each time. Step 2: 9 + 3 = 12."
+  },
+  {
+    "id": "P1-MUL-014-E01",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division by 2",
+    "difficulty": "easy",
+    "question": "Ahmad is at the swimming lesson. 8 postcards are used to make cards. Each card uses 2 postcards. How many cards can be made?",
+    "options": {
+      "A": "4",
+      "B": "3",
+      "C": "5",
+      "D": "6"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Each card needs 2 items. Step 2: 8 / 2 = 4. So 4 cards can be made."
+  },
+  {
+    "id": "P1-TIME-004-H02",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the museum visit, Siti gets this. The hour hand is between 2 and 3. The minute hand points to 6. We arrived at the museum visit 30 minutes later and stayed for 1 hour. What time did we leave?",
+    "options": {
+      "A": "3:00 p.m.",
+      "B": "4:00 p.m.",
+      "C": "3:30 p.m.",
+      "D": "4:30 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Clock time is 2:30 p.m.. Step 2: Arrive 30 minutes later at 3:00 p.m.. Step 3: One hour after that is 4:00 p.m.."
+  },
+  {
+    "id": "P1-WHOLE-019-E06",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "Devi writes this in a worksheet at the zoo trip. Complete the number pattern: 7, 11, 15, ?, 23.",
+    "options": {
+      "A": "18",
+      "B": "19",
+      "C": "20",
+      "D": "23"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: The pattern increases by 4 each time. Step 2: 15 + 4 = 19."
+  },
+  {
+    "id": "P1-GRAPH-017-M09",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two people in data",
+    "difficulty": "medium",
+    "question": "Jun Wei tries this puzzle at the home study table. Data list: art club - 12, story writing - 8 straws. story writing gets 1 more straw. How many more straws does art club have now?",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "2"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: story writing's new count is 8 + 1 = 9. Step 2: Difference is 12 - 9 = 3."
+  },
+  {
+    "id": "P1-TIME-004-M02",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "medium",
+    "question": "Sarah opens a quiz card at the art class and reads this. The hour hand is between 2 and 3. The minute hand points to 6. We reached the art class 30 minutes later. What time did we reach?",
+    "options": {
+      "A": "2:30 p.m.",
+      "B": "3:00 p.m.",
+      "C": "3:30 p.m.",
+      "D": "2:00 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Clock time is 2:30 p.m.. Step 2: Add 30 minutes to get 3:00 p.m.."
+  },
+  {
+    "id": "P1-WHOLE-019-E09",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "At a corner in the holiday camp, Zhi Hao works on this question. Complete the number pattern: 4, 8, 12, ?, 20.",
+    "options": {
+      "A": "16",
+      "B": "15",
+      "C": "17",
+      "D": "20"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: The pattern increases by 4 each time. Step 2: 12 + 4 = 16."
+  },
+  {
+    "id": "P1-GRAPH-018-M09",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Adding two values from data",
+    "difficulty": "medium",
+    "question": "Jun Wei tries this puzzle at the living room table. Data list: dance club - 8, model making - 9 coins. Then model making gets 1 more coin. How many coins are there in total now?",
+    "options": {
+      "A": "18",
+      "B": "17",
+      "C": "16",
+      "D": "20"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: model making's new count is 9 + 1 = 10. Step 2: Total is 8 + 10 = 18."
+  },
+  {
+    "id": "P1-MUL-010-H10",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Grouping into boxes",
+    "difficulty": "hard",
+    "question": "At the end of the fruit stall session, Li Ting solves this. There are 4 rubber bands. 4 more are added and then 2 are removed. The rest are packed 2 in each box. How many boxes are made?",
+    "options": {
+      "A": "4",
+      "B": "3",
+      "C": "6",
+      "D": "5"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: After adding, there are 4 + 4 = 8. Step 2: After removing 2, 8 - 2 = 6. Step 3: 6 / 2 = 3."
+  },
+  {
+    "id": "P1-TIME-004-E10",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "easy",
+    "question": "Li Ting hears this question announced in the playground. The hour hand is between 10 and 11. The minute hand points to 6. We were at the playground at ________. Which answer fits the blank?",
+    "options": {
+      "A": "10:00 p.m.",
+      "B": "10:30 p.m.",
+      "C": "11:00 p.m.",
+      "D": "11:30 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Minute hand at 6 means half past. Step 2: Half past 10 is 10:30 p.m.."
+  },
+  {
+    "id": "P1-WHOLE-019-M09",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "medium",
+    "question": "Jun Wei tries this puzzle at the kitchen table. Complete the pattern 4, 8, 12, ?, 20. Then add 2 to the missing number. What is the result?",
+    "options": {
+      "A": "18",
+      "B": "16",
+      "C": "17",
+      "D": "19"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Missing number is 16 because the step is 4. Step 2: 16 + 2 = 18."
+  },
+  {
+    "id": "P1-GRAPH-016-M06",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "medium",
+    "question": "A classmate in the canteen asks Hui Min this question. Data list: chess club - 14, music club - 11, kite flying - 12, volleyball - 15 cookies. kite flying gets 3 more cookies. How many cookies does kite flying have now?",
+    "options": {
+      "A": "12",
+      "B": "15",
+      "C": "14",
+      "D": "16"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: kite flying starts with 12 cookies. Step 2: Add 3: 12 + 3 = 15."
+  },
+  {
+    "id": "P1-MONEY-012-E01",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Reading and comparing prices",
+    "difficulty": "easy",
+    "question": "Ahmad is at the HDB void deck. Price list: box of coins $7, set of crayons $30, pack of crayons $22, tray of balloons $18. Which item costs the least?",
+    "options": {
+      "A": "box of coins",
+      "B": "set of crayons",
+      "C": "pack of crayons",
+      "D": "tray of balloons"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Compare all prices. Step 2: $7 is the smallest, so box of coins costs the least."
+  },
+  {
+    "id": "P1-MONEY-002-H06",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Matching equal coin values",
+    "difficulty": "hard",
+    "question": "At the holiday camp activity booth, Devi reads this. Devi has 1 x 20-cent coin + 4 x 10-cent coin + 2 x 5-cent coin (worth 70 cents). Then 10 cents are added and 15 cents are spent. Which option shows the amount left?",
+    "options": {
+      "A": "1 x 20-cent coin + 5 x 10-cent coin + 2 x 5-cent coin",
+      "B": "2 x 20-cent coin + 2 x 10-cent coin + 3 x 5-cent coin",
+      "C": "2 x 10-cent coin + 7 x 5-cent coin",
+      "D": "2 x 20-cent coin + 1 x 10-cent coin + 3 x 5-cent coin"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Start with 70 cents. Step 2: After adding 10 cents and spending 15 cents, amount left is 70 + 10 - 15 = 65 cents. Step 3: The matching option is 2 x 20-cent coin + 1 x 10-cent coin + 3 x 5-cent coin."
+  },
+  {
+    "id": "P1-ADD-003-M07",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "Arjun chooses this challenge from the family picnic station. Arjun collects 9 straws on Monday, 9 on Tuesday, and 9 on Wednesday. Then 1 straw is given away. How many are left?",
+    "options": {
+      "A": "27",
+      "B": "28",
+      "C": "26",
+      "D": "17"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total collected is 9 + 9 + 9 = 27. Step 2: After giving away 1, 27 - 1 = 26."
+  },
+  {
+    "id": "P1-TIME-005-M08",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "medium",
+    "question": "On a note in the tuition room, Kavitha finds this question. The hour hand points to 9. The minute hand points to 12. Kavitha starts homework then and eats dinner 1 hour later. What time does Kavitha eat dinner?",
+    "options": {
+      "A": "9:00 p.m.",
+      "B": "9:30 p.m.",
+      "C": "10:30 p.m.",
+      "D": "10:00 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Starting time is 9:00 p.m.. Step 2: One hour later is 10:00 p.m.."
+  },
+  {
+    "id": "P1-MUL-007-M03",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Counting groups of 3",
+    "difficulty": "medium",
+    "question": "Inside the family picnic, Ismail attempts this problem. There are 4 groups of 3 magnets. Then 1 more group of 3 is added. How many magnets are there now?",
+    "options": {
+      "A": "12",
+      "B": "18",
+      "C": "15",
+      "D": "19"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: New groups = 4 + 1 = 5. Step 2: Total is 5 x 3 = 15."
+  },
+  {
+    "id": "P1-GRAPH-015-E09",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding the least value",
+    "difficulty": "easy",
+    "question": "At a corner in the sports day booth, Zhi Hao works on this question. Data list: skipping - 9 sandwiches, model making - 8 sandwiches, frisbee - 13 sandwiches, lego building - 12 sandwiches. Which category has the least number of sandwiches?",
+    "options": {
+      "A": "model making",
+      "B": "skipping",
+      "C": "frisbee",
+      "D": "lego building"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Compare 9, 8, 13, and 12. Step 2: 8 is the smallest number, so model making has the least sandwiches."
+  },
+  {
+    "id": "P1-GRAPH-018-E03",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Adding two values from data",
+    "difficulty": "easy",
+    "question": "Raju's teacher at the weekend market asks this. Data list: chess club - 8 sandwiches, swimming - 9 sandwiches. How many sandwiches are there altogether?",
+    "options": {
+      "A": "16",
+      "B": "18",
+      "C": "17",
+      "D": "19"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add both counts. Step 2: 8 + 9 = 17."
+  },
+  {
+    "id": "P1-GRAPH-016-E06",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "easy",
+    "question": "Devi writes this in a worksheet at the community centre. Data list: chess club - 14 cupcakes, music club - 11 cupcakes, kite flying - 12 cupcakes, volleyball - 15 cupcakes. How many cupcakes does kite flying have?",
+    "options": {
+      "A": "14",
+      "B": "12",
+      "C": "11",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Read kite flying's value from the data list. Step 2: kite flying has 12 cupcakes."
+  },
+  {
+    "id": "P1-TIME-004-H06",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Writing time to the half hour",
+    "difficulty": "hard",
+    "question": "At the neighbourhood store activity booth, Devi reads this. The hour hand is between 6 and 7. The minute hand points to 6. We arrived at the neighbourhood store 30 minutes later and stayed for 1 hour. What time did we leave?",
+    "options": {
+      "A": "7:00 p.m.",
+      "B": "8:00 p.m.",
+      "C": "7:30 p.m.",
+      "D": "8:30 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Clock time is 6:30 p.m.. Step 2: Arrive 30 minutes later at 7:00 p.m.. Step 3: One hour after that is 8:00 p.m.."
+  },
+  {
+    "id": "P1-TIME-005-E04",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "easy",
+    "question": "During an activity in the bakery counter, Mei Hua reads this task. The hour hand points to 5. The minute hand points to 12. Mei Hua takes dinner at ________. Which answer is correct?",
+    "options": {
+      "A": "5:30 p.m.",
+      "B": "6:00 p.m.",
+      "C": "6:30 p.m.",
+      "D": "5:00 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Minute hand at 12 means exact hour. Step 2: Hour hand at 5 means the time is 5:00 p.m.."
+  },
+  {
+    "id": "P1-ADD-003-H10",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "hard",
+    "question": "At the end of the school fair session, Li Ting solves this. Li Ting counts 4 crayons in each of 3 trays. Then 2 extra crayons are added, and 2 crayons go missing. How many are there in all?",
+    "options": {
+      "A": "14",
+      "B": "13",
+      "C": "10",
+      "D": "12"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Three trays give 4 + 4 + 4 = 12. Step 2: Add 2: 12 + 2 = 14. Step 3: Subtract 2: 14 - 2 = 12."
+  },
+  {
+    "id": "P1-WHOLE-019-H06",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "At the swimming lesson activity booth, Devi reads this. Complete the pattern 7, 11, 15, ?, 23. Subtract 2 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "38",
+      "B": "34",
+      "C": "17",
+      "D": "36"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Missing number is 19. Step 2: 19 - 2 = 17. Step 3: Double it: 17 x 2 = 34."
+  },
+  {
+    "id": "P1-GRAPH-017-M04",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two people in data",
+    "difficulty": "medium",
+    "question": "While waiting at the school bookshop, Aisha practises this. Data list: floorball - 13, swimming - 11 cookies. swimming gets 2 more cookies. How many more cookies does floorball have now?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "0"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: swimming's new count is 11 + 2 = 13. Step 2: Difference is 13 - 13 = 0."
+  },
+  {
+    "id": "P1-MUL-022-H09",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Checking fair sharing",
+    "difficulty": "hard",
+    "question": "In the weekend market queue, Zhi Hao thinks about this. 4 badges are prepared. 2 more are added, then 2 are removed. Can the remaining badges be shared equally among 2 children?",
+    "options": {
+      "A": "Yes, each child gets 2.",
+      "B": "No, it is not equal.",
+      "C": "Yes, each child gets 3.",
+      "D": "Yes, each child gets 1."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: After adding and removing, remaining items are 4. Step 2: 4 / 2 = 2 with no remainder. So the sharing is equal."
+  },
+  {
+    "id": "P1-WHOLE-019-E01",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "Ahmad is at the family picnic. Complete the number pattern: 2, 4, 6, ?, 10.",
+    "options": {
+      "A": "8",
+      "B": "7",
+      "C": "9",
+      "D": "10"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: The pattern increases by 2 each time. Step 2: 6 + 2 = 8."
+  },
+  {
+    "id": "P1-ADD-003-M05",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "Kai starts this maths question during the science corner. Kai collects 7 notebooks on Monday, 7 on Tuesday, and 7 on Wednesday. Then 2 notebooks are given away. How many are left?",
+    "options": {
+      "A": "12",
+      "B": "21",
+      "C": "19",
+      "D": "20"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total collected is 7 + 7 + 7 = 21. Step 2: After giving away 2, 21 - 2 = 19."
+  },
+  {
+    "id": "P1-ADD-003-M06",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "medium",
+    "question": "A classmate in the birthday party asks Hui Min this question. Hui Min collects 8 toy blocks on Monday, 8 on Tuesday, and 8 on Wednesday. Then 3 toy blocks are given away. How many are left?",
+    "options": {
+      "A": "24",
+      "B": "13",
+      "C": "23",
+      "D": "21"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total collected is 8 + 8 + 8 = 24. Step 2: After giving away 3, 24 - 3 = 21."
+  },
+  {
+    "id": "P1-GRAPH-006-H02",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding equal values in data",
+    "difficulty": "hard",
+    "question": "In a quick quiz at the holiday camp, Siti gets this. Data list: tennis - 11, science club - 9, skipping - 13, captain's ball - 13. Then 1 pupils leave tennis and 3 pupils join science club. Which category now has the same number as tennis?",
+    "options": {
+      "A": "skipping",
+      "B": "science club",
+      "C": "captain's ball",
+      "D": "none"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: New tennis count is 11 - 1 = 10. Step 2: New science club count is 9 + 3 = 12. Step 3: Since both are 10, the matching category is science club."
+  },
+  {
+    "id": "P1-MUL-011-M01",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Forming equal groups",
+    "difficulty": "medium",
+    "question": "A helper at the community centre gives Darren this task. Darren has 15 toy cars. 5 are kept aside. The rest are grouped in sets of 5. How many groups are formed?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "1"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Remaining items are 15 - 5 = 10. Step 2: 10 / 5 = 2. So 2 groups are formed."
+  },
+  {
+    "id": "P1-ADD-003-E01",
+    "level": "P1",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Adding three numbers",
+    "difficulty": "easy",
+    "question": "Ahmad is at the classroom. What is 3 + 3 + 3?",
+    "options": {
+      "A": "8",
+      "B": "6",
+      "C": "9",
+      "D": "10"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the first two numbers: 3 + 3 = 6. Step 2: Add the third 3: 6 + 3 = 9."
+  },
+  {
+    "id": "P1-MUL-014-E05",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division by 2",
+    "difficulty": "easy",
+    "question": "From the birthday party, Wei Ling receives this maths challenge. 16 toy cars are used to make cards. Each card uses 2 toy cars. How many cards can be made?",
+    "options": {
+      "A": "8",
+      "B": "7",
+      "C": "9",
+      "D": "14"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Each card needs 2 items. Step 2: 16 / 2 = 8. So 8 cards can be made."
+  },
+  {
+    "id": "P1-MUL-017-E03",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Total from equal groups",
+    "difficulty": "easy",
+    "question": "Raju's teacher at the family picnic asks this. There are 6 equal groups. Each group has 4 biscuits. How many biscuits are there altogether?",
+    "options": {
+      "A": "10",
+      "B": "20",
+      "C": "24",
+      "D": "28"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Multiply the number of groups by items per group. Step 2: 6 x 4 = 24."
+  },
+  {
+    "id": "P1-GRAPH-005-H04",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Comparing two categories",
+    "difficulty": "hard",
+    "question": "At the toy shop counter, Mei Hua is asked this. Data list: hopscotch - 13, football - 11. Then 2 pupils leave hopscotch and 2 pupils join football. How many more pupils chose football than hopscotch now?",
+    "options": {
+      "A": "4",
+      "B": "0",
+      "C": "1",
+      "D": "2"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: New hopscotch count is 13 - 2 = 11. Step 2: New football count is 11 + 2 = 13. Step 3: Difference is 13 - 11 = 2."
+  },
+  {
+    "id": "P1-TIME-003-H04",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "hard",
+    "question": "At the park outing counter, Mei Hua is asked this. Child A reaches home at 5:30 p.m.. Child B reaches home 45 minutes after Child A. Child C reaches home 30 minutes before Child B. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "Child C",
+      "C": "They reach at the same time",
+      "D": "Child B"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Child B reaches at 6:15 p.m.. Step 2: Child C reaches 30 minutes before Child B, so Child C reaches at 5:45 p.m.. Step 3: 6:15 p.m. is the latest time, so Child B is latest."
+  },
+  {
+    "id": "P1-GRAPH-016-E04",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "easy",
+    "question": "During an activity in the family picnic, Mei Hua reads this task. Data list: table tennis - 12 crayons, reading club - 9 crayons, cycling - 10 crayons, model making - 13 crayons. How many crayons does cycling have?",
+    "options": {
+      "A": "12",
+      "B": "9",
+      "C": "13",
+      "D": "10"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Read cycling's value from the data list. Step 2: cycling has 10 crayons."
+  },
+  {
+    "id": "P1-WHOLE-019-E03",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "Raju's teacher at the community centre asks this. Complete the number pattern: 4, 8, 12, ?, 20.",
+    "options": {
+      "A": "15",
+      "B": "17",
+      "C": "16",
+      "D": "20"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: The pattern increases by 4 each time. Step 2: 12 + 4 = 16."
+  },
+  {
+    "id": "P1-MONEY-016-H07",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Finding cost from paid amount and change",
+    "difficulty": "hard",
+    "question": "A worksheet in the HDB void deck gives Ethan this task. Ethan paid $50 and got $12 back for postcards. Ethan also buys balloons for $8. Then Ethan pays $51 for both items together. How much change is received?",
+    "options": {
+      "A": "$12",
+      "B": "$46",
+      "C": "$5",
+      "D": "$7"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: First item costs $50 - $12 = $38. Step 2: Total for both items is $38 + $8 = $46. Step 3: Change is $51 - $46 = $5."
+  },
+  {
+    "id": "P1-MONEY-010-E05",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Making exact cents amounts",
+    "difficulty": "easy",
+    "question": "From the swimming lesson, Wei Ling receives this maths challenge. An item costs 55 cents. Which set of coins makes exactly 55 cents?",
+    "options": {
+      "A": "5 x 10-cent coin + 1 x 5-cent coin",
+      "B": "6 x 10-cent coin",
+      "C": "1 x 20-cent coin + 1 x 10-cent coin + 4 x 5-cent coin",
+      "D": "1 x 20-cent coin + 1 x 10-cent coin + 7 x 5-cent coin"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Add each option's coins in cents. Step 2: The option that totals 55 cents is 5 x 10-cent coin + 1 x 5-cent coin."
+  },
+  {
+    "id": "P1-TIME-003-M03",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Comparing times",
+    "difficulty": "medium",
+    "question": "Inside the art class, Ismail attempts this problem. Child A reaches home at 4:30 p.m.. Child B is 30 minutes later than Child A. Child C is 30 minutes earlier than Child A. Who reaches home the latest?",
+    "options": {
+      "A": "Child A",
+      "B": "Child C",
+      "C": "Child B",
+      "D": "They reach at the same time"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Child B reaches at 5:00 p.m. and Child C reaches at 4:00 p.m.. Step 2: Compare with Child A's 4:30 p.m.. Step 3: 5:00 p.m. is latest, so Child B is latest."
+  },
+  {
+    "id": "P1-MONEY-011-M07",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Budgeting within a fixed amount",
+    "difficulty": "medium",
+    "question": "Arjun chooses this challenge from the holiday camp station. Prices: pack of sandwiches $6, set of rubber bands $4, bundle of keychains $8. Arjun has $9 and gets $1 more. Which two items can be bought now?",
+    "options": {
+      "A": "pack of sandwiches and bundle of keychains",
+      "B": "set of rubber bands and bundle of keychains",
+      "C": "pack of sandwiches and set of rubber bands",
+      "D": "No pair can be bought"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total money is $9 + $1 = $10. Step 2: pack of sandwiches + set of rubber bands = $10, which is affordable. The other pairs are not. So pack of sandwiches and set of rubber bands is correct."
+  },
+  {
+    "id": "P1-MUL-012-M04",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Writing equations from equal groups",
+    "difficulty": "medium",
+    "question": "While waiting at the museum visit, Aisha practises this. There are 5 rows of 2 cupcakes, and 5 extra cupcakes. Which equation gives the total?",
+    "options": {
+      "A": "5 + 2 + 5 = 12",
+      "B": "5 x 2 - 5 = 5",
+      "C": "10 x 2 = 20",
+      "D": "5 x 2 + 5 = 15"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Items in rows are 5 x 2 = 10. Step 2: Add 5: 10 + 5 = 15. So the correct equation is 5 x 2 + 5 = 15."
+  },
+  {
+    "id": "P1-WHOLE-019-E07",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "easy",
+    "question": "In the museum visit, Ethan is checking this problem. Complete the number pattern: 2, 4, 6, ?, 10.",
+    "options": {
+      "A": "7",
+      "B": "9",
+      "C": "8",
+      "D": "10"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: The pattern increases by 2 each time. Step 2: 6 + 2 = 8."
+  },
+  {
+    "id": "P1-MUL-012-M03",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Writing equations from equal groups",
+    "difficulty": "medium",
+    "question": "Inside the zoo trip, Ismail attempts this problem. There are 4 rows of 5 biscuits, and 4 extra biscuits. Which equation gives the total?",
+    "options": {
+      "A": "4 + 5 + 4 = 13",
+      "B": "4 x 5 - 4 = 16",
+      "C": "4 x 5 + 4 = 24",
+      "D": "8 x 5 = 40"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Items in rows are 4 x 5 = 20. Step 2: Add 4: 20 + 4 = 24. So the correct equation is 4 x 5 + 4 = 24."
+  },
+  {
+    "id": "P1-MONEY-002-E07",
+    "level": "P1",
+    "topic": "Money",
+    "subtopic": "Matching equal coin values",
+    "difficulty": "easy",
+    "question": "In the bakery counter, Ethan is checking this problem. Ethan has these coins: 1 x 20-cent coin + 8 x 5-cent coin. Which option has the same value?",
+    "options": {
+      "A": "1 x 20-cent coin + 2 x 10-cent coin + 5 x 5-cent coin",
+      "B": "2 x 20-cent coin + 3 x 5-cent coin",
+      "C": "1 x 20-cent coin + 2 x 10-cent coin + 4 x 5-cent coin",
+      "D": "1 x 20-cent coin + 3 x 10-cent coin + 4 x 5-cent coin"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the shown coins to get 60 cents. Step 2: Find the option that also totals 60 cents. That option is 1 x 20-cent coin + 2 x 10-cent coin + 4 x 5-cent coin."
+  },
+  {
+    "id": "P1-GRAPH-018-M08",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Adding two values from data",
+    "difficulty": "medium",
+    "question": "On a note in the home study table, Kavitha finds this question. Data list: music club - 7, story writing - 7 fruit cards. Then story writing gets 2 more fruit cards. How many fruit cards are there in total now?",
+    "options": {
+      "A": "14",
+      "B": "18",
+      "C": "17",
+      "D": "16"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: story writing's new count is 7 + 2 = 9. Step 2: Total is 7 + 9 = 16."
+  },
+  {
+    "id": "P1-GRAPH-016-H04",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Reading exact values from data",
+    "difficulty": "hard",
+    "question": "At the fruit stall counter, Mei Hua is asked this. Data list: table tennis - 12, reading club - 9, cycling - 10, model making - 13 tokens. cycling gets 3 tokens and then gives away 2 tokens. How many tokens does cycling have now?",
+    "options": {
+      "A": "13",
+      "B": "8",
+      "C": "14",
+      "D": "11"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: After receiving, cycling has 10 + 3 = 13. Step 2: After giving away 2, 13 - 2 = 11."
+  },
+  {
+    "id": "P1-TIME-005-H03",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "hard",
+    "question": "Raju is timed on this question at the holiday camp. The hour hand points to 4. The minute hand points to 12. Raju starts dinner 1 hour later and finishes 30 minutes after that. What time does Raju finish dinner?",
+    "options": {
+      "A": "5:00 p.m.",
+      "B": "4:30 p.m.",
+      "C": "5:30 p.m.",
+      "D": "6:00 p.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Start dinner at 5:00 p.m. (1 hour later). Step 2: Add 30 minutes. Step 3: Finish time is 5:30 p.m.."
+  },
+  {
+    "id": "P1-TIME-001-M01",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the half hour",
+    "difficulty": "medium",
+    "question": "A helper at the MRT kiosk gives Darren this task. The hour hand is between 1 and 2. The minute hand points to 6. A lesson starts 30 minutes later. What time does it start?",
+    "options": {
+      "A": "2:30 a.m.",
+      "B": "1:30 a.m.",
+      "C": "2:00 a.m.",
+      "D": "1:00 a.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: The clock time is 1:30 a.m.. Step 2: Add 30 minutes: 1:30 a.m. + 30 minutes = 2:00 a.m.."
+  },
+  {
+    "id": "P1-GRAPH-006-M01",
+    "level": "P1",
+    "topic": "Picture Graphs",
+    "subtopic": "Finding equal values in data",
+    "difficulty": "medium",
+    "question": "A helper at the music class gives Darren this task. Data list: badminton - 11, robotics club - 9, cycling - 13, volleyball - 8. Then 2 pupils join robotics club. Which category now has the same number as badminton?",
+    "options": {
+      "A": "robotics club",
+      "B": "cycling",
+      "C": "volleyball",
+      "D": "none"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: robotics club becomes 9 + 2 = 11. Step 2: badminton is 11, so robotics club matches badminton."
+  },
+  {
+    "id": "P1-MUL-006-M03",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Sharing equally into 2 groups",
+    "difficulty": "medium",
+    "question": "Inside the birthday party, Ismail attempts this problem. There are 14 coins. 2 are removed first. The rest are split into 2 equal groups. How many are in each group?",
+    "options": {
+      "A": "7",
+      "B": "8",
+      "C": "6",
+      "D": "5"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Remaining items are 14 - 2 = 12. Step 2: 12 / 2 = 6."
+  },
+  {
+    "id": "P1-TIME-005-M10",
+    "level": "P1",
+    "topic": "Time",
+    "subtopic": "Telling time to the hour",
+    "difficulty": "medium",
+    "question": "At the zoo trip event, Xin Yi answers this question. The hour hand points to 2. The minute hand points to 12. Xin Yi starts homework then and eats dinner 1 hour later. What time does Xin Yi eat dinner?",
+    "options": {
+      "A": "2:00 p.m.",
+      "B": "3:00 p.m.",
+      "C": "2:30 p.m.",
+      "D": "3:30 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Starting time is 2:00 p.m.. Step 2: One hour later is 3:00 p.m.."
+  },
+  {
+    "id": "P1-MUL-012-E01",
+    "level": "P1",
+    "topic": "Multiplication/Division",
+    "subtopic": "Writing equations from equal groups",
+    "difficulty": "easy",
+    "question": "Ahmad is at the HDB void deck. A picture has 2 equal rows with 3 coins in each row. Which equation matches?",
+    "options": {
+      "A": "2 x 3 = 6",
+      "B": "2 + 3 = 5",
+      "C": "2 x 3 = 8",
+      "D": "3 x 2 = 5"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Equal rows mean multiplication. Step 2: 2 x 3 = 6. So the matching equation is 2 x 3 = 6."
+  },
+  {
+    "id": "P1-WHOLE-019-H10",
+    "level": "P1",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns",
+    "difficulty": "hard",
+    "question": "At the end of the birthday party session, Li Ting solves this. Complete the pattern 5, 7, 9, ?, 13. Subtract 2 from the missing number, then double it. What do you get?",
+    "options": {
+      "A": "22",
+      "B": "18",
+      "C": "9",
+      "D": "20"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Missing number is 11. Step 2: 11 - 2 = 9. Step 3: Double it: 9 x 2 = 18."
+  }
+]

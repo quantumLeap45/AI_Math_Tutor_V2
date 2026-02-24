@@ -9,7 +9,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { uploadQuizImage, validateQuizImage } from '@/lib/blob';
 import { quizImageUploadSchema } from '@/lib/validation';
-import { errorToResponse, ValidationError, AppError, ErrorCode } from '@/lib/errors';
+import { errorToResponse, ValidationError, QuotaError, RateLimitError } from '@/lib/errors';
+import { checkRateLimit, getClientIp } from '@/lib/rateLimit';
 import { z } from 'zod';
 
 export const runtime = 'nodejs';
@@ -20,6 +21,17 @@ export const runtime = 'nodejs';
  */
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting (both anti-spam and daily quota)
+    const ip = getClientIp(request);
+    const rateLimitResult = await checkRateLimit(ip);
+
+    if (!rateLimitResult.success) {
+      if (rateLimitResult.quotaStatus && rateLimitResult.dailyRemaining !== undefined) {
+        throw new QuotaError(rateLimitResult.quotaStatus.resetsAt);
+      }
+      throw new RateLimitError(rateLimitResult.retryAfter);
+    }
+
     const formData = await request.formData();
 
     // Extract file

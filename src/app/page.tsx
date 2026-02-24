@@ -276,11 +276,11 @@ export default function LandingPage() {
 
     // Save username and redirect
     localStorage.setItem('math-tutor-username', trimmedName);
-    router.push('/home');
+    router.push('/chat');
   };
 
   const handleContinue = () => {
-    router.push('/home');
+    router.push('/chat');
   };
 
   // Loading state
@@ -305,7 +305,7 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
         <div className="h-full max-w-7xl mx-auto px-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+            <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center shadow-sm">
               <span className="text-white font-bold text-lg">M</span>
             </div>
             <span className="hidden sm:block text-lg font-semibold text-slate-900 dark:text-slate-100">
@@ -315,8 +315,8 @@ export default function LandingPage() {
           <div className="flex items-center gap-3">
             <ThemeToggle />
             <Link
-              href="/home"
-              className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-lg shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all"
+              href="/chat"
+              className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg shadow-none transition-colors"
             >
               Get Started
             </Link>
@@ -329,18 +329,18 @@ export default function LandingPage() {
         <div className="text-center max-w-lg">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-medium text-slate-600 dark:text-slate-400 mb-8 animate-fade-in-up">
-            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-lg shadow-emerald-500/50" />
+            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
             Built for Singapore Primary Students
           </div>
 
           {/* Logo */}
-          <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-xl shadow-emerald-500/30 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+          <div className="w-20 h-20 mx-auto mb-6 rounded-xl bg-emerald-500 flex items-center justify-center shadow-sm animate-fade-in-up" style={{ animationDelay: '100ms' }}>
             <span className="text-white font-bold text-4xl">M</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
             Your personal<br />
-            <span className="bg-gradient-to-r from-emerald-500 to-green-600 bg-clip-text text-transparent">math tutor</span> anytime
+            <span className="text-emerald-500">math tutor</span> anytime
           </h1>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
@@ -350,13 +350,13 @@ export default function LandingPage() {
           {/* Returning user or new user form */}
           {returningUser ? (
             <div className="animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-lg">
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-xl p-6 shadow-sm">
                 <p className="text-slate-600 dark:text-slate-400 mb-4">
                   Welcome back,
                 </p>
                 <button
                   onClick={handleContinue}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold text-lg rounded-xl shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-lg rounded-lg shadow-none transition-colors flex items-center justify-center gap-2"
                 >
                   <span className="text-xl">{returningUser}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -384,7 +384,7 @@ export default function LandingPage() {
                     className={`
                       w-full min-w-[200px] md:min-w-[280px] px-4 py-3
                       bg-white dark:bg-slate-800
-                      border rounded-xl
+                      border rounded-lg
                       text-slate-900 dark:text-slate-100
                       placeholder:text-slate-400 dark:placeholder:text-slate-500
                       focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent
@@ -401,18 +401,17 @@ export default function LandingPage() {
                   disabled={name.trim().length < 2}
                   className={`
                     px-6 py-3
-                    bg-gradient-to-r from-emerald-500 to-green-600
-                    text-white font-semibold
-                    rounded-xl
-                    shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/40
-                    hover:-translate-y-0.5 active:translate-y-0
-                    transition-all duration-200
+                    bg-emerald-500 hover:bg-emerald-600
+                    text-white font-medium
+                    rounded-lg
+                    shadow-none
+                    transition-colors duration-200
                     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0
                     flex items-center justify-center gap-2
                     whitespace-nowrap
                   `}
                 >
-                  Let's Go!
+                  Let&apos;s Go!
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
@@ -428,98 +427,192 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-3">
-              What Can AI Math Tutor Do?
+              Everything You Need to Excel
             </h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Our goal is to provide comprehensive math support for Primary 1 to 6 students, aligned with the Singapore MOE Mathematics Syllabus.
+              Comprehensive math support for Primary 1 to 6, aligned with the Singapore MOE syllabus.
             </p>
           </div>
 
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-            {/* AI Chat Feature */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">AI Chat Tutor</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* AI Chat Tutor */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <li className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                  <span>Ask any math question and get step-by-step explanations</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                  <span><strong>SHOW mode:</strong> Get full solutions with working</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                  <span><strong>TEACH mode:</strong> Get hints and guidance without direct answers</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                  <span>Upload images of math problems (worksheets, textbook questions)</span>
-                </li>
-              </ul>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">AI Chat Tutor</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Ask any P1–P6 math question. Get clear, step-by-step explanations tailored to your level.
+              </p>
             </div>
 
-            {/* Quiz Mode Feature */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 17h.01" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Quiz Mode</h3>
+            {/* Two Learning Modes */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                  <rect x="1" y="5" width="22" height="14" rx="7" ry="7" />
+                  <circle cx="16" cy="12" r="3" />
+                </svg>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <li className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                  <span>Generate custom quizzes by topic, level (P1-P6), and difficulty</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                  <span>Built-in AI helper gives hints without revealing answers</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                  <span>Quiz summary with score, accuracy, and review options</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                  <span>Retry quizzes to improve your score</span>
-                </li>
-              </ul>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Two Learning Modes</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                SHOW mode gives complete solutions. TEACH mode guides you with hints so you learn to solve it yourself.
+              </p>
+            </div>
+
+            {/* Quiz Mode */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Quiz Mode</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Generate custom quizzes by topic, level, and difficulty. Track your score and retry to improve.
+              </p>
+            </div>
+
+            {/* Image Upload */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+              <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                  <circle cx="12" cy="13" r="4" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Image Upload</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Snap a photo of your homework and get instant help. No need to type out the whole question.
+              </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Important Limitation */}
-          <div className="bg-amber-50 dark:bg-amber-900/20 rounded-2xl p-6 border border-amber-200 dark:border-amber-800">
-            <h4 className="font-semibold text-amber-900 dark:text-amber-100 mb-3 flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                <line x1="12" y1="9" x2="12" y2="13" />
-                <line x1="12" y1="17" x2="12.01" y2="17" />
-              </svg>
-              Important Limitation - Image Upload
-            </h4>
-            <p className="text-sm text-amber-800 dark:text-amber-200 leading-relaxed">
-              While our AI chat can <strong>read and understand text-based math problems</strong> from uploaded images, it currently <strong>does not support visual/diagram-based questions</strong>. For example, if a question shows a triangle with labeled side lengths and angles, the AI cannot interpret the visual diagram to solve the problem. This capability requires advanced visual understanding that we're working to add in the future.
+      {/* How It Works Section */}
+      <section className="py-16 px-4 border-t border-slate-200 dark:border-slate-700 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+              How It Works
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Three simple steps to better math grades.
             </p>
+          </div>
+
+          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Connecting line (desktop only) */}
+            <div className="hidden md:block absolute top-6 left-[16.67%] right-[16.67%] h-px bg-slate-200 dark:bg-slate-700" aria-hidden="true" />
+
+            {/* Step 1 */}
+            <div className="relative text-center">
+              <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center mx-auto mb-4 relative z-10">
+                <span className="text-white font-bold text-lg">1</span>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Ask</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Type your math question or upload a photo of your homework.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative text-center">
+              <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center mx-auto mb-4 relative z-10">
+                <span className="text-white font-bold text-lg">2</span>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Learn</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Get personalized explanations in SHOW or TEACH mode.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative text-center">
+              <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center mx-auto mb-4 relative z-10">
+                <span className="text-white font-bold text-lg">3</span>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Practice</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Generate quizzes to test what you&apos;ve learned and track your progress.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-16 px-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-700 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+              Simple Pricing
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Choose the plan that works for your family.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Blurred pricing cards */}
+            <div className="blur-[3px] pointer-events-none select-none">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Free */}
+                <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">Free</h3>
+                  <p className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">$0<span className="text-sm font-normal text-slate-500">/mo</span></p>
+                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <li>30 messages per day</li>
+                    <li>Basic quiz mode</li>
+                    <li>Image upload</li>
+                    <li>Community support</li>
+                  </ul>
+                </div>
+
+                {/* Pro */}
+                <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border-2 border-emerald-500">
+                  <h3 className="text-lg font-semibold text-emerald-600 dark:text-emerald-400 mb-1">Pro</h3>
+                  <p className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">$5<span className="text-sm font-normal text-slate-500">/mo</span></p>
+                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <li>500 messages per day</li>
+                    <li>Advanced quizzes</li>
+                    <li>Priority AI</li>
+                    <li>Detailed analytics</li>
+                  </ul>
+                </div>
+
+                {/* Max */}
+                <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">Max</h3>
+                  <p className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">$15<span className="text-sm font-normal text-slate-500">/mo</span></p>
+                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <li>Unlimited messages</li>
+                    <li>All features</li>
+                    <li>Custom difficulty</li>
+                    <li>Priority support</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Coming Soon overlay */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-8 py-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm text-center">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">Coming Soon</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Premium plans are on the way</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="py-6 px-4 border-t border-slate-200 dark:border-slate-700 relative z-10">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+        <div className="max-w-7xl mx-auto text-center text-sm text-slate-500 dark:text-slate-400">
           <p>Aligned with Singapore MOE Primary Mathematics Syllabus (P1-P6)</p>
         </div>
       </footer>

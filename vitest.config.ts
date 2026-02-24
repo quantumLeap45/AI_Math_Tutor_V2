@@ -32,7 +32,6 @@ export default defineConfig({
         'src/types/',
         'src/app/layout.tsx',
         'src/app/page.tsx',
-        'src/app/home/page.tsx',
         'src/app/chat/page.tsx',
       ],
       // Coverage thresholds - enforce comprehensive testing

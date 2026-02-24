@@ -9,11 +9,20 @@
 import { Pinecone, ScoredPineconeRecord } from '@pinecone-database/pinecone';
 import { RAGQuestion } from './types';
 
+function sanitizeEnvValue(raw: string | undefined): string | undefined {
+  const trimmed = raw?.trim();
+  if (!trimmed) return undefined;
+  if (trimmed.length >= 2 && trimmed[0] === trimmed[trimmed.length - 1] && (trimmed[0] === '"' || trimmed[0] === '\'')) {
+    return trimmed.slice(1, -1).trim() || undefined;
+  }
+  return trimmed;
+}
+
 // Get environment variables dynamically (for scripts that use dotenv)
 const getPineconeEnv = () => ({
-  apiKey: process.env.PINECONE_API_KEY,
-  indexName: process.env.PINECONE_INDEX_NAME || 'ai-math-tutor-v2',
-  indexHost: process.env.PINECONE_INDEX_HOST,
+  apiKey: sanitizeEnvValue(process.env.PINECONE_API_KEY),
+  indexName: sanitizeEnvValue(process.env.PINECONE_INDEX_NAME) || 'ai-math-tutor-v2',
+  indexHost: sanitizeEnvValue(process.env.PINECONE_INDEX_HOST),
 });
 
 // Singleton client instance

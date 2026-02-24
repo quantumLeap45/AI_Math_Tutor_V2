@@ -7,7 +7,7 @@
  */
 
 const DAILY_QUOTA_STORAGE_KEY = 'math-tutor-daily-quota';
-const DEFAULT_DAILY_LIMIT = 50;
+const DEFAULT_DAILY_LIMIT = 30;
 
 /**
  * Daily quota data structure

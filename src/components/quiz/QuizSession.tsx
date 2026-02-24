@@ -11,7 +11,7 @@
  * - Loading/Error states
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuiz } from '@/hooks';
 import {
   QuizSetup,
@@ -25,7 +25,12 @@ import {
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { QuizOption } from '@/types';
 
-export function QuizSession() {
+interface QuizSessionProps {
+  /** When true, skips the home landing and opens setup directly (used in the drawer). */
+  startDirect?: boolean;
+}
+
+export function QuizSession({ startDirect = false }: QuizSessionProps) {
   const {
     phase,
     config,
@@ -52,6 +57,13 @@ export function QuizSession() {
     saveAndExit,
     clearError,
   } = useQuiz();
+
+  // In drawer mode: always stay in setup (never show the home landing)
+  useEffect(() => {
+    if (startDirect && phase === 'home') {
+      goToSetup();
+    }
+  }, [startDirect, phase, goToSetup]);
 
   // Error state
   if (phase === 'error') {
@@ -129,7 +141,7 @@ export function QuizSession() {
         setQuestionCount={setQuestionCount}
         onStartQuiz={startQuiz}
         isLoading={isLoading}
-        onBack={() => returnToSetup()}
+        onBack={startDirect ? undefined : () => returnToSetup()}
       />
     );
   }

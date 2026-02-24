@@ -80,39 +80,47 @@ class ConfigManager {
   }
 
   private loadAndValidate(): AppConfig {
+    const env = (name: string): string => {
+      const raw = (process.env[name] || '').trim();
+      if (raw.length >= 2 && raw[0] === raw[raw.length - 1] && (raw[0] === '"' || raw[0] === '\'')) {
+        return raw.slice(1, -1).trim();
+      }
+      return raw;
+    };
+
     const config: AppConfig = {
       gemini: {
-        apiKey: process.env.GEMINI_API_KEY || '',
-        model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
+        apiKey: env('GEMINI_API_KEY'),
+        model: env('GEMINI_MODEL') || 'gemini-2.5-flash',
       },
       supabase: {
-        url: process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-        anonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
-        enabled: Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
+        url: env('NEXT_PUBLIC_SUPABASE_URL'),
+        anonKey: env('NEXT_PUBLIC_SUPABASE_ANON_KEY'),
+        enabled: Boolean(env('NEXT_PUBLIC_SUPABASE_URL') && env('NEXT_PUBLIC_SUPABASE_ANON_KEY')),
       },
       pinecone: {
-        apiKey: process.env.PINECONE_API_KEY || '',
-        index: process.env.PINECONE_INDEX || 'math-tutor',
-        environment: process.env.PINECONE_ENVIRONMENT || 'production',
-        enabled: Boolean(process.env.PINECONE_API_KEY),
+        apiKey: env('PINECONE_API_KEY'),
+        index: env('PINECONE_INDEX_NAME') || env('PINECONE_INDEX') || 'math-tutor',
+        environment: env('PINECONE_ENVIRONMENT') || 'production',
+        enabled: Boolean(env('PINECONE_API_KEY')),
       },
       openai: {
-        apiKey: process.env.OPENAI_API_KEY || '',
-        enabled: Boolean(process.env.OPENAI_API_KEY),
+        apiKey: env('OPENAI_API_KEY'),
+        enabled: Boolean(env('OPENAI_API_KEY')),
       },
       openRouter: {
-        apiKey: process.env.OPENROUTER_API_KEY || '',
-        model: process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-lite-preview-09-2025',
-        enabled: Boolean(process.env.OPENROUTER_API_KEY),
+        apiKey: env('OPENROUTER_API_KEY'),
+        model: env('OPENROUTER_MODEL') || 'minimax/minimax-m2.5',
+        enabled: Boolean(env('OPENROUTER_API_KEY')),
       },
       blob: {
-        token: process.env.BLOB_READ_WRITE_TOKEN || '',
-        enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+        token: env('BLOB_READ_WRITE_TOKEN'),
+        enabled: Boolean(env('BLOB_READ_WRITE_TOKEN')),
       },
       rateLimits: {
         antiSpamWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000', 10),
         antiSpamMaxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '20', 10),
-        dailyQuotaLimit: parseInt(process.env.DAILY_QUOTA_LIMIT || '30', 10),
+        dailyQuotaLimit: parseInt(process.env.DAILY_QUOTA_LIMIT || '9999', 10),
       },
       storage: {
         maxSessions: parseInt(process.env.MAX_SESSIONS || '50', 10),

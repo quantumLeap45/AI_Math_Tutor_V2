@@ -3,7 +3,7 @@
  * AI Math Tutor v2
  *
  * Handles loading and accessing quiz question data.
- * All quiz data is stored in /data/quiz-p1.json and /data/quiz-p2.json
+ * All quiz data is stored in /data/quiz-p1-bank.json and /data/quiz-p2-bank.json
  */
 
 import {
@@ -14,6 +14,7 @@ import {
   QuizOption,
   P1_TOPICS,
   P2_TOPICS,
+  P3_TOPICS,
 } from '@/types';
 import { shuffleArray } from './quiz-randomization';
 
@@ -35,7 +36,7 @@ async function loadP1Questions(): Promise<QuizQuestion[]> {
 
   try {
     // Dynamic import to avoid SSR issues
-    const data = await import('@/data/quiz-p1.json');
+    const data = await import('@/data/quiz-p1-bank.json');
     const rawQuestions = data.default || data;
 
     // Validate and parse questions
@@ -75,7 +76,7 @@ async function loadP2Questions(): Promise<QuizQuestion[]> {
 
   try {
     // Dynamic import to avoid SSR issues
-    const data = await import('@/data/quiz-p2.json');
+    const data = await import('@/data/quiz-p2-bank.json');
     const rawQuestions = data.default || data;
 
     // Validate and parse questions
@@ -100,11 +101,50 @@ async function loadP2Questions(): Promise<QuizQuestion[]> {
 }
 
 /**
+ * P3 Quiz Questions (imported from JSON file)
+ * This is dynamically imported to avoid SSR issues
+ */
+let P3_QUESTIONS_CACHE: QuizQuestion[] | null = null;
+
+/**
+ * Load and parse P3 quiz questions from JSON
+ */
+async function loadP3Questions(): Promise<QuizQuestion[]> {
+  if (P3_QUESTIONS_CACHE) {
+    return P3_QUESTIONS_CACHE;
+  }
+
+  try {
+    const data = await import('@/data/quiz-p3-bank.json');
+    const rawQuestions = data.default || data;
+
+    const questions: QuizQuestion[] = rawQuestions.map((q) => ({
+      id: q.id,
+      level: q.level as PrimaryLevel,
+      topic: q.topic,
+      subtopic: q.subtopic,
+      difficulty: q.difficulty as QuizDifficulty,
+      question: q.question,
+      options: q.options,
+      correctAnswer: q.correctAnswer as QuizOption,
+      explanation: q.explanation,
+    }));
+
+    P3_QUESTIONS_CACHE = questions;
+    return questions;
+  } catch (error) {
+    console.error('Failed to load P3 quiz questions:', error);
+    return [];
+  }
+}
+
+/**
  * Reset the cache (useful for testing or data updates)
  */
 export function resetQuestionCache(): void {
   P1_QUESTIONS_CACHE = null;
   P2_QUESTIONS_CACHE = null;
+  P3_QUESTIONS_CACHE = null;
 }
 
 // ============ PUBLIC API ============
@@ -119,7 +159,9 @@ export function getAvailableTopics(level: string): string[] {
   if (level === 'P2') {
     return [...P2_TOPICS];
   }
-  // Future levels can be added here
+  if (level === 'P3') {
+    return [...P3_TOPICS];
+  }
   return [];
 }
 
@@ -133,7 +175,9 @@ export async function getQuestionsForLevel(level: string): Promise<QuizQuestion[
   if (level === 'P2') {
     return loadP2Questions();
   }
-  // Future levels can be added here
+  if (level === 'P3') {
+    return loadP3Questions();
+  }
   return [];
 }
 

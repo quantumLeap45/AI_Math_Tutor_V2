@@ -1,0 +1,4962 @@
+[
+  {
+    "id": "P3-WHOLE-001-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value up to 10,000",
+    "difficulty": "easy",
+    "question": "What is the value of the digit 3 in 5 392?",
+    "options": {
+      "A": "3",
+      "B": "30",
+      "C": "300",
+      "D": "3 000"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Look at each digit's position in 5 392. Step 2: 5 is in the thousands place, 3 is in the hundreds place, 9 is in the tens place, 2 is in the ones place. Step 3: The value of the digit 3 in the hundreds place is 300."
+  },
+  {
+    "id": "P3-WHOLE-002-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers up to 10,000",
+    "difficulty": "easy",
+    "question": "Which of the following numbers is the greatest?",
+    "options": {
+      "A": "4 072",
+      "B": "4 027",
+      "C": "4 207",
+      "D": "4 270"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: All four numbers have 4 in the thousands place. Step 2: Compare the hundreds digit: 0, 0, 2, 2. Step 3: 4 270 has 2 in the hundreds and 7 in the tens, which is the greatest. The answer is 4 270."
+  },
+  {
+    "id": "P3-WHOLE-003-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns up to 10,000",
+    "difficulty": "easy",
+    "question": "What is the missing number in the pattern? 3 100, 3 200, 3 300, ___, 3 500",
+    "options": {
+      "A": "3 350",
+      "B": "3 400",
+      "C": "3 450",
+      "D": "3 600"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Find the pattern by looking at the difference between consecutive numbers. Step 2: 3 200 − 3 100 = 100, so each number increases by 100. Step 3: 3 300 + 100 = 3 400. The missing number is 3 400."
+  },
+  {
+    "id": "P3-WHOLE-004-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Expanded notation",
+    "difficulty": "easy",
+    "question": "What is 6 000 + 400 + 50 + 8?",
+    "options": {
+      "A": "6 854",
+      "B": "6 548",
+      "C": "6 485",
+      "D": "6 458"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add the values together. Step 2: 6 000 + 400 = 6 400. Step 3: 6 400 + 50 + 8 = 6 458."
+  },
+  {
+    "id": "P3-WHOLE-005-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "100 more or less",
+    "difficulty": "easy",
+    "question": "What is 100 more than 7 836?",
+    "options": {
+      "A": "7 936",
+      "B": "7 846",
+      "C": "7 836",
+      "D": "8 836"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: To find 100 more, add 100 to the number. Step 2: 7 836 + 100 = 7 936."
+  },
+  {
+    "id": "P3-WHOLE-006-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Rounding to nearest 10",
+    "difficulty": "easy",
+    "question": "Round 4 563 to the nearest 10.",
+    "options": {
+      "A": "4 500",
+      "B": "4 570",
+      "C": "4 560",
+      "D": "4 600"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Look at the ones digit, which is 3. Step 2: Since 3 is less than 5, round down. Step 3: 4 563 rounded to the nearest 10 is 4 560."
+  },
+  {
+    "id": "P3-WHOLE-007-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Rounding to nearest 100",
+    "difficulty": "easy",
+    "question": "Round 2 738 to the nearest 100.",
+    "options": {
+      "A": "2 700",
+      "B": "2 730",
+      "C": "2 800",
+      "D": "2 740"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Look at the tens digit, which is 3. Step 2: Since 3 is less than 5, round down. Step 3: 2 738 rounded to the nearest 100 is 2 700."
+  },
+  {
+    "id": "P3-WHOLE-008-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Odd and even numbers",
+    "difficulty": "easy",
+    "question": "Which of these is an even number?",
+    "options": {
+      "A": "3 571",
+      "B": "8 024",
+      "C": "6 195",
+      "D": "4 283"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: An even number has 0, 2, 4, 6, or 8 in the ones place. Step 2: Check the ones digit of each number: 1, 4, 5, 3. Step 3: 8 024 has 4 in the ones place, so it is even."
+  },
+  {
+    "id": "P3-WHOLE-009-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Number before and after",
+    "difficulty": "easy",
+    "question": "What number is 10 less than 6 000?",
+    "options": {
+      "A": "5 900",
+      "B": "5 000",
+      "C": "5 999",
+      "D": "5 990"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: To find 10 less, subtract 10 from the number. Step 2: 6 000 − 10 = 5 990."
+  },
+  {
+    "id": "P3-WHOLE-010-E",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Rounding to nearest 1000",
+    "difficulty": "easy",
+    "question": "Round 7 215 to the nearest 1 000.",
+    "options": {
+      "A": "7 200",
+      "B": "7 300",
+      "C": "7 000",
+      "D": "8 000"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Look at the hundreds digit, which is 2. Step 2: Since 2 is less than 5, round down. Step 3: 7 215 rounded to the nearest 1 000 is 7 000."
+  },
+  {
+    "id": "P3-WHOLE-011-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value up to 10,000",
+    "difficulty": "medium",
+    "question": "In the number 8 456, the digit 4 is in the hundreds place. What is the total value of the digits 8 and 4?",
+    "options": {
+      "A": "8 040",
+      "B": "8 004",
+      "C": "840",
+      "D": "8 400"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: The digit 8 is in the thousands place, so its value is 8 000. Step 2: The digit 4 is in the hundreds place, so its value is 400. Step 3: 8 000 + 400 = 8 400."
+  },
+  {
+    "id": "P3-WHOLE-012-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Ordering numbers up to 10,000",
+    "difficulty": "medium",
+    "question": "Arrange these numbers in ascending order: 5 182, 5 218, 5 128, 5 281. Which number is the third?",
+    "options": {
+      "A": "5 128",
+      "B": "5 182",
+      "C": "5 218",
+      "D": "5 281"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: All numbers start with 5 in the thousands place. Compare hundreds digits: 1, 2, 1, 2. Step 2: Compare tens and ones for same hundreds: 5 128 < 5 182 and 5 218 < 5 281. Step 3: Ascending order is 5 128, 5 182, 5 218, 5 281. The third number is 5 218."
+  },
+  {
+    "id": "P3-WHOLE-013-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns up to 10,000",
+    "difficulty": "medium",
+    "question": "What is the missing number in the pattern? 8 500, 7 500, 6 500, ___, 4 500",
+    "options": {
+      "A": "5 500",
+      "B": "5 000",
+      "C": "6 000",
+      "D": "5 050"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Find the pattern: 8 500 − 7 500 = 1 000. Each number decreases by 1 000. Step 2: 6 500 − 1 000 = 5 500. The missing number is 5 500."
+  },
+  {
+    "id": "P3-WHOLE-014-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Expanded notation",
+    "difficulty": "medium",
+    "question": "Which of the following shows 9 053 in expanded form?",
+    "options": {
+      "A": "9 000 + 500 + 3",
+      "B": "9 000 + 50 + 3",
+      "C": "9 000 + 53",
+      "D": "9 000 + 5 + 3"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Break down 9 053 by place value. Step 2: 9 is in the thousands place (9 000), 0 is in the hundreds place (0), 5 is in the tens place (50), 3 is in the ones place (3). Step 3: 9 053 = 9 000 + 50 + 3."
+  },
+  {
+    "id": "P3-WHOLE-015-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "1000 more or less",
+    "difficulty": "medium",
+    "question": "What is 1 000 less than 3 042?",
+    "options": {
+      "A": "2 142",
+      "B": "2 952",
+      "C": "2 042",
+      "D": "3 142"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: To find 1 000 less, subtract 1 000 from the number. Step 2: 3 042 − 1 000 = 2 042."
+  },
+  {
+    "id": "P3-WHOLE-016-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers up to 10,000",
+    "difficulty": "medium",
+    "question": "Which of these numbers is the smallest? 6 098, 6 089, 6 809, 6 908",
+    "options": {
+      "A": "6 098",
+      "B": "6 089",
+      "C": "6 809",
+      "D": "6 908"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: All numbers have 6 in the thousands place. Step 2: Compare hundreds: 0, 0, 8, 9. The two smallest are 6 098 and 6 089. Step 3: Compare tens: 9 vs 8. Since 8 < 9, 6 089 is the smallest."
+  },
+  {
+    "id": "P3-WHOLE-017-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Estimation of sum",
+    "difficulty": "medium",
+    "question": "Estimate 3 812 + 4 195 by rounding each number to the nearest 1 000.",
+    "options": {
+      "A": "8 000",
+      "B": "7 000",
+      "C": "7 900",
+      "D": "8 100"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Round 3 812 to the nearest 1 000. The hundreds digit is 8, which is 5 or more, so round up to 4 000. Step 2: Round 4 195 to the nearest 1 000. The hundreds digit is 1, which is less than 5, so round down to 4 000. Step 3: 4 000 + 4 000 = 8 000."
+  },
+  {
+    "id": "P3-WHOLE-018-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Rounding to nearest 10",
+    "difficulty": "medium",
+    "question": "Raju rounds a number to the nearest 10 and gets 4 850. Which of the following could be the number?",
+    "options": {
+      "A": "4 839",
+      "B": "4 843",
+      "C": "4 856",
+      "D": "4 853"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: A number rounds to 4 850 if it is between 4 845 and 4 854. Step 2: Check each option: 4 839 rounds to 4 840, 4 843 rounds to 4 840, 4 856 rounds to 4 860, 4 853 rounds to 4 850. Step 3: 4 853 rounds to 4 850."
+  },
+  {
+    "id": "P3-WHOLE-019-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Rounding to nearest 100",
+    "difficulty": "medium",
+    "question": "Mei Hua rounds a number to the nearest 100 and gets 6 300. Which of the following could NOT be the number?",
+    "options": {
+      "A": "6 256",
+      "B": "6 289",
+      "C": "6 351",
+      "D": "6 349"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: A number rounds to 6 300 if it is from 6 250 to 6 349. Step 2: Check each option: 6 256 is in range, 6 289 is in range, 6 351 rounds to 6 400, 6 349 is in range. Step 3: 6 351 could NOT round to 6 300."
+  },
+  {
+    "id": "P3-WHOLE-020-M",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Odd and even numbers",
+    "difficulty": "medium",
+    "question": "Ahmad thinks of an even number between 4 570 and 4 580. The sum of its digits is 20. What is the number?",
+    "options": {
+      "A": "4 572",
+      "B": "4 574",
+      "C": "4 576",
+      "D": "4 578"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Even numbers between 4 570 and 4 580 are 4 572, 4 574, 4 576, 4 578. Step 2: Find the digit sum of each: 4+5+7+2=18, 4+5+7+4=20, 4+5+7+6=22, 4+5+7+8=24. Step 3: 4 574 has a digit sum of 20."
+  },
+  {
+    "id": "P3-WHOLE-021-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Place value up to 10,000",
+    "difficulty": "hard",
+    "question": "I am a 4-digit number. My thousands digit is 6. My hundreds digit is 3 more than my ones digit. My tens digit is 2. My ones digit is 1. What number am I?",
+    "options": {
+      "A": "6 321",
+      "B": "6 241",
+      "C": "6 421",
+      "D": "6 412"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Thousands digit = 6. Step 2: Ones digit = 1, and hundreds digit = 1 + 3 = 4. Step 3: Tens digit = 2. The number is 6 421."
+  },
+  {
+    "id": "P3-WHOLE-022-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Ordering numbers up to 10,000",
+    "difficulty": "hard",
+    "question": "Using the digits 3, 7, 0, and 5 each exactly once, what is the greatest 4-digit number that can be formed?",
+    "options": {
+      "A": "7 530",
+      "B": "7 350",
+      "C": "7 503",
+      "D": "7 305"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: To form the greatest number, place the largest digit in the thousands place: 7. Step 2: Then place the next largest in the hundreds place: 5. Step 3: Then 3 in the tens place and 0 in the ones place. The greatest number is 7 530."
+  },
+  {
+    "id": "P3-WHOLE-023-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Number patterns up to 10,000",
+    "difficulty": "hard",
+    "question": "Look at the pattern: 1 250, 2 350, 3 450, ___. What is the next number?",
+    "options": {
+      "A": "4 450",
+      "B": "4 500",
+      "C": "4 550",
+      "D": "4 650"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Find the difference between consecutive numbers: 2 350 − 1 250 = 1 100. Step 2: Check: 3 450 − 2 350 = 1 100. The pattern increases by 1 100. Step 3: 3 450 + 1 100 = 4 550."
+  },
+  {
+    "id": "P3-WHOLE-024-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Expanded notation",
+    "difficulty": "hard",
+    "question": "A number has 3 in the ones place, 0 in the tens place, 8 in the thousands place, and 5 in the hundreds place. What is the number when 1 000 is added to it?",
+    "options": {
+      "A": "8 503",
+      "B": "9 053",
+      "C": "8 530",
+      "D": "9 503"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: The number is 8 503 (8 thousands, 5 hundreds, 0 tens, 3 ones). Step 2: Add 1 000: 8 503 + 1 000 = 9 503."
+  },
+  {
+    "id": "P3-WHOLE-025-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Comparing numbers up to 10,000",
+    "difficulty": "hard",
+    "question": "Ethan writes four numbers: 3 A56, 3 856, 3 756, 3 656. When arranged in descending order, 3 A56 comes first. What is the smallest possible digit A?",
+    "options": {
+      "A": "7",
+      "B": "9",
+      "C": "8",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: For 3 A56 to come first in descending order, it must be the greatest number. Step 2: The other numbers in descending order are 3 856, 3 756, 3 656. Step 3: 3 A56 must be greater than 3 856, so A must be 9 or more. The smallest possible digit is 9."
+  },
+  {
+    "id": "P3-WHOLE-026-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Rounding to nearest 1000",
+    "difficulty": "hard",
+    "question": "When a number is rounded to the nearest 1 000, the answer is 5 000. When it is rounded to the nearest 100, the answer is 4 600. Which could the number be?",
+    "options": {
+      "A": "4 549",
+      "B": "5 049",
+      "C": "4 639",
+      "D": "4 651"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Rounded to the nearest 1 000 = 5 000, so the number is from 4 500 to 5 499. Step 2: Rounded to the nearest 100 = 4 600, so the number is from 4 550 to 4 649. Step 3: Check each option: 4 549 is below 4 550 range, 5 049 rounds to 5 000 (nearest 100), 4 639 rounds to 5 000 (nearest 1 000) and 4 600 (nearest 100) so it fits, 4 651 rounds to 4 700 (nearest 100). The answer is 4 639."
+  },
+  {
+    "id": "P3-WHOLE-027-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "1000 more or less",
+    "difficulty": "hard",
+    "question": "Siti thinks of a number. When she adds 1 000 and then subtracts 100, she gets 7 250. What was her original number?",
+    "options": {
+      "A": "6 250",
+      "B": "8 150",
+      "C": "6 150",
+      "D": "6 350"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Work backwards. The result after adding 1 000 and subtracting 100 is 7 250. Step 2: Reverse the subtraction: 7 250 + 100 = 7 350. Step 3: Reverse the addition: 7 350 − 1 000 = 6 350. Her original number was 6 350."
+  },
+  {
+    "id": "P3-WHOLE-028-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Estimation of sum",
+    "difficulty": "hard",
+    "question": "Darren estimates 5 482 + 2 738 by rounding each number to the nearest 1 000. Li Ting estimates the same sum by rounding to the nearest 100. What is the difference between their estimates?",
+    "options": {
+      "A": "300",
+      "B": "200",
+      "C": "100",
+      "D": "0"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Darren rounds to nearest 1 000: 5 000 + 3 000 = 8 000. Step 2: Li Ting rounds to nearest 100: 5 500 + 2 700 = 8 200. Step 3: Difference = 8 200 − 8 000 = 200."
+  },
+  {
+    "id": "P3-WHOLE-029-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Number before and after",
+    "difficulty": "hard",
+    "question": "Priya counts backwards by 100 from 5 020. Which of the following numbers will she say?",
+    "options": {
+      "A": "4 120",
+      "B": "4 200",
+      "C": "4 220",
+      "D": "4 320"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Priya counts: 5 020, 4 920, 4 820, 4 720, 4 620, 4 520, 4 420, 4 320, 4 220, ... Step 2: All numbers in the sequence end in 20 and decrease by 100. Step 3: 4 220 ends in 20 and is part of this sequence. The answer is 4 220."
+  },
+  {
+    "id": "P3-WHOLE-030-H",
+    "level": "P3",
+    "topic": "Whole Numbers",
+    "subtopic": "Rounding to nearest 10",
+    "difficulty": "hard",
+    "question": "When a number is rounded to the nearest 10, the result is 3 680. When the same number is rounded to the nearest 100, the result is 3 700. What is the greatest possible number?",
+    "options": {
+      "A": "3 682",
+      "B": "3 684",
+      "C": "3 678",
+      "D": "3 674"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Rounded to the nearest 10 gives 3 680, so the number is from 3 675 to 3 684. Step 2: Rounded to the nearest 100 gives 3 700, so the number is from 3 650 to 3 749. Step 3: Both conditions are satisfied by numbers from 3 675 to 3 684. The greatest possible number is 3 684."
+  },
+  {
+    "id": "P3-ADD-001-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Direct addition within 10,000",
+    "difficulty": "easy",
+    "question": "Find the value of 2 345 + 1 234.",
+    "options": {
+      "A": "3 589",
+      "B": "3 579",
+      "C": "3 679",
+      "D": "3 569"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Add the ones: 5 + 4 = 9. Step 2: Add the tens: 4 + 3 = 7. Step 3: Add the hundreds: 3 + 2 = 5. Add the thousands: 2 + 1 = 3. The answer is 3 579."
+  },
+  {
+    "id": "P3-ADD-002-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Direct subtraction within 10,000",
+    "difficulty": "easy",
+    "question": "Find the value of 5 876 − 2 341.",
+    "options": {
+      "A": "3 535",
+      "B": "3 435",
+      "C": "3 545",
+      "D": "3 635"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Subtract the ones: 6 − 1 = 5. Step 2: Subtract the tens: 7 − 4 = 3. Step 3: Subtract the hundreds: 8 − 3 = 5. Subtract the thousands: 5 − 2 = 3. The answer is 3 535."
+  },
+  {
+    "id": "P3-ADD-003-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "1-step addition word problem",
+    "difficulty": "easy",
+    "question": "A bookshop has 2 456 English books and 1 302 Chinese books. How many books does the bookshop have altogether?",
+    "options": {
+      "A": "3 658",
+      "B": "3 858",
+      "C": "3 768",
+      "D": "3 758"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Add the number of English and Chinese books. Step 2: 2 456 + 1 302 = 3 758. The bookshop has 3 758 books altogether."
+  },
+  {
+    "id": "P3-ADD-004-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "1-step subtraction word problem",
+    "difficulty": "easy",
+    "question": "A school had 4 580 pupils. 1 260 pupils graduated. How many pupils are left in the school?",
+    "options": {
+      "A": "3 220",
+      "B": "3 310",
+      "C": "3 320",
+      "D": "3 420"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Subtract the number of pupils who graduated. Step 2: 4 580 − 1 260 = 3 320. There are 3 320 pupils left."
+  },
+  {
+    "id": "P3-ADD-005-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Direct addition within 10,000",
+    "difficulty": "easy",
+    "question": "Find the value of 3 604 + 2 185.",
+    "options": {
+      "A": "5 879",
+      "B": "5 789",
+      "C": "5 889",
+      "D": "5 779"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Add the ones: 4 + 5 = 9. Step 2: Add the tens: 0 + 8 = 8. Step 3: Add the hundreds: 6 + 1 = 7. Add the thousands: 3 + 2 = 5. The answer is 5 789."
+  },
+  {
+    "id": "P3-ADD-006-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Direct subtraction within 10,000",
+    "difficulty": "easy",
+    "question": "Find the value of 7 496 − 3 251.",
+    "options": {
+      "A": "4 145",
+      "B": "4 345",
+      "C": "4 245",
+      "D": "4 255"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Subtract the ones: 6 − 1 = 5. Step 2: Subtract the tens: 9 − 5 = 4. Step 3: Subtract the hundreds: 4 − 2 = 2. Subtract the thousands: 7 − 3 = 4. The answer is 4 245."
+  },
+  {
+    "id": "P3-ADD-007-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "1-step addition word problem",
+    "difficulty": "easy",
+    "question": "Zhi Hao collected 1 438 stamps. Kai collected 2 351 stamps. How many stamps did they collect in total?",
+    "options": {
+      "A": "3 789",
+      "B": "3 689",
+      "C": "3 879",
+      "D": "3 899"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Add both amounts. Step 2: 1 438 + 2 351 = 3 789. They collected 3 789 stamps in total."
+  },
+  {
+    "id": "P3-ADD-008-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "1-step subtraction word problem",
+    "difficulty": "easy",
+    "question": "A community library has 6 725 books. 2 413 books were borrowed. How many books are left?",
+    "options": {
+      "A": "4 212",
+      "B": "4 302",
+      "C": "4 322",
+      "D": "4 312"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Subtract the borrowed books from the total. Step 2: 6 725 − 2 413 = 4 312. There are 4 312 books left."
+  },
+  {
+    "id": "P3-ADD-009-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Direct addition within 10,000",
+    "difficulty": "easy",
+    "question": "What is 4 152 + 3 726?",
+    "options": {
+      "A": "7 778",
+      "B": "7 978",
+      "C": "7 878",
+      "D": "7 888"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the ones: 2 + 6 = 8. Step 2: Add the tens: 5 + 2 = 7. Step 3: Add the hundreds: 1 + 7 = 8. Add the thousands: 4 + 3 = 7. The answer is 7 878."
+  },
+  {
+    "id": "P3-ADD-010-E",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Direct subtraction within 10,000",
+    "difficulty": "easy",
+    "question": "What is 8 659 − 5 437?",
+    "options": {
+      "A": "3 122",
+      "B": "3 222",
+      "C": "3 212",
+      "D": "3 322"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Subtract the ones: 9 − 7 = 2. Step 2: Subtract the tens: 5 − 3 = 2. Step 3: Subtract the hundreds: 6 − 4 = 2. Subtract the thousands: 8 − 5 = 3. The answer is 3 222."
+  },
+  {
+    "id": "P3-ADD-011-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition with regrouping",
+    "difficulty": "medium",
+    "question": "Find the value of 4 567 + 2 685.",
+    "options": {
+      "A": "7 152",
+      "B": "7 242",
+      "C": "7 252",
+      "D": "7 352"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the ones: 7 + 5 = 12. Write 2, carry 1. Step 2: Add the tens: 6 + 8 + 1 = 15. Write 5, carry 1. Step 3: Add the hundreds: 5 + 6 + 1 = 12. Write 2, carry 1. Add the thousands: 4 + 2 + 1 = 7. The answer is 7 252."
+  },
+  {
+    "id": "P3-ADD-012-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction with regrouping",
+    "difficulty": "medium",
+    "question": "Find the value of 6 034 − 2 578.",
+    "options": {
+      "A": "3 456",
+      "B": "3 356",
+      "C": "3 466",
+      "D": "3 556"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Subtract the ones: 4 − 8. Cannot subtract, so regroup from tens. But tens is 3, borrow from hundreds (0, so borrow from thousands). After regrouping: 14 − 8 = 6. Step 2: After regrouping, the tens: 12 − 7 = 5, hundreds: 9 − 5 = 4, thousands: 5 − 2 = 3. Step 3: The answer is 3 456."
+  },
+  {
+    "id": "P3-ADD-013-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Estimation then exact answer",
+    "difficulty": "medium",
+    "question": "Sarah estimates 5 287 + 2 614 by rounding each number to the nearest 1 000. What is her estimated answer?",
+    "options": {
+      "A": "7 000",
+      "B": "8 100",
+      "C": "7 900",
+      "D": "8 000"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Round 5 287 to the nearest 1 000. The hundreds digit is 2, which is less than 5, so round down to 5 000. Step 2: Round 2 614 to the nearest 1 000. The hundreds digit is 6, which is 5 or more, so round up to 3 000. Step 3: 5 000 + 3 000 = 8 000."
+  },
+  {
+    "id": "P3-ADD-014-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "2-step word problem (add and subtract)",
+    "difficulty": "medium",
+    "question": "A supermarket had 3 450 bottles of juice. It sold 1 278 bottles in the morning and received 560 new bottles in the afternoon. How many bottles does it have now?",
+    "options": {
+      "A": "2 632",
+      "B": "2 732",
+      "C": "2 832",
+      "D": "2 672"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Subtract the bottles sold: 3 450 − 1 278 = 2 172. Step 2: Add the new bottles received: 2 172 + 560 = 2 732. The supermarket has 2 732 bottles now."
+  },
+  {
+    "id": "P3-ADD-015-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "2-step comparison",
+    "difficulty": "medium",
+    "question": "Devi has 4 385 stickers. Aisha has 2 917 stickers. How many more stickers does Devi have than Aisha?",
+    "options": {
+      "A": "1 368",
+      "B": "1 568",
+      "C": "1 468",
+      "D": "1 478"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Find the difference between Devi's and Aisha's stickers. Step 2: 4 385 − 2 917 = 1 468. Devi has 1 468 more stickers than Aisha."
+  },
+  {
+    "id": "P3-ADD-016-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing number in equation",
+    "difficulty": "medium",
+    "question": "4 285 + ___ = 7 103. What is the missing number?",
+    "options": {
+      "A": "2 718",
+      "B": "2 818",
+      "C": "2 828",
+      "D": "2 918"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: To find the missing number, subtract 4 285 from 7 103. Step 2: 7 103 − 4 285 = 2 818. The missing number is 2 818."
+  },
+  {
+    "id": "P3-ADD-017-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Addition with regrouping",
+    "difficulty": "medium",
+    "question": "Arjun saved $3 678 in January. He saved another $2 945 in February. How much did he save in total?",
+    "options": {
+      "A": "6 623",
+      "B": "6 613",
+      "C": "6 523",
+      "D": "6 723"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Add the ones: 8 + 5 = 13. Write 3, carry 1. Step 2: Add the tens: 7 + 4 + 1 = 12. Write 2, carry 1. Step 3: Add the hundreds: 6 + 9 + 1 = 16. Write 6, carry 1. Add the thousands: 3 + 2 + 1 = 6. The total is $6 623."
+  },
+  {
+    "id": "P3-ADD-018-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction with regrouping",
+    "difficulty": "medium",
+    "question": "A charity drive collected 8 200 items. 3 756 items were given away. How many items are left?",
+    "options": {
+      "A": "4 344",
+      "B": "4 544",
+      "C": "4 454",
+      "D": "4 444"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Subtract: 8 200 − 3 756. Regroup since 0 < 6. Step 2: After regrouping: ones: 10 − 6 = 4, tens: 9 − 5 = 4, hundreds: 1 − 7, regroup again: 11 − 7 = 4, thousands: 7 − 3 = 4. Step 3: The answer is 4 444."
+  },
+  {
+    "id": "P3-ADD-019-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Subtraction with regrouping",
+    "difficulty": "medium",
+    "question": "Hui Min had 5 003 beads. She used 2 647 beads for a project. How many beads does she have left?",
+    "options": {
+      "A": "2 256",
+      "B": "2 346",
+      "C": "2 356",
+      "D": "2 456"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Subtract: 5 003 − 2 647. Regroup since 3 < 7. Step 2: Borrow from tens (0), then hundreds (0), then thousands. After regrouping: 13 − 7 = 6, 9 − 4 = 5, 9 − 6 = 3, 4 − 2 = 2. Step 3: The answer is 2 356."
+  },
+  {
+    "id": "P3-ADD-020-M",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing number in equation",
+    "difficulty": "medium",
+    "question": "___ − 1 856 = 3 472. What is the missing number?",
+    "options": {
+      "A": "5 228",
+      "B": "5 318",
+      "C": "5 338",
+      "D": "5 328"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: To find the missing number, add 1 856 to 3 472. Step 2: 3 472 + 1 856 = 5 328. The missing number is 5 328."
+  },
+  {
+    "id": "P3-ADD-021-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "3-step word problem",
+    "difficulty": "hard",
+    "question": "A school collected 8 500 cans for charity. Class A collected 1 263 cans and Class B collected 2 845 cans. How many cans did the other classes collect?",
+    "options": {
+      "A": "4 292",
+      "B": "4 392",
+      "C": "4 492",
+      "D": "4 592"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Find the total collected by Class A and Class B: 1 263 + 2 845 = 4 108. Step 2: Subtract from the school's total: 8 500 − 4 108 = 4 392. Step 3: The other classes collected 4 392 cans."
+  },
+  {
+    "id": "P3-ADD-022-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Finding unknown given sum and difference",
+    "difficulty": "hard",
+    "question": "Two numbers add up to 6 000. One number is 2 436. How much greater is the larger number than the smaller number?",
+    "options": {
+      "A": "1 228",
+      "B": "1 028",
+      "C": "1 128",
+      "D": "1 236"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Find the other number: 6 000 − 2 436 = 3 564. Step 2: The larger number is 3 564 and the smaller is 2 436. Step 3: Find the difference: 3 564 − 2 436 = 1 128."
+  },
+  {
+    "id": "P3-ADD-023-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "3-step word problem",
+    "difficulty": "hard",
+    "question": "Jun Wei had 5 400 marbles. He gave 1 265 marbles to Ahmad and 978 marbles to Raju. How many marbles does Jun Wei have left?",
+    "options": {
+      "A": "3 157",
+      "B": "3 057",
+      "C": "3 167",
+      "D": "3 257"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Find the total marbles given away: 1 265 + 978 = 2 243. Step 2: Subtract from Jun Wei's original amount: 5 400 − 2 243 = 3 157. Step 3: Jun Wei has 3 157 marbles left."
+  },
+  {
+    "id": "P3-ADD-024-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "2-step word problem (add and subtract)",
+    "difficulty": "hard",
+    "question": "A canteen sold 2 348 curry puffs on Monday and 1 879 curry puffs on Tuesday. It made 6 500 curry puffs for both days. How many curry puffs were left unsold?",
+    "options": {
+      "A": "2 173",
+      "B": "2 373",
+      "C": "2 283",
+      "D": "2 273"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Find the total sold: 2 348 + 1 879 = 4 227. Step 2: Subtract from total made: 6 500 − 4 227 = 2 273. Step 3: 2 273 curry puffs were left unsold."
+  },
+  {
+    "id": "P3-ADD-025-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "3-step comparison",
+    "difficulty": "hard",
+    "question": "At a book fair, Kavitha bought books costing $1 865 and $2 347. Xin Yi spent $3 498 on books. How much more did Kavitha spend than Xin Yi?",
+    "options": {
+      "A": "614",
+      "B": "704",
+      "C": "714",
+      "D": "724"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Find Kavitha's total spending: 1 865 + 2 347 = 4 212. Step 2: Find the difference: 4 212 − 3 498 = 714. Step 3: Kavitha spent $714 more than Xin Yi."
+  },
+  {
+    "id": "P3-ADD-026-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Missing number in multi-step equation",
+    "difficulty": "hard",
+    "question": "Ismail has some stickers. He gives away 1 345 stickers and receives 876 new ones. He now has 4 231 stickers. How many stickers did he have at first?",
+    "options": {
+      "A": "4 600",
+      "B": "4 700",
+      "C": "4 800",
+      "D": "4 900"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Work backwards. He now has 4 231. Before receiving 876, he had: 4 231 − 876 = 3 355. Step 2: Before giving away 1 345, he had: 3 355 + 1 345 = 4 700. Step 3: Ismail had 4 700 stickers at first."
+  },
+  {
+    "id": "P3-ADD-027-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "3-step word problem",
+    "difficulty": "hard",
+    "question": "At a sports day, 3 285 pupils participated in the morning. 1 946 more pupils joined in the afternoon. At the end of the day, 1 578 pupils had already left. How many pupils remained?",
+    "options": {
+      "A": "3 553",
+      "B": "3 853",
+      "C": "3 753",
+      "D": "3 653"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Find total pupils after afternoon: 3 285 + 1 946 = 5 231. Step 2: Subtract those who left: 5 231 − 1 578 = 3 653. Step 3: 3 653 pupils remained."
+  },
+  {
+    "id": "P3-ADD-028-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Estimation and exact comparison",
+    "difficulty": "hard",
+    "question": "Ethan estimates 4 738 − 1 265 by rounding both numbers to the nearest 100. What is the difference between his estimate and the exact answer?",
+    "options": {
+      "A": "27",
+      "B": "37",
+      "C": "63",
+      "D": "73"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Exact answer: 4 738 − 1 265 = 3 473. Step 2: Estimate: 4 700 − 1 300 = 3 400. Step 3: Difference between exact and estimate: 3 473 − 3 400 = 73."
+  },
+  {
+    "id": "P3-ADD-029-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "Finding unknown given sum and difference",
+    "difficulty": "hard",
+    "question": "Li Ting and Mei Hua have 7 500 beads altogether. Li Ting has 1 236 more beads than Mei Hua. How many beads does Mei Hua have?",
+    "options": {
+      "A": "3 132",
+      "B": "3 032",
+      "C": "3 232",
+      "D": "3 332"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: If Mei Hua has the same as Li Ting, the total would be 7 500 − 1 236 = 6 264 (removing the extra). Step 2: This means 2 equal groups: 6 264 divided by 2 = 3 132. Step 3: Mei Hua has 3 132 beads."
+  },
+  {
+    "id": "P3-ADD-030-H",
+    "level": "P3",
+    "topic": "Addition/Subtraction",
+    "subtopic": "3-step word problem",
+    "difficulty": "hard",
+    "question": "A school event raised $9 000. The school spent $2 465 on decorations and $3 187 on food. How much money was left from the event?",
+    "options": {
+      "A": "3 248",
+      "B": "3 348",
+      "C": "3 448",
+      "D": "3 548"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Find the total amount spent: 2 465 + 3 187 = 5 652. Step 2: Subtract from the total raised: 9 000 − 5 652 = 3 348. Step 3: $3 348 was left from the event."
+  },
+  {
+    "id": "P3-MUL-001-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Times tables — direct recall",
+    "difficulty": "easy",
+    "question": "9 × 6 = ___",
+    "options": {
+      "A": "54",
+      "B": "48",
+      "C": "56",
+      "D": "45"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Recall the 9 times table. Step 2: 9 × 6 = 54. Step 3: Check: 9 × 5 = 45, so 9 × 6 = 45 + 9 = 54."
+  },
+  {
+    "id": "P3-MUL-002-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Times tables — direct recall",
+    "difficulty": "easy",
+    "question": "7 × 8 = ___",
+    "options": {
+      "A": "54",
+      "B": "58",
+      "C": "63",
+      "D": "56"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Recall the 7 times table. Step 2: 7 × 8 = 56. Step 3: Check: 7 × 7 = 49, so 7 × 8 = 49 + 7 = 56."
+  },
+  {
+    "id": "P3-MUL-003-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Direct 3-digit × 1-digit",
+    "difficulty": "easy",
+    "question": "123 × 3 = ___",
+    "options": {
+      "A": "356",
+      "B": "369",
+      "C": "363",
+      "D": "396"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Multiply the ones: 3 × 3 = 9. Step 2: Multiply the tens: 2 × 3 = 6. Step 3: Multiply the hundreds: 1 × 3 = 3. Step 4: 123 × 3 = 369."
+  },
+  {
+    "id": "P3-MUL-004-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Direct division (exact)",
+    "difficulty": "easy",
+    "question": "72 ÷ 8 = ___",
+    "options": {
+      "A": "7",
+      "B": "8",
+      "C": "9",
+      "D": "10"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Think of the 8 times table. Step 2: 8 × 9 = 72. Step 3: So 72 ÷ 8 = 9."
+  },
+  {
+    "id": "P3-MUL-005-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Direct division (exact)",
+    "difficulty": "easy",
+    "question": "91 ÷ 7 = ___",
+    "options": {
+      "A": "13",
+      "B": "12",
+      "C": "11",
+      "D": "14"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Think of the 7 times table. Step 2: 7 × 13 = 91. Step 3: So 91 ÷ 7 = 13."
+  },
+  {
+    "id": "P3-MUL-006-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "1-step multiplication word problem",
+    "difficulty": "easy",
+    "question": "A box contains 8 packets of sweets. Each packet has 6 sweets. How many sweets are there altogether?",
+    "options": {
+      "A": "42",
+      "B": "46",
+      "C": "54",
+      "D": "48"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Number of packets = 8. Step 2: Sweets per packet = 6. Step 3: Total sweets = 8 × 6 = 48."
+  },
+  {
+    "id": "P3-MUL-007-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "1-step division word problem (sharing)",
+    "difficulty": "easy",
+    "question": "7 children share 63 stickers equally. How many stickers does each child get?",
+    "options": {
+      "A": "7",
+      "B": "9",
+      "C": "8",
+      "D": "10"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Total stickers = 63. Step 2: Number of children = 7. Step 3: Stickers per child = 63 ÷ 7 = 9."
+  },
+  {
+    "id": "P3-MUL-008-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "1-step multiplication word problem",
+    "difficulty": "easy",
+    "question": "A baker bakes 156 muffins each day. How many muffins does he bake in 3 days?",
+    "options": {
+      "A": "448",
+      "B": "458",
+      "C": "468",
+      "D": "478"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Muffins per day = 156. Step 2: Number of days = 3. Step 3: Total muffins = 156 × 3 = 468."
+  },
+  {
+    "id": "P3-MUL-009-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Finding missing factor",
+    "difficulty": "easy",
+    "question": "5 × ___ = 45. What is the missing number?",
+    "options": {
+      "A": "7",
+      "B": "8",
+      "C": "10",
+      "D": "9"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: We need to find what number multiplied by 5 gives 45. Step 2: 45 ÷ 5 = 9. Step 3: Check: 5 × 9 = 45. The missing number is 9."
+  },
+  {
+    "id": "P3-MUL-010-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Direct 2-digit × 1-digit",
+    "difficulty": "easy",
+    "question": "34 × 5 = ___",
+    "options": {
+      "A": "160",
+      "B": "170",
+      "C": "165",
+      "D": "175"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Multiply the ones: 4 × 5 = 20, write 0 carry 2. Step 2: Multiply the tens: 3 × 5 = 15, add carry 2 = 17. Step 3: 34 × 5 = 170."
+  },
+  {
+    "id": "P3-MUL-011-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "1-step division word problem (sharing)",
+    "difficulty": "easy",
+    "question": "Mei Hua has 48 beads. She divides them equally into 6 bags. How many beads are in each bag?",
+    "options": {
+      "A": "6",
+      "B": "7",
+      "C": "8",
+      "D": "9"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total beads = 48. Step 2: Number of bags = 6. Step 3: Beads per bag = 48 ÷ 6 = 8."
+  },
+  {
+    "id": "P3-MUL-012-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Direct 2-digit × 1-digit",
+    "difficulty": "easy",
+    "question": "46 × 7 = ___",
+    "options": {
+      "A": "312",
+      "B": "332",
+      "C": "342",
+      "D": "322"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Multiply the ones: 6 × 7 = 42, write 2 carry 4. Step 2: Multiply the tens: 4 × 7 = 28, add carry 4 = 32. Step 3: 46 × 7 = 322."
+  },
+  {
+    "id": "P3-MUL-013-E",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Direct 3-digit × 1-digit",
+    "difficulty": "easy",
+    "question": "214 × 4 = ___",
+    "options": {
+      "A": "856",
+      "B": "836",
+      "C": "846",
+      "D": "866"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Multiply the ones: 4 × 4 = 16, write 6 carry 1. Step 2: Multiply the tens: 1 × 4 = 4, add carry 1 = 5. Step 3: Multiply the hundreds: 2 × 4 = 8. Step 4: 214 × 4 = 856."
+  },
+  {
+    "id": "P3-MUL-014-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division with remainder",
+    "difficulty": "medium",
+    "question": "95 ÷ 6 = ___ remainder ___. What is the remainder?",
+    "options": {
+      "A": "3",
+      "B": "5",
+      "C": "4",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Find how many 6s fit into 95. Step 2: 6 × 15 = 90. Step 3: 95 − 90 = 5. Step 4: 95 ÷ 6 = 15 remainder 5."
+  },
+  {
+    "id": "P3-MUL-015-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "2-step: multiply then subtract",
+    "difficulty": "medium",
+    "question": "Ahmad had 5 packets of pencils. Each packet had 12 pencils. He gave 18 pencils to his friends. How many pencils did he have left?",
+    "options": {
+      "A": "42",
+      "B": "40",
+      "C": "44",
+      "D": "38"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Total pencils = 5 × 12 = 60. Step 2: Pencils given away = 18. Step 3: Pencils left = 60 − 18 = 42."
+  },
+  {
+    "id": "P3-MUL-016-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division with remainder — real-world interpretation",
+    "difficulty": "medium",
+    "question": "A farmer has 85 eggs. He packs them into boxes of 6. How many complete boxes can he fill?",
+    "options": {
+      "A": "12",
+      "B": "13",
+      "C": "14",
+      "D": "15"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Divide 85 by 6. Step 2: 6 × 14 = 84. Step 3: 85 − 84 = 1 egg left over. Step 4: He can fill 14 complete boxes."
+  },
+  {
+    "id": "P3-MUL-017-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Checking by inverse",
+    "difficulty": "medium",
+    "question": "Raju multiplied a number by 8 and got 96. What was the original number?",
+    "options": {
+      "A": "10",
+      "B": "11",
+      "C": "13",
+      "D": "12"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: The number × 8 = 96. Step 2: To find the number, divide: 96 ÷ 8 = 12. Step 3: Check: 12 × 8 = 96. The original number is 12."
+  },
+  {
+    "id": "P3-MUL-018-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "2-step: multiply two things then add",
+    "difficulty": "medium",
+    "question": "At a bookshop, Siti bought 4 notebooks at $3 each and 5 pens at $2 each. How much did she spend altogether?",
+    "options": {
+      "A": "$20",
+      "B": "$22",
+      "C": "$24",
+      "D": "$26"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Cost of notebooks = 4 × $3 = $12. Step 2: Cost of pens = 5 × $2 = $10. Step 3: Total = $12 + $10 = $22."
+  },
+  {
+    "id": "P3-MUL-019-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Finding missing factor",
+    "difficulty": "medium",
+    "question": "7 × ___ = 84. What is the missing number?",
+    "options": {
+      "A": "11",
+      "B": "13",
+      "C": "12",
+      "D": "14"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: We need to find what number multiplied by 7 gives 84. Step 2: 84 ÷ 7 = 12. Step 3: Check: 7 × 12 = 84. The missing number is 12."
+  },
+  {
+    "id": "P3-MUL-020-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "1-step division word problem (grouping)",
+    "difficulty": "medium",
+    "question": "Ethan has 168 marbles. He puts them equally into 8 bags. How many marbles are in each bag?",
+    "options": {
+      "A": "19",
+      "B": "21",
+      "C": "20",
+      "D": "22"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Total marbles = 168. Step 2: Number of bags = 8. Step 3: 168 ÷ 8 = 21 marbles per bag."
+  },
+  {
+    "id": "P3-MUL-021-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Direct 3-digit × 1-digit",
+    "difficulty": "medium",
+    "question": "246 × 3 = ___",
+    "options": {
+      "A": "728",
+      "B": "748",
+      "C": "738",
+      "D": "758"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Multiply the ones: 6 × 3 = 18, write 8 carry 1. Step 2: Multiply the tens: 4 × 3 = 12, add carry 1 = 13, write 3 carry 1. Step 3: Multiply the hundreds: 2 × 3 = 6, add carry 1 = 7. Step 4: 246 × 3 = 738."
+  },
+  {
+    "id": "P3-MUL-022-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division with remainder",
+    "difficulty": "medium",
+    "question": "79 ÷ 9 = ___ remainder ___. What is the quotient?",
+    "options": {
+      "A": "8",
+      "B": "7",
+      "C": "9",
+      "D": "10"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Find how many 9s fit into 79. Step 2: 9 × 8 = 72. Step 3: 79 − 72 = 7 remainder. Step 4: The quotient is 8."
+  },
+  {
+    "id": "P3-MUL-023-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "2-step: multiply then subtract",
+    "difficulty": "medium",
+    "question": "Li Ting baked 4 trays of cookies. Each tray had 36 cookies. She gave away 59 cookies. How many cookies did she have left?",
+    "options": {
+      "A": "75",
+      "B": "81",
+      "C": "89",
+      "D": "85"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total cookies = 4 × 36 = 144. Step 2: Cookies given away = 59. Step 3: Cookies left = 144 − 59 = 85."
+  },
+  {
+    "id": "P3-MUL-024-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "1-step multiplication word problem",
+    "difficulty": "medium",
+    "question": "A school orders 9 boxes of markers. Each box contains 24 markers. How many markers did the school order?",
+    "options": {
+      "A": "196",
+      "B": "206",
+      "C": "216",
+      "D": "226"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Number of boxes = 9. Step 2: Markers per box = 24. Step 3: Total markers = 9 × 24 = 216."
+  },
+  {
+    "id": "P3-MUL-025-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Checking by inverse",
+    "difficulty": "medium",
+    "question": "Devi divided a number by 9 and got 15. What was the original number?",
+    "options": {
+      "A": "125",
+      "B": "135",
+      "C": "130",
+      "D": "140"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: The number ÷ 9 = 15. Step 2: To find the number, multiply: 15 × 9 = 135. Step 3: Check: 135 ÷ 9 = 15. The original number is 135."
+  },
+  {
+    "id": "P3-MUL-026-M",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Division with remainder — real-world interpretation",
+    "difficulty": "medium",
+    "question": "Zhi Hao has 100 stickers. He pastes 7 stickers on each page of his album. How many pages can he completely fill?",
+    "options": {
+      "A": "12",
+      "B": "13",
+      "C": "15",
+      "D": "14"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Divide 100 by 7. Step 2: 7 × 14 = 98. Step 3: 100 − 98 = 2 stickers left over. Step 4: He can completely fill 14 pages."
+  },
+  {
+    "id": "P3-MUL-027-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step real-world problem",
+    "difficulty": "hard",
+    "question": "There are 8 rows of chairs in a hall. Each row has 24 chairs. 37 chairs are already taken. How many chairs are empty?",
+    "options": {
+      "A": "145",
+      "B": "155",
+      "C": "150",
+      "D": "160"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Total chairs = 8 × 24 = 192. Step 2: Chairs taken = 37. Step 3: Empty chairs = 192 − 37 = 155."
+  },
+  {
+    "id": "P3-MUL-028-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: multiply and compare",
+    "difficulty": "hard",
+    "question": "Darren has 6 packets of 18 stickers. Ismail has 4 packets of 25 stickers. How many more stickers does Darren have than Ismail?",
+    "options": {
+      "A": "6",
+      "B": "10",
+      "C": "8",
+      "D": "12"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Darren's stickers = 6 × 18 = 108. Step 2: Ismail's stickers = 4 × 25 = 100. Step 3: Difference = 108 − 100 = 8."
+  },
+  {
+    "id": "P3-MUL-029-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: division and remainder interpretation",
+    "difficulty": "hard",
+    "question": "A florist has 250 roses. She makes bouquets of 8 roses each. How many more roses does she need so that there are no roses left over?",
+    "options": {
+      "A": "4",
+      "B": "5",
+      "C": "7",
+      "D": "6"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Divide 250 by 8. Step 2: 8 × 31 = 248. Step 3: Remainder = 250 − 248 = 2 roses left over. Step 4: She needs 8 − 2 = 6 more roses to complete another bouquet."
+  },
+  {
+    "id": "P3-MUL-030-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: multiply, add, then divide",
+    "difficulty": "hard",
+    "question": "Priya bought 3 boxes of red beads and 2 boxes of blue beads. Each box contains 48 beads. She strings all the beads equally into 6 necklaces. How many beads are on each necklace?",
+    "options": {
+      "A": "36",
+      "B": "38",
+      "C": "42",
+      "D": "40"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total boxes = 3 + 2 = 5. Step 2: Total beads = 5 × 48 = 240. Step 3: Beads per necklace = 240 ÷ 6 = 40."
+  },
+  {
+    "id": "P3-MUL-031-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step real-world problem",
+    "difficulty": "hard",
+    "question": "A baker made 360 buns. He sold 225 in the morning and gave 45 to his neighbours. How many buns did he have left?",
+    "options": {
+      "A": "80",
+      "B": "90",
+      "C": "85",
+      "D": "95"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Buns sold = 225. Step 2: Buns given away = 45. Step 3: Total removed = 225 + 45 = 270. Step 4: Buns left = 360 − 270 = 90."
+  },
+  {
+    "id": "P3-MUL-032-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: multiply then divide with remainder",
+    "difficulty": "hard",
+    "question": "Kai has 7 bags of 35 marbles. He wants to repack all the marbles into boxes of 9. How many complete boxes can he fill, and how many marbles are left over?",
+    "options": {
+      "A": "27 boxes, 2 left over",
+      "B": "27 boxes, 4 left over",
+      "C": "28 boxes, 1 left over",
+      "D": "28 boxes, 3 left over"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Total marbles = 7 × 35 = 245. Step 2: 245 ÷ 9 = 27 remainder 2, since 9 × 27 = 243. Step 3: 245 − 243 = 2 left over. He can fill 27 complete boxes with 2 marbles left over."
+  },
+  {
+    "id": "P3-MUL-033-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: multiply, subtract, then divide",
+    "difficulty": "hard",
+    "question": "Sarah bought 8 packets of 15 balloons for a party. 23 balloons burst before the party. She tied the rest equally into bunches of 7. How many complete bunches did she make?",
+    "options": {
+      "A": "12",
+      "B": "14",
+      "C": "13",
+      "D": "15"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total balloons = 8 × 15 = 120. Step 2: After bursting: 120 − 23 = 97. Step 3: 97 ÷ 7 = 13 remainder 6, since 7 × 13 = 91. Step 4: She made 13 complete bunches."
+  },
+  {
+    "id": "P3-MUL-034-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: two multiplications and add",
+    "difficulty": "hard",
+    "question": "Aisha makes 6 bracelets a day for 9 days. Hui Min makes 8 bracelets a day for 7 days. How many bracelets do they make altogether?",
+    "options": {
+      "A": "100",
+      "B": "110",
+      "C": "105",
+      "D": "115"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Aisha's bracelets = 6 × 9 = 54. Step 2: Hui Min's bracelets = 8 × 7 = 56. Step 3: Total = 54 + 56 = 110."
+  },
+  {
+    "id": "P3-MUL-035-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: find total, then find remaining needed",
+    "difficulty": "hard",
+    "question": "Jun Wei needs 200 beads to make a curtain. He bought 7 packets of 25 beads. How many more beads does he need?",
+    "options": {
+      "A": "20",
+      "B": "30",
+      "C": "25",
+      "D": "35"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Beads bought = 7 × 25 = 175. Step 2: Beads needed = 200. Step 3: More beads needed = 200 − 175 = 25."
+  },
+  {
+    "id": "P3-MUL-036-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: divide, interpret remainder (round up)",
+    "difficulty": "hard",
+    "question": "A teacher has 173 students going on a field trip. Each bus can carry 45 students. What is the least number of buses needed?",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "6"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 173 ÷ 45 = 3 remainder 38, since 45 × 3 = 135 and 173 − 135 = 38. Step 2: 3 buses carry 135 students, but 38 students still need a bus. Step 3: She needs 3 + 1 = 4 buses in total."
+  },
+  {
+    "id": "P3-MUL-037-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: multiply, add, then compare",
+    "difficulty": "hard",
+    "question": "Arjun buys 3 books at $9 each and 2 files at $4 each. Kavitha buys 4 books at $9 each. Who spends more and by how much?",
+    "options": {
+      "A": "Kavitha spends $1 more",
+      "B": "Arjun spends $1 more",
+      "C": "They spend the same",
+      "D": "Kavitha spends $2 more"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Arjun's total = (3 × $9) + (2 × $4) = $27 + $8 = $35. Step 2: Kavitha's total = 4 × $9 = $36. Step 3: Difference = $36 − $35 = $1. Kavitha spends $1 more."
+  },
+  {
+    "id": "P3-MUL-038-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: multiply, subtract, find answer",
+    "difficulty": "hard",
+    "question": "A shop had 9 cartons of milk. Each carton contained 24 packets. After selling some packets, 148 packets were left. How many packets were sold?",
+    "options": {
+      "A": "62",
+      "B": "72",
+      "C": "58",
+      "D": "68"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total packets = 9 × 24 = 216. Step 2: Packets left = 148. Step 3: Packets sold = 216 − 148 = 68."
+  },
+  {
+    "id": "P3-MUL-039-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: two divisions, compare",
+    "difficulty": "hard",
+    "question": "A rope 252 cm long is cut into 9 equal pieces. Another rope 208 cm long is cut into 8 equal pieces. Which pieces are longer, and by how much?",
+    "options": {
+      "A": "Second rope by 2 cm",
+      "B": "First rope by 3 cm",
+      "C": "First rope by 2 cm",
+      "D": "Second rope by 4 cm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: First rope pieces = 252 ÷ 9 = 28 cm. Step 2: Second rope pieces = 208 ÷ 8 = 26 cm. Step 3: Difference = 28 − 26 = 2 cm. The first rope's pieces are 2 cm longer."
+  },
+  {
+    "id": "P3-MUL-040-H",
+    "level": "P3",
+    "topic": "Multiplication/Division",
+    "subtopic": "Multi-step: divide, subtract per group",
+    "difficulty": "hard",
+    "question": "A factory packed 328 toys into 4 equal boxes. 15 toys from each box were found to be damaged and removed. How many good toys are in each box after removing the damaged ones?",
+    "options": {
+      "A": "62",
+      "B": "67",
+      "C": "65",
+      "D": "70"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Toys per box = 328 ÷ 4 = 82. Step 2: Damaged toys removed per box = 15. Step 3: Good toys per box = 82 − 15 = 67."
+  },
+  {
+    "id": "P3-MONEY-001-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Total cost of multiple items",
+    "difficulty": "easy",
+    "question": "A pencil costs $0.80. How much do 5 pencils cost?",
+    "options": {
+      "A": "$4.00",
+      "B": "$3.50",
+      "C": "$4.50",
+      "D": "$5.00"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Cost of 1 pencil = $0.80. Step 2: Cost of 5 pencils = 5 × $0.80 = $4.00."
+  },
+  {
+    "id": "P3-MONEY-002-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Finding change",
+    "difficulty": "easy",
+    "question": "Ahmad buys a drink for $1.50. He pays with a $5 note. How much change does he get?",
+    "options": {
+      "A": "$3.00",
+      "B": "$3.50",
+      "C": "$4.00",
+      "D": "$4.50"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Amount paid = $5.00. Step 2: Cost of drink = $1.50. Step 3: Change = $5.00 − $1.50 = $3.50."
+  },
+  {
+    "id": "P3-MONEY-003-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Finding price per item",
+    "difficulty": "easy",
+    "question": "4 identical erasers cost $3.60. How much does each eraser cost?",
+    "options": {
+      "A": "$0.80",
+      "B": "$1.00",
+      "C": "$0.90",
+      "D": "$1.20"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total cost = $3.60. Step 2: Number of erasers = 4. Step 3: Cost per eraser = $3.60 ÷ 4 = $0.90."
+  },
+  {
+    "id": "P3-MONEY-004-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Total cost of multiple items",
+    "difficulty": "easy",
+    "question": "Siti buys 3 packets of chips at $1.20 each. How much does she pay?",
+    "options": {
+      "A": "$3.40",
+      "B": "$3.80",
+      "C": "$4.00",
+      "D": "$3.60"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Cost of 1 packet = $1.20. Step 2: Cost of 3 packets = 3 × $1.20 = $3.60."
+  },
+  {
+    "id": "P3-MONEY-005-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Finding the original amount",
+    "difficulty": "easy",
+    "question": "After spending $8.50, Ethan has $11.50 left. How much money did he have at first?",
+    "options": {
+      "A": "$18.00",
+      "B": "$20.00",
+      "C": "$19.00",
+      "D": "$21.00"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Money left = $11.50. Step 2: Money spent = $8.50. Step 3: Money at first = $11.50 + $8.50 = $20.00."
+  },
+  {
+    "id": "P3-MONEY-006-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Finding change",
+    "difficulty": "easy",
+    "question": "Devi buys a ruler for $2.30. She pays with a $5 note. How much change does she receive?",
+    "options": {
+      "A": "$2.50",
+      "B": "$2.70",
+      "C": "$3.30",
+      "D": "$3.70"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Amount paid = $5.00. Step 2: Cost of ruler = $2.30. Step 3: Change = $5.00 − $2.30 = $2.70."
+  },
+  {
+    "id": "P3-MONEY-007-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Total cost of two different items",
+    "difficulty": "easy",
+    "question": "A pen costs $1.50 and a notebook costs $2.80. How much do they cost altogether?",
+    "options": {
+      "A": "$4.10",
+      "B": "$4.20",
+      "C": "$4.30",
+      "D": "$4.40"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Cost of pen = $1.50. Step 2: Cost of notebook = $2.80. Step 3: Total = $1.50 + $2.80 = $4.30."
+  },
+  {
+    "id": "P3-MONEY-008-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Finding price per item",
+    "difficulty": "easy",
+    "question": "6 identical stickers cost $4.20. How much does each sticker cost?",
+    "options": {
+      "A": "$0.60",
+      "B": "$0.80",
+      "C": "$0.90",
+      "D": "$0.70"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Total cost = $4.20. Step 2: Number of stickers = 6. Step 3: Cost per sticker = $4.20 ÷ 6 = $0.70."
+  },
+  {
+    "id": "P3-MONEY-009-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Discount / sale price",
+    "difficulty": "easy",
+    "question": "A toy normally costs $15.00. It is on sale and Raju saves $3.50. How much does he pay for the toy?",
+    "options": {
+      "A": "$10.50",
+      "B": "$11.00",
+      "C": "$11.50",
+      "D": "$12.50"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Normal price = $15.00. Step 2: Savings = $3.50. Step 3: Sale price = $15.00 − $3.50 = $11.50."
+  },
+  {
+    "id": "P3-MONEY-010-E",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Splitting cost equally",
+    "difficulty": "easy",
+    "question": "3 friends share the cost of a present equally. The present costs $12.90. How much does each person pay?",
+    "options": {
+      "A": "$4.30",
+      "B": "$4.10",
+      "C": "$4.20",
+      "D": "$4.40"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Total cost = $12.90. Step 2: Number of friends = 3. Step 3: Each person pays = $12.90 ÷ 3 = $4.30."
+  },
+  {
+    "id": "P3-MONEY-011-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Total cost of multiple items and change",
+    "difficulty": "medium",
+    "question": "Mei Hua buys 2 pens at $1.50 each and a file for $3.20. She pays with a $10 note. How much change does she get?",
+    "options": {
+      "A": "$3.60",
+      "B": "$3.80",
+      "C": "$4.20",
+      "D": "$4.60"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Cost of pens = 2 × $1.50 = $3.00. Step 2: Cost of file = $3.20. Step 3: Total cost = $3.00 + $3.20 = $6.20. Step 4: Change = $10.00 − $6.20 = $3.80."
+  },
+  {
+    "id": "P3-MONEY-012-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Total cost of different items",
+    "difficulty": "medium",
+    "question": "A notebook costs $2.80 and a pen costs $1.50. How much do 3 notebooks and 2 pens cost altogether?",
+    "options": {
+      "A": "$11.40",
+      "B": "$10.40",
+      "C": "$12.40",
+      "D": "$13.40"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Cost of 3 notebooks = 3 × $2.80 = $8.40. Step 2: Cost of 2 pens = 2 × $1.50 = $3.00. Step 3: Total = $8.40 + $3.00 = $11.40."
+  },
+  {
+    "id": "P3-MONEY-013-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Comparing total costs",
+    "difficulty": "medium",
+    "question": "Shop A sells erasers at 3 for $1.50. Shop B sells them at $0.60 each. How much cheaper is each eraser at Shop A?",
+    "options": {
+      "A": "$0.05",
+      "B": "$0.10",
+      "C": "$0.15",
+      "D": "$0.20"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Shop A price per eraser = $1.50 ÷ 3 = $0.50. Step 2: Shop B price per eraser = $0.60. Step 3: Difference = $0.60 − $0.50 = $0.10. Each eraser is $0.10 cheaper at Shop A."
+  },
+  {
+    "id": "P3-MONEY-014-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Budget problem with change",
+    "difficulty": "medium",
+    "question": "Mrs Lee has $20. She buys 3 packets of biscuits at $3.50 each. How much money does she have left?",
+    "options": {
+      "A": "$8.50",
+      "B": "$9.00",
+      "C": "$9.50",
+      "D": "$10.00"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Cost of biscuits = 3 × $3.50 = $10.50. Step 2: Money left = $20.00 − $10.50 = $9.50."
+  },
+  {
+    "id": "P3-MONEY-015-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Price list problem",
+    "difficulty": "medium",
+    "question": "The school canteen sells mee goreng for $2.50 and teh tarik for $1.20. Zhi Hao buys 2 mee goreng and 3 teh tarik. How much does he spend?",
+    "options": {
+      "A": "$8.00",
+      "B": "$8.20",
+      "C": "$8.40",
+      "D": "$8.60"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Cost of mee goreng = 2 × $2.50 = $5.00. Step 2: Cost of teh tarik = 3 × $1.20 = $3.60. Step 3: Total = $5.00 + $3.60 = $8.60."
+  },
+  {
+    "id": "P3-MONEY-016-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Finding price per item",
+    "difficulty": "medium",
+    "question": "6 identical books cost $21.60 altogether. How much does each book cost?",
+    "options": {
+      "A": "$3.20",
+      "B": "$3.40",
+      "C": "$3.60",
+      "D": "$3.80"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total cost = $21.60. Step 2: Number of books = 6. Step 3: Cost per book = $21.60 ÷ 6 = $3.60."
+  },
+  {
+    "id": "P3-MONEY-017-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "2-step: buy items and find total",
+    "difficulty": "medium",
+    "question": "Darren buys 4 markers at $2.40 each and 3 glue sticks at $1.30 each. How much does he pay in total?",
+    "options": {
+      "A": "$12.50",
+      "B": "$13.50",
+      "C": "$13.00",
+      "D": "$14.00"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Cost of markers = 4 × $2.40 = $9.60. Step 2: Cost of glue sticks = 3 × $1.30 = $3.90. Step 3: Total = $9.60 + $3.90 = $13.50."
+  },
+  {
+    "id": "P3-MONEY-018-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Discount / sale price",
+    "difficulty": "medium",
+    "question": "A bag normally costs $28.00. It is now on sale for $6.50 less. How much does the bag cost now?",
+    "options": {
+      "A": "$20.50",
+      "B": "$22.50",
+      "C": "$23.50",
+      "D": "$21.50"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Normal price = $28.00. Step 2: Discount = $6.50. Step 3: Sale price = $28.00 − $6.50 = $21.50."
+  },
+  {
+    "id": "P3-MONEY-019-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Splitting cost",
+    "difficulty": "medium",
+    "question": "5 friends share the cost of a birthday cake equally. The cake costs $42.50. How much does each friend pay?",
+    "options": {
+      "A": "$7.50",
+      "B": "$8.00",
+      "C": "$8.50",
+      "D": "$9.00"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total cost = $42.50. Step 2: Number of friends = 5. Step 3: Each friend pays = $42.50 ÷ 5 = $8.50."
+  },
+  {
+    "id": "P3-MONEY-020-M",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Finding the original amount",
+    "difficulty": "medium",
+    "question": "After spending $14.60, Arjun has $35.40 left. How much money did he have at first?",
+    "options": {
+      "A": "$48.00",
+      "B": "$49.00",
+      "C": "$50.00",
+      "D": "$51.00"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Money left = $35.40. Step 2: Money spent = $14.60. Step 3: Money at first = $35.40 + $14.60 = $50.00."
+  },
+  {
+    "id": "P3-MONEY-021-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "3-step: savings, buy items, find remainder",
+    "difficulty": "hard",
+    "question": "Siti saves $2.50 a week for 8 weeks. She wants to buy a book for $18.50. Does she have enough money, and how much money will she have left after buying the book?",
+    "options": {
+      "A": "Yes, $0.50 left",
+      "B": "Yes, $1.50 left",
+      "C": "No, she needs $0.50 more",
+      "D": "Yes, $2.50 left"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Total savings = 8 × $2.50 = $20.00. Step 2: Cost of book = $18.50. Step 3: $20.00 > $18.50, so she has enough. Step 4: Money left = $20.00 − $18.50 = $1.50."
+  },
+  {
+    "id": "P3-MONEY-022-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "3-step: buy multiple items and find change",
+    "difficulty": "hard",
+    "question": "Mrs Lee has $50. She buys 3 packets of biscuits at $4.80 each and a bottle of juice for $3.50. How much change does she get?",
+    "options": {
+      "A": "$30.10",
+      "B": "$31.10",
+      "C": "$32.10",
+      "D": "$33.10"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Cost of biscuits = 3 × $4.80 = $14.40. Step 2: Cost of juice = $3.50. Step 3: Total cost = $14.40 + $3.50 = $17.90. Step 4: Change = $50.00 − $17.90 = $32.10."
+  },
+  {
+    "id": "P3-MONEY-023-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "3-step: savings over time, buy two items",
+    "difficulty": "hard",
+    "question": "Kai saves $3.50 a week for 6 weeks. He buys a toy car for $12.80 and a puzzle for $5.70. How much money does he have left?",
+    "options": {
+      "A": "$1.50",
+      "B": "$2.00",
+      "C": "$2.50",
+      "D": "$3.00"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total savings = 6 × $3.50 = $21.00. Step 2: Total spending = $12.80 + $5.70 = $18.50. Step 3: Money left = $21.00 − $18.50 = $2.50."
+  },
+  {
+    "id": "P3-MONEY-024-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Multi-step: buy items, find total, compare to budget",
+    "difficulty": "hard",
+    "question": "Li Ting wants to buy 4 books at $6.90 each. She has $25.00. How much more money does she need?",
+    "options": {
+      "A": "$1.60",
+      "B": "$3.60",
+      "C": "$2.60",
+      "D": "$4.60"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Cost of 4 books = 4 × $6.90 = $27.60. Step 2: Money she has = $25.00. Step 3: More money needed = $27.60 − $25.00 = $2.60."
+  },
+  {
+    "id": "P3-MONEY-025-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Multi-step: price list, multiple items, change",
+    "difficulty": "hard",
+    "question": "At a hawker centre, nasi lemak costs $3.50 and milo costs $1.80. Priya buys 3 nasi lemak and 2 milo. She pays with a $20 note. How much change does she get?",
+    "options": {
+      "A": "$5.90",
+      "B": "$6.40",
+      "C": "$5.40",
+      "D": "$6.90"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Cost of nasi lemak = 3 × $3.50 = $10.50. Step 2: Cost of milo = 2 × $1.80 = $3.60. Step 3: Total = $10.50 + $3.60 = $14.10. Step 4: Change = $20.00 − $14.10 = $5.90."
+  },
+  {
+    "id": "P3-MONEY-026-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Multi-step: find per-item cost, then total for different quantity",
+    "difficulty": "hard",
+    "question": "8 identical markers cost $14.40. How much would 5 of these markers cost?",
+    "options": {
+      "A": "$8.00",
+      "B": "$9.00",
+      "C": "$10.00",
+      "D": "$11.00"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Cost per marker = $14.40 ÷ 8 = $1.80. Step 2: Cost of 5 markers = 5 × $1.80 = $9.00."
+  },
+  {
+    "id": "P3-MONEY-027-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Multi-step: comparing purchases",
+    "difficulty": "hard",
+    "question": "Ismail buys 2 shirts at $12.50 each. Ahmad buys 3 shirts at $8.90 each. Who spends more and by how much?",
+    "options": {
+      "A": "Ahmad spends $1.70 more",
+      "B": "Ismail spends $1.70 more",
+      "C": "Ahmad spends $2.70 more",
+      "D": "Ismail spends $2.70 more"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Ismail's total = 2 × $12.50 = $25.00. Step 2: Ahmad's total = 3 × $8.90 = $26.70. Step 3: Difference = $26.70 − $25.00 = $1.70. Ahmad spends $1.70 more."
+  },
+  {
+    "id": "P3-MONEY-028-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Multi-step: savings, two purchases, remainder",
+    "difficulty": "hard",
+    "question": "Xin Yi has $45.00. She buys 6 files at $3.80 each and 2 pens at $2.50 each. How much money does she have left?",
+    "options": {
+      "A": "$15.20",
+      "B": "$16.20",
+      "C": "$18.20",
+      "D": "$17.20"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Cost of files = 6 × $3.80 = $22.80. Step 2: Cost of pens = 2 × $2.50 = $5.00. Step 3: Total spending = $22.80 + $5.00 = $27.80. Step 4: Money left = $45.00 − $27.80 = $17.20."
+  },
+  {
+    "id": "P3-MONEY-029-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Multi-step: earn money, spend, find remainder",
+    "difficulty": "hard",
+    "question": "Jun Wei earns $4.50 a day helping at a shop for 7 days. He spends $18.90 on a game. How much money does he have left from his earnings?",
+    "options": {
+      "A": "$10.60",
+      "B": "$11.60",
+      "C": "$12.60",
+      "D": "$13.60"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Total earnings = 7 × $4.50 = $31.50. Step 2: Amount spent = $18.90. Step 3: Money left = $31.50 − $18.90 = $12.60."
+  },
+  {
+    "id": "P3-MONEY-030-H",
+    "level": "P3",
+    "topic": "Money",
+    "subtopic": "Multi-step: total cost, split unevenly, find one share",
+    "difficulty": "hard",
+    "question": "Sarah and Hui Min buy a gift together. The gift costs $38.00. Sarah pays $5.00 more than Hui Min. How much does Hui Min pay?",
+    "options": {
+      "A": "$15.50",
+      "B": "$16.50",
+      "C": "$17.50",
+      "D": "$18.50"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Total cost = $38.00. Step 2: Sarah pays $5.00 more than Hui Min. Step 3: If Hui Min pays $x, Sarah pays $x + $5.00. Step 4: $x + ($x + $5.00) = $38.00, so 2x = $33.00, x = $16.50. Hui Min pays $16.50."
+  },
+  {
+    "id": "P3-TIME-001-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Duration — how long",
+    "difficulty": "easy",
+    "question": "A lesson started at 9:15 a.m. and ended at 10:05 a.m. How long was the lesson?",
+    "options": {
+      "A": "45 min",
+      "B": "1 h 5 min",
+      "C": "55 min",
+      "D": "50 min"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: From 9:15 a.m. to 10:00 a.m. is 45 minutes. Step 2: From 10:00 a.m. to 10:05 a.m. is 5 minutes. Step 3: Total = 45 + 5 = 50 minutes."
+  },
+  {
+    "id": "P3-TIME-002-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "End time",
+    "difficulty": "easy",
+    "question": "A show started at 2:45 p.m. and lasted 1 hour 15 minutes. What time did it end?",
+    "options": {
+      "A": "3:45 p.m.",
+      "B": "3:55 p.m.",
+      "C": "4:00 p.m.",
+      "D": "4:15 p.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 2:45 p.m. + 1 hour = 3:45 p.m. Step 2: 3:45 p.m. + 15 minutes = 4:00 p.m."
+  },
+  {
+    "id": "P3-TIME-003-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Start time",
+    "difficulty": "easy",
+    "question": "A movie ended at 5:30 p.m. It lasted 2 hours. When did it start?",
+    "options": {
+      "A": "3:00 p.m.",
+      "B": "3:30 p.m.",
+      "C": "4:00 p.m.",
+      "D": "4:30 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 5:30 p.m. − 2 hours = 3:30 p.m. The movie started at 3:30 p.m."
+  },
+  {
+    "id": "P3-TIME-004-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "24-hour clock conversion",
+    "difficulty": "easy",
+    "question": "Express 3:15 p.m. in 24-hour notation.",
+    "options": {
+      "A": "0315",
+      "B": "1515",
+      "C": "1315",
+      "D": "1615"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 3:15 p.m. is in the afternoon, so add 12 to the hour. Step 2: 3 + 12 = 15. Step 3: In 24-hour notation, it is 1515."
+  },
+  {
+    "id": "P3-TIME-005-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "24-hour to 12-hour",
+    "difficulty": "easy",
+    "question": "Express 0930 in 12-hour format.",
+    "options": {
+      "A": "9:30 a.m.",
+      "B": "9:30 p.m.",
+      "C": "9:03 a.m.",
+      "D": "10:30 a.m."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 0930 means 9 hours and 30 minutes. Step 2: Since 9 is less than 12, it is in the morning. Step 3: The time is 9:30 a.m."
+  },
+  {
+    "id": "P3-TIME-006-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Clock reading — text description",
+    "difficulty": "easy",
+    "question": "The hour hand points between 3 and 4. The minute hand points to 6. What time is it?",
+    "options": {
+      "A": "3:06",
+      "B": "3:30",
+      "C": "4:30",
+      "D": "6:15"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: The hour hand between 3 and 4 means the hour is 3. Step 2: The minute hand at 6 means 6 × 5 = 30 minutes. Step 3: The time is 3:30."
+  },
+  {
+    "id": "P3-TIME-007-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Time X minutes later",
+    "difficulty": "easy",
+    "question": "It is now 8:40 a.m. What time will it be 20 minutes later?",
+    "options": {
+      "A": "8:50 a.m.",
+      "B": "8:55 a.m.",
+      "C": "9:10 a.m.",
+      "D": "9:00 a.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 8:40 a.m. + 20 minutes = 9:00 a.m."
+  },
+  {
+    "id": "P3-TIME-008-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Duration in 24-hour",
+    "difficulty": "easy",
+    "question": "A train left at 1400 and arrived at 1530. How long was the journey?",
+    "options": {
+      "A": "1 h 30 min",
+      "B": "1 h 15 min",
+      "C": "1 h",
+      "D": "2 h"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: From 1400 to 1500 is 1 hour. Step 2: From 1500 to 1530 is 30 minutes. Step 3: Total = 1 h 30 min."
+  },
+  {
+    "id": "P3-TIME-009-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Schedule problems",
+    "difficulty": "easy",
+    "question": "A bus leaves every 20 minutes. The first bus leaves at 7:00 a.m. What time does the 3rd bus leave?",
+    "options": {
+      "A": "7:40 a.m.",
+      "B": "7:30 a.m.",
+      "C": "7:20 a.m.",
+      "D": "8:00 a.m."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 1st bus at 7:00 a.m. Step 2: 2nd bus at 7:00 + 20 = 7:20 a.m. Step 3: 3rd bus at 7:20 + 20 = 7:40 a.m."
+  },
+  {
+    "id": "P3-TIME-010-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Days and weeks",
+    "difficulty": "easy",
+    "question": "Today is 10 June. What date will it be in 2 weeks?",
+    "options": {
+      "A": "17 June",
+      "B": "20 June",
+      "C": "24 June",
+      "D": "25 June"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 2 weeks = 14 days. Step 2: 10 June + 14 days = 24 June."
+  },
+  {
+    "id": "P3-TIME-011-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Hours in days",
+    "difficulty": "easy",
+    "question": "How many hours are there in 2 days?",
+    "options": {
+      "A": "12 hours",
+      "B": "24 hours",
+      "C": "36 hours",
+      "D": "48 hours"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 1 day = 24 hours. Step 2: 2 days = 2 × 24 = 48 hours."
+  },
+  {
+    "id": "P3-TIME-012-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "End time",
+    "difficulty": "easy",
+    "question": "Ethan started his homework at 4:30 p.m. He spent 45 minutes on it. What time did he finish?",
+    "options": {
+      "A": "5:00 p.m.",
+      "B": "5:15 p.m.",
+      "C": "5:05 p.m.",
+      "D": "5:30 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 4:30 p.m. + 30 minutes = 5:00 p.m. Step 2: 5:00 p.m. + 15 minutes = 5:15 p.m. Step 3: Total time added is 45 minutes."
+  },
+  {
+    "id": "P3-TIME-013-E",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Timetable-style",
+    "difficulty": "easy",
+    "question": "A train journey takes 1 hour 30 minutes. If Ahmad wants to arrive by 3:00 p.m., what is the latest he can board the train?",
+    "options": {
+      "A": "1:30 p.m.",
+      "B": "1:00 p.m.",
+      "C": "2:00 p.m.",
+      "D": "2:30 p.m."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 3:00 p.m. − 1 hour = 2:00 p.m. Step 2: 2:00 p.m. − 30 minutes = 1:30 p.m. Ahmad must board by 1:30 p.m."
+  },
+  {
+    "id": "P3-TIME-014-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Duration — how long",
+    "difficulty": "medium",
+    "question": "Siti started reading at 10:25 a.m. and stopped at 12:10 p.m. How long did she read?",
+    "options": {
+      "A": "1 h 45 min",
+      "B": "1 h 35 min",
+      "C": "1 h 25 min",
+      "D": "2 h 15 min"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: From 10:25 a.m. to 11:00 a.m. is 35 minutes. Step 2: From 11:00 a.m. to 12:10 p.m. is 1 hour 10 minutes. Step 3: Total = 35 min + 1 h 10 min = 1 h 45 min."
+  },
+  {
+    "id": "P3-TIME-015-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "End time",
+    "difficulty": "medium",
+    "question": "A concert started at 7:35 p.m. and lasted 2 hours 40 minutes. What time did it end?",
+    "options": {
+      "A": "9:55 p.m.",
+      "B": "10:05 p.m.",
+      "C": "10:15 p.m.",
+      "D": "10:25 p.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 7:35 p.m. + 2 hours = 9:35 p.m. Step 2: 9:35 p.m. + 40 minutes = 10:15 p.m."
+  },
+  {
+    "id": "P3-TIME-016-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Start time",
+    "difficulty": "medium",
+    "question": "A movie ended at 4:15 p.m. It lasted 2 hours 25 minutes. When did it start?",
+    "options": {
+      "A": "1:40 p.m.",
+      "B": "2:25 p.m.",
+      "C": "2:10 p.m.",
+      "D": "1:50 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 4:15 p.m. − 2 hours = 2:15 p.m. Step 2: 2:15 p.m. − 25 minutes = 1:50 p.m."
+  },
+  {
+    "id": "P3-TIME-017-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "24-hour clock conversion",
+    "difficulty": "medium",
+    "question": "Express 11:45 p.m. in 24-hour notation.",
+    "options": {
+      "A": "2345",
+      "B": "2145",
+      "C": "1145",
+      "D": "0045"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 11:45 p.m. is in the evening. Step 2: Add 12 to the hour: 11 + 12 = 23. Step 3: In 24-hour notation, it is 2345."
+  },
+  {
+    "id": "P3-TIME-018-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "24-hour to 12-hour",
+    "difficulty": "medium",
+    "question": "Express 1725 in 12-hour format.",
+    "options": {
+      "A": "5:25 a.m.",
+      "B": "5:25 p.m.",
+      "C": "7:25 p.m.",
+      "D": "5:52 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 17 is greater than 12, so it is p.m. Step 2: 17 − 12 = 5. Step 3: The time is 5:25 p.m."
+  },
+  {
+    "id": "P3-TIME-019-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Duration in 24-hour",
+    "difficulty": "medium",
+    "question": "A bus left the station at 0845 and arrived at its destination at 1120. How long was the journey?",
+    "options": {
+      "A": "2 h 15 min",
+      "B": "2 h 25 min",
+      "C": "3 h 25 min",
+      "D": "2 h 35 min"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: From 0845 to 0900 is 15 minutes. Step 2: From 0900 to 1100 is 2 hours. Step 3: From 1100 to 1120 is 20 minutes. Step 4: Total = 15 min + 2 h + 20 min = 2 h 35 min."
+  },
+  {
+    "id": "P3-TIME-020-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Clock reading — text description",
+    "difficulty": "medium",
+    "question": "The hour hand points between 10 and 11. The minute hand points to 9. What time is it?",
+    "options": {
+      "A": "9:10",
+      "B": "9:50",
+      "C": "10:45",
+      "D": "10:09"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: The hour hand between 10 and 11 means the hour is 10. Step 2: The minute hand at 9 means 9 × 5 = 45 minutes. Step 3: The time is 10:45."
+  },
+  {
+    "id": "P3-TIME-021-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Schedule problems",
+    "difficulty": "medium",
+    "question": "A bus leaves every 15 minutes. The first bus leaves at 6:30 a.m. What time does the 5th bus leave?",
+    "options": {
+      "A": "7:30 a.m.",
+      "B": "7:15 a.m.",
+      "C": "7:45 a.m.",
+      "D": "8:00 a.m."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: The 5th bus leaves 4 intervals after the 1st. Step 2: 4 × 15 = 60 minutes = 1 hour. Step 3: 6:30 a.m. + 1 hour = 7:30 a.m."
+  },
+  {
+    "id": "P3-TIME-022-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Time X minutes later",
+    "difficulty": "medium",
+    "question": "It is now 10:50 a.m. What time will it be 1 hour 25 minutes later?",
+    "options": {
+      "A": "11:55 a.m.",
+      "B": "12:05 p.m.",
+      "C": "12:15 p.m.",
+      "D": "12:25 p.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 10:50 a.m. + 1 hour = 11:50 a.m. Step 2: 11:50 a.m. + 25 minutes = 12:15 p.m."
+  },
+  {
+    "id": "P3-TIME-023-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Elapsed time with a.m./p.m. crossing",
+    "difficulty": "medium",
+    "question": "Mei Hua starts baking at 11:20 a.m. She bakes for 1 hour 50 minutes. What time does she finish?",
+    "options": {
+      "A": "12:50 p.m.",
+      "B": "1:00 p.m.",
+      "C": "1:20 p.m.",
+      "D": "1:10 p.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 11:20 a.m. + 1 hour = 12:20 p.m. Step 2: 12:20 p.m. + 50 minutes = 1:10 p.m."
+  },
+  {
+    "id": "P3-TIME-024-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Timetable-style",
+    "difficulty": "medium",
+    "question": "A bus journey from Town A to Town B takes 1 hour 45 minutes. If Raju wants to arrive by 2:30 p.m., what is the latest he can board the bus?",
+    "options": {
+      "A": "12:30 p.m.",
+      "B": "12:45 p.m.",
+      "C": "1:00 p.m.",
+      "D": "1:15 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 2:30 p.m. − 1 hour = 1:30 p.m. Step 2: 1:30 p.m. − 45 minutes = 12:45 p.m."
+  },
+  {
+    "id": "P3-TIME-025-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Days and weeks",
+    "difficulty": "medium",
+    "question": "Today is 20 March. What date will it be in 3 weeks?",
+    "options": {
+      "A": "3 April",
+      "B": "7 April",
+      "C": "10 April",
+      "D": "11 April"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 3 weeks = 21 days. Step 2: March has 31 days. Step 3: 20 March + 11 days = 31 March. Step 4: 21 − 11 = 10 days left in April. Step 5: The date is 10 April."
+  },
+  {
+    "id": "P3-TIME-026-M",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Hours in days",
+    "difficulty": "medium",
+    "question": "How many hours are there in 3 days and 8 hours?",
+    "options": {
+      "A": "56 hours",
+      "B": "72 hours",
+      "C": "76 hours",
+      "D": "80 hours"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 3 days = 3 × 24 = 72 hours. Step 2: 72 + 8 = 80 hours."
+  },
+  {
+    "id": "P3-TIME-027-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Duration — how long",
+    "difficulty": "hard",
+    "question": "Darren started studying at 9:45 a.m. and stopped at 1:20 p.m. How long did he study?",
+    "options": {
+      "A": "3 h 25 min",
+      "B": "3 h 45 min",
+      "C": "3 h 35 min",
+      "D": "4 h 25 min"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: From 9:45 a.m. to 10:00 a.m. is 15 minutes. Step 2: From 10:00 a.m. to 1:00 p.m. is 3 hours. Step 3: From 1:00 p.m. to 1:20 p.m. is 20 minutes. Step 4: Total = 15 min + 3 h + 20 min = 3 h 35 min."
+  },
+  {
+    "id": "P3-TIME-028-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "End time",
+    "difficulty": "hard",
+    "question": "Ismail started a project at 10:35 a.m. He worked for 3 hours 50 minutes. What time did he finish?",
+    "options": {
+      "A": "2:25 p.m.",
+      "B": "2:15 p.m.",
+      "C": "1:55 p.m.",
+      "D": "2:35 p.m."
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 10:35 a.m. + 3 hours = 1:35 p.m. Step 2: 1:35 p.m. + 50 minutes = 2:25 p.m."
+  },
+  {
+    "id": "P3-TIME-029-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Start time",
+    "difficulty": "hard",
+    "question": "A train arrived at its destination at 2:05 p.m. The journey took 3 hours 40 minutes. What time did the train depart?",
+    "options": {
+      "A": "10:15 a.m.",
+      "B": "10:25 a.m.",
+      "C": "10:35 a.m.",
+      "D": "11:25 a.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 2:05 p.m. − 3 hours = 11:05 a.m. Step 2: 11:05 a.m. − 40 minutes = 10:25 a.m."
+  },
+  {
+    "id": "P3-TIME-030-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Elapsed time with a.m./p.m. crossing",
+    "difficulty": "hard",
+    "question": "Ahmad starts cooking at 11:40 a.m. He cooks for 1 hour 35 minutes. What time does he finish?",
+    "options": {
+      "A": "12:55 p.m.",
+      "B": "1:15 p.m.",
+      "C": "1:05 p.m.",
+      "D": "1:25 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 11:40 a.m. + 1 hour = 12:40 p.m. Step 2: 12:40 p.m. + 35 minutes = 1:15 p.m."
+  },
+  {
+    "id": "P3-TIME-031-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "24-hour clock conversion",
+    "difficulty": "hard",
+    "question": "Li Ting left home at 6:50 a.m. and returned at 6:15 p.m. Express both times in 24-hour notation and find how long she was away.",
+    "options": {
+      "A": "11 h 25 min",
+      "B": "11 h 15 min",
+      "C": "12 h 25 min",
+      "D": "12 h 35 min"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 6:50 a.m. = 0650. Step 2: 6:15 p.m. = 1815. Step 3: From 0650 to 0700 is 10 minutes. Step 4: From 0700 to 1800 is 11 hours. Step 5: From 1800 to 1815 is 15 minutes. Step 6: Total = 10 min + 11 h + 15 min = 11 h 25 min."
+  },
+  {
+    "id": "P3-TIME-032-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Duration in 24-hour",
+    "difficulty": "hard",
+    "question": "A flight departed at 2235 and landed at 0150 the next day. How long was the flight?",
+    "options": {
+      "A": "2 h 55 min",
+      "B": "3 h 25 min",
+      "C": "3 h 15 min",
+      "D": "3 h 55 min"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: From 2235 to 2300 is 25 minutes. Step 2: From 2300 to 0000 (midnight) is 1 hour. Step 3: From 0000 to 0150 is 1 hour 50 minutes. Step 4: Total = 25 min + 1 h + 1 h 50 min = 3 h 15 min."
+  },
+  {
+    "id": "P3-TIME-033-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Schedule problems",
+    "difficulty": "hard",
+    "question": "A bus leaves every 25 minutes. The first bus leaves at 8:10 a.m. What time does the 6th bus leave?",
+    "options": {
+      "A": "10:05 a.m.",
+      "B": "10:35 a.m.",
+      "C": "10:20 a.m.",
+      "D": "10:15 a.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: The 6th bus leaves after 5 intervals from the 1st bus. Step 2: 5 × 25 = 125 minutes = 2 hours 5 minutes. Step 3: 8:10 a.m. + 2 hours = 10:10 a.m. Step 4: 10:10 a.m. + 5 minutes = 10:15 a.m."
+  },
+  {
+    "id": "P3-TIME-034-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Timetable-style",
+    "difficulty": "hard",
+    "question": "A train journey from City A to City B takes 2 hours 45 minutes. If Priya wants to arrive by 3:00 p.m., what is the latest she can board?",
+    "options": {
+      "A": "12:05 p.m.",
+      "B": "12:15 p.m.",
+      "C": "12:30 p.m.",
+      "D": "1:15 p.m."
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 3:00 p.m. − 2 hours = 1:00 p.m. Step 2: 1:00 p.m. − 45 minutes = 12:15 p.m. Priya must board by 12:15 p.m."
+  },
+  {
+    "id": "P3-TIME-035-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Time X minutes later",
+    "difficulty": "hard",
+    "question": "It is now 11:45 a.m. What time will it be 2 hours 35 minutes later?",
+    "options": {
+      "A": "2:10 p.m.",
+      "B": "2:30 p.m.",
+      "C": "2:20 p.m.",
+      "D": "2:45 p.m."
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 11:45 a.m. + 2 hours = 1:45 p.m. Step 2: 1:45 p.m. + 35 minutes = 2:20 p.m."
+  },
+  {
+    "id": "P3-TIME-036-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "24-hour to 12-hour",
+    "difficulty": "hard",
+    "question": "A shop opens at 0945 and closes at 2130. How long is the shop open?",
+    "options": {
+      "A": "10 h 45 min",
+      "B": "11 h 45 min",
+      "C": "11 h 15 min",
+      "D": "12 h 15 min"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: From 0945 to 1000 is 15 minutes. Step 2: From 1000 to 2100 is 11 hours. Step 3: From 2100 to 2130 is 30 minutes. Step 4: Total = 15 min + 11 h + 30 min = 11 h 45 min."
+  },
+  {
+    "id": "P3-TIME-037-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Clock reading — text description",
+    "difficulty": "hard",
+    "question": "Jun Wei checked the time. The hour hand was between 1 and 2. The minute hand pointed to 11. What was the time?",
+    "options": {
+      "A": "1:55",
+      "B": "1:11",
+      "C": "2:55",
+      "D": "11:05"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: The hour hand between 1 and 2 means the hour is 1. Step 2: The minute hand at 11 means 11 × 5 = 55 minutes. Step 3: The time is 1:55."
+  },
+  {
+    "id": "P3-TIME-038-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Days and weeks",
+    "difficulty": "hard",
+    "question": "Today is 25 January. What date will it be in 4 weeks?",
+    "options": {
+      "A": "18 February",
+      "B": "1 March",
+      "C": "25 February",
+      "D": "22 February"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 4 weeks = 28 days. Step 2: January has 31 days. Days left in January: 31 − 25 = 6 days. Step 3: 28 − 6 = 22 days into February. Step 4: The date is 22 February."
+  },
+  {
+    "id": "P3-TIME-039-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Hours in days",
+    "difficulty": "hard",
+    "question": "Kai spent 80 hours on a project. How many days and hours is that?",
+    "options": {
+      "A": "3 days 6 hours",
+      "B": "3 days 12 hours",
+      "C": "3 days 8 hours",
+      "D": "4 days 8 hours"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 80 ÷ 24 = 3 remainder 8. Step 2: 3 × 24 = 72. Step 3: 80 − 72 = 8 hours. Step 4: 80 hours = 3 days 8 hours."
+  },
+  {
+    "id": "P3-TIME-040-H",
+    "level": "P3",
+    "topic": "Time",
+    "subtopic": "Elapsed time with a.m./p.m. crossing",
+    "difficulty": "hard",
+    "question": "Aisha started her journey at 10:50 p.m. She travelled for 4 hours 30 minutes. What time did she arrive?",
+    "options": {
+      "A": "2:50 a.m.",
+      "B": "3:10 a.m.",
+      "C": "3:30 a.m.",
+      "D": "3:20 a.m."
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 10:50 p.m. + 4 hours = 2:50 a.m. (crosses midnight). Step 2: 2:50 a.m. + 30 minutes = 3:20 a.m."
+  },
+  {
+    "id": "P3-MEAS-001-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Conversion m to cm",
+    "difficulty": "easy",
+    "question": "Express 3 m 8 cm in centimetres.",
+    "options": {
+      "A": "38 cm",
+      "B": "3008 cm",
+      "C": "380 cm",
+      "D": "308 cm"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 3 m = 3 × 100 = 300 cm. Step 2: 300 cm + 8 cm = 308 cm."
+  },
+  {
+    "id": "P3-MEAS-002-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Conversion cm to m",
+    "difficulty": "easy",
+    "question": "Express 425 cm in metres and centimetres.",
+    "options": {
+      "A": "4 m 2 cm",
+      "B": "4 m 25 cm",
+      "C": "42 m 5 cm",
+      "D": "40 m 25 cm"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 425 ÷ 100 = 4 remainder 25. Step 2: 425 cm = 4 m 25 cm."
+  },
+  {
+    "id": "P3-MEAS-003-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Conversion km to m",
+    "difficulty": "easy",
+    "question": "Express 2 km 350 m in metres.",
+    "options": {
+      "A": "235 m",
+      "B": "2350 m",
+      "C": "2035 m",
+      "D": "23 500 m"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 2 km = 2 × 1000 = 2000 m. Step 2: 2000 m + 350 m = 2350 m."
+  },
+  {
+    "id": "P3-MEAS-004-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Conversion kg to g",
+    "difficulty": "easy",
+    "question": "Express 2 kg 50 g in grams.",
+    "options": {
+      "A": "250 g",
+      "B": "2005 g",
+      "C": "2050 g",
+      "D": "2500 g"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 2 kg = 2 × 1000 = 2000 g. Step 2: 2000 g + 50 g = 2050 g."
+  },
+  {
+    "id": "P3-MEAS-005-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Conversion g to kg",
+    "difficulty": "easy",
+    "question": "Express 3050 g in kilograms and grams.",
+    "options": {
+      "A": "3 kg 50 g",
+      "B": "3 kg 5 g",
+      "C": "30 kg 5 g",
+      "D": "30 kg 50 g"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 3050 ÷ 1000 = 3 remainder 50. Step 2: 3050 g = 3 kg 50 g."
+  },
+  {
+    "id": "P3-MEAS-006-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Conversion litres to millilitres",
+    "difficulty": "easy",
+    "question": "Express 4 litres 250 millilitres in millilitres.",
+    "options": {
+      "A": "425 ml",
+      "B": "4025 ml",
+      "C": "42 500 ml",
+      "D": "4250 ml"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 4 litres = 4 × 1000 = 4000 ml. Step 2: 4000 ml + 250 ml = 4250 ml."
+  },
+  {
+    "id": "P3-MEAS-007-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Conversion millilitres to litres",
+    "difficulty": "easy",
+    "question": "Express 5060 ml in litres and millilitres.",
+    "options": {
+      "A": "5 litres 60 ml",
+      "B": "5 litres 6 ml",
+      "C": "50 litres 6 ml",
+      "D": "50 litres 60 ml"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 5060 ÷ 1000 = 5 remainder 60. Step 2: 5060 ml = 5 litres 60 ml."
+  },
+  {
+    "id": "P3-MEAS-008-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Conversion m to km",
+    "difficulty": "easy",
+    "question": "Express 5060 m in kilometres and metres.",
+    "options": {
+      "A": "5 km 6 m",
+      "B": "5 km 60 m",
+      "C": "50 km 6 m",
+      "D": "50 km 60 m"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 5060 ÷ 1000 = 5 remainder 60. Step 2: 5060 m = 5 km 60 m."
+  },
+  {
+    "id": "P3-MEAS-009-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Adding lengths",
+    "difficulty": "easy",
+    "question": "A ribbon is 2 m 40 cm long. Another ribbon is 1 m 30 cm long. What is the total length?",
+    "options": {
+      "A": "3 m 70 cm",
+      "B": "3 m 60 cm",
+      "C": "3 m 10 cm",
+      "D": "4 m 10 cm"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Add the metres: 2 + 1 = 3 m. Step 2: Add the centimetres: 40 + 30 = 70 cm. Step 3: Total = 3 m 70 cm."
+  },
+  {
+    "id": "P3-MEAS-010-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Adding masses",
+    "difficulty": "easy",
+    "question": "A bag of rice weighs 1 kg 200 g. A bag of flour weighs 800 g. What is the total mass?",
+    "options": {
+      "A": "2 kg",
+      "B": "1 kg 800 g",
+      "C": "2 kg 100 g",
+      "D": "2 kg 200 g"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Convert rice: 1 kg 200 g = 1200 g. Step 2: Total = 1200 + 800 = 2000 g. Step 3: 2000 g = 2 kg."
+  },
+  {
+    "id": "P3-MEAS-011-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Adding volumes",
+    "difficulty": "easy",
+    "question": "A jug contains 1 litre 500 ml of water. Devi pours in another 400 ml. How much water is in the jug now?",
+    "options": {
+      "A": "1 litre 800 ml",
+      "B": "2 litres 400 ml",
+      "C": "2 litres 100 ml",
+      "D": "1 litre 900 ml"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 1 litre 500 ml + 400 ml. Step 2: 500 + 400 = 900 ml. Step 3: Total = 1 litre 900 ml."
+  },
+  {
+    "id": "P3-MEAS-012-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Comparing lengths",
+    "difficulty": "easy",
+    "question": "Rope A is 3 m long. Rope B is 1 m 50 cm long. How much longer is Rope A than Rope B?",
+    "options": {
+      "A": "1 m 30 cm",
+      "B": "4 m 50 cm",
+      "C": "2 m 50 cm",
+      "D": "1 m 50 cm"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 3 m = 3 m 0 cm. Step 2: 3 m 0 cm − 1 m 50 cm = 1 m 50 cm."
+  },
+  {
+    "id": "P3-MEAS-013-E",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Comparing masses",
+    "difficulty": "easy",
+    "question": "A watermelon weighs 3 kg. A pineapple weighs 1 kg 600 g. How much heavier is the watermelon?",
+    "options": {
+      "A": "1 kg 400 g",
+      "B": "1 kg 200 g",
+      "C": "2 kg 400 g",
+      "D": "2 kg 600 g"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 3 kg = 3000 g. Step 2: 1 kg 600 g = 1600 g. Step 3: 3000 − 1600 = 1400 g = 1 kg 400 g."
+  },
+  {
+    "id": "P3-MEAS-014-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Adding lengths",
+    "difficulty": "medium",
+    "question": "A rope is 5 m 20 cm long. Another rope is 3 m 85 cm long. What is the total length in metres and centimetres?",
+    "options": {
+      "A": "8 m 5 cm",
+      "B": "9 m 5 cm",
+      "C": "8 m 95 cm",
+      "D": "9 m 15 cm"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Add metres: 5 + 3 = 8 m. Step 2: Add centimetres: 20 + 85 = 105 cm. Step 3: 105 cm = 1 m 5 cm. Step 4: Total = 8 m + 1 m 5 cm = 9 m 5 cm."
+  },
+  {
+    "id": "P3-MEAS-015-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Comparing lengths",
+    "difficulty": "medium",
+    "question": "A pole is 4 m 60 cm tall. Another pole is 2 m 85 cm tall. How much taller is the first pole?",
+    "options": {
+      "A": "1 m 75 cm",
+      "B": "1 m 25 cm",
+      "C": "2 m 15 cm",
+      "D": "2 m 25 cm"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 4 m 60 cm = 460 cm. Step 2: 2 m 85 cm = 285 cm. Step 3: 460 − 285 = 175 cm = 1 m 75 cm."
+  },
+  {
+    "id": "P3-MEAS-016-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Word problem",
+    "difficulty": "medium",
+    "question": "Raju runs 1 km 250 m in the morning and 875 m in the afternoon. How far does he run altogether? Give your answer in km and m.",
+    "options": {
+      "A": "1 km 875 m",
+      "B": "2 km 25 m",
+      "C": "2 km 125 m",
+      "D": "2 km 250 m"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 1 km 250 m = 1250 m. Step 2: 1250 + 875 = 2125 m. Step 3: 2125 m = 2 km 125 m."
+  },
+  {
+    "id": "P3-MEAS-017-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Subtracting masses",
+    "difficulty": "medium",
+    "question": "A bag of sugar weighs 2 kg 300 g. Mrs Tan uses 850 g. How much sugar is left?",
+    "options": {
+      "A": "1 kg 350 g",
+      "B": "2 kg 550 g",
+      "C": "1 kg 550 g",
+      "D": "1 kg 450 g"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 2 kg 300 g = 2300 g. Step 2: 2300 − 850 = 1450 g. Step 3: 1450 g = 1 kg 450 g."
+  },
+  {
+    "id": "P3-MEAS-018-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Adding masses",
+    "difficulty": "medium",
+    "question": "A pineapple weighs 1 kg 350 g. A papaya weighs 980 g. What is the total mass?",
+    "options": {
+      "A": "2 kg 230 g",
+      "B": "2 kg 330 g",
+      "C": "2 kg 430 g",
+      "D": "3 kg 330 g"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 1 kg 350 g = 1350 g. Step 2: 1350 + 980 = 2330 g. Step 3: 2330 g = 2 kg 330 g."
+  },
+  {
+    "id": "P3-MEAS-019-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Comparing masses",
+    "difficulty": "medium",
+    "question": "A watermelon weighs 3 kg 200 g. A pumpkin weighs 2 kg 750 g. How much heavier is the watermelon?",
+    "options": {
+      "A": "350 g",
+      "B": "650 g",
+      "C": "550 g",
+      "D": "450 g"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 3 kg 200 g = 3200 g. Step 2: 2 kg 750 g = 2750 g. Step 3: 3200 − 2750 = 450 g."
+  },
+  {
+    "id": "P3-MEAS-020-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Adding volumes",
+    "difficulty": "medium",
+    "question": "A tank contains 3 litres 200 ml of water. Another 1 litre 750 ml is added. How much water is in the tank now?",
+    "options": {
+      "A": "4 litres 850 ml",
+      "B": "5 litres 50 ml",
+      "C": "4 litres 950 ml",
+      "D": "5 litres 150 ml"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 3 litres 200 ml = 3200 ml. Step 2: 1 litre 750 ml = 1750 ml. Step 3: 3200 + 1750 = 4950 ml. Step 4: 4950 ml = 4 litres 950 ml."
+  },
+  {
+    "id": "P3-MEAS-021-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Subtracting volumes",
+    "difficulty": "medium",
+    "question": "A bottle contains 2 litres 300 ml of juice. Sarah drinks 650 ml. How much juice is left?",
+    "options": {
+      "A": "1 litre 550 ml",
+      "B": "2 litre 650 ml",
+      "C": "1 litre 750 ml",
+      "D": "1 litre 650 ml"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 2 litres 300 ml = 2300 ml. Step 2: 2300 − 650 = 1650 ml. Step 3: 1650 ml = 1 litre 650 ml."
+  },
+  {
+    "id": "P3-MEAS-022-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Comparison",
+    "difficulty": "medium",
+    "question": "Container A holds 2 litres 750 ml. Container B holds 3 litres 100 ml. How much more does Container B hold than Container A?",
+    "options": {
+      "A": "250 ml",
+      "B": "450 ml",
+      "C": "350 ml",
+      "D": "550 ml"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 3 litres 100 ml = 3100 ml. Step 2: 2 litres 750 ml = 2750 ml. Step 3: 3100 − 2750 = 350 ml."
+  },
+  {
+    "id": "P3-MEAS-023-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Conversion km to m",
+    "difficulty": "medium",
+    "question": "Ethan walks 3 km 400 m to school and 3 km 400 m back home. What is the total distance he walks? Give your answer in km and m.",
+    "options": {
+      "A": "6 km 400 m",
+      "B": "7 km 200 m",
+      "C": "6 km 800 m",
+      "D": "7 km 800 m"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 3 km 400 m + 3 km 400 m. Step 2: 3 + 3 = 6 km. Step 3: 400 + 400 = 800 m. Step 4: Total = 6 km 800 m."
+  },
+  {
+    "id": "P3-MEAS-024-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Conversion litres to millilitres",
+    "difficulty": "medium",
+    "question": "Hui Min has 3 bottles. Each bottle holds 1 litre 200 ml. What is the total amount of water in all 3 bottles? Give your answer in litres and millilitres.",
+    "options": {
+      "A": "3 litres 200 ml",
+      "B": "3 litres 600 ml",
+      "C": "4 litres 600 ml",
+      "D": "5 litres 600 ml"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 1 litre 200 ml = 1200 ml. Step 2: 3 × 1200 = 3600 ml. Step 3: 3600 ml = 3 litres 600 ml."
+  },
+  {
+    "id": "P3-MEAS-025-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Conversion kg to g",
+    "difficulty": "medium",
+    "question": "Zhi Hao bought 4 bags of oranges. Each bag weighs 500 g. What is the total mass in kilograms?",
+    "options": {
+      "A": "1 kg",
+      "B": "5 kg",
+      "C": "4 kg",
+      "D": "2 kg"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 4 × 500 = 2000 g. Step 2: 2000 g = 2 kg."
+  },
+  {
+    "id": "P3-MEAS-026-M",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Conversion cm to m",
+    "difficulty": "medium",
+    "question": "Kavitha has a piece of cloth 6 m 30 cm long. She cuts off 2 m 75 cm. How long is the remaining piece?",
+    "options": {
+      "A": "3 m 45 cm",
+      "B": "4 m 55 cm",
+      "C": "4 m 45 cm",
+      "D": "3 m 55 cm"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 6 m 30 cm = 630 cm. Step 2: 2 m 75 cm = 275 cm. Step 3: 630 − 275 = 355 cm = 3 m 55 cm."
+  },
+  {
+    "id": "P3-MEAS-027-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Word problem",
+    "difficulty": "hard",
+    "question": "Arjun has a rope 8 m long. He cuts it into 5 equal pieces. What is the length of each piece in metres and centimetres?",
+    "options": {
+      "A": "1 m 60 cm",
+      "B": "1 m 40 cm",
+      "C": "1 m 20 cm",
+      "D": "2 m 40 cm"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 8 m = 800 cm. Step 2: 800 ÷ 5 = 160 cm. Step 3: 160 cm = 1 m 60 cm."
+  },
+  {
+    "id": "P3-MEAS-028-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Multi-step",
+    "difficulty": "hard",
+    "question": "A box of 6 mangoes has a total mass of 2 kg 400 g. What is the mass of each mango?",
+    "options": {
+      "A": "350 g",
+      "B": "400 g",
+      "C": "450 g",
+      "D": "480 g"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 2 kg 400 g = 2400 g. Step 2: 2400 ÷ 6 = 400 g. Each mango weighs 400 g."
+  },
+  {
+    "id": "P3-MEAS-029-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Word problem with multiplication",
+    "difficulty": "hard",
+    "question": "A tank contains 3 litres 200 ml of water. Siti pours 5 cups of 250 ml each into it. How much water is in the tank now?",
+    "options": {
+      "A": "4 litres 450 ml",
+      "B": "4 litres 200 ml",
+      "C": "4 litres 700 ml",
+      "D": "5 litres 450 ml"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 5 × 250 = 1250 ml. Step 2: 3 litres 200 ml = 3200 ml. Step 3: 3200 + 1250 = 4450 ml. Step 4: 4450 ml = 4 litres 450 ml."
+  },
+  {
+    "id": "P3-MEAS-030-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Subtracting volumes",
+    "difficulty": "hard",
+    "question": "A jug contains 2 litres 500 ml of milk. Mrs Tan pours out 4 glasses of 350 ml each. How much milk is left in the jug?",
+    "options": {
+      "A": "900 ml",
+      "B": "1 litre 200 ml",
+      "C": "1 litre 100 ml",
+      "D": "1 litre 400 ml"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 4 × 350 = 1400 ml. Step 2: 2 litres 500 ml = 2500 ml. Step 3: 2500 − 1400 = 1100 ml. Step 4: 1100 ml = 1 litre 100 ml."
+  },
+  {
+    "id": "P3-MEAS-031-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Word problem",
+    "difficulty": "hard",
+    "question": "Li Ting cycles 2 km 750 m from her home to the library. She then cycles 1 km 480 m from the library to the market. How far does she cycle altogether? Give your answer in km and m.",
+    "options": {
+      "A": "3 km 230 m",
+      "B": "4 km 230 m",
+      "C": "4 km 130 m",
+      "D": "4 km 330 m"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 2 km 750 m = 2750 m. Step 2: 1 km 480 m = 1480 m. Step 3: 2750 + 1480 = 4230 m. Step 4: 4230 m = 4 km 230 m."
+  },
+  {
+    "id": "P3-MEAS-032-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Multi-step",
+    "difficulty": "hard",
+    "question": "A bag weighs 350 g when empty. Xin Yi puts 8 oranges into the bag. Each orange weighs 125 g. What is the total mass of the bag with the oranges?",
+    "options": {
+      "A": "1 kg 150 g",
+      "B": "1 kg 250 g",
+      "C": "1 kg 350 g",
+      "D": "1 kg 450 g"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 8 × 125 = 1000 g. Step 2: 1000 + 350 = 1350 g. Step 3: 1350 g = 1 kg 350 g."
+  },
+  {
+    "id": "P3-MEAS-033-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Word problem with multiplication",
+    "difficulty": "hard",
+    "question": "Darren has a 5-litre container filled with water. He pours the water equally into 8 cups. How many millilitres of water are in each cup?",
+    "options": {
+      "A": "500 ml",
+      "B": "600 ml",
+      "C": "650 ml",
+      "D": "625 ml"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 5 litres = 5000 ml. Step 2: 5000 ÷ 8 = 625 ml."
+  },
+  {
+    "id": "P3-MEAS-034-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Comparing lengths",
+    "difficulty": "hard",
+    "question": "Ahmad has 3 pieces of wire. They are 1 m 45 cm, 2 m 30 cm and 1 m 75 cm long. What is the total length of the 3 pieces of wire?",
+    "options": {
+      "A": "4 m 50 cm",
+      "B": "5 m 30 cm",
+      "C": "5 m 50 cm",
+      "D": "6 m 50 cm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Convert all to cm: 145 + 230 + 175. Step 2: 145 + 230 = 375. Step 3: 375 + 175 = 550 cm. Step 4: 550 cm = 5 m 50 cm."
+  },
+  {
+    "id": "P3-MEAS-035-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Subtracting masses",
+    "difficulty": "hard",
+    "question": "A box of 10 apples has a total mass of 3 kg 500 g. The empty box weighs 300 g. What is the mass of each apple?",
+    "options": {
+      "A": "280 g",
+      "B": "300 g",
+      "C": "320 g",
+      "D": "350 g"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 3 kg 500 g = 3500 g. Step 2: Mass of apples only = 3500 − 300 = 3200 g. Step 3: 3200 ÷ 10 = 320 g per apple."
+  },
+  {
+    "id": "P3-MEAS-036-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Comparison",
+    "difficulty": "hard",
+    "question": "Mei Hua has 2 litres 400 ml of orange juice and 1 litre 850 ml of apple juice. How much more orange juice than apple juice does she have?",
+    "options": {
+      "A": "450 ml",
+      "B": "550 ml",
+      "C": "650 ml",
+      "D": "750 ml"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 2 litres 400 ml = 2400 ml. Step 2: 1 litre 850 ml = 1850 ml. Step 3: 2400 − 1850 = 550 ml."
+  },
+  {
+    "id": "P3-MEAS-037-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Length — Word problem",
+    "difficulty": "hard",
+    "question": "A piece of string is 10 m long. Kai cuts off 3 pieces, each 2 m 45 cm long. What is the length of string left?",
+    "options": {
+      "A": "2 m 65 cm",
+      "B": "2 m 55 cm",
+      "C": "2 m 45 cm",
+      "D": "3 m 45 cm"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 2 m 45 cm = 245 cm. Step 2: 3 × 245 = 735 cm. Step 3: 10 m = 1000 cm. Step 4: 1000 − 735 = 265 cm = 2 m 65 cm."
+  },
+  {
+    "id": "P3-MEAS-038-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Adding masses",
+    "difficulty": "hard",
+    "question": "Aisha buys 3 packets of flour. Each packet weighs 1 kg 250 g. What is the total mass of the flour?",
+    "options": {
+      "A": "3 kg 250 g",
+      "B": "3 kg 750 g",
+      "C": "3 kg 650 g",
+      "D": "4 kg 250 g"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 1 kg 250 g = 1250 g. Step 2: 3 × 1250 = 3750 g. Step 3: 3750 g = 3 kg 750 g."
+  },
+  {
+    "id": "P3-MEAS-039-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Volume — Word problem with multiplication",
+    "difficulty": "hard",
+    "question": "A water tank holds 10 litres. Jun Wei fills it using a pail that holds 1 litre 250 ml. How many pails of water does he need to fill the tank completely?",
+    "options": {
+      "A": "8",
+      "B": "7",
+      "C": "6",
+      "D": "10"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: 10 litres = 10 000 ml. Step 2: 1 litre 250 ml = 1250 ml. Step 3: 10 000 ÷ 1250 = 8. He needs 8 pails."
+  },
+  {
+    "id": "P3-MEAS-040-H",
+    "level": "P3",
+    "topic": "Measurement",
+    "subtopic": "Mass — Multi-step",
+    "difficulty": "hard",
+    "question": "Priya has 5 kg of sugar. She packs the sugar equally into 8 bags. How many grams of sugar are in each bag?",
+    "options": {
+      "A": "500 g",
+      "B": "600 g",
+      "C": "625 g",
+      "D": "650 g"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 5 kg = 5000 g. Step 2: 5000 ÷ 8 = 625 g. Each bag has 625 g of sugar."
+  },
+  {
+    "id": "P3-FRAC-001-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Naming fractions — word context",
+    "difficulty": "easy",
+    "question": "A cake is cut into 6 equal slices. Ahmad eats 1 slice. What fraction of the cake did he eat?",
+    "options": {
+      "A": "1/5",
+      "B": "1/6",
+      "C": "1/3",
+      "D": "6/1"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: The cake is cut into 6 equal slices, so each slice is 1/6 of the cake. Step 2: Ahmad eats 1 slice. Step 3: The fraction he ate is 1/6."
+  },
+  {
+    "id": "P3-FRAC-002-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Equivalent fractions — find missing number",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/3 = ___/9",
+    "options": {
+      "A": "3",
+      "B": "2",
+      "C": "4",
+      "D": "6"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: To change the denominator from 3 to 9, multiply by 3. Step 2: Multiply the numerator by 3 as well: 1 × 3 = 3. Step 3: So 1/3 = 3/9."
+  },
+  {
+    "id": "P3-FRAC-003-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Comparing fractions — same denominator",
+    "difficulty": "easy",
+    "question": "Which is greater: 5/9 or 7/9?",
+    "options": {
+      "A": "5/9",
+      "B": "They are equal",
+      "C": "7/9",
+      "D": "Cannot be determined"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Both fractions have the same denominator (9). Step 2: When denominators are equal, the fraction with the larger numerator is greater. Step 3: 7 > 5, so 7/9 is greater than 5/9."
+  },
+  {
+    "id": "P3-FRAC-004-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Comparing fractions — same numerator",
+    "difficulty": "easy",
+    "question": "Which of the following fractions is the smallest: 2/3, 2/5, 2/7, or 2/9?",
+    "options": {
+      "A": "2/9",
+      "B": "2/3",
+      "C": "2/5",
+      "D": "2/7"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: All fractions have the same numerator (2). Step 2: When numerators are equal, the fraction with the larger denominator is smaller. Step 3: 9 is the largest denominator, so 2/9 is the smallest."
+  },
+  {
+    "id": "P3-FRAC-005-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Adding like fractions",
+    "difficulty": "easy",
+    "question": "What is 2/7 + 3/7?",
+    "options": {
+      "A": "5/14",
+      "B": "5/7",
+      "C": "6/7",
+      "D": "1/7"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Both fractions have the same denominator (7). Step 2: Add the numerators: 2 + 3 = 5. Step 3: Keep the denominator: 5/7."
+  },
+  {
+    "id": "P3-FRAC-006-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Subtracting like fractions",
+    "difficulty": "easy",
+    "question": "What is 7/8 − 3/8?",
+    "options": {
+      "A": "4/16",
+      "B": "4/0",
+      "C": "3/8",
+      "D": "4/8"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Both fractions have the same denominator (8). Step 2: Subtract the numerators: 7 − 3 = 4. Step 3: Keep the denominator: 4/8 (which is equivalent to 1/2)."
+  },
+  {
+    "id": "P3-FRAC-007-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a set — find the part",
+    "difficulty": "easy",
+    "question": "There are 20 sweets. 1/4 of them are strawberry flavour. How many sweets are strawberry flavour?",
+    "options": {
+      "A": "4",
+      "B": "10",
+      "C": "8",
+      "D": "5"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Find 1/4 of 20. Step 2: Divide 20 by 4 = 5. Step 3: 5 sweets are strawberry flavour."
+  },
+  {
+    "id": "P3-FRAC-008-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Naming fractions — word context",
+    "difficulty": "easy",
+    "question": "Siti has a ribbon. She cuts it into 5 equal parts and uses 3 parts. What fraction of the ribbon did she use?",
+    "options": {
+      "A": "5/3",
+      "B": "3/8",
+      "C": "2/5",
+      "D": "3/5"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: The ribbon is cut into 5 equal parts. Step 2: Siti uses 3 parts. Step 3: The fraction used is 3/5."
+  },
+  {
+    "id": "P3-FRAC-009-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Equivalent fractions — are these equal",
+    "difficulty": "easy",
+    "question": "Which of the following is equivalent to 1/2?",
+    "options": {
+      "A": "2/3",
+      "B": "3/4",
+      "D": "4/8",
+      "C": "5/12"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Multiply both numerator and denominator of 1/2 by 4: 1 × 4 = 4, 2 × 4 = 8. Step 2: 1/2 = 4/8. Step 3: So 4/8 is equivalent to 1/2."
+  },
+  {
+    "id": "P3-FRAC-010-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Ordering fractions — same denominator",
+    "difficulty": "easy",
+    "question": "Arrange 5/8, 2/8, 7/8, 1/8 from smallest to greatest. What is the third fraction?",
+    "options": {
+      "A": "5/8",
+      "B": "7/8",
+      "C": "2/8",
+      "D": "1/8"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: All fractions have the same denominator (8). Step 2: Order by numerator from smallest to greatest: 1/8, 2/8, 5/8, 7/8. Step 3: The third fraction is 5/8."
+  },
+  {
+    "id": "P3-FRAC-011-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Adding like fractions",
+    "difficulty": "easy",
+    "question": "What is 1/6 + 3/6?",
+    "options": {
+      "A": "4/12",
+      "B": "3/6",
+      "C": "2/6",
+      "D": "4/6"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Both fractions have the same denominator (6). Step 2: Add the numerators: 1 + 3 = 4. Step 3: Keep the denominator: 4/6 (which is equivalent to 2/3)."
+  },
+  {
+    "id": "P3-FRAC-012-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Comparing fractions — benchmark (half)",
+    "difficulty": "easy",
+    "question": "Which of the following fractions is greater than 1/2?",
+    "options": {
+      "A": "3/8",
+      "B": "2/5",
+      "C": "5/9",
+      "D": "1/3"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 1/2 = 4.5/9. Step 2: Check each option: 3/8 = 0.375 (less than 0.5), 2/5 = 0.4 (less than 0.5), 5/9 ≈ 0.556 (greater than 0.5), 1/3 ≈ 0.333 (less than 0.5). Step 3: 5/9 is greater than 1/2."
+  },
+  {
+    "id": "P3-FRAC-013-E",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Subtracting like fractions",
+    "difficulty": "easy",
+    "question": "What is 5/6 − 2/6?",
+    "options": {
+      "A": "3/6",
+      "B": "7/6",
+      "C": "3/12",
+      "D": "2/6"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Both fractions have the same denominator (6). Step 2: Subtract the numerators: 5 − 2 = 3. Step 3: Keep the denominator: 3/6 (which is equivalent to 1/2)."
+  },
+  {
+    "id": "P3-FRAC-014-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Equivalent fractions — find missing number",
+    "difficulty": "medium",
+    "question": "Find the missing number: 5/6 = ___/18",
+    "options": {
+      "A": "10",
+      "B": "12",
+      "C": "15",
+      "D": "18"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: To change the denominator from 6 to 18, multiply by 3. Step 2: Multiply the numerator by 3 as well: 5 × 3 = 15. Step 3: So 5/6 = 15/18."
+  },
+  {
+    "id": "P3-FRAC-015-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Equivalent fractions — are these equal",
+    "difficulty": "medium",
+    "question": "Which of the following is equivalent to 2/3?",
+    "options": {
+      "A": "4/9",
+      "B": "6/9",
+      "C": "4/6",
+      "D": "Both B and C"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Check 6/9: 2 × 3 = 6, 3 × 3 = 9, so 6/9 = 2/3. Step 2: Check 4/6: 2 × 2 = 4, 3 × 2 = 6, so 4/6 = 2/3. Step 3: Check 4/9: 2/3 ≠ 4/9 (2 × 3 = 6 ≠ 4). Step 4: Both B and C are equivalent to 2/3."
+  },
+  {
+    "id": "P3-FRAC-016-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a set — find the part",
+    "difficulty": "medium",
+    "question": "There are 36 children in a class. 2/9 of them wear glasses. How many children wear glasses?",
+    "options": {
+      "A": "6",
+      "B": "8",
+      "C": "4",
+      "D": "12"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Find 1/9 of 36: 36 ÷ 9 = 4. Step 2: Find 2/9 of 36: 4 × 2 = 8. Step 3: 8 children wear glasses."
+  },
+  {
+    "id": "P3-FRAC-017-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a set — find what's remaining",
+    "difficulty": "medium",
+    "question": "Raju has 24 marbles. 3/8 of them are blue. How many marbles are not blue?",
+    "options": {
+      "A": "9",
+      "B": "12",
+      "C": "15",
+      "D": "18"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Find 3/8 of 24: 24 ÷ 8 = 3, then 3 × 3 = 9 blue marbles. Step 2: Marbles that are not blue: 24 − 9 = 15. Step 3: 15 marbles are not blue."
+  },
+  {
+    "id": "P3-FRAC-018-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Comparing fractions — same numerator",
+    "difficulty": "medium",
+    "question": "Which of the following fractions is the greatest: 4/5, 4/8, 4/10, or 4/12?",
+    "options": {
+      "A": "4/5",
+      "B": "4/8",
+      "C": "4/10",
+      "D": "4/12"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: All fractions have the same numerator (4). Step 2: When numerators are equal, the fraction with the smaller denominator is greater. Step 3: 5 is the smallest denominator, so 4/5 is the greatest."
+  },
+  {
+    "id": "P3-FRAC-019-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Subtracting like fractions — from 1",
+    "difficulty": "medium",
+    "question": "Find the value of 1 − 5/9.",
+    "options": {
+      "A": "5/9",
+      "B": "4/0",
+      "D": "4/9",
+      "C": "3/9"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Write 1 as 9/9. Step 2: Subtract: 9/9 − 5/9 = 4/9. Step 3: The answer is 4/9."
+  },
+  {
+    "id": "P3-FRAC-020-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Ordering fractions — same denominator",
+    "difficulty": "medium",
+    "question": "Arrange 3/10, 7/10, 1/10, 9/10 from smallest to greatest. What is the second fraction?",
+    "options": {
+      "A": "3/10",
+      "B": "1/10",
+      "C": "7/10",
+      "D": "9/10"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: All fractions have the same denominator (10). Step 2: Order by numerator from smallest to greatest: 1/10, 3/10, 7/10, 9/10. Step 3: The second fraction is 3/10."
+  },
+  {
+    "id": "P3-FRAC-021-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Adding like fractions",
+    "difficulty": "medium",
+    "question": "Mei Hua ate 2/9 of a pie. Ethan ate 4/9 of the same pie. What fraction of the pie did they eat altogether?",
+    "options": {
+      "A": "6/18",
+      "B": "6/9",
+      "C": "2/9",
+      "D": "8/9"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Both fractions have the same denominator (9). Step 2: Add the numerators: 2 + 4 = 6. Step 3: The fraction eaten altogether is 6/9 (which is equivalent to 2/3)."
+  },
+  {
+    "id": "P3-FRAC-022-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Comparing fractions — benchmark (half)",
+    "difficulty": "medium",
+    "question": "Which of the following fractions is less than 1/2?",
+    "options": {
+      "A": "5/8",
+      "B": "7/12",
+      "C": "3/5",
+      "D": "3/8"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: 1/2 of 8 = 4. Since 3 < 4, 3/8 < 1/2. Step 2: Check others: 5/8 > 4/8 = 1/2, 7/12 > 6/12 = 1/2, 3/5 > 2.5/5 = 1/2. Step 3: Only 3/8 is less than 1/2."
+  },
+  {
+    "id": "P3-FRAC-023-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Equivalent fractions — find missing number",
+    "difficulty": "medium",
+    "question": "Find the missing number: 2/3 = 8/___",
+    "options": {
+      "A": "6",
+      "B": "9",
+      "C": "12",
+      "D": "16"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: To change the numerator from 2 to 8, multiply by 4. Step 2: Multiply the denominator by 4 as well: 3 × 4 = 12. Step 3: So 2/3 = 8/12."
+  },
+  {
+    "id": "P3-FRAC-024-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Naming fractions — word context",
+    "difficulty": "medium",
+    "question": "A box contains 12 eggs. Devi uses 5 eggs to bake a cake. What fraction of the eggs are left in the box?",
+    "options": {
+      "A": "5/12",
+      "B": "7/12",
+      "C": "5/7",
+      "D": "7/5"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Total eggs = 12. Eggs used = 5. Step 2: Eggs left = 12 − 5 = 7. Step 3: Fraction of eggs left = 7/12."
+  },
+  {
+    "id": "P3-FRAC-025-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a set — find the part",
+    "difficulty": "medium",
+    "question": "Li Ting has 40 stickers. 3/5 of them are star-shaped. How many star-shaped stickers does she have?",
+    "options": {
+      "A": "20",
+      "B": "24",
+      "C": "8",
+      "D": "30"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Find 1/5 of 40: 40 ÷ 5 = 8. Step 2: Find 3/5 of 40: 8 × 3 = 24. Step 3: Li Ting has 24 star-shaped stickers."
+  },
+  {
+    "id": "P3-FRAC-026-M",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Subtracting like fractions",
+    "difficulty": "medium",
+    "question": "Sarah has 11/12 of a metre of string. She uses 5/12 of a metre. How much string does she have left?",
+    "options": {
+      "A": "6/12",
+      "B": "5/12",
+      "C": "6/24",
+      "D": "16/12"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Both fractions have the same denominator (12). Step 2: Subtract the numerators: 11 − 5 = 6. Step 3: Sarah has 6/12 (or 1/2) of a metre of string left."
+  },
+  {
+    "id": "P3-FRAC-027-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Multi-step fraction",
+    "difficulty": "hard",
+    "question": "There are 48 sweets. 1/4 of them are strawberry flavour and 1/3 of them are grape flavour. How many sweets are neither strawberry nor grape flavour?",
+    "options": {
+      "A": "28",
+      "B": "20",
+      "C": "12",
+      "D": "16"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Strawberry sweets = 1/4 × 48 = 12. Step 2: Grape sweets = 1/3 × 48 = 16. Step 3: Sweets that are neither = 48 − 12 − 16 = 20."
+  },
+  {
+    "id": "P3-FRAC-028-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a set — find the whole",
+    "difficulty": "hard",
+    "question": "1/4 of the stickers in a box are blue. There are 9 blue stickers. How many stickers are there in the box altogether?",
+    "options": {
+      "A": "27",
+      "B": "32",
+      "C": "36",
+      "D": "45"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 1/4 of the total = 9 stickers. Step 2: Total stickers = 9 × 4 = 36. Step 3: There are 36 stickers in the box altogether."
+  },
+  {
+    "id": "P3-FRAC-029-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fraction word problem — 2-step",
+    "difficulty": "hard",
+    "question": "A baker made 360 buns. He sold 225 buns in the morning. What fraction of the buns were sold in the morning?",
+    "options": {
+      "A": "3/8",
+      "B": "5/8",
+      "C": "1/4",
+      "D": "3/4"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Fraction sold = 225/360. Step 2: Simplify by dividing both by 45: 225 ÷ 45 = 5, 360 ÷ 45 = 8. Step 3: The fraction sold is 5/8."
+  },
+  {
+    "id": "P3-FRAC-030-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Multi-step fraction",
+    "difficulty": "hard",
+    "question": "Arjun has 60 cards. 1/3 of them are red and 1/5 of them are green. The rest are yellow. How many yellow cards does he have?",
+    "options": {
+      "A": "28",
+      "B": "32",
+      "C": "20",
+      "D": "24"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Red cards = 1/3 × 60 = 20. Step 2: Green cards = 1/5 × 60 = 12. Step 3: Yellow cards = 60 − 20 − 12 = 28."
+  },
+  {
+    "id": "P3-FRAC-031-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a set — find the whole",
+    "difficulty": "hard",
+    "question": "2/5 of the children in a school are boys. There are 24 boys. How many children are there in the school?",
+    "options": {
+      "A": "48",
+      "B": "50",
+      "C": "60",
+      "D": "72"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 2/5 of the total = 24 children. Step 2: 1/5 of the total = 24 ÷ 2 = 12. Step 3: Total children = 12 × 5 = 60."
+  },
+  {
+    "id": "P3-FRAC-032-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Equivalent fractions — find missing number",
+    "difficulty": "hard",
+    "question": "Find the missing number: ___/8 = 9/12",
+    "options": {
+      "A": "4",
+      "B": "5",
+      "C": "6",
+      "D": "3"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Simplify 9/12 by dividing both by 3: 9 ÷ 3 = 3, 12 ÷ 3 = 4. So 9/12 = 3/4. Step 2: Convert 3/4 to eighths: 3 × 2 = 6, 4 × 2 = 8. Step 3: So 6/8 = 9/12. The missing number is 6."
+  },
+  {
+    "id": "P3-FRAC-033-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a set — find what's remaining",
+    "difficulty": "hard",
+    "question": "Kavitha has 54 beads. She gives 1/6 of them to Priya and 2/9 of them to Aisha. How many beads does Kavitha have left?",
+    "options": {
+      "A": "33",
+      "B": "21",
+      "C": "30",
+      "D": "36"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Beads given to Priya = 1/6 × 54 = 9. Step 2: Beads given to Aisha = 2/9 × 54 = 12. Step 3: Beads left = 54 − 9 − 12 = 33."
+  },
+  {
+    "id": "P3-FRAC-034-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Adding like fractions — word problem",
+    "difficulty": "hard",
+    "question": "Darren drank 3/10 of a bottle of water in the morning and 4/10 of the same bottle in the afternoon. What fraction of the water is left?",
+    "options": {
+      "A": "7/10",
+      "B": "1/10",
+      "C": "3/10",
+      "D": "2/10"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Fraction drunk altogether = 3/10 + 4/10 = 7/10. Step 2: Fraction left = 10/10 − 7/10 = 3/10. Step 3: 3/10 of the water is left."
+  },
+  {
+    "id": "P3-FRAC-035-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Comparing fractions — benchmark (half)",
+    "difficulty": "hard",
+    "question": "How many of these fractions are greater than 1/2? 5/12, 4/6, 3/5, 2/8, 7/10",
+    "options": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 5/12 — half of 12 is 6, 5 < 6, so less than 1/2. Step 2: 4/6 — half of 6 is 3, 4 > 3, so greater than 1/2. Step 3: 3/5 — half of 5 is 2.5, 3 > 2.5, so greater than 1/2. Step 4: 2/8 — half of 8 is 4, 2 < 4, so less than 1/2. Step 5: 7/10 — half of 10 is 5, 7 > 5, so greater than 1/2. Step 6: 3 fractions are greater than 1/2."
+  },
+  {
+    "id": "P3-FRAC-036-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Ordering fractions — same numerator",
+    "difficulty": "hard",
+    "question": "Arrange 5/6, 5/10, 5/8, 5/12 from greatest to smallest. What is the second fraction?",
+    "options": {
+      "A": "5/6",
+      "B": "5/12",
+      "C": "5/10",
+      "D": "5/8"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: All fractions have the same numerator (5). Step 2: The smaller the denominator, the greater the fraction. Step 3: Order from greatest to smallest: 5/6, 5/8, 5/10, 5/12. Step 4: The second fraction is 5/8."
+  },
+  {
+    "id": "P3-FRAC-037-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fraction word problem — 2-step",
+    "difficulty": "hard",
+    "question": "Zhi Hao had 240 stamps. He gave 1/8 of them to Kai. He then gave 1/5 of the remaining stamps to Jun Wei. How many stamps did Jun Wei receive?",
+    "options": {
+      "A": "42",
+      "B": "48",
+      "C": "30",
+      "D": "40"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Stamps given to Kai = 1/8 × 240 = 30. Step 2: Remaining stamps = 240 − 30 = 210. Step 3: Stamps given to Jun Wei = 1/5 × 210 = 42."
+  },
+  {
+    "id": "P3-FRAC-038-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fractions of a set — find the whole",
+    "difficulty": "hard",
+    "question": "3/8 of the books on a shelf are storybooks. There are 21 storybooks. How many books are on the shelf altogether?",
+    "options": {
+      "A": "48",
+      "B": "56",
+      "C": "64",
+      "D": "72"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: 3/8 of the total = 21 books. Step 2: 1/8 of the total = 21 ÷ 3 = 7. Step 3: Total books = 7 × 8 = 56."
+  },
+  {
+    "id": "P3-FRAC-039-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Equivalent fractions — are these equal",
+    "difficulty": "hard",
+    "question": "Which pair of fractions is NOT equivalent?",
+    "options": {
+      "A": "2/3 and 8/12",
+      "B": "3/4 and 9/12",
+      "C": "1/5 and 3/10",
+      "D": "4/6 and 6/9"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: 2/3 = 8/12 (multiply by 4). Step 2: 3/4 = 9/12 (multiply by 3). Step 3: 1/5 = 2/10 (multiply by 2), but 3/10 ≠ 2/10, so 1/5 ≠ 3/10. Step 4: 4/6 = 2/3 and 6/9 = 2/3, so they are equivalent. Step 5: The pair that is NOT equivalent is 1/5 and 3/10."
+  },
+  {
+    "id": "P3-FRAC-040-H",
+    "level": "P3",
+    "topic": "Fractions",
+    "subtopic": "Fraction word problem — 2-step",
+    "difficulty": "hard",
+    "question": "Hui Min had some money. She spent 1/4 of it on a book and 1/3 of it on a pen. She had $25 left. How much money did she have at first?",
+    "options": {
+      "A": "$48",
+      "B": "$60",
+      "C": "$72",
+      "D": "$50"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Fraction spent = 1/4 + 1/3 = 3/12 + 4/12 = 7/12. Step 2: Fraction left = 1 − 7/12 = 5/12. Step 3: 5/12 of total = $25, so 1/12 = $5, and total = $5 × 12 = $60."
+  },
+  {
+    "id": "P3-AREA-001-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find perimeter of rectangle",
+    "difficulty": "easy",
+    "question": "A rectangle is 8 cm long and 5 cm wide. What is its perimeter?",
+    "options": {
+      "A": "26 cm",
+      "B": "40 cm",
+      "C": "13 cm",
+      "D": "18 cm"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Perimeter of a rectangle = 2 × (length + width). Step 2: Perimeter = 2 × (8 + 5) = 2 × 13 = 26 cm."
+  },
+  {
+    "id": "P3-AREA-002-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find area of rectangle",
+    "difficulty": "easy",
+    "question": "A rectangle is 12 cm long and 7 cm wide. What is its area?",
+    "options": {
+      "A": "38 cm²",
+      "B": "84 cm²",
+      "C": "19 cm²",
+      "D": "72 cm²"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Area of a rectangle = length × width. Step 2: Area = 12 × 7 = 84 cm²."
+  },
+  {
+    "id": "P3-AREA-003-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find perimeter of square",
+    "difficulty": "easy",
+    "question": "A square has sides of 9 cm. What is its perimeter?",
+    "options": {
+      "A": "18 cm",
+      "B": "81 cm²",
+      "C": "36 cm",
+      "D": "27 cm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Perimeter of a square = 4 × side. Step 2: Perimeter = 4 × 9 = 36 cm."
+  },
+  {
+    "id": "P3-AREA-004-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find area of square",
+    "difficulty": "easy",
+    "question": "A square has sides of 6 cm. What is its area?",
+    "options": {
+      "A": "24 cm",
+      "B": "12 cm²",
+      "C": "36 cm²",
+      "D": "24 cm²"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Area of a square = side × side. Step 2: Area = 6 × 6 = 36 cm²."
+  },
+  {
+    "id": "P3-AREA-005-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find perimeter of rectangle",
+    "difficulty": "easy",
+    "question": "A rectangle is 10 cm long and 3 cm wide. What is its perimeter?",
+    "options": {
+      "A": "30 cm²",
+      "B": "13 cm",
+      "C": "30 cm",
+      "D": "26 cm"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Perimeter of a rectangle = 2 × (length + width). Step 2: Perimeter = 2 × (10 + 3) = 2 × 13 = 26 cm."
+  },
+  {
+    "id": "P3-AREA-006-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find area of rectangle",
+    "difficulty": "easy",
+    "question": "A rectangle is 9 cm long and 4 cm wide. What is its area?",
+    "options": {
+      "A": "36 cm²",
+      "B": "26 cm",
+      "C": "13 cm²",
+      "D": "32 cm²"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Area of a rectangle = length × width. Step 2: Area = 9 × 4 = 36 cm²."
+  },
+  {
+    "id": "P3-AREA-007-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Real-world perimeter",
+    "difficulty": "easy",
+    "question": "Ahmad wants to put a ribbon around a rectangular card. The card is 14 cm long and 6 cm wide. How many centimetres of ribbon does he need?",
+    "options": {
+      "A": "84 cm",
+      "B": "20 cm",
+      "C": "40 cm",
+      "D": "34 cm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Perimeter = 2 × (length + width). Step 2: Perimeter = 2 × (14 + 6) = 2 × 20 = 40 cm."
+  },
+  {
+    "id": "P3-AREA-008-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find area of square",
+    "difficulty": "easy",
+    "question": "A square tile has sides of 8 cm. What is its area?",
+    "options": {
+      "A": "32 cm",
+      "B": "32 cm²",
+      "C": "64 cm²",
+      "D": "16 cm²"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Area of a square = side × side. Step 2: Area = 8 × 8 = 64 cm²."
+  },
+  {
+    "id": "P3-AREA-009-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Real-world area",
+    "difficulty": "easy",
+    "question": "A room is 7 m long and 5 m wide. What is the area of the floor?",
+    "options": {
+      "A": "24 m²",
+      "B": "35 m²",
+      "C": "12 m²",
+      "D": "24 m"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Area of a rectangle = length × width. Step 2: Area = 7 × 5 = 35 m²."
+  },
+  {
+    "id": "P3-AREA-010-E",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find perimeter of square",
+    "difficulty": "easy",
+    "question": "A square garden has sides of 11 m. What is its perimeter?",
+    "options": {
+      "A": "44 m",
+      "B": "22 m",
+      "C": "121 m²",
+      "D": "33 m"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Perimeter of a square = 4 × side. Step 2: Perimeter = 4 × 11 = 44 m."
+  },
+  {
+    "id": "P3-AREA-011-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find unknown side given perimeter of rectangle",
+    "difficulty": "medium",
+    "question": "The perimeter of a rectangle is 34 cm. Its length is 12 cm. What is its width?",
+    "options": {
+      "A": "10 cm",
+      "B": "5 cm",
+      "C": "11 cm",
+      "D": "22 cm"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Perimeter = 2 × (length + width). Step 2: 34 = 2 × (12 + width). Step 3: 17 = 12 + width. Step 4: Width = 17 − 12 = 5 cm."
+  },
+  {
+    "id": "P3-AREA-012-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find unknown side given area",
+    "difficulty": "medium",
+    "question": "The area of a rectangle is 56 cm². Its width is 7 cm. What is its length?",
+    "options": {
+      "A": "7 cm",
+      "B": "49 cm",
+      "C": "8 cm",
+      "D": "9 cm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Area = length × width. Step 2: 56 = length × 7. Step 3: Length = 56 ÷ 7 = 8 cm."
+  },
+  {
+    "id": "P3-AREA-013-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find unknown side of square given perimeter",
+    "difficulty": "medium",
+    "question": "The perimeter of a square is 48 cm. What is the length of each side?",
+    "options": {
+      "A": "16 cm",
+      "B": "24 cm",
+      "C": "8 cm",
+      "D": "12 cm"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Perimeter of a square = 4 × side. Step 2: 48 = 4 × side. Step 3: Side = 48 ÷ 4 = 12 cm."
+  },
+  {
+    "id": "P3-AREA-014-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find both area and perimeter",
+    "difficulty": "medium",
+    "question": "A rectangle is 11 cm long and 4 cm wide. What is the difference between its perimeter and its area?",
+    "options": {
+      "A": "14 cm",
+      "B": "30 cm",
+      "C": "44 cm²",
+      "D": "There is no difference"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Perimeter = 2 × (11 + 4) = 2 × 15 = 30 cm. Step 2: Area = 11 × 4 = 44 cm². Step 3: The perimeter value is 30 and the area value is 44. The difference in numerical value is 44 − 30 = 14. Note: Perimeter (cm) and area (cm²) have different units, but the numerical difference is 14."
+  },
+  {
+    "id": "P3-AREA-015-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Real-world perimeter",
+    "difficulty": "medium",
+    "question": "Siti wants to put a fence around her rectangular garden. The garden is 15 m long and 8 m wide. How many metres of fencing does she need?",
+    "options": {
+      "A": "120 m",
+      "B": "23 m",
+      "C": "46 m",
+      "D": "38 m"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Perimeter = 2 × (length + width). Step 2: Perimeter = 2 × (15 + 8) = 2 × 23 = 46 m."
+  },
+  {
+    "id": "P3-AREA-016-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find unknown side given perimeter of rectangle",
+    "difficulty": "medium",
+    "question": "A rectangular garden has a length of 9 m. Its perimeter is 28 m. What is its width?",
+    "options": {
+      "A": "10 m",
+      "B": "5 m",
+      "C": "19 m",
+      "D": "14 m"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Perimeter = 2 × (length + width). Step 2: 28 = 2 × (9 + width). Step 3: 14 = 9 + width. Step 4: Width = 14 − 9 = 5 m."
+  },
+  {
+    "id": "P3-AREA-017-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Comparing areas",
+    "difficulty": "medium",
+    "question": "Rectangle A is 9 cm by 5 cm. Rectangle B is 8 cm by 6 cm. Which has a larger area and by how much?",
+    "options": {
+      "A": "Rectangle A, by 3 cm²",
+      "B": "Rectangle B, by 3 cm²",
+      "C": "Rectangle A, by 1 cm²",
+      "D": "They have the same area"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Area of Rectangle A = 9 × 5 = 45 cm². Step 2: Area of Rectangle B = 8 × 6 = 48 cm². Step 3: Rectangle B has a larger area by 48 − 45 = 3 cm²."
+  },
+  {
+    "id": "P3-AREA-018-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Find unknown side given area",
+    "difficulty": "medium",
+    "question": "The area of a rectangle is 72 cm². Its length is 9 cm. What is its width?",
+    "options": {
+      "A": "7 cm",
+      "B": "63 cm",
+      "C": "8 cm",
+      "D": "6 cm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Area = length × width. Step 2: 72 = 9 × width. Step 3: Width = 72 ÷ 9 = 8 cm."
+  },
+  {
+    "id": "P3-AREA-019-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Real-world area",
+    "difficulty": "medium",
+    "question": "Ethan wants to cover the top of a table with paper. The table is 120 cm long and 60 cm wide. What is the area of paper he needs?",
+    "options": {
+      "A": "360 cm²",
+      "B": "180 cm²",
+      "C": "7200 cm²",
+      "D": "3600 cm²"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Area = length × width. Step 2: Area = 120 × 60 = 7200 cm²."
+  },
+  {
+    "id": "P3-AREA-020-M",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Tiling/covering",
+    "difficulty": "medium",
+    "question": "A floor is 6 m long and 4 m wide. Square tiles each have sides of 1 m. How many tiles are needed to cover the floor?",
+    "options": {
+      "A": "10",
+      "B": "20",
+      "C": "24",
+      "D": "36"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Area of the floor = 6 × 4 = 24 m². Step 2: Area of each tile = 1 × 1 = 1 m². Step 3: Number of tiles = 24 ÷ 1 = 24."
+  },
+  {
+    "id": "P3-AREA-021-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "2-step perimeter problem",
+    "difficulty": "hard",
+    "question": "A rectangle has a perimeter of 40 cm. Its length is 3 times its width. What is the area of the rectangle?",
+    "options": {
+      "A": "100 cm²",
+      "B": "75 cm²",
+      "C": "60 cm²",
+      "D": "120 cm²"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Let width = w. Length = 3w. Step 2: Perimeter = 2 × (3w + w) = 2 × 4w = 8w. Step 3: 8w = 40, so w = 5 cm. Step 4: Length = 3 × 5 = 15 cm. Step 5: Area = 15 × 5 = 75 cm²."
+  },
+  {
+    "id": "P3-AREA-022-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "2-step area and perimeter",
+    "difficulty": "hard",
+    "question": "The area of a square is 49 cm². What is the perimeter of the square?",
+    "options": {
+      "A": "14 cm",
+      "B": "21 cm",
+      "C": "28 cm",
+      "D": "49 cm"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Area of a square = side × side. Step 2: 49 = side × side, so side = 7 cm. Step 3: Perimeter = 4 × 7 = 28 cm."
+  },
+  {
+    "id": "P3-AREA-023-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Real-world perimeter — 2-step",
+    "difficulty": "hard",
+    "question": "Raju wants to put a fence around a square field. Each side of the field is 12 m. If fencing costs $3 per metre, how much will the fencing cost altogether?",
+    "options": {
+      "A": "$36",
+      "B": "$48",
+      "C": "$96",
+      "D": "$144"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Perimeter of the square = 4 × 12 = 48 m. Step 2: Cost = 48 × $3 = $144."
+  },
+  {
+    "id": "P3-AREA-024-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Tiling/covering — 2-step",
+    "difficulty": "hard",
+    "question": "A wall is 8 m long and 3 m high. Square tiles each have sides of 1 m. If each tile costs $5, how much will it cost to tile the entire wall?",
+    "options": {
+      "A": "$40",
+      "B": "$120",
+      "C": "$55",
+      "D": "$80"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Area of the wall = 8 × 3 = 24 m². Step 2: Number of tiles = 24 ÷ 1 = 24 tiles. Step 3: Total cost = 24 × $5 = $120."
+  },
+  {
+    "id": "P3-AREA-025-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Comparing areas — 2-step",
+    "difficulty": "hard",
+    "question": "A square has sides of 7 cm. A rectangle is 10 cm long and 4 cm wide. What is the difference in their areas?",
+    "options": {
+      "A": "9 cm²",
+      "B": "3 cm²",
+      "C": "49 cm²",
+      "D": "40 cm²"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Area of square = 7 × 7 = 49 cm². Step 2: Area of rectangle = 10 × 4 = 40 cm². Step 3: Difference = 49 − 40 = 9 cm²."
+  },
+  {
+    "id": "P3-AREA-026-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "2-step perimeter problem",
+    "difficulty": "hard",
+    "question": "A rectangle has a perimeter of 30 cm. Its width is 5 cm. What is the area of the rectangle?",
+    "options": {
+      "A": "100 cm²",
+      "B": "25 cm²",
+      "C": "50 cm²",
+      "D": "75 cm²"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Perimeter = 2 × (length + width). Step 2: 30 = 2 × (length + 5). Step 3: 15 = length + 5, so length = 10 cm. Step 4: Area = 10 × 5 = 50 cm²."
+  },
+  {
+    "id": "P3-AREA-027-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Real-world area — 2-step",
+    "difficulty": "hard",
+    "question": "Mei Hua wants to cover a rectangular table with cloth. The table is 2 m long and 1 m wide. If the cloth costs $8 per square metre, how much will it cost to cover the table?",
+    "options": {
+      "A": "$8",
+      "B": "$24",
+      "C": "$16",
+      "D": "$32"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Area of the table = 2 × 1 = 2 m². Step 2: Cost = 2 × $8 = $16."
+  },
+  {
+    "id": "P3-AREA-028-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "2-step perimeter problem",
+    "difficulty": "hard",
+    "question": "A rectangle has a perimeter of 36 cm. Its length is twice its width. What is the width of the rectangle?",
+    "options": {
+      "A": "9 cm",
+      "B": "6 cm",
+      "C": "12 cm",
+      "D": "8 cm"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Let width = w. Length = 2w. Step 2: Perimeter = 2 × (2w + w) = 2 × 3w = 6w. Step 3: 6w = 36, so w = 6 cm."
+  },
+  {
+    "id": "P3-AREA-029-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "Comparing perimeters",
+    "difficulty": "hard",
+    "question": "Square X has sides of 8 cm. Rectangle Y is 11 cm long and 5 cm wide. Which shape has a greater perimeter and by how much?",
+    "options": {
+      "A": "Square X, by 2 cm",
+      "B": "Rectangle Y, by 2 cm",
+      "C": "Square X, by 4 cm",
+      "D": "They have the same perimeter"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Perimeter of Square X = 4 × 8 = 32 cm. Step 2: Perimeter of Rectangle Y = 2 × (11 + 5) = 2 × 16 = 32 cm. Step 3: Both have the same perimeter of 32 cm."
+  },
+  {
+    "id": "P3-AREA-030-H",
+    "level": "P3",
+    "topic": "Area and Perimeter",
+    "subtopic": "2-step area problem",
+    "difficulty": "hard",
+    "question": "The area of a rectangle is 96 cm². Its width is 8 cm. What is the perimeter of the rectangle?",
+    "options": {
+      "A": "40 cm",
+      "B": "20 cm",
+      "C": "48 cm",
+      "D": "24 cm"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Area = length × width. 96 = length × 8. Length = 96 ÷ 8 = 12 cm. Step 2: Perimeter = 2 × (length + width) = 2 × (12 + 8) = 2 × 20 = 40 cm."
+  },
+  {
+    "id": "P3-GRAPH-001-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading a bar graph — single value",
+    "difficulty": "easy",
+    "question": "The table shows the number of books read by 4 children: Ahmad — 6, Siti — 9, Wei Ling — 4, Raju — 7. How many books did Siti read?",
+    "options": {
+      "A": "6",
+      "B": "4",
+      "C": "9",
+      "D": "7"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Look at the data for Siti. Step 2: Siti read 9 books."
+  },
+  {
+    "id": "P3-GRAPH-002-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — most/least",
+    "difficulty": "easy",
+    "question": "A class voted for their favourite sport. The results are: Football — 14, Swimming — 9, Badminton — 11, Running — 6. Which sport received the fewest votes?",
+    "options": {
+      "A": "Swimming",
+      "B": "Running",
+      "C": "Football",
+      "D": "Badminton"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Compare all values: Football = 14, Swimming = 9, Badminton = 11, Running = 6. Step 2: The smallest value is 6. Step 3: Running received the fewest votes."
+  },
+  {
+    "id": "P3-GRAPH-003-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — total",
+    "difficulty": "easy",
+    "question": "The table shows the number of stickers collected by 4 pupils: Ethan — 12, Devi — 8, Kai — 15, Priya — 5. How many stickers were collected altogether?",
+    "options": {
+      "A": "40",
+      "B": "38",
+      "C": "35",
+      "D": "42"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Add all values: 12 + 8 + 15 + 5. Step 2: 12 + 8 = 20. Step 3: 20 + 15 = 35. Step 4: 35 + 5 = 40. Step 5: The total is 40 stickers."
+  },
+  {
+    "id": "P3-GRAPH-004-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — single value",
+    "difficulty": "easy",
+    "question": "The table shows how pupils travel to school: Bus — 12, Car — 7, MRT — 9, Walk — 5. How many pupils travel by MRT?",
+    "options": {
+      "A": "12",
+      "B": "7",
+      "C": "5",
+      "D": "9"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Look at the data for MRT. Step 2: 9 pupils travel by MRT."
+  },
+  {
+    "id": "P3-GRAPH-005-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — most",
+    "difficulty": "easy",
+    "question": "The table shows the number of pets owned by 4 children: Zhi Hao — 3, Mei Hua — 5, Darren — 2, Aisha — 4. Who owns the most pets?",
+    "options": {
+      "A": "Mei Hua",
+      "B": "Zhi Hao",
+      "C": "Darren",
+      "D": "Aisha"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Compare all values: Zhi Hao = 3, Mei Hua = 5, Darren = 2, Aisha = 4. Step 2: The highest value is 5. Step 3: Mei Hua owns the most pets."
+  },
+  {
+    "id": "P3-GRAPH-006-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — difference",
+    "difficulty": "easy",
+    "question": "The table shows the number of fruits sold at a stall: Apples — 18, Oranges — 12, Pears — 15, Bananas — 20. How many more bananas than oranges were sold?",
+    "options": {
+      "A": "6",
+      "B": "5",
+      "C": "3",
+      "D": "8"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Find the number of bananas sold: 20. Step 2: Find the number of oranges sold: 12. Step 3: Subtract: 20 − 12 = 8. Step 4: 8 more bananas than oranges were sold."
+  },
+  {
+    "id": "P3-GRAPH-007-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — ranked position",
+    "difficulty": "easy",
+    "question": "The table shows the number of coloured pencils used by 4 pupils: Li Ting — 10, Ismail — 14, Hui Min — 8, Arjun — 12. Who used the second most coloured pencils?",
+    "options": {
+      "A": "Li Ting",
+      "B": "Ismail",
+      "C": "Arjun",
+      "D": "Hui Min"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Arrange in order from most to least: Ismail = 14, Arjun = 12, Li Ting = 10, Hui Min = 8. Step 2: The second most is Arjun with 12 coloured pencils."
+  },
+  {
+    "id": "P3-GRAPH-008-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — least",
+    "difficulty": "easy",
+    "question": "The table shows the number of stamps collected by 4 children: Jun Wei — 22, Sarah — 15, Kavitha — 28, Darren — 19. Who collected the fewest stamps?",
+    "options": {
+      "A": "Jun Wei",
+      "B": "Sarah",
+      "C": "Kavitha",
+      "D": "Darren"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Compare all values: Jun Wei = 22, Sarah = 15, Kavitha = 28, Darren = 19. Step 2: The smallest value is 15. Step 3: Sarah collected the fewest stamps."
+  },
+  {
+    "id": "P3-GRAPH-009-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — data ordering",
+    "difficulty": "easy",
+    "question": "The table shows the number of library visits by 4 pupils: Xin Yi — 7, Ahmad — 11, Devi — 5, Ethan — 9. Arrange the number of visits in ascending order. What is the second number?",
+    "options": {
+      "A": "5",
+      "B": "9",
+      "C": "11",
+      "D": "7"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Arrange in ascending order: 5, 7, 9, 11. Step 2: The second number is 7."
+  },
+  {
+    "id": "P3-GRAPH-010-E",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Reading — single value",
+    "difficulty": "easy",
+    "question": "The table shows the number of movies watched by 4 children in a month: Raju — 3, Mei Hua — 6, Zhi Hao — 4, Siti — 5. How many movies did Zhi Hao watch?",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "6",
+      "D": "5"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Look at the data for Zhi Hao. Step 2: Zhi Hao watched 4 movies."
+  },
+  {
+    "id": "P3-GRAPH-011-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Difference — how many more/fewer",
+    "difficulty": "medium",
+    "question": "The table shows the number of trees planted by 4 classes: Class A — 25, Class B — 18, Class C — 32, Class D — 14. How many fewer trees did Class D plant than Class C?",
+    "options": {
+      "A": "18",
+      "B": "14",
+      "C": "7",
+      "D": "11"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Find Class C trees: 32. Step 2: Find Class D trees: 14. Step 3: Subtract: 32 − 14 = 18. Step 4: Class D planted 18 fewer trees than Class C."
+  },
+  {
+    "id": "P3-GRAPH-012-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Scaled graph — scale of 2",
+    "difficulty": "medium",
+    "question": "In a bar graph, each unit represents 2 badges. The data shows: Priya — 6 units, Kai — 4 units, Sarah — 8 units, Ismail — 5 units. How many badges did Sarah earn?",
+    "options": {
+      "A": "8",
+      "B": "10",
+      "C": "16",
+      "D": "12"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Each unit represents 2 badges. Step 2: Sarah has 8 units. Step 3: Multiply: 8 × 2 = 16. Step 4: Sarah earned 16 badges."
+  },
+  {
+    "id": "P3-GRAPH-013-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Total and compare",
+    "difficulty": "medium",
+    "question": "A class voted for their favourite food. The results are: Chicken rice — 11, Nasi lemak — 8, Fried rice — 6, Noodles — 9. How many pupils voted for chicken rice and noodles altogether?",
+    "options": {
+      "A": "17",
+      "B": "20",
+      "C": "15",
+      "D": "19"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Find the number who voted for chicken rice: 11. Step 2: Find the number who voted for noodles: 9. Step 3: Add: 11 + 9 = 20. Step 4: 20 pupils voted for chicken rice and noodles altogether."
+  },
+  {
+    "id": "P3-GRAPH-014-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Scaled graph — scale of 5",
+    "difficulty": "medium",
+    "question": "In a bar graph, each unit represents 5 coins. The data shows: Hui Min — 3 units, Arjun — 7 units, Li Ting — 4 units, Darren — 6 units. How many coins did Arjun save?",
+    "options": {
+      "A": "25",
+      "B": "30",
+      "C": "40",
+      "D": "35"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Each unit represents 5 coins. Step 2: Arjun has 7 units. Step 3: Multiply: 7 × 5 = 35. Step 4: Arjun saved 35 coins."
+  },
+  {
+    "id": "P3-GRAPH-015-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Change over time — difference",
+    "difficulty": "medium",
+    "question": "A shop sold recycled items over 3 months: January — 45, February — 38, March — 52. How many more items were sold in March than in February?",
+    "options": {
+      "A": "14",
+      "B": "7",
+      "C": "10",
+      "D": "17"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Find March sales: 52. Step 2: Find February sales: 38. Step 3: Subtract: 52 − 38 = 14. Step 4: 14 more items were sold in March than in February."
+  },
+  {
+    "id": "P3-GRAPH-016-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Bar graph creation reasoning",
+    "difficulty": "medium",
+    "question": "Kavitha wants to make a bar graph for this data: Roses — 24, Sunflowers — 18, Daisies — 30, Tulips — 12. If the scale is 1 unit = 6 flowers, how many units tall should the Daisies bar be?",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "6"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Each unit represents 6 flowers. Step 2: Daisies = 30 flowers. Step 3: Divide: 30 ÷ 6 = 5. Step 4: The Daisies bar should be 5 units tall."
+  },
+  {
+    "id": "P3-GRAPH-017-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "2-step total then compare",
+    "difficulty": "medium",
+    "question": "The table shows the CCA choices of pupils: Art Club — 13, Science Club — 9, Sports Club — 16, Drama Club — 7. How many more pupils chose Art Club and Science Club than Drama Club?",
+    "options": {
+      "A": "12",
+      "B": "18",
+      "C": "22",
+      "D": "15"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Find Art Club + Science Club: 13 + 9 = 22. Step 2: Find Drama Club: 7. Step 3: Subtract: 22 − 7 = 15. Step 4: 15 more pupils chose Art Club and Science Club than Drama Club."
+  },
+  {
+    "id": "P3-GRAPH-018-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Data ordering — ascending",
+    "difficulty": "medium",
+    "question": "The table shows the number of steps walked by 5 pupils: Xin Yi — 320, Jun Wei — 450, Aisha — 280, Ethan — 510, Devi — 390. Arrange the data in ascending order. Who walked the second most steps?",
+    "options": {
+      "A": "Jun Wei",
+      "B": "Devi",
+      "C": "Xin Yi",
+      "D": "Ethan"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Arrange in ascending order: Aisha = 280, Xin Yi = 320, Devi = 390, Jun Wei = 450, Ethan = 510. Step 2: The second most is Jun Wei with 450 steps."
+  },
+  {
+    "id": "P3-GRAPH-019-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Scaled graph — scale of 10",
+    "difficulty": "medium",
+    "question": "In a bar graph, each unit represents 10 pages. The data shows: Mei Hua — 4 units, Raju — 6 units, Siti — 3 units, Zhi Hao — 8 units. How many pages did Raju read?",
+    "options": {
+      "A": "40",
+      "B": "30",
+      "C": "80",
+      "D": "60"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Each unit represents 10 pages. Step 2: Raju has 6 units. Step 3: Multiply: 6 × 10 = 60. Step 4: Raju read 60 pages."
+  },
+  {
+    "id": "P3-GRAPH-020-M",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Total from data",
+    "difficulty": "medium",
+    "question": "The table shows the number of siblings that pupils have: 0 siblings — 5 pupils, 1 sibling — 12 pupils, 2 siblings — 8 pupils, 3 siblings — 3 pupils. How many pupils are there in total?",
+    "options": {
+      "A": "25",
+      "B": "28",
+      "C": "30",
+      "D": "26"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Add all values: 5 + 12 + 8 + 3. Step 2: 5 + 12 = 17. Step 3: 17 + 8 = 25. Step 4: 25 + 3 = 28. Step 5: There are 28 pupils in total."
+  },
+  {
+    "id": "P3-GRAPH-021-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Multi-step — missing value and comparison",
+    "difficulty": "hard",
+    "question": "A school collected books for charity. Class A collected 48, Class B collected 35, Class C collected 27. Class D collected some books. The total collected by all four classes is 145. How many more books did Class A collect than Class D?",
+    "options": {
+      "A": "13",
+      "B": "11",
+      "C": "15",
+      "D": "9"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Find Class D books: 145 − 48 − 35 − 27 = 35. Step 2: Find difference: 48 − 35 = 13. Step 3: Class A collected 13 more books than Class D."
+  },
+  {
+    "id": "P3-GRAPH-022-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Multi-step — scaled graph with total",
+    "difficulty": "hard",
+    "question": "In a bar graph, each unit represents 2 stickers. The data shows: Ahmad — 7 units, Priya — 5 units, Darren — 9 units, Kavitha — 4 units. How many stickers did all 4 children collect altogether?",
+    "options": {
+      "A": "25",
+      "B": "44",
+      "C": "50",
+      "D": "38"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Convert units to stickers: Ahmad = 7 × 2 = 14, Priya = 5 × 2 = 10, Darren = 9 × 2 = 18, Kavitha = 4 × 2 = 8. Step 2: Add: 14 + 10 + 18 + 8 = 50. Step 3: They collected 50 stickers altogether."
+  },
+  {
+    "id": "P3-GRAPH-023-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Double bar graph — comparison",
+    "difficulty": "hard",
+    "question": "Two classes recorded the number of pupils who like each language. Class A: English — 12, Chinese — 8, Malay — 5, Tamil — 3. Class B: English — 9, Chinese — 14, Malay — 4, Tamil — 6. How many more pupils in both classes like English than Tamil altogether?",
+    "options": {
+      "A": "10",
+      "B": "12",
+      "C": "14",
+      "D": "15"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Find total for English: 12 + 9 = 21. Step 2: Find total for Tamil: 3 + 6 = 9. Step 3: Find difference: 21 − 9 = 12. Step 4: 12 more pupils like English than Tamil altogether."
+  },
+  {
+    "id": "P3-GRAPH-024-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Multi-step — find missing value given total",
+    "difficulty": "hard",
+    "question": "Four children collected coins. Ismail collected 36, Li Ting collected 28, Ethan collected 42. The total number of coins collected by all four children is 140. How many coins did Hui Min collect?",
+    "options": {
+      "A": "30",
+      "B": "32",
+      "C": "34",
+      "D": "38"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Add the known values: 36 + 28 + 42 = 106. Step 2: Subtract from total: 140 − 106 = 34. Step 3: Hui Min collected 34 coins."
+  },
+  {
+    "id": "P3-GRAPH-025-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Multi-step — scaled graph with difference",
+    "difficulty": "hard",
+    "question": "In a bar graph, each unit represents 5 stamps. The data shows: Jun Wei — 8 units, Sarah — 5 units, Raju — 6 units, Xin Yi — 9 units. How many more stamps did Xin Yi collect than Sarah?",
+    "options": {
+      "A": "4",
+      "B": "15",
+      "C": "25",
+      "D": "20"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Xin Yi stamps: 9 × 5 = 45. Step 2: Sarah stamps: 5 × 5 = 25. Step 3: Difference: 45 − 25 = 20. Step 4: Xin Yi collected 20 more stamps than Sarah."
+  },
+  {
+    "id": "P3-GRAPH-026-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Multi-step — comparison as fraction",
+    "difficulty": "hard",
+    "question": "The table shows the number of badges earned by 4 pupils: Aisha — 6, Arjun — 10, Mei Hua — 4, Kai — 12. What fraction of all the badges were earned by Arjun and Mei Hua together? Give your answer in the simplest form.",
+    "options": {
+      "A": "7/16",
+      "B": "14/32",
+      "C": "5/16",
+      "D": "1/2"
+    },
+    "correctAnswer": "A",
+    "explanation": "Step 1: Find total badges: 6 + 10 + 4 + 12 = 32. Step 2: Find Arjun and Mei Hua together: 10 + 4 = 14. Step 3: Fraction = 14/32. Step 4: Simplify: 14/32 = 7/16."
+  },
+  {
+    "id": "P3-GRAPH-027-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Double bar graph — multi-step comparison",
+    "difficulty": "hard",
+    "question": "Two classes recorded their favourite transport. Class A: Bus — 15, MRT — 10, Car — 8, Walk — 7. Class B: Bus — 11, MRT — 13, Car — 6, Walk — 5. Which class had more pupils who chose Bus or Walk? By how many?",
+    "options": {
+      "A": "Class B, by 4",
+      "B": "Class A, by 6",
+      "C": "Class A, by 4",
+      "D": "Class B, by 6"
+    },
+    "correctAnswer": "B",
+    "explanation": "Step 1: Class A Bus + Walk: 15 + 7 = 22. Step 2: Class B Bus + Walk: 11 + 5 = 16. Step 3: Difference: 22 − 16 = 6. Step 4: Class A had 6 more pupils who chose Bus or Walk."
+  },
+  {
+    "id": "P3-GRAPH-028-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Multi-step — change over time with total",
+    "difficulty": "hard",
+    "question": "A library recorded the number of visitors over 4 weeks: Week 1 — 85, Week 2 — 72, Week 3 — 96, Week 4 — 67. What is the difference between the total visitors in the first two weeks and the total visitors in the last two weeks?",
+    "options": {
+      "A": "4",
+      "B": "8",
+      "C": "6",
+      "D": "10"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: First two weeks total: 85 + 72 = 157. Step 2: Last two weeks total: 96 + 67 = 163. Step 3: Difference: 163 − 157 = 6. Step 4: The difference is 6 visitors."
+  },
+  {
+    "id": "P3-GRAPH-029-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Multi-step — bar graph creation with comparison",
+    "difficulty": "hard",
+    "question": "Siti wants to make a bar graph for the number of recycled items: Paper — 35, Plastic — 20, Glass — 15, Metal — 10. If the scale is 1 unit = 5 items, how many more units will the Paper bar have than the Glass bar?",
+    "options": {
+      "A": "3",
+      "B": "2",
+      "C": "5",
+      "D": "4"
+    },
+    "correctAnswer": "D",
+    "explanation": "Step 1: Paper bar units: 35 ÷ 5 = 7 units. Step 2: Glass bar units: 15 ÷ 5 = 3 units. Step 3: Difference: 7 − 3 = 4 units. Step 4: The Paper bar will have 4 more units than the Glass bar."
+  },
+  {
+    "id": "P3-GRAPH-030-H",
+    "level": "P3",
+    "topic": "Bar Graphs",
+    "subtopic": "Multi-step — missing value and total",
+    "difficulty": "hard",
+    "question": "A school recorded the number of pupils in 4 CCAs. Art Club has 24 pupils, Music Club has 18 pupils, and Sports Club has 30 pupils. The total number of pupils in all 4 CCAs is 90. How many pupils are in Drama Club, and how many more pupils are in Sports Club than Drama Club?",
+    "options": {
+      "A": "Drama Club has 20, difference is 10",
+      "B": "Drama Club has 16, difference is 14",
+      "C": "Drama Club has 18, difference is 12",
+      "D": "Drama Club has 22, difference is 8"
+    },
+    "correctAnswer": "C",
+    "explanation": "Step 1: Find Drama Club: 90 − 24 − 18 − 30 = 18 pupils. Step 2: Find difference: Sports Club − Drama Club = 30 − 18 = 12. Step 3: Drama Club has 18 pupils and Sports Club has 12 more pupils than Drama Club."
+  }
+]

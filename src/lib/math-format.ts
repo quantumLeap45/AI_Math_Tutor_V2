@@ -33,12 +33,32 @@ export function formatLatexToKidFriendly(text: string): string {
   // Handle escaped dollar signs
   result = result.replace(/\\\$/g, '$');
 
+  // Strip \text{...}, \textbf{...}, \mathrm{...}, \mathbf{...} — keep inner content
+  result = result.replace(/\\text(?:bf|rm|it)?\{([^}]+)\}/g, '$1');
+  result = result.replace(/\\math(?:rm|bf|it|cal)?\{([^}]+)\}/g, '$1');
+
+  // Strip \left and \right delimiters (e.g., \left( ... \right))
+  result = result.replace(/\\left\s*/g, '');
+  result = result.replace(/\\right\s*/g, '');
+
+  // Convert LaTeX spacing commands to regular space
+  result = result.replace(/\\[,;:!]\s*/g, ' ');
+  result = result.replace(/\\quad\s*/g, ' ');
+  result = result.replace(/\\qquad\s*/g, ' ');
+
+  // Convert \% to %
+  result = result.replace(/\\%/g, '%');
+
   // Convert fractions \frac{a}{b} or \\frac{a}{b} to a/b
   // Using simple format (1/2) for compatibility with vertical fraction component
   // Handle single backslash
   result = result.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
   // Handle double backslash (escaped)
   result = result.replace(/\\\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
+
+  // Convert math asterisk to multiplication sign for student-friendly display
+  // Matches contexts like "2*3", "2 * 3", "b*18", "(a+b)*4"
+  result = result.replace(/(?<=\b[\dA-Za-z)\]])\s*\*\s*(?=[\dA-Za-z([])/g, ' × ');
 
   // Convert \times to ×
   result = result.replace(/\\times/g, '×');
@@ -73,6 +93,34 @@ export function formatLatexToKidFriendly(text: string): string {
   result = result.replace(/\^\{(\d)\}/g, (_, digit) => superscripts[digit] || `^{${digit}}`);
   result = result.replace(/\^([+-=()n])/g, (_, char) => superscripts[char] || `^${char}`);
 
+  // Normalize common area/volume unit forms to superscripts:
+  // cm2 -> cm², m3 -> m³, cm squared -> cm², m cubed -> m³
+  // Use a non-word prefix guard to avoid converting variable names like "xm2".
+  result = result.replace(
+    /(^|[^\w])(?:sq|sq\.|square)\s*((?:cm|mm|km|m|ft))\b/gi,
+    (_, prefix, unit) => `${prefix}${unit}²`
+  );
+  result = result.replace(
+    /(^|[^\w])(?:cu|cu\.|cubic)\s*((?:cm|mm|km|m|ft))\b/gi,
+    (_, prefix, unit) => `${prefix}${unit}³`
+  );
+  result = result.replace(
+    /(^|[^\w])((?:cm|mm|km|m|ft))\s*(?:sq|sq\.|square)\b/gi,
+    (_, prefix, unit) => `${prefix}${unit}²`
+  );
+  result = result.replace(
+    /(^|[^\w])((?:cm|mm|km|m|ft))\s*(?:cu|cu\.|cubic|cube|cubed)\b/gi,
+    (_, prefix, unit) => `${prefix}${unit}³`
+  );
+  result = result.replace(
+    /(^|[^\w])((?:cm|mm|km|m|ft))\s*(?:\^\s*\{?\s*3\s*\}?|3|cubed)\b/gi,
+    (_, prefix, unit) => `${prefix}${unit}³`
+  );
+  result = result.replace(
+    /(^|[^\w])((?:cm|mm|km|m|ft))\s*(?:\^\s*\{?\s*2\s*\}?|2|squared)\b/gi,
+    (_, prefix, unit) => `${prefix}${unit}²`
+  );
+
   // Convert common subscripts: x_1 → x₁, x_2 → x₂
   const subscripts: Record<string, string> = {
     '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄',
@@ -99,25 +147,4 @@ export function formatLatexToKidFriendly(text: string): string {
   result = result.replace(/\\\\/g, '\\');
 
   return result;
-}
-
-/**
- * Formats a quiz question for display, converting LaTeX to kid-friendly format.
- */
-export function formatQuizQuestion(question: string): string {
-  return formatLatexToKidFriendly(question);
-}
-
-/**
- * Formats a quiz option for display, converting LaTeX to kid-friendly format.
- */
-export function formatQuizOption(option: string): string {
-  return formatLatexToKidFriendly(option);
-}
-
-/**
- * Formats a quiz explanation for display, converting LaTeX to kid-friendly format.
- */
-export function formatQuizExplanation(explanation: string): string {
-  return formatLatexToKidFriendly(explanation);
 }

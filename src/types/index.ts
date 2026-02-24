@@ -1,7 +1,7 @@
 // AI Math Tutor v2 - Type Definitions
 
-// Import QuizQuestion explicitly since it's used in this file
-import type { QuizQuestion } from './quiz';
+// Import quiz-specific types used in this file
+import type { QuizQuestion, QuizQuestionCount } from './quiz';
 
 // Re-export all types from quiz module
 export * from './quiz';
@@ -32,7 +32,7 @@ export interface QuizSummaryData {
     level: 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
     topics: string[];
     difficulty: 'easy' | 'medium' | 'hard' | 'all';
-    questionCount: 5 | 10 | 15 | 20;
+    questionCount: QuizQuestionCount;
   };
   /** Number of correct answers */
   score: number;
@@ -107,7 +107,7 @@ export interface ChatQuizState {
     level: 'P1' | 'P2' | 'P3' | 'P4' | 'P5' | 'P6';
     topics: string[];
     difficulty: 'easy' | 'medium' | 'hard' | 'all';
-    questionCount: 5 | 10 | 15 | 20;
+    questionCount: QuizQuestionCount;
   };
   /** Questions in the quiz */
   questions: QuizQuestion[];

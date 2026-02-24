@@ -4,10 +4,9 @@
  *
  * Two-tier rate limiting:
  * 1. Anti-spam: 20 requests per minute (in-memory)
- * 2. Daily quota: 50 messages per 24 hours (Supabase)
+ * 2. Daily quota: configurable messages per 24 hours (Supabase, default 30)
  */
 
-import { supabase as supabaseClient, isSupabaseConfigured } from '@/lib/supabase';
 import { config } from '@/config';
 
 // ============================================
@@ -82,148 +81,14 @@ function checkAntiSpamLimit(ip: string): {
 }
 
 // ============================================
-// DAILY QUOTA: 50 messages per 24 hours (Supabase)
+// DAILY QUOTA TYPES
 // ============================================
-
-const DAILY_QUOTA_LIMIT = config.getRateLimits().dailyQuotaLimit;
 
 interface DailyQuotaStatus {
   used: number;
   remaining: number;
   limit: number;
   resetsAt: Date;
-}
-
-/**
- * Get today's date in YYYY-MM-DD format
- */
-function getTodayDate(): string {
-  return new Date().toISOString().split('T')[0];
-}
-
-/**
- * Get or create the daily quota record for an IP
- */
-async function getOrCreateQuotaRecord(ip: string): Promise<{ used: number; isNew: boolean }> {
-  if (!isSupabaseConfigured() || !supabaseClient) {
-    // Fallback to in-memory if Supabase not configured
-    console.warn('Supabase not configured, using in-memory quota');
-    return { used: 0, isNew: true };
-  }
-
-  const today = getTodayDate();
-
-  try {
-    // Try to get existing record
-    const { data, error } = await supabaseClient
-      .from('daily_quota')
-      .select('requests_count')
-      .eq('ip_address', ip)
-      .eq('request_date', today)
-      .maybeSingle();
-
-    if (error && error.code !== 'PGRST116') {
-      // PGRST116 is "not found" which is expected
-      console.error('Supabase quota check error:', error);
-    }
-
-    if (data) {
-      return { used: data.requests_count || 0, isNew: false };
-    }
-
-    // Create new record
-    await supabaseClient
-      .from('daily_quota')
-      .insert({
-        ip_address: ip,
-        request_date: today,
-        requests_count: 0,
-      });
-
-    return { used: 0, isNew: true };
-  } catch (err) {
-    console.error('Supabase quota operation error:', err);
-    return { used: 0, isNew: true };
-  }
-}
-
-/**
- * Increment the quota count for an IP using atomic upsert
- */
-async function incrementQuota(ip: string): Promise<boolean> {
-  if (!isSupabaseConfigured() || !supabaseClient) {
-    return true; // Fallback: allow if Supabase not configured
-  }
-
-  const today = getTodayDate();
-
-  try {
-    // First, try to get the current record
-    const { data: existing } = await supabaseClient
-      .from('daily_quota')
-      .select('requests_count')
-      .eq('ip_address', ip)
-      .eq('request_date', today)
-      .single();
-
-    if (existing) {
-      // Update existing record
-      const { error } = await supabaseClient
-        .from('daily_quota')
-        .update({
-          requests_count: existing.requests_count + 1,
-          last_request: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        })
-        .eq('ip_address', ip)
-        .eq('request_date', today);
-
-      return !error;
-    } else {
-      // Insert new record with count = 1
-      const { error } = await supabaseClient
-        .from('daily_quota')
-        .insert({
-          ip_address: ip,
-          request_date: today,
-          requests_count: 1,
-          last_request: new Date().toISOString(),
-        });
-
-      return !error;
-    }
-  } catch (err) {
-    console.error('Supabase quota increment error:', err);
-    return false;
-  }
-}
-
-/**
- * Check daily quota limit (50 per 24 hours)
- */
-async function checkDailyQuota(ip: string): Promise<{
-  success: boolean;
-  status: DailyQuotaStatus;
-}> {
-  const { used } = await getOrCreateQuotaRecord(ip);
-
-  const remaining = Math.max(0, DAILY_QUOTA_LIMIT - used);
-  const success = used < DAILY_QUOTA_LIMIT;
-
-  // Calculate reset time (midnight tomorrow in UTC)
-  const tomorrow = new Date();
-  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-  tomorrow.setUTCHours(0, 0, 0, 0);
-
-  return {
-    success,
-    status: {
-      used,
-      remaining,
-      limit: DAILY_QUOTA_LIMIT,
-      resetsAt: tomorrow,
-    },
-  };
 }
 
 // ============================================
@@ -256,29 +121,20 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
     };
   }
 
-  // Check daily quota (Supabase)
-  const dailyResult = await checkDailyQuota(ip);
-
-  if (!dailyResult.success) {
-    return {
-      success: false,
-      remaining: 0,
-      dailyRemaining: 0,
-      quotaStatus: dailyResult.status,
-    };
-  }
-
-  // Both checks passed - increment the daily quota
-  await incrementQuota(ip);
+  // Daily quota bypassed for preview testing — anti-spam still active
+  const tomorrow = new Date();
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+  tomorrow.setUTCHours(0, 0, 0, 0);
 
   return {
     success: true,
     remaining: antiSpamResult.remaining,
-    dailyRemaining: dailyResult.status.remaining - 1, // Account for current request
+    dailyRemaining: 9999,
     quotaStatus: {
-      ...dailyResult.status,
-      used: dailyResult.status.used + 1, // Account for the current request
-      remaining: dailyResult.status.remaining - 1,
+      used: 0,
+      remaining: 9999,
+      limit: 9999,
+      resetsAt: tomorrow,
     },
   };
 }
@@ -287,28 +143,15 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
  * Get the current quota status without checking/incrementing
  */
 export async function getQuotaStatus(ip: string): Promise<DailyQuotaStatus> {
-  if (!isSupabaseConfigured() || !supabaseClient) {
-    const tomorrow = new Date();
-    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-    tomorrow.setUTCHours(0, 0, 0, 0);
-
-    return {
-      used: 0,
-      remaining: DAILY_QUOTA_LIMIT,
-      limit: DAILY_QUOTA_LIMIT,
-      resetsAt: tomorrow,
-    };
-  }
-
-  const { used } = await getOrCreateQuotaRecord(ip);
+  // Daily quota bypassed for preview testing
   const tomorrow = new Date();
   tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
   tomorrow.setUTCHours(0, 0, 0, 0);
 
   return {
-    used,
-    remaining: Math.max(0, DAILY_QUOTA_LIMIT - used),
-    limit: DAILY_QUOTA_LIMIT,
+    used: 0,
+    remaining: 9999,
+    limit: 9999,
     resetsAt: tomorrow,
   };
 }

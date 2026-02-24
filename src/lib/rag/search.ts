@@ -8,7 +8,8 @@
  */
 
 import { queryByVector, buildFilter, RAG_NAMESPACE } from './pinecone';
-import { generateQueryEmbedding, createSearchableText } from './embeddings';
+import { generateQueryEmbedding } from './embeddings';
+import { hasVisualDependency } from '../quiz/guardrails';
 import {
   SearchResult,
   RAGContext,
@@ -16,7 +17,6 @@ import {
   UserIntent,
   GradeLevel,
   RAGQuestion,
-  Difficulty,
 } from './types';
 
 /**
@@ -64,12 +64,22 @@ const TOPIC_KEYWORDS: Record<string, string[]> = {
   'Multiplication': ['multiply', 'multiplication', 'times', 'multiplied', 'groups of', 'product'],
   'Division': ['divide', 'division', 'shared', 'split', 'quotient', 'equal groups'],
   'Fractions': ['fraction', 'half', 'quarter', 'third', 'numerator', 'denominator'],
+  'Decimals': ['decimal', 'decimal point', 'tenths', 'hundredths', 'place value'],
+  'Percentage': ['percentage', 'percent', '%', 'rate percent'],
+  'Ratio': ['ratio', 'part to part', 'part to whole'],
+  'Rate': ['rate', 'per', 'speed', 'unit rate'],
+  'Algebra': ['algebra', 'expression', 'equation', 'unknown', 'variable', 'solve for', 'value of'],
   'Money': ['money', 'dollars', 'cents', 'coins', 'notes', 'sgd', 'cost', 'price', 'spend'],
   'Time': ['time', 'clock', 'hour', 'minute', 'am', 'pm', 'o\'clock', 'duration'],
   'Length': ['length', 'long', 'short', 'cm', 'm', 'meter', 'centimeter', 'measure'],
   'Mass': ['mass', 'weight', 'kg', 'gram', 'kilogram', 'heavy', 'light', 'weigh', 'scales'],
-  'Shapes': ['shape', 'triangle', 'square', 'circle', 'rectangle', 'sides', 'corners', 'vertices'],
+  'Area': ['area', 'square units', 'cm2', 'm2', 'sq cm'],
+  'Perimeter': ['perimeter', 'boundary length', 'around shape'],
+  'Volume': ['volume', 'capacity', 'cubic', 'cm3', 'm3', 'cube'],
+  'Shapes': ['shape', 'triangle', 'square', 'circle', 'rectangle', 'sides', 'corners', 'vertices', 'polygon'],
+  'Geometry': ['geometry', 'angle', 'parallel', 'perpendicular', 'line segment', 'vertex', 'symmetry', 'coordinates', 'grid'],
   'Picture Graphs': ['picture graph', 'bar graph', 'chart', 'graph', 'data'],
+  'Data Analysis': ['data', 'table', 'survey', 'average', 'mean', 'median', 'mode'],
   'Word Problems': ['word problem', 'story problem'],
   'Number Bonds': ['number bond', 'part whole', 'bond'],
   'Number Patterns': ['pattern', 'sequence', 'skip count'],
@@ -199,13 +209,19 @@ export async function searchQuestions(
     for (const match of matches) {
       if (match.metadata) {
         const metadata = match.metadata as Record<string, string | number | string[]>;
+        const questionText = String(metadata.questionText || '');
+
+        // Guardrail: exclude visual-dependent references from RAG examples.
+        if (hasVisualDependency(questionText)) {
+          continue;
+        }
 
         searchResults.push({
           id: match.id,
           score: match.score ?? 0,
           question: {
             id: match.id,
-            questionText: String(metadata.questionText || ''),
+            questionText,
             gradeLevel: metadata.gradeLevel || 'P1',
             topic: String(metadata.topic || ''),
             subtopic: String(metadata.subtopic || ''),
