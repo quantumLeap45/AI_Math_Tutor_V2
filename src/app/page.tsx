@@ -472,7 +472,7 @@ export default function LandingPage() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Quiz Mode</h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Generate custom quizzes by topic, level, and difficulty. Track your score and retry to improve.
+                Practice with topic-based quizzes for P1–P3. Choose your difficulty and get instant feedback. P4–P6 coming soon.
               </p>
             </div>
 
@@ -611,9 +611,47 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-6 px-4 border-t border-slate-200 dark:border-slate-700 relative z-10">
-        <div className="max-w-7xl mx-auto text-center text-sm text-slate-500 dark:text-slate-400">
-          <p>Aligned with Singapore MOE Primary Mathematics Syllabus (P1-P6)</p>
+      <footer className="py-10 px-4 border-t border-slate-200 dark:border-slate-700 relative z-10 bg-white dark:bg-slate-900">
+        <div className="max-w-4xl mx-auto space-y-8">
+
+          {/* Under development notice */}
+          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-5 text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-600 dark:text-amber-400 flex-shrink-0">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              <span className="font-semibold text-amber-700 dark:text-amber-400">Early Access — Still in Development</span>
+            </div>
+            <p className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed max-w-xl mx-auto">
+              This app is actively being built and improved. You may encounter bugs, incorrect answers, or incomplete features as you explore. Thank you for your patience — your experience directly helps shape what gets fixed and built next.
+            </p>
+          </div>
+
+          {/* Contact / Feedback */}
+          <div className="text-center">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+              Found a bug or have a suggestion? I&apos;d love to hear from you.
+            </p>
+            <a
+              href="https://www.linkedin.com/in/javen-soh-9808633a3/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-[#0077B5] hover:bg-[#006097] text-white font-medium text-sm rounded-lg transition-colors shadow-sm"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              Send Feedback on LinkedIn
+            </a>
+          </div>
+
+          {/* Bottom line */}
+          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-400 dark:text-slate-600">
+            Aligned with the Singapore MOE Primary Mathematics Syllabus (P1–P6)
+          </div>
+
         </div>
       </footer>
     </div>

@@ -481,6 +481,11 @@ export default function ChatPage() {
               isVisible={quizMode.quizModeActive}
             />
           )}
+
+          {/* Static bank quiz — sits alongside chat, no backdrop */}
+          {quizDrawerOpen && (
+            <QuizDrawer onClose={() => setQuizDrawerOpen(false)} />
+          )}
         </div>
       </div>
 
@@ -494,11 +499,6 @@ export default function ChatPage() {
         />
       )}
 
-      {/* Quiz Drawer — static question bank quiz */}
-      <QuizDrawer
-        isOpen={quizDrawerOpen}
-        onClose={() => setQuizDrawerOpen(false)}
-      />
     </div>
   );
 }
