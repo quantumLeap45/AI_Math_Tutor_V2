@@ -4887,7 +4887,7 @@
     "subtopic": "Interpreting data",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Anna has 9 mangoes, Priya has 7 mangoes, Cynthia has 4 mangoes and Ben has 10 mangoes. How many more mangoes does Cynthia have than Anna?",
+    "question": "Anna has 9 mangoes, Priya has 7 mangoes, Cynthia has 4 mangoes and Ben has 10 mangoes. How many more mangoes does Anna have than Cynthia?",
     "options": {
       "A": "2",
       "B": "9",
@@ -4896,7 +4896,7 @@
     },
     "correctAnswer": "D",
     "correctValue": "5",
-    "explanation": "Difference = 4 - 9 = 5.",
+    "explanation": "Difference = 9 - 4 = 5.",
     "difficultyReason": "Requires simple addition or subtraction of given quantities."
   },
   {
@@ -4927,7 +4927,7 @@
     "subtopic": "Interpreting data",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Siti has 2 mangoes, Cynthia has 7 mangoes, Ahmad has 6 mangoes and Kai has 3 mangoes. How many more mangoes does Siti have than Cynthia?",
+    "question": "Siti has 2 mangoes, Cynthia has 7 mangoes, Ahmad has 6 mangoes and Kai has 3 mangoes. How many more mangoes does Cynthia have than Siti?",
     "options": {
       "A": "4",
       "B": "5",
@@ -4936,7 +4936,7 @@
     },
     "correctAnswer": "B",
     "correctValue": "5",
-    "explanation": "Difference = 2 - 7 = 5.",
+    "explanation": "Difference = 7 - 2 = 5.",
     "difficultyReason": "Requires simple addition or subtraction of given quantities."
   },
   {
@@ -5007,7 +5007,7 @@
     "subtopic": "Interpreting data",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ahmad has 8 mangoes, Priya has 5 mangoes, Siti has 4 mangoes and Ben has 6 mangoes. How many more mangoes does Siti have than Ben?",
+    "question": "Ahmad has 8 mangoes, Priya has 5 mangoes, Siti has 4 mangoes and Ben has 6 mangoes. How many more mangoes does Ben have than Siti?",
     "options": {
       "A": "7",
       "B": "3",
@@ -5016,7 +5016,7 @@
     },
     "correctAnswer": "D",
     "correctValue": "2",
-    "explanation": "Difference = 4 - 6 = 2.",
+    "explanation": "Difference = 6 - 4 = 2.",
     "difficultyReason": "Requires simple addition or subtraction of given quantities."
   },
   {
@@ -5127,7 +5127,7 @@
     "subtopic": "Interpreting data",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ben has 8 mangoes, Raju has 10 mangoes, Kai has 2 mangoes and Eileen has 2 mangoes. How many more mangoes does Eileen have than Ben?",
+    "question": "Ben has 8 mangoes, Raju has 10 mangoes, Kai has 2 mangoes and Eileen has 2 mangoes. How many more mangoes does Ben have than Eileen?",
     "options": {
       "A": "8",
       "B": "6",
@@ -5136,7 +5136,7 @@
     },
     "correctAnswer": "B",
     "correctValue": "6",
-    "explanation": "Difference = 2 - 8 = 6.",
+    "explanation": "Difference = 8 - 2 = 6.",
     "difficultyReason": "Requires simple addition or subtraction of given quantities."
   },
   {
