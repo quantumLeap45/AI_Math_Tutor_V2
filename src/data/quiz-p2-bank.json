@@ -5240,46 +5240,6 @@
     "difficultyReason": "Requires recall of the number of faces, edges or vertices of 3D solids."
   },
   {
-    "id": "P2-GRAPH-001",
-    "level": "P2",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Devi has 10 marbles, Deepa has 10 marbles and Priya has 3 marbles. How many marbles does Deepa have?",
-    "options": {
-      "A": "13",
-      "B": "12",
-      "C": "10",
-      "D": "6"
-    },
-    "correctAnswer": "C",
-    "correctValue": "10",
-    "explanation": "Deepa has 10 marbles as given.",
-    "difficultyReason": "Direct reading or addition of quantities."
-  },
-  {
-    "id": "P2-GRAPH-002",
-    "level": "P2",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Ben has 10 marbles, Arjun has 10 marbles and Eileen has 5 marbles. How many marbles does Arjun have?",
-    "options": {
-      "A": "13",
-      "B": "14",
-      "C": "15",
-      "D": "10"
-    },
-    "correctAnswer": "D",
-    "correctValue": "10",
-    "explanation": "Arjun has 10 marbles as given.",
-    "difficultyReason": "Direct reading or addition of quantities."
-  },
-  {
     "id": "P2-GRAPH-003",
     "level": "P2",
     "topicCode": "GRAPH",
@@ -5317,26 +5277,6 @@
     "correctAnswer": "B",
     "correctValue": "11",
     "explanation": "Total = 7 + 4 = 11.",
-    "difficultyReason": "Direct reading or addition of quantities."
-  },
-  {
-    "id": "P2-GRAPH-005",
-    "level": "P2",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Mei Hua has 7 marbles, Arjun has 3 marbles and Priya has 10 marbles. How many marbles does Arjun have?",
-    "options": {
-      "A": "0",
-      "B": "3",
-      "C": "8",
-      "D": "6"
-    },
-    "correctAnswer": "B",
-    "correctValue": "3",
-    "explanation": "Arjun has 3 marbles as given.",
     "difficultyReason": "Direct reading or addition of quantities."
   },
   {

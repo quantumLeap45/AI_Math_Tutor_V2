@@ -1767,7 +1767,7 @@
     "subtopic": "Word problem",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Deepa had 31 stickers. Deepa bought 17 more stickers, then gave away 6 stickers. After that Deepa found 1 stickers on the ground. How many stickers does Deepa have now?",
+    "question": "Deepa had 31 stickers. Deepa bought 17 more stickers, then gave away 6 stickers. After that Deepa found 1 sticker on the ground. How many stickers does Deepa have now?",
     "options": {
       "A": "40",
       "B": "38",
@@ -1967,7 +1967,7 @@
     "subtopic": "Word problem",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Siti had 31 stickers. Siti bought 5 more stickers, then gave away 4 stickers. After that Siti found 1 stickers on the ground. How many stickers does Siti have now?",
+    "question": "Siti had 31 stickers. Siti bought 5 more stickers, then gave away 4 stickers. After that Siti found 1 sticker on the ground. How many stickers does Siti have now?",
     "options": {
       "A": "33",
       "B": "30",
@@ -3980,46 +3980,6 @@
     "difficultyReason": "Involves three purchases or solving for an unknown price."
   },
   {
-    "id": "P1-TIME-001",
-    "level": "P1",
-    "topicCode": "TIME",
-    "topic": "Time",
-    "subtopic": "Days and months",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Which month comes before April?",
-    "options": {
-      "A": "March",
-      "B": "July",
-      "C": "September",
-      "D": "February"
-    },
-    "correctAnswer": "A",
-    "correctValue": "March",
-    "explanation": "The month before April is March.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
-  },
-  {
-    "id": "P1-TIME-002",
-    "level": "P1",
-    "topicCode": "TIME",
-    "topic": "Time",
-    "subtopic": "Days and months",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "What day comes before Monday?",
-    "options": {
-      "A": "Monday",
-      "B": "Sunday",
-      "C": "Friday",
-      "D": "Saturday"
-    },
-    "correctAnswer": "B",
-    "correctValue": "Sunday",
-    "explanation": "The day before Monday is Sunday.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
-  },
-  {
     "id": "P1-TIME-003",
     "level": "P1",
     "topicCode": "TIME",
@@ -4060,46 +4020,6 @@
     "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
   },
   {
-    "id": "P1-TIME-005",
-    "level": "P1",
-    "topicCode": "TIME",
-    "topic": "Time",
-    "subtopic": "Days and months",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Which month comes after November?",
-    "options": {
-      "A": "March",
-      "B": "October",
-      "C": "July",
-      "D": "December"
-    },
-    "correctAnswer": "D",
-    "correctValue": "December",
-    "explanation": "The month after November is December.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
-  },
-  {
-    "id": "P1-TIME-006",
-    "level": "P1",
-    "topicCode": "TIME",
-    "topic": "Time",
-    "subtopic": "Days and months",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Which month comes before October?",
-    "options": {
-      "A": "January",
-      "B": "September",
-      "C": "April",
-      "D": "July"
-    },
-    "correctAnswer": "B",
-    "correctValue": "September",
-    "explanation": "The month before October is September.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
-  },
-  {
     "id": "P1-TIME-007",
     "level": "P1",
     "topicCode": "TIME",
@@ -4137,26 +4057,6 @@
     "correctAnswer": "D",
     "correctValue": "half past 8",
     "explanation": "When the minute hand points to 6, it is half past the hour.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
-  },
-  {
-    "id": "P1-TIME-009",
-    "level": "P1",
-    "topicCode": "TIME",
-    "topic": "Time",
-    "subtopic": "Days and months",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "What day comes before Friday?",
-    "options": {
-      "A": "Thursday",
-      "B": "Monday",
-      "C": "Saturday",
-      "D": "Friday"
-    },
-    "correctAnswer": "A",
-    "correctValue": "Thursday",
-    "explanation": "The day before Friday is Thursday.",
     "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
   },
   {
@@ -4220,26 +4120,6 @@
     "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
   },
   {
-    "id": "P1-TIME-013",
-    "level": "P1",
-    "topicCode": "TIME",
-    "topic": "Time",
-    "subtopic": "Days and months",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Which month comes after July?",
-    "options": {
-      "A": "July",
-      "B": "August",
-      "C": "December",
-      "D": "November"
-    },
-    "correctAnswer": "B",
-    "correctValue": "August",
-    "explanation": "The month after July is August.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
-  },
-  {
     "id": "P1-TIME-014",
     "level": "P1",
     "topicCode": "TIME",
@@ -4257,26 +4137,6 @@
     "correctAnswer": "C",
     "correctValue": "half past 8",
     "explanation": "When the minute hand points to 6, it is half past the hour.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
-  },
-  {
-    "id": "P1-TIME-015",
-    "level": "P1",
-    "topicCode": "TIME",
-    "topic": "Time",
-    "subtopic": "Days and months",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "What day comes before Sunday?",
-    "options": {
-      "A": "Monday",
-      "B": "Wednesday",
-      "C": "Friday",
-      "D": "Saturday"
-    },
-    "correctAnswer": "D",
-    "correctValue": "Saturday",
-    "explanation": "The day before Sunday is Saturday.",
     "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
   },
   {
@@ -4980,306 +4840,6 @@
     "difficultyReason": "Requires adding times across hour boundaries."
   },
   {
-    "id": "P1-GRAPH-001",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Raju has 6 books, Priya has 5 books and Anna has 2 books. How many books does Raju have?",
-    "options": {
-      "A": "5",
-      "B": "6",
-      "C": "4",
-      "D": "11"
-    },
-    "correctAnswer": "B",
-    "correctValue": "6",
-    "explanation": "Raju has 6 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-002",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Eileen has 5 books, Ethan has 6 books and Kai has 2 books. How many books does Eileen have?",
-    "options": {
-      "A": "5",
-      "B": "10",
-      "C": "7",
-      "D": "6"
-    },
-    "correctAnswer": "A",
-    "correctValue": "5",
-    "explanation": "Eileen has 5 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-003",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Ethan has 8 books, Devi has 4 books and Mei Hua has 4 books. How many books does Ethan have?",
-    "options": {
-      "A": "4",
-      "B": "6",
-      "C": "10",
-      "D": "8"
-    },
-    "correctAnswer": "D",
-    "correctValue": "8",
-    "explanation": "Ethan has 8 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-004",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Cynthia has 5 books, Ben has 2 books and Priya has 4 books. How many books does Cynthia have?",
-    "options": {
-      "A": "9",
-      "B": "5",
-      "C": "0",
-      "D": "4"
-    },
-    "correctAnswer": "B",
-    "correctValue": "5",
-    "explanation": "Cynthia has 5 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-005",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Eileen has 7 books, Raju has 6 books and Arjun has 8 books. How many books does Eileen have?",
-    "options": {
-      "A": "6",
-      "B": "7",
-      "C": "3",
-      "D": "2"
-    },
-    "correctAnswer": "B",
-    "correctValue": "7",
-    "explanation": "Eileen has 7 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-006",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Raju has 6 books, Kai has 7 books and Deepa has 6 books. How many books does Raju have?",
-    "options": {
-      "A": "6",
-      "B": "9",
-      "C": "5",
-      "D": "3"
-    },
-    "correctAnswer": "A",
-    "correctValue": "6",
-    "explanation": "Raju has 6 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-007",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Wei Ling has 8 books, Siti has 8 books and Eileen has 6 books. How many books does Wei Ling have?",
-    "options": {
-      "A": "8",
-      "B": "13",
-      "C": "10",
-      "D": "4"
-    },
-    "correctAnswer": "A",
-    "correctValue": "8",
-    "explanation": "Wei Ling has 8 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-008",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Deepa has 3 books, Siti has 5 books and Eileen has 1 books. How many books does Deepa have?",
-    "options": {
-      "A": "5",
-      "B": "1",
-      "C": "3",
-      "D": "4"
-    },
-    "correctAnswer": "C",
-    "correctValue": "3",
-    "explanation": "Deepa has 3 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-009",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Ahmad has 4 books, Priya has 2 books and Ethan has 8 books. How many books does Ahmad have?",
-    "options": {
-      "A": "4",
-      "B": "2",
-      "C": "3",
-      "D": "8"
-    },
-    "correctAnswer": "A",
-    "correctValue": "4",
-    "explanation": "Ahmad has 4 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-010",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Eileen has 1 books, Deepa has 2 books and Siti has 4 books. How many books does Eileen have?",
-    "options": {
-      "A": "1",
-      "B": "2",
-      "C": "0",
-      "D": "4"
-    },
-    "correctAnswer": "A",
-    "correctValue": "1",
-    "explanation": "Eileen has 1 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-011",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Eileen has 7 books, Mei Hua has 8 books and Priya has 1 books. How many books does Eileen have?",
-    "options": {
-      "A": "9",
-      "B": "7",
-      "C": "11",
-      "D": "5"
-    },
-    "correctAnswer": "B",
-    "correctValue": "7",
-    "explanation": "Eileen has 7 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-012",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Eileen has 4 books, Wei Ling has 5 books and Ahmad has 8 books. How many books does Eileen have?",
-    "options": {
-      "A": "4",
-      "B": "8",
-      "C": "7",
-      "D": "3"
-    },
-    "correctAnswer": "A",
-    "correctValue": "4",
-    "explanation": "Eileen has 4 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-013",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Ben has 4 books, Cynthia has 1 books and Arjun has 7 books. How many books does Ben have?",
-    "options": {
-      "A": "4",
-      "B": "7",
-      "C": "8",
-      "D": "9"
-    },
-    "correctAnswer": "A",
-    "correctValue": "4",
-    "explanation": "Ben has 4 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-014",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Mei Hua has 5 books, Raju has 1 books and Ahmad has 8 books. How many books does Mei Hua have?",
-    "options": {
-      "A": "5",
-      "B": "0",
-      "C": "3",
-      "D": "10"
-    },
-    "correctAnswer": "A",
-    "correctValue": "5",
-    "explanation": "Mei Hua has 5 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-015",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Reading data",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "Kai has 1 books, Arjun has 4 books and Cynthia has 7 books. How many books does Kai have?",
-    "options": {
-      "A": "2",
-      "B": "1",
-      "C": "6",
-      "D": "3"
-    },
-    "correctAnswer": "B",
-    "correctValue": "1",
-    "explanation": "Kai has 1 books as stated.",
-    "difficultyReason": "Direct reading of given quantities."
-  },
-  {
     "id": "P1-GRAPH-016",
     "level": "P1",
     "topicCode": "GRAPH",
@@ -5337,26 +4897,6 @@
     "correctAnswer": "D",
     "correctValue": "5",
     "explanation": "Difference = 4 - 9 = 5.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-019",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Interpreting data",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "Wei Ling has 5 mangoes, Mei Hua has 3 mangoes, Devi has 9 mangoes and Deepa has 4 mangoes. How many more mangoes does Devi have than Deepa?",
-    "options": {
-      "A": "6",
-      "B": "5",
-      "C": "2",
-      "D": "7"
-    },
-    "correctAnswer": "B",
-    "correctValue": "5",
-    "explanation": "Difference = 9 - 4 = 5.",
     "difficultyReason": "Requires simple addition or subtraction of given quantities."
   },
   {
@@ -5457,26 +4997,6 @@
     "correctAnswer": "C",
     "correctValue": "3",
     "explanation": "Difference = 9 - 6 = 3.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
-  },
-  {
-    "id": "P1-GRAPH-025",
-    "level": "P1",
-    "topicCode": "GRAPH",
-    "topic": "Picture Graphs",
-    "subtopic": "Interpreting data",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "Arjun has 5 mangoes, Ben has 9 mangoes, Ethan has 6 mangoes and Mei Hua has 3 mangoes. How many more mangoes does Mei Hua have than Ethan?",
-    "options": {
-      "A": "5",
-      "B": "4",
-      "C": "1",
-      "D": "3"
-    },
-    "correctAnswer": "D",
-    "correctValue": "3",
-    "explanation": "Difference = 3 - 6 = 3.",
     "difficultyReason": "Requires simple addition or subtraction of given quantities."
   },
   {
