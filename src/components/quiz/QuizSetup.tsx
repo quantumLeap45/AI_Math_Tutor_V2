@@ -16,6 +16,7 @@ import {
   QuizQuestionCount,
   P1_TOPICS,
   P2_TOPICS,
+  P3_TOPICS,
   DIFFICULTY_OPTIONS,
   QUESTION_COUNT_OPTIONS,
 } from '@/types';
@@ -45,18 +46,21 @@ interface QuizSetupProps {
 }
 
 // Available topics as checkboxes
-const TOPIC_OPTIONS: { value: QuizTopic; label: string; emoji: string; level?: ('P1' | 'P2')[]; comingSoon?: boolean }[] = [
-  { value: 'Whole Numbers', label: 'Whole Numbers', emoji: '🔢', level: ['P1', 'P2'] },
-  { value: 'Addition/Subtraction', label: 'Addition & Subtraction', emoji: '➕', level: ['P1', 'P2'] },
-  { value: 'Multiplication/Division', label: 'Multiplication & Division', emoji: '✖️', level: ['P1', 'P2'] },
-  { value: 'Money', label: 'Money', emoji: '💰', level: ['P1', 'P2'] },
-  { value: 'Time', label: 'Time', emoji: '⏰', level: ['P1', 'P2'] },
+const TOPIC_OPTIONS: { value: QuizTopic; label: string; emoji: string; level?: ('P1' | 'P2' | 'P3')[]; comingSoon?: boolean }[] = [
+  { value: 'Whole Numbers', label: 'Whole Numbers', emoji: '🔢', level: ['P1', 'P2', 'P3'] },
+  { value: 'Addition/Subtraction', label: 'Addition & Subtraction', emoji: '➕', level: ['P1', 'P2', 'P3'] },
+  { value: 'Multiplication/Division', label: 'Multiplication & Division', emoji: '✖️', level: ['P1', 'P2', 'P3'] },
+  { value: 'Money', label: 'Money', emoji: '💰', level: ['P1', 'P2', 'P3'] },
+  { value: 'Time', label: 'Time', emoji: '⏰', level: ['P1', 'P2', 'P3'] },
+  { value: 'Fractions', label: 'Fractions', emoji: '🍕', level: ['P2', 'P3'] },
   { value: 'Patterns', label: 'Patterns', emoji: '🔷', level: ['P1'] },
   { value: 'Length', label: 'Length', emoji: '📏', level: ['P2'] },
   { value: 'Mass', label: 'Mass', emoji: '⚖️', level: ['P2'] },
-  { value: 'Fractions', label: 'Fractions', emoji: '🍕', level: ['P2'] },
-  { value: 'Shapes', label: 'Shapes', emoji: '🔷', level: ['P2'], comingSoon: true },
-  { value: 'Picture Graphs', label: 'Picture Graphs', emoji: '📊', level: ['P2'], comingSoon: true },
+  { value: 'Shapes', label: 'Shapes', emoji: '🔷', level: ['P2'] },
+  { value: 'Picture Graphs', label: 'Picture Graphs', emoji: '📊', level: ['P2'] },
+  { value: 'Measurement', label: 'Measurement', emoji: '📐', level: ['P3'] },
+  { value: 'Area and Perimeter', label: 'Area & Perimeter', emoji: '📦', level: ['P3'] },
+  { value: 'Bar Graphs', label: 'Bar Graphs', emoji: '📊', level: ['P3'] },
 ];
 
 const DIFFICULTY_LABELS: Record<QuizDifficulty | 'all', { label: string; emoji: string }> = {
@@ -112,7 +116,7 @@ export function QuizSetup({
 
   // Get topics for current level
   const getCurrentLevelTopics = (): QuizTopic[] => {
-    return level === 'P1' ? P1_TOPICS : P2_TOPICS;
+    return level === 'P1' ? P1_TOPICS : level === 'P2' ? P2_TOPICS : P3_TOPICS;
   };
 
   const toggleTopic = (topic: QuizTopic) => {
@@ -184,7 +188,7 @@ export function QuizSetup({
             Primary Level
           </label>
           <div className="flex flex-wrap gap-2">
-            {(['P1', 'P2'] as PrimaryLevel[]).map((lvl) => (
+            {(['P1', 'P2', 'P3'] as PrimaryLevel[]).map((lvl) => (
               <button
                 key={lvl}
                 onClick={() => setLevel(lvl)}
@@ -206,7 +210,7 @@ export function QuizSetup({
               </button>
             ))}
             <span className="text-sm text-slate-500 dark:text-slate-500 py-2 px-3">
-              P3-P6 coming soon
+              P4-P6 coming soon
             </span>
           </div>
         </div>
@@ -225,7 +229,7 @@ export function QuizSetup({
             </button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {TOPIC_OPTIONS.filter((topic) => !topic.level || topic.level.includes(level as 'P1' | 'P2')).map((topic) => {
+            {TOPIC_OPTIONS.filter((topic) => !topic.level || topic.level.includes(level as 'P1' | 'P2' | 'P3')).map((topic) => {
               const questionCount = topicQuestionCounts[topic.value] || 0;
               const isComingSoon = topic.comingSoon || false;
               return (

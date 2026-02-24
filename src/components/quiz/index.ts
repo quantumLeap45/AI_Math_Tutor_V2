@@ -9,6 +9,7 @@ export { QuizQuestion } from './QuizQuestion';
 export { QuizOptions, QuizOptionsCompact } from './QuizOptions';
 export { QuizResults } from './QuizResults';
 export { QuizSession } from './QuizSession';
+export { QuizDrawer } from './QuizDrawer';
 export { QuizHome } from './QuizHome';
 export { ResumePanel } from './ResumePanel';
 export { DiscardDialog } from './DiscardDialog';

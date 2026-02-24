@@ -148,24 +148,3 @@ export function formatLatexToKidFriendly(text: string): string {
 
   return result;
 }
-
-/**
- * Formats a quiz question for display, converting LaTeX to kid-friendly format.
- */
-export function formatQuizQuestion(question: string): string {
-  return formatLatexToKidFriendly(question);
-}
-
-/**
- * Formats a quiz option for display, converting LaTeX to kid-friendly format.
- */
-export function formatQuizOption(option: string): string {
-  return formatLatexToKidFriendly(option);
-}
-
-/**
- * Formats a quiz explanation for display, converting LaTeX to kid-friendly format.
- */
-export function formatQuizExplanation(explanation: string): string {
-  return formatLatexToKidFriendly(explanation);
-}

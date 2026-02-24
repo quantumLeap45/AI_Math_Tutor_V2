@@ -36,7 +36,10 @@ export type QuizTopic =
   | 'Mass'
   | 'Fractions'
   | 'Shapes'
-  | 'Picture Graphs';
+  | 'Picture Graphs'
+  | 'Measurement'
+  | 'Area and Perimeter'
+  | 'Bar Graphs';
 
 /**
  * Available question counts for a quiz session
@@ -385,12 +388,11 @@ export const P1_TOPICS: QuizTopic[] = [
   'Multiplication/Division',
   'Money',
   'Time',
-  'Patterns',
+  'Picture Graphs',
 ] as const;
 
 /**
  * All available topics for P2
- * Note: Shapes and Picture Graphs are marked as "coming soon" (require visuals)
  */
 export const P2_TOPICS: QuizTopic[] = [
   'Whole Numbers',
@@ -406,9 +408,24 @@ export const P2_TOPICS: QuizTopic[] = [
 ] as const;
 
 /**
+ * All available topics for P3
+ */
+export const P3_TOPICS: QuizTopic[] = [
+  'Whole Numbers',
+  'Addition/Subtraction',
+  'Multiplication/Division',
+  'Money',
+  'Time',
+  'Fractions',
+  'Measurement',
+  'Area and Perimeter',
+  'Bar Graphs',
+] as const;
+
+/**
  * Available difficulty levels for filtering
  */
-export const DIFFICULTY_OPTIONS = ['easy', 'medium', 'all'] as const;
+export const DIFFICULTY_OPTIONS = ['easy', 'medium', 'hard', 'all'] as const;
 
 /**
  * Available question counts
@@ -443,7 +460,7 @@ export function isQuizDifficulty(value: string): value is QuizDifficulty {
  * Checks against both P1 and P2 topics
  */
 export function isQuizTopic(value: string): value is QuizTopic {
-  return [...P1_TOPICS, ...P2_TOPICS].includes(value as QuizTopic);
+  return [...P1_TOPICS, ...P2_TOPICS, ...P3_TOPICS].includes(value as QuizTopic);
 }
 
 /**

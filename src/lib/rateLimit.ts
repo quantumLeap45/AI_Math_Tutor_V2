@@ -7,7 +7,6 @@
  * 2. Daily quota: configurable messages per 24 hours (Supabase, default 30)
  */
 
-import { supabase as supabaseClient, isSupabaseConfigured } from '@/lib/supabase';
 import { config } from '@/config';
 
 // ============================================
@@ -82,161 +81,14 @@ function checkAntiSpamLimit(ip: string): {
 }
 
 // ============================================
-// DAILY QUOTA: Configurable per 24 hours (Supabase)
+// DAILY QUOTA TYPES
 // ============================================
-
-const DAILY_QUOTA_LIMIT = config.getRateLimits().dailyQuotaLimit;
 
 interface DailyQuotaStatus {
   used: number;
   remaining: number;
   limit: number;
   resetsAt: Date;
-}
-
-/**
- * Get today's date in YYYY-MM-DD format
- */
-function getTodayDate(): string {
-  return new Date().toISOString().split('T')[0];
-}
-
-/**
- * Get or create the daily quota record for an IP
- */
-async function getOrCreateQuotaRecord(ip: string): Promise<{ used: number; isNew: boolean }> {
-  if (!isSupabaseConfigured() || !supabaseClient) {
-    // Fallback to in-memory if Supabase not configured
-    console.warn('Supabase not configured, using in-memory quota');
-    return { used: 0, isNew: true };
-  }
-
-  const today = getTodayDate();
-
-  try {
-    // Try to get existing record
-    const { data, error } = await supabaseClient
-      .from('daily_quota')
-      .select('requests_count')
-      .eq('ip_address', ip)
-      .eq('request_date', today)
-      .maybeSingle();
-
-    if (error && error.code !== 'PGRST116') {
-      // PGRST116 is "not found" which is expected
-      console.error('Supabase quota check error:', error);
-    }
-
-    if (data) {
-      return { used: data.requests_count || 0, isNew: false };
-    }
-
-    // Create new record
-    await supabaseClient
-      .from('daily_quota')
-      .insert({
-        ip_address: ip,
-        request_date: today,
-        requests_count: 0,
-      });
-
-    return { used: 0, isNew: true };
-  } catch (err) {
-    console.error('Supabase quota operation error:', err);
-    return { used: 0, isNew: true };
-  }
-}
-
-/**
- * Increment the quota count for an IP using optimistic locking.
- * Uses a conditional WHERE on the current count to prevent race conditions
- * where two concurrent requests read the same count and both increment.
- */
-async function incrementQuota(ip: string): Promise<boolean> {
-  if (!isSupabaseConfigured() || !supabaseClient) {
-    return true; // Fallback: allow if Supabase not configured
-  }
-
-  const today = getTodayDate();
-  const maxRetries = 2;
-
-  for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    try {
-      const { data: existing } = await supabaseClient
-        .from('daily_quota')
-        .select('requests_count')
-        .eq('ip_address', ip)
-        .eq('request_date', today)
-        .maybeSingle();
-
-      if (existing) {
-        // Optimistic lock: only update if count hasn't changed since we read it
-        const { data: updated } = await supabaseClient
-          .from('daily_quota')
-          .update({
-            requests_count: existing.requests_count + 1,
-            last_request: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-          })
-          .eq('ip_address', ip)
-          .eq('request_date', today)
-          .eq('requests_count', existing.requests_count)
-          .select();
-
-        if (updated && updated.length > 0) return true;
-        // Count changed between read and write — retry
-        continue;
-      } else {
-        // Insert new record with count = 1
-        const { error } = await supabaseClient
-          .from('daily_quota')
-          .insert({
-            ip_address: ip,
-            request_date: today,
-            requests_count: 1,
-            last_request: new Date().toISOString(),
-          });
-
-        if (!error) return true;
-        // Insert conflict (another request created it first) — retry as update
-        continue;
-      }
-    } catch (err) {
-      console.error('Supabase quota increment error:', err);
-      return false;
-    }
-  }
-
-  console.warn('Quota increment failed after retries for IP:', ip);
-  return false;
-}
-
-/**
- * Check daily quota limit (configurable, default 30 per 24 hours)
- */
-async function checkDailyQuota(ip: string): Promise<{
-  success: boolean;
-  status: DailyQuotaStatus;
-}> {
-  const { used } = await getOrCreateQuotaRecord(ip);
-
-  const remaining = Math.max(0, DAILY_QUOTA_LIMIT - used);
-  const success = used < DAILY_QUOTA_LIMIT;
-
-  // Calculate reset time (midnight tomorrow in UTC)
-  const tomorrow = new Date();
-  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-  tomorrow.setUTCHours(0, 0, 0, 0);
-
-  return {
-    success,
-    status: {
-      used,
-      remaining,
-      limit: DAILY_QUOTA_LIMIT,
-      resetsAt: tomorrow,
-    },
-  };
 }
 
 // ============================================
