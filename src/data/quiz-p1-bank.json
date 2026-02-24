@@ -3067,7 +3067,7 @@
     "subtopic": "Simple change",
     "difficulty": "easy",
     "questionType": "mcq",
-    "question": "Ahmad buys a snack for 20¢. Wei Ling pays $1.00. How much change does Anna receive?",
+    "question": "Ahmad buys a snack for 20¢ and pays $1.00. How much change does Ahmad receive?",
     "options": {
       "A": "$0.80",
       "B": "$1.00",
@@ -3107,7 +3107,7 @@
     "subtopic": "Simple change",
     "difficulty": "easy",
     "questionType": "mcq",
-    "question": "Mei Hua buys a snack for 60¢. Ethan pays $1.00. How much change does Kai receive?",
+    "question": "Mei Hua buys a snack for 60¢ and pays $1.00. How much change does Mei Hua receive?",
     "options": {
       "A": "$0.53",
       "B": "$0.40",
@@ -3227,7 +3227,7 @@
     "subtopic": "Simple change",
     "difficulty": "easy",
     "questionType": "mcq",
-    "question": "Ahmad buys a snack for 30¢. Arjun pays $1.00. How much change does Eileen receive?",
+    "question": "Ahmad buys a snack for 30¢ and pays $1.00. How much change does Ahmad receive?",
     "options": {
       "A": "$1.09",
       "B": "$0.70",
@@ -3287,7 +3287,7 @@
     "subtopic": "Simple change",
     "difficulty": "easy",
     "questionType": "mcq",
-    "question": "Devi buys a snack for 50¢. Wei Ling pays $1.00. How much change does Anna receive?",
+    "question": "Devi buys a snack for 50¢ and pays $1.00. How much change does Devi receive?",
     "options": {
       "A": "$0.13",
       "B": "$0.88",
@@ -3307,7 +3307,7 @@
     "subtopic": "Change after two items",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Wei Ling buys two items costing $1.79 and $0.72. Wei Ling pays $5.00. How much change does Ethan receive?",
+    "question": "Wei Ling buys two items costing $1.79 and $0.72 and pays $5.00. How much change does Wei Ling receive?",
     "options": {
       "A": "$2.54",
       "B": "$2.65",
@@ -3327,7 +3327,7 @@
     "subtopic": "Change after two items",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ben buys two items costing $2.13 and $2.23. Siti pays $5.00. How much change does Ethan receive?",
+    "question": "Ben buys two items costing $2.13 and $2.23 and pays $5.00. How much change does Ben receive?",
     "options": {
       "A": "$0.42",
       "B": "$1.00",
@@ -3347,7 +3347,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Devi buys an item for $1.02 and another item for $1.98. How much does Priya spend altogether?",
+    "question": "Devi buys an item for $1.02 and another item for $1.98. How much does Devi spend altogether?",
     "options": {
       "A": "$3.29",
       "B": "$3.00",
@@ -3367,7 +3367,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Raju buys an item for $1.69 and another item for $1.83. How much does Mei Hua spend altogether?",
+    "question": "Raju buys an item for $1.69 and another item for $1.83. How much does Raju spend altogether?",
     "options": {
       "A": "$3.72",
       "B": "$3.52",
@@ -3387,7 +3387,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ethan buys an item for $1.02 and another item for $1.12. How much does Mei Hua spend altogether?",
+    "question": "Ethan buys an item for $1.02 and another item for $1.12. How much does Ethan spend altogether?",
     "options": {
       "A": "$2.14",
       "B": "$2.49",
@@ -3407,7 +3407,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Siti buys an item for $0.28 and another item for $0.82. How much does Arjun spend altogether?",
+    "question": "Siti buys an item for $0.28 and another item for $0.82. How much does Siti spend altogether?",
     "options": {
       "A": "$1.16",
       "B": "$1.59",
@@ -3427,7 +3427,7 @@
     "subtopic": "Change after two items",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Priya buys two items costing $2.98 and $1.46. Siti pays $10.00. How much change does Ben receive?",
+    "question": "Priya buys two items costing $2.98 and $1.46 and pays $10.00. How much change does Priya receive?",
     "options": {
       "A": "$5.90",
       "B": "$5.08",
@@ -3447,7 +3447,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ethan buys an item for $1.56 and another item for $1.96. How much does Ben spend altogether?",
+    "question": "Ethan buys an item for $1.56 and another item for $1.96. How much does Ethan spend altogether?",
     "options": {
       "A": "$3.52",
       "B": "$3.89",
@@ -3467,7 +3467,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Mei Hua buys an item for $0.26 and another item for $1.39. How much does Cynthia spend altogether?",
+    "question": "Mei Hua buys an item for $0.26 and another item for $1.39. How much does Mei Hua spend altogether?",
     "options": {
       "A": "$1.49",
       "B": "$1.65",
@@ -3487,7 +3487,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Raju buys an item for $1.53 and another item for $0.92. How much does Arjun spend altogether?",
+    "question": "Raju buys an item for $1.53 and another item for $0.92. How much does Raju spend altogether?",
     "options": {
       "A": "$2.56",
       "B": "$2.45",
@@ -3507,7 +3507,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Priya buys an item for $1.97 and another item for $1.14. How much does Kai spend altogether?",
+    "question": "Priya buys an item for $1.97 and another item for $1.14. How much does Priya spend altogether?",
     "options": {
       "A": "$3.44",
       "B": "$2.94",
@@ -3527,7 +3527,7 @@
     "subtopic": "Change after two items",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Priya buys two items costing $2.24 and $1.52. Wei Ling pays $10.00. How much change does Cynthia receive?",
+    "question": "Priya buys two items costing $2.24 and $1.52 and pays $10.00. How much change does Priya receive?",
     "options": {
       "A": "$6.24",
       "B": "$5.95",
@@ -3547,7 +3547,7 @@
     "subtopic": "Change after two items",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Kai buys two items costing $1.89 and $0.84. Raju pays $5.00. How much change does Devi receive?",
+    "question": "Kai buys two items costing $1.89 and $0.84 and pays $5.00. How much change does Kai receive?",
     "options": {
       "A": "$1.98",
       "B": "$2.61",
@@ -3567,7 +3567,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Cynthia buys an item for $1.77 and another item for $0.54. How much does Mei Hua spend altogether?",
+    "question": "Cynthia buys an item for $1.77 and another item for $0.54. How much does Cynthia spend altogether?",
     "options": {
       "A": "$2.12",
       "B": "$2.58",
@@ -3580,26 +3580,6 @@
     "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
   },
   {
-    "id": "P1-MONEY-030",
-    "level": "P1",
-    "topicCode": "MONEY",
-    "topic": "Money",
-    "subtopic": "Change after two items",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "Priya buys two items costing $2.79 and $2.24. Eileen pays $5.00. How much change does Raju receive?",
-    "options": {
-      "A": "$0.19",
-      "B": "$-0.03",
-      "C": "$0.27",
-      "D": "$0.16"
-    },
-    "correctAnswer": "B",
-    "correctValue": "$-0.03",
-    "explanation": "Total cost = $5.03. Change = $5.00 - $5.03 = $-0.03.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
-  },
-  {
     "id": "P1-MONEY-031",
     "level": "P1",
     "topicCode": "MONEY",
@@ -3607,7 +3587,7 @@
     "subtopic": "Change after two items",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Devi buys two items costing $2.40 and $1.30. Devi pays $5.00. How much change does Priya receive?",
+    "question": "Devi buys two items costing $2.40 and $1.30 and pays $5.00. How much change does Devi receive?",
     "options": {
       "A": "$1.30",
       "B": "$1.23",
@@ -3627,7 +3607,7 @@
     "subtopic": "Change after two items",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ethan buys two items costing $1.08 and $1.92. Arjun pays $5.00. How much change does Ben receive?",
+    "question": "Ethan buys two items costing $1.08 and $1.92 and pays $5.00. How much change does Ethan receive?",
     "options": {
       "A": "$2.17",
       "B": "$2.47",
@@ -3647,7 +3627,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Wei Ling buys an item for $0.45 and another item for $1.18. How much does Eileen spend altogether?",
+    "question": "Wei Ling buys an item for $0.45 and another item for $1.18. How much does Wei Ling spend altogether?",
     "options": {
       "A": "$1.18",
       "B": "$1.34",
@@ -3667,7 +3647,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Raju buys an item for $0.32 and another item for $0.47. How much does Arjun spend altogether?",
+    "question": "Raju buys an item for $0.32 and another item for $0.47. How much does Raju spend altogether?",
     "options": {
       "A": "$1.12",
       "B": "$0.53",
@@ -3687,7 +3667,7 @@
     "subtopic": "Total cost",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Arjun buys an item for $0.23 and another item for $1.50. How much does Kai spend altogether?",
+    "question": "Arjun buys an item for $0.23 and another item for $1.50. How much does Arjun spend altogether?",
     "options": {
       "A": "$1.79",
       "B": "$1.63",
@@ -3767,7 +3747,7 @@
     "subtopic": "Three items with change",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Ben buys three items costing $1.04, $1.78 and $1.79. Eileen pays $10.00. How much change does Arjun receive?",
+    "question": "Ben buys three items costing $1.04, $1.78 and $1.79 and pays $10.00. How much change does Ben receive?",
     "options": {
       "A": "$5.39",
       "B": "$4.98",
@@ -3787,7 +3767,7 @@
     "subtopic": "Three items with change",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Cynthia buys three items costing $2.55, $1.15 and $2.35. Devi pays $10.00. How much change does Ahmad receive?",
+    "question": "Cynthia buys three items costing $2.55, $1.15 and $2.35 and pays $10.00. How much change does Cynthia receive?",
     "options": {
       "A": "$4.29",
       "B": "$3.95",
@@ -3807,7 +3787,7 @@
     "subtopic": "Three items with change",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Siti buys three items costing $2.36, $1.03 and $0.89. Kai pays $5.00. How much change does Wei Ling receive?",
+    "question": "Siti buys three items costing $2.36, $1.03 and $0.89 and pays $5.00. How much change does Siti receive?",
     "options": {
       "A": "$1.10",
       "B": "$0.51",
@@ -3887,7 +3867,7 @@
     "subtopic": "Three items with change",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Cynthia buys three items costing $1.05, $2.86 and $1.13. Deepa pays $10.00. How much change does Devi receive?",
+    "question": "Cynthia buys three items costing $1.05, $2.86 and $1.13 and pays $10.00. How much change does Cynthia receive?",
     "options": {
       "A": "$5.21",
       "B": "$4.77",
@@ -3927,7 +3907,7 @@
     "subtopic": "Three items with change",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Anna buys three items costing $2.11, $1.74 and $2.87. Raju pays $10.00. How much change does Ethan receive?",
+    "question": "Anna buys three items costing $2.11, $1.74 and $2.87 and pays $10.00. How much change does Anna receive?",
     "options": {
       "A": "$3.28",
       "B": "$2.93",
@@ -3947,7 +3927,7 @@
     "subtopic": "Three items with change",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Mei Hua buys three items costing $2.20, $2.41 and $0.41. Priya pays $10.00. How much change does Arjun receive?",
+    "question": "Mei Hua buys three items costing $2.20, $2.41 and $0.41 and pays $10.00. How much change does Mei Hua receive?",
     "options": {
       "A": "$4.98",
       "B": "$4.61",

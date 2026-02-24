@@ -480,46 +480,6 @@
     "difficultyReason": "Requires solving for an unknown from a sum of three numbers."
   },
   {
-    "id": "P3-WHOLE-025",
-    "level": "P3",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Number properties",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Which of the following numbers between 4812 and 5161 is divisible by 3 and ends with 9?",
-    "options": {
-      "A": "4855",
-      "B": "4973",
-      "C": "4985",
-      "D": "4869"
-    },
-    "correctAnswer": "D",
-    "correctValue": "4869",
-    "explanation": "4869 satisfies both divisibility by 3 and ends with 9.",
-    "difficultyReason": "Requires applying divisibility and digit criteria."
-  },
-  {
-    "id": "P3-WHOLE-026",
-    "level": "P3",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Number properties",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Which of the following numbers between 4610 and 5587 is divisible by 3 and ends with 3?",
-    "options": {
-      "A": "5256",
-      "B": "4713",
-      "C": "5340",
-      "D": "5428"
-    },
-    "correctAnswer": "B",
-    "correctValue": "4713",
-    "explanation": "4713 satisfies both divisibility by 3 and ends with 3.",
-    "difficultyReason": "Requires applying divisibility and digit criteria."
-  },
-  {
     "id": "P3-WHOLE-027",
     "level": "P3",
     "topicCode": "WHOLE",
@@ -538,26 +498,6 @@
     "correctValue": "3955",
     "explanation": "Subtract the known numbers from 8648 to find the missing number: 3955.",
     "difficultyReason": "Requires solving for an unknown from a sum of three numbers."
-  },
-  {
-    "id": "P3-WHOLE-028",
-    "level": "P3",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Number properties",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Which of the following numbers between 4235 and 4521 is divisible by 3 and ends with 9?",
-    "options": {
-      "A": "4501",
-      "B": "4389",
-      "C": "4434",
-      "D": "4511"
-    },
-    "correctAnswer": "B",
-    "correctValue": "4389",
-    "explanation": "4389 satisfies both divisibility by 3 and ends with 9.",
-    "difficultyReason": "Requires applying divisibility and digit criteria."
   },
   {
     "id": "P3-WHOLE-029",
@@ -580,26 +520,6 @@
     "difficultyReason": "Requires solving for an unknown from a sum of three numbers."
   },
   {
-    "id": "P3-WHOLE-030",
-    "level": "P3",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Number properties",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Which of the following numbers between 4527 and 4992 is divisible by 9 and ends with 6?",
-    "options": {
-      "A": "4536",
-      "B": "4551",
-      "C": "4860",
-      "D": "4914"
-    },
-    "correctAnswer": "A",
-    "correctValue": "4536",
-    "explanation": "4536 satisfies both divisibility by 9 and ends with 6.",
-    "difficultyReason": "Requires applying divisibility and digit criteria."
-  },
-  {
     "id": "P3-WHOLE-031",
     "level": "P3",
     "topicCode": "WHOLE",
@@ -617,46 +537,6 @@
     "correctAnswer": "B",
     "correctValue": "4860",
     "explanation": "4860 satisfies both divisibility by 4 and ends with 9.",
-    "difficultyReason": "Requires applying divisibility and digit criteria."
-  },
-  {
-    "id": "P3-WHOLE-032",
-    "level": "P3",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Number properties",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Which of the following numbers between 3431 and 3966 is divisible by 9 and ends with 4?",
-    "options": {
-      "A": "3581",
-      "B": "3896",
-      "C": "3531",
-      "D": "3654"
-    },
-    "correctAnswer": "D",
-    "correctValue": "3654",
-    "explanation": "3654 satisfies both divisibility by 9 and ends with 4.",
-    "difficultyReason": "Requires applying divisibility and digit criteria."
-  },
-  {
-    "id": "P3-WHOLE-033",
-    "level": "P3",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Number properties",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Which of the following numbers between 3254 and 3889 is divisible by 4 and ends with 8?",
-    "options": {
-      "A": "3632",
-      "B": "3333",
-      "C": "3710",
-      "D": "3528"
-    },
-    "correctAnswer": "D",
-    "correctValue": "3528",
-    "explanation": "3528 satisfies both divisibility by 4 and ends with 8.",
     "difficultyReason": "Requires applying divisibility and digit criteria."
   },
   {
@@ -2187,7 +2067,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Priya buys items costing $15.05, $7.61 and $14.99. Wei Ling pays $50.00. How much change does Mei Hua receive?",
+    "question": "Priya buys items costing $15.05, $7.61 and $14.99 and pays $50.00. How much change does Priya receive?",
     "options": {
       "A": "$12.51",
       "B": "$12.35",
@@ -2207,7 +2087,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Cynthia buys items costing $5.02, $9.94 and $11.10. Wei Ling pays $100.00. How much change does Deepa receive?",
+    "question": "Cynthia buys items costing $5.02, $9.94 and $11.10 and pays $100.00. How much change does Cynthia receive?",
     "options": {
       "A": "$73.94",
       "B": "$73.70",
@@ -2227,7 +2107,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Kai buys items costing $6.63 and $10.35. Priya pays $100.00. How much change does Arjun receive?",
+    "question": "Kai buys items costing $6.63 and $10.35 and pays $100.00. How much change does Kai receive?",
     "options": {
       "A": "$82.88",
       "B": "$83.02",
@@ -2247,7 +2127,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Priya buys items costing $9.28, $9.48 and $9.10. Ethan pays $100.00. How much change does Kai receive?",
+    "question": "Priya buys items costing $9.28, $9.48 and $9.10 and pays $100.00. How much change does Priya receive?",
     "options": {
       "A": "$71.64",
       "B": "$72.14",
@@ -2267,7 +2147,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Arjun buys items costing $15.73 and $19.23. Anna pays $100.00. How much change does Ethan receive?",
+    "question": "Arjun buys items costing $15.73 and $19.23 and pays $100.00. How much change does Arjun receive?",
     "options": {
       "A": "$64.57",
       "B": "$65.38",
@@ -2287,7 +2167,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Kai buys items costing $13.36, $14.18 and $14.55. Mei Hua pays $50.00. How much change does Ethan receive?",
+    "question": "Kai buys items costing $13.36, $14.18 and $14.55 and pays $50.00. How much change does Kai receive?",
     "options": {
       "A": "$7.75",
       "B": "$7.85",
@@ -2327,7 +2207,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Anna buys items costing $6.84 and $5.77. Kai pays $100.00. How much change does Ahmad receive?",
+    "question": "Anna buys items costing $6.84 and $5.77 and pays $100.00. How much change does Anna receive?",
     "options": {
       "A": "$87.79",
       "B": "$87.34",
@@ -2347,7 +2227,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ethan buys items costing $5.07, $8.74 and $14.67. Wei Ling pays $50.00. How much change does Arjun receive?",
+    "question": "Ethan buys items costing $5.07, $8.74 and $14.67 and pays $50.00. How much change does Ethan receive?",
     "options": {
       "A": "$21.52",
       "B": "$22.00",
@@ -2387,7 +2267,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ben buys items costing $3.10 and $15.53. Mei Hua pays $50.00. How much change does Cynthia receive?",
+    "question": "Ben buys items costing $3.10 and $15.53 and pays $50.00. How much change does Ben receive?",
     "options": {
       "A": "$31.23",
       "B": "$30.88",
@@ -2407,7 +2287,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Deepa buys items costing $8.06, $14.27 and $8.18. Raju pays $100.00. How much change does Devi receive?",
+    "question": "Deepa buys items costing $8.06, $14.27 and $8.18 and pays $100.00. How much change does Deepa receive?",
     "options": {
       "A": "$69.81",
       "B": "$69.49",
@@ -2427,7 +2307,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Anna buys items costing $2.46 and $4.21. Cynthia pays $100.00. How much change does Deepa receive?",
+    "question": "Anna buys items costing $2.46 and $4.21 and pays $100.00. How much change does Anna receive?",
     "options": {
       "A": "$93.66",
       "B": "$93.49",
@@ -2487,7 +2367,7 @@
     "subtopic": "Complex money problems",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Siti buys 3 shirts at $7.64 each and 4 hats at $2.60 each. Priya pays $50.00. How much change does Anna get?",
+    "question": "Siti buys 3 shirts at $7.64 each and 4 hats at $2.60 each and pays $50.00. How much change does Siti get?",
     "options": {
       "A": "$16.74",
       "B": "$16.68",
@@ -2527,7 +2407,7 @@
     "subtopic": "Complex money problems",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Anna buys 2 shirts at $3.81 each and 5 hats at $2.00 each. Siti pays $50.00. How much change does Mei Hua get?",
+    "question": "Anna buys 2 shirts at $3.81 each and 5 hats at $2.00 each and pays $50.00. How much change does Anna get?",
     "options": {
       "A": "$32.38",
       "B": "$32.19",
@@ -2547,7 +2427,7 @@
     "subtopic": "Complex money problems",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Priya buys 3 shirts at $8.58 each and 4 hats at $3.84 each. Ahmad pays $50.00. How much change does Arjun get?",
+    "question": "Priya buys 3 shirts at $8.58 each and 4 hats at $3.84 each and pays $50.00. How much change does Priya get?",
     "options": {
       "A": "$9.33",
       "B": "$9.02",
@@ -2567,7 +2447,7 @@
     "subtopic": "Complex money problems",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Ethan buys 2 shirts at $5.16 each and 6 hats at $2.73 each. Kai pays $50.00. How much change does Anna get?",
+    "question": "Ethan buys 2 shirts at $5.16 each and 6 hats at $2.73 each and pays $50.00. How much change does Ethan get?",
     "options": {
       "A": "$23.30",
       "B": "$23.79",

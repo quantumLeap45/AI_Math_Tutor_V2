@@ -1847,7 +1847,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ahmad buys 6 notebooks at $0.78 each. Deepa pays $10.00. How much change does Wei Ling receive?",
+    "question": "Ahmad buys 6 notebooks at $0.78 each and pays $10.00. How much change does Ahmad receive?",
     "options": {
       "A": "$5.46",
       "B": "$5.19",
@@ -1867,7 +1867,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Ahmad buys 3 notebooks at $0.62 each. Eileen pays $10.00. How much change does Eileen receive?",
+    "question": "Ahmad buys 3 notebooks at $0.62 each and pays $10.00. How much change does Ahmad receive?",
     "options": {
       "A": "$8.14",
       "B": "$8.28",
@@ -1887,7 +1887,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Arjun buys 2 notebooks at $2.49 each. Ahmad pays $20.00. How much change does Anna receive?",
+    "question": "Arjun buys 2 notebooks at $2.49 each and pays $20.00. How much change does Arjun receive?",
     "options": {
       "A": "$15.10",
       "B": "$15.02",
@@ -1907,7 +1907,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Mei Hua buys 6 notebooks at $0.97 each. Ben pays $10.00. How much change does Wei Ling receive?",
+    "question": "Mei Hua buys 6 notebooks at $0.97 each and pays $10.00. How much change does Mei Hua receive?",
     "options": {
       "A": "$4.57",
       "B": "$4.18",
@@ -1947,7 +1947,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Devi buys two items costing $2.19 and $2.98. Ethan pays $20.00. How much change does Ethan get?",
+    "question": "Devi buys two items costing $2.19 and $2.98 and pays $20.00. How much change does Devi get?",
     "options": {
       "A": "$14.35",
       "B": "$15.21",
@@ -1967,7 +1967,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Eileen buys two items costing $1.47 and $1.92. Arjun pays $20.00. How much change does Arjun get?",
+    "question": "Eileen buys two items costing $1.47 and $1.92 and pays $20.00. How much change does Eileen get?",
     "options": {
       "A": "$16.70",
       "B": "$16.61",
@@ -1987,7 +1987,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Mei Hua buys two items costing $1.65 and $1.85. Eileen pays $20.00. How much change does Raju get?",
+    "question": "Mei Hua buys two items costing $1.65 and $1.85 and pays $20.00. How much change does Mei Hua get?",
     "options": {
       "A": "$16.09",
       "B": "$16.88",
@@ -2007,7 +2007,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Devi buys two items costing $4.01 and $4.65. Eileen pays $20.00. How much change does Deepa get?",
+    "question": "Devi buys two items costing $4.01 and $4.65 and pays $20.00. How much change does Devi get?",
     "options": {
       "A": "$11.34",
       "B": "$10.90",
@@ -2027,7 +2027,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Arjun buys two items costing $1.94 and $3.04. Anna pays $20.00. How much change does Raju get?",
+    "question": "Arjun buys two items costing $1.94 and $3.04 and pays $20.00. How much change does Arjun get?",
     "options": {
       "A": "$15.14",
       "B": "$14.53",
@@ -2047,7 +2047,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Arjun buys 6 notebooks at $0.71 each. Priya pays $10.00. How much change does Kai receive?",
+    "question": "Arjun buys 6 notebooks at $0.71 each and pays $10.00. How much change does Arjun receive?",
     "options": {
       "A": "$5.83",
       "B": "$5.74",
@@ -2067,7 +2067,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Raju buys two items costing $3.03 and $4.99. Siti pays $10.00. How much change does Kai get?",
+    "question": "Raju buys two items costing $3.03 and $4.99 and pays $10.00. How much change does Raju get?",
     "options": {
       "A": "$1.98",
       "B": "$2.08",
@@ -2187,7 +2187,7 @@
     "subtopic": "Complex money problems",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Ben buys 4 books at $2.07 each and 4 pens at $1.26 each. Kai pays $20.00. How much change does Eileen receive?",
+    "question": "Ben buys 4 books at $2.07 each and 4 pens at $1.26 each and pays $20.00. How much change does Ben receive?",
     "options": {
       "A": "$7.15",
       "B": "$6.83",

@@ -204,20 +204,86 @@ export async function getQuestionsForConfig(config: QuizConfig): Promise<QuizQue
 }
 
 /**
- * Get a random subset of questions matching the configuration
+ * Get a random subset of questions matching the configuration.
+ *
+ * Applies two levels of diversity:
+ *   1. Topic-level: when multiple topics are selected, questions are distributed
+ *      roughly evenly across topics rather than weighted by pool size.
+ *   2. Subtopic-level: within each topic, questions are spread across different
+ *      subtopics to prevent the same question template from repeating back-to-back.
  */
 export async function getRandomQuestions(
   config: QuizConfig,
   count: number
 ): Promise<QuizQuestion[]> {
   const available = await getQuestionsForConfig(config);
+  if (available.length === 0) return [];
 
-  // If we don't have enough questions, return what we have
   const actualCount = Math.min(count, available.length);
 
-  // Shuffle and slice
-  const shuffled = shuffleArray(available);
-  return shuffled.slice(0, actualCount);
+  // ── 1. Group by topic ──────────────────────────────────────────────────────
+  const byTopic = new Map<string, QuizQuestion[]>();
+  for (const q of available) {
+    if (!byTopic.has(q.topic)) byTopic.set(q.topic, []);
+    byTopic.get(q.topic)!.push(q);
+  }
+
+  const topics = shuffleArray(Array.from(byTopic.keys()));
+  const numTopics = topics.length;
+
+  // ── 2. Allocate question slots evenly across topics ─────────────────────────
+  const slotsPerTopic = new Map<string, number>();
+  const base = Math.floor(actualCount / numTopics);
+  const extra = actualCount % numTopics;
+  topics.forEach((topic, i) => {
+    slotsPerTopic.set(topic, base + (i < extra ? 1 : 0));
+  });
+
+  // ── 3. For each topic, pick questions with subtopic diversity ───────────────
+  const selected: QuizQuestion[] = [];
+
+  for (const topic of topics) {
+    const slots = slotsPerTopic.get(topic)!;
+    const topicQuestions = byTopic.get(topic)!;
+
+    // Group by subtopic and shuffle within each group
+    const bySubtopic = new Map<string, QuizQuestion[]>();
+    for (const q of shuffleArray(topicQuestions)) {
+      if (!bySubtopic.has(q.subtopic)) bySubtopic.set(q.subtopic, []);
+      bySubtopic.get(q.subtopic)!.push(q);
+    }
+
+    const subtopics = shuffleArray(Array.from(bySubtopic.keys()));
+    const maxPerSubtopic = Math.max(2, Math.ceil(slots / subtopics.length));
+
+    // Round-robin across subtopics until topic's slot quota is filled
+    const usedCount = new Map<string, number>();
+    const topicPicked: QuizQuestion[] = [];
+    let pass = 0;
+
+    while (topicPicked.length < slots && pass < slots * subtopics.length) {
+      const sub = subtopics[pass % subtopics.length];
+      const used = usedCount.get(sub) ?? 0;
+      const pool = bySubtopic.get(sub)!;
+
+      if (used < maxPerSubtopic && used < pool.length) {
+        topicPicked.push(pool[used]);
+        usedCount.set(sub, used + 1);
+      }
+      pass++;
+    }
+
+    selected.push(...topicPicked);
+  }
+
+  // ── 4. If topics didn't have enough questions, fill any remaining slots ──────
+  if (selected.length < actualCount) {
+    const selectedIds = new Set(selected.map(q => q.id));
+    const remainder = shuffleArray(available.filter(q => !selectedIds.has(q.id)));
+    selected.push(...remainder.slice(0, actualCount - selected.length));
+  }
+
+  return shuffleArray(selected);
 }
 
 /**
