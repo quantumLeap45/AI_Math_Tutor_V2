@@ -27,17 +27,16 @@ export type QuizOption = 'A' | 'B' | 'C' | 'D';
  */
 export type QuizTopic =
   | 'Whole Numbers'
-  | 'Addition/Subtraction'
-  | 'Multiplication/Division'
+  | 'Addition and Subtraction'
+  | 'Multiplication and Division'
   | 'Money'
   | 'Time'
-  | 'Patterns'
   | 'Length'
   | 'Mass'
   | 'Fractions'
   | 'Shapes'
   | 'Picture Graphs'
-  | 'Measurement'
+  | 'Length/Mass/Volume'
   | 'Area and Perimeter'
   | 'Bar Graphs';
 
@@ -384,8 +383,8 @@ export const DEFAULT_QUIZ_CONFIG: QuizConfig = {
  */
 export const P1_TOPICS: QuizTopic[] = [
   'Whole Numbers',
-  'Addition/Subtraction',
-  'Multiplication/Division',
+  'Addition and Subtraction',
+  'Multiplication and Division',
   'Money',
   'Time',
   'Picture Graphs',
@@ -396,8 +395,8 @@ export const P1_TOPICS: QuizTopic[] = [
  */
 export const P2_TOPICS: QuizTopic[] = [
   'Whole Numbers',
-  'Addition/Subtraction',
-  'Multiplication/Division',
+  'Addition and Subtraction',
+  'Multiplication and Division',
   'Length',
   'Mass',
   'Time',
@@ -412,12 +411,12 @@ export const P2_TOPICS: QuizTopic[] = [
  */
 export const P3_TOPICS: QuizTopic[] = [
   'Whole Numbers',
-  'Addition/Subtraction',
-  'Multiplication/Division',
+  'Addition and Subtraction',
+  'Multiplication and Division',
   'Money',
   'Time',
   'Fractions',
-  'Measurement',
+  'Length/Mass/Volume',
   'Area and Perimeter',
   'Bar Graphs',
 ] as const;

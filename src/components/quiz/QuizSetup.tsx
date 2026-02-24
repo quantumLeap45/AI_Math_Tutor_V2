@@ -48,17 +48,16 @@ interface QuizSetupProps {
 // Available topics as checkboxes
 const TOPIC_OPTIONS: { value: QuizTopic; label: string; emoji: string; level?: ('P1' | 'P2' | 'P3')[]; comingSoon?: boolean }[] = [
   { value: 'Whole Numbers', label: 'Whole Numbers', emoji: '🔢', level: ['P1', 'P2', 'P3'] },
-  { value: 'Addition/Subtraction', label: 'Addition & Subtraction', emoji: '➕', level: ['P1', 'P2', 'P3'] },
-  { value: 'Multiplication/Division', label: 'Multiplication & Division', emoji: '✖️', level: ['P1', 'P2', 'P3'] },
+  { value: 'Addition and Subtraction', label: 'Addition & Subtraction', emoji: '➕', level: ['P1', 'P2', 'P3'] },
+  { value: 'Multiplication and Division', label: 'Multiplication & Division', emoji: '✖️', level: ['P1', 'P2', 'P3'] },
   { value: 'Money', label: 'Money', emoji: '💰', level: ['P1', 'P2', 'P3'] },
   { value: 'Time', label: 'Time', emoji: '⏰', level: ['P1', 'P2', 'P3'] },
   { value: 'Fractions', label: 'Fractions', emoji: '🍕', level: ['P2', 'P3'] },
-  { value: 'Patterns', label: 'Patterns', emoji: '🔷', level: ['P1'] },
   { value: 'Length', label: 'Length', emoji: '📏', level: ['P2'] },
   { value: 'Mass', label: 'Mass', emoji: '⚖️', level: ['P2'] },
   { value: 'Shapes', label: 'Shapes', emoji: '🔷', level: ['P2'] },
-  { value: 'Picture Graphs', label: 'Picture Graphs', emoji: '📊', level: ['P2'] },
-  { value: 'Measurement', label: 'Measurement', emoji: '📐', level: ['P3'] },
+  { value: 'Picture Graphs', label: 'Picture Graphs', emoji: '📊', level: ['P1', 'P2'] },
+  { value: 'Length/Mass/Volume', label: 'Length, Mass & Volume', emoji: '📐', level: ['P3'] },
   { value: 'Area and Perimeter', label: 'Area & Perimeter', emoji: '📦', level: ['P3'] },
   { value: 'Bar Graphs', label: 'Bar Graphs', emoji: '📊', level: ['P3'] },
 ];
