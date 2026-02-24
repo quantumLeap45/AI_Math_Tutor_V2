@@ -49,8 +49,10 @@ export function shuffleQuestionOptions(question: QuizQuestion): QuizQuestion {
   };
 
   // Find which position now has the correct answer
+  // Use findIndex to get the new position (0=A, 1=B, 2=C, 3=D) rather than the original key
   const correctValue = question.options[question.correctAnswer];
-  const newCorrectKey = shuffledEntries.find(([, value]) => value === correctValue)![0];
+  const newCorrectIndex = shuffledEntries.findIndex(([, value]) => value === correctValue);
+  const newCorrectKey = (['A', 'B', 'C', 'D'] as const)[newCorrectIndex];
 
   return {
     ...question,
