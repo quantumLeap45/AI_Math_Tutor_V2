@@ -1060,46 +1060,6 @@
     "difficultyReason": "Requires solving for an unknown using subtraction/addition."
   },
   {
-    "id": "P2-MUL-001",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multiplication facts",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "8 × 7 = ___",
-    "options": {
-      "A": "56",
-      "B": "51",
-      "C": "55",
-      "D": "60"
-    },
-    "correctAnswer": "A",
-    "correctValue": "56",
-    "explanation": "Multiply 8 by 7 to get 56.",
-    "difficultyReason": "Direct recall of times tables up to 10."
-  },
-  {
-    "id": "P2-MUL-002",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multiplication facts",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "7 × 6 = ___",
-    "options": {
-      "A": "46",
-      "B": "42",
-      "C": "40",
-      "D": "37"
-    },
-    "correctAnswer": "B",
-    "correctValue": "42",
-    "explanation": "Multiply 7 by 6 to get 42.",
-    "difficultyReason": "Direct recall of times tables up to 10."
-  },
-  {
     "id": "P2-MUL-003",
     "level": "P2",
     "topicCode": "MUL",
@@ -1117,26 +1077,6 @@
     "correctAnswer": "C",
     "correctValue": "30",
     "explanation": "Multiply 10 by 3 to get 30.",
-    "difficultyReason": "Direct recall of times tables up to 10."
-  },
-  {
-    "id": "P2-MUL-004",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multiplication facts",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "9 × 8 = ___",
-    "options": {
-      "A": "76",
-      "B": "77",
-      "C": "74",
-      "D": "72"
-    },
-    "correctAnswer": "D",
-    "correctValue": "72",
-    "explanation": "Multiply 9 by 8 to get 72.",
     "difficultyReason": "Direct recall of times tables up to 10."
   },
   {
@@ -1180,26 +1120,6 @@
     "difficultyReason": "Direct recall of times tables up to 10."
   },
   {
-    "id": "P2-MUL-007",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multiplication facts",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "5 × 6 = ___",
-    "options": {
-      "A": "30",
-      "B": "28",
-      "C": "26",
-      "D": "27"
-    },
-    "correctAnswer": "A",
-    "correctValue": "30",
-    "explanation": "Multiply 5 by 6 to get 30.",
-    "difficultyReason": "Direct recall of times tables up to 10."
-  },
-  {
     "id": "P2-MUL-008",
     "level": "P2",
     "topicCode": "MUL",
@@ -1217,26 +1137,6 @@
     "correctAnswer": "C",
     "correctValue": "28",
     "explanation": "Multiply 7 by 4 to get 28.",
-    "difficultyReason": "Direct recall of times tables up to 10."
-  },
-  {
-    "id": "P2-MUL-009",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multiplication facts",
-    "difficulty": "easy",
-    "questionType": "mcq",
-    "question": "7 × 9 = ___",
-    "options": {
-      "A": "63",
-      "B": "59",
-      "C": "68",
-      "D": "58"
-    },
-    "correctAnswer": "A",
-    "correctValue": "63",
-    "explanation": "Multiply 7 by 9 to get 63.",
     "difficultyReason": "Direct recall of times tables up to 10."
   },
   {
@@ -1280,46 +1180,6 @@
     "difficultyReason": "Involves multiplication or division in context."
   },
   {
-    "id": "P2-MUL-012",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Word problems",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "8 × ___ = 64",
-    "options": {
-      "A": "8",
-      "B": "12",
-      "C": "10",
-      "D": "4"
-    },
-    "correctAnswer": "A",
-    "correctValue": "8",
-    "explanation": "Divide 64 by 8 to find the missing factor: 8.",
-    "difficultyReason": "Involves multiplication or division in context."
-  },
-  {
-    "id": "P2-MUL-013",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Word problems",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "64 sweets are shared equally among 8 children. How many sweets does each child get?",
-    "options": {
-      "A": "9",
-      "B": "10",
-      "C": "8",
-      "D": "6"
-    },
-    "correctAnswer": "C",
-    "correctValue": "8",
-    "explanation": "Divide 64 by 8 to get 8.",
-    "difficultyReason": "Involves multiplication or division in context."
-  },
-  {
     "id": "P2-MUL-014",
     "level": "P2",
     "topicCode": "MUL",
@@ -1336,27 +1196,7 @@
     },
     "correctAnswer": "C",
     "correctValue": "10",
-    "explanation": "Divide 50 by 5 to find the missing factor: 10.",
-    "difficultyReason": "Involves multiplication or division in context."
-  },
-  {
-    "id": "P2-MUL-015",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Word problems",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "12 × ___ = 36",
-    "options": {
-      "A": "3",
-      "B": "1",
-      "C": "4",
-      "D": "5"
-    },
-    "correctAnswer": "A",
-    "correctValue": "3",
-    "explanation": "Divide 36 by 12 to find the missing factor: 3.",
+    "explanation": "Divide 50 by 5 to find the missing number: 10.",
     "difficultyReason": "Involves multiplication or division in context."
   },
   {
@@ -1380,26 +1220,6 @@
     "difficultyReason": "Involves multiplication or division in context."
   },
   {
-    "id": "P2-MUL-017",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Word problems",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "12 × ___ = 72",
-    "options": {
-      "A": "1",
-      "B": "2",
-      "C": "6",
-      "D": "9"
-    },
-    "correctAnswer": "C",
-    "correctValue": "6",
-    "explanation": "Divide 72 by 12 to find the missing factor: 6.",
-    "difficultyReason": "Involves multiplication or division in context."
-  },
-  {
     "id": "P2-MUL-018",
     "level": "P2",
     "topicCode": "MUL",
@@ -1420,46 +1240,6 @@
     "difficultyReason": "Involves multiplication or division in context."
   },
   {
-    "id": "P2-MUL-019",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Word problems",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "72 sweets are shared equally among 9 children. How many sweets does each child get?",
-    "options": {
-      "A": "13",
-      "B": "4",
-      "C": "8",
-      "D": "11"
-    },
-    "correctAnswer": "C",
-    "correctValue": "8",
-    "explanation": "Divide 72 by 9 to get 8.",
-    "difficultyReason": "Involves multiplication or division in context."
-  },
-  {
-    "id": "P2-MUL-020",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Word problems",
-    "difficulty": "medium",
-    "questionType": "mcq",
-    "question": "6 × ___ = 42",
-    "options": {
-      "A": "6",
-      "B": "9",
-      "C": "7",
-      "D": "8"
-    },
-    "correctAnswer": "C",
-    "correctValue": "7",
-    "explanation": "Divide 42 by 6 to find the missing factor: 7.",
-    "difficultyReason": "Involves multiplication or division in context."
-  },
-  {
     "id": "P2-MUL-021",
     "level": "P2",
     "topicCode": "MUL",
@@ -1476,88 +1256,8 @@
     },
     "correctAnswer": "A",
     "correctValue": "4",
-    "explanation": "Divide 16 by 4 to find the missing factor: 4.",
+    "explanation": "Divide 16 by 4 to find the missing number: 4.",
     "difficultyReason": "Involves multiplication or division in context."
-  },
-  {
-    "id": "P2-MUL-022",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multi‑step",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "There are 8 boxes of pencils. Each box has 4 pencils. The pencils are shared equally among 3 students. How many pencils does each student receive?",
-    "options": {
-      "A": "11",
-      "B": "13",
-      "C": "10",
-      "D": "14"
-    },
-    "correctAnswer": "C",
-    "correctValue": "10",
-    "explanation": "First multiply: 8 × 4 = 32. Then divide by 3: 32 ÷ 3 = 10.",
-    "difficultyReason": "Involves two operations: multiplication combined with division or subtraction."
-  },
-  {
-    "id": "P2-MUL-023",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multi‑step",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "There are 8 bags of marbles. Each bag has 8 marbles. If 5 marbles fall out of each bag, how many marbles are left in all?",
-    "options": {
-      "A": "29",
-      "B": "27",
-      "C": "19",
-      "D": "24"
-    },
-    "correctAnswer": "D",
-    "correctValue": "24",
-    "explanation": "Each bag loses 5 marbles, leaving 3. Multiply by 8: 24.",
-    "difficultyReason": "Involves two operations: multiplication combined with division or subtraction."
-  },
-  {
-    "id": "P2-MUL-024",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multi‑step",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "There are 6 bags of marbles. Each bag has 6 marbles. If 3 marbles fall out of each bag, how many marbles are left in all?",
-    "options": {
-      "A": "18",
-      "B": "17",
-      "C": "21",
-      "D": "15"
-    },
-    "correctAnswer": "A",
-    "correctValue": "18",
-    "explanation": "Each bag loses 3 marbles, leaving 3. Multiply by 6: 18.",
-    "difficultyReason": "Involves two operations: multiplication combined with division or subtraction."
-  },
-  {
-    "id": "P2-MUL-025",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multi‑step",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "There are 6 bags of marbles. Each bag has 6 marbles. If 2 marbles fall out of each bag, how many marbles are left in all?",
-    "options": {
-      "A": "24",
-      "B": "19",
-      "C": "28",
-      "D": "25"
-    },
-    "correctAnswer": "A",
-    "correctValue": "24",
-    "explanation": "Each bag loses 2 marbles, leaving 4. Multiply by 6: 24.",
-    "difficultyReason": "Involves two operations: multiplication combined with division or subtraction."
   },
   {
     "id": "P2-MUL-026",
@@ -1597,66 +1297,6 @@
     "correctAnswer": "B",
     "correctValue": "4",
     "explanation": "Each bag loses 3 marbles, leaving 1. Multiply by 4: 4.",
-    "difficultyReason": "Involves two operations: multiplication combined with division or subtraction."
-  },
-  {
-    "id": "P2-MUL-028",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multi‑step",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "There are 6 boxes of pencils. Each box has 3 pencils. The pencils are shared equally among 4 students. How many pencils does each student receive?",
-    "options": {
-      "A": "2",
-      "B": "7",
-      "C": "4",
-      "D": "3"
-    },
-    "correctAnswer": "C",
-    "correctValue": "4",
-    "explanation": "First multiply: 6 × 3 = 18. Then divide by 4: 18 ÷ 4 = 4.",
-    "difficultyReason": "Involves two operations: multiplication combined with division or subtraction."
-  },
-  {
-    "id": "P2-MUL-029",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multi‑step",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "There are 5 boxes of pencils. Each box has 3 pencils. The pencils are shared equally among 4 students. How many pencils does each student receive?",
-    "options": {
-      "A": "3",
-      "B": "5",
-      "C": "4",
-      "D": "7"
-    },
-    "correctAnswer": "A",
-    "correctValue": "3",
-    "explanation": "First multiply: 5 × 3 = 15. Then divide by 4: 15 ÷ 4 = 3.",
-    "difficultyReason": "Involves two operations: multiplication combined with division or subtraction."
-  },
-  {
-    "id": "P2-MUL-030",
-    "level": "P2",
-    "topicCode": "MUL",
-    "topic": "Multiplication and Division",
-    "subtopic": "Multi‑step",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "There are 6 boxes of pencils. Each box has 3 pencils. The pencils are shared equally among 4 students. How many pencils does each student receive?",
-    "options": {
-      "A": "4",
-      "B": "5",
-      "C": "0",
-      "D": "9"
-    },
-    "correctAnswer": "A",
-    "correctValue": "4",
-    "explanation": "First multiply: 6 × 3 = 18. Then divide by 4: 18 ÷ 4 = 4.",
     "difficultyReason": "Involves two operations: multiplication combined with division or subtraction."
   },
   {
