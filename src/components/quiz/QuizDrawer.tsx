@@ -11,12 +11,14 @@
 
 import React from 'react';
 import { QuizSession } from './QuizSession';
+import { QuizAttempt, QuizResult } from '@/types';
 
 interface QuizDrawerProps {
   onClose: () => void;
+  onQuizComplete?: (attempt: QuizAttempt, result: QuizResult) => void;
 }
 
-export function QuizDrawer({ onClose }: QuizDrawerProps) {
+export function QuizDrawer({ onClose, onQuizComplete }: QuizDrawerProps) {
   return (
     <div
       role="complementary"
@@ -77,7 +79,7 @@ export function QuizDrawer({ onClose }: QuizDrawerProps) {
 
       {/* Scrollable quiz content */}
       <div className="flex-1 overflow-y-auto p-4">
-        <QuizSession startDirect />
+        <QuizSession startDirect onQuizComplete={onQuizComplete} />
       </div>
     </div>
   );

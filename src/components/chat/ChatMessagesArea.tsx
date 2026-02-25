@@ -28,7 +28,7 @@ interface ChatMessagesAreaProps {
   messagesEndRef: React.RefObject<HTMLDivElement | null>;
   onSendMessage: (content: string, image?: string) => void;
   onReviewQuiz: (quiz: QuizSummaryData) => void;
-  onRetryQuiz: () => void;
+  onRetryQuiz: (source?: string) => void;
   onDismissError: () => void;
 }
 

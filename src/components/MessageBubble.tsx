@@ -22,7 +22,7 @@ interface MessageBubbleProps {
   message: Message;
   showTimestamp?: boolean;
   onReviewQuiz?: (quiz: QuizSummaryData) => void;
-  onRetryQuiz?: () => void;
+  onRetryQuiz?: (source?: string) => void;
 }
 
 export function MessageBubble({ message, showTimestamp = false, onReviewQuiz, onRetryQuiz }: MessageBubbleProps) {
@@ -39,11 +39,20 @@ export function MessageBubble({ message, showTimestamp = false, onReviewQuiz, on
           percentage={message.quizSummary.percentage}
           timeTaken={message.quizSummary.timeTaken}
           level={message.quizSummary.config.level}
-          difficulty={message.quizSummary.config.difficulty === 'all' ? 'medium' : message.quizSummary.config.difficulty}
+          difficulty={message.quizSummary.config.difficulty}
           topic={message.quizSummary.questions?.[0]?.topic || message.quizSummary.config.topics[0] || 'Math'}
           retryAttempt={message.quizSummary.retryAttempt}
-          onReview={() => onReviewQuiz?.(message.quizSummary!)}
-          onRetry={onRetryQuiz}
+          questions={message.quizSummary.questions?.map(q => ({
+            question: q.question,
+            topic: q.topic,
+            difficulty: q.difficulty,
+            correctAnswer: q.correctAnswer,
+          }))}
+          answers={message.quizSummary.answers?.map(a => ({
+            selected: a.selected,
+            isCorrect: a.isCorrect,
+          }))}
+          onRetry={() => onRetryQuiz?.(message.quizSummary?.source)}
         />
       </div>
     );

@@ -14,7 +14,7 @@ import { ChatSidebar } from '@/components/ChatSidebar';
 import { QuizPanel, QuizLoadingPanel, QuizReviewModal, ChatHeader, ChatMessagesArea } from '@/components/chat';
 import { QuizDrawer } from '@/components/quiz';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { ChatSession } from '@/types';
+import { ChatSession, QuizAttempt, QuizResult, QuizSummaryData, Message } from '@/types';
 import {
   createSession,
   saveSession,
@@ -75,6 +75,62 @@ export default function ChatPage() {
     sessionMgmt.handleSelectSession(sessionId);
     quizMode.resetQuizState();
   }, [sessionMgmt.handleSelectSession, quizMode.resetQuizState]);
+
+  // Called when a static bank quiz (QuizDrawer) completes — posts summary to chat
+  const handleStaticQuizComplete = useCallback((attempt: QuizAttempt, result: QuizResult) => {
+    const totalMs = result.totalTime ?? 0;
+    const minutes = Math.floor(totalMs / 60000);
+    const seconds = Math.floor((totalMs % 60000) / 1000);
+    const timeTaken = minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
+
+    const summaryData: QuizSummaryData = {
+      config: attempt.config as QuizSummaryData['config'],
+      score: result.correctCount,
+      totalQuestions: result.totalQuestions,
+      percentage: result.score,
+      timeTaken,
+      retryAttempt: 0,
+      isRetry: false,
+      questions: attempt.questions,
+      answers: attempt.answers.map(a => ({
+        selected: a.selected,
+        isCorrect: a.isCorrect,
+        answeredAt: a.answeredAt,
+      })),
+      completedAt: result.completedAt,
+      startedAt: attempt.startedAt,
+      source: 'static',
+    };
+
+    const summaryMessage: Message = {
+      id: crypto.randomUUID(),
+      role: 'quiz_summary',
+      content: '',
+      timestamp: new Date().toISOString(),
+      quizSummary: summaryData,
+    };
+
+    let session = sessionMgmt.currentSession;
+    if (!session) {
+      session = createSession(sessionMgmt.mode);
+      sessionMgmt.setCurrentSession(session);
+      sessionMgmt.setSessions(prev => [session!, ...prev]);
+      saveSession(session);
+      saveSettings({ lastActiveSession: session.id });
+    }
+
+    const updatedSession: ChatSession = {
+      ...session,
+      messages: [...session.messages, summaryMessage],
+      updatedAt: new Date().toISOString(),
+    };
+
+    sessionMgmt.setCurrentSession(updatedSession);
+    saveSession(updatedSession);
+    sessionMgmt.setSessions(prev =>
+      prev.map(s => (s.id === updatedSession.id ? updatedSession : s))
+    );
+  }, [sessionMgmt.currentSession, sessionMgmt.mode, sessionMgmt.setCurrentSession, sessionMgmt.setSessions]);
 
   // Auto-scroll on new messages
   const scrollToBottom = useCallback(() => {
@@ -349,7 +405,13 @@ export default function ChatPage() {
     messagesEndRef,
     onSendMessage: handleSendMessage,
     onReviewQuiz: quizMode.handleReviewQuiz,
-    onRetryQuiz: quizMode.handleRetryQuiz,
+    onRetryQuiz: (source?: string) => {
+      if (source === 'static') {
+        setQuizDrawerOpen(true);
+      } else {
+        quizMode.handleRetryQuiz();
+      }
+    },
     onDismissError: () => setError(null),
   };
 
@@ -484,7 +546,10 @@ export default function ChatPage() {
 
           {/* Static bank quiz — sits alongside chat, no backdrop */}
           {quizDrawerOpen && (
-            <QuizDrawer onClose={() => setQuizDrawerOpen(false)} />
+            <QuizDrawer
+              onClose={() => setQuizDrawerOpen(false)}
+              onQuizComplete={handleStaticQuizComplete}
+            />
           )}
         </div>
       </div>
