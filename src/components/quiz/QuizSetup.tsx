@@ -8,7 +8,7 @@
  * Allows selecting level, topics, difficulty, and question count.
  */
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   PrimaryLevel,
   QuizTopic,
@@ -91,28 +91,6 @@ export function QuizSetup({
   onBack,
   availableQuestionCount,
 }: QuizSetupProps) {
-  // Question counts by topic
-  const [topicQuestionCounts, setTopicQuestionCounts] = useState<Record<string, number>>({});
-  const [loadingCounts, setLoadingCounts] = useState(true);
-
-  // Load question counts on mount
-  useEffect(() => {
-    const loadQuestionCounts = async () => {
-      try {
-        const { getQuestionSummary } = await import('@/lib/quiz/quiz-data');
-        const summary = await getQuestionSummary(level);
-        setTopicQuestionCounts(summary.byTopic);
-      } catch (error) {
-        console.error('Failed to load question counts:', error);
-      } finally {
-        setLoadingCounts(false);
-      }
-    };
-
-    setLoadingCounts(true);
-    loadQuestionCounts();
-  }, [level]);
-
   // Get topics for current level
   const getCurrentLevelTopics = (): QuizTopic[] => {
     return level === 'P1' ? P1_TOPICS : level === 'P2' ? P2_TOPICS : P3_TOPICS;
@@ -229,7 +207,6 @@ export function QuizSetup({
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {TOPIC_OPTIONS.filter((topic) => !topic.level || topic.level.includes(level as 'P1' | 'P2' | 'P3')).map((topic) => {
-              const questionCount = topicQuestionCounts[topic.value] || 0;
               const isComingSoon = topic.comingSoon || false;
               return (
                 <button
@@ -254,15 +231,6 @@ export function QuizSetup({
                   {isComingSoon && (
                     <div className="mt-1 text-xs font-medium text-orange-500 dark:text-orange-400">
                       Coming Soon
-                    </div>
-                  )}
-                  {!isComingSoon && !loadingCounts && (
-                    <div className={`mt-2 text-xs font-medium ${
-                      topics.includes(topic.value)
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-slate-500 dark:text-slate-500'
-                    }`}>
-                      {questionCount} {questionCount === 1 ? 'question' : 'questions'}
                     </div>
                   )}
                 </button>

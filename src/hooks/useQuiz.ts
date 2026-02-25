@@ -29,6 +29,61 @@ import {
   getQuizProgress,
 } from '@/lib/storage';
 
+// ============ TEMPLATE COOLDOWN HELPERS ============
+
+/** Number of past quizzes whose templates are deprioritised */
+const TEMPLATE_COOLDOWN_QUIZZES = 5;
+
+interface TemplateCooldownEntry {
+  completedAt: string;
+  templateIds: string[];
+}
+
+interface TemplateCooldownStore {
+  [level: string]: { history: TemplateCooldownEntry[] };
+}
+
+/**
+ * Read the set of template IDs that should be deprioritised for the given level.
+ * Returns template IDs seen across the last TEMPLATE_COOLDOWN_QUIZZES quizzes.
+ */
+function getTemplateCooldown(level: string): Set<string> {
+  if (typeof window === 'undefined') return new Set();
+  try {
+    const raw = localStorage.getItem(QUIZ_STORAGE_KEYS.TEMPLATE_COOLDOWN);
+    if (!raw) return new Set();
+    const store: TemplateCooldownStore = JSON.parse(raw);
+    const history = store[level]?.history ?? [];
+    const ids = history.flatMap(entry => entry.templateIds);
+    return new Set(ids);
+  } catch {
+    return new Set();
+  }
+}
+
+/**
+ * Append the template IDs used in a just-completed quiz to the cooldown store,
+ * keeping only the last TEMPLATE_COOLDOWN_QUIZZES entries per level.
+ */
+function recordTemplateCooldown(level: string, templateIds: string[]): void {
+  if (typeof window === 'undefined' || templateIds.length === 0) return;
+  try {
+    const raw = localStorage.getItem(QUIZ_STORAGE_KEYS.TEMPLATE_COOLDOWN);
+    const store: TemplateCooldownStore = raw ? JSON.parse(raw) : {};
+    if (!store[level]) store[level] = { history: [] };
+
+    store[level].history.unshift({
+      completedAt: new Date().toISOString(),
+      templateIds,
+    });
+
+    // Keep only the last N entries
+    store[level].history = store[level].history.slice(0, TEMPLATE_COOLDOWN_QUIZZES);
+    localStorage.setItem(QUIZ_STORAGE_KEYS.TEMPLATE_COOLDOWN, JSON.stringify(store));
+  } catch {
+    // Silently fail if localStorage is unavailable
+  }
+}
 
 // ============ HOOK STATE ============
 
@@ -277,25 +332,24 @@ export function useQuiz(): QuizState & QuizActions {
 
     try {
       // Import quiz data utilities dynamically
-      const { getQuestionsForConfig } = await import('@/lib/quiz/quiz-data');
-      const { shuffleAllQuestionOptions, shuffleArray } = await import('@/lib/quiz/quiz-randomization');
+      const { getRandomQuestions, getQuestionsForConfig } = await import('@/lib/quiz/quiz-data');
+      const { shuffleAllQuestionOptions } = await import('@/lib/quiz/quiz-randomization');
 
-      // Get filtered questions
-      const questions = await getQuestionsForConfig(config);
-
-      if (questions.length < config.questionCount) {
+      // Verify enough questions are available before proceeding
+      const allAvailable = await getQuestionsForConfig(config);
+      if (allAvailable.length < config.questionCount) {
         throw new Error(
-          `Not enough questions available. Found ${questions.length}, need ${config.questionCount}`
+          `Not enough questions available. Found ${allAvailable.length}, need ${config.questionCount}`
         );
       }
 
-      // CRITICAL FIX: Shuffle question order FIRST, then select
-      // Previously: shuffleAllQuestionOptions only shuffled answer options (A/B/C/D), not question order
-      // This caused same questions to appear in same order every time
-      const shuffledQuestions = shuffleArray(questions);
-      const selectedQuestions = shuffledQuestions.slice(0, config.questionCount);
+      // Read template cooldown for this level so recently-seen styles are deprioritised
+      const cooldown = getTemplateCooldown(config.level);
 
-      // Then shuffle answer options within selected questions
+      // Use the diversity-aware selection algorithm (topic + subtopic + template diversity)
+      const selectedQuestions = await getRandomQuestions(config, config.questionCount, cooldown);
+
+      // Shuffle answer option positions (A/B/C/D) within each selected question
       const selected = shuffleAllQuestionOptions(selectedQuestions);
 
       // Create new quiz attempt
@@ -466,6 +520,12 @@ export function useQuiz(): QuizState & QuizActions {
 
         // Save to attempts history using storage function
         saveQuizAttempt(completed);
+
+        // Record template IDs used in this quiz for future cooldown tracking
+        const usedTemplateIds = completed.questions
+          .map(q => q.templateId)
+          .filter((id): id is string => Boolean(id));
+        recordTemplateCooldown(completed.config.level, usedTemplateIds);
 
         // Remove from in-progress since it's completed
         removeInProgressQuiz(completed.id);
