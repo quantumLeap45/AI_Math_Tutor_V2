@@ -103,19 +103,19 @@ export function ChatHeader({
 
         {/* Right: Credits badge, Clear Chat, and theme toggle */}
         <div className="flex items-center gap-2">
-          {/* Credits badge — hidden until real quota loads */}
+          {/* Credits badge */}
           {quotaLoaded && (
             <div
               className="group relative px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 cursor-default"
             >
-              <span className="text-xs font-medium text-slate-600 dark:text-slate-400 tabular-nums">
-                {quotaRemaining}/{quotaLimit} left
+              <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
+                Unlimited
               </span>
               {/* Tooltip */}
               <div className="absolute top-full right-0 mt-2 hidden group-hover:block w-48 p-2 bg-slate-900 dark:bg-slate-700 text-white text-xs rounded-lg shadow-lg z-50">
-                <div className="font-medium mb-1">Daily Usage Limit</div>
+                <div className="font-medium mb-1">Messages</div>
                 <div className="text-slate-300">
-                  {quotaLimit} messages per day. Resets at midnight UTC.
+                  Unlimited during early access.
                 </div>
               </div>
             </div>

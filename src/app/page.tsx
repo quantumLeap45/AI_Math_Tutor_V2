@@ -474,6 +474,9 @@ export default function LandingPage() {
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                 Practice with topic-based quizzes for P1–P3. Choose your difficulty and get instant feedback. P4–P6 coming soon.
               </p>
+              <p className="mt-2 text-xs text-amber-600 dark:text-amber-400">
+                Note: Quiz questions are experimental and not yet at their best — we are actively working on improving them.
+              </p>
             </div>
 
             {/* Image Upload */}
@@ -626,6 +629,21 @@ export default function LandingPage() {
             </div>
             <p className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed max-w-xl mx-auto">
               This app is actively being built and improved. You may encounter bugs, incorrect answers, or incomplete features as you explore. Thank you for your patience — your experience directly helps shape what gets fixed and built next.
+            </p>
+          </div>
+
+          {/* Desktop recommendation notice */}
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-5 text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600 dark:text-blue-400 flex-shrink-0">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+              <span className="font-semibold text-blue-700 dark:text-blue-400">Best on Desktop or iPad</span>
+            </div>
+            <p className="text-sm text-blue-700 dark:text-blue-300 leading-relaxed max-w-xl mx-auto">
+              For the best experience, we recommend using a laptop, desktop, or iPad. Mobile phone support is still being improved.
             </p>
           </div>
 

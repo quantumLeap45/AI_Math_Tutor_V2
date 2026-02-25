@@ -460,8 +460,8 @@ export default function ChatPage() {
             <div className="flex items-center gap-2">
               {quotaLoaded && (
                 <div className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800">
-                  <span className="text-xs font-medium text-slate-600 dark:text-slate-400 tabular-nums">
-                    {quotaStatus.remaining}/{quotaStatus.limit} left
+                  <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
+                    Unlimited
                   </span>
                 </div>
               )}
