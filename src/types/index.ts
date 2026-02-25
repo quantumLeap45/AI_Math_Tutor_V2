@@ -58,6 +58,8 @@ export interface QuizSummaryData {
   completedAt: string;
   /** When quiz was started */
   startedAt: string;
+  /** Source of the quiz — 'static' for bank quiz, 'chat' for AI-generated quiz */
+  source?: 'static' | 'chat';
 }
 
 /**

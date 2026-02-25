@@ -11,7 +11,7 @@
  * - Loading/Error states
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useQuiz } from '@/hooks';
 import {
   QuizSetup,
@@ -20,17 +20,18 @@ import {
   QuizOptions,
   QuizResults,
   QuizHome,
-  QuizAIChat,
 } from '@/components/quiz';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
-import { QuizOption } from '@/types';
+import { QuizOption, QuizResult, QuizAttempt } from '@/types';
 
 interface QuizSessionProps {
   /** When true, skips the home landing and opens setup directly (used in the drawer). */
   startDirect?: boolean;
+  /** Called once when a quiz is fully completed, with the attempt and result data. */
+  onQuizComplete?: (attempt: QuizAttempt, result: QuizResult) => void;
 }
 
-export function QuizSession({ startDirect = false }: QuizSessionProps) {
+export function QuizSession({ startDirect = false, onQuizComplete }: QuizSessionProps) {
   const {
     phase,
     config,
@@ -64,6 +65,16 @@ export function QuizSession({ startDirect = false }: QuizSessionProps) {
       goToSetup();
     }
   }, [startDirect, phase, goToSetup]);
+
+  // Fire onQuizComplete once when quiz transitions to results
+  const calledCompleteRef = useRef(false);
+  useEffect(() => {
+    if (phase === 'active') calledCompleteRef.current = false;
+    if (phase === 'results' && result && currentQuiz && !calledCompleteRef.current) {
+      calledCompleteRef.current = true;
+      onQuizComplete?.(currentQuiz, result);
+    }
+  }, [phase, result, currentQuiz, onQuizComplete]);
 
   // Error state
   if (phase === 'error') {
@@ -255,31 +266,6 @@ export function QuizSession({ startDirect = false }: QuizSessionProps) {
             </button>
           </div>
 
-          {/* Save & Exit button */}
-          <div className="mt-8 text-center">
-            <button
-              onClick={saveAndExit}
-              className="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors flex items-center gap-2 mx-auto"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
-                <polyline points="17 21 17 13 7 13 7 21" />
-                <polyline points="7 3 7 8 15 8" />
-              </svg>
-              Save & Exit
-            </button>
-          </div>
-
           {/* Skip hint (if no selection) */}
           {!hasSelected && (
             <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-900 rounded-lg">
@@ -289,12 +275,6 @@ export function QuizSession({ startDirect = false }: QuizSessionProps) {
             </div>
           )}
         </div>
-
-        {/* AI Chat Assistant */}
-        <QuizAIChat
-          currentQuestion={currentQuestion}
-          questionNumber={currentQuiz.currentIndex + 1}
-        />
       </>
     );
   }
