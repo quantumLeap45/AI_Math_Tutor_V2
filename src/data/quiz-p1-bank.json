@@ -700,26 +700,6 @@
     "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
   },
   {
-    "id": "P1-WHOLE-036",
-    "level": "P1",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Two operations",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thought of a number. He added 11 to it and then subtracted 15. His answer was 17. What was Kai's number?",
-    "options": {
-      "A": "21",
-      "B": "19",
-      "C": "24",
-      "D": "18"
-    },
-    "correctAnswer": "A",
-    "correctValue": "21",
-    "explanation": "Let the number be x. x + 11 - 15 = 17. So x = 17 - (11 - 15) = 21.",
-    "difficultyReason": "Solving the inverse of two sequential operations."
-  },
-  {
     "id": "P1-WHOLE-037",
     "level": "P1",
     "topicCode": "WHOLE",
@@ -738,26 +718,6 @@
     "correctValue": "52",
     "explanation": "Among the numbers given, only 52 is a multiple of 4 between 43 and 53.",
     "difficultyReason": "Requires checking range and divisibility properties."
-  },
-  {
-    "id": "P1-WHOLE-038",
-    "level": "P1",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Two operations",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thought of a number. He added 11 to it and then subtracted 14. His answer was 34. What was Kai's number?",
-    "options": {
-      "A": "39",
-      "B": "37",
-      "C": "40",
-      "D": "33"
-    },
-    "correctAnswer": "B",
-    "correctValue": "37",
-    "explanation": "Let the number be x. x + 11 - 14 = 34. So x = 34 - (11 - 14) = 37.",
-    "difficultyReason": "Solving the inverse of two sequential operations."
   },
   {
     "id": "P1-WHOLE-039",
@@ -800,66 +760,6 @@
     "difficultyReason": "Requires checking range and divisibility properties."
   },
   {
-    "id": "P1-WHOLE-041",
-    "level": "P1",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Two operations",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thought of a number. He added 23 to it and then subtracted 1. His answer was 33. What was Kai's number?",
-    "options": {
-      "A": "12",
-      "B": "11",
-      "C": "14",
-      "D": "6"
-    },
-    "correctAnswer": "B",
-    "correctValue": "11",
-    "explanation": "Let the number be x. x + 23 - 1 = 33. So x = 33 - (23 - 1) = 11.",
-    "difficultyReason": "Solving the inverse of two sequential operations."
-  },
-  {
-    "id": "P1-WHOLE-042",
-    "level": "P1",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Two operations",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thought of a number. He added 19 to it and then subtracted 11. His answer was 34. What was Kai's number?",
-    "options": {
-      "A": "28",
-      "B": "26",
-      "C": "21",
-      "D": "30"
-    },
-    "correctAnswer": "B",
-    "correctValue": "26",
-    "explanation": "Let the number be x. x + 19 - 11 = 34. So x = 34 - (19 - 11) = 26.",
-    "difficultyReason": "Solving the inverse of two sequential operations."
-  },
-  {
-    "id": "P1-WHOLE-043",
-    "level": "P1",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Two operations",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thought of a number. He added 27 to it and then subtracted 14. His answer was 35. What was Kai's number?",
-    "options": {
-      "A": "26",
-      "B": "22",
-      "C": "19",
-      "D": "23"
-    },
-    "correctAnswer": "B",
-    "correctValue": "22",
-    "explanation": "Let the number be x. x + 27 - 14 = 35. So x = 35 - (27 - 14) = 22.",
-    "difficultyReason": "Solving the inverse of two sequential operations."
-  },
-  {
     "id": "P1-WHOLE-044",
     "level": "P1",
     "topicCode": "WHOLE",
@@ -870,7 +770,7 @@
     "question": "Which of the following numbers is between 46 and 63 and is a multiple of 4?",
     "options": {
       "A": "48",
-      "B": "56",
+      "B": "57",
       "C": "55",
       "D": "62"
     },
@@ -898,26 +798,6 @@
     "correctValue": "36",
     "explanation": "Among the numbers given, only 36 is a multiple of 3 between 36 and 48.",
     "difficultyReason": "Requires checking range and divisibility properties."
-  },
-  {
-    "id": "P1-WHOLE-046",
-    "level": "P1",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Two operations",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thought of a number. He added 17 to it and then subtracted 3. His answer was 36. What was Kai's number?",
-    "options": {
-      "A": "18",
-      "B": "22",
-      "C": "21",
-      "D": "24"
-    },
-    "correctAnswer": "B",
-    "correctValue": "22",
-    "explanation": "Let the number be x. x + 17 - 3 = 36. So x = 36 - (17 - 3) = 22.",
-    "difficultyReason": "Solving the inverse of two sequential operations."
   },
   {
     "id": "P1-WHOLE-047",
@@ -958,26 +838,6 @@
     "correctValue": "50",
     "explanation": "Among the numbers given, only 50 is a multiple of 5 between 45 and 62.",
     "difficultyReason": "Requires checking range and divisibility properties."
-  },
-  {
-    "id": "P1-WHOLE-049",
-    "level": "P1",
-    "topicCode": "WHOLE",
-    "topic": "Whole Numbers",
-    "subtopic": "Two operations",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thought of a number. He added 18 to it and then subtracted 6. His answer was 29. What was Kai's number?",
-    "options": {
-      "A": "15",
-      "B": "17",
-      "C": "14",
-      "D": "19"
-    },
-    "correctAnswer": "B",
-    "correctValue": "17",
-    "explanation": "Let the number be x. x + 18 - 6 = 29. So x = 29 - (18 - 6) = 17.",
-    "difficultyReason": "Solving the inverse of two sequential operations."
   },
   {
     "id": "P1-WHOLE-050",
@@ -3047,7 +2907,7 @@
     "subtopic": "Counting coins",
     "difficulty": "easy",
     "questionType": "mcq",
-    "question": "Kai has 1 50-cent coin, 3 20-cent coins and 4 10-cent coins. How much money does Deepa have?",
+    "question": "Kai has 1 50-cent coin, 3 20-cent coins and 4 10-cent coins. How much money does Kai have altogether?",
     "options": {
       "A": "$1.73",
       "B": "$1.00",
@@ -3187,7 +3047,7 @@
     "subtopic": "Simple change",
     "difficulty": "easy",
     "questionType": "mcq",
-    "question": "Kai buys a snack for 70¢. Ahmad pays $1.00. How much change does Kai receive?",
+    "question": "Kai buys a snack for 70¢. He pays $1.00. How much change does Kai receive?",
     "options": {
       "A": "$0.18",
       "B": "$0.65",
@@ -3267,7 +3127,7 @@
     "subtopic": "Counting coins",
     "difficulty": "easy",
     "questionType": "mcq",
-    "question": "Ahmad has 2 50-cent coins, 2 20-cent coins and 0 10-cent coins. How much money does Kai have?",
+    "question": "Ahmad has 2 50-cent coins, 2 20-cent coins and 0 10-cent coins. How much money does Ahmad have altogether?",
     "options": {
       "A": "$1.40",
       "B": "$1.09",
@@ -3707,7 +3567,7 @@
     "subtopic": "Missing cost",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Ahmad buys a book for $1.44. Anna pays $10.00 and receives $0.37 in change. How much does the other item cost?",
+    "question": "Ahmad buys a book for $1.44 and another item. He pays $10.00 and receives $0.37 in change. How much does the other item cost?",
     "options": {
       "A": "$8.32",
       "B": "$8.62",
@@ -3807,7 +3667,7 @@
     "subtopic": "Missing cost",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Wei Ling buys a book for $2.40. Priya pays $5.00 and receives $0.42 in change. How much does the other item cost?",
+    "question": "Wei Ling buys a book for $2.40 and another item. She pays $5.00 and receives $0.42 in change. How much does the other item cost?",
     "options": {
       "A": "$2.08",
       "B": "$1.97",
@@ -3847,7 +3707,7 @@
     "subtopic": "Missing cost",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Kai buys a book for $1.73. Priya pays $5.00 and receives $0.50 in change. How much does the other item cost?",
+    "question": "Kai buys a book for $1.73 and another item. He pays $5.00 and receives $0.50 in change. How much does the other item cost?",
     "options": {
       "A": "$2.59",
       "B": "$3.14",

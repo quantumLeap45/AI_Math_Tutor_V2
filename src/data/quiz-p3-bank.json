@@ -1000,46 +1000,6 @@
     "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
   },
   {
-    "id": "P3-ADD-024",
-    "level": "P3",
-    "topicCode": "ADD",
-    "topic": "Addition and Subtraction",
-    "subtopic": "Missing number",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thinks of a number. He adds 773, subtracts 664 and then adds 101. His final answer is 4998. What number did Kai think of?",
-    "options": {
-      "A": "4791",
-      "B": "4788",
-      "C": "4792",
-      "D": "4784"
-    },
-    "correctAnswer": "B",
-    "correctValue": "4788",
-    "explanation": "Let x be the number. x + 773 - 664 + 101 = 4998. So x = 4998 - (773 - 664 + 101) = 4788.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
-  },
-  {
-    "id": "P3-ADD-025",
-    "level": "P3",
-    "topicCode": "ADD",
-    "topic": "Addition and Subtraction",
-    "subtopic": "Missing number",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thinks of a number. He adds 729, subtracts 977 and then adds 122. His final answer is 3354. What number did Kai think of?",
-    "options": {
-      "A": "3478",
-      "B": "3483",
-      "C": "3480",
-      "D": "3485"
-    },
-    "correctAnswer": "C",
-    "correctValue": "3480",
-    "explanation": "Let x be the number. x + 729 - 977 + 122 = 3354. So x = 3354 - (729 - 977 + 122) = 3480.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
-  },
-  {
     "id": "P3-ADD-026",
     "level": "P3",
     "topicCode": "ADD",
@@ -1080,46 +1040,6 @@
     "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
   },
   {
-    "id": "P3-ADD-028",
-    "level": "P3",
-    "topicCode": "ADD",
-    "topic": "Addition and Subtraction",
-    "subtopic": "Missing number",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thinks of a number. He adds 442, subtracts 274 and then adds 497. His final answer is 4793. What number did Kai think of?",
-    "options": {
-      "A": "4129",
-      "B": "4123",
-      "C": "4133",
-      "D": "4128"
-    },
-    "correctAnswer": "D",
-    "correctValue": "4128",
-    "explanation": "Let x be the number. x + 442 - 274 + 497 = 4793. So x = 4793 - (442 - 274 + 497) = 4128.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
-  },
-  {
-    "id": "P3-ADD-029",
-    "level": "P3",
-    "topicCode": "ADD",
-    "topic": "Addition and Subtraction",
-    "subtopic": "Missing number",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thinks of a number. He adds 910, subtracts 266 and then adds 500. His final answer is 4427. What number did Kai think of?",
-    "options": {
-      "A": "3283",
-      "B": "3286",
-      "C": "3279",
-      "D": "3281"
-    },
-    "correctAnswer": "A",
-    "correctValue": "3283",
-    "explanation": "Let x be the number. x + 910 - 266 + 500 = 4427. So x = 4427 - (910 - 266 + 500) = 3283.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
-  },
-  {
     "id": "P3-ADD-030",
     "level": "P3",
     "topicCode": "ADD",
@@ -1137,26 +1057,6 @@
     "correctAnswer": "D",
     "correctValue": "2207",
     "explanation": "Subtract the known numbers from 7414 to get 2207.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
-  },
-  {
-    "id": "P3-ADD-031",
-    "level": "P3",
-    "topicCode": "ADD",
-    "topic": "Addition and Subtraction",
-    "subtopic": "Missing number",
-    "difficulty": "hard",
-    "questionType": "mcq",
-    "question": "Kai thinks of a number. He adds 891, subtracts 226 and then adds 332. His final answer is 5663. What number did Kai think of?",
-    "options": {
-      "A": "4666",
-      "B": "4671",
-      "C": "4661",
-      "D": "4665"
-    },
-    "correctAnswer": "A",
-    "correctValue": "4666",
-    "explanation": "Let x be the number. x + 891 - 226 + 332 = 5663. So x = 5663 - (891 - 226 + 332) = 4666.",
     "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
   },
   {
@@ -2187,7 +2087,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Kai buys items costing $17.77 and $4.98. Anna pays $100.00. How much change does Kai receive?",
+    "question": "Kai buys items costing $17.77 and $4.98. He pays $100.00. How much change does Kai receive?",
     "options": {
       "A": "$76.86",
       "B": "$77.25",
@@ -2247,7 +2147,7 @@
     "subtopic": "Purchases and change",
     "difficulty": "medium",
     "questionType": "mcq",
-    "question": "Siti buys items costing $9.93, $18.43 and $3.97. Kai pays $50.00. How much change does Siti receive?",
+    "question": "Siti buys items costing $9.93, $18.43 and $3.97. She pays $50.00. How much change does Siti receive?",
     "options": {
       "A": "$17.98",
       "B": "$17.67",
@@ -2347,7 +2247,7 @@
     "subtopic": "Complex money problems",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Anna buys a book for $32.03 and another item. Wei Ling pays $100.00 and receives $41.06 change. How much does the other item cost?",
+    "question": "Anna buys a book for $32.03 and another item. She pays $100.00 and receives $41.06 change. How much does the other item cost?",
     "options": {
       "A": "$26.91",
       "B": "$26.80",
@@ -2467,7 +2367,7 @@
     "subtopic": "Complex money problems",
     "difficulty": "hard",
     "questionType": "mcq",
-    "question": "Deepa buys a book for $35.70 and another item. Ben pays $100.00 and receives $19.63 change. How much does the other item cost?",
+    "question": "Deepa buys a book for $35.70 and another item. She pays $100.00 and receives $19.63 change. How much does the other item cost?",
     "options": {
       "A": "$44.67",
       "B": "$44.87",
