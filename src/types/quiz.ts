@@ -103,6 +103,12 @@ export interface QuizQuestion {
   imageUrl?: string;
   /** Alt text describing the image for accessibility */
   imageAlt?: string;
+  /**
+   * Template group identifier — questions sharing the same story/structure
+   * have the same template_id even when numbers differ. Used by the quiz
+   * engine to enforce template diversity within and across quiz sessions.
+   */
+  templateId?: string;
 }
 
 /**
@@ -336,6 +342,12 @@ export const QUIZ_STORAGE_KEYS = {
   CURRENT: 'math-tutor-quiz-current',
   /** Array of in-progress quiz attempts (max 5) */
   IN_PROGRESS: 'math-tutor-quiz-in-progress',
+  /**
+   * Template cooldown history per level.
+   * Tracks which template groups appeared in the last N quizzes so the
+   * engine can deprioritise them in the next session.
+   */
+  TEMPLATE_COOLDOWN: 'math-tutor-template-cooldown',
 } as const;
 
 // ============ STORAGE LIMITS ============

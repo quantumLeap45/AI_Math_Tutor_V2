@@ -17,7 +17,8 @@
     "correctAnswer": "B",
     "correctValue": "8000",
     "explanation": "Rounding 8298 gives 8000.",
-    "difficultyReason": "Applies rounding to hundreds or thousands."
+    "difficultyReason": "Applies rounding to hundreds or thousands.",
+    "template_id": "p3-t001"
   },
   {
     "id": "P3-WHOLE-002",
@@ -37,7 +38,8 @@
     "correctAnswer": "D",
     "correctValue": "8000",
     "explanation": "Rounding 7979 gives 8000.",
-    "difficultyReason": "Applies rounding to hundreds or thousands."
+    "difficultyReason": "Applies rounding to hundreds or thousands.",
+    "template_id": "p3-t002"
   },
   {
     "id": "P3-WHOLE-003",
@@ -57,7 +59,8 @@
     "correctAnswer": "D",
     "correctValue": "2000",
     "explanation": "Rounding 2297 gives 2000.",
-    "difficultyReason": "Applies rounding to hundreds or thousands."
+    "difficultyReason": "Applies rounding to hundreds or thousands.",
+    "template_id": "p3-t001"
   },
   {
     "id": "P3-WHOLE-004",
@@ -77,7 +80,8 @@
     "correctAnswer": "D",
     "correctValue": "7800",
     "explanation": "Rounding 7766 gives 7800.",
-    "difficultyReason": "Applies rounding to hundreds or thousands."
+    "difficultyReason": "Applies rounding to hundreds or thousands.",
+    "template_id": "p3-t002"
   },
   {
     "id": "P3-WHOLE-005",
@@ -97,7 +101,8 @@
     "correctAnswer": "D",
     "correctValue": "5",
     "explanation": "The digit 5 in the ones place is worth 5.",
-    "difficultyReason": "Identifies the value of a digit in a 4‑digit number."
+    "difficultyReason": "Identifies the value of a digit in a 4‑digit number.",
+    "template_id": "p3-t003"
   },
   {
     "id": "P3-WHOLE-006",
@@ -117,7 +122,8 @@
     "correctAnswer": "A",
     "correctValue": "4100",
     "explanation": "Rounding 4066 gives 4100.",
-    "difficultyReason": "Applies rounding to hundreds or thousands."
+    "difficultyReason": "Applies rounding to hundreds or thousands.",
+    "template_id": "p3-t002"
   },
   {
     "id": "P3-WHOLE-007",
@@ -137,7 +143,8 @@
     "correctAnswer": "C",
     "correctValue": "200",
     "explanation": "The digit 2 in the hundreds place is worth 200.",
-    "difficultyReason": "Identifies the value of a digit in a 4‑digit number."
+    "difficultyReason": "Identifies the value of a digit in a 4‑digit number.",
+    "template_id": "p3-t003"
   },
   {
     "id": "P3-WHOLE-008",
@@ -157,7 +164,8 @@
     "correctAnswer": "C",
     "correctValue": "200",
     "explanation": "The digit 2 in the hundreds place is worth 200.",
-    "difficultyReason": "Identifies the value of a digit in a 4‑digit number."
+    "difficultyReason": "Identifies the value of a digit in a 4‑digit number.",
+    "template_id": "p3-t003"
   },
   {
     "id": "P3-WHOLE-009",
@@ -177,7 +185,8 @@
     "correctAnswer": "B",
     "correctValue": "3000",
     "explanation": "Rounding 3427 gives 3000.",
-    "difficultyReason": "Applies rounding to hundreds or thousands."
+    "difficultyReason": "Applies rounding to hundreds or thousands.",
+    "template_id": "p3-t001"
   },
   {
     "id": "P3-WHOLE-010",
@@ -197,7 +206,8 @@
     "correctAnswer": "A",
     "correctValue": "5000",
     "explanation": "Rounding 4975 gives 5000.",
-    "difficultyReason": "Applies rounding to hundreds or thousands."
+    "difficultyReason": "Applies rounding to hundreds or thousands.",
+    "template_id": "p3-t002"
   },
   {
     "id": "P3-WHOLE-011",
@@ -217,7 +227,8 @@
     "correctAnswer": "B",
     "correctValue": "1606",
     "explanation": "1606 is the smallest among the options.",
-    "difficultyReason": "Requires identifying the extreme value among several numbers."
+    "difficultyReason": "Requires identifying the extreme value among several numbers.",
+    "template_id": "p3-t004"
   },
   {
     "id": "P3-WHOLE-012",
@@ -237,7 +248,8 @@
     "correctAnswer": "D",
     "correctValue": "9655",
     "explanation": "9655 is the largest among the options.",
-    "difficultyReason": "Requires identifying the extreme value among several numbers."
+    "difficultyReason": "Requires identifying the extreme value among several numbers.",
+    "template_id": "p3-t005"
   },
   {
     "id": "P3-WHOLE-013",
@@ -257,7 +269,8 @@
     "correctAnswer": "D",
     "correctValue": "8014",
     "explanation": "Add 5721 and 2293 to get 8014.",
-    "difficultyReason": "Performs simple addition or subtraction with 4‑digit numbers."
+    "difficultyReason": "Performs simple addition or subtraction with 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-WHOLE-014",
@@ -277,7 +290,8 @@
     "correctAnswer": "A",
     "correctValue": "5718, 4149, 3643",
     "explanation": "Sorted in descending order: 5718, 4149, 3643.",
-    "difficultyReason": "Requires ordering 4‑digit numbers."
+    "difficultyReason": "Requires ordering 4‑digit numbers.",
+    "template_id": "p3-t007"
   },
   {
     "id": "P3-WHOLE-015",
@@ -297,7 +311,8 @@
     "correctAnswer": "D",
     "correctValue": "5874",
     "explanation": "Add 2327 and 3547 to get 5874.",
-    "difficultyReason": "Performs simple addition or subtraction with 4‑digit numbers."
+    "difficultyReason": "Performs simple addition or subtraction with 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-WHOLE-016",
@@ -317,7 +332,8 @@
     "correctAnswer": "C",
     "correctValue": "5975, 7815, 9089",
     "explanation": "Sorted in ascending order: 5975, 7815, 9089.",
-    "difficultyReason": "Requires ordering 4‑digit numbers."
+    "difficultyReason": "Requires ordering 4‑digit numbers.",
+    "template_id": "p3-t008"
   },
   {
     "id": "P3-WHOLE-017",
@@ -337,7 +353,8 @@
     "correctAnswer": "B",
     "correctValue": "2867, 6533, 8055",
     "explanation": "Sorted in ascending order: 2867, 6533, 8055.",
-    "difficultyReason": "Requires ordering 4‑digit numbers."
+    "difficultyReason": "Requires ordering 4‑digit numbers.",
+    "template_id": "p3-t008"
   },
   {
     "id": "P3-WHOLE-018",
@@ -357,7 +374,8 @@
     "correctAnswer": "C",
     "correctValue": "8489",
     "explanation": "8489 is the largest among the options.",
-    "difficultyReason": "Requires identifying the extreme value among several numbers."
+    "difficultyReason": "Requires identifying the extreme value among several numbers.",
+    "template_id": "p3-t005"
   },
   {
     "id": "P3-WHOLE-019",
@@ -377,7 +395,8 @@
     "correctAnswer": "C",
     "correctValue": "9311",
     "explanation": "9311 is the largest among the options.",
-    "difficultyReason": "Requires identifying the extreme value among several numbers."
+    "difficultyReason": "Requires identifying the extreme value among several numbers.",
+    "template_id": "p3-t005"
   },
   {
     "id": "P3-WHOLE-020",
@@ -397,7 +416,8 @@
     "correctAnswer": "A",
     "correctValue": "2934",
     "explanation": "2934 is the smallest among the options.",
-    "difficultyReason": "Requires identifying the extreme value among several numbers."
+    "difficultyReason": "Requires identifying the extreme value among several numbers.",
+    "template_id": "p3-t004"
   },
   {
     "id": "P3-WHOLE-021",
@@ -417,7 +437,8 @@
     "correctAnswer": "B",
     "correctValue": "9288",
     "explanation": "9288 is the largest among the options.",
-    "difficultyReason": "Requires identifying the extreme value among several numbers."
+    "difficultyReason": "Requires identifying the extreme value among several numbers.",
+    "template_id": "p3-t005"
   },
   {
     "id": "P3-WHOLE-022",
@@ -437,7 +458,8 @@
     "correctAnswer": "A",
     "correctValue": "6959",
     "explanation": "6959 is the largest among the options.",
-    "difficultyReason": "Requires identifying the extreme value among several numbers."
+    "difficultyReason": "Requires identifying the extreme value among several numbers.",
+    "template_id": "p3-t005"
   },
   {
     "id": "P3-WHOLE-023",
@@ -457,7 +479,8 @@
     "correctAnswer": "C",
     "correctValue": "5431",
     "explanation": "Add 4405 and 1026 to get 5431.",
-    "difficultyReason": "Performs simple addition or subtraction with 4‑digit numbers."
+    "difficultyReason": "Performs simple addition or subtraction with 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-WHOLE-024",
@@ -477,7 +500,8 @@
     "correctAnswer": "C",
     "correctValue": "3578",
     "explanation": "Subtract the known numbers from 9306 to find the missing number: 3578.",
-    "difficultyReason": "Requires solving for an unknown from a sum of three numbers."
+    "difficultyReason": "Requires solving for an unknown from a sum of three numbers.",
+    "template_id": "p3-t009"
   },
   {
     "id": "P3-WHOLE-027",
@@ -497,7 +521,8 @@
     "correctAnswer": "B",
     "correctValue": "3955",
     "explanation": "Subtract the known numbers from 8648 to find the missing number: 3955.",
-    "difficultyReason": "Requires solving for an unknown from a sum of three numbers."
+    "difficultyReason": "Requires solving for an unknown from a sum of three numbers.",
+    "template_id": "p3-t009"
   },
   {
     "id": "P3-WHOLE-029",
@@ -517,7 +542,8 @@
     "correctAnswer": "D",
     "correctValue": "3135",
     "explanation": "Subtract the known numbers from 9133 to find the missing number: 3135.",
-    "difficultyReason": "Requires solving for an unknown from a sum of three numbers."
+    "difficultyReason": "Requires solving for an unknown from a sum of three numbers.",
+    "template_id": "p3-t009"
   },
   {
     "id": "P3-WHOLE-031",
@@ -537,7 +563,8 @@
     "correctAnswer": "B",
     "correctValue": "4860",
     "explanation": "4860 satisfies both divisibility by 4 and ends with 9.",
-    "difficultyReason": "Requires applying divisibility and digit criteria."
+    "difficultyReason": "Requires applying divisibility and digit criteria.",
+    "template_id": "p3-t010"
   },
   {
     "id": "P3-ADD-001",
@@ -557,7 +584,8 @@
     "correctAnswer": "C",
     "correctValue": "1700",
     "explanation": "Subtract 5086 from 6786: 1700.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t011"
   },
   {
     "id": "P3-ADD-002",
@@ -577,7 +605,8 @@
     "correctAnswer": "A",
     "correctValue": "8850",
     "explanation": "Add 4965 and 3885: 8850.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-ADD-003",
@@ -597,7 +626,8 @@
     "correctAnswer": "A",
     "correctValue": "7955",
     "explanation": "Add 3464 and 4491: 7955.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-ADD-004",
@@ -617,7 +647,8 @@
     "correctAnswer": "C",
     "correctValue": "4769",
     "explanation": "Add 2521 and 2248: 4769.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-ADD-005",
@@ -637,7 +668,8 @@
     "correctAnswer": "A",
     "correctValue": "6104",
     "explanation": "Add 1749 and 4355: 6104.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-ADD-006",
@@ -657,7 +689,8 @@
     "correctAnswer": "B",
     "correctValue": "2222",
     "explanation": "Subtract 2545 from 4767: 2222.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t011"
   },
   {
     "id": "P3-ADD-007",
@@ -677,7 +710,8 @@
     "correctAnswer": "C",
     "correctValue": "7835",
     "explanation": "Add 4276 and 3559: 7835.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-ADD-008",
@@ -697,7 +731,8 @@
     "correctAnswer": "C",
     "correctValue": "5566",
     "explanation": "Subtract 1725 from 7291: 5566.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t011"
   },
   {
     "id": "P3-ADD-009",
@@ -717,7 +752,8 @@
     "correctAnswer": "B",
     "correctValue": "7023",
     "explanation": "Add 4074 and 2949: 7023.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-ADD-010",
@@ -737,7 +773,8 @@
     "correctAnswer": "B",
     "correctValue": "7490",
     "explanation": "Add 4305 and 3185: 7490.",
-    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers."
+    "difficultyReason": "Direct addition or subtraction of 4‑digit numbers.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-ADD-011",
@@ -757,7 +794,8 @@
     "correctAnswer": "C",
     "correctValue": "4095",
     "explanation": "Start at 4162. After two operations the result is 4095.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t012"
   },
   {
     "id": "P3-ADD-012",
@@ -777,7 +815,8 @@
     "correctAnswer": "C",
     "correctValue": "4353",
     "explanation": "Start at 4779. After two operations the result is 4353.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t012"
   },
   {
     "id": "P3-ADD-013",
@@ -797,7 +836,8 @@
     "correctAnswer": "B",
     "correctValue": "3286",
     "explanation": "Start at 3327. After two operations the result is 3286.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t013"
   },
   {
     "id": "P3-ADD-014",
@@ -817,7 +857,8 @@
     "correctAnswer": "B",
     "correctValue": "4402",
     "explanation": "Start at 3903. After two operations the result is 4402.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t014"
   },
   {
     "id": "P3-ADD-015",
@@ -837,7 +878,8 @@
     "correctAnswer": "C",
     "correctValue": "4447",
     "explanation": "Start at 4327. After two operations the result is 4447.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t015"
   },
   {
     "id": "P3-ADD-016",
@@ -857,7 +899,8 @@
     "correctAnswer": "A",
     "correctValue": "4992",
     "explanation": "Start at 4542. After two operations the result is 4992.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t015"
   },
   {
     "id": "P3-ADD-017",
@@ -877,7 +920,8 @@
     "correctAnswer": "C",
     "correctValue": "2801",
     "explanation": "Start at 2661. After two operations the result is 2801.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t015"
   },
   {
     "id": "P3-ADD-018",
@@ -897,7 +941,8 @@
     "correctAnswer": "A",
     "correctValue": "4427",
     "explanation": "Start at 4793. After two operations the result is 4427.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t016"
   },
   {
     "id": "P3-ADD-019",
@@ -917,7 +962,8 @@
     "correctAnswer": "B",
     "correctValue": "2479",
     "explanation": "Start at 2008. After two operations the result is 2479.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t015"
   },
   {
     "id": "P3-ADD-020",
@@ -937,7 +983,8 @@
     "correctAnswer": "C",
     "correctValue": "3891",
     "explanation": "Start at 4750. After two operations the result is 3891.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t016"
   },
   {
     "id": "P3-ADD-021",
@@ -957,7 +1004,8 @@
     "correctAnswer": "B",
     "correctValue": "1425",
     "explanation": "Start at 2038. After two operations the result is 1425.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t012"
   },
   {
     "id": "P3-ADD-022",
@@ -977,7 +1025,8 @@
     "correctAnswer": "A",
     "correctValue": "5231",
     "explanation": "Start at 4018. After two operations the result is 5231.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t015"
   },
   {
     "id": "P3-ADD-023",
@@ -997,7 +1046,8 @@
     "correctAnswer": "B",
     "correctValue": "4736",
     "explanation": "Start at 4317. After two operations the result is 4736.",
-    "difficultyReason": "Requires two sequential additions/subtractions of large numbers."
+    "difficultyReason": "Requires two sequential additions/subtractions of large numbers.",
+    "template_id": "p3-t015"
   },
   {
     "id": "P3-ADD-026",
@@ -1017,7 +1067,8 @@
     "correctAnswer": "D",
     "correctValue": "2370",
     "explanation": "Subtract the known numbers from 7047 to get 2370.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
+    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario.",
+    "template_id": "p3-t009"
   },
   {
     "id": "P3-ADD-027",
@@ -1037,7 +1088,8 @@
     "correctAnswer": "B",
     "correctValue": "1114",
     "explanation": "Subtract the known numbers from 6848 to get 1114.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
+    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario.",
+    "template_id": "p3-t009"
   },
   {
     "id": "P3-ADD-030",
@@ -1057,7 +1109,8 @@
     "correctAnswer": "D",
     "correctValue": "2207",
     "explanation": "Subtract the known numbers from 7414 to get 2207.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
+    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario.",
+    "template_id": "p3-t009"
   },
   {
     "id": "P3-ADD-032",
@@ -1077,7 +1130,8 @@
     "correctAnswer": "C",
     "correctValue": "3610",
     "explanation": "Subtract the known numbers from 8473 to get 3610.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
+    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario.",
+    "template_id": "p3-t017"
   },
   {
     "id": "P3-ADD-033",
@@ -1097,7 +1151,8 @@
     "correctAnswer": "D",
     "correctValue": "2276",
     "explanation": "Subtract the known numbers from 5045 to get 2276.",
-    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario."
+    "difficultyReason": "Requires solving for an unknown in a three‑step addition/subtraction scenario.",
+    "template_id": "p3-t017"
   },
   {
     "id": "P3-MUL-001",
@@ -1117,7 +1172,8 @@
     "correctAnswer": "D",
     "correctValue": "2786",
     "explanation": "Multiply 398 by 7 to get 2786.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-002",
@@ -1137,7 +1193,8 @@
     "correctAnswer": "A",
     "correctValue": "2712",
     "explanation": "Multiply 904 by 3 to get 2712.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-003",
@@ -1157,7 +1214,8 @@
     "correctAnswer": "B",
     "correctValue": "3696",
     "explanation": "Multiply 528 by 7 to get 3696.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-004",
@@ -1177,7 +1235,8 @@
     "correctAnswer": "C",
     "correctValue": "3096",
     "explanation": "Multiply 344 by 9 to get 3096.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-005",
@@ -1197,7 +1256,8 @@
     "correctAnswer": "A",
     "correctValue": "932",
     "explanation": "Multiply 466 by 2 to get 932.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-006",
@@ -1217,7 +1277,8 @@
     "correctAnswer": "D",
     "correctValue": "1515",
     "explanation": "Multiply 303 by 5 to get 1515.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-007",
@@ -1237,7 +1298,8 @@
     "correctAnswer": "A",
     "correctValue": "1680",
     "explanation": "Multiply 280 by 6 to get 1680.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-008",
@@ -1257,7 +1319,8 @@
     "correctAnswer": "A",
     "correctValue": "2415",
     "explanation": "Multiply 345 by 7 to get 2415.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-009",
@@ -1277,7 +1340,8 @@
     "correctAnswer": "A",
     "correctValue": "2368",
     "explanation": "Multiply 296 by 8 to get 2368.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-010",
@@ -1297,7 +1361,8 @@
     "correctAnswer": "B",
     "correctValue": "3632",
     "explanation": "Multiply 908 by 4 to get 3632.",
-    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number."
+    "difficultyReason": "Direct multiplication of a 3‑digit number by a 1‑digit number.",
+    "template_id": "p3-t018"
   },
   {
     "id": "P3-MUL-011",
@@ -1317,7 +1382,8 @@
     "correctAnswer": "B",
     "correctValue": "12",
     "explanation": "Divide 108 by 9 to get 12.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t019"
   },
   {
     "id": "P3-MUL-012",
@@ -1337,7 +1403,8 @@
     "correctAnswer": "A",
     "correctValue": "3",
     "explanation": "Divide 192 by 7: 192 = 7 × 27 + 3, so the remainder is 3.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t020"
   },
   {
     "id": "P3-MUL-013",
@@ -1357,7 +1424,8 @@
     "correctAnswer": "A",
     "correctValue": "7",
     "explanation": "Divide 115 by 9: 115 = 9 × 12 + 7, so the remainder is 7.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t020"
   },
   {
     "id": "P3-MUL-014",
@@ -1377,7 +1445,8 @@
     "correctAnswer": "C",
     "correctValue": "2",
     "explanation": "Divide 44 by 3: 44 = 3 × 14 + 2, so the remainder is 2.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t020"
   },
   {
     "id": "P3-MUL-015",
@@ -1397,7 +1466,8 @@
     "correctAnswer": "A",
     "correctValue": "12",
     "explanation": "Divide 72 by 6 to get 12.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t019"
   },
   {
     "id": "P3-MUL-016",
@@ -1417,7 +1487,8 @@
     "correctAnswer": "A",
     "correctValue": "3",
     "explanation": "Divide 52 by 7: 52 = 7 × 7 + 3, so the remainder is 3.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t020"
   },
   {
     "id": "P3-MUL-017",
@@ -1437,7 +1508,8 @@
     "correctAnswer": "A",
     "correctValue": "6",
     "explanation": "Divide 83 by 7: 83 = 7 × 11 + 6, so the remainder is 6.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t020"
   },
   {
     "id": "P3-MUL-018",
@@ -1457,7 +1529,8 @@
     "correctAnswer": "B",
     "correctValue": "9",
     "explanation": "Divide 81 by 9 to get 9.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t019"
   },
   {
     "id": "P3-MUL-019",
@@ -1477,7 +1550,8 @@
     "correctAnswer": "B",
     "correctValue": "6",
     "explanation": "Divide 54 by 9 to get 6.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t019"
   },
   {
     "id": "P3-MUL-020",
@@ -1497,7 +1571,8 @@
     "correctAnswer": "D",
     "correctValue": "3",
     "explanation": "Divide 24 by 8 to get 3.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t019"
   },
   {
     "id": "P3-MUL-021",
@@ -1517,7 +1592,8 @@
     "correctAnswer": "D",
     "correctValue": "9",
     "explanation": "Divide 54 by 6 to get 9.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t019"
   },
   {
     "id": "P3-MUL-022",
@@ -1537,7 +1613,8 @@
     "correctAnswer": "C",
     "correctValue": "17",
     "explanation": "Divide 51 by 3 to get 17.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t019"
   },
   {
     "id": "P3-MUL-023",
@@ -1557,7 +1634,8 @@
     "correctAnswer": "C",
     "correctValue": "5",
     "explanation": "Divide 161 by 6: 161 = 6 × 26 + 5, so the remainder is 5.",
-    "difficultyReason": "Requires calculating quotient or remainder in division."
+    "difficultyReason": "Requires calculating quotient or remainder in division.",
+    "template_id": "p3-t020"
   },
   {
     "id": "P3-MUL-024",
@@ -1577,7 +1655,8 @@
     "correctAnswer": "D",
     "correctValue": "62",
     "explanation": "First multiply: 5 × 88 = 440. Then divide by 7: 440 ÷ 7 = 62 trays.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t021"
   },
   {
     "id": "P3-MUL-025",
@@ -1597,7 +1676,8 @@
     "correctAnswer": "D",
     "correctValue": "110",
     "explanation": "First multiply: 10 × 55 = 550. Then divide by 5: 550 ÷ 5 = 110 trays.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t021"
   },
   {
     "id": "P3-MUL-026",
@@ -1617,7 +1697,8 @@
     "correctAnswer": "C",
     "correctValue": "24",
     "explanation": "First multiply: 4 × 56 = 224. Then divide by 9: 224 ÷ 9 = 24 trays.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t021"
   },
   {
     "id": "P3-MUL-027",
@@ -1637,7 +1718,8 @@
     "correctAnswer": "D",
     "correctValue": "48",
     "explanation": "Each bag has 8 sweets left. Multiply by 6: 48.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t022"
   },
   {
     "id": "P3-MUL-028",
@@ -1657,7 +1739,8 @@
     "correctAnswer": "A",
     "correctValue": "198",
     "explanation": "Each bag has 33 sweets left. Multiply by 6: 198.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t022"
   },
   {
     "id": "P3-MUL-029",
@@ -1677,7 +1760,8 @@
     "correctAnswer": "D",
     "correctValue": "57",
     "explanation": "First multiply: 10 × 23 = 230. Then divide by 4: 230 ÷ 4 = 57 trays.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t021"
   },
   {
     "id": "P3-MUL-030",
@@ -1697,7 +1781,8 @@
     "correctAnswer": "B",
     "correctValue": "33",
     "explanation": "First multiply: 5 × 61 = 305. Then divide by 9: 305 ÷ 9 = 33 trays.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t021"
   },
   {
     "id": "P3-MUL-031",
@@ -1717,7 +1802,8 @@
     "correctAnswer": "C",
     "correctValue": "8",
     "explanation": "Each bag has 2 sweets left. Multiply by 4: 8.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t022"
   },
   {
     "id": "P3-MUL-032",
@@ -1737,7 +1823,8 @@
     "correctAnswer": "A",
     "correctValue": "44",
     "explanation": "Each bag has 11 sweets left. Multiply by 4: 44.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t022"
   },
   {
     "id": "P3-MUL-033",
@@ -1757,7 +1844,8 @@
     "correctAnswer": "C",
     "correctValue": "129",
     "explanation": "Each bag has 43 sweets left. Multiply by 3: 129.",
-    "difficultyReason": "Requires combining multiplication with division or subtraction."
+    "difficultyReason": "Requires combining multiplication with division or subtraction.",
+    "template_id": "p3-t022"
   },
   {
     "id": "P3-MONEY-001",
@@ -1777,7 +1865,8 @@
     "correctAnswer": "C",
     "correctValue": "$16.51",
     "explanation": "Subtract $5.17 from $21.68 to get $16.51.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t011"
   },
   {
     "id": "P3-MONEY-002",
@@ -1797,7 +1886,8 @@
     "correctAnswer": "B",
     "correctValue": "$61.22",
     "explanation": "Add $41.70 and $19.52 to get $61.22.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-MONEY-003",
@@ -1817,7 +1907,8 @@
     "correctAnswer": "C",
     "correctValue": "$33.96",
     "explanation": "Subtract $5.44 from $39.40 to get $33.96.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t011"
   },
   {
     "id": "P3-MONEY-004",
@@ -1837,7 +1928,8 @@
     "correctAnswer": "C",
     "correctValue": "$63.04",
     "explanation": "Add $23.50 and $39.54 to get $63.04.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-MONEY-005",
@@ -1857,7 +1949,8 @@
     "correctAnswer": "A",
     "correctValue": "$53.53",
     "explanation": "Add $19.94 and $33.59 to get $53.53.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-MONEY-006",
@@ -1877,7 +1970,8 @@
     "correctAnswer": "D",
     "correctValue": "$48.21",
     "explanation": "Add $15.47 and $32.74 to get $48.21.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-MONEY-007",
@@ -1897,7 +1991,8 @@
     "correctAnswer": "B",
     "correctValue": "$28.58",
     "explanation": "Subtract $9.22 from $37.80 to get $28.58.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t011"
   },
   {
     "id": "P3-MONEY-008",
@@ -1917,7 +2012,8 @@
     "correctAnswer": "B",
     "correctValue": "$77.43",
     "explanation": "Add $28.44 and $48.99 to get $77.43.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-MONEY-009",
@@ -1937,7 +2033,8 @@
     "correctAnswer": "B",
     "correctValue": "$80.73",
     "explanation": "Add $45.80 and $34.93 to get $80.73.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-MONEY-010",
@@ -1957,7 +2054,8 @@
     "correctAnswer": "D",
     "correctValue": "$52.29",
     "explanation": "Add $44.14 and $8.15 to get $52.29.",
-    "difficultyReason": "Direct addition or subtraction of dollars and cents."
+    "difficultyReason": "Direct addition or subtraction of dollars and cents.",
+    "template_id": "p3-t006"
   },
   {
     "id": "P3-MONEY-011",
@@ -1977,7 +2075,8 @@
     "correctAnswer": "B",
     "correctValue": "$12.35",
     "explanation": "Total cost = $37.65. Change = $50.00 - $37.65 = $12.35.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t023"
   },
   {
     "id": "P3-MONEY-012",
@@ -1997,7 +2096,8 @@
     "correctAnswer": "A",
     "correctValue": "$73.94",
     "explanation": "Total cost = $26.06. Change = $100.00 - $26.06 = $73.94.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t024"
   },
   {
     "id": "P3-MONEY-013",
@@ -2017,7 +2117,8 @@
     "correctAnswer": "B",
     "correctValue": "$83.02",
     "explanation": "Total cost = $16.98. Change = $100.00 - $16.98 = $83.02.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t025"
   },
   {
     "id": "P3-MONEY-014",
@@ -2037,7 +2138,8 @@
     "correctAnswer": "B",
     "correctValue": "$72.14",
     "explanation": "Total cost = $27.86. Change = $100.00 - $27.86 = $72.14.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t023"
   },
   {
     "id": "P3-MONEY-015",
@@ -2057,7 +2159,8 @@
     "correctAnswer": "D",
     "correctValue": "$65.04",
     "explanation": "Total cost = $34.96. Change = $100.00 - $34.96 = $65.04.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t025"
   },
   {
     "id": "P3-MONEY-016",
@@ -2077,7 +2180,8 @@
     "correctAnswer": "D",
     "correctValue": "$7.91",
     "explanation": "Total cost = $42.09. Change = $50.00 - $42.09 = $7.91.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t023"
   },
   {
     "id": "P3-MONEY-017",
@@ -2097,7 +2201,8 @@
     "correctAnswer": "B",
     "correctValue": "$77.25",
     "explanation": "Total cost = $22.75. Change = $100.00 - $22.75 = $77.25.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t026"
   },
   {
     "id": "P3-MONEY-018",
@@ -2117,7 +2222,8 @@
     "correctAnswer": "D",
     "correctValue": "$87.39",
     "explanation": "Total cost = $12.61. Change = $100.00 - $12.61 = $87.39.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t025"
   },
   {
     "id": "P3-MONEY-019",
@@ -2137,7 +2243,8 @@
     "correctAnswer": "A",
     "correctValue": "$21.52",
     "explanation": "Total cost = $28.48. Change = $50.00 - $28.48 = $21.52.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t023"
   },
   {
     "id": "P3-MONEY-020",
@@ -2157,7 +2264,8 @@
     "correctAnswer": "B",
     "correctValue": "$17.67",
     "explanation": "Total cost = $32.33. Change = $50.00 - $32.33 = $17.67.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t027"
   },
   {
     "id": "P3-MONEY-021",
@@ -2177,7 +2285,8 @@
     "correctAnswer": "D",
     "correctValue": "$31.37",
     "explanation": "Total cost = $18.63. Change = $50.00 - $18.63 = $31.37.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t025"
   },
   {
     "id": "P3-MONEY-022",
@@ -2197,7 +2306,8 @@
     "correctAnswer": "B",
     "correctValue": "$69.49",
     "explanation": "Total cost = $30.51. Change = $100.00 - $30.51 = $69.49.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t023"
   },
   {
     "id": "P3-MONEY-023",
@@ -2217,7 +2327,8 @@
     "correctAnswer": "C",
     "correctValue": "$93.33",
     "explanation": "Total cost = $6.67. Change = $100.00 - $6.67 = $93.33.",
-    "difficultyReason": "Requires summing multiple costs and subtracting from payment."
+    "difficultyReason": "Requires summing multiple costs and subtracting from payment.",
+    "template_id": "p3-t025"
   },
   {
     "id": "P3-MONEY-024",
@@ -2237,7 +2348,8 @@
     "correctAnswer": "C",
     "correctValue": "$1.58",
     "explanation": "Total spent = $50.00 - $19.41 = $30.59. Subtract $29.01 to find the other cost: $1.58.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t028"
   },
   {
     "id": "P3-MONEY-025",
@@ -2257,7 +2369,8 @@
     "correctAnswer": "A",
     "correctValue": "$26.91",
     "explanation": "Total spent = $100.00 - $41.06 = $58.94. Subtract $32.03 to find the other cost: $26.91.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t029"
   },
   {
     "id": "P3-MONEY-026",
@@ -2277,7 +2390,8 @@
     "correctAnswer": "B",
     "correctValue": "$16.68",
     "explanation": "Cost = 3 × $7.64 + 4 × $2.60 = $33.32. Change = $50.00 - $33.32 = $16.68.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t030"
   },
   {
     "id": "P3-MONEY-027",
@@ -2297,7 +2411,8 @@
     "correctAnswer": "D",
     "correctValue": "$55.86",
     "explanation": "Total spent = $100.00 - $6.46 = $93.54. Subtract $37.68 to find the other cost: $55.86.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t028"
   },
   {
     "id": "P3-MONEY-028",
@@ -2317,7 +2432,8 @@
     "correctAnswer": "A",
     "correctValue": "$32.38",
     "explanation": "Cost = 2 × $3.81 + 5 × $2.00 = $17.62. Change = $50.00 - $17.62 = $32.38.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t030"
   },
   {
     "id": "P3-MONEY-029",
@@ -2337,7 +2453,8 @@
     "correctAnswer": "C",
     "correctValue": "$8.90",
     "explanation": "Cost = 3 × $8.58 + 4 × $3.84 = $41.10. Change = $50.00 - $41.10 = $8.90.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t030"
   },
   {
     "id": "P3-MONEY-030",
@@ -2357,7 +2474,8 @@
     "correctAnswer": "A",
     "correctValue": "$23.30",
     "explanation": "Cost = 2 × $5.16 + 6 × $2.73 = $26.70. Change = $50.00 - $26.70 = $23.30.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t030"
   },
   {
     "id": "P3-MONEY-031",
@@ -2377,7 +2495,8 @@
     "correctAnswer": "A",
     "correctValue": "$44.67",
     "explanation": "Total spent = $100.00 - $19.63 = $80.37. Subtract $35.70 to find the other cost: $44.67.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t029"
   },
   {
     "id": "P3-MONEY-032",
@@ -2397,7 +2516,8 @@
     "correctAnswer": "B",
     "correctValue": "$52.78",
     "explanation": "Total spent = $100.00 - $21.38 = $78.62. Subtract $25.84 to find the other cost: $52.78.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t031"
   },
   {
     "id": "P3-MONEY-033",
@@ -2417,7 +2537,8 @@
     "correctAnswer": "C",
     "correctValue": "$53.98",
     "explanation": "Total spent = $100.00 - $22.76 = $77.24. Subtract $23.26 to find the other cost: $53.98.",
-    "difficultyReason": "Requires solving for unknown or combining costs and quantities."
+    "difficultyReason": "Requires solving for unknown or combining costs and quantities.",
+    "template_id": "p3-t032"
   },
   {
     "id": "P3-TIME-001",
@@ -2437,7 +2558,8 @@
     "correctAnswer": "C",
     "correctValue": "9:15 p.m.",
     "explanation": "Convert 21:15 to 12-hour format: 9:15 p.m..",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-002",
@@ -2457,7 +2579,8 @@
     "correctAnswer": "B",
     "correctValue": "03:45",
     "explanation": "Convert 3:45 a.m. to 24-hour format: 03:45.",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-003",
@@ -2477,7 +2600,8 @@
     "correctAnswer": "D",
     "correctValue": "8:45 p.m.",
     "explanation": "Convert 20:45 to 12-hour format: 8:45 p.m..",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-004",
@@ -2497,7 +2621,8 @@
     "correctAnswer": "D",
     "correctValue": "3:45 a.m.",
     "explanation": "Convert 03:45 to 12-hour format: 3:45 a.m..",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-005",
@@ -2517,7 +2642,8 @@
     "correctAnswer": "B",
     "correctValue": "05:15",
     "explanation": "Convert 5:15 a.m. to 24-hour format: 05:15.",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-006",
@@ -2537,7 +2663,8 @@
     "correctAnswer": "C",
     "correctValue": "12:45 p.m.",
     "explanation": "Convert 12:45 to 12-hour format: 12:45 p.m..",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-007",
@@ -2557,7 +2684,8 @@
     "correctAnswer": "B",
     "correctValue": "4:15 a.m.",
     "explanation": "Convert 04:15 to 12-hour format: 4:15 a.m..",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-008",
@@ -2577,7 +2705,8 @@
     "correctAnswer": "A",
     "correctValue": "7:30 a.m.",
     "explanation": "Convert 07:30 to 12-hour format: 7:30 a.m..",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-009",
@@ -2597,7 +2726,8 @@
     "correctAnswer": "C",
     "correctValue": "4:30 p.m.",
     "explanation": "Convert 16:30 to 12-hour format: 4:30 p.m..",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-010",
@@ -2617,7 +2747,8 @@
     "correctAnswer": "A",
     "correctValue": "03:45",
     "explanation": "Convert 3:45 a.m. to 24-hour format: 03:45.",
-    "difficultyReason": "Converts between 24-hour and 12-hour clock representations."
+    "difficultyReason": "Converts between 24-hour and 12-hour clock representations.",
+    "template_id": "p3-t033"
   },
   {
     "id": "P3-TIME-011",
@@ -2637,7 +2768,8 @@
     "correctAnswer": "C",
     "correctValue": "12:35",
     "explanation": "Add 1 hours and 50 minutes to 10:45.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t034"
   },
   {
     "id": "P3-TIME-012",
@@ -2657,7 +2789,8 @@
     "correctAnswer": "B",
     "correctValue": "2h 50m",
     "explanation": "Compute the difference between start and end times: 2h 50m.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t035"
   },
   {
     "id": "P3-TIME-013",
@@ -2677,7 +2810,8 @@
     "correctAnswer": "C",
     "correctValue": "19:55",
     "explanation": "Subtract 1 hours and 50 minutes from 21:45.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t036"
   },
   {
     "id": "P3-TIME-014",
@@ -2697,7 +2831,8 @@
     "correctAnswer": "B",
     "correctValue": "16:10",
     "explanation": "Add 2 hours and 10 minutes to 14:00.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t037"
   },
   {
     "id": "P3-TIME-015",
@@ -2717,7 +2852,8 @@
     "correctAnswer": "C",
     "correctValue": "17:10",
     "explanation": "Subtract 1 hours and 20 minutes from 18:30.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t036"
   },
   {
     "id": "P3-TIME-016",
@@ -2737,7 +2873,8 @@
     "correctAnswer": "A",
     "correctValue": "14:35",
     "explanation": "Subtract 1 hours and 10 minutes from 15:45.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t036"
   },
   {
     "id": "P3-TIME-017",
@@ -2757,7 +2894,8 @@
     "correctAnswer": "A",
     "correctValue": "1h 50m",
     "explanation": "Compute the difference between start and end times: 1h 50m.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t035"
   },
   {
     "id": "P3-TIME-018",
@@ -2777,7 +2915,8 @@
     "correctAnswer": "B",
     "correctValue": "1h 20m",
     "explanation": "Compute the difference between start and end times: 1h 20m.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t035"
   },
   {
     "id": "P3-TIME-019",
@@ -2797,7 +2936,8 @@
     "correctAnswer": "D",
     "correctValue": "19:15",
     "explanation": "Subtract 1 hours and 30 minutes from 20:45.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t036"
   },
   {
     "id": "P3-TIME-020",
@@ -2817,7 +2957,8 @@
     "correctAnswer": "C",
     "correctValue": "2h 50m",
     "explanation": "Compute the difference between start and end times: 2h 50m.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t035"
   },
   {
     "id": "P3-TIME-021",
@@ -2837,7 +2978,8 @@
     "correctAnswer": "A",
     "correctValue": "2h 40m",
     "explanation": "Compute the difference between start and end times: 2h 40m.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t035"
   },
   {
     "id": "P3-TIME-022",
@@ -2857,7 +2999,8 @@
     "correctAnswer": "B",
     "correctValue": "14:40",
     "explanation": "Subtract 2 hours and 50 minutes from 17:30.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t038"
   },
   {
     "id": "P3-TIME-023",
@@ -2877,7 +3020,8 @@
     "correctAnswer": "D",
     "correctValue": "20:20",
     "explanation": "Subtract 1 hours and 10 minutes from 21:30.",
-    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock."
+    "difficultyReason": "Requires calculating end time or start time or duration using 24‑hour clock.",
+    "template_id": "p3-t036"
   },
   {
     "id": "P3-TIME-024",
@@ -2897,7 +3041,8 @@
     "correctAnswer": "C",
     "correctValue": "13:00",
     "explanation": "Add 1h 30m then add 2h 30m to 09:00.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t039"
   },
   {
     "id": "P3-TIME-025",
@@ -2917,7 +3062,8 @@
     "correctAnswer": "B",
     "correctValue": "17:35",
     "explanation": "Add 1h 20m then add 1h 30m to 14:45.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t040"
   },
   {
     "id": "P3-TIME-026",
@@ -2937,7 +3083,8 @@
     "correctAnswer": "C",
     "correctValue": "18:30",
     "explanation": "Subtract 1h 30m then subtract 1h 30m from 21:30.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t041"
   },
   {
     "id": "P3-TIME-027",
@@ -2957,7 +3104,8 @@
     "correctAnswer": "A",
     "correctValue": "12:10",
     "explanation": "Add 1h 30m then add 2h 10m to 08:30.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t042"
   },
   {
     "id": "P3-TIME-028",
@@ -2977,7 +3125,8 @@
     "correctAnswer": "D",
     "correctValue": "16:00",
     "explanation": "Add 2h 30m then add 1h 30m to 12:00.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t043"
   },
   {
     "id": "P3-TIME-029",
@@ -2997,7 +3146,8 @@
     "correctAnswer": "B",
     "correctValue": "11:10",
     "explanation": "Subtract 2h 10m then subtract 1h 10m from 14:30.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t044"
   },
   {
     "id": "P3-TIME-030",
@@ -3017,7 +3167,8 @@
     "correctAnswer": "A",
     "correctValue": "16:55",
     "explanation": "Subtract 1h 30m then subtract 1h 20m from 19:45.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t045"
   },
   {
     "id": "P3-TIME-031",
@@ -3037,7 +3188,8 @@
     "correctAnswer": "C",
     "correctValue": "07:10",
     "explanation": "Subtract 1h 20m then subtract 2h 30m from 11:00.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t046"
   },
   {
     "id": "P3-TIME-032",
@@ -3057,7 +3209,8 @@
     "correctAnswer": "D",
     "correctValue": "14:25",
     "explanation": "Subtract 1h 20m then subtract 1h 30m from 17:15.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t047"
   },
   {
     "id": "P3-TIME-033",
@@ -3077,7 +3230,8 @@
     "correctAnswer": "B",
     "correctValue": "15:55",
     "explanation": "Add 2h 20m then add 2h 20m to 11:15.",
-    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times."
+    "difficultyReason": "Requires adding or subtracting multiple durations from start or end times.",
+    "template_id": "p3-t048"
   },
   {
     "id": "P3-MEAS-001",
@@ -3097,7 +3251,8 @@
     "correctAnswer": "B",
     "correctValue": "1.6 ℓ",
     "explanation": "1 ℓ = 1000 mℓ. 1603 mℓ ÷ 1000 = 1.6 ℓ.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t049"
   },
   {
     "id": "P3-MEAS-002",
@@ -3117,7 +3272,8 @@
     "correctAnswer": "D",
     "correctValue": "1.31 ℓ",
     "explanation": "1 ℓ = 1000 mℓ. 1312 mℓ ÷ 1000 = 1.31 ℓ.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t049"
   },
   {
     "id": "P3-MEAS-003",
@@ -3137,7 +3293,8 @@
     "correctAnswer": "C",
     "correctValue": "4.93 kg",
     "explanation": "1 kg = 1000 g. 4930 g ÷ 1000 = 4.93 kg.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t050"
   },
   {
     "id": "P3-MEAS-004",
@@ -3157,7 +3314,8 @@
     "correctAnswer": "C",
     "correctValue": "2.12 m",
     "explanation": "1 m = 100 cm. 212 cm ÷ 100 = 2.12 m.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t051"
   },
   {
     "id": "P3-MEAS-005",
@@ -3177,7 +3335,8 @@
     "correctAnswer": "B",
     "correctValue": "5.0 kg",
     "explanation": "1 kg = 1000 g. 4999 g ÷ 1000 = 5.0 kg.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t050"
   },
   {
     "id": "P3-MEAS-006",
@@ -3197,7 +3356,8 @@
     "correctAnswer": "B",
     "correctValue": "2.59 ℓ",
     "explanation": "1 ℓ = 1000 mℓ. 2594 mℓ ÷ 1000 = 2.59 ℓ.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t049"
   },
   {
     "id": "P3-MEAS-007",
@@ -3217,7 +3377,8 @@
     "correctAnswer": "C",
     "correctValue": "0.92 ℓ",
     "explanation": "1 ℓ = 1000 mℓ. 922 mℓ ÷ 1000 = 0.92 ℓ.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t049"
   },
   {
     "id": "P3-MEAS-008",
@@ -3237,7 +3398,8 @@
     "correctAnswer": "D",
     "correctValue": "2.49 m",
     "explanation": "1 m = 100 cm. 249 cm ÷ 100 = 2.49 m.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t051"
   },
   {
     "id": "P3-MEAS-009",
@@ -3257,7 +3419,8 @@
     "correctAnswer": "C",
     "correctValue": "2.96 kg",
     "explanation": "1 kg = 1000 g. 2962 g ÷ 1000 = 2.96 kg.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t050"
   },
   {
     "id": "P3-MEAS-010",
@@ -3277,7 +3440,8 @@
     "correctAnswer": "B",
     "correctValue": "4.27 m",
     "explanation": "1 m = 100 cm. 427 cm ÷ 100 = 4.27 m.",
-    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres."
+    "difficultyReason": "Converts between centimetres/metres, grams/kilograms or millilitres/litres.",
+    "template_id": "p3-t051"
   },
   {
     "id": "P3-MEAS-011",
@@ -3297,7 +3461,8 @@
     "correctAnswer": "D",
     "correctValue": "4 kg 485 g",
     "explanation": "Convert 3 kg 103 g to 3103 g. Add 1382 g = 4485 g, which is 4 kg 485 g.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t052"
   },
   {
     "id": "P3-MEAS-012",
@@ -3317,7 +3482,8 @@
     "correctAnswer": "C",
     "correctValue": "4 ℓ 554 mℓ",
     "explanation": "Convert 3 ℓ 788 mℓ to 3788 mℓ. Add 766 mℓ = 4554 mℓ, which is 4 ℓ 554 mℓ.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t053"
   },
   {
     "id": "P3-MEAS-013",
@@ -3337,7 +3503,8 @@
     "correctAnswer": "D",
     "correctValue": "1 m 96 cm",
     "explanation": "Convert 1 m 16 cm to 116 cm. Add 80 cm = 196 cm, which is 1 m 96 cm.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t054"
   },
   {
     "id": "P3-MEAS-014",
@@ -3357,7 +3524,8 @@
     "correctAnswer": "A",
     "correctValue": "4 kg 398 g",
     "explanation": "Convert 3 kg 485 g to 3485 g. Add 913 g = 4398 g, which is 4 kg 398 g.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t052"
   },
   {
     "id": "P3-MEAS-015",
@@ -3377,7 +3545,8 @@
     "correctAnswer": "D",
     "correctValue": "4 kg 613 g",
     "explanation": "Convert 2 kg 644 g to 2644 g. Add 1969 g = 4613 g, which is 4 kg 613 g.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t052"
   },
   {
     "id": "P3-MEAS-016",
@@ -3397,7 +3566,8 @@
     "correctAnswer": "D",
     "correctValue": "1 ℓ 889 mℓ",
     "explanation": "Convert 1 ℓ 296 mℓ to 1296 mℓ. Add 593 mℓ = 1889 mℓ, which is 1 ℓ 889 mℓ.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t053"
   },
   {
     "id": "P3-MEAS-017",
@@ -3417,7 +3587,8 @@
     "correctAnswer": "B",
     "correctValue": "3 ℓ 874 mℓ",
     "explanation": "Convert 2 ℓ 575 mℓ to 2575 mℓ. Add 1299 mℓ = 3874 mℓ, which is 3 ℓ 874 mℓ.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t053"
   },
   {
     "id": "P3-MEAS-018",
@@ -3437,7 +3608,8 @@
     "correctAnswer": "B",
     "correctValue": "4 ℓ 559 mℓ",
     "explanation": "Convert 3 ℓ 9 mℓ to 3009 mℓ. Add 1550 mℓ = 4559 mℓ, which is 4 ℓ 559 mℓ.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t053"
   },
   {
     "id": "P3-MEAS-019",
@@ -3457,7 +3629,8 @@
     "correctAnswer": "C",
     "correctValue": "3 m 91 cm",
     "explanation": "Convert 2 m 5 cm to 205 cm. Add 186 cm = 391 cm, which is 3 m 91 cm.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t054"
   },
   {
     "id": "P3-MEAS-020",
@@ -3477,7 +3650,8 @@
     "correctAnswer": "D",
     "correctValue": "4 m 12 cm",
     "explanation": "Convert 2 m 26 cm to 226 cm. Add 186 cm = 412 cm, which is 4 m 12 cm.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t054"
   },
   {
     "id": "P3-MEAS-021",
@@ -3497,7 +3671,8 @@
     "correctAnswer": "A",
     "correctValue": "3 ℓ 170 mℓ",
     "explanation": "Convert 1 ℓ 418 mℓ to 1418 mℓ. Add 1752 mℓ = 3170 mℓ, which is 3 ℓ 170 mℓ.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t053"
   },
   {
     "id": "P3-MEAS-022",
@@ -3517,7 +3692,8 @@
     "correctAnswer": "B",
     "correctValue": "4 m 89 cm",
     "explanation": "Convert 3 m 2 cm to 302 cm. Add 187 cm = 489 cm, which is 4 m 89 cm.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t054"
   },
   {
     "id": "P3-MEAS-023",
@@ -3537,7 +3713,8 @@
     "correctAnswer": "B",
     "correctValue": "3 kg 899 g",
     "explanation": "Convert 2 kg 208 g to 2208 g. Add 1691 g = 3899 g, which is 3 kg 899 g.",
-    "difficultyReason": "Requires conversion and addition of mixed units."
+    "difficultyReason": "Requires conversion and addition of mixed units.",
+    "template_id": "p3-t052"
   },
   {
     "id": "P3-MEAS-024",
@@ -3557,7 +3734,8 @@
     "correctAnswer": "A",
     "correctValue": "635 g",
     "explanation": "Convert to grams: 2 kg 470 g = 2470 g; 1 kg 835 g = 1835 g. Difference = 635 g.",
-    "difficultyReason": "Requires converting masses and computing difference."
+    "difficultyReason": "Requires converting masses and computing difference.",
+    "template_id": "p3-t055"
   },
   {
     "id": "P3-MEAS-025",
@@ -3577,7 +3755,8 @@
     "correctAnswer": "D",
     "correctValue": "63 cm",
     "explanation": "Convert lengths to cm: 5 m 87 cm = 587 cm; 5 m 24 cm = 524 cm. Difference = 63 cm.",
-    "difficultyReason": "Requires converting lengths and computing difference."
+    "difficultyReason": "Requires converting lengths and computing difference.",
+    "template_id": "p3-t056"
   },
   {
     "id": "P3-MEAS-026",
@@ -3597,7 +3776,8 @@
     "correctAnswer": "B",
     "correctValue": "231 mℓ",
     "explanation": "Convert to mℓ: 1 ℓ 617 mℓ = 1617 mℓ; 1 ℓ 386 mℓ = 1386 mℓ. Difference = 231 mℓ.",
-    "difficultyReason": "Requires converting volumes and computing difference."
+    "difficultyReason": "Requires converting volumes and computing difference.",
+    "template_id": "p3-t057"
   },
   {
     "id": "P3-MEAS-027",
@@ -3617,7 +3797,8 @@
     "correctAnswer": "B",
     "correctValue": "21 cm",
     "explanation": "Convert lengths to cm: 2 m 69 cm = 269 cm; 2 m 90 cm = 290 cm. Difference = 21 cm.",
-    "difficultyReason": "Requires converting lengths and computing difference."
+    "difficultyReason": "Requires converting lengths and computing difference.",
+    "template_id": "p3-t056"
   },
   {
     "id": "P3-MEAS-028",
@@ -3637,7 +3818,8 @@
     "correctAnswer": "C",
     "correctValue": "693 g",
     "explanation": "Convert to grams: 2 kg 249 g = 2249 g; 1 kg 556 g = 1556 g. Difference = 693 g.",
-    "difficultyReason": "Requires converting masses and computing difference."
+    "difficultyReason": "Requires converting masses and computing difference.",
+    "template_id": "p3-t055"
   },
   {
     "id": "P3-MEAS-029",
@@ -3657,7 +3839,8 @@
     "correctAnswer": "A",
     "correctValue": "99 cm",
     "explanation": "Convert lengths to cm: 2 m 28 cm = 228 cm; 1 m 29 cm = 129 cm. Difference = 99 cm.",
-    "difficultyReason": "Requires converting lengths and computing difference."
+    "difficultyReason": "Requires converting lengths and computing difference.",
+    "template_id": "p3-t056"
   },
   {
     "id": "P3-MEAS-030",
@@ -3677,7 +3860,8 @@
     "correctAnswer": "C",
     "correctValue": "1008 g",
     "explanation": "Convert to grams: 2 kg 112 g = 2112 g; 1 kg 104 g = 1104 g. Difference = 1008 g.",
-    "difficultyReason": "Requires converting masses and computing difference."
+    "difficultyReason": "Requires converting masses and computing difference.",
+    "template_id": "p3-t055"
   },
   {
     "id": "P3-MEAS-031",
@@ -3697,7 +3881,8 @@
     "correctAnswer": "B",
     "correctValue": "1919 mℓ",
     "explanation": "Convert to mℓ: 3 ℓ 614 mℓ = 3614 mℓ; 1 ℓ 695 mℓ = 1695 mℓ. Difference = 1919 mℓ.",
-    "difficultyReason": "Requires converting volumes and computing difference."
+    "difficultyReason": "Requires converting volumes and computing difference.",
+    "template_id": "p3-t057"
   },
   {
     "id": "P3-MEAS-032",
@@ -3717,7 +3902,8 @@
     "correctAnswer": "B",
     "correctValue": "75 g",
     "explanation": "Convert to grams: 1 kg 807 g = 1807 g; 1 kg 882 g = 1882 g. Difference = 75 g.",
-    "difficultyReason": "Requires converting masses and computing difference."
+    "difficultyReason": "Requires converting masses and computing difference.",
+    "template_id": "p3-t055"
   },
   {
     "id": "P3-MEAS-033",
@@ -3737,7 +3923,8 @@
     "correctAnswer": "C",
     "correctValue": "1834 mℓ",
     "explanation": "Convert to mℓ: 4 ℓ 982 mℓ = 4982 mℓ; 3 ℓ 148 mℓ = 3148 mℓ. Difference = 1834 mℓ.",
-    "difficultyReason": "Requires converting volumes and computing difference."
+    "difficultyReason": "Requires converting volumes and computing difference.",
+    "template_id": "p3-t057"
   },
   {
     "id": "P3-FRAC-001",
@@ -3757,7 +3944,8 @@
     "correctAnswer": "B",
     "correctValue": "7/9",
     "explanation": "Divide numerator and denominator by 1 to get 7/9.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t058"
   },
   {
     "id": "P3-FRAC-002",
@@ -3777,7 +3965,8 @@
     "correctAnswer": "A",
     "correctValue": "5/11",
     "explanation": "Divide numerator and denominator by 1 to get 5/11.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t058"
   },
   {
     "id": "P3-FRAC-003",
@@ -3797,7 +3986,8 @@
     "correctAnswer": "B",
     "correctValue": "16/8",
     "explanation": "Multiply numerator and denominator of 4/2 by 4 to get 16/8.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t059"
   },
   {
     "id": "P3-FRAC-004",
@@ -3817,7 +4007,8 @@
     "correctAnswer": "B",
     "correctValue": "4/8",
     "explanation": "Multiply numerator and denominator of 2/4 by 2 to get 4/8.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t059"
   },
   {
     "id": "P3-FRAC-005",
@@ -3837,7 +4028,8 @@
     "correctAnswer": "A",
     "correctValue": "3/4",
     "explanation": "Divide numerator and denominator by 1 to get 3/4.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t058"
   },
   {
     "id": "P3-FRAC-006",
@@ -3857,7 +4049,8 @@
     "correctAnswer": "C",
     "correctValue": "6/10",
     "explanation": "Multiply numerator and denominator of 3/5 by 2 to get 6/10.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t059"
   },
   {
     "id": "P3-FRAC-007",
@@ -3877,7 +4070,8 @@
     "correctAnswer": "B",
     "correctValue": "2/6",
     "explanation": "Multiply numerator and denominator of 1/3 by 2 to get 2/6.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t059"
   },
   {
     "id": "P3-FRAC-008",
@@ -3897,7 +4091,8 @@
     "correctAnswer": "B",
     "correctValue": "4/3",
     "explanation": "Divide numerator and denominator by 1 to get 4/3.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t058"
   },
   {
     "id": "P3-FRAC-009",
@@ -3917,7 +4112,8 @@
     "correctAnswer": "C",
     "correctValue": "8/12",
     "explanation": "Divide numerator and denominator by 4 to get 8/12.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t058"
   },
   {
     "id": "P3-FRAC-010",
@@ -3937,7 +4133,8 @@
     "correctAnswer": "A",
     "correctValue": "3/4",
     "explanation": "Divide numerator and denominator by 1 to get 3/4.",
-    "difficultyReason": "Tests knowledge of equivalent fractions or simplification."
+    "difficultyReason": "Tests knowledge of equivalent fractions or simplification.",
+    "template_id": "p3-t058"
   },
   {
     "id": "P3-FRAC-011",
@@ -3957,7 +4154,8 @@
     "correctAnswer": "A",
     "correctValue": "2/5",
     "explanation": "Convert to decimals: 2/8 ≈ 0.25, 2/5 ≈ 0.40. The larger value corresponds to the larger fraction.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t060"
   },
   {
     "id": "P3-FRAC-012",
@@ -3977,7 +4175,8 @@
     "correctAnswer": "D",
     "correctValue": "3/5",
     "explanation": "Convert to decimals: 4/7 ≈ 0.57, 3/5 ≈ 0.60. The larger value corresponds to the larger fraction.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t060"
   },
   {
     "id": "P3-FRAC-013",
@@ -3997,7 +4196,8 @@
     "correctAnswer": "D",
     "correctValue": "2",
     "explanation": "Multiply 15 by 1 and divide by 6 to get 2.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t061"
   },
   {
     "id": "P3-FRAC-014",
@@ -4017,7 +4217,8 @@
     "correctAnswer": "D",
     "correctValue": "19",
     "explanation": "Multiply 39 by 2 and divide by 4 to get 19.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t061"
   },
   {
     "id": "P3-FRAC-015",
@@ -4037,7 +4238,8 @@
     "correctAnswer": "D",
     "correctValue": "20",
     "explanation": "Multiply 41 by 4 and divide by 8 to get 20.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t061"
   },
   {
     "id": "P3-FRAC-016",
@@ -4057,7 +4259,8 @@
     "correctAnswer": "D",
     "correctValue": "3/3",
     "explanation": "Convert to decimals: 1/3 ≈ 0.33, 3/3 ≈ 1.00. The larger value corresponds to the larger fraction.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t060"
   },
   {
     "id": "P3-FRAC-017",
@@ -4077,7 +4280,8 @@
     "correctAnswer": "D",
     "correctValue": "10",
     "explanation": "Multiply 31 by 2 and divide by 6 to get 10.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t061"
   },
   {
     "id": "P3-FRAC-018",
@@ -4097,7 +4301,8 @@
     "correctAnswer": "B",
     "correctValue": "1/4",
     "explanation": "Convert to decimals: 1/4 ≈ 0.25, 1/5 ≈ 0.20. The larger value corresponds to the larger fraction.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t060"
   },
   {
     "id": "P3-FRAC-019",
@@ -4117,7 +4322,8 @@
     "correctAnswer": "D",
     "correctValue": "3/3",
     "explanation": "Convert to decimals: 4/7 ≈ 0.57, 3/3 ≈ 1.00. The larger value corresponds to the larger fraction.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t060"
   },
   {
     "id": "P3-FRAC-020",
@@ -4137,7 +4343,8 @@
     "correctAnswer": "D",
     "correctValue": "14",
     "explanation": "Multiply 44 by 2 and divide by 6 to get 14.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t061"
   },
   {
     "id": "P3-FRAC-021",
@@ -4157,7 +4364,8 @@
     "correctAnswer": "D",
     "correctValue": "16",
     "explanation": "Multiply 25 by 2 and divide by 3 to get 16.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t061"
   },
   {
     "id": "P3-FRAC-022",
@@ -4177,7 +4385,8 @@
     "correctAnswer": "D",
     "correctValue": "24",
     "explanation": "Multiply 36 by 2 and divide by 3 to get 24.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t061"
   },
   {
     "id": "P3-FRAC-023",
@@ -4197,7 +4406,8 @@
     "correctAnswer": "C",
     "correctValue": "3/3",
     "explanation": "Convert to decimals: 1/5 ≈ 0.20, 3/3 ≈ 1.00. The larger value corresponds to the larger fraction.",
-    "difficultyReason": "Requires computing a fraction of a set or comparing fractions."
+    "difficultyReason": "Requires computing a fraction of a set or comparing fractions.",
+    "template_id": "p3-t060"
   },
   {
     "id": "P3-FRAC-024",
@@ -4217,7 +4427,8 @@
     "correctAnswer": "A",
     "correctValue": "24",
     "explanation": "First give 10 (fraction 0.25 of 41) leaving 31. Then give 7 (fraction 0.25 of 31) leaving 24.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-025",
@@ -4237,7 +4448,8 @@
     "correctAnswer": "C",
     "correctValue": "14",
     "explanation": "First give 16 (fraction 0.5 of 32) leaving 16. Then give 2 (fraction 0.16666666666666666 of 16) leaving 14.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-026",
@@ -4257,7 +4469,8 @@
     "correctAnswer": "B",
     "correctValue": "32",
     "explanation": "First give 14 (fraction 0.25 of 56) leaving 42. Then give 10 (fraction 0.25 of 42) leaving 32.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-027",
@@ -4277,7 +4490,8 @@
     "correctAnswer": "D",
     "correctValue": "13",
     "explanation": "First give 16 (fraction 0.5 of 33) leaving 17. Then give 4 (fraction 0.25 of 17) leaving 13.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-028",
@@ -4297,7 +4511,8 @@
     "correctAnswer": "B",
     "correctValue": "24",
     "explanation": "First give 15 (fraction 0.3333333333333333 of 46) leaving 31. Then give 7 (fraction 0.25 of 31) leaving 24.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-029",
@@ -4317,7 +4532,8 @@
     "correctAnswer": "A",
     "correctValue": "22",
     "explanation": "First give 16 (fraction 0.3333333333333333 of 49) leaving 33. Then give 11 (fraction 0.3333333333333333 of 33) leaving 22.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-030",
@@ -4337,7 +4553,8 @@
     "correctAnswer": "D",
     "correctValue": "14",
     "explanation": "First give 6 (fraction 0.25 of 26) leaving 20. Then give 6 (fraction 0.3333333333333333 of 20) leaving 14.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-031",
@@ -4357,7 +4574,8 @@
     "correctAnswer": "A",
     "correctValue": "23",
     "explanation": "First give 17 (fraction 0.3333333333333333 of 51) leaving 34. Then give 11 (fraction 0.3333333333333333 of 34) leaving 23.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-032",
@@ -4377,7 +4595,8 @@
     "correctAnswer": "B",
     "correctValue": "15",
     "explanation": "First give 9 (fraction 0.3333333333333333 of 28) leaving 19. Then give 4 (fraction 0.25 of 19) leaving 15.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-FRAC-033",
@@ -4397,7 +4616,8 @@
     "correctAnswer": "D",
     "correctValue": "15",
     "explanation": "First give 9 (fraction 0.3333333333333333 of 29) leaving 20. Then give 5 (fraction 0.25 of 20) leaving 15.",
-    "difficultyReason": "Involves applying two fractions successively to a quantity."
+    "difficultyReason": "Involves applying two fractions successively to a quantity.",
+    "template_id": "p3-t062"
   },
   {
     "id": "P3-AREA-001",
@@ -4417,7 +4637,8 @@
     "correctAnswer": "D",
     "correctValue": "112 cm²",
     "explanation": "Area = 8 × 14 = 112 cm².",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t063"
   },
   {
     "id": "P3-AREA-002",
@@ -4437,7 +4658,8 @@
     "correctAnswer": "C",
     "correctValue": "36 cm",
     "explanation": "Perimeter = 2 × (10 + 8) = 36 cm.",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t064"
   },
   {
     "id": "P3-AREA-003",
@@ -4457,7 +4679,8 @@
     "correctAnswer": "C",
     "correctValue": "24 cm",
     "explanation": "Perimeter = 2 × (6 + 6) = 24 cm.",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t064"
   },
   {
     "id": "P3-AREA-004",
@@ -4477,7 +4700,8 @@
     "correctAnswer": "A",
     "correctValue": "24 cm²",
     "explanation": "Area = 8 × 3 = 24 cm².",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t063"
   },
   {
     "id": "P3-AREA-005",
@@ -4497,7 +4721,8 @@
     "correctAnswer": "D",
     "correctValue": "99 cm²",
     "explanation": "Area = 11 × 9 = 99 cm².",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t063"
   },
   {
     "id": "P3-AREA-006",
@@ -4517,7 +4742,8 @@
     "correctAnswer": "B",
     "correctValue": "63 cm²",
     "explanation": "Area = 9 × 7 = 63 cm².",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t063"
   },
   {
     "id": "P3-AREA-007",
@@ -4537,7 +4763,8 @@
     "correctAnswer": "C",
     "correctValue": "40 cm²",
     "explanation": "Area = 4 × 10 = 40 cm².",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t063"
   },
   {
     "id": "P3-AREA-008",
@@ -4557,7 +4784,8 @@
     "correctAnswer": "D",
     "correctValue": "24 cm²",
     "explanation": "Area = 4 × 6 = 24 cm².",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t063"
   },
   {
     "id": "P3-AREA-009",
@@ -4577,7 +4805,8 @@
     "correctAnswer": "D",
     "correctValue": "91 cm²",
     "explanation": "Area = 7 × 13 = 91 cm².",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t063"
   },
   {
     "id": "P3-AREA-010",
@@ -4597,7 +4826,8 @@
     "correctAnswer": "B",
     "correctValue": "46 cm",
     "explanation": "Perimeter = 2 × (15 + 8) = 46 cm.",
-    "difficultyReason": "Direct application of perimeter or area formula."
+    "difficultyReason": "Direct application of perimeter or area formula.",
+    "template_id": "p3-t064"
   },
   {
     "id": "P3-AREA-011",
@@ -4617,7 +4847,8 @@
     "correctAnswer": "B",
     "correctValue": "5 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 15 - 10 = 5 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-012",
@@ -4637,7 +4868,8 @@
     "correctAnswer": "A",
     "correctValue": "4 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 16 - 12 = 4 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-013",
@@ -4657,7 +4889,8 @@
     "correctAnswer": "A",
     "correctValue": "4 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 8 - 4 = 4 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-014",
@@ -4677,7 +4910,8 @@
     "correctAnswer": "A",
     "correctValue": "11 cm",
     "explanation": "Area = length × breadth ⇒ breadth = 77 ÷ 7 = 11 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t066"
   },
   {
     "id": "P3-AREA-015",
@@ -4697,7 +4931,8 @@
     "correctAnswer": "D",
     "correctValue": "5 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 10 - 5 = 5 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-016",
@@ -4717,7 +4952,8 @@
     "correctAnswer": "C",
     "correctValue": "3 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 14 - 11 = 3 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-017",
@@ -4737,7 +4973,8 @@
     "correctAnswer": "A",
     "correctValue": "5 cm",
     "explanation": "Area = length × breadth ⇒ breadth = 20 ÷ 4 = 5 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t066"
   },
   {
     "id": "P3-AREA-018",
@@ -4757,7 +4994,8 @@
     "correctAnswer": "D",
     "correctValue": "3 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 10 - 7 = 3 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-019",
@@ -4777,7 +5015,8 @@
     "correctAnswer": "D",
     "correctValue": "7 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 15 - 8 = 7 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-020",
@@ -4797,7 +5036,8 @@
     "correctAnswer": "D",
     "correctValue": "9 cm",
     "explanation": "Area = length × breadth ⇒ breadth = 108 ÷ 12 = 9 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t066"
   },
   {
     "id": "P3-AREA-021",
@@ -4817,7 +5057,8 @@
     "correctAnswer": "C",
     "correctValue": "10 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 17 - 7 = 10 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-022",
@@ -4837,7 +5078,8 @@
     "correctAnswer": "A",
     "correctValue": "10 cm",
     "explanation": "Area = length × breadth ⇒ breadth = 50 ÷ 5 = 10 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t066"
   },
   {
     "id": "P3-AREA-023",
@@ -4857,7 +5099,8 @@
     "correctAnswer": "C",
     "correctValue": "9 cm",
     "explanation": "Perimeter = 2 × (length + breadth). Breadth = 18 - 9 = 9 cm.",
-    "difficultyReason": "Requires rearranging the formula for perimeter or area."
+    "difficultyReason": "Requires rearranging the formula for perimeter or area.",
+    "template_id": "p3-t065"
   },
   {
     "id": "P3-AREA-024",
@@ -4877,7 +5120,8 @@
     "correctAnswer": "B",
     "correctValue": "16 cm",
     "explanation": "For a square, side = √{16} = 4 cm. Perimeter = 4 × 4 = 16 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t067"
   },
   {
     "id": "P3-AREA-025",
@@ -4897,7 +5141,8 @@
     "correctAnswer": "D",
     "correctValue": "28 cm",
     "explanation": "Breadth = area ÷ length = 8 cm. Perimeter = 2 × (6 + 8) = 28 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t068"
   },
   {
     "id": "P3-AREA-026",
@@ -4917,7 +5162,8 @@
     "correctAnswer": "B",
     "correctValue": "38 cm",
     "explanation": "Breadth = area ÷ length = 7 cm. Perimeter = 2 × (12 + 7) = 38 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t068"
   },
   {
     "id": "P3-AREA-027",
@@ -4937,7 +5183,8 @@
     "correctAnswer": "D",
     "correctValue": "16 cm",
     "explanation": "For a square, side = √{16} = 4 cm. Perimeter = 4 × 4 = 16 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t067"
   },
   {
     "id": "P3-AREA-028",
@@ -4957,7 +5204,8 @@
     "correctAnswer": "B",
     "correctValue": "16 cm",
     "explanation": "For a square, side = √{16} = 4 cm. Perimeter = 4 × 4 = 16 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t067"
   },
   {
     "id": "P3-AREA-029",
@@ -4977,7 +5225,8 @@
     "correctAnswer": "D",
     "correctValue": "32 cm",
     "explanation": "For a square, side = √{64} = 8 cm. Perimeter = 4 × 8 = 32 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t067"
   },
   {
     "id": "P3-AREA-030",
@@ -4997,7 +5246,8 @@
     "correctAnswer": "C",
     "correctValue": "22 cm",
     "explanation": "Breadth = area ÷ length = 4 cm. Perimeter = 2 × (7 + 4) = 22 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t068"
   },
   {
     "id": "P3-AREA-031",
@@ -5017,7 +5267,8 @@
     "correctAnswer": "D",
     "correctValue": "38 cm",
     "explanation": "Breadth = area ÷ length = 10 cm. Perimeter = 2 × (9 + 10) = 38 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t068"
   },
   {
     "id": "P3-AREA-032",
@@ -5037,7 +5288,8 @@
     "correctAnswer": "A",
     "correctValue": "32 cm",
     "explanation": "Breadth = area ÷ length = 4 cm. Perimeter = 2 × (12 + 4) = 32 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t068"
   },
   {
     "id": "P3-AREA-033",
@@ -5057,7 +5309,8 @@
     "correctAnswer": "D",
     "correctValue": "36 cm",
     "explanation": "For a square, side = √{81} = 9 cm. Perimeter = 4 × 9 = 36 cm.",
-    "difficultyReason": "Requires computing an unknown side then calculating perimeter."
+    "difficultyReason": "Requires computing an unknown side then calculating perimeter.",
+    "template_id": "p3-t067"
   },
   {
     "id": "P3-BARG-001",
@@ -5077,7 +5330,8 @@
     "correctAnswer": "A",
     "correctValue": "37",
     "explanation": "Total = 23 + 14 = 37.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t069"
   },
   {
     "id": "P3-BARG-002",
@@ -5097,7 +5351,8 @@
     "correctAnswer": "A",
     "correctValue": "73",
     "explanation": "Total = 43 + 30 = 73.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t070"
   },
   {
     "id": "P3-BARG-003",
@@ -5117,7 +5372,8 @@
     "correctAnswer": "C",
     "correctValue": "Mei Hua",
     "explanation": "Mei Hua scored 35 marks, the highest among them.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t071"
   },
   {
     "id": "P3-BARG-004",
@@ -5137,7 +5393,8 @@
     "correctAnswer": "D",
     "correctValue": "Ben",
     "explanation": "Ben scored 39 marks, the highest among them.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t071"
   },
   {
     "id": "P3-BARG-005",
@@ -5157,7 +5414,8 @@
     "correctAnswer": "C",
     "correctValue": "67",
     "explanation": "Total = 27 + 40 = 67.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t072"
   },
   {
     "id": "P3-BARG-006",
@@ -5177,7 +5435,8 @@
     "correctAnswer": "A",
     "correctValue": "Arjun",
     "explanation": "Arjun scored 38 marks, the highest among them.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t073"
   },
   {
     "id": "P3-BARG-007",
@@ -5197,7 +5456,8 @@
     "correctAnswer": "A",
     "correctValue": "83",
     "explanation": "Total = 35 + 48 = 83.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t074"
   },
   {
     "id": "P3-BARG-008",
@@ -5217,7 +5477,8 @@
     "correctAnswer": "A",
     "correctValue": "Eileen",
     "explanation": "Eileen scored 27 marks, the highest among them.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t075"
   },
   {
     "id": "P3-BARG-009",
@@ -5237,7 +5498,8 @@
     "correctAnswer": "A",
     "correctValue": "Siti",
     "explanation": "Siti scored 41 marks, the highest among them.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t076"
   },
   {
     "id": "P3-BARG-010",
@@ -5257,7 +5519,8 @@
     "correctAnswer": "C",
     "correctValue": "31",
     "explanation": "Total = 10 + 21 = 31.",
-    "difficultyReason": "Direct reading of data to identify highest or compute total."
+    "difficultyReason": "Direct reading of data to identify highest or compute total.",
+    "template_id": "p3-t077"
   },
   {
     "id": "P3-BARG-011",
@@ -5277,7 +5540,8 @@
     "correctAnswer": "B",
     "correctValue": "84",
     "explanation": "Add the three numbers to get 84.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t078"
   },
   {
     "id": "P3-BARG-012",
@@ -5297,7 +5561,8 @@
     "correctAnswer": "A",
     "correctValue": "113",
     "explanation": "Add the three numbers to get 113.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t079"
   },
   {
     "id": "P3-BARG-013",
@@ -5317,7 +5582,8 @@
     "correctAnswer": "B",
     "correctValue": "44",
     "explanation": "Eileen + Arjun = 98. Cynthia + Ben = 54. Difference = 44.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t080"
   },
   {
     "id": "P3-BARG-014",
@@ -5337,7 +5603,8 @@
     "correctAnswer": "C",
     "correctValue": "103",
     "explanation": "Add the three numbers to get 103.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t081"
   },
   {
     "id": "P3-BARG-015",
@@ -5357,7 +5624,8 @@
     "correctAnswer": "A",
     "correctValue": "85",
     "explanation": "Add the three numbers to get 85.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t082"
   },
   {
     "id": "P3-BARG-016",
@@ -5377,7 +5645,8 @@
     "correctAnswer": "A",
     "correctValue": "107",
     "explanation": "Add the three numbers to get 107.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t083"
   },
   {
     "id": "P3-BARG-017",
@@ -5397,7 +5666,8 @@
     "correctAnswer": "A",
     "correctValue": "89",
     "explanation": "Add the three numbers to get 89.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t078"
   },
   {
     "id": "P3-BARG-018",
@@ -5417,7 +5687,8 @@
     "correctAnswer": "A",
     "correctValue": "6",
     "explanation": "Wei Ling + Mei Hua = 87. Priya + Ben = 81. Difference = 6.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t084"
   },
   {
     "id": "P3-BARG-019",
@@ -5437,7 +5708,8 @@
     "correctAnswer": "C",
     "correctValue": "114",
     "explanation": "Add the three numbers to get 114.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t085"
   },
   {
     "id": "P3-BARG-020",
@@ -5457,7 +5729,8 @@
     "correctAnswer": "C",
     "correctValue": "122",
     "explanation": "Add the three numbers to get 122.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t086"
   },
   {
     "id": "P3-BARG-021",
@@ -5477,7 +5750,8 @@
     "correctAnswer": "D",
     "correctValue": "1",
     "explanation": "Devi + Mei Hua = 96. Siti + Kai = 95. Difference = 1.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t087"
   },
   {
     "id": "P3-BARG-022",
@@ -5497,7 +5771,8 @@
     "correctAnswer": "A",
     "correctValue": "52",
     "explanation": "Kai + Ben = 61. Eileen + Anna = 113. Difference = 52.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t088"
   },
   {
     "id": "P3-BARG-023",
@@ -5517,7 +5792,8 @@
     "correctAnswer": "D",
     "correctValue": "80",
     "explanation": "Add the three numbers to get 80.",
-    "difficultyReason": "Requires summing or comparing totals across multiple bars."
+    "difficultyReason": "Requires summing or comparing totals across multiple bars.",
+    "template_id": "p3-t078"
   },
   {
     "id": "P3-BARG-024",
@@ -5537,7 +5813,8 @@
     "correctAnswer": "B",
     "correctValue": "45",
     "explanation": "Sum1 = 54 + 32 = 86. Sum2 = 67 + 64 = 131. Difference = 45.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t089"
   },
   {
     "id": "P3-BARG-025",
@@ -5557,7 +5834,8 @@
     "correctAnswer": "D",
     "correctValue": "0",
     "explanation": "Sum1 = 20 + 56 = 76. Sum2 = 49 + 27 = 76. Difference = 0.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t090"
   },
   {
     "id": "P3-BARG-026",
@@ -5577,7 +5855,8 @@
     "correctAnswer": "C",
     "correctValue": "37",
     "explanation": "Sum1 = 77 + 65 = 142. Sum2 = 52 + 53 = 105. Difference = 37.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t091"
   },
   {
     "id": "P3-BARG-027",
@@ -5597,7 +5876,8 @@
     "correctAnswer": "A",
     "correctValue": "53",
     "explanation": "Sum1 = 57 + 64 = 121. Sum2 = 40 + 28 = 68. Difference = 53.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t092"
   },
   {
     "id": "P3-BARG-028",
@@ -5617,7 +5897,8 @@
     "correctAnswer": "D",
     "correctValue": "35",
     "explanation": "Sum1 = 66 + 77 = 143. Sum2 = 77 + 31 = 108. Difference = 35.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t093"
   },
   {
     "id": "P3-BARG-029",
@@ -5637,7 +5918,8 @@
     "correctAnswer": "C",
     "correctValue": "33",
     "explanation": "Sum1 = 28 + 55 = 83. Sum2 = 60 + 56 = 116. Difference = 33.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t094"
   },
   {
     "id": "P3-BARG-030",
@@ -5657,7 +5939,8 @@
     "correctAnswer": "A",
     "correctValue": "14",
     "explanation": "Sum1 = 20 + 71 = 91. Sum2 = 77 + 28 = 105. Difference = 14.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t095"
   },
   {
     "id": "P3-BARG-031",
@@ -5677,7 +5960,8 @@
     "correctAnswer": "D",
     "correctValue": "29",
     "explanation": "Sum1 = 28 + 39 = 67. Sum2 = 70 + 26 = 96. Difference = 29.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t096"
   },
   {
     "id": "P3-BARG-032",
@@ -5697,7 +5981,8 @@
     "correctAnswer": "A",
     "correctValue": "22",
     "explanation": "Sum1 = 53 + 35 = 88. Sum2 = 56 + 54 = 110. Difference = 22.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t097"
   },
   {
     "id": "P3-BARG-033",
@@ -5717,7 +6002,8 @@
     "correctAnswer": "C",
     "correctValue": "50",
     "explanation": "Sum1 = 33 + 55 = 88. Sum2 = 66 + 72 = 138. Difference = 50.",
-    "difficultyReason": "Requires summing two pairs and comparing their totals."
+    "difficultyReason": "Requires summing two pairs and comparing their totals.",
+    "template_id": "p3-t098"
   },
   {
     "id": "P3-WHOLE-034",
@@ -5736,7 +6022,8 @@
     "correctAnswer": "C",
     "correctValue": "6000",
     "explanation": "Look at the hundreds digit of 5869. If it is 500 or more, round up; otherwise round down. The answer is 6000.",
-    "difficultyReason": "Medium rounding 4-digit number."
+    "difficultyReason": "Medium rounding 4-digit number.",
+    "template_id": "p3-t001"
   },
   {
     "id": "P3-ADD-034",
@@ -5755,7 +6042,8 @@
     "correctAnswer": "D",
     "correctValue": "2151",
     "explanation": "Subtract 1202 from 3353 to get 2151.",
-    "difficultyReason": "Medium 4-digit subtraction."
+    "difficultyReason": "Medium 4-digit subtraction.",
+    "template_id": "p3-t011"
   },
   {
     "id": "P3-MUL-034",
@@ -5774,6 +6062,7 @@
     "correctAnswer": "C",
     "correctValue": "2032",
     "explanation": "Multiply 254 and 8 to get 2032.",
-    "difficultyReason": "Easy multiplication."
+    "difficultyReason": "Easy multiplication.",
+    "template_id": "p3-t018"
   }
 ]

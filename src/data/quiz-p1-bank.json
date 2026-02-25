@@ -17,7 +17,8 @@
     "correctAnswer": "D",
     "correctValue": "5",
     "explanation": "To make 6, add 5 to 1.",
-    "difficultyReason": "Simple addition within 20."
+    "difficultyReason": "Simple addition within 20.",
+    "template_id": "p1-t001"
   },
   {
     "id": "P1-WHOLE-002",
@@ -37,7 +38,8 @@
     "correctAnswer": "B",
     "correctValue": "30",
     "explanation": "In 37, the digit 3 is in the tens place. It stands for 3 tens = 30.",
-    "difficultyReason": "Identifying tens or ones place is a direct recall."
+    "difficultyReason": "Identifying tens or ones place is a direct recall.",
+    "template_id": "p1-t002"
   },
   {
     "id": "P1-WHOLE-003",
@@ -57,7 +59,8 @@
     "correctAnswer": "A",
     "correctValue": "5",
     "explanation": "To make 11, add 5 to 6.",
-    "difficultyReason": "Simple addition within 20."
+    "difficultyReason": "Simple addition within 20.",
+    "template_id": "p1-t001"
   },
   {
     "id": "P1-WHOLE-004",
@@ -77,7 +80,8 @@
     "correctAnswer": "A",
     "correctValue": "83",
     "explanation": "The number after 82 is 83.",
-    "difficultyReason": "Finding predecessor or successor is a simple one‑step operation."
+    "difficultyReason": "Finding predecessor or successor is a simple one‑step operation.",
+    "template_id": "p1-t003"
   },
   {
     "id": "P1-WHOLE-005",
@@ -97,7 +101,8 @@
     "correctAnswer": "C",
     "correctValue": "2",
     "explanation": "To make 8, add 2 to 6.",
-    "difficultyReason": "Simple addition within 20."
+    "difficultyReason": "Simple addition within 20.",
+    "template_id": "p1-t001"
   },
   {
     "id": "P1-WHOLE-006",
@@ -117,7 +122,8 @@
     "correctAnswer": "C",
     "correctValue": "7",
     "explanation": "In 57, the digit 7 is in the ones place. It stands for 7.",
-    "difficultyReason": "Identifying tens or ones place is a direct recall."
+    "difficultyReason": "Identifying tens or ones place is a direct recall.",
+    "template_id": "p1-t002"
   },
   {
     "id": "P1-WHOLE-007",
@@ -137,7 +143,8 @@
     "correctAnswer": "B",
     "correctValue": "85",
     "explanation": "The number before 86 is 85.",
-    "difficultyReason": "Finding predecessor or successor is a simple one‑step operation."
+    "difficultyReason": "Finding predecessor or successor is a simple one‑step operation.",
+    "template_id": "p1-t004"
   },
   {
     "id": "P1-WHOLE-008",
@@ -157,7 +164,8 @@
     "correctAnswer": "B",
     "correctValue": "6",
     "explanation": "To make 10, add 6 to 4.",
-    "difficultyReason": "Simple addition within 20."
+    "difficultyReason": "Simple addition within 20.",
+    "template_id": "p1-t001"
   },
   {
     "id": "P1-WHOLE-009",
@@ -177,7 +185,8 @@
     "correctAnswer": "C",
     "correctValue": "7",
     "explanation": "To make 14, add 7 to 7.",
-    "difficultyReason": "Simple addition within 20."
+    "difficultyReason": "Simple addition within 20.",
+    "template_id": "p1-t001"
   },
   {
     "id": "P1-WHOLE-010",
@@ -197,7 +206,8 @@
     "correctAnswer": "A",
     "correctValue": "90",
     "explanation": "In 90, the digit 9 is in the tens place. It stands for 9 tens = 90.",
-    "difficultyReason": "Identifying tens or ones place is a direct recall."
+    "difficultyReason": "Identifying tens or ones place is a direct recall.",
+    "template_id": "p1-t002"
   },
   {
     "id": "P1-WHOLE-011",
@@ -217,7 +227,8 @@
     "correctAnswer": "D",
     "correctValue": "1",
     "explanation": "To make 6, add 1 to 5.",
-    "difficultyReason": "Simple addition within 20."
+    "difficultyReason": "Simple addition within 20.",
+    "template_id": "p1-t001"
   },
   {
     "id": "P1-WHOLE-012",
@@ -237,7 +248,8 @@
     "correctAnswer": "D",
     "correctValue": "3",
     "explanation": "To make 13, add 3 to 10.",
-    "difficultyReason": "Simple addition within 20."
+    "difficultyReason": "Simple addition within 20.",
+    "template_id": "p1-t001"
   },
   {
     "id": "P1-WHOLE-013",
@@ -257,7 +269,8 @@
     "correctAnswer": "C",
     "correctValue": "6",
     "explanation": "In 56, the digit 6 is in the ones place. It stands for 6.",
-    "difficultyReason": "Identifying tens or ones place is a direct recall."
+    "difficultyReason": "Identifying tens or ones place is a direct recall.",
+    "template_id": "p1-t002"
   },
   {
     "id": "P1-WHOLE-014",
@@ -277,7 +290,8 @@
     "correctAnswer": "D",
     "correctValue": "4",
     "explanation": "To make 7, add 4 to 3.",
-    "difficultyReason": "Simple addition within 20."
+    "difficultyReason": "Simple addition within 20.",
+    "template_id": "p1-t001"
   },
   {
     "id": "P1-WHOLE-015",
@@ -297,7 +311,8 @@
     "correctAnswer": "D",
     "correctValue": "40",
     "explanation": "In 41, the digit 4 is in the tens place. It stands for 4 tens = 40.",
-    "difficultyReason": "Identifying tens or ones place is a direct recall."
+    "difficultyReason": "Identifying tens or ones place is a direct recall.",
+    "template_id": "p1-t002"
   },
   {
     "id": "P1-WHOLE-016",
@@ -317,7 +332,8 @@
     "correctAnswer": "A",
     "correctValue": "13",
     "explanation": "The pattern increases by 2 each time. The missing number is 13.",
-    "difficultyReason": "Identifying an arithmetic pattern requires counting on."
+    "difficultyReason": "Identifying an arithmetic pattern requires counting on.",
+    "template_id": "p1-t005"
   },
   {
     "id": "P1-WHOLE-017",
@@ -337,7 +353,8 @@
     "correctAnswer": "C",
     "correctValue": "83",
     "explanation": "8 tens equal 80 and 3 ones make 3. Total = 83.",
-    "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
+    "difficultyReason": "Combining tens and ones involves simple multiplication and addition.",
+    "template_id": "p1-t006"
   },
   {
     "id": "P1-WHOLE-018",
@@ -357,7 +374,8 @@
     "correctAnswer": "B",
     "correctValue": "96",
     "explanation": "Among 16, 96, 93, 92, the greatest is 96.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-019",
@@ -377,7 +395,8 @@
     "correctAnswer": "A",
     "correctValue": "21",
     "explanation": "The pattern increases by 5 each time. The missing number is 21.",
-    "difficultyReason": "Identifying an arithmetic pattern requires counting on."
+    "difficultyReason": "Identifying an arithmetic pattern requires counting on.",
+    "template_id": "p1-t005"
   },
   {
     "id": "P1-WHOLE-020",
@@ -397,7 +416,8 @@
     "correctAnswer": "A",
     "correctValue": "69",
     "explanation": "Among 69, 41, 19, 66, the greatest is 69.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-021",
@@ -417,7 +437,8 @@
     "correctAnswer": "C",
     "correctValue": "20",
     "explanation": "2 tens equal 20 and 0 ones make 0. Total = 20.",
-    "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
+    "difficultyReason": "Combining tens and ones involves simple multiplication and addition.",
+    "template_id": "p1-t006"
   },
   {
     "id": "P1-WHOLE-022",
@@ -437,7 +458,8 @@
     "correctAnswer": "C",
     "correctValue": "58",
     "explanation": "Among 17, 31, 58, 10, the greatest is 58.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-023",
@@ -457,7 +479,8 @@
     "correctAnswer": "B",
     "correctValue": "68",
     "explanation": "Among 43, 68, 46, 64, the greatest is 68.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-024",
@@ -477,7 +500,8 @@
     "correctAnswer": "A",
     "correctValue": "97",
     "explanation": "9 tens equal 90 and 7 ones make 7. Total = 97.",
-    "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
+    "difficultyReason": "Combining tens and ones involves simple multiplication and addition.",
+    "template_id": "p1-t006"
   },
   {
     "id": "P1-WHOLE-025",
@@ -497,7 +521,8 @@
     "correctAnswer": "D",
     "correctValue": "88",
     "explanation": "8 tens equal 80 and 8 ones make 8. Total = 88.",
-    "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
+    "difficultyReason": "Combining tens and ones involves simple multiplication and addition.",
+    "template_id": "p1-t006"
   },
   {
     "id": "P1-WHOLE-026",
@@ -517,7 +542,8 @@
     "correctAnswer": "D",
     "correctValue": "84",
     "explanation": "Among 25, 82, 41, 84, the greatest is 84.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-027",
@@ -537,7 +563,8 @@
     "correctAnswer": "D",
     "correctValue": "19",
     "explanation": "1 tens equal 10 and 9 ones make 9. Total = 19.",
-    "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
+    "difficultyReason": "Combining tens and ones involves simple multiplication and addition.",
+    "template_id": "p1-t006"
   },
   {
     "id": "P1-WHOLE-028",
@@ -557,7 +584,8 @@
     "correctAnswer": "B",
     "correctValue": "95",
     "explanation": "Among 26, 95, 92, 48, the greatest is 95.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-029",
@@ -577,7 +605,8 @@
     "correctAnswer": "D",
     "correctValue": "68",
     "explanation": "Among 50, 19, 11, 68, the greatest is 68.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-030",
@@ -597,7 +626,8 @@
     "correctAnswer": "A",
     "correctValue": "21",
     "explanation": "2 tens equal 20 and 1 ones make 1. Total = 21.",
-    "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
+    "difficultyReason": "Combining tens and ones involves simple multiplication and addition.",
+    "template_id": "p1-t006"
   },
   {
     "id": "P1-WHOLE-031",
@@ -617,7 +647,8 @@
     "correctAnswer": "C",
     "correctValue": "79",
     "explanation": "Among 30, 66, 79, 48, the greatest is 79.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-032",
@@ -637,7 +668,8 @@
     "correctAnswer": "A",
     "correctValue": "90",
     "explanation": "9 tens equal 90 and 0 ones make 0. Total = 90.",
-    "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
+    "difficultyReason": "Combining tens and ones involves simple multiplication and addition.",
+    "template_id": "p1-t006"
   },
   {
     "id": "P1-WHOLE-033",
@@ -657,7 +689,8 @@
     "correctAnswer": "B",
     "correctValue": "87",
     "explanation": "Among 46, 87, 36, 53, the greatest is 87.",
-    "difficultyReason": "Selecting the largest number among a list requires comparison."
+    "difficultyReason": "Selecting the largest number among a list requires comparison.",
+    "template_id": "p1-t007"
   },
   {
     "id": "P1-WHOLE-034",
@@ -677,7 +710,8 @@
     "correctAnswer": "D",
     "correctValue": "28",
     "explanation": "The pattern increases by 5 each time. The missing number is 28.",
-    "difficultyReason": "Identifying an arithmetic pattern requires counting on."
+    "difficultyReason": "Identifying an arithmetic pattern requires counting on.",
+    "template_id": "p1-t005"
   },
   {
     "id": "P1-WHOLE-035",
@@ -697,7 +731,8 @@
     "correctAnswer": "D",
     "correctValue": "78",
     "explanation": "7 tens equal 70 and 8 ones make 8. Total = 78.",
-    "difficultyReason": "Combining tens and ones involves simple multiplication and addition."
+    "difficultyReason": "Combining tens and ones involves simple multiplication and addition.",
+    "template_id": "p1-t006"
   },
   {
     "id": "P1-ADD-001",
@@ -717,7 +752,8 @@
     "correctAnswer": "B",
     "correctValue": "88",
     "explanation": "Add 59 and 29 to get 88.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t008"
   },
   {
     "id": "P1-ADD-002",
@@ -737,7 +773,8 @@
     "correctAnswer": "B",
     "correctValue": "12",
     "explanation": "Subtract 63 from 75 to get 12.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-003",
@@ -757,7 +794,8 @@
     "correctAnswer": "A",
     "correctValue": "22",
     "explanation": "Subtract 73 from 95 to get 22.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-004",
@@ -777,7 +815,8 @@
     "correctAnswer": "B",
     "correctValue": "39",
     "explanation": "Subtract 22 from 61 to get 39.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-005",
@@ -797,7 +836,8 @@
     "correctAnswer": "B",
     "correctValue": "59",
     "explanation": "Add 53 and 6 to get 59.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t008"
   },
   {
     "id": "P1-ADD-006",
@@ -817,7 +857,8 @@
     "correctAnswer": "B",
     "correctValue": "2",
     "explanation": "Subtract 39 from 41 to get 2.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-007",
@@ -837,7 +878,8 @@
     "correctAnswer": "C",
     "correctValue": "40",
     "explanation": "Subtract 5 from 45 to get 40.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-008",
@@ -857,7 +899,8 @@
     "correctAnswer": "C",
     "correctValue": "90",
     "explanation": "Add 59 and 31 to get 90.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t008"
   },
   {
     "id": "P1-ADD-009",
@@ -877,7 +920,8 @@
     "correctAnswer": "D",
     "correctValue": "6",
     "explanation": "Subtract 55 from 61 to get 6.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-010",
@@ -897,7 +941,8 @@
     "correctAnswer": "D",
     "correctValue": "49",
     "explanation": "Subtract 12 from 61 to get 49.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-011",
@@ -917,7 +962,8 @@
     "correctAnswer": "B",
     "correctValue": "51",
     "explanation": "Add 20 and 31 to get 51.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t008"
   },
   {
     "id": "P1-ADD-012",
@@ -937,7 +983,8 @@
     "correctAnswer": "B",
     "correctValue": "46",
     "explanation": "Subtract 48 from 94 to get 46.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-013",
@@ -957,7 +1004,8 @@
     "correctAnswer": "C",
     "correctValue": "23",
     "explanation": "Subtract 12 from 35 to get 23.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t009"
   },
   {
     "id": "P1-ADD-014",
@@ -977,7 +1025,8 @@
     "correctAnswer": "D",
     "correctValue": "44",
     "explanation": "Add 28 and 16 to get 44.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t008"
   },
   {
     "id": "P1-ADD-015",
@@ -997,7 +1046,8 @@
     "correctAnswer": "B",
     "correctValue": "65",
     "explanation": "Add 60 and 5 to get 65.",
-    "difficultyReason": "Direct addition or subtraction within 100."
+    "difficultyReason": "Direct addition or subtraction within 100.",
+    "template_id": "p1-t008"
   },
   {
     "id": "P1-ADD-016",
@@ -1017,7 +1067,8 @@
     "correctAnswer": "C",
     "correctValue": "13",
     "explanation": "First add: 12 + 17 = 29. Then subtract 16: 29 - 16 = 13.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-017",
@@ -1037,7 +1088,8 @@
     "correctAnswer": "A",
     "correctValue": "32",
     "explanation": "First add: 34 + 18 = 52. Then subtract 20: 52 - 20 = 32.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-018",
@@ -1057,7 +1109,8 @@
     "correctAnswer": "D",
     "correctValue": "50",
     "explanation": "First add: 28 + 24 = 52. Then subtract 2: 52 - 2 = 50.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-019",
@@ -1077,7 +1130,8 @@
     "correctAnswer": "C",
     "correctValue": "21",
     "explanation": "First add: 12 + 10 = 22. Then subtract 1: 22 - 1 = 21.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-020",
@@ -1097,7 +1151,8 @@
     "correctAnswer": "C",
     "correctValue": "53",
     "explanation": "First add: 37 + 19 = 56. Then subtract 3: 56 - 3 = 53.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-021",
@@ -1117,7 +1172,8 @@
     "correctAnswer": "A",
     "correctValue": "24",
     "explanation": "First add: 18 + 9 = 27. Then subtract 3: 27 - 3 = 24.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t011"
   },
   {
     "id": "P1-ADD-022",
@@ -1137,7 +1193,8 @@
     "correctAnswer": "A",
     "correctValue": "18",
     "explanation": "First add: 22 + 13 = 35. Then subtract 17: 35 - 17 = 18.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-023",
@@ -1157,7 +1214,8 @@
     "correctAnswer": "A",
     "correctValue": "20",
     "explanation": "First add: 18 + 5 = 23. Then subtract 3: 23 - 3 = 20.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t012"
   },
   {
     "id": "P1-ADD-024",
@@ -1177,7 +1235,8 @@
     "correctAnswer": "A",
     "correctValue": "32",
     "explanation": "First add: 23 + 25 = 48. Then subtract 16: 48 - 16 = 32.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t012"
   },
   {
     "id": "P1-ADD-025",
@@ -1197,7 +1256,8 @@
     "correctAnswer": "A",
     "correctValue": "30",
     "explanation": "First add: 31 + 17 = 48. Then subtract 18: 48 - 18 = 30.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-026",
@@ -1217,7 +1277,8 @@
     "correctAnswer": "B",
     "correctValue": "22",
     "explanation": "First add: 26 + 16 = 42. Then subtract 20: 42 - 20 = 22.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t013"
   },
   {
     "id": "P1-ADD-027",
@@ -1237,7 +1298,8 @@
     "correctAnswer": "C",
     "correctValue": "15",
     "explanation": "First add: 10 + 25 = 35. Then subtract 20: 35 - 20 = 15.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-028",
@@ -1257,7 +1319,8 @@
     "correctAnswer": "A",
     "correctValue": "43",
     "explanation": "First add: 40 + 8 = 48. Then subtract 5: 48 - 5 = 43.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-029",
@@ -1277,7 +1340,8 @@
     "correctAnswer": "C",
     "correctValue": "23",
     "explanation": "First add: 16 + 24 = 40. Then subtract 17: 40 - 17 = 23.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-030",
@@ -1297,7 +1361,8 @@
     "correctAnswer": "D",
     "correctValue": "15",
     "explanation": "First add: 14 + 19 = 33. Then subtract 18: 33 - 18 = 15.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-031",
@@ -1317,7 +1382,8 @@
     "correctAnswer": "C",
     "correctValue": "32",
     "explanation": "First add: 20 + 28 = 48. Then subtract 16: 48 - 16 = 32.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-032",
@@ -1337,7 +1403,8 @@
     "correctAnswer": "D",
     "correctValue": "44",
     "explanation": "First add: 26 + 19 = 45. Then subtract 1: 45 - 1 = 44.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-033",
@@ -1357,7 +1424,8 @@
     "correctAnswer": "A",
     "correctValue": "9",
     "explanation": "First add: 12 + 15 = 27. Then subtract 18: 27 - 18 = 9.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-034",
@@ -1377,7 +1445,8 @@
     "correctAnswer": "C",
     "correctValue": "26",
     "explanation": "First add: 33 + 7 = 40. Then subtract 14: 40 - 14 = 26.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t013"
   },
   {
     "id": "P1-ADD-035",
@@ -1397,7 +1466,8 @@
     "correctAnswer": "A",
     "correctValue": "23",
     "explanation": "First add: 21 + 16 = 37. Then subtract 14: 37 - 14 = 23.",
-    "difficultyReason": "Requires two operations (add then subtract) in a realistic context."
+    "difficultyReason": "Requires two operations (add then subtract) in a realistic context.",
+    "template_id": "p1-t010"
   },
   {
     "id": "P1-ADD-036",
@@ -1417,7 +1487,8 @@
     "correctAnswer": "B",
     "correctValue": "11",
     "explanation": "Subtract 48 from 59 to find the other number: 11.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-ADD-037",
@@ -1437,7 +1508,8 @@
     "correctAnswer": "B",
     "correctValue": "36",
     "explanation": "Subtract 41 from 77 to find the other number: 36.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-ADD-038",
@@ -1457,7 +1529,8 @@
     "correctAnswer": "C",
     "correctValue": "31",
     "explanation": "Subtract 43 from 74 to find the other number: 31.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-ADD-039",
@@ -1477,7 +1550,8 @@
     "correctAnswer": "D",
     "correctValue": "43",
     "explanation": "Start with 31. Add 17 to get 48. Subtract 6 to get 42. Finally add 1: 42 + 1 = 43.",
-    "difficultyReason": "Involves three sequential operations in a story context."
+    "difficultyReason": "Involves three sequential operations in a story context.",
+    "template_id": "p1-t015"
   },
   {
     "id": "P1-ADD-040",
@@ -1497,7 +1571,8 @@
     "correctAnswer": "A",
     "correctValue": "10",
     "explanation": "Subtract 53 from 63 to find the other number: 10.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-ADD-041",
@@ -1517,7 +1592,8 @@
     "correctAnswer": "B",
     "correctValue": "29",
     "explanation": "Start with 19. Add 15 to get 34. Subtract 8 to get 26. Finally add 3: 26 + 3 = 29.",
-    "difficultyReason": "Involves three sequential operations in a story context."
+    "difficultyReason": "Involves three sequential operations in a story context.",
+    "template_id": "p1-t016"
   },
   {
     "id": "P1-ADD-042",
@@ -1525,7 +1601,7 @@
     "topicCode": "ADD",
     "topic": "Addition and Subtraction",
     "subtopic": "Word problem",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "questionType": "mcq",
     "question": "Ethan had 40 stickers. Ethan bought 7 more stickers, then gave away 4 stickers. After that Ethan found 4 stickers on the ground. How many stickers does Ethan have now?",
     "options": {
@@ -1537,7 +1613,8 @@
     "correctAnswer": "D",
     "correctValue": "47",
     "explanation": "Start with 40. Add 7 to get 47. Subtract 4 to get 43. Finally add 4: 43 + 4 = 47.",
-    "difficultyReason": "Involves three sequential operations in a story context."
+    "difficultyReason": "Involves three sequential operations in a story context.",
+    "template_id": "p1-t017"
   },
   {
     "id": "P1-ADD-043",
@@ -1557,7 +1634,8 @@
     "correctAnswer": "D",
     "correctValue": "27",
     "explanation": "Subtract 45 from 72 to find the other number: 27.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-ADD-044",
@@ -1577,7 +1655,8 @@
     "correctAnswer": "A",
     "correctValue": "35",
     "explanation": "Subtract 43 from 78 to find the other number: 35.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-ADD-045",
@@ -1585,7 +1664,7 @@
     "topicCode": "ADD",
     "topic": "Addition and Subtraction",
     "subtopic": "Word problem",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "questionType": "mcq",
     "question": "Eileen had 27 stickers. Eileen bought 9 more stickers, then gave away 8 stickers. After that Eileen found 8 stickers on the ground. How many stickers does Eileen have now?",
     "options": {
@@ -1597,7 +1676,8 @@
     "correctAnswer": "B",
     "correctValue": "36",
     "explanation": "Start with 27. Add 9 to get 36. Subtract 8 to get 28. Finally add 8: 28 + 8 = 36.",
-    "difficultyReason": "Involves three sequential operations in a story context."
+    "difficultyReason": "Involves three sequential operations in a story context.",
+    "template_id": "p1-t016"
   },
   {
     "id": "P1-ADD-046",
@@ -1617,7 +1697,8 @@
     "correctAnswer": "A",
     "correctValue": "6",
     "explanation": "Subtract 16 from 22 to find the other number: 6.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-ADD-047",
@@ -1637,7 +1718,8 @@
     "correctAnswer": "A",
     "correctValue": "12",
     "explanation": "Subtract 11 from 23 to find the other number: 12.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-ADD-048",
@@ -1657,7 +1739,8 @@
     "correctAnswer": "C",
     "correctValue": "52",
     "explanation": "Start with 35. Add 11 to get 46. Subtract 3 to get 43. Finally add 9: 43 + 9 = 52.",
-    "difficultyReason": "Involves three sequential operations in a story context."
+    "difficultyReason": "Involves three sequential operations in a story context.",
+    "template_id": "p1-t017"
   },
   {
     "id": "P1-ADD-049",
@@ -1677,7 +1760,8 @@
     "correctAnswer": "A",
     "correctValue": "33",
     "explanation": "Start with 31. Add 5 to get 36. Subtract 4 to get 32. Finally add 1: 32 + 1 = 33.",
-    "difficultyReason": "Involves three sequential operations in a story context."
+    "difficultyReason": "Involves three sequential operations in a story context.",
+    "template_id": "p1-t015"
   },
   {
     "id": "P1-ADD-050",
@@ -1697,7 +1781,8 @@
     "correctAnswer": "B",
     "correctValue": "41",
     "explanation": "Subtract 12 from 53 to find the other number: 41.",
-    "difficultyReason": "Requires understanding that subtraction undoes addition."
+    "difficultyReason": "Requires understanding that subtraction undoes addition.",
+    "template_id": "p1-t014"
   },
   {
     "id": "P1-MUL-001",
@@ -1717,7 +1802,8 @@
     "correctAnswer": "B",
     "correctValue": "4",
     "explanation": "Divide 8 by 2 to get 4.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t018"
   },
   {
     "id": "P1-MUL-002",
@@ -1737,7 +1823,8 @@
     "correctAnswer": "A",
     "correctValue": "8",
     "explanation": "Multiply 2 by 4 to get 8.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t019"
   },
   {
     "id": "P1-MUL-003",
@@ -1757,7 +1844,8 @@
     "correctAnswer": "C",
     "correctValue": "10",
     "explanation": "There are 5 groups of 2. 5 × 2 = 10.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t020"
   },
   {
     "id": "P1-MUL-004",
@@ -1777,7 +1865,8 @@
     "correctAnswer": "D",
     "correctValue": "8",
     "explanation": "There are 2 groups of 4. 2 × 4 = 8.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t020"
   },
   {
     "id": "P1-MUL-005",
@@ -1797,7 +1886,8 @@
     "correctAnswer": "D",
     "correctValue": "10",
     "explanation": "Multiply 5 by 2 to get 10.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t019"
   },
   {
     "id": "P1-MUL-006",
@@ -1817,7 +1907,8 @@
     "correctAnswer": "C",
     "correctValue": "2",
     "explanation": "Divide 10 by 5 to get 2.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t018"
   },
   {
     "id": "P1-MUL-007",
@@ -1837,7 +1928,8 @@
     "correctAnswer": "D",
     "correctValue": "2",
     "explanation": "Divide 8 by 4 to get 2.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t018"
   },
   {
     "id": "P1-MUL-008",
@@ -1857,7 +1949,8 @@
     "correctAnswer": "B",
     "correctValue": "4",
     "explanation": "Divide 16 by 4 to get 4.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t018"
   },
   {
     "id": "P1-MUL-009",
@@ -1877,7 +1970,8 @@
     "correctAnswer": "C",
     "correctValue": "15",
     "explanation": "Multiply 3 by 5 to get 15.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t019"
   },
   {
     "id": "P1-MUL-010",
@@ -1897,7 +1991,8 @@
     "correctAnswer": "A",
     "correctValue": "9",
     "explanation": "Multiply 3 by 3 to get 9.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t019"
   },
   {
     "id": "P1-MUL-011",
@@ -1917,7 +2012,8 @@
     "correctAnswer": "B",
     "correctValue": "12",
     "explanation": "There are 4 groups of 3. 4 × 3 = 12.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t020"
   },
   {
     "id": "P1-MUL-012",
@@ -1937,7 +2033,8 @@
     "correctAnswer": "C",
     "correctValue": "15",
     "explanation": "Multiply 3 by 5 to get 15.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t019"
   },
   {
     "id": "P1-MUL-013",
@@ -1957,7 +2054,8 @@
     "correctAnswer": "A",
     "correctValue": "4",
     "explanation": "There are 2 groups of 2. 2 × 2 = 4.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t020"
   },
   {
     "id": "P1-MUL-014",
@@ -1977,7 +2075,8 @@
     "correctAnswer": "A",
     "correctValue": "5",
     "explanation": "Divide 10 by 2 to get 5.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t018"
   },
   {
     "id": "P1-MUL-015",
@@ -1997,7 +2096,8 @@
     "correctAnswer": "D",
     "correctValue": "15",
     "explanation": "There are 3 groups of 5. 3 × 5 = 15.",
-    "difficultyReason": "Single multiplication or division fact."
+    "difficultyReason": "Single multiplication or division fact.",
+    "template_id": "p1-t020"
   },
   {
     "id": "P1-MUL-016",
@@ -2017,7 +2117,8 @@
     "correctAnswer": "C",
     "correctValue": "18",
     "explanation": "4 × 4 = 16. Adding 2 gives 18.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-017",
@@ -2037,7 +2138,8 @@
     "correctAnswer": "B",
     "correctValue": "2",
     "explanation": "Each child gets 4 sweets (8 ÷ 2). Then each eats 2, leaving 2.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t022"
   },
   {
     "id": "P1-MUL-018",
@@ -2057,7 +2159,8 @@
     "correctAnswer": "B",
     "correctValue": "16",
     "explanation": "4 × 3 = 12. Adding 4 gives 16.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-019",
@@ -2077,7 +2180,8 @@
     "correctAnswer": "B",
     "correctValue": "26",
     "explanation": "5 × 5 = 25. Adding 1 gives 26.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-020",
@@ -2097,7 +2201,8 @@
     "correctAnswer": "A",
     "correctValue": "32",
     "explanation": "5 × 6 = 30. Adding 2 gives 32.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-021",
@@ -2117,7 +2222,8 @@
     "correctAnswer": "C",
     "correctValue": "28",
     "explanation": "5 × 5 = 25. Adding 3 gives 28.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-022",
@@ -2137,7 +2243,8 @@
     "correctAnswer": "D",
     "correctValue": "14",
     "explanation": "2 × 6 = 12. Adding 2 gives 14.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-023",
@@ -2157,7 +2264,8 @@
     "correctAnswer": "D",
     "correctValue": "19",
     "explanation": "3 × 6 = 18. Adding 1 gives 19.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-024",
@@ -2177,7 +2285,8 @@
     "correctAnswer": "B",
     "correctValue": "3",
     "explanation": "Each child gets 4 sweets (12 ÷ 3). Then each eats 1, leaving 3.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t022"
   },
   {
     "id": "P1-MUL-025",
@@ -2197,7 +2306,8 @@
     "correctAnswer": "B",
     "correctValue": "5",
     "explanation": "Each child gets 6 sweets (18 ÷ 3). Then each eats 1, leaving 5.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t022"
   },
   {
     "id": "P1-MUL-026",
@@ -2217,7 +2327,8 @@
     "correctAnswer": "D",
     "correctValue": "18",
     "explanation": "5 × 3 = 15. Adding 3 gives 18.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-027",
@@ -2237,7 +2348,8 @@
     "correctAnswer": "B",
     "correctValue": "25",
     "explanation": "4 × 6 = 24. Adding 1 gives 25.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-028",
@@ -2257,7 +2369,8 @@
     "correctAnswer": "B",
     "correctValue": "10",
     "explanation": "2 × 3 = 6. Adding 4 gives 10.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-029",
@@ -2277,7 +2390,8 @@
     "correctAnswer": "B",
     "correctValue": "9",
     "explanation": "3 × 2 = 6. Adding 3 gives 9.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-030",
@@ -2297,7 +2411,8 @@
     "correctAnswer": "D",
     "correctValue": "3",
     "explanation": "Each child gets 5 sweets (10 ÷ 2). Then each eats 2, leaving 3.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t022"
   },
   {
     "id": "P1-MUL-031",
@@ -2317,7 +2432,8 @@
     "correctAnswer": "C",
     "correctValue": "1",
     "explanation": "Each child gets 6 sweets (12 ÷ 2). Then each eats 5, leaving 1.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t022"
   },
   {
     "id": "P1-MUL-032",
@@ -2337,7 +2453,8 @@
     "correctAnswer": "C",
     "correctValue": "4",
     "explanation": "Each child gets 5 sweets (10 ÷ 2). Then each eats 1, leaving 4.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t022"
   },
   {
     "id": "P1-MUL-033",
@@ -2357,7 +2474,8 @@
     "correctAnswer": "C",
     "correctValue": "11",
     "explanation": "3 × 2 = 6. Adding 5 gives 11.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-034",
@@ -2377,7 +2495,8 @@
     "correctAnswer": "C",
     "correctValue": "10",
     "explanation": "3 × 3 = 9. Adding 1 gives 10.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-035",
@@ -2397,7 +2516,8 @@
     "correctAnswer": "B",
     "correctValue": "21",
     "explanation": "5 × 4 = 20. Adding 1 gives 21.",
-    "difficultyReason": "Combines multiplication or division with an additional operation."
+    "difficultyReason": "Combines multiplication or division with an additional operation.",
+    "template_id": "p1-t021"
   },
   {
     "id": "P1-MUL-036",
@@ -2417,7 +2537,8 @@
     "correctAnswer": "A",
     "correctValue": "15",
     "explanation": "Each bag loses 3 sweets, so each has 3 left. 5 × 3 = 15.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t023"
   },
   {
     "id": "P1-MUL-037",
@@ -2437,7 +2558,8 @@
     "correctAnswer": "B",
     "correctValue": "4",
     "explanation": "28 ÷ 6 = 4 remainder 4. Thus 4 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-038",
@@ -2457,7 +2579,8 @@
     "correctAnswer": "C",
     "correctValue": "5",
     "explanation": "35 ÷ 6 = 5 remainder 5. Thus 5 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-039",
@@ -2477,7 +2600,8 @@
     "correctAnswer": "D",
     "correctValue": "6",
     "explanation": "Each bag loses 1 sweets, so each has 2 left. 3 × 2 = 6.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t023"
   },
   {
     "id": "P1-MUL-040",
@@ -2497,7 +2621,8 @@
     "correctAnswer": "B",
     "correctValue": "4",
     "explanation": "34 ÷ 6 = 5 remainder 4. Thus 4 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-041",
@@ -2517,7 +2642,8 @@
     "correctAnswer": "C",
     "correctValue": "0",
     "explanation": "12 ÷ 3 = 4 remainder 0. Thus 0 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-042",
@@ -2537,7 +2663,8 @@
     "correctAnswer": "D",
     "correctValue": "6",
     "explanation": "Each bag loses 1 sweets, so each has 2 left. 3 × 2 = 6.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t023"
   },
   {
     "id": "P1-MUL-043",
@@ -2557,7 +2684,8 @@
     "correctAnswer": "C",
     "correctValue": "2",
     "explanation": "22 ÷ 5 = 4 remainder 2. Thus 2 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-044",
@@ -2577,7 +2705,8 @@
     "correctAnswer": "A",
     "correctValue": "2",
     "explanation": "20 ÷ 3 = 6 remainder 2. Thus 2 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-045",
@@ -2597,7 +2726,8 @@
     "correctAnswer": "D",
     "correctValue": "1",
     "explanation": "21 ÷ 4 = 5 remainder 1. Thus 1 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-046",
@@ -2617,7 +2747,8 @@
     "correctAnswer": "B",
     "correctValue": "4",
     "explanation": "Each bag loses 2 sweets, so each has 1 left. 4 × 1 = 4.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t023"
   },
   {
     "id": "P1-MUL-047",
@@ -2637,7 +2768,8 @@
     "correctAnswer": "D",
     "correctValue": "5",
     "explanation": "23 ÷ 6 = 3 remainder 5. Thus 5 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-048",
@@ -2657,7 +2789,8 @@
     "correctAnswer": "B",
     "correctValue": "1",
     "explanation": "29 ÷ 4 = 7 remainder 1. Thus 1 stickers are left unpacked.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t024"
   },
   {
     "id": "P1-MUL-049",
@@ -2677,7 +2810,8 @@
     "correctAnswer": "C",
     "correctValue": "6",
     "explanation": "Each bag loses 2 sweets, so each has 3 left. 2 × 3 = 6.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t023"
   },
   {
     "id": "P1-MUL-050",
@@ -2697,7 +2831,8 @@
     "correctAnswer": "D",
     "correctValue": "15",
     "explanation": "Each bag loses 1 sweets, so each has 3 left. 5 × 3 = 15.",
-    "difficultyReason": "Requires combining multiplication/division with a second operation."
+    "difficultyReason": "Requires combining multiplication/division with a second operation.",
+    "template_id": "p1-t023"
   },
   {
     "id": "P1-MONEY-001",
@@ -2717,7 +2852,8 @@
     "correctAnswer": "A",
     "correctValue": "$1.00",
     "explanation": "Compute 50¢ × 0 = 0¢, 20¢ × 3 = 60¢, 10¢ × 4 = 40¢. Total = 100¢ = $1.00.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t025"
   },
   {
     "id": "P1-MONEY-002",
@@ -2737,7 +2873,8 @@
     "correctAnswer": "A",
     "correctValue": "$0.90",
     "explanation": "Compute 50¢ × 1 = 50¢, 20¢ × 1 = 20¢, 10¢ × 2 = 20¢. Total = 90¢ = $0.90.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t026"
   },
   {
     "id": "P1-MONEY-003",
@@ -2757,7 +2894,8 @@
     "correctAnswer": "C",
     "correctValue": "$1.50",
     "explanation": "Compute 50¢ × 1 = 50¢, 20¢ × 3 = 60¢, 10¢ × 4 = 40¢. Total = 150¢ = $1.50.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t027"
   },
   {
     "id": "P1-MONEY-004",
@@ -2777,7 +2915,8 @@
     "correctAnswer": "A",
     "correctValue": "$0.80",
     "explanation": "Change = $1.00 - $0.20 = $0.80.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t028"
   },
   {
     "id": "P1-MONEY-005",
@@ -2797,7 +2936,8 @@
     "correctAnswer": "C",
     "correctValue": "$1.30",
     "explanation": "Compute 50¢ × 1 = 50¢, 20¢ × 2 = 40¢, 10¢ × 4 = 40¢. Total = 130¢ = $1.30.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t029"
   },
   {
     "id": "P1-MONEY-006",
@@ -2817,7 +2957,8 @@
     "correctAnswer": "B",
     "correctValue": "$0.40",
     "explanation": "Change = $1.00 - $0.60 = $0.40.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t030"
   },
   {
     "id": "P1-MONEY-007",
@@ -2837,7 +2978,8 @@
     "correctAnswer": "A",
     "correctValue": "$1.10",
     "explanation": "Compute 50¢ × 2 = 100¢, 20¢ × 0 = 0¢, 10¢ × 1 = 10¢. Total = 110¢ = $1.10.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t031"
   },
   {
     "id": "P1-MONEY-008",
@@ -2857,7 +2999,8 @@
     "correctAnswer": "C",
     "correctValue": "$1.90",
     "explanation": "Compute 50¢ × 2 = 100¢, 20¢ × 2 = 40¢, 10¢ × 5 = 50¢. Total = 190¢ = $1.90.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t032"
   },
   {
     "id": "P1-MONEY-009",
@@ -2877,7 +3020,8 @@
     "correctAnswer": "C",
     "correctValue": "$0.40",
     "explanation": "Change = $1.00 - $0.60 = $0.40.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t033"
   },
   {
     "id": "P1-MONEY-010",
@@ -2897,7 +3041,8 @@
     "correctAnswer": "C",
     "correctValue": "$0.30",
     "explanation": "Change = $1.00 - $0.70 = $0.30.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t034"
   },
   {
     "id": "P1-MONEY-011",
@@ -2917,7 +3062,8 @@
     "correctAnswer": "D",
     "correctValue": "$0.60",
     "explanation": "Change = $1.00 - $0.40 = $0.60.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t035"
   },
   {
     "id": "P1-MONEY-012",
@@ -2937,7 +3083,8 @@
     "correctAnswer": "B",
     "correctValue": "$0.70",
     "explanation": "Change = $1.00 - $0.30 = $0.70.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t028"
   },
   {
     "id": "P1-MONEY-013",
@@ -2957,7 +3104,8 @@
     "correctAnswer": "C",
     "correctValue": "$1.60",
     "explanation": "Compute 50¢ × 2 = 100¢, 20¢ × 1 = 20¢, 10¢ × 4 = 40¢. Total = 160¢ = $1.60.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t036"
   },
   {
     "id": "P1-MONEY-014",
@@ -2977,7 +3125,8 @@
     "correctAnswer": "A",
     "correctValue": "$1.40",
     "explanation": "Compute 50¢ × 2 = 100¢, 20¢ × 2 = 40¢, 10¢ × 0 = 0¢. Total = 140¢ = $1.40.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t037"
   },
   {
     "id": "P1-MONEY-015",
@@ -2997,7 +3146,8 @@
     "correctAnswer": "C",
     "correctValue": "$0.50",
     "explanation": "Change = $1.00 - $0.50 = $0.50.",
-    "difficultyReason": "Direct counting of coins or making change."
+    "difficultyReason": "Direct counting of coins or making change.",
+    "template_id": "p1-t038"
   },
   {
     "id": "P1-MONEY-016",
@@ -3017,7 +3167,8 @@
     "correctAnswer": "C",
     "correctValue": "$2.49",
     "explanation": "Total cost = $2.51. Change = $5.00 - $2.51 = $2.49.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t039"
   },
   {
     "id": "P1-MONEY-017",
@@ -3037,7 +3188,8 @@
     "correctAnswer": "C",
     "correctValue": "$0.64",
     "explanation": "Total cost = $4.36. Change = $5.00 - $4.36 = $0.64.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t039"
   },
   {
     "id": "P1-MONEY-018",
@@ -3057,7 +3209,8 @@
     "correctAnswer": "B",
     "correctValue": "$3.00",
     "explanation": "Add $1.02 and $1.98 to get $3.00.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t040"
   },
   {
     "id": "P1-MONEY-019",
@@ -3077,7 +3230,8 @@
     "correctAnswer": "B",
     "correctValue": "$3.52",
     "explanation": "Add $1.69 and $1.83 to get $3.52.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t041"
   },
   {
     "id": "P1-MONEY-020",
@@ -3097,7 +3251,8 @@
     "correctAnswer": "A",
     "correctValue": "$2.14",
     "explanation": "Add $1.02 and $1.12 to get $2.14.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t042"
   },
   {
     "id": "P1-MONEY-021",
@@ -3117,7 +3272,8 @@
     "correctAnswer": "D",
     "correctValue": "$1.10",
     "explanation": "Add $0.28 and $0.82 to get $1.10.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t042"
   },
   {
     "id": "P1-MONEY-022",
@@ -3137,7 +3293,8 @@
     "correctAnswer": "C",
     "correctValue": "$5.56",
     "explanation": "Total cost = $4.44. Change = $10.00 - $4.44 = $5.56.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t039"
   },
   {
     "id": "P1-MONEY-023",
@@ -3157,7 +3314,8 @@
     "correctAnswer": "A",
     "correctValue": "$3.52",
     "explanation": "Add $1.56 and $1.96 to get $3.52.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t042"
   },
   {
     "id": "P1-MONEY-024",
@@ -3177,7 +3335,8 @@
     "correctAnswer": "B",
     "correctValue": "$1.65",
     "explanation": "Add $0.26 and $1.39 to get $1.65.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t043"
   },
   {
     "id": "P1-MONEY-025",
@@ -3197,7 +3356,8 @@
     "correctAnswer": "B",
     "correctValue": "$2.45",
     "explanation": "Add $1.53 and $0.92 to get $2.45.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t041"
   },
   {
     "id": "P1-MONEY-026",
@@ -3217,7 +3377,8 @@
     "correctAnswer": "D",
     "correctValue": "$3.11",
     "explanation": "Add $1.97 and $1.14 to get $3.11.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t042"
   },
   {
     "id": "P1-MONEY-027",
@@ -3237,7 +3398,8 @@
     "correctAnswer": "A",
     "correctValue": "$6.24",
     "explanation": "Total cost = $3.76. Change = $10.00 - $3.76 = $6.24.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t039"
   },
   {
     "id": "P1-MONEY-028",
@@ -3257,7 +3419,8 @@
     "correctAnswer": "C",
     "correctValue": "$2.27",
     "explanation": "Total cost = $2.73. Change = $5.00 - $2.73 = $2.27.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t039"
   },
   {
     "id": "P1-MONEY-029",
@@ -3277,7 +3440,8 @@
     "correctAnswer": "D",
     "correctValue": "$2.31",
     "explanation": "Add $1.77 and $0.54 to get $2.31.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t044"
   },
   {
     "id": "P1-MONEY-031",
@@ -3297,7 +3461,8 @@
     "correctAnswer": "A",
     "correctValue": "$1.30",
     "explanation": "Total cost = $3.70. Change = $5.00 - $3.70 = $1.30.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t045"
   },
   {
     "id": "P1-MONEY-032",
@@ -3317,7 +3482,8 @@
     "correctAnswer": "C",
     "correctValue": "$2.00",
     "explanation": "Total cost = $3.00. Change = $5.00 - $3.00 = $2.00.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t039"
   },
   {
     "id": "P1-MONEY-033",
@@ -3337,7 +3503,8 @@
     "correctAnswer": "D",
     "correctValue": "$1.63",
     "explanation": "Add $0.45 and $1.18 to get $1.63.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t042"
   },
   {
     "id": "P1-MONEY-034",
@@ -3357,7 +3524,8 @@
     "correctAnswer": "D",
     "correctValue": "$0.79",
     "explanation": "Add $0.32 and $0.47 to get $0.79.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t041"
   },
   {
     "id": "P1-MONEY-035",
@@ -3377,7 +3545,8 @@
     "correctAnswer": "C",
     "correctValue": "$1.73",
     "explanation": "Add $0.23 and $1.50 to get $1.73.",
-    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment."
+    "difficultyReason": "Requires adding two amounts and possibly subtracting from payment.",
+    "template_id": "p1-t042"
   },
   {
     "id": "P1-MONEY-036",
@@ -3397,7 +3566,8 @@
     "correctAnswer": "A",
     "correctValue": "$3.46",
     "explanation": "Total spent = $10.00 - $4.00 = $6.00. Subtract $2.54 to find the other cost: $3.46.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t046"
   },
   {
     "id": "P1-MONEY-037",
@@ -3417,7 +3587,8 @@
     "correctAnswer": "D",
     "correctValue": "$8.19",
     "explanation": "Total spent = $10.00 - $0.37 = $9.63. Subtract $1.44 to find the other cost: $8.19.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t047"
   },
   {
     "id": "P1-MONEY-038",
@@ -3437,7 +3608,8 @@
     "correctAnswer": "D",
     "correctValue": "$2.08",
     "explanation": "Total spent = $5.00 - $1.74 = $3.26. Subtract $1.18 to find the other cost: $2.08.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t048"
   },
   {
     "id": "P1-MONEY-039",
@@ -3457,7 +3629,8 @@
     "correctAnswer": "A",
     "correctValue": "$5.39",
     "explanation": "Total cost = $4.61. Change = $10.00 - $4.61 = $5.39.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t049"
   },
   {
     "id": "P1-MONEY-040",
@@ -3477,7 +3650,8 @@
     "correctAnswer": "B",
     "correctValue": "$3.95",
     "explanation": "Total cost = $6.05. Change = $10.00 - $6.05 = $3.95.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t050"
   },
   {
     "id": "P1-MONEY-041",
@@ -3497,7 +3671,8 @@
     "correctAnswer": "D",
     "correctValue": "$0.72",
     "explanation": "Total cost = $4.28. Change = $5.00 - $4.28 = $0.72.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t049"
   },
   {
     "id": "P1-MONEY-042",
@@ -3517,7 +3692,8 @@
     "correctAnswer": "C",
     "correctValue": "$2.18",
     "explanation": "Total spent = $5.00 - $0.42 = $4.58. Subtract $2.40 to find the other cost: $2.18.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t051"
   },
   {
     "id": "P1-MONEY-043",
@@ -3537,7 +3713,8 @@
     "correctAnswer": "D",
     "correctValue": "$1.63",
     "explanation": "Total spent = $5.00 - $1.84 = $3.16. Subtract $1.53 to find the other cost: $1.63.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t048"
   },
   {
     "id": "P1-MONEY-044",
@@ -3557,7 +3734,8 @@
     "correctAnswer": "D",
     "correctValue": "$2.77",
     "explanation": "Total spent = $5.00 - $0.50 = $4.50. Subtract $1.73 to find the other cost: $2.77.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t047"
   },
   {
     "id": "P1-MONEY-045",
@@ -3577,7 +3755,8 @@
     "correctAnswer": "C",
     "correctValue": "$4.96",
     "explanation": "Total cost = $5.04. Change = $10.00 - $5.04 = $4.96.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t050"
   },
   {
     "id": "P1-MONEY-046",
@@ -3597,7 +3776,8 @@
     "correctAnswer": "D",
     "correctValue": "$3.38",
     "explanation": "Total spent = $10.00 - $3.70 = $6.30. Subtract $2.92 to find the other cost: $3.38.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t052"
   },
   {
     "id": "P1-MONEY-047",
@@ -3617,7 +3797,8 @@
     "correctAnswer": "A",
     "correctValue": "$3.28",
     "explanation": "Total cost = $6.72. Change = $10.00 - $6.72 = $3.28.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t049"
   },
   {
     "id": "P1-MONEY-048",
@@ -3637,7 +3818,8 @@
     "correctAnswer": "A",
     "correctValue": "$4.98",
     "explanation": "Total cost = $5.02. Change = $10.00 - $5.02 = $4.98.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t053"
   },
   {
     "id": "P1-MONEY-049",
@@ -3657,7 +3839,8 @@
     "correctAnswer": "C",
     "correctValue": "$4.72",
     "explanation": "Total cost = $5.28. Change = $10.00 - $5.28 = $4.72.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t054"
   },
   {
     "id": "P1-MONEY-050",
@@ -3677,7 +3860,8 @@
     "correctAnswer": "C",
     "correctValue": "$1.64",
     "explanation": "Total spent = $5.00 - $0.93 = $4.07. Subtract $2.43 to find the other cost: $1.64.",
-    "difficultyReason": "Involves three purchases or solving for an unknown price."
+    "difficultyReason": "Involves three purchases or solving for an unknown price.",
+    "template_id": "p1-t052"
   },
   {
     "id": "P1-TIME-003",
@@ -3697,7 +3881,8 @@
     "correctAnswer": "B",
     "correctValue": "half past 12",
     "explanation": "When the minute hand points to 6, it is half past the hour.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
+    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months).",
+    "template_id": "p1-t055"
   },
   {
     "id": "P1-TIME-004",
@@ -3717,7 +3902,8 @@
     "correctAnswer": "B",
     "correctValue": "half past 6",
     "explanation": "When the minute hand points to 6, it is half past the hour.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
+    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months).",
+    "template_id": "p1-t055"
   },
   {
     "id": "P1-TIME-007",
@@ -3737,7 +3923,8 @@
     "correctAnswer": "A",
     "correctValue": "9 o'clock",
     "explanation": "When the minute hand points to 12 it is exactly 9 o'clock.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
+    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months).",
+    "template_id": "p1-t056"
   },
   {
     "id": "P1-TIME-008",
@@ -3757,7 +3944,8 @@
     "correctAnswer": "D",
     "correctValue": "half past 8",
     "explanation": "When the minute hand points to 6, it is half past the hour.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
+    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months).",
+    "template_id": "p1-t055"
   },
   {
     "id": "P1-TIME-010",
@@ -3777,7 +3965,8 @@
     "correctAnswer": "B",
     "correctValue": "half past 11",
     "explanation": "When the minute hand points to 6, it is half past the hour.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
+    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months).",
+    "template_id": "p1-t055"
   },
   {
     "id": "P1-TIME-011",
@@ -3797,7 +3986,8 @@
     "correctAnswer": "D",
     "correctValue": "half past 6",
     "explanation": "When the minute hand points to 6, it is half past the hour.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
+    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months).",
+    "template_id": "p1-t055"
   },
   {
     "id": "P1-TIME-012",
@@ -3817,7 +4007,8 @@
     "correctAnswer": "B",
     "correctValue": "3 o'clock",
     "explanation": "When the minute hand points to 12 it is exactly 3 o'clock.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
+    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months).",
+    "template_id": "p1-t056"
   },
   {
     "id": "P1-TIME-014",
@@ -3837,7 +4028,8 @@
     "correctAnswer": "C",
     "correctValue": "half past 8",
     "explanation": "When the minute hand points to 6, it is half past the hour.",
-    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months)."
+    "difficultyReason": "Direct recall of time facts (hours, half hours, days, months).",
+    "template_id": "p1-t055"
   },
   {
     "id": "P1-TIME-016",
@@ -3857,7 +4049,8 @@
     "correctAnswer": "C",
     "correctValue": "8:15 p.m.",
     "explanation": "Add 30 minutes to 7:45. 45 + 30 = 75, which is 8:15.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-017",
@@ -3877,7 +4070,8 @@
     "correctAnswer": "B",
     "correctValue": "5:25 p.m.",
     "explanation": "Add 25 minutes to 5:00. 0 + 25 = 25, which is 5:25.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-018",
@@ -3897,7 +4091,8 @@
     "correctAnswer": "B",
     "correctValue": "5:45 p.m.",
     "explanation": "Add 15 minutes to 5:30. 30 + 15 = 45, which is 5:45.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-019",
@@ -3917,7 +4112,8 @@
     "correctAnswer": "C",
     "correctValue": "5:15 p.m.",
     "explanation": "Subtract 15 minutes from 5:30: 30 - 15 = 15 minutes. Adjust hours if necessary to get 5:15.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t058"
   },
   {
     "id": "P1-TIME-020",
@@ -3937,7 +4133,8 @@
     "correctAnswer": "D",
     "correctValue": "1:00 p.m.",
     "explanation": "Add 30 minutes to 12:30. 30 + 30 = 60, which is 1:00.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-021",
@@ -3957,7 +4154,8 @@
     "correctAnswer": "A",
     "correctValue": "9:50 p.m.",
     "explanation": "Subtract 25 minutes from 10:15: 15 - 25 = -10 minutes. Adjust hours if necessary to get 9:50.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t058"
   },
   {
     "id": "P1-TIME-022",
@@ -3977,7 +4175,8 @@
     "correctAnswer": "A",
     "correctValue": "4:00 p.m.",
     "explanation": "Add 15 minutes to 3:45. 45 + 15 = 60, which is 4:00.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-023",
@@ -3997,7 +4196,8 @@
     "correctAnswer": "C",
     "correctValue": "12:15 p.m.",
     "explanation": "Add 30 minutes to 11:45. 45 + 30 = 75, which is 12:15.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-024",
@@ -4017,7 +4217,8 @@
     "correctAnswer": "A",
     "correctValue": "9:05 p.m.",
     "explanation": "Subtract 25 minutes from 9:30: 30 - 25 = 5 minutes. Adjust hours if necessary to get 9:05.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t058"
   },
   {
     "id": "P1-TIME-025",
@@ -4037,7 +4238,8 @@
     "correctAnswer": "C",
     "correctValue": "12:30 p.m.",
     "explanation": "Add 30 minutes to 12:00. 0 + 30 = 30, which is 12:30.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-026",
@@ -4057,7 +4259,8 @@
     "correctAnswer": "A",
     "correctValue": "6:05 p.m.",
     "explanation": "Subtract 25 minutes from 6:30: 30 - 25 = 5 minutes. Adjust hours if necessary to get 6:05.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t058"
   },
   {
     "id": "P1-TIME-027",
@@ -4077,7 +4280,8 @@
     "correctAnswer": "D",
     "correctValue": "10:45 p.m.",
     "explanation": "Subtract 15 minutes from 11:00: 0 - 15 = -15 minutes. Adjust hours if necessary to get 10:45.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t058"
   },
   {
     "id": "P1-TIME-028",
@@ -4097,7 +4301,8 @@
     "correctAnswer": "A",
     "correctValue": "2:45 p.m.",
     "explanation": "Add 30 minutes to 2:15. 15 + 30 = 45, which is 2:45.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-029",
@@ -4117,7 +4322,8 @@
     "correctAnswer": "D",
     "correctValue": "5:25 p.m.",
     "explanation": "Add 25 minutes to 5:00. 0 + 25 = 25, which is 5:25.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-030",
@@ -4137,7 +4343,8 @@
     "correctAnswer": "B",
     "correctValue": "7:15 p.m.",
     "explanation": "Add 15 minutes to 7:00. 0 + 15 = 15, which is 7:15.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-031",
@@ -4157,7 +4364,8 @@
     "correctAnswer": "D",
     "correctValue": "12:35 p.m.",
     "explanation": "Subtract 25 minutes from 1:00: 0 - 25 = -25 minutes. Adjust hours if necessary to get 12:35.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t058"
   },
   {
     "id": "P1-TIME-032",
@@ -4177,7 +4385,8 @@
     "correctAnswer": "D",
     "correctValue": "1:45 p.m.",
     "explanation": "Subtract 30 minutes from 2:15: 15 - 30 = -15 minutes. Adjust hours if necessary to get 1:45.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t058"
   },
   {
     "id": "P1-TIME-033",
@@ -4197,7 +4406,8 @@
     "correctAnswer": "D",
     "correctValue": "6:55 p.m.",
     "explanation": "Add 25 minutes to 6:30. 30 + 25 = 55, which is 6:55.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-034",
@@ -4217,7 +4427,8 @@
     "correctAnswer": "D",
     "correctValue": "8:50 p.m.",
     "explanation": "Add 20 minutes to 8:30. 30 + 20 = 50, which is 8:50.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-035",
@@ -4237,7 +4448,8 @@
     "correctAnswer": "B",
     "correctValue": "11:10 p.m.",
     "explanation": "Add 25 minutes to 10:45. 45 + 25 = 70, which is 11:10.",
-    "difficultyReason": "Requires adding or subtracting minutes to find start/end times."
+    "difficultyReason": "Requires adding or subtracting minutes to find start/end times.",
+    "template_id": "p1-t057"
   },
   {
     "id": "P1-TIME-036",
@@ -4257,7 +4469,8 @@
     "correctAnswer": "C",
     "correctValue": "11:15 p.m.",
     "explanation": "Add 1 hour and 45 minutes to 9:30 to get 11:15.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t059"
   },
   {
     "id": "P1-TIME-037",
@@ -4277,7 +4490,8 @@
     "correctAnswer": "B",
     "correctValue": "2:45 p.m.",
     "explanation": "Add 45 minutes to 1:00 then add 60 minutes to get 2:45.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t060"
   },
   {
     "id": "P1-TIME-038",
@@ -4297,7 +4511,8 @@
     "correctAnswer": "C",
     "correctValue": "9:30 p.m.",
     "explanation": "Add 1 hour and 30 minutes to 8:00 to get 9:30.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t059"
   },
   {
     "id": "P1-TIME-039",
@@ -4317,7 +4532,8 @@
     "correctAnswer": "D",
     "correctValue": "5:15 p.m.",
     "explanation": "Add 45 minutes to 3:30 then add 60 minutes to get 5:15.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t060"
   },
   {
     "id": "P1-TIME-040",
@@ -4337,7 +4553,8 @@
     "correctAnswer": "A",
     "correctValue": "6:30 p.m.",
     "explanation": "Add 1 hour and 15 minutes to 5:15 to get 6:30.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t059"
   },
   {
     "id": "P1-TIME-041",
@@ -4357,7 +4574,8 @@
     "correctAnswer": "B",
     "correctValue": "8:45 p.m.",
     "explanation": "Add 45 minutes to 7:00 then add 60 minutes to get 8:45.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t060"
   },
   {
     "id": "P1-TIME-042",
@@ -4377,7 +4595,8 @@
     "correctAnswer": "B",
     "correctValue": "5:30 p.m.",
     "explanation": "Add 30 minutes to 4:00 then add 60 minutes to get 5:30.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t060"
   },
   {
     "id": "P1-TIME-043",
@@ -4397,7 +4616,8 @@
     "correctAnswer": "C",
     "correctValue": "5:45 p.m.",
     "explanation": "Add 60 minutes to 4:00 then add 45 minutes to get 5:45.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t060"
   },
   {
     "id": "P1-TIME-044",
@@ -4417,7 +4637,8 @@
     "correctAnswer": "C",
     "correctValue": "10:45 p.m.",
     "explanation": "Add 2 hours and 45 minutes to 8:00 to get 10:45.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t061"
   },
   {
     "id": "P1-TIME-045",
@@ -4437,7 +4658,8 @@
     "correctAnswer": "C",
     "correctValue": "3:45 p.m.",
     "explanation": "Add 2 hours and 30 minutes to 1:15 to get 3:45.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t061"
   },
   {
     "id": "P1-TIME-046",
@@ -4457,7 +4679,8 @@
     "correctAnswer": "B",
     "correctValue": "6:30 p.m.",
     "explanation": "Add 1 hour and 30 minutes to 5:00 to get 6:30.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t059"
   },
   {
     "id": "P1-TIME-047",
@@ -4477,7 +4700,8 @@
     "correctAnswer": "A",
     "correctValue": "4:30 p.m.",
     "explanation": "Add 60 minutes to 2:30 then add 60 minutes to get 4:30.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t060"
   },
   {
     "id": "P1-TIME-048",
@@ -4497,7 +4721,8 @@
     "correctAnswer": "C",
     "correctValue": "10:30 p.m.",
     "explanation": "Add 2 hours and 15 minutes to 8:15 to get 10:30.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t061"
   },
   {
     "id": "P1-TIME-049",
@@ -4517,7 +4742,8 @@
     "correctAnswer": "C",
     "correctValue": "10:15 p.m.",
     "explanation": "Add 1 hour and 15 minutes to 9:00 to get 10:15.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t059"
   },
   {
     "id": "P1-TIME-050",
@@ -4537,7 +4763,8 @@
     "correctAnswer": "C",
     "correctValue": "4:15 p.m.",
     "explanation": "Add 45 minutes to 3:00 then add 30 minutes to get 4:15.",
-    "difficultyReason": "Requires adding times across hour boundaries."
+    "difficultyReason": "Requires adding times across hour boundaries.",
+    "template_id": "p1-t060"
   },
   {
     "id": "P1-GRAPH-016",
@@ -4557,7 +4784,8 @@
     "correctAnswer": "A",
     "correctValue": "14",
     "explanation": "Total = 4 + 10 = 14.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t062"
   },
   {
     "id": "P1-GRAPH-017",
@@ -4577,7 +4805,8 @@
     "correctAnswer": "D",
     "correctValue": "5",
     "explanation": "Difference = 7 - 2 = 5.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t063"
   },
   {
     "id": "P1-GRAPH-018",
@@ -4597,7 +4826,8 @@
     "correctAnswer": "D",
     "correctValue": "5",
     "explanation": "Difference = 9 - 4 = 5.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t064"
   },
   {
     "id": "P1-GRAPH-020",
@@ -4617,7 +4847,8 @@
     "correctAnswer": "C",
     "correctValue": "9",
     "explanation": "Total = 2 + 7 = 9.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t065"
   },
   {
     "id": "P1-GRAPH-021",
@@ -4637,7 +4868,8 @@
     "correctAnswer": "B",
     "correctValue": "5",
     "explanation": "Difference = 7 - 2 = 5.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t066"
   },
   {
     "id": "P1-GRAPH-022",
@@ -4657,7 +4889,8 @@
     "correctAnswer": "A",
     "correctValue": "12",
     "explanation": "Total = 5 + 7 = 12.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t067"
   },
   {
     "id": "P1-GRAPH-023",
@@ -4677,7 +4910,8 @@
     "correctAnswer": "A",
     "correctValue": "14",
     "explanation": "Total = 9 + 5 = 14.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t068"
   },
   {
     "id": "P1-GRAPH-024",
@@ -4697,7 +4931,8 @@
     "correctAnswer": "C",
     "correctValue": "3",
     "explanation": "Difference = 9 - 6 = 3.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t069"
   },
   {
     "id": "P1-GRAPH-026",
@@ -4717,7 +4952,8 @@
     "correctAnswer": "D",
     "correctValue": "2",
     "explanation": "Difference = 6 - 4 = 2.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t070"
   },
   {
     "id": "P1-GRAPH-027",
@@ -4737,7 +4973,8 @@
     "correctAnswer": "D",
     "correctValue": "9",
     "explanation": "Total = 6 + 3 = 9.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t071"
   },
   {
     "id": "P1-GRAPH-028",
@@ -4757,7 +4994,8 @@
     "correctAnswer": "C",
     "correctValue": "11",
     "explanation": "Total = 9 + 2 = 11.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t072"
   },
   {
     "id": "P1-GRAPH-029",
@@ -4777,7 +5015,8 @@
     "correctAnswer": "D",
     "correctValue": "12",
     "explanation": "Total = 9 + 3 = 12.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t073"
   },
   {
     "id": "P1-GRAPH-030",
@@ -4797,7 +5036,8 @@
     "correctAnswer": "C",
     "correctValue": "7",
     "explanation": "Difference = 9 - 2 = 7.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t074"
   },
   {
     "id": "P1-GRAPH-031",
@@ -4817,7 +5057,8 @@
     "correctAnswer": "C",
     "correctValue": "3",
     "explanation": "Difference = 7 - 4 = 3.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t075"
   },
   {
     "id": "P1-GRAPH-032",
@@ -4837,7 +5078,8 @@
     "correctAnswer": "B",
     "correctValue": "6",
     "explanation": "Difference = 8 - 2 = 6.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t076"
   },
   {
     "id": "P1-GRAPH-033",
@@ -4857,7 +5099,8 @@
     "correctAnswer": "B",
     "correctValue": "4",
     "explanation": "Difference = 10 - 6 = 4.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t077"
   },
   {
     "id": "P1-GRAPH-034",
@@ -4877,7 +5120,8 @@
     "correctAnswer": "B",
     "correctValue": "9",
     "explanation": "Total = 5 + 4 = 9.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t078"
   },
   {
     "id": "P1-GRAPH-035",
@@ -4897,7 +5141,8 @@
     "correctAnswer": "C",
     "correctValue": "15",
     "explanation": "Total = 5 + 10 = 15.",
-    "difficultyReason": "Requires simple addition or subtraction of given quantities."
+    "difficultyReason": "Requires simple addition or subtraction of given quantities.",
+    "template_id": "p1-t079"
   },
   {
     "id": "P1-GRAPH-036",
@@ -4917,7 +5162,8 @@
     "correctAnswer": "C",
     "correctValue": "1",
     "explanation": "Ben + Devi = 12 and Eileen + Siti = 11. Difference = 1.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t080"
   },
   {
     "id": "P1-GRAPH-037",
@@ -4937,7 +5183,8 @@
     "correctAnswer": "D",
     "correctValue": "10",
     "explanation": "Ahmad + Deepa = 22 and Ben + Mei Hua = 12. Difference = 10.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t081"
   },
   {
     "id": "P1-GRAPH-038",
@@ -4957,7 +5204,8 @@
     "correctAnswer": "A",
     "correctValue": "4",
     "explanation": "Devi + Priya = 11 and Mei Hua + Ethan = 7. Difference = 4.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t082"
   },
   {
     "id": "P1-GRAPH-039",
@@ -4977,7 +5225,8 @@
     "correctAnswer": "B",
     "correctValue": "6",
     "explanation": "Cynthia + Eileen = 13 and Wei Ling + Mei Hua = 7. Difference = 6.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t083"
   },
   {
     "id": "P1-GRAPH-040",
@@ -4997,7 +5246,8 @@
     "correctAnswer": "A",
     "correctValue": "1",
     "explanation": "Anna + Devi = 15 and Ahmad + Deepa = 14. Difference = 1.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t084"
   },
   {
     "id": "P1-GRAPH-041",
@@ -5017,7 +5267,8 @@
     "correctAnswer": "C",
     "correctValue": "2",
     "explanation": "Deepa + Ahmad = 19 and Kai + Cynthia = 21. Difference = 2.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t085"
   },
   {
     "id": "P1-GRAPH-042",
@@ -5037,7 +5288,8 @@
     "correctAnswer": "C",
     "correctValue": "4",
     "explanation": "Ahmad + Raju = 9 and Deepa + Anna = 13. Difference = 4.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t086"
   },
   {
     "id": "P1-GRAPH-043",
@@ -5057,7 +5309,8 @@
     "correctAnswer": "D",
     "correctValue": "3",
     "explanation": "Priya + Ethan = 16 and Eileen + Siti = 13. Difference = 3.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t087"
   },
   {
     "id": "P1-GRAPH-044",
@@ -5077,7 +5330,8 @@
     "correctAnswer": "D",
     "correctValue": "3",
     "explanation": "Arjun + Anna = 9 and Mei Hua + Siti = 12. Difference = 3.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t088"
   },
   {
     "id": "P1-GRAPH-045",
@@ -5097,7 +5351,8 @@
     "correctAnswer": "A",
     "correctValue": "9",
     "explanation": "Arjun + Ethan = 16 and Raju + Anna = 7. Difference = 9.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t089"
   },
   {
     "id": "P1-GRAPH-046",
@@ -5117,7 +5372,8 @@
     "correctAnswer": "B",
     "correctValue": "0",
     "explanation": "Eileen + Kai = 15 and Ben + Raju = 15. Difference = 0.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t090"
   },
   {
     "id": "P1-GRAPH-047",
@@ -5137,7 +5393,8 @@
     "correctAnswer": "D",
     "correctValue": "18",
     "explanation": "Siti + Deepa = 6 and Cynthia + Ahmad = 24. Difference = 18.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t091"
   },
   {
     "id": "P1-GRAPH-048",
@@ -5157,7 +5414,8 @@
     "correctAnswer": "B",
     "correctValue": "2",
     "explanation": "Wei Ling + Siti = 15 and Priya + Cynthia = 17. Difference = 2.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t085"
   },
   {
     "id": "P1-GRAPH-049",
@@ -5177,7 +5435,8 @@
     "correctAnswer": "D",
     "correctValue": "3",
     "explanation": "Wei Ling + Mei Hua = 13 and Priya + Devi = 16. Difference = 3.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t092"
   },
   {
     "id": "P1-GRAPH-050",
@@ -5197,6 +5456,7 @@
     "correctAnswer": "B",
     "correctValue": "6",
     "explanation": "Arjun + Eileen = 14 and Anna + Cynthia = 20. Difference = 6.",
-    "difficultyReason": "Requires summing pairs then comparing totals."
+    "difficultyReason": "Requires summing pairs then comparing totals.",
+    "template_id": "p1-t093"
   }
 ]

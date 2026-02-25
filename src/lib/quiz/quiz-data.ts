@@ -50,6 +50,7 @@ async function loadP1Questions(): Promise<QuizQuestion[]> {
       options: q.options,
       correctAnswer: q.correctAnswer as QuizOption,
       explanation: q.explanation,
+      templateId: q.template_id,
     }));
 
     P1_QUESTIONS_CACHE = questions;
@@ -90,6 +91,7 @@ async function loadP2Questions(): Promise<QuizQuestion[]> {
       options: q.options,
       correctAnswer: q.correctAnswer as QuizOption,
       explanation: q.explanation,
+      templateId: q.template_id,
     }));
 
     P2_QUESTIONS_CACHE = questions;
@@ -128,6 +130,7 @@ async function loadP3Questions(): Promise<QuizQuestion[]> {
       options: q.options,
       correctAnswer: q.correctAnswer as QuizOption,
       explanation: q.explanation,
+      templateId: q.template_id,
     }));
 
     P3_QUESTIONS_CACHE = questions;
@@ -206,81 +209,135 @@ export async function getQuestionsForConfig(config: QuizConfig): Promise<QuizQue
 /**
  * Get a random subset of questions matching the configuration.
  *
- * Applies two levels of diversity:
- *   1. Topic-level: when multiple topics are selected, questions are distributed
- *      roughly evenly across topics rather than weighted by pool size.
- *   2. Subtopic-level: within each topic, questions are spread across different
- *      subtopics to prevent the same question template from repeating back-to-back.
+ * Applies three levels of diversity:
+ *   1. Topic-level: questions are distributed evenly across topics.
+ *   2. Subtopic-level: questions are spread across subtopics within each topic.
+ *   3. Template-level: within a single quiz, max 1 question per template group.
+ *      Across quizzes, questions whose template was seen recently are deprioritised
+ *      (pushed to the back of the selection pool) but not hard-excluded, so the
+ *      engine never runs out of questions even with a narrow topic filter.
+ *
+ * @param config           Quiz configuration (level, topics, difficulty, count)
+ * @param count            Number of questions to return
+ * @param cooldownTemplates Set of template_id values seen in the last N quizzes.
+ *                          Questions matching these are used only as a last resort.
  */
 export async function getRandomQuestions(
   config: QuizConfig,
-  count: number
+  count: number,
+  cooldownTemplates: ReadonlySet<string> = new Set()
 ): Promise<QuizQuestion[]> {
   const available = await getQuestionsForConfig(config);
   if (available.length === 0) return [];
 
   const actualCount = Math.min(count, available.length);
 
-  // ── 1. Group by topic ──────────────────────────────────────────────────────
-  const byTopic = new Map<string, QuizQuestion[]>();
-  for (const q of available) {
-    if (!byTopic.has(q.topic)) byTopic.set(q.topic, []);
-    byTopic.get(q.topic)!.push(q);
-  }
+  // ── 0. Split pool into "fresh" (not recently seen) and "cooled" (seen recently)
+  const freshPool = shuffleArray(available.filter(q => !q.templateId || !cooldownTemplates.has(q.templateId)));
+  const cooledPool = shuffleArray(available.filter(q => q.templateId && cooldownTemplates.has(q.templateId)));
 
-  const topics = shuffleArray(Array.from(byTopic.keys()));
-  const numTopics = topics.length;
-
-  // ── 2. Allocate question slots evenly across topics ─────────────────────────
-  const slotsPerTopic = new Map<string, number>();
-  const base = Math.floor(actualCount / numTopics);
-  const extra = actualCount % numTopics;
-  topics.forEach((topic, i) => {
-    slotsPerTopic.set(topic, base + (i < extra ? 1 : 0));
-  });
-
-  // ── 3. For each topic, pick questions with subtopic diversity ───────────────
-  const selected: QuizQuestion[] = [];
-
-  for (const topic of topics) {
-    const slots = slotsPerTopic.get(topic)!;
-    const topicQuestions = byTopic.get(topic)!;
-
-    // Group by subtopic and shuffle within each group
+  // ── Helper: pick up to `slots` questions from a pool with subtopic diversity ─
+  function pickWithDiversity(pool: QuizQuestion[], slots: number, usedTemplates: Set<string>): QuizQuestion[] {
+    // Group by subtopic
     const bySubtopic = new Map<string, QuizQuestion[]>();
-    for (const q of shuffleArray(topicQuestions)) {
+    for (const q of pool) {
       if (!bySubtopic.has(q.subtopic)) bySubtopic.set(q.subtopic, []);
       bySubtopic.get(q.subtopic)!.push(q);
     }
 
     const subtopics = shuffleArray(Array.from(bySubtopic.keys()));
-    const maxPerSubtopic = Math.max(2, Math.ceil(slots / subtopics.length));
+    const maxPerSubtopic = Math.max(2, Math.ceil(slots / Math.max(subtopics.length, 1)));
 
-    // Round-robin across subtopics until topic's slot quota is filled
-    const usedCount = new Map<string, number>();
-    const topicPicked: QuizQuestion[] = [];
+    const usedSubtopicCount = new Map<string, number>();
+    const picked: QuizQuestion[] = [];
     let pass = 0;
 
-    while (topicPicked.length < slots && pass < slots * subtopics.length) {
+    while (picked.length < slots && pass < slots * Math.max(subtopics.length, 1) * 2) {
       const sub = subtopics[pass % subtopics.length];
-      const used = usedCount.get(sub) ?? 0;
-      const pool = bySubtopic.get(sub)!;
+      const usedForSub = usedSubtopicCount.get(sub) ?? 0;
+      const subPool = bySubtopic.get(sub)!;
 
-      if (used < maxPerSubtopic && used < pool.length) {
-        topicPicked.push(pool[used]);
-        usedCount.set(sub, used + 1);
+      // Scan this subtopic's remaining questions for one with a fresh template
+      let found = false;
+      for (let i = usedForSub; i < subPool.length && i < usedForSub + maxPerSubtopic; i++) {
+        const candidate = subPool[i];
+        if (!candidate.templateId || !usedTemplates.has(candidate.templateId)) {
+          picked.push(candidate);
+          if (candidate.templateId) usedTemplates.add(candidate.templateId);
+          usedSubtopicCount.set(sub, i + 1);
+          found = true;
+          break;
+        }
+        // Skip (same template already used in this quiz)
+        usedSubtopicCount.set(sub, i + 1);
       }
+      if (!found) usedSubtopicCount.set(sub, (usedSubtopicCount.get(sub) ?? 0) + 1);
+
       pass++;
     }
 
-    selected.push(...topicPicked);
+    return picked;
   }
 
-  // ── 4. If topics didn't have enough questions, fill any remaining slots ──────
+  // ── 1. Group fresh pool by topic ────────────────────────────────────────────
+  const byTopicFresh = new Map<string, QuizQuestion[]>();
+  for (const q of freshPool) {
+    if (!byTopicFresh.has(q.topic)) byTopicFresh.set(q.topic, []);
+    byTopicFresh.get(q.topic)!.push(q);
+  }
+
+  const byTopicCooled = new Map<string, QuizQuestion[]>();
+  for (const q of cooledPool) {
+    if (!byTopicCooled.has(q.topic)) byTopicCooled.set(q.topic, []);
+    byTopicCooled.get(q.topic)!.push(q);
+  }
+
+  // Collect all topics that have at least one question
+  const allTopics = shuffleArray(
+    Array.from(new Set([...byTopicFresh.keys(), ...byTopicCooled.keys()]))
+  );
+  const numTopics = allTopics.length;
+
+  // ── 2. Allocate slots evenly across topics ──────────────────────────────────
+  const slotsPerTopic = new Map<string, number>();
+  const base = Math.floor(actualCount / numTopics);
+  const extra = actualCount % numTopics;
+  allTopics.forEach((topic, i) => {
+    slotsPerTopic.set(topic, base + (i < extra ? 1 : 0));
+  });
+
+  // ── 3. For each topic, pick with diversity — fresh first, cooled as fallback ─
+  const selected: QuizQuestion[] = [];
+  const usedTemplatesThisQuiz = new Set<string>();
+
+  for (const topic of allTopics) {
+    const slots = slotsPerTopic.get(topic)!;
+    const freshForTopic = byTopicFresh.get(topic) ?? [];
+    const cooledForTopic = byTopicCooled.get(topic) ?? [];
+
+    // Try to fill from fresh pool first
+    const fromFresh = pickWithDiversity(freshForTopic, slots, usedTemplatesThisQuiz);
+    selected.push(...fromFresh);
+
+    // Fill remaining slots from cooled pool if fresh wasn't enough
+    const remaining = slots - fromFresh.length;
+    if (remaining > 0) {
+      const fromCooled = pickWithDiversity(cooledForTopic, remaining, usedTemplatesThisQuiz);
+      selected.push(...fromCooled);
+    }
+  }
+
+  // ── 4. Top-up with any remaining questions (fresh first) if still short ──────
   if (selected.length < actualCount) {
     const selectedIds = new Set(selected.map(q => q.id));
-    const remainder = shuffleArray(available.filter(q => !selectedIds.has(q.id)));
-    selected.push(...remainder.slice(0, actualCount - selected.length));
+    const topUpPool = shuffleArray([
+      ...freshPool.filter(q => !selectedIds.has(q.id)),
+      ...cooledPool.filter(q => !selectedIds.has(q.id)),
+    ]);
+    for (const q of topUpPool) {
+      if (selected.length >= actualCount) break;
+      selected.push(q);
+    }
   }
 
   return shuffleArray(selected);
