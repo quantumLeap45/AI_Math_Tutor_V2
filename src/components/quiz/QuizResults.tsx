@@ -323,4 +323,3 @@ export function QuizResults({
   );
 }
 
-export default QuizResults;

@@ -131,7 +131,6 @@ interface QuizActions {
 
   // Quiz lifecycle
   startQuiz: () => Promise<void>;
-  abandonQuiz: () => void;
   resumeQuiz: (quizId: string) => void;
   discardQuiz: (quizId: string) => void;
 
@@ -140,14 +139,12 @@ interface QuizActions {
 
   // Question navigation
   selectOption: (option: QuizOption | null) => void;
-  submitAnswer: () => void;
   nextQuestion: () => void;
   previousQuestion: () => void;
 
   // Result actions
   restartQuiz: () => void;
   returnToSetup: () => void;
-  saveAndExit: () => void;
 
   // Utility
   clearError: () => void;
@@ -385,22 +382,6 @@ export function useQuiz(): QuizState & QuizActions {
     }
   }, [config]);
 
-  const abandonQuiz = useCallback(() => {
-    // Mark current quiz as abandoned and remove from in-progress
-    if (currentQuiz) {
-      // Just remove from in-progress - don't save abandoned state
-      removeInProgressQuiz(currentQuiz.id);
-      const updated = getInProgressQuizzes();
-      setInProgressQuizzes(updated);
-    }
-
-    // Clear current quiz and return to home
-    setCurrentQuiz(null);
-    setResult(null);
-    setPhase('home');
-    setElapsed(0);
-  }, [currentQuiz]);
-
   const resumeQuiz = useCallback((quizId: string) => {
     // Find the quiz in in-progress list
     const quiz = inProgressQuizzes.find(q => q.id === quizId);
@@ -581,25 +562,6 @@ export function useQuiz(): QuizState & QuizActions {
     // No need to manually clear - in-progress quizzes are managed by storage functions
   }, []);
 
-  const saveAndExit = useCallback(() => {
-    // Keep quiz in localStorage (already auto-saved), return to home
-    // Clear currentQuiz from React state but keep in localStorage
-    if (currentQuiz) {
-      // Update lastSavedAt and accumulatedTime before exiting
-      const quizToSave = {
-        ...currentQuiz,
-        lastSavedAt: new Date().toISOString(),
-        accumulatedTime: elapsed, // Save current elapsed time as accumulated
-      };
-      // Use multi-resume storage
-      addOrUpdateInProgressQuiz(quizToSave);
-    }
-    setCurrentQuiz(null);
-    setResult(null);
-    setPhase('home');
-    setElapsed(0);
-  }, [currentQuiz, elapsed]);
-
   // ============ UTILITY ============
 
   const clearError = useCallback(() => {
@@ -626,7 +588,6 @@ export function useQuiz(): QuizState & QuizActions {
 
     // Quiz lifecycle
     startQuiz,
-    abandonQuiz,
     resumeQuiz,
     discardQuiz,
 
@@ -635,14 +596,12 @@ export function useQuiz(): QuizState & QuizActions {
 
     // Question navigation
     selectOption,
-    submitAnswer,
     nextQuestion,
     previousQuestion,
 
     // Result actions
     restartQuiz,
     returnToSetup,
-    saveAndExit,
 
     // Utility
     clearError,
@@ -766,78 +725,3 @@ function updateProgressStats(attempt: QuizAttempt): void {
   }
 }
 
-// ============ UTILITY HOOKS ============
-
-/**
- * Hook to get quiz statistics summary
- */
-export function useQuizStats() {
-  const [stats, setStats] = useState<{
-    totalQuizzes: number;
-    overallAccuracy: number;
-    bestScore: number;
-    currentStreak: number;
-  }>({
-    totalQuizzes: 0,
-    overallAccuracy: 0,
-    bestScore: 0,
-    currentStreak: 0,
-  });
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const loadStats = () => {
-      const progress = getQuizProgress();
-      setStats({
-        totalQuizzes: progress.totalQuizzes ?? 0,
-        overallAccuracy: progress.overallAccuracy ?? 0,
-        bestScore: progress.bestScore ?? 0,
-        currentStreak: progress.currentStreak ?? 0,
-      });
-    };
-
-    loadStats();
-
-    // Listen for storage changes (in case another tab updates)
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === QUIZ_STORAGE_KEYS.PROGRESS) {
-        loadStats();
-      }
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
-
-  return stats;
-}
-
-/**
- * Hook to get recent quiz attempts
- */
-export function useQuizAttempts(limit: number = 10) {
-  const [attempts, setAttempts] = useState<QuizAttempt[]>([]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const loadAttempts = () => {
-      const all = getQuizAttempts();
-      setAttempts(all.slice(0, limit));
-    };
-
-    loadAttempts();
-
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === QUIZ_STORAGE_KEYS.ATTEMPTS) {
-        loadAttempts();
-      }
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, [limit]);
-
-  return attempts;
-}

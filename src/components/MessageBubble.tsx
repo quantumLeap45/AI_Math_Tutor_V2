@@ -20,12 +20,11 @@ import { QuizSummaryCard } from './chat/QuizSummaryCard';
 
 interface MessageBubbleProps {
   message: Message;
-  showTimestamp?: boolean;
   onReviewQuiz?: (quiz: QuizSummaryData) => void;
   onRetryQuiz?: (source?: string) => void;
 }
 
-export function MessageBubble({ message, showTimestamp = false, onReviewQuiz, onRetryQuiz }: MessageBubbleProps) {
+export function MessageBubble({ message, onReviewQuiz, onRetryQuiz }: MessageBubbleProps) {
   const isUser = message.role === 'user';
   const isQuizSummary = message.quizSummary !== undefined; // Check for quizSummary data instead of role
 
@@ -132,17 +131,6 @@ export function MessageBubble({ message, showTimestamp = false, onReviewQuiz, on
             </div>
           )}
 
-          {/* Timestamp */}
-          {showTimestamp && (
-            <p
-              className={`
-                text-xs mt-2
-                ${isUser ? 'text-white/70' : 'text-slate-400 dark:text-slate-500'}
-              `}
-            >
-              {formatTimestamp(message.timestamp)}
-            </p>
-          )}
         </div>
 
       </div>

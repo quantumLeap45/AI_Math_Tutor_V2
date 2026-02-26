@@ -13,7 +13,7 @@
  */
 
 import { config } from 'dotenv';
-import { getIndexStats, isPineconeConfigured, listAllRecordIds, RAG_NAMESPACE } from '../src/lib/rag/pinecone';
+import { getIndexStats, isPineconeConfigured, RAG_NAMESPACE } from '../src/lib/rag/pinecone';
 import { parseAllMarkdownFiles, toPineconeRecords } from '../src/lib/rag/parser';
 import { searchQuestions, getRAGContext, detectUserIntent } from '../src/lib/rag/search';
 import { join, resolve } from 'path';
@@ -156,38 +156,10 @@ async function testDataParsing() {
 }
 
 /**
- * Test 4: Record Listing
- */
-async function testRecordListing() {
-  section('TEST 4: Record Listing');
-
-  try {
-    const ids = await listAllRecordIds(RAG_NAMESPACE);
-
-    if (ids.length === 0) {
-      info('No records found in Pinecone');
-      info('  Run "npx tsx scripts/ingest-questions.ts" to upload questions');
-      return false;
-    }
-
-    success(`Found ${ids.length} records in Pinecone`);
-
-    // Show sample IDs
-    info('\nSample record IDs:');
-    ids.slice(0, 5).forEach(id => info(`  - ${id}`));
-
-    return true;
-  } catch (err) {
-    error(`Failed to list records: ${err}`);
-    return false;
-  }
-}
-
-/**
- * Test 5: Intent Detection
+ * Test 4: Intent Detection
  */
 function testIntentDetection() {
-  section('TEST 5: Intent Detection');
+  section('TEST 4: Intent Detection');
 
   const testQueries = [
     'Give me a P1 addition problem',
@@ -219,7 +191,7 @@ function testIntentDetection() {
  * Test 6: Search Functionality
  */
 async function testSearch() {
-  section('TEST 6: Search Functionality');
+  section('TEST 5: Search Functionality');
 
   const testSearches = [
     { query: 'P1 addition word problems', gradeLevel: 'P1' as const, topic: 'Addition' },
@@ -259,7 +231,7 @@ async function testSearch() {
  * Test 7: RAG Context Formatting
  */
 async function testRAGContext() {
-  section('TEST 7: RAG Context Formatting');
+  section('TEST 6: RAG Context Formatting');
 
   const testQuery = 'Give me a P1 addition word problem';
 
@@ -298,7 +270,6 @@ async function runTests() {
   results.push({ name: 'Configuration Check', passed: await testConfiguration() });
   results.push({ name: 'Pinecone Connection', passed: await testPineconeConnection() });
   results.push({ name: 'Data Parsing', passed: await testDataParsing() });
-  results.push({ name: 'Record Listing', passed: await testRecordListing() });
   results.push({ name: 'Intent Detection', passed: await testIntentDetection() });
   results.push({ name: 'Search Functionality', passed: await testSearch() });
   results.push({ name: 'RAG Context Formatting', passed: await testRAGContext() });

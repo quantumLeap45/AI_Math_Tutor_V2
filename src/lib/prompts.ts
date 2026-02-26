@@ -243,29 +243,6 @@ ${GUARDRAILS_PROMPT}`;
 }
 
 /**
- * Get a welcome message for a new chat session
- *
- * @param mode - The current tutor mode
- * @param username - The student's name
- * @returns Welcome message
- */
-export function getWelcomeMessage(mode: TutorMode, username: string): string {
-  if (mode === 'SHOW') {
-    return `Hi ${username}! I'm your AI Math Tutor. I'm here to help you with any Primary 1-6 math questions.
-
-Just ask me anything, and I'll show you the complete solution with step-by-step explanations!
-
-You can type your question or upload a photo of your homework.`;
-  } else {
-    return `Hi ${username}! I'm your AI Math Tutor in TEACH mode. I'm here to help you learn by guiding you through problems.
-
-When you ask a question, I'll help you discover the answer yourself through hints and guiding questions. This is the best way to really understand math!
-
-Ready? What math problem would you like to work on?`;
-  }
-}
-
-/**
  * Build a quiz-specific system prompt that guides without giving answers
  *
  * @param question - The current quiz question text

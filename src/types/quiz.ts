@@ -111,25 +111,6 @@ export interface QuizQuestion {
   templateId?: string;
 }
 
-/**
- * Raw question data format from JSON (may have different structure)
- */
-export interface RawQuestionData {
-  id: string;
-  level: PrimaryLevel;
-  topic: string;
-  subtopic: string;
-  difficulty: QuizDifficulty;
-  question: string;
-  options: QuizOptions;
-  correctAnswer: QuizOption;
-  explanation: string;
-  /** Optional image URL for visual questions */
-  imageUrl?: string;
-  /** Alt text describing the image */
-  imageAlt?: string;
-}
-
 // ============ QUIZ CONFIGURATION ============
 
 /**
@@ -234,18 +215,6 @@ export interface QuizResult {
   completedAt: string;
 }
 
-/**
- * Answer review item for results page
- */
-export interface AnswerReview {
-  /** Question */
-  question: QuizQuestion;
-  /** User's answer */
-  answer: QuizAnswer;
-  /** Question number in the quiz */
-  questionNumber: number;
-}
-
 // ============ PROGRESS TRACKING ============
 
 /**
@@ -291,20 +260,6 @@ export interface QuizProgress {
   weakAreas: string[];
   /** ISO 8601 timestamp of last update */
   lastUpdated: string;
-}
-
-/**
- * Statistics summary for display
- */
-export interface QuizStats {
-  /** Total quizzes completed */
-  totalQuizzes: number;
-  /** Overall accuracy percentage */
-  overallAccuracy: number;
-  /** Best score percentage */
-  bestScore: number;
-  /** Current streak */
-  currentStreak: number;
 }
 
 // ============ QUIZ METADATA ============
@@ -446,35 +401,6 @@ export const QUESTION_COUNT_OPTIONS: QuizQuestionCount[] = [5, 10, 15, 20, 25] a
 // ============ UTILITY TYPES ============
 
 /**
- * Type guard to check if a value is a valid QuizOption
- */
-export function isQuizOption(value: string): value is QuizOption {
-  return ['A', 'B', 'C', 'D'].includes(value);
-}
-
-/**
- * Type guard to check if a value is a valid PrimaryLevel
- */
-export function isPrimaryLevel(value: string): value is PrimaryLevel {
-  return ['P1', 'P2', 'P3', 'P4', 'P5', 'P6'].includes(value);
-}
-
-/**
- * Type guard to check if a value is a valid QuizDifficulty
- */
-export function isQuizDifficulty(value: string): value is QuizDifficulty {
-  return ['easy', 'medium', 'hard'].includes(value);
-}
-
-/**
- * Type guard to check if a value is a valid QuizTopic
- * Checks against both P1 and P2 topics
- */
-export function isQuizTopic(value: string): value is QuizTopic {
-  return [...P1_TOPICS, ...P2_TOPICS, ...P3_TOPICS].includes(value as QuizTopic);
-}
-
-/**
  * Calculate performance rating from score
  */
 export function getPerformanceRating(score: number): PerformanceRating {
@@ -482,22 +408,6 @@ export function getPerformanceRating(score: number): PerformanceRating {
   if (score >= RATING_THRESHOLDS.GOOD) return 'good';
   if (score >= RATING_THRESHOLDS.FAIR) return 'fair';
   return 'needs_practice';
-}
-
-/**
- * Get color class for performance rating
- */
-export function getRatingColor(rating: PerformanceRating): string {
-  switch (rating) {
-    case 'excellent':
-      return 'text-green-600';
-    case 'good':
-      return 'text-blue-600';
-    case 'fair':
-      return 'text-yellow-600';
-    case 'needs_practice':
-      return 'text-red-600';
-  }
 }
 
 /**

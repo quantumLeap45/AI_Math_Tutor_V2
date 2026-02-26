@@ -55,7 +55,6 @@ export function QuizSession({ startDirect = false, onQuizComplete }: QuizSession
     previousQuestion,
     restartQuiz,
     returnToSetup,
-    saveAndExit,
     clearError,
   } = useQuiz();
 
