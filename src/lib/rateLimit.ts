@@ -173,9 +173,3 @@ export function getClientIp(request: Request): string {
   return '127.0.0.1';
 }
 
-/**
- * Reset rate limit for an IP (for testing)
- */
-export function resetRateLimit(ip: string): void {
-  requestLog.delete(ip);
-}

@@ -29,8 +29,6 @@ interface UseChatQuizState {
   currentQuestion: QuizQuestion | null;
   /** Last active question — persists after quiz completion for follow-up chat context */
   lastActiveQuestion: QuizQuestion | null;
-  /** Completed quizzes for review (stored in memory) */
-  completedQuizzes: Array<ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string }>;
   /** Last completed quiz available for retry (with retry count) */
   lastCompletedQuiz: (ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string; retryAttempt: number }) | null;
   /** Last failed quiz config for retry on generation failure */
@@ -50,8 +48,6 @@ interface UseChatQuizActions {
   submitAnswer: () => void;
   /** Move to the next question */
   nextQuestion: () => void;
-  /** Go back to the previous question */
-  previousQuestion: () => void;
   /** Clear the current error */
   clearError: () => void;
   /** Exit and clear quiz state */
@@ -157,7 +153,6 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   const [quiz, setQuiz] = useState<ChatQuizState | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [completedQuizzes, setCompletedQuizzes] = useState<Array<ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string }>>([]);
   // Track last completed quiz for retry (with retry count)
   const [lastCompletedQuiz, setLastCompletedQuiz] = useState<(ChatQuizState & { timeTaken: string; score: number; correctCount: number; completedAt: string; retryAttempt: number }) | null>(null);
   // Track last failed quiz config for retry on generation failure
@@ -320,9 +315,6 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
           retryAttempt: 0, // First attempt
         } as ChatQuizState & { completedAt: string; score: number; correctCount: number; timeTaken: string; retryAttempt: number };
 
-        // Store in completed quizzes for review
-        setCompletedQuizzes(old => [...old, completedQuiz]);
-
         // Store as last completed quiz for retry
         setLastCompletedQuiz(completedQuiz);
 
@@ -459,7 +451,6 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     error,
     currentQuestion,
     lastActiveQuestion,
-    completedQuizzes,
     lastCompletedQuiz,
     lastFailedConfig,
 
@@ -470,7 +461,6 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
     selectOption,
     submitAnswer,
     nextQuestion,
-    previousQuestion,
     clearError,
     exitQuiz,
     clearLastActiveQuestion,
@@ -478,12 +468,3 @@ export function useChatQuiz(options: UseChatQuizOptions): UseChatQuizState & Use
   };
 }
 
-// ============ UTILITY EXPORTS ============
-
-/**
- * Export utility functions for use in components
- */
-export const chatQuizUtils = {
-  calculateScore,
-  createInitialQuizState,
-};

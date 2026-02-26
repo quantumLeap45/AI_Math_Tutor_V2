@@ -175,4 +175,3 @@ export function QuizSummaryCard({
   );
 }
 
-export default QuizSummaryCard;

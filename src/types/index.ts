@@ -130,14 +130,6 @@ export interface ChatQuizState {
 }
 
 /**
- * Chat session with optional embedded quiz
- */
-export interface ChatSessionWithQuiz extends ChatSession {
-  /** Active quiz in this session (optional) */
-  activeQuiz?: ChatQuizState;
-}
-
-/**
  * User settings stored in localStorage
  */
 export interface UserSettings {
@@ -149,38 +141,6 @@ export interface UserSettings {
   sidebarCollapsed: boolean;
   /** ID of the last active session */
   lastActiveSession?: string;
-}
-
-/**
- * API request payload for chat endpoint
- */
-export interface ChatRequest {
-  /** Array of messages in the conversation */
-  messages: Message[];
-  /** Current tutor mode */
-  mode: TutorMode;
-  /** Optional image as base64 string (without data URL prefix) */
-  image?: string;
-}
-
-/**
- * API response for chat endpoint (streamed)
- */
-export interface ChatResponse {
-  /** Response text content */
-  content: string;
-  /** Whether this is the final chunk */
-  done: boolean;
-}
-
-/**
- * Error response from API
- */
-export interface ApiError {
-  /** Error message */
-  error: string;
-  /** HTTP status code */
-  status?: number;
 }
 
 /**

@@ -9,13 +9,11 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { GoogleGenAI } from '@google/genai';
 import {
   streamChat,
-  sendChat,
-  analyzeImage,
   isConfigured,
   checkHealth,
 } from '@/lib/gemini';
 import { Message, TutorMode } from '@/types';
-import { resetConfigSingleton, createMockMessages, MOCK_BASE64_IMAGE } from '../test-utils';
+import { createMockMessages, MOCK_BASE64_IMAGE } from '../test-utils';
 
 // Mock the Google GenAI SDK
 vi.mock('@google/genai', () => ({
@@ -37,7 +35,6 @@ describe('Gemini Client', () => {
     originalEnv = { ...process.env };
 
     // Reset singleton
-    resetConfigSingleton();
 
     // Set required environment variables
     process.env.GEMINI_API_KEY = 'test-api-key';
@@ -56,7 +53,6 @@ describe('Gemini Client', () => {
   afterEach(() => {
     // Restore environment
     process.env = originalEnv;
-    resetConfigSingleton();
   });
 
   describe('isConfigured', () => {
@@ -69,8 +65,7 @@ describe('Gemini Client', () => {
 
     it('should return false when API key is not set', async () => {
       delete process.env.GEMINI_API_KEY;
-      resetConfigSingleton();
-
+  
       const { isConfigured: isConfiguredTest } = await import('@/lib/gemini');
 
       expect(isConfiguredTest()).toBe(false);
@@ -529,244 +524,4 @@ describe('Gemini Client', () => {
     });
   });
 
-  describe('sendChat (non-streaming)', () => {
-    it('should accumulate all chunks into single response', async () => {
-      const mockChunks = [
-        { text: 'Hello' },
-        { text: ', ' },
-        { text: 'world' },
-        { text: '!' },
-      ];
-      const asyncGenerator = (async function* () {
-        for (const chunk of mockChunks) {
-          yield chunk;
-        }
-      })();
-
-      const mockGenerateContentStream = vi.fn().mockResolvedValue(asyncGenerator);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContentStream: mockGenerateContentStream,
-        },
-      }));
-
-      const response = await sendChat(
-        [
-          {
-            id: '1',
-            role: 'user',
-            content: 'Say hello',
-            timestamp: '2025-01-01T12:00:00.000Z',
-          },
-        ],
-        'SHOW'
-      );
-
-      expect(response).toBe('Hello, world!');
-    });
-
-    it('should handle empty response', async () => {
-      const asyncGenerator = (async function* () {
-        yield { text: '' };
-      })();
-
-      const mockGenerateContentStream = vi.fn().mockResolvedValue(asyncGenerator);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContentStream: mockGenerateContentStream,
-        },
-      }));
-
-      const response = await sendChat(
-        [
-          {
-            id: '1',
-            role: 'user',
-            content: 'Test',
-            timestamp: '2025-01-01T12:00:00.000Z',
-          },
-        ],
-        'SHOW'
-      );
-
-      expect(response).toBe('');
-    });
-
-    it('should propagate errors from streamChat', async () => {
-      const mockGenerateContentStream = vi.fn().mockRejectedValue(new Error('API Error'));
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContentStream: mockGenerateContentStream,
-        },
-      }));
-
-      await expect(
-        sendChat(
-          [
-            {
-              id: '1',
-              role: 'user',
-              content: 'Test',
-              timestamp: '2025-01-01T12:00:00.000Z',
-            },
-          ],
-          'SHOW'
-        )
-      ).rejects.toThrow();
-    });
-  });
-
-  describe('analyzeImage', () => {
-    it('should analyze image and return text', async () => {
-      const mockResponse = {
-        text: 'This is a math problem about fractions.',
-      };
-
-      const mockGenerateContent = vi.fn().mockResolvedValue(mockResponse);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContent: mockGenerateContent,
-        },
-      }));
-
-      const result = await analyzeImage(MOCK_BASE64_IMAGE, 'What is this?', 'SHOW');
-
-      expect(result).toBe('This is a math problem about fractions.');
-      expect(mockGenerateContent).toHaveBeenCalledWith(
-        expect.objectContaining({
-          model: 'gemini-2.5-flash',
-          contents: [
-            {
-              role: 'user',
-              parts: [
-                {
-                  inlineData: {
-                    mimeType: 'image/jpeg',
-                    data: expect.any(String),
-                  },
-                },
-                { text: 'What is this?' },
-              ],
-            },
-          ],
-          config: expect.objectContaining({
-            systemInstruction: expect.any(String),
-          }),
-        })
-      );
-    });
-
-    it('should handle base64 image with data prefix', async () => {
-      const mockResponse = { text: 'Analysis' };
-      const mockGenerateContent = vi.fn().mockResolvedValue(mockResponse);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContent: mockGenerateContent,
-        },
-      }));
-
-      await analyzeImage('data:image/jpeg;base64,abc123', 'Prompt', 'TEACH');
-
-      const callArgs = mockGenerateContent.mock.calls[0][0];
-      expect(callArgs.contents[0].parts[0].inlineData.data).toBe('abc123');
-    });
-
-    it('should handle base64 image without data prefix', async () => {
-      const mockResponse = { text: 'Analysis' };
-      const mockGenerateContent = vi.fn().mockResolvedValue(mockResponse);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContent: mockGenerateContent,
-        },
-      }));
-
-      await analyzeImage('rawbase64data', 'Prompt', 'SHOW');
-
-      const callArgs = mockGenerateContent.mock.calls[0][0];
-      expect(callArgs.contents[0].parts[0].inlineData.data).toBe('rawbase64data');
-    });
-
-    it('should use default prompt when not provided', async () => {
-      const mockResponse = { text: 'Analysis' };
-      const mockGenerateContent = vi.fn().mockResolvedValue(mockResponse);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContent: mockGenerateContent,
-        },
-      }));
-
-      await analyzeImage(MOCK_BASE64_IMAGE, undefined, 'SHOW');
-
-      const callArgs = mockGenerateContent.mock.calls[0][0];
-      expect(callArgs.contents[0].parts[1].text).toContain('analyze this math problem');
-    });
-
-    it('should use mode-specific system prompt', async () => {
-      const mockResponse = { text: 'Analysis' };
-      const mockGenerateContent = vi.fn().mockResolvedValue(mockResponse);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContent: mockGenerateContent,
-        },
-      }));
-
-      await analyzeImage(MOCK_BASE64_IMAGE, 'Prompt', 'TEACH');
-
-      const callArgs = mockGenerateContent.mock.calls[0][0];
-      expect(callArgs.config.systemInstruction).toContain('TEACH');
-    });
-
-    it('should handle empty response text', async () => {
-      const mockResponse = { text: '' };
-      const mockGenerateContent = vi.fn().mockResolvedValue(mockResponse);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContent: mockGenerateContent,
-        },
-      }));
-
-      const result = await analyzeImage(MOCK_BASE64_IMAGE, 'Prompt', 'SHOW');
-
-      expect(result).toBe('');
-    });
-
-    it('should throw user-friendly error on failure', async () => {
-      const mockGenerateContent = vi.fn().mockRejectedValue({
-        message: 'API quota exceeded',
-        toString: () => 'Error: API quota exceeded',
-      });
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContent: mockGenerateContent,
-        },
-      }));
-
-      await expect(analyzeImage(MOCK_BASE64_IMAGE, 'Prompt', 'SHOW')).rejects.toThrow();
-    });
-
-    it('should handle undefined text property', async () => {
-      const mockResponse = {};
-      const mockGenerateContent = vi.fn().mockResolvedValue(mockResponse);
-
-      (GoogleGenAI as any).mockImplementation(() => ({
-        models: {
-          generateContent: mockGenerateContent,
-        },
-      }));
-
-      const result = await analyzeImage(MOCK_BASE64_IMAGE, 'Prompt', 'SHOW');
-
-      expect(result).toBe('');
-    });
-  });
 });

@@ -29,7 +29,7 @@ export function shuffleArray<T>(array: T[]): T[] {
  * Shuffle options in place for a question
  * Returns a new question with shuffled options and updated correctAnswer
  */
-export function shuffleQuestionOptions(question: QuizQuestion): QuizQuestion {
+function shuffleQuestionOptions(question: QuizQuestion): QuizQuestion {
   const optionEntries: [QuizOption, string][] = [
     ['A', question.options.A],
     ['B', question.options.B],

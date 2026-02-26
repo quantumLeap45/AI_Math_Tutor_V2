@@ -98,64 +98,6 @@ function resetQuota(): DailyQuotaData {
 }
 
 /**
- * Check and consume a quota slot
- *
- * @returns Object indicating if request is allowed and quota status
- */
-export function checkDailyQuota(): {
-  allowed: boolean;
-  remaining: number;
-  limit: number;
-  resetAt?: string; // ISO timestamp when quota will reset
-  exceeded: boolean;
-} {
-  const quota = getDailyQuota();
-
-  // Check if we need to reset (24 hours after limit was hit)
-  if (shouldResetQuota(quota)) {
-    const resetQuotaData = resetQuota();
-    saveDailyQuota(resetQuotaData);
-    return {
-      allowed: true,
-      remaining: resetQuotaData.dailyLimit - 1,
-      limit: resetQuotaData.dailyLimit,
-      exceeded: false,
-    };
-  }
-
-  // Check if already at limit
-  if (quota.requestsToday >= quota.dailyLimit) {
-    // Set limit reached timestamp if not set
-    if (!quota.limitReachedAt) {
-      quota.limitReachedAt = new Date().toISOString();
-      saveDailyQuota(quota);
-    }
-
-    const resetAt = new Date(quota.limitReachedAt);
-    resetAt.setHours(resetAt.getHours() + 24);
-
-    return {
-      allowed: false,
-      remaining: 0,
-      limit: quota.dailyLimit,
-      resetAt: resetAt.toISOString(),
-      exceeded: true,
-    };
-  }
-
-  // Increment request count
-  quota.requestsToday += 1;
-  saveDailyQuota(quota);
-
-  return {
-    allowed: true,
-    remaining: quota.dailyLimit - quota.requestsToday,
-    limit: quota.dailyLimit,
-    exceeded: false,
-  };
-}
-
-/**
  * Get current quota status without consuming a slot
  */
 export function getQuotaStatus(): {
@@ -217,19 +159,3 @@ export function getTimeUntilReset(resetAt: string): {
   };
 }
 
-/**
- * Reset daily quota (for testing purposes)
- */
-export function resetDailyQuota(): void {
-  if (typeof window === 'undefined') return;
-  localStorage.removeItem(DAILY_QUOTA_STORAGE_KEY);
-}
-
-/**
- * Set custom daily limit (for admin/config purposes)
- */
-export function setDailyLimit(limit: number): void {
-  const quota = getDailyQuota();
-  quota.dailyLimit = Math.max(1, limit);
-  saveDailyQuota(quota);
-}

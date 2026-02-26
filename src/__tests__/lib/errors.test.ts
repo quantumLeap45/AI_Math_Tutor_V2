@@ -10,13 +10,11 @@ import {
   ErrorCode,
   AppError,
   AIError,
-  ConfigError,
   RateLimitError,
   QuotaError,
   ValidationError,
   RAGError,
   toUserError,
-  logError,
   errorToResponse,
 } from '@/lib/errors';
 
@@ -150,25 +148,6 @@ describe('AIError', () => {
     const error = new AIError(ErrorCode.AI_STREAM_ERROR, 'Stream error');
 
     expect(error.isRetryable).toBe(false);
-  });
-});
-
-describe('ConfigError', () => {
-  it('should create config error with standard properties', () => {
-    const error = new ConfigError('Missing API key');
-
-    expect(error.name).toBe('ConfigError');
-    expect(error.code).toBe(ErrorCode.CONFIG_MISSING);
-    expect(error.message).toContain('Configuration error');
-    expect(error.userMessage).toContain('Application configuration is incomplete');
-    expect(error.statusCode).toBe(500);
-    expect(error.isRetryable).toBe(false);
-  });
-
-  it('should include the original message in the technical message', () => {
-    const error = new ConfigError('Invalid rate limit configuration');
-
-    expect(error.message).toBe('Configuration error: Invalid rate limit configuration');
   });
 });
 
@@ -379,62 +358,6 @@ describe('toUserError', () => {
     const result = toUserError(undefined);
 
     expect(result).toBeInstanceOf(AppError);
-  });
-});
-
-describe('logError', () => {
-  beforeEach(() => {
-    vi.spyOn(console, 'error').mockImplementation(() => {});
-  });
-
-  it('should log AppError properties', () => {
-    const error = new ValidationError('test');
-    const consoleSpy = vi.spyOn(console, 'error');
-
-    logError(error);
-
-    expect(consoleSpy).toHaveBeenCalledWith('=== Application Error ===');
-    expect(consoleSpy).toHaveBeenCalledWith('Code:', error.code);
-    expect(consoleSpy).toHaveBeenCalledWith('Message:', error.message);
-    expect(consoleSpy).toHaveBeenCalledWith('User Message:', error.userMessage);
-    expect(consoleSpy).toHaveBeenCalledWith('Status:', error.statusCode);
-    expect(consoleSpy).toHaveBeenCalledWith('Retryable:', error.isRetryable);
-  });
-
-  it('should log context when provided', () => {
-    const error = new ValidationError('test');
-    const consoleSpy = vi.spyOn(console, 'error');
-    const context = { userId: '123', action: 'chat' };
-
-    logError(error, context);
-
-    expect(consoleSpy).toHaveBeenCalledWith('Context:', context);
-  });
-
-  it('should log details when present', () => {
-    const error = new AIError(
-      ErrorCode.AI_TIMEOUT,
-      'Timeout',
-      true,
-      { attempt: 3, maxAttempts: 5 }
-    );
-    const consoleSpy = vi.spyOn(console, 'error');
-
-    logError(error);
-
-    expect(consoleSpy).toHaveBeenCalledWith('Details:', error.details);
-  });
-
-  it('should convert non-AppError to AppError before logging', () => {
-    const genericError = new Error('Generic error');
-    const consoleSpy = vi.spyOn(console, 'error');
-
-    logError(genericError);
-
-    expect(consoleSpy).toHaveBeenCalled();
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining('Code:')
-    );
   });
 });
 

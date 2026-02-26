@@ -110,17 +110,6 @@ export function useDailyQuota() {
     return { allowed: true };
   }, []);
 
-  // Reset quota (for testing - doesn't affect server)
-  const resetQuota = useCallback(() => {
-    setQuotaStatus({
-      used: 0,
-      remaining: 9999,
-      limit: 9999,
-      exceeded: false,
-    });
-    setCountdown(null);
-  }, []);
-
   // Set up countdown timer when quota is exceeded
   useEffect(() => {
     if (quotaStatus.exceeded && quotaStatus.resetAt) {
@@ -161,7 +150,6 @@ export function useDailyQuota() {
     countdown,
     consumeQuota,
     refreshQuotaStatus,
-    resetQuota,
     updateQuotaFromResponse,
   };
 }

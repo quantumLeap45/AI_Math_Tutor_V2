@@ -84,22 +84,6 @@ export class AIError extends AppError {
 }
 
 /**
- * Configuration errors
- */
-export class ConfigError extends AppError {
-  constructor(message: string) {
-    super(
-      ErrorCode.CONFIG_MISSING,
-      `Configuration error: ${message}`,
-      'Application configuration is incomplete. Please contact support.',
-      500,
-      false
-    );
-    this.name = 'ConfigError';
-  }
-}
-
-/**
  * Rate limit errors
  */
 export class RateLimitError extends AppError {
@@ -229,26 +213,6 @@ export function toUserError(error: unknown): AppError {
     500,
     true
   );
-}
-
-/**
- * Log error with context
- */
-export function logError(error: unknown, context?: Record<string, unknown>): void {
-  const appError = error instanceof AppError ? error : toUserError(error);
-
-  console.error('=== Application Error ===');
-  console.error(`Code: ${appError.code}`);
-  console.error(`Message: ${appError.message}`);
-  console.error(`User Message: ${appError.userMessage}`);
-  console.error(`Status: ${appError.statusCode}`);
-  console.error(`Retryable: ${appError.isRetryable}`);
-  if (context) {
-    console.error('Context:', context);
-  }
-  if (appError.details) {
-    console.error('Details:', appError.details);
-  }
 }
 
 /**
