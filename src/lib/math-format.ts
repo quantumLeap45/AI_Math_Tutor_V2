@@ -146,5 +146,11 @@ export function formatLatexToKidFriendly(text: string): string {
   // Clean up any remaining escaped backslashes
   result = result.replace(/\\\\/g, '\\');
 
+  // Remove empty/blank markdown list items (e.g., "- ", "* ", "+ " with nothing after)
+  result = result.replace(/^[-*+]\s*$/gm, '');
+
+  // Clean up excessive blank lines left behind (3+ newlines → 2)
+  result = result.replace(/\n{3,}/g, '\n\n');
+
   return result;
 }

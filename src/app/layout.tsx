@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     'AI tutor',
     'MOE syllabus',
   ],
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
