@@ -332,19 +332,22 @@ export function useQuiz(): QuizState & QuizActions {
       const { getRandomQuestions, getQuestionsForConfig } = await import('@/lib/quiz/quiz-data');
       const { shuffleAllQuestionOptions } = await import('@/lib/quiz/quiz-randomization');
 
+      // Defensive guard: ensure topics is always an array
+      const safeConfig = { ...config, topics: config.topics ?? [] };
+
       // Verify enough questions are available before proceeding
-      const allAvailable = await getQuestionsForConfig(config);
-      if (allAvailable.length < config.questionCount) {
+      const allAvailable = await getQuestionsForConfig(safeConfig);
+      if (allAvailable.length < safeConfig.questionCount) {
         throw new Error(
-          `Not enough questions available. Found ${allAvailable.length}, need ${config.questionCount}`
+          `Not enough questions available. Found ${allAvailable.length}, need ${safeConfig.questionCount}`
         );
       }
 
       // Read template cooldown for this level so recently-seen styles are deprioritised
-      const cooldown = getTemplateCooldown(config.level);
+      const cooldown = getTemplateCooldown(safeConfig.level);
 
       // Use the diversity-aware selection algorithm (topic + subtopic + template diversity)
-      const selectedQuestions = await getRandomQuestions(config, config.questionCount, cooldown);
+      const selectedQuestions = await getRandomQuestions(safeConfig, safeConfig.questionCount, cooldown);
 
       // Shuffle answer option positions (A/B/C/D) within each selected question
       const selected = shuffleAllQuestionOptions(selectedQuestions);
@@ -353,7 +356,7 @@ export function useQuiz(): QuizState & QuizActions {
       const now = new Date().toISOString();
       const newQuiz: QuizAttempt = {
         id: crypto.randomUUID(),
-        config,
+        config: safeConfig,
         questions: selected,
         answers: [],
         currentIndex: 0,
@@ -566,6 +569,7 @@ export function useQuiz(): QuizState & QuizActions {
 
   const clearError = useCallback(() => {
     setError(null);
+    setPhase('setup');
   }, []);
 
   return {

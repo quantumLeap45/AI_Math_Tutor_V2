@@ -169,8 +169,9 @@ export async function getQuestionsForConfig(config: QuizConfig): Promise<QuizQue
   // Filter by topics (if specified)
   let filtered = allQuestions;
 
-  if (config.topics.length > 0) {
-    filtered = filtered.filter(q => config.topics.includes(q.topic));
+  const topics = config.topics ?? [];
+  if (topics.length > 0) {
+    filtered = filtered.filter(q => topics.includes(q.topic));
   }
 
   // Filter by difficulty (if specified)
