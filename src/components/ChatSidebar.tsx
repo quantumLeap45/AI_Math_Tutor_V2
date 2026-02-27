@@ -8,9 +8,10 @@
  * Collapsible on desktop with toggle button.
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ChatSession } from '@/types';
 import { formatTimestamp, truncateText } from '@/lib/chat';
+import { DeleteSessionDialog } from '@/components/DeleteSessionDialog';
 
 interface ChatSidebarProps {
   sessions: ChatSession[];
@@ -35,6 +36,9 @@ export function ChatSidebar({
   onClose,
   onToggleCollapse,
 }: ChatSidebarProps) {
+  // Delete confirmation state
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
+
   // Don't render content if collapsed on desktop (but keep mobile overlay)
   const shouldHideContent = collapsed && isOpen;
 
@@ -43,7 +47,7 @@ export function ChatSidebar({
       {/* Mobile overlay */}
       {isOpen && onClose && (
         <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
           onClick={onClose}
         />
       )}
@@ -51,13 +55,13 @@ export function ChatSidebar({
       {/* Sidebar container */}
       <aside
         className={`
-          fixed lg:relative inset-y-0 left-0 z-50 lg:z-0
+          fixed md:relative inset-y-0 left-0 z-50 md:z-0
           bg-slate-50 dark:bg-slate-900
           border-r border-slate-200 dark:border-slate-700
           flex flex-col
           transition-all duration-300 ease-in-out
-          ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-          ${collapsed ? 'lg:w-0 lg:overflow-hidden lg:p-0' : 'lg:w-72'}
+          ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+          ${collapsed ? 'md:w-0 md:overflow-hidden md:p-0' : 'md:w-72'}
           ${isOpen && !collapsed ? 'w-72' : 'w-0'}
         `}
       >
@@ -65,7 +69,7 @@ export function ChatSidebar({
         {collapsed && (
           <button
             onClick={onToggleCollapse}
-            className="hidden lg:flex absolute top-4 right-0 z-10 translate-x-full bg-slate-50 dark:bg-slate-900 border-l border-t border-b border-slate-200 dark:border-slate-700 rounded-r-lg p-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400"
+            className="hidden md:flex absolute top-4 right-0 z-10 translate-x-full bg-slate-50 dark:bg-slate-900 border-l border-t border-b border-slate-200 dark:border-slate-700 rounded-r-lg p-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400"
             aria-label="Open sidebar"
           >
             <svg
@@ -87,7 +91,7 @@ export function ChatSidebar({
         )}
 
         {/* Sidebar content (hidden when collapsed) */}
-        <div className={`${shouldHideContent ? 'lg:hidden' : ''} flex flex-col h-full`}>
+        <div className={`${shouldHideContent ? 'md:hidden' : ''} flex flex-col h-full`}>
           {/* Header with New Chat button and collapse toggle */}
           <div className="p-4 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2">
             <button
@@ -117,7 +121,7 @@ export function ChatSidebar({
             {onToggleCollapse && (
               <button
                 onClick={onToggleCollapse}
-                className="hidden lg:flex p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400"
+                className="hidden md:flex p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400"
                 aria-label="Collapse sidebar"
               >
                 <svg
@@ -185,7 +189,7 @@ export function ChatSidebar({
                           <button
                             onClick={e => {
                               e.stopPropagation();
-                              onDeleteSession(session.id);
+                              setPendingDeleteId(session.id);
                             }}
                             className="p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 opacity-0 group-hover:opacity-100 transition-opacity"
                             aria-label="Delete session"
@@ -219,7 +223,7 @@ export function ChatSidebar({
           {onClose && (
             <button
               onClick={onClose}
-              className="lg:hidden absolute top-4 right-4 p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700"
+              className="md:hidden absolute top-4 right-4 p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700"
               aria-label="Close sidebar"
             >
               <svg
@@ -241,6 +245,18 @@ export function ChatSidebar({
           )}
         </div>
       </aside>
+
+      {/* Delete session confirmation dialog */}
+      <DeleteSessionDialog
+        isOpen={pendingDeleteId !== null}
+        onCancel={() => setPendingDeleteId(null)}
+        onConfirm={() => {
+          if (pendingDeleteId) {
+            onDeleteSession?.(pendingDeleteId);
+            setPendingDeleteId(null);
+          }
+        }}
+      />
     </>
   );
 }
