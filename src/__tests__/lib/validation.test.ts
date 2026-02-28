@@ -166,8 +166,10 @@ describe('Message Schema', () => {
     expect(() => messageSchema.parse({ ...validMessage, timestamp: 'not-a-date' })).toThrow();
   });
 
-  it('should reject message with invalid image URL', () => {
-    expect(() => messageSchema.parse({ ...validMessage, imageUrl: 'not-a-url' })).toThrow();
+  it('should accept message with base64 imageUrl (no URL format restriction)', () => {
+    // imageUrl now accepts any string (including base64 data URLs, not just http URLs)
+    const result = messageSchema.parse({ ...validMessage, imageUrl: 'data:image/jpeg;base64,abc123' });
+    expect(result.imageUrl).toBe('data:image/jpeg;base64,abc123');
   });
 });
 
@@ -257,9 +259,14 @@ describe('Chat Request Schema', () => {
     expect(() => chatRequestSchema.parse({ ...validChatRequest, mode: 'INVALID' as any })).toThrow();
   });
 
-  it('should reject image too large', () => {
+  it('should reject images array with image too large', () => {
     const largeImage = 'data:image/jpeg;base64,' + 'a'.repeat(6000000);
-    expect(() => chatRequestSchema.parse({ ...validChatRequest, image: largeImage })).toThrow();
+    expect(() => chatRequestSchema.parse({ ...validChatRequest, images: [largeImage] })).toThrow();
+  });
+
+  it('should reject images array with more than 3 items', () => {
+    const smallImage = 'data:image/jpeg;base64,abc123';
+    expect(() => chatRequestSchema.parse({ ...validChatRequest, images: [smallImage, smallImage, smallImage, smallImage] })).toThrow();
   });
 });
 
