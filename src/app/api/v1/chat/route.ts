@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
       throw new ValidationError('request body');
     }
 
-    const { messages, mode, image } = validatedData;
+    const { messages, mode, images } = validatedData;
 
     // Create streaming response
     const encoder = new TextEncoder();
@@ -140,8 +140,8 @@ export async function POST(request: NextRequest) {
 
           // Stream from the appropriate AI provider
           const chatStream = useOpenRouter
-            ? streamChatWithOpenRouter(messages, mode, image, ragContext)
-            : streamChat(messages, mode, image, ragContext);
+            ? streamChatWithOpenRouter(messages, mode, images, ragContext)
+            : streamChat(messages, mode, images, ragContext);
 
           for await (const chunk of chatStream) {
             controller.enqueue(encoder.encode(chunk));

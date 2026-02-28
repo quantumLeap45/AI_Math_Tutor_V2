@@ -72,8 +72,10 @@ export interface Message {
   role: MessageRole;
   /** Message content (supports Markdown) */
   content: string;
-  /** Optional image as base64 data URL */
+  /** Optional image as base64 data URL (legacy — single image, kept for backward compat) */
   imageUrl?: string;
+  /** Optional array of images as base64 data URLs (new — supports up to 3) */
+  imageUrls?: string[];
   /** ISO 8601 timestamp when message was created */
   timestamp: string;
   /** Quiz summary data (only present for quiz_summary messages) */

@@ -51,7 +51,8 @@ export const messageSchema = z.object({
   content: z.string()
     .min(1, 'Message content cannot be empty')
     .max(10000, 'Message content too long (max 10000 characters)'),
-  imageUrl: z.string().url('Invalid image URL format').optional(),
+  imageUrl: z.string().optional(),
+  imageUrls: z.array(z.string()).optional(),
   timestamp: z.string().datetime('Invalid timestamp format'),
   quizSummary: z.any().optional(), // Complex object, validated separately if needed
 });
@@ -75,7 +76,7 @@ export const chatRequestSchema = z.object({
     .min(1, 'At least one message is required')
     .max(100, 'Too many messages (max 100)'),
   mode: tutorModeSchema,
-  image: z.string().max(5000000, 'Image too large (max ~5MB base64)').optional(),
+  images: z.array(z.string().max(5000000, 'Image too large (max ~5MB base64)')).max(3, 'Maximum 3 images per message').optional(),
   quizQuestionContext: quizQuestionContextSchema.optional(),
 });
 

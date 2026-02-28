@@ -220,13 +220,13 @@ describe('Chat Request Schema', () => {
     expect(result).toEqual(validChatRequest);
   });
 
-  it('should accept chat request with image', () => {
-    const requestWithImage = {
+  it('should accept chat request with images', () => {
+    const requestWithImages = {
       ...validChatRequest,
-      image: 'data:image/jpeg;base64,abc123',
+      images: ['data:image/jpeg;base64,abc123'],
     };
-    const result = chatRequestSchema.parse(requestWithImage);
-    expect(result.image).toBe('data:image/jpeg;base64,abc123');
+    const result = chatRequestSchema.parse(requestWithImages);
+    expect(result.images).toEqual(['data:image/jpeg;base64,abc123']);
   });
 
   it('should accept chat request with quiz context', () => {

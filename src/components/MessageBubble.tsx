@@ -80,8 +80,18 @@ export function MessageBubble({ message, onReviewQuiz, onRetryQuiz }: MessageBub
             }
           `}
         >
-          {/* Image if present */}
-          {message.imageUrl && (
+          {/* Multi-image (new messages) */}
+          {message.imageUrls && message.imageUrls.length > 0 && (
+            <div className="mb-3 flex flex-wrap gap-2">
+              {message.imageUrls.map((url, i) => (
+                <div key={i}>
+                  <ImagePreview src={url} alt={`Image ${i + 1}`} />
+                </div>
+              ))}
+            </div>
+          )}
+          {/* Legacy single image (old stored messages — backward compat) */}
+          {!message.imageUrls && message.imageUrl && (
             <div className="mb-3">
               <ImagePreview src={message.imageUrl} alt="Uploaded image" />
             </div>

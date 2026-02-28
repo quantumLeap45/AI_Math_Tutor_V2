@@ -150,8 +150,8 @@ export default function ChatPage() {
 
   // Send message (central coordinator)
   const handleSendMessage = useCallback(
-    async (content: string, image?: string) => {
-      if (!content.trim() && !image) return;
+    async (content: string, images?: string[]) => {
+      if (!content.trim() && (!images || images.length === 0)) return;
 
       const quotaResult = consumeQuota();
       if (!quotaResult.allowed) {
@@ -260,7 +260,7 @@ export default function ChatPage() {
         sessionMgmt.setQuizSessionId(session.id);
       }
 
-      const userMessage = createMessage('user', content, image);
+      const userMessage = createMessage('user', content, undefined, images);
       const updatedSession: ChatSession = {
         ...session,
         mode: sessionMgmt.mode,
@@ -322,7 +322,7 @@ export default function ChatPage() {
             body: JSON.stringify({
               messages: messagesForApi,
               mode: sessionMgmt.mode,
-              image,
+              images,
             }),
             signal: abortController.signal,
           });

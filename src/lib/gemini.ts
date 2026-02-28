@@ -50,7 +50,7 @@ function messagesToGeminiContent(messages: Message[]): Content[] {
 export async function* streamChat(
   messages: Message[],
   mode: TutorMode,
-  image?: string,
+  images?: string[],
   ragContext?: RAGContext
 ): AsyncGenerator<string, void, unknown> {
   const systemPrompt = buildSystemPrompt(mode, ragContext);
@@ -58,19 +58,19 @@ export async function* streamChat(
   // Build contents for the request
   const contents = messagesToGeminiContent(messages);
 
-  // Add image if provided (add to the last user message)
-  if (image && contents.length > 0) {
+  // Add images if provided (prepend to the last user message as inlineData parts)
+  if (images && images.length > 0 && contents.length > 0) {
     const lastUserMessageIndex = contents.findLastIndex(c => c.role === 'user');
     if (lastUserMessageIndex >= 0) {
       const lastContent = contents[lastUserMessageIndex];
-      // Add image part to the last user message
       if (Array.isArray(lastContent.parts)) {
-        lastContent.parts.unshift({
-          inlineData: {
-            mimeType: 'image/jpeg',
-            data: image.includes(',') ? image.split(',')[1] : image,
-          },
-        });
+        // Prepend each image as an inlineData part (in reverse so order is preserved)
+        for (let i = images.length - 1; i >= 0; i--) {
+          const img = images[i];
+          const mimeType = img.includes(';') ? (img.split(';')[0].split(':')[1] as string) : 'image/jpeg';
+          const data = img.includes(',') ? img.split(',')[1] : img;
+          lastContent.parts.unshift({ inlineData: { mimeType, data } });
+        }
       }
     }
   }
@@ -105,19 +105,34 @@ export async function* streamChat(
 export async function* streamChatWithOpenRouter(
   messages: Message[],
   mode: TutorMode,
-  image?: string,
+  images?: string[],
   ragContext?: RAGContext
 ): AsyncGenerator<string, void, unknown> {
   const { apiKey, model } = config.getOpenRouter();
   const systemPrompt = buildSystemPrompt(mode, ragContext);
 
-  // Convert messages to OpenAI format
-  const openAIMessages: Array<{ role: string; content: string }> = [
+  type TextPart = { type: 'text'; text: string };
+  type ImagePart = { type: 'image_url'; image_url: { url: string } };
+  type MessageContent = string | Array<TextPart | ImagePart>;
+  type OpenAIMessage = { role: string; content: MessageContent };
+
+  const lastIndex = messages.length - 1;
+
+  // Convert messages to OpenAI format; attach images to the last user message
+  const openAIMessages: OpenAIMessage[] = [
     { role: 'system', content: systemPrompt },
-    ...messages.map(m => ({
-      role: m.role === 'user' ? 'user' : 'assistant',
-      content: m.content,
-    })),
+    ...messages.map((m, i) => {
+      const role = m.role === 'user' ? 'user' : 'assistant';
+      // Only attach images to the final message (which must be a user message)
+      if (i === lastIndex && m.role === 'user' && images && images.length > 0) {
+        const contentParts: Array<TextPart | ImagePart> = [
+          ...images.map(img => ({ type: 'image_url' as const, image_url: { url: img } })),
+          { type: 'text' as const, text: m.content },
+        ];
+        return { role, content: contentParts };
+      }
+      return { role, content: m.content };
+    }),
   ];
 
   try {

@@ -361,7 +361,7 @@ describe('Gemini Client', () => {
       }));
 
       await (async () => {
-        for await (const _chunk of streamChat(mockMessages, 'SHOW', MOCK_BASE64_IMAGE)) {
+        for await (const _chunk of streamChat(mockMessages, 'SHOW', [MOCK_BASE64_IMAGE])) {
           break;
         }
       })();
@@ -394,7 +394,7 @@ describe('Gemini Client', () => {
       }));
 
       await (async () => {
-        for await (const _chunk of streamChat(mockMessages, 'SHOW', imageWithPrefix)) {
+        for await (const _chunk of streamChat(mockMessages, 'SHOW', [imageWithPrefix])) {
           break;
         }
       })();
@@ -421,7 +421,7 @@ describe('Gemini Client', () => {
       }));
 
       await (async () => {
-        for await (const _chunk of streamChat(mockMessages, 'SHOW', imageWithoutPrefix)) {
+        for await (const _chunk of streamChat(mockMessages, 'SHOW', [imageWithoutPrefix])) {
           break;
         }
       })();
@@ -467,7 +467,7 @@ describe('Gemini Client', () => {
       }));
 
       await (async () => {
-        for await (const _chunk of streamChat(messagesWithMultipleUsers, 'SHOW', MOCK_BASE64_IMAGE)) {
+        for await (const _chunk of streamChat(messagesWithMultipleUsers, 'SHOW', [MOCK_BASE64_IMAGE])) {
           break;
         }
       })();

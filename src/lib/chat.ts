@@ -124,13 +124,15 @@ export function truncateText(text: string, maxLength: number): string {
 export function createMessage(
   role: 'user' | 'assistant',
   content: string,
-  imageUrl?: string
+  imageUrl?: string,
+  imageUrls?: string[]
 ): Message {
   return {
     id: crypto.randomUUID(),
     role,
     content,
     imageUrl,
+    imageUrls,
     timestamp: new Date().toISOString(),
   };
 }
@@ -164,20 +166,21 @@ export function createQuizSummaryMessage(summaryData: QuizSummaryData): Message 
  * @returns Object with valid status and optional error message
  */
 export function validateImageFile(file: File): { valid: boolean; error?: string } {
-  const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-  const maxSize = 10 * 1024 * 1024; // 10MB
+  const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+  const validTypes = [...validImageTypes, 'application/pdf'];
+  const maxSize = file.type === 'application/pdf' ? 20 * 1024 * 1024 : 10 * 1024 * 1024;
 
   if (!validTypes.includes(file.type)) {
     return {
       valid: false,
-      error: 'Please upload a JPEG, PNG, GIF, or WebP image.',
+      error: 'Please upload a JPEG, PNG, GIF, WebP image, or PDF.',
     };
   }
 
   if (file.size > maxSize) {
     return {
       valid: false,
-      error: 'Image must be under 10MB.',
+      error: file.type === 'application/pdf' ? 'PDF must be under 20MB.' : 'Image must be under 10MB.',
     };
   }
 

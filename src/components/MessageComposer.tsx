@@ -4,7 +4,9 @@
  * Message Composer Component
  * AI Math Tutor v2
  *
- * Input area for composing messages with image upload support.
+ * Input area for composing messages with multi-image and PDF upload support.
+ * Supports up to 3 images per message. PDFs are rendered to images in-browser
+ * using pdfjs-dist (dynamically imported — no bundle impact unless PDF is selected).
  * Includes mode controls (Show/Teach) as icon buttons with tooltips.
  * Supports a centered layout variant for the welcome state.
  */
@@ -14,8 +16,10 @@ import { validateImageFile, fileToBase64 } from '@/lib/chat';
 import { ImagePreview } from './ImagePreview';
 import { TutorMode } from '@/types';
 
+const MAX_ATTACHMENTS = 3;
+
 interface MessageComposerProps {
-  onSend: (message: string, image?: string) => void;
+  onSend: (message: string, images?: string[]) => void;
   disabled?: boolean;
   placeholder?: string;
   /** Whether to use centered welcome state layout */
@@ -41,9 +45,9 @@ export function MessageComposer({
   modeDisabled = false,
 }: MessageComposerProps) {
   const [message, setMessage] = useState('');
-  const [image, setImage] = useState<string | null>(null);
-  const [imageError, setImageError] = useState<string | null>(null);
-  const [isUploading, setIsUploading] = useState(false);
+  const [attachments, setAttachments] = useState<string[]>([]);
+  const [attachmentError, setAttachmentError] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -58,12 +62,12 @@ export function MessageComposer({
   const handleSubmit = (e?: React.FormEvent) => {
     e?.preventDefault();
 
-    if ((!message.trim() && !image) || disabled) return;
+    if ((!message.trim() && attachments.length === 0) || disabled) return;
 
-    onSend(message.trim(), image || undefined);
+    onSend(message.trim(), attachments.length > 0 ? attachments : undefined);
     setMessage('');
-    setImage(null);
-    setImageError(null);
+    setAttachments([]);
+    setAttachmentError(null);
 
     // Reset textarea height
     if (textareaRef.current) {
@@ -78,36 +82,90 @@ export function MessageComposer({
     }
   };
 
+  const removeAttachment = (index: number) => {
+    setAttachments(prev => prev.filter((_, i) => i !== index));
+    setAttachmentError(null);
+  };
+
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Reset input so same file can be selected again
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
 
-    const validation = validateImageFile(file);
-    if (!validation.valid) {
-      setImageError(validation.error || 'Invalid file');
+    if (attachments.length >= MAX_ATTACHMENTS) {
+      setAttachmentError(`Maximum ${MAX_ATTACHMENTS} files allowed.`);
       return;
     }
 
-    setIsUploading(true);
-    setImageError(null);
+    if (file.type === 'application/pdf') {
+      // Validate size (20MB limit for PDFs)
+      if (file.size > 20 * 1024 * 1024) {
+        setAttachmentError('PDF must be under 20MB.');
+        return;
+      }
 
-    try {
-      const base64 = await fileToBase64(file);
-      setImage(base64);
-    } catch {
-      setImageError('Failed to process image. Please try again.');
-    } finally {
-      setIsUploading(false);
+      setIsProcessing(true);
+      setAttachmentError(null);
+
+      try {
+        // Dynamic import — only loads pdfjs-dist when a PDF is actually selected
+        const pdfjsLib = await import('pdfjs-dist');
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+
+        const arrayBuffer = await file.arrayBuffer();
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+        // Render up to however many pages fit within the 3-attachment cap
+        const pagesToRender = Math.min(pdf.numPages, MAX_ATTACHMENTS - attachments.length);
+        const newImages: string[] = [];
+
+        for (let i = 1; i <= pagesToRender; i++) {
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 1.5 });
+          const canvas = document.createElement('canvas');
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) continue;
+          await page.render({ canvasContext: ctx, viewport }).promise;
+          newImages.push(canvas.toDataURL('image/jpeg', 0.85));
+        }
+
+        setAttachments(prev => [...prev, ...newImages]);
+
+        // Suggest a helpful message if text box is empty
+        if (!message.trim()) {
+          setMessage("I've uploaded my exam paper. Please ask me which question I need help with.");
+        }
+      } catch {
+        setAttachmentError('Failed to process PDF. Please try again.');
+      } finally {
+        setIsProcessing(false);
+      }
+    } else {
+      // Image file path
+      const validation = validateImageFile(file);
+      if (!validation.valid) {
+        setAttachmentError(validation.error || 'Invalid file');
+        return;
+      }
+
+      setIsProcessing(true);
+      setAttachmentError(null);
+
+      try {
+        const base64 = await fileToBase64(file);
+        setAttachments(prev => [...prev, base64]);
+      } catch {
+        setAttachmentError('Failed to process image. Please try again.');
+      } finally {
+        setIsProcessing(false);
+      }
     }
-  };
-
-  const removeImage = () => {
-    setImage(null);
-    setImageError(null);
   };
 
   // Mode icon button helper
@@ -165,28 +223,28 @@ export function MessageComposer({
     </div>
   );
 
-  // Hidden file input (shared)
+  // Hidden file input (shared) — accepts images and PDFs
   const fileInput = (
     <input
       ref={fileInputRef}
       type="file"
-      accept="image/jpeg,image/png,image/gif,image/webp"
+      accept="image/jpeg,image/png,image/gif,image/webp,application/pdf"
       onChange={handleImageUpload}
       className="hidden"
     />
   );
 
-  // Image upload button (shared)
+  // Image upload button (shared) — disabled when at max attachments
   const imageUploadButton = (
     <button
       type="button"
       onClick={() => fileInputRef.current?.click()}
-      disabled={disabled || isUploading}
+      disabled={disabled || isProcessing || attachments.length >= MAX_ATTACHMENTS}
       className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-      aria-label="Upload image"
-      title="Upload a photo of your math problem"
+      aria-label="Upload image or PDF"
+      title={attachments.length >= MAX_ATTACHMENTS ? 'Maximum 3 files' : 'Upload a photo or PDF of your math problem'}
     >
-      {isUploading ? (
+      {isProcessing ? (
         <svg className="animate-spin h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
@@ -205,7 +263,7 @@ export function MessageComposer({
   const sendButton = (
     <button
       type="submit"
-      disabled={disabled || (!message.trim() && !image)}
+      disabled={disabled || (!message.trim() && attachments.length === 0)}
       className="p-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       aria-label="Send message"
     >
@@ -216,29 +274,36 @@ export function MessageComposer({
     </button>
   );
 
+  // Attachment thumbnails row (shared between both layouts)
+  const attachmentPreviews = attachments.length > 0 && (
+    <div className="mb-3 flex flex-wrap gap-2">
+      {attachments.map((src, i) => (
+        <div key={i} className="relative inline-block">
+          <ImagePreview src={src} alt={`Attachment ${i + 1}`} className="w-16 h-16 object-cover rounded-lg" />
+          <button
+            type="button"
+            onClick={() => removeAttachment(i)}
+            className="absolute -top-2 -right-2 w-5 h-5 bg-slate-500 hover:bg-slate-600 text-white rounded-full flex items-center justify-center transition-colors"
+            aria-label={`Remove attachment ${i + 1}`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+
   // ===== CENTERED LAYOUT (Welcome state) =====
   if (centered) {
     return (
       <div className="w-full max-w-2xl mx-auto px-4">
-        {/* Image preview */}
-        {image && (
-          <div className="mb-3 relative inline-block">
-            <ImagePreview src={image} alt="Upload preview" className="max-h-32" />
-            <button
-              onClick={removeImage}
-              className="absolute -top-2 -right-2 w-6 h-6 bg-slate-500 hover:bg-slate-600 text-white rounded-full flex items-center justify-center transition-colors"
-              aria-label="Remove image"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          </div>
-        )}
+        {attachmentPreviews}
 
-        {imageError && (
-          <p className="mb-2 text-sm text-red-500">{imageError}</p>
+        {attachmentError && (
+          <p className="mb-2 text-sm text-red-500">{attachmentError}</p>
         )}
 
         <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm overflow-hidden">
@@ -278,25 +343,10 @@ export function MessageComposer({
   // ===== BOTTOM LAYOUT (Chat state) =====
   return (
     <div className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-3">
-      {/* Image preview */}
-      {image && (
-        <div className="mb-3 relative inline-block">
-          <ImagePreview src={image} alt="Upload preview" className="max-h-32" />
-          <button
-            onClick={removeImage}
-            className="absolute -top-2 -right-2 w-6 h-6 bg-slate-500 hover:bg-slate-600 text-white rounded-full flex items-center justify-center transition-colors"
-            aria-label="Remove image"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-        </div>
-      )}
+      {attachmentPreviews}
 
-      {imageError && (
-        <p className="mb-2 text-sm text-red-500">{imageError}</p>
+      {attachmentError && (
+        <p className="mb-2 text-sm text-red-500">{attachmentError}</p>
       )}
 
       <form onSubmit={handleSubmit} className="flex items-center gap-2">
