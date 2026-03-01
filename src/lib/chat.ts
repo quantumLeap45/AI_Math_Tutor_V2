@@ -125,7 +125,9 @@ export function createMessage(
   role: 'user' | 'assistant',
   content: string,
   imageUrl?: string,
-  imageUrls?: string[]
+  imageUrls?: string[],
+  pdfName?: string,
+  pdfPageCount?: number
 ): Message {
   return {
     id: crypto.randomUUID(),
@@ -133,6 +135,8 @@ export function createMessage(
     content,
     imageUrl,
     imageUrls,
+    pdfName,
+    pdfPageCount,
     timestamp: new Date().toISOString(),
   };
 }

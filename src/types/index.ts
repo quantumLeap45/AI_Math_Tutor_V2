@@ -76,6 +76,10 @@ export interface Message {
   imageUrl?: string;
   /** Optional array of images as base64 data URLs (new — supports up to 3) */
   imageUrls?: string[];
+  /** PDF attachment name (e.g. "exam_paper.pdf") — stored for display in history */
+  pdfName?: string;
+  /** Number of PDF pages that were sent to the AI */
+  pdfPageCount?: number;
   /** ISO 8601 timestamp when message was created */
   timestamp: string;
   /** Quiz summary data (only present for quiz_summary messages) */

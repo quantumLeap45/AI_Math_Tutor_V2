@@ -264,9 +264,10 @@ describe('Chat Request Schema', () => {
     expect(() => chatRequestSchema.parse({ ...validChatRequest, images: [largeImage] })).toThrow();
   });
 
-  it('should reject images array with more than 3 items', () => {
+  it('should reject images array with more than 23 items', () => {
     const smallImage = 'data:image/jpeg;base64,abc123';
-    expect(() => chatRequestSchema.parse({ ...validChatRequest, images: [smallImage, smallImage, smallImage, smallImage] })).toThrow();
+    const tooMany = Array(24).fill(smallImage);
+    expect(() => chatRequestSchema.parse({ ...validChatRequest, images: tooMany })).toThrow();
   });
 });
 

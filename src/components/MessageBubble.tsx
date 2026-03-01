@@ -80,8 +80,21 @@ export function MessageBubble({ message, onReviewQuiz, onRetryQuiz }: MessageBub
             }
           `}
         >
-          {/* Multi-image (new messages) */}
-          {message.imageUrls && message.imageUrls.length > 0 && (
+          {/* PDF attachment chip */}
+          {message.pdfName && (
+            <div className="mb-3 flex items-center gap-2 px-3 py-2 bg-white/20 dark:bg-white/10 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+              <span className="text-sm font-medium truncate">{message.pdfName}</span>
+              <span className="text-xs opacity-75 flex-shrink-0">
+                {message.pdfPageCount} page{message.pdfPageCount !== 1 ? 's' : ''}
+              </span>
+            </div>
+          )}
+          {/* Multi-image (new messages — not from PDF) */}
+          {!message.pdfName && message.imageUrls && message.imageUrls.length > 0 && (
             <div className="mb-3 flex flex-wrap gap-2">
               {message.imageUrls.map((url, i) => (
                 <div key={i}>
@@ -91,7 +104,7 @@ export function MessageBubble({ message, onReviewQuiz, onRetryQuiz }: MessageBub
             </div>
           )}
           {/* Legacy single image (old stored messages — backward compat) */}
-          {!message.imageUrls && message.imageUrl && (
+          {!message.pdfName && !message.imageUrls && message.imageUrl && (
             <div className="mb-3">
               <ImagePreview src={message.imageUrl} alt="Uploaded image" />
             </div>

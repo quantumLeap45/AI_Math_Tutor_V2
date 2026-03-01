@@ -150,7 +150,7 @@ export default function ChatPage() {
 
   // Send message (central coordinator)
   const handleSendMessage = useCallback(
-    async (content: string, images?: string[]) => {
+    async (content: string, images?: string[], pdfInfo?: { name: string; pageCount: number }) => {
       if (!content.trim() && (!images || images.length === 0)) return;
 
       const quotaResult = consumeQuota();
@@ -260,7 +260,7 @@ export default function ChatPage() {
         sessionMgmt.setQuizSessionId(session.id);
       }
 
-      const userMessage = createMessage('user', content, undefined, images);
+      const userMessage = createMessage('user', content, undefined, images, pdfInfo?.name, pdfInfo?.pageCount);
       const updatedSession: ChatSession = {
         ...session,
         mode: sessionMgmt.mode,

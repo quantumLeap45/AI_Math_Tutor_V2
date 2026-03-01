@@ -26,7 +26,7 @@ interface ChatMessagesAreaProps {
   error: string | null;
   countdown: { formatted: string } | null;
   messagesEndRef: React.RefObject<HTMLDivElement | null>;
-  onSendMessage: (content: string, images?: string[]) => void;
+  onSendMessage: (content: string, images?: string[], pdfInfo?: { name: string; pageCount: number }) => void;
   onReviewQuiz: (quiz: QuizSummaryData) => void;
   onRetryQuiz: (source?: string) => void;
   onDismissError: () => void;

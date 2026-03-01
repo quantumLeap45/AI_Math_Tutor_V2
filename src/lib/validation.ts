@@ -76,7 +76,7 @@ export const chatRequestSchema = z.object({
     .min(1, 'At least one message is required')
     .max(100, 'Too many messages (max 100)'),
   mode: tutorModeSchema,
-  images: z.array(z.string().max(5000000, 'Image too large (max ~5MB base64)')).max(3, 'Maximum 3 images per message').optional(),
+  images: z.array(z.string().max(5000000, 'Image too large (max ~5MB base64)')).max(23, 'Maximum 23 images per message (3 photos + up to 20 PDF pages)').optional(),
   quizQuestionContext: quizQuestionContextSchema.optional(),
 });
 
